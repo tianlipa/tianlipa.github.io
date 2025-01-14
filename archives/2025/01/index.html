@@ -95,7 +95,23 @@
       <h1 class="site-title">tianlipa</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">tianlipa</p>
+    
+      <!-- <p class="site-subtitle" itemprop="description">Subtitle</p> -->
+
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script>
+      var paragraphs = [
+          "AAA全国可飞加我看小男娘",
+          "无糖可乐和有糖的, 相比之下,<br>冰镇可乐, 喝的更痛快.",
+          "前有绝景, 敬请见证.",
+          "再添加一个段落以供随机选择。",
+          "<span style='color: red;'>这句话是红色的.</span>"
+      ];
+      var randomIndex = Math.floor(Math.random() * paragraphs.length);
+      var selectedParagraph = paragraphs[randomIndex];
+      document.getElementById('randomParagraph').innerHTML = selectedParagraph;
+      </script>
+    
   </div>
 
   <div class="site-nav-right">
@@ -149,7 +165,7 @@
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 1 篇日志。 继续努力。</span>
+        <span class="collection-header">嗯..! 目前共计 3 篇日志。 继续努力。</span>
       </div>
 
       
@@ -162,15 +178,55 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2025-01-11T18:52:03+08:00"
+              datetime="2025-01-14T16:53:48+08:00"
+              content="2025-01-14">
+          01-14
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/01/14/NexTSubtitle/" itemprop="url">
+            <span itemprop="name">NexT主题Hexo博客如何显示动态Subtitle（随机显示Subtitle）</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2025-01-12T23:09:27+08:00"
+              content="2025-01-12">
+          01-12
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/01/12/2025-1-12/" itemprop="url">
+            <span itemprop="name">2025.1.12</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2025-01-11T21:15:57+08:00"
               content="2025-01-11">
           01-11
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2025/01/11/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
+          <a class="post-title-link" href="/2025/01/11/Start/" itemprop="url">
+            <span itemprop="name">Start</span>
           </a>
       </div>
 
@@ -249,9 +305,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>

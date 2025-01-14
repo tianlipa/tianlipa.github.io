@@ -99,7 +99,23 @@
       <h1 class="site-title">tianlipa</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">tianlipa</p>
+    
+      <!-- <p class="site-subtitle" itemprop="description">Subtitle</p> -->
+
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script>
+      var paragraphs = [
+          "AAA全国可飞加我看小男娘",
+          "无糖可乐和有糖的, 相比之下,<br>冰镇可乐, 喝的更痛快.",
+          "前有绝景, 敬请见证.",
+          "再添加一个段落以供随机选择。",
+          "<span style='color: red;'>这句话是红色的.</span>"
+      ];
+      var randomIndex = Math.floor(Math.random() * paragraphs.length);
+      var selectedParagraph = paragraphs[randomIndex];
+      document.getElementById('randomParagraph').innerHTML = selectedParagraph;
+      </script>
+    
   </div>
 
   <div class="site-nav-right">
@@ -273,9 +289,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
