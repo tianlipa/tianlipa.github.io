@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"tianlipa.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="众所周知国内对GitHub的访问非常不稳定, 大部分稳定访问方法都需要借助非常规手段, 其中比较靠谱且免费的是SteamCommunity302, 不仅能加速Steam商店, 还能稳定访问GitHub. 然而, 启动SteamCommunity302的时候, 虽然浏览器能流畅访问GitHub, 但是命令行中的git会连接失败, 报错类似 SSL peer certificate or SSH re">
+  <meta name="description" content="Requires password.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何解决启用SteamCommunity302后git命令行无法连接">
-<meta property="og:url" content="https://tianlipa.github.io/2025/03/16/302git/index.html">
+<meta property="og:title" content="2025-3-22">
+<meta property="og:url" content="https://tianlipa.github.io/2025/03/22/2025-3-22/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="众所周知国内对GitHub的访问非常不稳定, 大部分稳定访问方法都需要借助非常规手段, 其中比较靠谱且免费的是SteamCommunity302, 不仅能加速Steam商店, 还能稳定访问GitHub. 然而, 启动SteamCommunity302的时候, 虽然浏览器能流畅访问GitHub, 但是命令行中的git会连接失败, 报错类似 SSL peer certificate or SSH re">
+<meta property="og:description" content="Requires password.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-16T12:23:43.000Z">
-<meta property="article:modified_time" content="2025-03-16T12:33:55.088Z">
+<meta property="article:published_time" content="2025-03-22T15:11:32.000Z">
+<meta property="article:modified_time" content="2025-03-22T15:22:16.272Z">
 <meta property="article:author" content="tianlipa">
-<meta property="article:tag" content="疑难解答">
+<meta property="article:tag" content="日寄">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://tianlipa.github.io/2025/03/16/302git/">
+<link rel="canonical" href="https://tianlipa.github.io/2025/03/22/2025-3-22/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>如何解决启用SteamCommunity302后git命令行无法连接 | tianlipa</title>
+  <title>2025-3-22 | tianlipa</title>
   
 
 
@@ -245,7 +245,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/03/16/302git/">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/03/22/2025-3-22/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -258,7 +258,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何解决启用SteamCommunity302后git命令行无法连接
+          2025-3-22
         </h1>
 
         <div class="post-meta">
@@ -269,7 +269,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-03-16 20:23:43 / 修改时间：20:33:55" itemprop="dateCreated datePublished" datetime="2025-03-16T20:23:43+08:00">2025-03-16</time>
+              <time title="创建时间：2025-03-22 23:11:32 / 修改时间：23:22:16" itemprop="dateCreated datePublished" datetime="2025-03-22T23:11:32+08:00">2025-03-22</time>
             </span>
 
           
@@ -283,18 +283,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>众所周知国内对GitHub的访问非常不稳定, 大部分稳定访问方法都需要借助非常规手段, 其中比较靠谱且免费的是SteamCommunity302, 不仅能加速Steam商店, 还能稳定访问GitHub. 然而, 启动SteamCommunity302的时候, 虽然浏览器能流畅访问GitHub, 但是命令行中的git会连接失败, 报错类似</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSL peer certificate or SSH remote key was not OK</span><br></pre></td></tr></table></figure>
-
-<p>解决方案如下:</p>
-<p>方法一(推荐):</p>
-<p>找到SteamCommunity302根目录下的<code>steamcommunity.crt</code>证书文件, 双击打开, 点击安装证书-下一步-将所有证书放入下列存储-浏览, 选择”受信任的根证书颁发机构”, 点击安装即可.</p>
-<p>方法二(不推荐):</p>
-<p>终端运行:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>暂时关闭git的SSL安全验证, 但存在安全隐患, 不建议长期关闭.</p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="你没资格啊, 你没资格" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="6fafd86d92bf4efbd75c887e15be55de333053810b8cfa3ea68302013aa6fe4f">65d63d5764e6e1413d7ff8079ab052ab2355f51735eb1fd36aae58dc8c0c28e678cd294955f08a6a26719130b2cfd9fefda677456463183a6663b06f13270401d7141e9dece1de5036ba848195b08568087f4d6c59362b632cb63d0dafd87343f20285a4e16ea27ffbd23c2f68181d3e9cc9d2d1dcd9b43276b8e16e97074d9e579c84ae3b88c363f7bb0803dfb49ff091dc3d76470d2e5047717e8fd18cbb8a58d8a7915e0cf9e7dd3b1749ae248adeb9a02ba7f601ad6e4ccf568ebf4fd1d3a40e6791d2604b160df494eba835fec29071e50918c8b09eaf0ba208a4e94b5675ade4e22b3549393abd0ccef4a4fa33c8d68cd21da0ea1f14e207d389aae6675219b9f4a34e19ef9704fb90403643e81206921681e3c0aaf7fe4d31300579e16133ca5e91bb33126f6a24114c7444f7eb522e71b7f531be3c1f409a02694f8ec880aae9cced0b9658b7bd4ea12c763b153326a9dd54391915dac467eee093939f787b44343a9a131f109ecf2371f6e05c71bbf9813d616ad4afdce668a4db49e5923d96f3252dd71c18596ee4a01d413469dd44d491d7f272fbc6bb1a6990f1b02372157b721c576314cd9b772d4d38d6e1835bfc14ae2f4a160469af08cf08eb3d1ef8339d5a4a6d1886d688917cf24592b23d5c4c44ae17fe8486fb63754dd7537e7bfee7cd95d3c18b82eeb717998cd84a07fc18b96234eeeffee433dc467f6ae6bd56d279b79a039eaa1e6108e18a146d361be6f8c546d9c152383b0763edebd7b6aad4bc83cc0233b5db035b643ba1d0715466b5a6104b4c1da3f22bae98b6b2d2065d4616bc1f23c518981907635a0658f606f70d72dce4712fb51ebf1e0e4acf62bb306fd1295aecad4db5e8455e509abad3de5cf2d9c79e60033f3f1d735c3dee434d069f1c925ad32160f5c224cc411d4f962789cb4fb155c19cb4055535593e14ef874b11d9b2a02178e4c684fdd6e8ca733196526a9c35b1da045d9f06adb43b6f0b4cdf23ac65e93ed416021c10d1f1ee1913b29786a41edb3ab67eee81788d47830b6805859fa3894d3a3ec422d94de6745fa99d23e9bd93811d13b2a2c6f9b873f91fe6f3441a80ca44604a807b9b7b89904d2ab65259ab695fe6e29eb6ce4d2bad70139315121748e5abc00bedcc543908e05c46c831eec4ee0543e394ba8825451ad053cc19ac2e0fbae45f16a0fac6e691c0d8cedb9d1bfd843e129da6a0a923b85e985cb4260ad7d13356914a4297542c08422bd93470e7c51a69dd01748a54714ac7d521f404d6fdd33a8f6a69ac0e613f84051d3574ecd0b7799bc817d2d57ac3e6871824419738e16c23550f9ec9419dcd47503c47ccead6866e8c340df99d843d21f6eebdc78f8be0255d022ede5b4ea9c43369562975b922b40d166a4f85fd6bba88e9a4552374fe2ceefe56baf15c779b688c1492143c3e9fbdbe9ec7336c0d022194078c0239ace4a9e44b756a58db645b33de475a3ece28d7a93ea21c274319ffc13db713f6e0dd257fb9691dd7a7c221c819</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-flip">
+      <input class="hbe hbe-input-field hbe-input-field-flip" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-flip" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-flip" data-content="Requires password.">Requires password.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
     
@@ -303,7 +303,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94/" rel="tag"># 疑难解答</a>
+              <a href="/tags/%E6%97%A5%E5%AF%84/" rel="tag"># 日寄</a>
           </div>
 
         
@@ -312,13 +312,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2025/03/14/2025-3-13/" rel="prev" title="2025-3-13">
-      <i class="fa fa-chevron-left"></i> 2025-3-13
+    <a href="/2025/03/16/302git/" rel="prev" title="如何解决启用SteamCommunity302后git命令行无法连接">
+      <i class="fa fa-chevron-left"></i> 如何解决启用SteamCommunity302后git命令行无法连接
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2025/03/22/2025-3-22/" rel="next" title="2025-3-22">
-      2025-3-22 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
