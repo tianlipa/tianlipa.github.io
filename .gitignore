@@ -131,3 +131,4 @@ dist
 
 # 手动添加
 public/
+/.deploy_git
