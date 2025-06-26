@@ -20,10 +20,12 @@
     var CONFIG = {"hostname":"tianlipa.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="嘻嘻, 我一定要活下去">
+<meta property="og:type" content="website">
 <meta property="og:title" content="tianlipa">
 <meta property="og:url" content="https://tianlipa.github.io/page/4/index.html">
 <meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="嘻嘻, 我一定要活下去">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="tianlipa">
 <meta name="twitter:card" content="summary">
@@ -244,12 +246,162 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/01/14/NexTSubtitle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="嘻嘻, 我一定要活下去">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/14/NexTSubtitle/" class="post-title-link" itemprop="url">NexT主题Hexo博客如何显示动态Subtitle（随机显示Subtitle）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-14 16:53:48" itemprop="dateCreated datePublished" datetime="2025-01-14T16:53:48+08:00">2025-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-16 23:23:52" itemprop="dateModified" datetime="2025-01-16T23:23:52+08:00">2025-01-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>起因是觉得Matery主题不太符合审美, 想换成NexT主题, 但又想像Matery那样添加每次刷新都显示的动态签名, 找了一下发现在NexT中签名是写在Subtitle里的, 但网上相关的博客只有两篇, 且都过时失效了, 剩下的基本都是互相抄袭的胡说八道, 遂自己研究了一下.</p>
+<p>纯属照着AI依葫芦画瓢写出的东西, 很可能含有愚蠢的实现方式或错误, 贻笑大方, 但反正最后达到我想要的效果了.</p>
+<p>打开博客根目录下<code>themes/next/layout/_partials/header/brand.swig</code>, 找到以下内容:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;%- if subtitle %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;site-subtitle&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;description&quot;</span>&gt;</span>&#123;&#123; subtitle &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将其替换成</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;% if subtitle %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;randomParagraph&quot;</span> <span class="attr">class</span>=<span class="string">&quot;site-subtitle&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;description&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> paragraphs = [</span></span><br><span class="line"><span class="language-javascript">        <span class="string">&quot;你想要的Subtitle&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="string">&quot;我是奶龙&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="string">&quot;你想要的另外的Subtitle&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="string">&quot;再添加一个段落以供随机选择。&quot;</span></span></span><br><span class="line"><span class="language-javascript">    ];</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> randomIndex = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * paragraphs.<span class="property">length</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> selectedParagraph = paragraphs[randomIndex];</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;randomParagraph&#x27;</span>).<span class="property">innerText</span> = selectedParagraph;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>即可.</p>
+<p>如果想在Subtitle里插入HTML代码(例如使用&lt;br&gt;换行), 只需将</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">document.getElementById(&#x27;randomParagraph&#x27;).innerText = selectedParagraph;</span><br></pre></td></tr></table></figure>
+
+<p>中的<code>innerText</code>替换成<code>innerHTML</code>即可.</p>
+<p>其实严格来说这么做也不是很对劲, 因为这跟根目录下<code>_config.yml</code>里的Subtitle已经没什么关系了, 不过除非你是强迫症, 否则应该没什么实际影响.</p>
+<p>参考的两篇博客:<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/df2c844eeabf">hexo个性化（next主题动态显示subtitle）</a><br><a target="_blank" rel="noopener" href="https://lruihao.cn/posts/dongtaisub/">Hexo 个性化 - Next 主题动态显示 Subtitle</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/01/12/2025-1-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="嘻嘻, 我一定要活下去">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/12/2025-1-12/" class="post-title-link" itemprop="url">2025-1-12</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-12 23:09:27" itemprop="dateCreated datePublished" datetime="2025-01-12T23:09:27+08:00">2025-01-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-17 23:56:08" itemprop="dateModified" datetime="2025-01-17T23:56:08+08:00">2025-01-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天把马士兵的HTML看完了, 感觉没讲什么东西就戛然而止了.<br>开始看马士兵的PHP, 目前看到了表单提交. Bootstrap没细看, 第不知道多少次没学会正则表达式.</p>
+<p>图书馆借了两本书, 一本是《地铁2033》, 准备玩游戏之前先看看原著小说. 另外一本书看起来非常有意思, V.M.石察卡的《忒修斯之船》, 看了个序章准备慢慢看.</p>
+<p>乏了, 开把以撒.</p>
+<p>晚上陪同学把昨天没看的闪灵看了, 觉得前半段略无聊, 后半段还是有点吓人的.</p>
+<p><img src="/img/2025-1-12/twins.png"></p>
+<p>本来以为这二位镜头会多点呢, 毕竟是个名场面.</p>
+<p>有空研究一下博客能不能加上评论区或者浏览次数统计之类的, 话说真有人会看吗?</p>
+<p>校园网又连不上github了, 要不等会再发布吧.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/01/11/Start/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="嘻嘻, 我一定要活下去">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -371,14 +523,14 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">tianlipa</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">嘻嘻, 我一定要活下去</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
