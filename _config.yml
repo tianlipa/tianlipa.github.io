@@ -29,7 +29,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-    - projects/**
+    - abracadabra/**
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -132,3 +132,9 @@ encrypt:
   message: Requires password.
   wrong_pass_message: 你没资格啊, 你没资格
   # wrong_hash_message:
+
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
