@@ -775,4 +775,23 @@
         <tag>日寄</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2025-8-6</title>
+    <url>/2025/08/06/2025-8-6/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="你没资格啊, 你没资格" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="bfb19dbe84e427a319955c9256141ccf171000673f8b578fc06ea0f97c989597">65d63d5764e6e1413d7ff8079ab052abacecafc8b986a4a471ec3adb5db33a933881aaf3f402eec5ec9c6e3a721e5dd5c33220d1ae18e2b5a6f0b1ed891ba41465e2028117e030231bd7b433cce28036190011a012436a04080d217d8a9b997b</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-flip">
+      <input class="hbe hbe-input-field hbe-input-field-flip" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-flip" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-flip" data-content="Requires password.">Requires password.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>日寄</tag>
+      </tags>
+  </entry>
 </search>
