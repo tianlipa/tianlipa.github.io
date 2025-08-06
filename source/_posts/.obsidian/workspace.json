@@ -11,10 +11,14 @@
             "id": "6b552a1bee4214b9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "2025-4-3.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "2025-4-3"
             }
           }
         ]
@@ -36,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byModifiedTime",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -166,26 +170,33 @@
   },
   "active": "6b552a1bee4214b9",
   "lastOpenFiles": [
-    "2025-7-17.md",
-    "2025-6-26.md",
-    "未命名.canvas",
-    "未命名",
-    "2025-5-21.md",
-    "2025-06-29.md",
-    "gdb.md",
-    "2025-4-2.md",
-    "gdb调试ELF程序.md",
-    "hello-world.md",
+    "2025-5-5.md",
     "2025-4-17.md",
+    "2025-4-6.md",
     "2025-4-3.md",
+    "2025-4-2.md",
+    "2025-3-27.md",
+    "302git.md",
+    "2025-3-22.md",
     "2025-3-13.md",
-    "2025-3-5.md",
-    "2025-2-27.md",
-    "2025-3-6.md",
-    "未命名 1.md",
-    "未命名.md",
+    "hello-world.md",
+    "2025-5-21.md",
+    "hw.md",
+    "Start.md",
+    "NexTSubtitle.md",
+    "2025-1-19.md",
+    "2025-1-17.md",
     "2025-1-12.md",
+    "2025-1-22.md",
     "2025-1-23.md",
-    "2025-1-24.md"
+    "2025-1-24.md",
+    "2025-1-26.md",
+    "newyearnewgee.md",
+    "2025-1-20.md",
+    "2025-2-1.md",
+    "2025-2-3.md",
+    "2025-2-7.md",
+    "未命名.canvas",
+    "未命名"
   ]
 }
