@@ -829,9 +829,9 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/08/12/openvino-funasr/</url>
-    <content><![CDATA[<h3 id="尝试利用OpenVINO库加速FunASR语音识别"><a href="#尝试利用OpenVINO库加速FunASR语音识别" class="headerlink" title="尝试利用OpenVINO库加速FunASR语音识别"></a>尝试利用OpenVINO库加速FunASR语音识别</h3><p>选取模型为<a href="https://www.modelscope.cn/models/iic/SenseVoiceSmall">SenseVoiceSmall</a>.</p>
+    <title>利用OpenVINO库加速FunASR语音识别</title>
+    <url>/2025/07/23/openvino-funasr/</url>
+    <content><![CDATA[<p>选取模型为<a href="https://www.modelscope.cn/models/iic/SenseVoiceSmall">SenseVoiceSmall</a>.</p>
 <p>开始运行前首先需要将模型转换为OpenVINO IR格式. 原模型为PyTorch框架, 可以利用以下代码保存为ONNX格式.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">onnx_model = onnx.load(model_path)</span><br><span class="line">onnx.save_model(onnx_model,</span><br><span class="line">                <span class="string">&#x27;saved_model.onnx&#x27;</span>,</span><br><span class="line">                save_as_external_data=<span class="literal">True</span>,</span><br><span class="line">                all_tensors_to_one_file=<span class="literal">True</span>,</span><br><span class="line">                location=<span class="string">&#x27;data/weights_data&#x27;</span>,</span><br><span class="line">                size_threshold=<span class="number">1024</span>,</span><br><span class="line">                convert_attribute=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
