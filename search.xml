@@ -840,6 +840,8 @@
 
 <p>此命令会将模型优化并导出为OpenVINO IR格式模型. 注意, <code>--compress_to_fp16</code>默认处于开启状态, 会将模型压缩至fp16精度, 正常情况下不会导致明显的精度损失.</p>
 <p>可以通过如下代码加载并编译OpenVINO IR模型.</p>
+<span id="more"></span>
+
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> openvino <span class="keyword">as</span> ov</span><br><span class="line">model_path = <span class="string">r&quot;/saved_model.xml&quot;</span></span><br><span class="line">model = ov.compile_model(model_path, <span class="string">&quot;AUTO&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>需要注意的是, 原模型采用FunASR提供的<code>AutoModel</code>类加载并调用, 而在转换为OpenVINO后由于模型类改变, 无法用原方法调用. 因此, 需要将原模型调用过程中, 对音频进行前处理后的数据导出, 用编译后的模型运算, 再将模型输出手动解码输出.</p>
