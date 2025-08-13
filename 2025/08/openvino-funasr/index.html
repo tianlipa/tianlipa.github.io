@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tianlipa.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="选取模型为SenseVoiceSmall. 开始运行前首先需要将模型转换为OpenVINO IR格式. 原模型为PyTorch框架, 可以利用以下代码保存为ONNX格式. onnx_model &#x3D; onnx.load(model_path)onnx.save_model(onnx_model,                &#x27;saved_model.onnx&#x27;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用OpenVINO库加速FunASR语音识别">
+<meta property="og:url" content="https://tianlipa.github.io/2025/08/openvino-funasr/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="选取模型为SenseVoiceSmall. 开始运行前首先需要将模型转换为OpenVINO IR格式. 原模型为PyTorch框架, 可以利用以下代码保存为ONNX格式. onnx_model &#x3D; onnx.load(model_path)onnx.save_model(onnx_model,                &#x27;saved_model.onnx&#x27;,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/openvino-funasr/%E8%AF%86%E5%88%AB1.jpg">
+<meta property="og:image" content="https://tianlipa.github.io/img/openvino-funasr/%E8%AF%86%E5%88%AB2.jpg">
+<meta property="article:published_time" content="2025-08-12T01:10:08.000Z">
+<meta property="article:modified_time" content="2025-08-12T05:28:34.421Z">
+<meta property="article:author" content="tianlipa">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/openvino-funasr/%E8%AF%86%E5%88%AB1.jpg">
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/08/openvino-funasr/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>利用OpenVINO库加速FunASR语音识别 | tianlipa</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">tianlipa</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+    
+      <!-- <p class="site-subtitle" itemprop="description">Subtitle</p> -->
+
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script>
+      var paragraphs = [
+          "AAA全国可飞加我看小男娘",
+          "无糖可乐和有糖的, 相比之下,<br>冰镇可乐, 喝的更痛快.",
+          "前有绝景, 敬请见证.",
+          "再添加一个段落以供随机选择.",
+          "<span style='color: red;'>这句话是红色的.</span>",
+          "My eyes are open.",
+          "Memento Mori.",
+          "we will get out of babbdi",
+          "谁也不会把迷宫的出口告诉小白鼠的, 伦吾同学.",
+          "那些没有天赋的人呢?",
+          "本人今年就30了, 和很多校友一样",
+          "即使引导早已破碎, <br>也请您当上艾尔登之王.",
+          "我考, 完啦",
+          "任何人来打扰我干正事,<br>我都会停下来和他玩",
+          "没有爱可以活下去, 但没有水不行.",
+          "偶洅匜ハモえ菗潒ろ",
+          "多勢に無勢 もう負け犬決定",
+          "再见, 老七",
+          "赌书消得泼茶香,<br>当时只道是寻常.",
+          "欲买桂花同载酒,<br>终不似, 少年游.",
+          "我未成名君未嫁,<br>可能俱是不如人.",
+          "多少事, 从来急;<br>天地转, 光阴迫.<br>一万年太久, 只争朝夕.<br>四海翻腾云水怒, 五洲震荡风雷激.<br>要扫除一切害人虫, 全无敌.",
+          "当烧到一百三十五万时, 水开了.",
+          "啊啊啊啊啊<br>啊啊啊啊啊<br>啊啊啊啊啊<br>啊啊啊啊唉",
+          "I was cured, all right.",
+          "Keep on keeping on.",
+          "Don't be so serious.",
+          "Once there was an explosion",
+          "知君命不偶, 同病亦同忧.",
+          "等闲变却故人心,<br>却道故人心易变.",
+          "欢迎使用华为备忘录. 您可以使用备忘录快速记录所思所想, 创建笔记, 清单以及待办事项.",
+          "一光栅宽5cm，每1mm有400条刻线，波长500nm光波正入射时，第二级衍射谱的衍射角最接近于",
+          "如果你能认出Subtitle里的所有梗可以联系我, 我愿意v你50",
+          "你的电影, 超~~级好看",
+          "骗你的, 我们不去看电影",
+          "95%的可能我们会寄",
+          "我不想吃拼好饭了, 我想被爱",
+          "It's not faith you need.<br>It's fear.",
+          "关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!",
+          "愿您坦然释怀",
+          "永远别放弃!",
+          "愿指引明路的苍蓝星为你闪耀",
+          "&lt;script>alert(1)&lt;/script>",
+          "你终于醒了, 现在是2019年, 我们一起玩MC",
+          "诸位祖先, 敬请见证!",
+          "我只是嘴甜, 我心里没你",
+          "我在跟你说现在的事.",
+          "嘻嘻, 我一定要活下去",
+          "不要害怕,<br>最终我们每个人都会幸福快乐.",
+          "不要在晚上做任何决定.<br>(这条是在凌晨两点写的)",
+          "'or 1=1#",
+          "早知道就活得再任性一点了.",
+          "你好中国!",
+          "事情就是这样.",
+          "叽-啁-叽?",
+          "啊呀呀半夜时钟刚刚敲过,<br>呜呼呼他娘的霉运老跟着我.",
+          "算, 称, 分",
+          "可惜你不写博客, 也不知道这句Subtitle的分量...",
+          "有些人口中的看不见未来其实是看见了未来.",
+          "你知道吗:<br>放坏的香蕉比正常的香蕉更通便.",
+          "征服世界失败, 我被瑞士干掉了.",
+          "太好了, 我逐渐理解一切",
+          "Escape, now",
+          "QmFzZTY06Kej5a+G5aSx6LSlLCDor7fph43or5Uh",
+          "幸福就像巧克力,<br>我这种狗一吃就似了.",
+          "逮住蛤蟆, 攥出尿来.",
+          "生活就像海洋, 只有意志坚强的人, 才能到达彼岸.",
+          "<b>活下去</b>",
+          "CAW! CAAAW!",
+          "慢慢地慢慢地像被勒紧脖子一般地<br>把直到昨天的我逐渐杀死",
+          "你尚未连接.<br>Web因你而不同.",
+          "适当地 自由地<br>苟活下去",
+          "@edmundmcmillen You litte F**ker<br>You made a shit of piece with your trash Issac it's f**King Bad this trash game I will become back my money I hope you will in your next time a cow on a trash farm you sucker",
+          "Misery is wasted on the miserable.",
+          "按部就班的发疯",
+          "oiiaiooiiiai",
+          "出售大脑, 全新未使用",
+          "I miss the old days I couldn't tell.",
+          "认清形势, 放弃幻想.",
+          "我能在拥有失忆症的情况下通关地球OL吗",
+          "I said I'm fine!",
+          "永怀初心",
+          "我真的变成坚韧了吗?",
+          "爱的反义词不是恨, 是冷漠.",
+          "哈!",
+          "休息一天, 钓鱼去吧.<br>但愿仍然有鱼可钓.",
+          "广告位招租",
+          "我想了好久要把一句话加进来, 一直拖着没做, 现在忘了是哪句话",
+          "死很容易, 喜剧最难",
+          "S'all good, man.",
+          "坚持到底并不重要!",
+          "让我们从阳台上看看星星吧",
+          "从前种种, 譬如昨日死;<br>从后种种, 譬如今日生.",
+          "Also try GitLab!"
+      ];
+      var randomIndex = Math.floor(Math.random() * paragraphs.length);
+      var selectedParagraph = paragraphs[randomIndex];
+      document.getElementById('randomParagraph').innerHTML = selectedParagraph;
+      </script>
+    
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/openvino-funasr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          利用OpenVINO库加速FunASR语音识别
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-08-12 09:10:08 / 修改时间：13:28:34" itemprop="dateCreated datePublished" datetime="2025-08-12T09:10:08+08:00">2025-08-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>选取模型为<a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/iic/SenseVoiceSmall">SenseVoiceSmall</a>.</p>
+<p>开始运行前首先需要将模型转换为OpenVINO IR格式. 原模型为PyTorch框架, 可以利用以下代码保存为ONNX格式.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">onnx_model = onnx.load(model_path)</span><br><span class="line">onnx.save_model(onnx_model,</span><br><span class="line">                <span class="string">&#x27;saved_model.onnx&#x27;</span>,</span><br><span class="line">                save_as_external_data=<span class="literal">True</span>,</span><br><span class="line">                all_tensors_to_one_file=<span class="literal">True</span>,</span><br><span class="line">                location=<span class="string">&#x27;data/weights_data&#x27;</span>,</span><br><span class="line">                size_threshold=<span class="number">1024</span>,</span><br><span class="line">                convert_attribute=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接下载FunASR官方提供的<a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/iic/SenseVoiceSmall-onnx">SenseVoiceSmall-onnx</a>模型. 准备好ONNX格式模型后, 可以利用OpenVINO提供的<code>mo</code>或<code>ovc</code>工具将其转换为OpenVINO IR格式. 在最新的OpenVINO版本中, <code>mo</code>工具已经被更简化的<code>OpenVINO Model Converter</code>即<code>ovc</code>工具所替代.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mo --input_model &lt;INPUT_MODEL&gt;.onnx</span><br></pre></td></tr></table></figure>
+
+<p>此命令会将模型优化并导出为OpenVINO IR格式模型. 注意, <code>--compress_to_fp16</code>默认处于开启状态, 会将模型压缩至fp16精度, 正常情况下不会导致明显的精度损失.</p>
+<p>可以通过如下代码加载并编译OpenVINO IR模型.</p>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> openvino <span class="keyword">as</span> ov</span><br><span class="line">model_path = <span class="string">r&quot;/saved_model.xml&quot;</span></span><br><span class="line">model = ov.compile_model(model_path, <span class="string">&quot;AUTO&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是, 原模型采用FunASR提供的<code>AutoModel</code>类加载并调用, 而在转换为OpenVINO后由于模型类改变, 无法用原方法调用. 因此, 需要将原模型调用过程中, 对音频进行前处理后的数据导出, 用编译后的模型运算, 再将模型输出手动解码输出.</p>
+<p>原模型的调用方法如下.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> funasr <span class="keyword">import</span> AutoModel</span><br><span class="line"><span class="keyword">from</span> funasr.utils.postprocess_utils <span class="keyword">import</span> rich_transcription_postprocess</span><br><span class="line"></span><br><span class="line">model = AutoModel(</span><br><span class="line">    model=model_dir,</span><br><span class="line">    trust_remote_code=<span class="literal">True</span>,</span><br><span class="line">    device=<span class="string">&quot;gpu&quot;</span>,</span><br><span class="line">    disable_update=<span class="literal">True</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">res = model.generate(</span><br><span class="line">    <span class="built_in">input</span>=<span class="string">&quot;./vad_example.wav&quot;</span>,</span><br><span class="line">    cache=&#123;&#125;,</span><br><span class="line">    language=<span class="string">&quot;auto&quot;</span>,</span><br><span class="line">    use_itn=<span class="literal">True</span>,</span><br><span class="line">    batch_size_s=<span class="number">60</span>,</span><br><span class="line">    vad=<span class="literal">False</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">text = rich_transcription_postprocess(res[<span class="number">0</span>][<span class="string">&quot;text&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(text)</span><br></pre></td></tr></table></figure>
+
+<p>为导出前处理后数据, 需要给原模型的<code>encoder</code>添加hook, 代码如下.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hook_layer = model.model.encoder.encoders0[<span class="number">0</span>]</span><br><span class="line">all_feats = []</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_feats_hook</span>(<span class="params">module, <span class="built_in">input</span>, output</span>):</span><br><span class="line">    feats = <span class="built_in">input</span>[<span class="number">0</span>]</span><br><span class="line">    feats_np = feats.detach().cpu().numpy()</span><br><span class="line">    all_feats.append(feats_np)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;已保存中间特征: &quot;</span>, feats.shape)</span><br><span class="line">hook_handle = hook_layer.register_forward_hook(save_feats_hook)</span><br><span class="line"></span><br><span class="line">res = model.generate(</span><br><span class="line">    <span class="built_in">input</span>=<span class="string">&quot;./vad_example.wav&quot;</span>,</span><br><span class="line">    cache=&#123;&#125;,</span><br><span class="line">    language=<span class="string">&quot;auto&quot;</span>,</span><br><span class="line">    use_itn=<span class="literal">True</span>,</span><br><span class="line">    batch_size_s=<span class="number">60</span>,</span><br><span class="line">    vad=<span class="literal">False</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">all_feats = np.concatenate(all_feats, axis=<span class="number">1</span>)</span><br><span class="line">np.save(<span class="string">&quot;example_feats.npy&quot;</span>, all_feats)</span><br><span class="line">np.save(<span class="string">&quot;example_feats_len.npy&quot;</span>, np.array([all_feats.shape[<span class="number">1</span>]], dtype=np.int32))</span><br><span class="line">hook_handle.remove()</span><br></pre></td></tr></table></figure>
+
+<p>注意, 如果在导出前处理数据时开启vad, 会导致按乱序导出数据, 识别内容虽然正确, 但对稍长的文本, 每句话之间的顺序会出现错乱, 故不应开启vad.</p>
+<p>调用编译后模型代码如下.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">speech = np.load(<span class="string">&quot;example_feats.npy&quot;</span>)  <span class="comment"># shape: [1, T, 560]</span></span><br><span class="line">speech_lengths = np.load(<span class="string">&quot;example_feats_len.npy&quot;</span>)  <span class="comment"># shape: [1]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Speech shape: <span class="subst">&#123;speech.shape&#125;</span>, Lengths: <span class="subst">&#123;speech_lengths&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">language = np.array([<span class="number">0</span>], dtype=np.int32)  <span class="comment"># 0 = auto</span></span><br><span class="line">textnorm = np.array([<span class="number">1</span>], dtype=np.int32)  <span class="comment"># 1 = do itn</span></span><br><span class="line"></span><br><span class="line">inputs = &#123;</span><br><span class="line">    <span class="string">&quot;speech&quot;</span>: speech,</span><br><span class="line">    <span class="string">&quot;speech_lengths&quot;</span>: speech_lengths,</span><br><span class="line">    <span class="string">&quot;language&quot;</span>: language,</span><br><span class="line">    <span class="string">&quot;textnorm&quot;</span>: textnorm,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">results = model(inputs)</span><br></pre></td></tr></table></figure>
+
+<p>此时<code>results</code>内保存内容为识别文字对应token, 需手动解码并输出. 为此, 首先需要找到原模型的<code>tokens.json</code>文件, 并编写解码函数如下, 其中<code>rich_transcription_postprocess</code>是FunASR提供的用于将情感标识, 语言标识等符号转换为可读形式的函数.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="comment"># 原模型的tokens.json文件路径</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;.\SenseVoiceSmall-onnx\tokens.json&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    token_list = json.load(f)</span><br><span class="line">blank_id = token_list.index(<span class="string">&quot;&lt;unk&gt;&quot;</span>)</span><br><span class="line"></span><br><span class="line">logits = results[<span class="string">&quot;ctc_logits&quot;</span>]  <span class="comment"># [1, T&#x27;, vocab_size]</span></span><br><span class="line">logits = np.squeeze(logits, axis=<span class="number">0</span>)  <span class="comment"># [time, vocab_size]</span></span><br><span class="line">token_ids = np.argmax(logits, axis=-<span class="number">1</span>)  <span class="comment"># [time]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode</span>(<span class="params">ids, blank=<span class="number">0</span></span>):</span><br><span class="line">    output = []</span><br><span class="line">    prev = blank</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ids:</span><br><span class="line">        <span class="keyword">if</span> i!= prev <span class="keyword">and</span> i != blank:</span><br><span class="line">            output.append(i)</span><br><span class="line">        prev = i</span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">decoded_ids = decode(token_ids, blank=blank_id)</span><br><span class="line"></span><br><span class="line">text = <span class="string">&quot;&quot;</span>.join(token_list[i] <span class="keyword">for</span> i <span class="keyword">in</span> decoded_ids)</span><br><span class="line">text = rich_transcription_postprocess(text)</span><br><span class="line"><span class="built_in">print</span>(text)</span><br></pre></td></tr></table></figure>
+
+<p>即可完成利用OpenVINO的模型调用, 效果如图.</p>
+<p><img src="/img/openvino-funasr/%E8%AF%86%E5%88%AB1.jpg" alt="img"></p>
+<p>实验表明, 在音频不长(约1分钟)时, 是否使用OpenVINO对模型效率影响不大, 但在音频文件略长(约13分钟)时, 使用OpenVINO会显著提升模型效率, 如图.</p>
+<p><img src="/img/openvino-funasr/%E8%AF%86%E5%88%AB2.jpg" alt="img"></p>
+<p>如果尝试在NPU上运行模型会导致报错, 错误信息如下.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;C:\FunASR\ov.py&quot;, line 15, in &lt;module&gt;</span><br><span class="line">    model = ov.compile_model(model_path, &quot;NPU&quot;)</span><br><span class="line">  File &quot;C:\Users\MTL659\AppData\Local\Programs\Python\Python310\lib\site-packages\openvino\runtime\ie_api.py&quot;, line 631, in compile_model</span><br><span class="line">    return core.compile_model(model, device_name, &#123;&#125; if config is None else config)</span><br><span class="line">  File &quot;C:\Users\MTL659\AppData\Local\Programs\Python\Python310\lib\site-packages\openvino\runtime\ie_api.py&quot;, line 543, in compile_model</span><br><span class="line">    super().compile_model(model, device_name, &#123;&#125; if config is None else config),</span><br><span class="line">RuntimeError: Exception from src\inference\src\cpp\core.cpp:124:</span><br><span class="line">Exception from src\inference\src\dev\plugin.cpp:58:</span><br><span class="line">Exception from src\plugins\intel_npu\src\plugin\src\plugin.cpp:717:</span><br><span class="line">Exception from src\plugins\intel_npu\src\compiler_adapter\src\ze_graph_ext_wrappers.cpp:389:</span><br><span class="line">L0 pfnCreate2 result: ZE_RESULT_ERROR_INVALID_ARGUMENT, code 0x78000004 - generic error code for invalid arguments . [NPU_VCL] Compiler returned msg:</span><br><span class="line">Upper bounds were not specified, got the default value - &#x27;9223372036854775807&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>推测是NPU不支持动态<code>input shape</code>导致, 可能需要进一步研究.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/08/pixel001/" rel="prev" title="无题">
+      <i class="fa fa-chevron-left"></i> 无题
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tianlipa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
