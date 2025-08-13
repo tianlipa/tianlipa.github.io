@@ -1,3 +1,4 @@
+https://tianlipa.github.io/2025/08/2025-8-13/
 https://tianlipa.github.io/2025/08/msb-01-data-collecting/
 https://tianlipa.github.io/2025/08/msb-02-sql-injection/
 https://tianlipa.github.io/2025/08/msb-03-xss/
