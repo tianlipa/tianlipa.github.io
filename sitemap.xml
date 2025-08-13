@@ -2,6 +2,132 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-01-data-collecting/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-02-sql-injection/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-03-xss/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-04-csrf/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-05-file-upload/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-06-file-include/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-07-ssrf/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-08-xxe/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-09-rce/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-10-deserialize/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-11-redis/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-12-logic/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-17-metasploit/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-18-burp/</loc>
+    
+    <lastmod>2025-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/2025/06/gdb/</loc>
     
     <lastmod>2025-08-13</lastmod>
@@ -464,6 +590,13 @@
   </url>
   
   <url>
+    <loc>https://tianlipa.github.io/tags/CTF/</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/tags/%E8%89%BA%E6%9C%AF%E7%BB%86%E8%8F%8C/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -471,7 +604,21 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/CTF-reverse/</loc>
+    <loc>https://tianlipa.github.io/tags/reverse/</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/tags/web/</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

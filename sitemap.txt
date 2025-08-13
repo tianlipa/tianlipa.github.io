@@ -1,3 +1,17 @@
+https://tianlipa.github.io/2025/08/msb-01-data-collecting/
+https://tianlipa.github.io/2025/08/msb-02-sql-injection/
+https://tianlipa.github.io/2025/08/msb-03-xss/
+https://tianlipa.github.io/2025/08/msb-04-csrf/
+https://tianlipa.github.io/2025/08/msb-05-file-upload/
+https://tianlipa.github.io/2025/08/msb-06-file-include/
+https://tianlipa.github.io/2025/08/msb-07-ssrf/
+https://tianlipa.github.io/2025/08/msb-08-xxe/
+https://tianlipa.github.io/2025/08/msb-09-rce/
+https://tianlipa.github.io/2025/08/msb-10-deserialize/
+https://tianlipa.github.io/2025/08/msb-11-redis/
+https://tianlipa.github.io/2025/08/msb-12-logic/
+https://tianlipa.github.io/2025/08/msb-17-metasploit/
+https://tianlipa.github.io/2025/08/msb-18-burp/
 https://tianlipa.github.io/2025/06/gdb/
 https://tianlipa.github.io/tags/index.html
 https://tianlipa.github.io/2025/01/2025-1-20/
@@ -50,5 +64,8 @@ https://tianlipa.github.io/
 https://tianlipa.github.io/tags/%E6%97%A5%E5%AF%84/
 https://tianlipa.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/
 https://tianlipa.github.io/tags/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94/
+https://tianlipa.github.io/tags/CTF/
 https://tianlipa.github.io/tags/%E8%89%BA%E6%9C%AF%E7%BB%86%E8%8F%8C/
-https://tianlipa.github.io/tags/CTF-reverse/
+https://tianlipa.github.io/tags/reverse/
+https://tianlipa.github.io/tags/web/
+https://tianlipa.github.io/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/
