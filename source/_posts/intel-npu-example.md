@@ -85,7 +85,7 @@ AttributeError: 'GenerationConfig' object has no attribute 'compile_config'
 
 再次运行, 发现`torch`2.6及以后版本将`weights_only`默认设为`true`, 导致模型无法直接运行, 修改其版本为2.5.1后解决, 模型成功运行, 效果如图, 且在任务管理器中查看NPU利用率为50%左右, 说明成功利用NPU运行模型.
 
-![img](/img/intel_npu_example/tinyllama.png)
+![img](/img/intel-npu-example/tinyllama.png)
 
 ### Phi-2
 
@@ -93,7 +93,7 @@ AttributeError: 'GenerationConfig' object has no attribute 'compile_config'
 
 直接运行`examples/phi-2.py`输出结果均为乱码, 如图.
 
-![乱码](/img/intel_npu_example/乱码.png)
+![乱码](/img/intel-npu-example/乱码.png)
 
 尝试不通过NPU运行, 代码如下.
 
@@ -122,7 +122,7 @@ compiler_conf = CompilerConfig(dtype=torch.float16)
 
 后运行, 结果正常, 如图, 且NPU占用率在50%左右, 说明成功利用NPU运行模型.
 
-![img](/img/intel_npu_example/phi2.png)
+![img](/img/intel-npu-example/phi2.png)
 
 将
 
@@ -142,7 +142,7 @@ pipe.model.config.pad_token_id = 50256
 
 直接运行`examples/phi-3.py`成功, 效果如图.
 
-![img](/img/intel_npu_example/phi-3.png)
+![img](/img/intel-npu-example/phi-3.png)
 
 ### 性能测试
 

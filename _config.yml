@@ -6,15 +6,16 @@
 title: tianlipa
 subtitle: 'Subtitle'
 description: ''
-keywords:
+keywords: 甜力怕, tianlipa, 博客
 author: tianlipa
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://tianlipa.github.io/
-permalink: :year/:month/:day/:title/
+url: https://tianlipa.github.io
+# permalink: :year/:month/:day/:title/
+permalink: :year/:month/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -133,8 +134,8 @@ encrypt:
   wrong_pass_message: 你没资格啊, 你没资格
   # wrong_hash_message:
 
-search:
-  path: search.xml
-  field: post
-  content: true
-  format: html
+# search:
+#   path: search.xml
+#   field: post
+#   content: true
+#   format: html
