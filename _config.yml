@@ -5,7 +5,7 @@
 # Site
 title: tianlipa
 subtitle: 'Subtitle'
-description: ''
+description: '本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵'
 keywords: 甜力怕, tianlipa, 博客
 author: tianlipa
 language: zh-CN
@@ -139,3 +139,6 @@ encrypt:
 #   field: post
 #   content: true
 #   format: html
+
+archive_generator:
+  per_page: 15

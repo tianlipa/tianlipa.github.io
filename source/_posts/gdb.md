@@ -18,6 +18,8 @@ tags: [CTF, reverse]
 `info locals` 查看局部变量(带符号)
 `backtrace` 查看调用栈
 
+<!--more-->
+
 `si` 逐汇编语句执行
 `ni` 同上, 但不进入函数
 `step` 逐C语句执行, 进入函数

@@ -1,7 +1,7 @@
 ---
 title: 利用OpenVINO库加速FunASR语音识别
 date: 2025-08-12 09:10:08
-tags:
+tags: [大模型, 实习]
 ---
 
 选取模型为[SenseVoiceSmall](https://www.modelscope.cn/models/iic/SenseVoiceSmall).
