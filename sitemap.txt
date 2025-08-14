@@ -1,5 +1,5 @@
-https://tianlipa.github.io/2025/07/intel-npu-example/
 https://tianlipa.github.io/2025/08/intel-npu-deepseek/
+https://tianlipa.github.io/2025/07/intel-npu-example/
 https://tianlipa.github.io/2025/08/2025-8-13/
 https://tianlipa.github.io/2025/08/msb-01-data-collecting/
 https://tianlipa.github.io/2025/08/msb-02-sql-injection/
