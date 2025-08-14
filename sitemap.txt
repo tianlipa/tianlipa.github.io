@@ -1,3 +1,4 @@
+https://tianlipa.github.io/2025/06/gdb/
 https://tianlipa.github.io/2025/08/intel-npu-deepseek/
 https://tianlipa.github.io/2025/07/intel-npu-example/
 https://tianlipa.github.io/2025/08/2025-8-13/
@@ -15,7 +16,6 @@ https://tianlipa.github.io/2025/08/msb-11-redis/
 https://tianlipa.github.io/2025/08/msb-12-logic/
 https://tianlipa.github.io/2025/08/msb-17-metasploit/
 https://tianlipa.github.io/2025/08/msb-18-burp/
-https://tianlipa.github.io/2025/06/gdb/
 https://tianlipa.github.io/tags/index.html
 https://tianlipa.github.io/2025/01/2025-1-20/
 https://tianlipa.github.io/2025/02/2025-2-16/
