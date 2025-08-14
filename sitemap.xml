@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tianlipa.github.io/2025/08/msb-10-deserialize/</loc>
+    
+    <lastmod>2025-08-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/08/openvino-funasr/</loc>
+    
+    <lastmod>2025-08-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/2025/06/gdb/</loc>
     
     <lastmod>2025-08-14</lastmod>
@@ -119,15 +137,6 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/08/msb-10-deserialize/</loc>
-    
-    <lastmod>2025-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tianlipa.github.io/2025/08/msb-11-redis/</loc>
     
     <lastmod>2025-08-13</lastmod>
@@ -183,15 +192,6 @@
   
   <url>
     <loc>https://tianlipa.github.io/2025/02/2025-2-16/</loc>
-    
-    <lastmod>2025-08-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tianlipa.github.io/2025/08/openvino-funasr/</loc>
     
     <lastmod>2025-08-12</lastmod>
     
