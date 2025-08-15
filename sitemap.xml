@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tianlipa.github.io/2025/08/2025-8-16/</loc>
+    
+    <lastmod>2025-08-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/01/NexTSubtitle/</loc>
+    
+    <lastmod>2025-08-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/2025/08/msb-10-deserialize/</loc>
     
     <lastmod>2025-08-14</lastmod>
@@ -554,15 +572,6 @@
     <loc>https://tianlipa.github.io/2025/01/2025-1-17/</loc>
     
     <lastmod>2025-01-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tianlipa.github.io/2025/01/NexTSubtitle/</loc>
-    
-    <lastmod>2025-01-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
