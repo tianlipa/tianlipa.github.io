@@ -129,7 +129,8 @@
           "埋骨何须桑梓地,<br>人生无处不青山.",
           "五花马, 千金裘,<br>呼儿将出换美酒,<br>与尔同销万古愁.",
           "访问本站即表明您同意本站的用户与服务政策, 每周四需向我转账50元.",
-          "*意义不明的鼓点*"
+          "*意义不明的鼓点*",
+          "人有所操"
       ];
       var randomIndex = Math.floor(Math.random() * paragraphs.length);
       var selectedParagraph = paragraphs[randomIndex];
