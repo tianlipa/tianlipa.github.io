@@ -201,7 +201,8 @@
           "*意义不明的鼓点*",
           "人有所操",
           "The world is a cat<br>playing with Australia",
-          "神说, 要有光,<br>就有了光.<br>他看光是好的,<br>就把光速设定为299,792,458m/s,<br>并让之永远不变,<br>不应参照系的改变而改变."
+          "神说, 要有光,<br>就有了光.<br>他看光是好的,<br>就把光速设定为299,792,458m/s,<br>并让之永远不变,<br>不应参照系的改变而改变.",
+          "BONFIRE LIT"
       ];
       var randomIndex = Math.floor(Math.random() * paragraphs.length);
       var selectedParagraph = paragraphs[randomIndex];
@@ -255,7 +256,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +290,99 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/intel-npu-example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/intel-npu-example/" class="post-title-link" itemprop="url">Intel NPU加速库使用样例</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-23 16:53:23" itemprop="dateCreated datePublished" datetime="2025-07-23T16:53:23+08:00">2025-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-14 09:17:36" itemprop="dateModified" datetime="2025-08-14T09:17:36+08:00">2025-08-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>配置Python环境, 安装git(用于从huggingface下载模型)后, 运行项目提供的矩阵乘法示例代码:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> intel_npu_acceleration_library.backend <span class="keyword">import</span> MatMul</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">inC, outC, batch = <span class="number">512</span>, <span class="number">256</span>, <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create both inputs</span></span><br><span class="line">X1 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (batch, inC)).astype(np.float16)</span><br><span class="line">X2 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (outC, inC)).astype(np.float16)</span><br><span class="line"></span><br><span class="line">mm = MatMul(inC, outC, batch, profile=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">result = mm.run(X1, X2)</span><br></pre></td></tr></table></figure>
+
+<p>注意到运行程序时有如下提示:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.</span><br><span class="line">  from pkg_resources import parse_version</span><br></pre></td></tr></table></figure>
+
+<p>查阅资料知是由于新版<code>setuptools</code>弃用旧版语法导致, 卸载并重新安装67.6.1版本解决.</p>
+<p>该程序计算了一个<code>32×512</code>矩阵和一个<code>512×256</code>矩阵相乘, 输出<code>result.shape</code>结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(32, 256)</span><br></pre></td></tr></table></figure>
+
+<p>知输出结果正确, 代码可正常运行.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/07/intel-npu-example/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1119,89 +1213,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/03/2025-3-27/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/03/2025-3-22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/2025-3-22/" class="post-title-link" itemprop="url">2025-3-22</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-22 23:11:32" itemprop="dateCreated datePublished" datetime="2025-03-22T23:11:32+08:00">2025-03-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-18 14:49:23" itemprop="dateModified" datetime="2025-08-18T14:49:23+08:00">2025-08-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Requires password.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/03/2025-3-22/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
