@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -757,7 +757,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-14 13:47:17" itemprop="dateModified" datetime="2025-08-14T13:47:17+08:00">2025-08-14</time>
+      <time title="修改时间：2025-08-18 14:45:55" itemprop="dateModified" datetime="2025-08-18T14:45:55+08:00">2025-08-18</time>
     </span>
 
   
@@ -773,10 +773,8 @@
           <p>选取模型为<a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/iic/SenseVoiceSmall">SenseVoiceSmall</a>.</p>
 <p>开始运行前首先需要将模型转换为OpenVINO IR格式. 原模型为PyTorch框架, 可以利用以下代码保存为ONNX格式.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">onnx_model = onnx.load(model_path)</span><br><span class="line">onnx.save_model(onnx_model,</span><br><span class="line">                <span class="string">&#x27;saved_model.onnx&#x27;</span>,</span><br><span class="line">                save_as_external_data=<span class="literal">True</span>,</span><br><span class="line">                all_tensors_to_one_file=<span class="literal">True</span>,</span><br><span class="line">                location=<span class="string">&#x27;data/weights_data&#x27;</span>,</span><br><span class="line">                size_threshold=<span class="number">1024</span>,</span><br><span class="line">                convert_attribute=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
 <p>也可以直接下载FunASR官方提供的<a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/iic/SenseVoiceSmall-onnx">SenseVoiceSmall-onnx</a>模型. 准备好ONNX格式模型后, 可以利用OpenVINO提供的<code>mo</code>或<code>ovc</code>工具将其转换为OpenVINO IR格式. 在最新的OpenVINO版本中, <code>mo</code>工具已经被更简化的<code>OpenVINO Model Converter</code>即<code>ovc</code>工具所替代.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mo --input_model &lt;INPUT_MODEL&gt;.onnx</span><br></pre></td></tr></table></figure>
-
 <p>此命令会将模型优化并导出为OpenVINO IR格式模型. 注意, <code>--compress_to_fp16</code>默认处于开启状态, 会将模型压缩至fp16精度, 正常情况下不会导致明显的精度损失.</p>
 <p>可以通过如下代码加载并编译OpenVINO IR模型.</p>
           <!--noindex-->
