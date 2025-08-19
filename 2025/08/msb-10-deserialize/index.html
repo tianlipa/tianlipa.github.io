@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="PHP类与对象类：一个共享相同结构和行为的对象的集合对象：类的实例 PHP Magic函数魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。">
+    <meta name="description" content="PHP类与对象 类：一个共享相同结构和行为的对象的集合 对象：类的实例 PHP Magic函数 魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10-反序列化漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-10-deserialize/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="PHP类与对象类：一个共享相同结构和行为的对象的集合对象：类的实例 PHP Magic函数魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。">
+<meta property="og:description" content="PHP类与对象 类：一个共享相同结构和行为的对象的集合 对象：类的实例 PHP Magic函数 魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tianlipa.github.io/img/msb/17387600154271.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/msb/17387600155299.png">
@@ -355,23 +355,35 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="PHP类与对象"><a href="#PHP类与对象" class="headerlink" title="PHP类与对象"></a>PHP类与对象</h3><p>类：一个共享相同结构和行为的对象的集合<br>对象：类的实例</p>
-<h3 id="PHP-Magic函数"><a href="#PHP-Magic函数" class="headerlink" title="PHP Magic函数"></a>PHP Magic函数</h3><p>魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。</p>
-<p><img src="/img/msb/17387600154271.png"></p>
-<p><img src="/img/msb/17387600155299.png"></p>
+    <div class="post-body" itemprop="articleBody"><h3 id="PHP类与对象">PHP类与对象</h3>
+<p>类：一个共享相同结构和行为的对象的集合<br>
+对象：类的实例</p>
+<h3 id="PHP-Magic函数">PHP Magic函数</h3>
+<p>魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。</p>
+<p><img src="/img/msb/17387600154271.png" alt=""></p>
+<p><img src="/img/msb/17387600155299.png" alt=""></p>
 <span id="more"></span>
-
-<h3 id="PHP序列化和反序列化"><a href="#PHP序列化和反序列化" class="headerlink" title="PHP序列化和反序列化"></a>PHP序列化和反序列化</h3><p>序列化：把对象转换为字符<br>反序列化：对单一的已序列化的变量进行操作，将其转换为PHP的值</p>
+<h3 id="PHP序列化和反序列化">PHP序列化和反序列化</h3>
+<p>序列化：把对象转换为字符<br>
+反序列化：对单一的已序列化的变量进行操作，将其转换为PHP的值</p>
 <p>serialize</p>
-<p>其他序列化格式：<br>json字符串 json_encode<br>xml字符串  wddx_serialize_value<br>二进制格式<br>字节数组</p>
+<p>其他序列化格式：<br>
+json字符串 json_encode<br>
+xml字符串  wddx_serialize_value<br>
+二进制格式<br>
+字节数组</p>
 <p>若类中同时定义了__unserialize()方法和__wakeup()方法，则反序列化时只会调用__unserialize()方法</p>
-<h3 id="漏洞发生条件"><a href="#漏洞发生条件" class="headerlink" title="漏洞发生条件"></a>漏洞发生条件</h3><ul>
+<h3 id="漏洞发生条件">漏洞发生条件</h3>
+<ul>
 <li>unserialize函数的参数可控</li>
 <li>脚本中定义了Magic方法，方法中有读写php文件或执行命令的操作，如__destruct(), unlink()</li>
 <li>操作的内容需要有对象中的成员变量的值，如filename</li>
 </ul>
-<h3 id="常见利用函数"><a href="#常见利用函数" class="headerlink" title="常见利用函数"></a>常见利用函数</h3><p>命令执行：<br>exec(), passthru(), popen(), system(), call_user_func</p>
-<p>文件操作：<br>file_put_contents(), file_get_contents(), unlink()</p>
+<h3 id="常见利用函数">常见利用函数</h3>
+<p>命令执行：<br>
+exec(), passthru(), popen(), system(), call_user_func</p>
+<p>文件操作：<br>
+file_put_contents(), file_get_contents(), unlink()</p>
 
     </div>
 

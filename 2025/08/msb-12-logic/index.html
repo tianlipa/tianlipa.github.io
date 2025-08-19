@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="逻辑漏洞，指开发人员设计程序时逻辑不严密，导致攻击者可以修改、绕过或中断整个程序，让程序按开发者预料之外的方式执行。 身份验证漏洞验证码爆破：pkav 暴力破解漏洞：bp intruder限制IP爆破：代理池限制密码错误次数：弱密码爆破账户多字段爆破：bp grep或自己写脚本 Authorization爆破：编码后的用户名与密码爆破 未授权漏洞：session:利用服务器的session不变机制">
+    <meta name="description" content="逻辑漏洞，指开发人员设计程序时逻辑不严密，导致攻击者可以修改、绕过或中断整个程序，让程序按开发者预料之外的方式执行。 身份验证漏洞 验证码爆破：pkav 暴力破解漏洞：bp intruder 限制IP爆破：代理池 限制密码错误次数：弱密码爆破账户 多字段爆破：bp grep或自己写脚本 Authorization爆破：编码后的用户名与密码爆破 未授权漏洞： session: 利用服务器的sessi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="12-逻辑漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-12-logic/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="逻辑漏洞，指开发人员设计程序时逻辑不严密，导致攻击者可以修改、绕过或中断整个程序，让程序按开发者预料之外的方式执行。 身份验证漏洞验证码爆破：pkav 暴力破解漏洞：bp intruder限制IP爆破：代理池限制密码错误次数：弱密码爆破账户多字段爆破：bp grep或自己写脚本 Authorization爆破：编码后的用户名与密码爆破 未授权漏洞：session:利用服务器的session不变机制">
+<meta property="og:description" content="逻辑漏洞，指开发人员设计程序时逻辑不严密，导致攻击者可以修改、绕过或中断整个程序，让程序按开发者预料之外的方式执行。 身份验证漏洞 验证码爆破：pkav 暴力破解漏洞：bp intruder 限制IP爆破：代理池 限制密码错误次数：弱密码爆破账户 多字段爆破：bp grep或自己写脚本 Authorization爆破：编码后的用户名与密码爆破 未授权漏洞： session: 利用服务器的sessi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-13T05:51:39.000Z">
 <meta property="article:modified_time" content="2025-08-13T06:10:07.841Z">
@@ -347,22 +347,36 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>逻辑漏洞，指开发人员设计程序时逻辑不严密，导致攻击者可以修改、绕过或中断整个程序，让程序按开发者预料之外的方式执行。</p>
-<h3 id="身份验证漏洞"><a href="#身份验证漏洞" class="headerlink" title="身份验证漏洞"></a>身份验证漏洞</h3><p>验证码爆破：pkav</p>
-<p>暴力破解漏洞：bp intruder<br>限制IP爆破：代理池<br>限制密码错误次数：弱密码爆破账户<br>多字段爆破：bp grep或自己写脚本</p>
+<h3 id="身份验证漏洞">身份验证漏洞</h3>
+<p>验证码爆破：pkav</p>
+<p>暴力破解漏洞：bp intruder<br>
+限制IP爆破：代理池<br>
+限制密码错误次数：弱密码爆破账户<br>
+多字段爆破：bp grep或自己写脚本</p>
 <p>Authorization爆破：编码后的用户名与密码爆破</p>
-<p>未授权漏洞：<br>session:<br>利用服务器的session不变机制，借他人之手获得认证和授权并冒充他人<br>漏洞原理：请求登录过程中URL带有session，发送带有session的URL给相关人员诱导其登录获取身份信息<br>cookie:<br>cookie中有明文或只是简单编码，伪造cookie信息</p>
+<p>未授权漏洞：<br>
+session:<br>
+利用服务器的session不变机制，借他人之手获得认证和授权并冒充他人<br>
+漏洞原理：请求登录过程中URL带有session，发送带有session的URL给相关人员诱导其登录获取身份信息<br>
+cookie:<br>
+cookie中有明文或只是简单编码，伪造cookie信息</p>
 <p>未进行登录凭证验证：直接访问后台</p>
 <span id="more"></span>
-
-<h3 id="验证码安全"><a href="#验证码安全" class="headerlink" title="验证码安全"></a>验证码安全</h3><p>验证码复用</p>
+<h3 id="验证码安全">验证码安全</h3>
+<p>验证码复用</p>
 <p>验证码绕过：服务端返回状态值或验证码</p>
 <p>客户端验证码：改包，或删除相关js代码</p>
-<h3 id="登录前端验证漏洞"><a href="#登录前端验证漏洞" class="headerlink" title="登录前端验证漏洞"></a>登录前端验证漏洞</h3><p>验证码爆破</p>
+<h3 id="登录前端验证漏洞">登录前端验证漏洞</h3>
+<p>验证码爆破</p>
 <p>前端验证：客户端验证是不安全的</p>
-<h3 id="越权"><a href="#越权" class="headerlink" title="越权"></a>越权</h3><p>平行越权：权限类型不变，ID改变<br>垂直越权：权限类型改变，ID不变<br>交叉越权：都改变</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>注册：</p>
+<h3 id="越权">越权</h3>
+<p>平行越权：权限类型不变，ID改变<br>
+垂直越权：权限类型改变，ID不变<br>
+交叉越权：都改变</p>
+<h2 id="总结">总结</h2>
+<p>注册：</p>
 <ul>
-<li>短信&#x2F;邮箱轰炸</li>
+<li>短信/邮箱轰炸</li>
 <li>验证码安全</li>
 <li>密码爆破</li>
 <li>用户任意注册，批量注册</li>
@@ -386,7 +400,7 @@
 <li>直接跳过验证步骤</li>
 <li>购买支付、充值，抓包查看可用参数</li>
 <li>交易金额、数量修改、更换支付模块</li>
-<li>交易信息订单编码&#x2F;导致信息泄露</li>
+<li>交易信息订单编码/导致信息泄露</li>
 <li>整数溢出，2147483647</li>
 <li>修改充值帐户</li>
 <li>支付绕过</li>
@@ -413,14 +427,14 @@
 <p>传输过程：</p>
 <ul>
 <li>明文传输账户密码</li>
-<li>修改信息处无session&#x2F;token导致csrf</li>
-<li>POST&#x2F;COOKIE注入</li>
+<li>修改信息处无session/token导致csrf</li>
+<li>POST/COOKIE注入</li>
 </ul>
 <p>评论：</p>
 <ul>
 <li>POST注入</li>
 <li>存储型XSS</li>
-<li>无session&#x2F;token导致csrf</li>
+<li>无session/token导致csrf</li>
 </ul>
 <p>验证码：</p>
 <ul>
@@ -434,7 +448,7 @@
 <li>删除修改cookie，重放数据包</li>
 <li>遍历参数发送数据包</li>
 <li>手机号加空格，+86，逗号分号等重发数据包</li>
-<li>请求参数修改大小写或添加参数，如&amp;id&#x3D;1</li>
+<li>请求参数修改大小写或添加参数，如&amp;id=1</li>
 <li>多测试接口，如注册，找回密码</li>
 <li>如限制手机号一天次数，可以再发一次短信，DQ intercept之后修改为成功回显</li>
 </ul>

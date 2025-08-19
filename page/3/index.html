@@ -348,16 +348,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>配置Python环境, 安装git(用于从huggingface下载模型)后, 运行项目提供的矩阵乘法示例代码:</p>
+          <h3 id="矩阵乘法">矩阵乘法</h3>
+<p>配置Python环境, 安装git(用于从huggingface下载模型)后, 运行项目提供的矩阵乘法示例代码:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> intel_npu_acceleration_library.backend <span class="keyword">import</span> MatMul</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">inC, outC, batch = <span class="number">512</span>, <span class="number">256</span>, <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create both inputs</span></span><br><span class="line">X1 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (batch, inC)).astype(np.float16)</span><br><span class="line">X2 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (outC, inC)).astype(np.float16)</span><br><span class="line"></span><br><span class="line">mm = MatMul(inC, outC, batch, profile=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">result = mm.run(X1, X2)</span><br></pre></td></tr></table></figure>
-
 <p>注意到运行程序时有如下提示:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.</span><br><span class="line">  from pkg_resources import parse_version</span><br></pre></td></tr></table></figure>
-
 <p>查阅资料知是由于新版<code>setuptools</code>弃用旧版语法导致, 卸载并重新安装67.6.1版本解决.</p>
 <p>该程序计算了一个<code>32×512</code>矩阵和一个<code>512×256</code>矩阵相乘, 输出<code>result.shape</code>结果为</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(32, 256)</span><br></pre></td></tr></table></figure>
-
 <p>知输出结果正确, 代码可正常运行.</p>
           <!--noindex-->
             <div class="post-button">
@@ -442,10 +440,29 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>作者: <a target="_blank" rel="noopener" href="https://hf-mirror.com/TinyLlama/TinyLlama-1.1B-Chat-v1.0">TinyLlama&#x2F;TinyLlama-1.1B-Chat-v1.0</a></p>
+<p>作者: <a target="_blank" rel="noopener" href="https://hf-mirror.com/TinyLlama/TinyLlama-1.1B-Chat-v1.0">TinyLlama/TinyLlama-1.1B-Chat-v1.0</a></p>
 <p>转载请不要注明出处</p>
 </blockquote>
-<p>Ask something: fuck you<br>Run inference<br>fuck you you and me.<br>You can’t go against my opinion and I am just waiting for the next round.<br>Fast paced rhyming poem for your students to learn and practice how to create a rhyming pattern.<br>To be perfect and fit.<br>In your heart and your eyes.<br>We are not afraid we are not afraid.<br>Is like a handshake. A hug.<br>For this is our fight the fight.<br>So when your head’s just about to burst.<br>You need this right now and you need this just.<br>This one for you right now and this one for you right.<br>No this one for me and this one for you.<br>Your life is not in danger you can’t feel.<br>You have a life but that is not all the.<br>You need to feel. That’s right you feel.<br>You need to hear. That’s right you hear.<br>You need to feel. You hear.<br>You need to feel. You have a life.
+<p>Ask something: fuck you<br>
+Run inference<br>
+fuck you you and me.<br>
+You can’t go against my opinion and I am just waiting for the next round.<br>
+Fast paced rhyming poem for your students to learn and practice how to create a rhyming pattern.<br>
+To be perfect and fit.<br>
+In your heart and your eyes.<br>
+We are not afraid we are not afraid.<br>
+Is like a handshake. A hug.<br>
+For this is our fight the fight.<br>
+So when your head’s just about to burst.<br>
+You need this right now and you need this just.<br>
+This one for you right now and this one for you right.<br>
+No this one for me and this one for you.<br>
+Your life is not in danger you can’t feel.<br>
+You have a life but that is not all the.<br>
+You need to feel. That’s right you feel.<br>
+You need to hear. That’s right you hear.<br>
+You need to feel. You hear.<br>
+You need to feel. You have a life.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/07/poem/#more" rel="contents">
@@ -600,9 +617,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>run [args]</code> 运行并传参<br><code>start</code> 运行到<code>main()</code>开头</p>
-<p><code>break func/地址</code> 在<code>func</code>函数或地址处设置断点<br><code>delete</code> 删除断点<br><code>info breakpoints</code> 查看断点</p>
-<p><code>info registers</code> 查看所有寄存器<br><code>x/s 地址</code> 查看地址处字符串<br><code>x/10xw 地址</code> 查看10个4字节的十六进制<br><code>x/20i $rip</code> 查看当前附近的汇编指令<br><code>info frame</code> 当前调用栈帧<br><code>info locals</code> 查看局部变量(带符号)<br><code>backtrace</code> 查看调用栈</p>
+          <p><code>run [args]</code> 运行并传参<br>
+<code>start</code> 运行到<code>main()</code>开头</p>
+<p><code>break func/地址</code> 在<code>func</code>函数或地址处设置断点<br>
+<code>delete</code> 删除断点<br>
+<code>info breakpoints</code> 查看断点</p>
+<p><code>info registers</code> 查看所有寄存器<br>
+<code>x/s 地址</code> 查看地址处字符串<br>
+<code>x/10xw 地址</code> 查看10个4字节的十六进制<br>
+<code>x/20i $rip</code> 查看当前附近的汇编指令<br>
+<code>info frame</code> 当前调用栈帧<br>
+<code>info locals</code> 查看局部变量(带符号)<br>
+<code>backtrace</code> 查看调用栈</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/06/gdb/#more" rel="contents">

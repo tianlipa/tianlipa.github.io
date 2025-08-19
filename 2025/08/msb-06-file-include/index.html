@@ -21,14 +21,14 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="简介本地文件包含(LFI, Local File Inclusion)目录遍历漏洞&#x2F;文件任意访问漏洞通过接口动态包含可用于包含恶意代码或图片马包含敏感文件 远程文件包含(RFI, Remote File Inclusion)   漏洞 描述 原因 后果    XXE XML外部实体注入 使用XML传输数据，并且允许解析外部实体 导致访问敏感文件，探测端口，执行系统命令等   SSRF 服">
+    <meta name="description" content="简介 本地文件包含(LFI, Local File Inclusion) 目录遍历漏洞&#x2F;文件任意访问漏洞 通过接口动态包含 可用于包含恶意代码或图片马 包含敏感文件 远程文件包含(RFI, Remote File Inclusion)    漏洞 描述 原因 后果     XXE XML外部实体注入 使用XML传输数据，并且允许解析外部实体 导致访问敏感文件，探测端口，执行系统命令等   SSRF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6-文件包含漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-06-file-include/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="简介本地文件包含(LFI, Local File Inclusion)目录遍历漏洞&#x2F;文件任意访问漏洞通过接口动态包含可用于包含恶意代码或图片马包含敏感文件 远程文件包含(RFI, Remote File Inclusion)   漏洞 描述 原因 后果    XXE XML外部实体注入 使用XML传输数据，并且允许解析外部实体 导致访问敏感文件，探测端口，执行系统命令等   SSRF 服">
+<meta property="og:description" content="简介 本地文件包含(LFI, Local File Inclusion) 目录遍历漏洞&#x2F;文件任意访问漏洞 通过接口动态包含 可用于包含恶意代码或图片马 包含敏感文件 远程文件包含(RFI, Remote File Inclusion)    漏洞 描述 原因 后果     XXE XML外部实体注入 使用XML传输数据，并且允许解析外部实体 导致访问敏感文件，探测端口，执行系统命令等   SSRF">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tianlipa.github.io/media/17385011252030.png">
+<meta property="og:image" content="https://tianlipa.github.io/2025/08/msb-06-file-include/media/17385011252030.png">
 <meta property="article:published_time" content="2025-08-13T05:43:25.000Z">
 <meta property="article:modified_time" content="2025-08-13T06:11:24.298Z">
 <meta property="article:author" content="tianlipa">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="web">
 <meta property="article:tag" content="马士兵">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tianlipa.github.io/media/17385011252030.png">
+<meta name="twitter:image" content="https://tianlipa.github.io/2025/08/msb-06-file-include/media/17385011252030.png">
 
 
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-06-file-include/">
@@ -348,8 +348,14 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="本地文件包含-LFI-Local-File-Inclusion"><a href="#本地文件包含-LFI-Local-File-Inclusion" class="headerlink" title="本地文件包含(LFI, Local File Inclusion)"></a>本地文件包含(LFI, Local File Inclusion)</h3><p>目录遍历漏洞&#x2F;文件任意访问漏洞<br>通过接口动态包含<br>可用于包含恶意代码或图片马<br>包含敏感文件</p>
-<h3 id="远程文件包含-RFI-Remote-File-Inclusion"><a href="#远程文件包含-RFI-Remote-File-Inclusion" class="headerlink" title="远程文件包含(RFI, Remote File Inclusion)"></a>远程文件包含(RFI, Remote File Inclusion)</h3><table>
+    <div class="post-body" itemprop="articleBody"><h2 id="简介">简介</h2>
+<h3 id="本地文件包含-LFI-Local-File-Inclusion">本地文件包含(LFI, Local File Inclusion)</h3>
+<p>目录遍历漏洞/文件任意访问漏洞<br>
+通过接口动态包含<br>
+可用于包含恶意代码或图片马<br>
+包含敏感文件</p>
+<h3 id="远程文件包含-RFI-Remote-File-Inclusion">远程文件包含(RFI, Remote File Inclusion)</h3>
+<table>
 <thead>
 <tr>
 <th>漏洞</th>
@@ -358,7 +364,8 @@
 <th>后果</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>XXE</td>
 <td>XML外部实体注入</td>
 <td>使用XML传输数据，并且允许解析外部实体</td>
@@ -376,18 +383,22 @@
 <td>使用了include</td>
 <td>导致任意文件访问，包含shell代码</td>
 </tr>
-</tbody></table>
-<p>需要配置php.ini:<br>allow_url_fopen&#x3D;On<br>allow_url_include&#x3D;On</p>
+</tbody>
+</table>
+<p>需要配置php.ini:<br>
+allow_url_fopen=On<br>
+allow_url_include=On</p>
 <span id="more"></span>
-
-<h2 id="PHP相关函数和伪协议"><a href="#PHP相关函数和伪协议" class="headerlink" title="PHP相关函数和伪协议"></a>PHP相关函数和伪协议</h2><table>
+<h2 id="PHP相关函数和伪协议">PHP相关函数和伪协议</h2>
+<table>
 <thead>
 <tr>
 <th>函数</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>include()</td>
 <td>包含并运行指定文件</td>
 </tr>
@@ -423,14 +434,26 @@
 <td>file</td>
 <td>把整个文件读入一个数组</td>
 </tr>
-</tbody></table>
-<h3 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h3><p><img src="/media/17385011252030.png"></p>
-<p>php:&#x2F;&#x2F;filter可以作为中间流处理其他流，例如php:&#x2F;&#x2F;filter&#x2F;resource&#x3D;&#x2F;flag</p>
-<p>?url&#x3D;&#x2F;etc&#x2F;passwd测试是否能访问文件<br>?url&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log查看日志<br>日志注入</p>
-<h2 id="文件包含漏洞挖掘与利用"><a href="#文件包含漏洞挖掘与利用" class="headerlink" title="文件包含漏洞挖掘与利用"></a>文件包含漏洞挖掘与利用</h2><h3 id="URL关键字"><a href="#URL关键字" class="headerlink" title="URL关键字"></a>URL关键字</h3><p>URL参数名出现了page file filename include等关键字<br>URL参数值出现了文件名，如xxx.php xxx.html</p>
-<p>如：<br>?file&#x3D;content<br>?page&#x3D;abc.asp<br>?home&#x3D;abc.html</p>
-<h3 id="利用流程"><a href="#利用流程" class="headerlink" title="利用流程"></a>利用流程</h3><p>发现漏洞，上传shell&#x2F;读取敏感文件(FUZZ)，执行恶意代码</p>
-<p>自动工具：<br>LFI Suite</p>
+</tbody>
+</table>
+<h3 id="PHP伪协议">PHP伪协议</h3>
+<p><img src="media/17385011252030.png" alt=""></p>
+<p>php://filter可以作为中间流处理其他流，例如php://filter/resource=/flag</p>
+<p>?url=/etc/passwd测试是否能访问文件<br>
+?url=/var/log/nginx/access.log查看日志<br>
+日志注入</p>
+<h2 id="文件包含漏洞挖掘与利用">文件包含漏洞挖掘与利用</h2>
+<h3 id="URL关键字">URL关键字</h3>
+<p>URL参数名出现了page file filename include等关键字<br>
+URL参数值出现了文件名，如xxx.php xxx.html</p>
+<p>如：<br>
+?file=content<br>
+?page=abc.asp<br>
+?home=abc.html</p>
+<h3 id="利用流程">利用流程</h3>
+<p>发现漏洞，上传shell/读取敏感文件(FUZZ)，执行恶意代码</p>
+<p>自动工具：<br>
+LFI Suite</p>
 
     </div>
 

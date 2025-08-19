@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="XML: eXtensible Markup Language, 可扩展标记语言 用作配置文件，交换数据 XML格式要求：  必须有根元素 必须有关闭标签 标签对大小写敏感 元素必须被正确地嵌套 属性必须加引号  XML格式校验：DTD: Document Type Definition, 文档类型定义 内部实体 internal entity外部实体 external entity 如果Web应">
+    <meta name="description" content="XML: eXtensible Markup Language, 可扩展标记语言 用作配置文件，交换数据 XML格式要求：  必须有根元素 必须有关闭标签 标签对大小写敏感 元素必须被正确地嵌套 属性必须加引号  XML格式校验： DTD: Document Type Definition, 文档类型定义 内部实体 internal entity 外部实体 external entity 如果We">
 <meta property="og:type" content="article">
 <meta property="og:title" content="8-XXE漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-08-xxe/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="XML: eXtensible Markup Language, 可扩展标记语言 用作配置文件，交换数据 XML格式要求：  必须有根元素 必须有关闭标签 标签对大小写敏感 元素必须被正确地嵌套 属性必须加引号  XML格式校验：DTD: Document Type Definition, 文档类型定义 内部实体 internal entity外部实体 external entity 如果Web应">
+<meta property="og:description" content="XML: eXtensible Markup Language, 可扩展标记语言 用作配置文件，交换数据 XML格式要求：  必须有根元素 必须有关闭标签 标签对大小写敏感 元素必须被正确地嵌套 属性必须加引号  XML格式校验： DTD: Document Type Definition, 文档类型定义 内部实体 internal entity 外部实体 external entity 如果We">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-13T05:45:17.000Z">
 <meta property="article:modified_time" content="2025-08-13T06:11:04.081Z">
@@ -356,10 +356,13 @@
 <li>元素必须被正确地嵌套</li>
 <li>属性必须加引号</li>
 </ul>
-<p>XML格式校验：<br>DTD: Document Type Definition, 文档类型定义</p>
-<p>内部实体 internal entity<br>外部实体 external entity</p>
+<p>XML格式校验：<br>
+DTD: Document Type Definition, 文档类型定义</p>
+<p>内部实体 internal entity<br>
+外部实体 external entity</p>
 <p>如果Web应用的脚本代码没有限制XML引入外部实体，会导致用户可以插入外部实体，其中的内容会被服务器端执行，插入的代码可能导致<strong>任意文件读取、系统命令执行、内网端口探测、攻击内网网站</strong>等危害。</p>
-<p>无回显利用：<br>DNSLog, http接口参数写入文件</p>
+<p>无回显利用：<br>
+DNSLog, http接口参数写入文件</p>
 
     </div>
 

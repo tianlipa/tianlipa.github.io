@@ -342,7 +342,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>php curl扩展：<br>获取网页资源，爬虫<br>webservice, 获取接口数据<br>FTP, 下载文件<br>php.ini extension&#x3D;php_curl.dll</p>
+          <p>php curl扩展：<br>
+获取网页资源，爬虫<br>
+webservice, 获取接口数据<br>
+FTP, 下载文件<br>
+php.ini extension=php_curl.dll</p>
 <p>SSRF: Server-Side Request Forgery, 服务端请求伪造，由攻击者构造形成由服务端发起请求的一种安全漏洞。</p>
 <p>危害：</p>
 <ul>
@@ -352,7 +356,10 @@
 <li>访问大文件造成溢出</li>
 <li>通过Redis写入WebShell或建立反弹连接</li>
 </ul>
-<p>可能导致SSRF漏洞的函数：<br>curl_exec(): 执行cURL会话<br>file_get_contents(): 将整个文件读入为一个字符串<br>fsockopen(): 打开一个网络连接或一个Unix套接字连接</p>
+<p>可能导致SSRF漏洞的函数：<br>
+curl_exec(): 执行cURL会话<br>
+file_get_contents(): 将整个文件读入为一个字符串<br>
+fsockopen(): 打开一个网络连接或一个Unix套接字连接</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/08/msb-07-ssrf/#more" rel="contents">
@@ -429,8 +436,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="本地文件包含-LFI-Local-File-Inclusion"><a href="#本地文件包含-LFI-Local-File-Inclusion" class="headerlink" title="本地文件包含(LFI, Local File Inclusion)"></a>本地文件包含(LFI, Local File Inclusion)</h3><p>目录遍历漏洞&#x2F;文件任意访问漏洞<br>通过接口动态包含<br>可用于包含恶意代码或图片马<br>包含敏感文件</p>
-<h3 id="远程文件包含-RFI-Remote-File-Inclusion"><a href="#远程文件包含-RFI-Remote-File-Inclusion" class="headerlink" title="远程文件包含(RFI, Remote File Inclusion)"></a>远程文件包含(RFI, Remote File Inclusion)</h3><table>
+          <h2 id="简介">简介</h2>
+<h3 id="本地文件包含-LFI-Local-File-Inclusion">本地文件包含(LFI, Local File Inclusion)</h3>
+<p>目录遍历漏洞/文件任意访问漏洞<br>
+通过接口动态包含<br>
+可用于包含恶意代码或图片马<br>
+包含敏感文件</p>
+<h3 id="远程文件包含-RFI-Remote-File-Inclusion">远程文件包含(RFI, Remote File Inclusion)</h3>
+<table>
 <thead>
 <tr>
 <th>漏洞</th>
@@ -439,7 +452,8 @@
 <th>后果</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>XXE</td>
 <td>XML外部实体注入</td>
 <td>使用XML传输数据，并且允许解析外部实体</td>
@@ -457,8 +471,11 @@
 <td>使用了include</td>
 <td>导致任意文件访问，包含shell代码</td>
 </tr>
-</tbody></table>
-<p>需要配置php.ini:<br>allow_url_fopen&#x3D;On<br>allow_url_include&#x3D;On</p>
+</tbody>
+</table>
+<p>需要配置php.ini:<br>
+allow_url_fopen=On<br>
+allow_url_include=On</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/08/msb-06-file-include/#more" rel="contents">
@@ -535,10 +552,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h2 id="Webshell"><a href="#Webshell" class="headerlink" title="Webshell"></a>Webshell</h2><h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p>代码短，只有一行代码。<br>应用场景多，可以单独生成文件，也可以插入到图片中。<br>安全性高，隐匿性强，可以变形免杀。</p>
-<h3 id="小马"><a href="#小马" class="headerlink" title="小马"></a>小马</h3><p>体积小，功能少，只有文件上传功能。</p>
-<h3 id="大马"><a href="#大马" class="headerlink" title="大马"></a>大马</h3><p>体积大，功能全，能够管理数据库、文件管理、对站点进行快速信息收集，甚至能够提权。</p>
-<h2 id="网站控制工具"><a href="#网站控制工具" class="headerlink" title="网站控制工具"></a>网站控制工具</h2><p>中国菜刀，中国蚁剑，weevely, godzilla, behinder</p>
+          <h2 id="原理">原理</h2>
+<h2 id="Webshell">Webshell</h2>
+<h3 id="一句话木马">一句话木马</h3>
+<p>代码短，只有一行代码。<br>
+应用场景多，可以单独生成文件，也可以插入到图片中。<br>
+安全性高，隐匿性强，可以变形免杀。</p>
+<h3 id="小马">小马</h3>
+<p>体积小，功能少，只有文件上传功能。</p>
+<h3 id="大马">大马</h3>
+<p>体积大，功能全，能够管理数据库、文件管理、对站点进行快速信息收集，甚至能够提权。</p>
+<h2 id="网站控制工具">网站控制工具</h2>
+<p>中国菜刀，中国蚁剑，weevely, godzilla, behinder</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/08/msb-05-file-upload/#more" rel="contents">
@@ -616,10 +641,15 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>CSRF(XSRF): Cross-Site Request Forgery, 跨站请求伪造</p>
-<p><img src="/img/msb/17379650021685.png"></p>
+<p><img src="/img/msb/17379650021685.png" alt=""></p>
 <p>典型案例：Gmail CSRF漏洞设置邮件转发，Weibo CSRF漏洞自动关注账号。</p>
-<h2 id="CSRF漏洞挖掘"><a href="#CSRF漏洞挖掘" class="headerlink" title="CSRF漏洞挖掘"></a>CSRF漏洞挖掘</h2><p>Burp Suite<br>CSRF Tester<br>github.com&#x2F;s0md3v&#x2F;Bolt</p>
-<h2 id="防御思路"><a href="#防御思路" class="headerlink" title="防御思路"></a>防御思路</h2><p>区分请求来自自己的前端页面还是第三方网站<br>或让自己的前端页面的请求与伪造请求不一样</p>
+<h2 id="CSRF漏洞挖掘">CSRF漏洞挖掘</h2>
+<p>Burp Suite<br>
+CSRF Tester<br>
+<a target="_blank" rel="noopener" href="http://github.com/s0md3v/Bolt">github.com/s0md3v/Bolt</a></p>
+<h2 id="防御思路">防御思路</h2>
+<p>区分请求来自自己的前端页面还是第三方网站<br>
+或让自己的前端页面的请求与伪造请求不一样</p>
 <p>HTTP Request Header: Referer: 引用页，来源页面，用于跟踪来源，如访问统计和广告效果</p>
           <!--noindex-->
             <div class="post-button">
@@ -699,10 +729,12 @@
     <div class="post-body" itemprop="articleBody">
           <p>客户端的Cookie: 记录登录状态，跟踪用户行为</p>
 <p>服务端的Session</p>
-<h2 id="JavaScript操作Cookie"><a href="#JavaScript操作Cookie" class="headerlink" title="JavaScript操作Cookie"></a>JavaScript操作Cookie</h2><p>获取和设置：</p>
+<h2 id="JavaScript操作Cookie">JavaScript操作Cookie</h2>
+<p>获取和设置：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>=‘name=abc’;</span><br></pre></td></tr></table></figure>
 <p>无法删除，只能通过更改过期时间删除。</p>
-<h2 id="脚本注入网页：XSS-Cross-Site-Script"><a href="#脚本注入网页：XSS-Cross-Site-Script" class="headerlink" title="脚本注入网页：XSS(Cross Site Script)"></a>脚本注入网页：XSS(Cross Site Script)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="number">1</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="脚本注入网页：XSS-Cross-Site-Script">脚本注入网页：XSS(Cross Site Script)</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="number">1</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/08/msb-03-xss/#more" rel="contents">
@@ -779,9 +811,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="MySQL语法"><a href="#MySQL语法" class="headerlink" title="MySQL语法"></a>MySQL语法</h3><p>union查询需要前后语句查询字段数量相同</p>
-<p>order by字段名&#x2F;数字</p>
-<h3 id="MySQL系统库"><a href="#MySQL系统库" class="headerlink" title="MySQL系统库"></a>MySQL系统库</h3><p>information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息</p>
+          <h2 id="第一章">第一章</h2>
+<h3 id="MySQL语法">MySQL语法</h3>
+<p>union查询需要前后语句查询字段数量相同</p>
+<p>order by字段名/数字</p>
+<h3 id="MySQL系统库">MySQL系统库</h3>
+<p>information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息</p>
 <ul>
 <li>SCHEMATA表：提供当前MySQL实例中所有数据库信息</li>
 <li>TABLES表：提供关于数据中表的信息，table_name</li>
@@ -866,14 +901,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="域名信息收集"><a href="#域名信息收集" class="headerlink" title="域名信息收集"></a>域名信息收集</h2><h3 id="whois"><a href="#whois" class="headerlink" title="whois"></a>whois</h3><ul>
+          <h2 id="域名信息收集">域名信息收集</h2>
+<h3 id="whois">whois</h3>
+<ul>
 <li>whois查询</li>
 <li>whois反查</li>
 <li>kali中的whois命令</li>
 <li>隐私保护</li>
 <li>icp备案查询</li>
 </ul>
-<h3 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h3><ul>
+<h3 id="子域名">子域名</h3>
+<ul>
 <li>字典猜解</li>
 <li>枚举</li>
 </ul>

