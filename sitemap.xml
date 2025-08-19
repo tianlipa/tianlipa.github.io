@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tianlipa.github.io/2025/08/hexo-todo-list/</loc>
+    
+    <lastmod>2025-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/2025/08/2025-8-18/</loc>
     
     <lastmod>2025-08-18</lastmod>
@@ -663,20 +672,6 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/web/</loc>
-    <lastmod>2025-08-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tianlipa.github.io/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/</loc>
-    <lastmod>2025-08-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://tianlipa.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</loc>
     <lastmod>2025-08-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -685,6 +680,20 @@
   
   <url>
     <loc>https://tianlipa.github.io/tags/USTC-MINE/</loc>
+    <lastmod>2025-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/tags/web/</loc>
+    <lastmod>2025-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/</loc>
     <lastmod>2025-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

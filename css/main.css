@@ -1252,7 +1252,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #24ff62;
+    background: #b8ffd6;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2673,6 +2673,6 @@ header.header {
   list-style-type: none;
 }
 .task-list-item input[type="checkbox"] {
-  margin-right: 0.5em;
   margin-left: -1em;
+  margin-right: 0.5em;
 }
