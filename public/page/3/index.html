@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -197,9 +197,12 @@
           "花有重开日, 人无再少年.",
           "埋骨何须桑梓地,<br>人生无处不青山.",
           "五花马, 千金裘,<br>呼儿将出换美酒,<br>与尔同销万古愁.",
-          "访问本站即表明您同意本站的用户与服务政策, 每周四需向我转账50元.",
+          "访问本站即表明您同意本站的用户服务政策, 每周四需向我转账50元.",
           "*意义不明的鼓点*",
-          "人有所操"
+          "人有所操",
+          "The world is a cat<br>playing with Australia",
+          "神说, 要有光,<br>就有了光.<br>他看光是好的,<br>就把光速设定为299,792,458m/s,<br>并让之永远不变,<br>不应参照系的改变而改变.",
+          "BONFIRE LIT"
       ];
       var randomIndex = Math.floor(Math.random() * paragraphs.length);
       var selectedParagraph = paragraphs[randomIndex];
@@ -253,13 +256,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -287,6 +290,258 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/intel-npu-example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/intel-npu-example/" class="post-title-link" itemprop="url">Intel NPU加速库使用样例</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-23 16:53:23" itemprop="dateCreated datePublished" datetime="2025-07-23T16:53:23+08:00">2025-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-14 09:17:36" itemprop="dateModified" datetime="2025-08-14T09:17:36+08:00">2025-08-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>配置Python环境, 安装git(用于从huggingface下载模型)后, 运行项目提供的矩阵乘法示例代码:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> intel_npu_acceleration_library.backend <span class="keyword">import</span> MatMul</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">inC, outC, batch = <span class="number">512</span>, <span class="number">256</span>, <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create both inputs</span></span><br><span class="line">X1 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (batch, inC)).astype(np.float16)</span><br><span class="line">X2 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (outC, inC)).astype(np.float16)</span><br><span class="line"></span><br><span class="line">mm = MatMul(inC, outC, batch, profile=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">result = mm.run(X1, X2)</span><br></pre></td></tr></table></figure>
+
+<p>注意到运行程序时有如下提示:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.</span><br><span class="line">  from pkg_resources import parse_version</span><br></pre></td></tr></table></figure>
+
+<p>查阅资料知是由于新版<code>setuptools</code>弃用旧版语法导致, 卸载并重新安装67.6.1版本解决.</p>
+<p>该程序计算了一个<code>32×512</code>矩阵和一个<code>512×256</code>矩阵相乘, 输出<code>result.shape</code>结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(32, 256)</span><br></pre></td></tr></table></figure>
+
+<p>知输出结果正确, 代码可正常运行.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/07/intel-npu-example/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/poem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/poem/" class="post-title-link" itemprop="url">神秘后现代诗词</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-18 14:20:34" itemprop="dateCreated datePublished" datetime="2025-07-18T14:20:34+08:00">2025-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-23 22:20:09" itemprop="dateModified" datetime="2025-07-23T22:20:09+08:00">2025-07-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>作者: <a target="_blank" rel="noopener" href="https://hf-mirror.com/TinyLlama/TinyLlama-1.1B-Chat-v1.0">TinyLlama&#x2F;TinyLlama-1.1B-Chat-v1.0</a></p>
+<p>转载请不要注明出处</p>
+</blockquote>
+<p>Ask something: fuck you<br>Run inference<br>fuck you you and me.<br>You can’t go against my opinion and I am just waiting for the next round.<br>Fast paced rhyming poem for your students to learn and practice how to create a rhyming pattern.<br>To be perfect and fit.<br>In your heart and your eyes.<br>We are not afraid we are not afraid.<br>Is like a handshake. A hug.<br>For this is our fight the fight.<br>So when your head’s just about to burst.<br>You need this right now and you need this just.<br>This one for you right now and this one for you right.<br>No this one for me and this one for you.<br>Your life is not in danger you can’t feel.<br>You have a life but that is not all the.<br>You need to feel. That’s right you feel.<br>You need to hear. That’s right you hear.<br>You need to feel. You hear.<br>You need to feel. You have a life.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/07/poem/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/2025-7-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/2025-7-17/" class="post-title-link" itemprop="url">2025-7-17</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-17 15:02:40 / 修改时间：15:10:53" itemprop="dateCreated datePublished" datetime="2025-07-17T15:02:40+08:00">2025-07-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>不知道为什么, 其实很多事情, 比如实习, 考驾照, 进实验室, 本身可能都没什么难度, 或者至少没什么明显的阻碍, 但一想到这些事情我就会莫名其妙地非常焦虑且烦躁, 然后就硬拖着不做. 很奇怪.</p>
+<p>然后反正折腾了一段时间, 现在在深圳的某公司实习, 入职培训一上午说了一堆废话, 然后现在在干坐着等布置任务. 主要是不太方便光明正大打游戏, 不然我已经环世界启动了.</p>
+<p>上周日去带了个家教, 在一个从来没听过的小区, 到地方发现条件实在不怎么好, 住宿条件跟老家差不多, 恍惚间还能闻到鸡史味, 导致我实在不好意思多收钱, 底价430我只好意思收了300. 有没有人能给我介绍几个特别讨人厌的有钱人, 让我心安理得地狠狠宰一笔.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -492,9 +747,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-05-21 01:00:52 / 修改时间：01:14:24" itemprop="dateCreated datePublished" datetime="2025-05-21T01:00:52+08:00">2025-05-21</time>
+      <time title="创建时间：2025-05-21 01:00:52" itemprop="dateCreated datePublished" datetime="2025-05-21T01:00:52+08:00">2025-05-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-18 14:48:14" itemprop="dateModified" datetime="2025-08-18T14:48:14+08:00">2025-08-18</time>
     </span>
 
   
@@ -508,10 +769,10 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>前几天经历了人生中第一次报警并进派出所.</p>
-<p>具体经历是我半夜刷小红书刷到一个约炮贴, 内容是经典的”小红书为啥很少见合肥IP”. 虽然但是IP不都是精确到省吗. 然后下面有个憨批, 拍了一堆抗抑郁药物(至少露名字那个是抗抑郁的)并表示”马上就要少一个合肥的了”, 然后我作为一个被白左(是这么叫的吗)价值观洗脑的圣母婊, 放着不管实在是于心不安, 但我又怕这人是口嗨的, 报警会很尴尬, 犹豫之后发短信报警. 本来以为完事了, 结果来了辆警车凌晨把我带去派出所做了笔录.</p>
+<p>具体经历是我半夜刷小红书刷到一个约炮贴, 内容是经典的“小红书为啥很少见合肥IP”. 虽然但是IP不都是精确到省吗. 然后下面有个憨批, 拍了一堆抗抑郁药物(至少露名字那个是抗抑郁的)并表示“马上就要少一个合肥的了”, 然后我作为一个被白左(是这么叫的吗)价值观洗脑的圣母婊, 放着不管实在是于心不安, 但我又怕这人是口嗨的, 报警会很尴尬, 犹豫之后发短信报警. 本来以为完事了, 结果来了辆警车凌晨把我带去派出所做了笔录.</p>
 <p>后续如何我不太清楚, 不过那个憨批的评论被删了, 如果能排除作者删除和系统删除, 应该就是没事了. 但我没什么办法核查. 总之我觉得这件事我真是仁至义尽了, 毕竟第二天上午我还有课, 凌晨还要做笔录.</p>
 <p>有时候感觉我真是大善人, 能不能给我来点好报啊.</p>
-<p>这段时间真的是忙出史了, 下周三考我屁都不会的信息论, 然后过一两天就交还没动笔的AI作业, 然后6.8交还没读题的密码学大作业, 然后还有刚组上队的AI大作业. <del>往好的方面看和学妹组上队了,</del> 往坏的方面看根据IYPT经验她应该是女同. 哦我还有六级要准备, 完tmd蛋. 我真是造孽了.</p>
+<p>这段时间真的是忙出史了, 下周三考我屁都不会的信息论, 然后过一两天就交还没动笔的AI作业, 然后6.8交还没读题的密码学大作业, 然后还有刚组上队的AI大作业. <s>往好的方面看和学妹组上队了,</s> 往坏的方面看根据IYPT经验她应该是女同. 哦我还有六级要准备, 完tmd蛋. 我真是造孽了.</p>
 <blockquote>
 <p>Our great war is a spiritual war.</p>
 <p>Our great depression, is our lives.</p>
@@ -952,240 +1213,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/03/2025-3-27/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/03/2025-3-22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/2025-3-22/" class="post-title-link" itemprop="url">2025-3-22</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-03-22 23:11:32 / 修改时间：23:22:16" itemprop="dateCreated datePublished" datetime="2025-03-22T23:11:32+08:00">2025-03-22</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Requires password.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/03/2025-3-22/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/03/302git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/302git/" class="post-title-link" itemprop="url">如何解决启用SteamCommunity302后git命令行无法连接</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-03-16 20:23:43 / 修改时间：20:33:55" itemprop="dateCreated datePublished" datetime="2025-03-16T20:23:43+08:00">2025-03-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>众所周知国内对GitHub的访问非常不稳定, 大部分稳定访问方法都需要借助非常规手段, 其中比较靠谱且免费的是SteamCommunity302, 不仅能加速Steam商店, 还能稳定访问GitHub. 然而, 启动SteamCommunity302的时候, 虽然浏览器能流畅访问GitHub, 但是命令行中的git会连接失败, 报错类似</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSL peer certificate or SSH remote key was not OK</span><br></pre></td></tr></table></figure>
-
-<p>解决方案如下:</p>
-<p>方法一(推荐):</p>
-<p>找到SteamCommunity302根目录下的<code>steamcommunity.crt</code>证书文件, 双击打开, 点击安装证书-下一步-将所有证书放入下列存储-浏览, 选择”受信任的根证书颁发机构”, 点击安装即可.</p>
-<p>方法二(不推荐):</p>
-<p>终端运行:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>暂时关闭git的SSL安全验证, 但存在安全隐患, 不建议长期关闭.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/03/2025-3-13/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/2025-3-13/" class="post-title-link" itemprop="url">2025-3-13</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-03-14 00:39:17 / 修改时间：00:43:05" itemprop="dateCreated datePublished" datetime="2025-03-14T00:39:17+08:00">2025-03-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Requires password.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/03/2025-3-13/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

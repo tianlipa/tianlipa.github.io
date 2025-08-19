@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -197,9 +197,12 @@
           "花有重开日, 人无再少年.",
           "埋骨何须桑梓地,<br>人生无处不青山.",
           "五花马, 千金裘,<br>呼儿将出换美酒,<br>与尔同销万古愁.",
-          "访问本站即表明您同意本站的用户与服务政策, 每周四需向我转账50元.",
+          "访问本站即表明您同意本站的用户服务政策, 每周四需向我转账50元.",
           "*意义不明的鼓点*",
-          "人有所操"
+          "人有所操",
+          "The world is a cat<br>playing with Australia",
+          "神说, 要有光,<br>就有了光.<br>他看光是好的,<br>就把光速设定为299,792,458m/s,<br>并让之永远不变,<br>不应参照系的改变而改变.",
+          "BONFIRE LIT"
       ];
       var randomIndex = Math.floor(Math.random() * paragraphs.length);
       var selectedParagraph = paragraphs[randomIndex];
@@ -253,13 +256,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -287,6 +290,279 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/msb-07-ssrf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/msb-07-ssrf/" class="post-title-link" itemprop="url">7-SSRF漏洞</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-13 13:44:18 / 修改时间：14:11:15" itemprop="dateCreated datePublished" datetime="2025-08-13T13:44:18+08:00">2025-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>php curl扩展：<br>获取网页资源，爬虫<br>webservice, 获取接口数据<br>FTP, 下载文件<br>php.ini extension&#x3D;php_curl.dll</p>
+<p>SSRF: Server-Side Request Forgery, 服务端请求伪造，由攻击者构造形成由服务端发起请求的一种安全漏洞。</p>
+<p>危害：</p>
+<ul>
+<li>扫描资产</li>
+<li>获取敏感信息</li>
+<li>绕过防火墙攻击内网服务器</li>
+<li>访问大文件造成溢出</li>
+<li>通过Redis写入WebShell或建立反弹连接</li>
+</ul>
+<p>可能导致SSRF漏洞的函数：<br>curl_exec(): 执行cURL会话<br>file_get_contents(): 将整个文件读入为一个字符串<br>fsockopen(): 打开一个网络连接或一个Unix套接字连接</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/08/msb-07-ssrf/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/msb-06-file-include/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/msb-06-file-include/" class="post-title-link" itemprop="url">6-文件包含漏洞</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-13 13:43:25 / 修改时间：14:11:24" itemprop="dateCreated datePublished" datetime="2025-08-13T13:43:25+08:00">2025-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="本地文件包含-LFI-Local-File-Inclusion"><a href="#本地文件包含-LFI-Local-File-Inclusion" class="headerlink" title="本地文件包含(LFI, Local File Inclusion)"></a>本地文件包含(LFI, Local File Inclusion)</h3><p>目录遍历漏洞&#x2F;文件任意访问漏洞<br>通过接口动态包含<br>可用于包含恶意代码或图片马<br>包含敏感文件</p>
+<h3 id="远程文件包含-RFI-Remote-File-Inclusion"><a href="#远程文件包含-RFI-Remote-File-Inclusion" class="headerlink" title="远程文件包含(RFI, Remote File Inclusion)"></a>远程文件包含(RFI, Remote File Inclusion)</h3><table>
+<thead>
+<tr>
+<th>漏洞</th>
+<th>描述</th>
+<th>原因</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>XXE</td>
+<td>XML外部实体注入</td>
+<td>使用XML传输数据，并且允许解析外部实体</td>
+<td>导致访问敏感文件，探测端口，执行系统命令等</td>
+</tr>
+<tr>
+<td>SSRF</td>
+<td>服务顿请求伪造</td>
+<td>使用了curl_exec()之类的函数</td>
+<td>导致端口扫描，攻击内网主机，绕过防火墙，获取敏感信息，访问大文件造成内存溢出，操作Redis等问题</td>
+</tr>
+<tr>
+<td>RFI</td>
+<td>远程文件包含</td>
+<td>使用了include</td>
+<td>导致任意文件访问，包含shell代码</td>
+</tr>
+</tbody></table>
+<p>需要配置php.ini:<br>allow_url_fopen&#x3D;On<br>allow_url_include&#x3D;On</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/08/msb-06-file-include/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/msb-05-file-upload/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/msb-05-file-upload/" class="post-title-link" itemprop="url">5-文件上传漏洞</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-13 13:42:16 / 修改时间：14:11:29" itemprop="dateCreated datePublished" datetime="2025-08-13T13:42:16+08:00">2025-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h2 id="Webshell"><a href="#Webshell" class="headerlink" title="Webshell"></a>Webshell</h2><h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p>代码短，只有一行代码。<br>应用场景多，可以单独生成文件，也可以插入到图片中。<br>安全性高，隐匿性强，可以变形免杀。</p>
+<h3 id="小马"><a href="#小马" class="headerlink" title="小马"></a>小马</h3><p>体积小，功能少，只有文件上传功能。</p>
+<h3 id="大马"><a href="#大马" class="headerlink" title="大马"></a>大马</h3><p>体积大，功能全，能够管理数据库、文件管理、对站点进行快速信息收集，甚至能够提权。</p>
+<h2 id="网站控制工具"><a href="#网站控制工具" class="headerlink" title="网站控制工具"></a>网站控制工具</h2><p>中国菜刀，中国蚁剑，weevely, godzilla, behinder</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/08/msb-05-file-upload/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -675,7 +951,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-14 13:47:17" itemprop="dateModified" datetime="2025-08-14T13:47:17+08:00">2025-08-14</time>
+      <time title="修改时间：2025-08-18 14:45:55" itemprop="dateModified" datetime="2025-08-18T14:45:55+08:00">2025-08-18</time>
     </span>
 
   
@@ -691,10 +967,8 @@
           <p>选取模型为<a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/iic/SenseVoiceSmall">SenseVoiceSmall</a>.</p>
 <p>开始运行前首先需要将模型转换为OpenVINO IR格式. 原模型为PyTorch框架, 可以利用以下代码保存为ONNX格式.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">onnx_model = onnx.load(model_path)</span><br><span class="line">onnx.save_model(onnx_model,</span><br><span class="line">                <span class="string">&#x27;saved_model.onnx&#x27;</span>,</span><br><span class="line">                save_as_external_data=<span class="literal">True</span>,</span><br><span class="line">                all_tensors_to_one_file=<span class="literal">True</span>,</span><br><span class="line">                location=<span class="string">&#x27;data/weights_data&#x27;</span>,</span><br><span class="line">                size_threshold=<span class="number">1024</span>,</span><br><span class="line">                convert_attribute=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
 <p>也可以直接下载FunASR官方提供的<a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/iic/SenseVoiceSmall-onnx">SenseVoiceSmall-onnx</a>模型. 准备好ONNX格式模型后, 可以利用OpenVINO提供的<code>mo</code>或<code>ovc</code>工具将其转换为OpenVINO IR格式. 在最新的OpenVINO版本中, <code>mo</code>工具已经被更简化的<code>OpenVINO Model Converter</code>即<code>ovc</code>工具所替代.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mo --input_model &lt;INPUT_MODEL&gt;.onnx</span><br></pre></td></tr></table></figure>
-
 <p>此命令会将模型优化并导出为OpenVINO IR格式模型. 注意, <code>--compress_to_fp16</code>默认处于开启状态, 会将模型压缩至fp16精度, 正常情况下不会导致明显的精度损失.</p>
 <p>可以通过如下代码加载并编译OpenVINO IR模型.</p>
           <!--noindex-->
@@ -1012,258 +1286,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/intel-npu-example/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/intel-npu-example/" class="post-title-link" itemprop="url">Intel NPU加速库使用样例</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-07-23 16:53:23" itemprop="dateCreated datePublished" datetime="2025-07-23T16:53:23+08:00">2025-07-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-14 09:17:36" itemprop="dateModified" datetime="2025-08-14T09:17:36+08:00">2025-08-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>配置Python环境, 安装git(用于从huggingface下载模型)后, 运行项目提供的矩阵乘法示例代码:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> intel_npu_acceleration_library.backend <span class="keyword">import</span> MatMul</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">inC, outC, batch = <span class="number">512</span>, <span class="number">256</span>, <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create both inputs</span></span><br><span class="line">X1 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (batch, inC)).astype(np.float16)</span><br><span class="line">X2 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (outC, inC)).astype(np.float16)</span><br><span class="line"></span><br><span class="line">mm = MatMul(inC, outC, batch, profile=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">result = mm.run(X1, X2)</span><br></pre></td></tr></table></figure>
-
-<p>注意到运行程序时有如下提示:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.</span><br><span class="line">  from pkg_resources import parse_version</span><br></pre></td></tr></table></figure>
-
-<p>查阅资料知是由于新版<code>setuptools</code>弃用旧版语法导致, 卸载并重新安装67.6.1版本解决.</p>
-<p>该程序计算了一个<code>32×512</code>矩阵和一个<code>512×256</code>矩阵相乘, 输出<code>result.shape</code>结果为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(32, 256)</span><br></pre></td></tr></table></figure>
-
-<p>知输出结果正确, 代码可正常运行.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/intel-npu-example/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/poem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/poem/" class="post-title-link" itemprop="url">神秘后现代诗词</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-07-18 14:20:34" itemprop="dateCreated datePublished" datetime="2025-07-18T14:20:34+08:00">2025-07-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-23 22:20:09" itemprop="dateModified" datetime="2025-07-23T22:20:09+08:00">2025-07-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>作者: <a target="_blank" rel="noopener" href="https://hf-mirror.com/TinyLlama/TinyLlama-1.1B-Chat-v1.0">TinyLlama&#x2F;TinyLlama-1.1B-Chat-v1.0</a></p>
-<p>转载请不要注明出处</p>
-</blockquote>
-<p>Ask something: fuck you<br>Run inference<br>fuck you you and me.<br>You can’t go against my opinion and I am just waiting for the next round.<br>Fast paced rhyming poem for your students to learn and practice how to create a rhyming pattern.<br>To be perfect and fit.<br>In your heart and your eyes.<br>We are not afraid we are not afraid.<br>Is like a handshake. A hug.<br>For this is our fight the fight.<br>So when your head’s just about to burst.<br>You need this right now and you need this just.<br>This one for you right now and this one for you right.<br>No this one for me and this one for you.<br>Your life is not in danger you can’t feel.<br>You have a life but that is not all the.<br>You need to feel. That’s right you feel.<br>You need to hear. That’s right you hear.<br>You need to feel. You hear.<br>You need to feel. You have a life.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/poem/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/2025-7-17/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/2025-7-17/" class="post-title-link" itemprop="url">2025-7-17</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-07-17 15:02:40 / 修改时间：15:10:53" itemprop="dateCreated datePublished" datetime="2025-07-17T15:02:40+08:00">2025-07-17</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>不知道为什么, 其实很多事情, 比如实习, 考驾照, 进实验室, 本身可能都没什么难度, 或者至少没什么明显的阻碍, 但一想到这些事情我就会莫名其妙地非常焦虑且烦躁, 然后就硬拖着不做. 很奇怪.</p>
-<p>然后反正折腾了一段时间, 现在在深圳的某公司实习, 入职培训一上午说了一堆废话, 然后现在在干坐着等布置任务. 主要是不太方便光明正大打游戏, 不然我已经环世界启动了.</p>
-<p>上周日去带了个家教, 在一个从来没听过的小区, 到地方发现条件实在不怎么好, 住宿条件跟老家差不多, 恍惚间还能闻到鸡史味, 导致我实在不好意思多收钱, 底价430我只好意思收了300. 有没有人能给我介绍几个特别讨人厌的有钱人, 让我心安理得地狠狠宰一笔.</p>
-
       
     </div>
 

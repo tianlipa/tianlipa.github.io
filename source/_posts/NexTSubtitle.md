@@ -48,3 +48,9 @@ document.getElementById('randomParagraph').innerText = selectedParagraph;
 参考的两篇博客:
 [hexo个性化（next主题动态显示subtitle）](https://www.jianshu.com/p/df2c844eeabf)
 [Hexo 个性化 - Next 主题动态显示 Subtitle](https://lruihao.cn/posts/dongtaisub/)
+
+---
+
+更新: 今天把NexT主题升级到了8.24.0版本, 由于新版NexT把所有swig文件都换成了njk格式, 原来的方法失效了.
+
+不过新版的步骤也没什么区别, 只是修改`brand.swig`变成了修改`brand.njk`而已.
