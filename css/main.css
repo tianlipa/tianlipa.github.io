@@ -1252,7 +1252,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #b8ffd6;
+    background: #77008a;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2676,3 +2676,19 @@ header.header {
   margin-left: -1em;
   margin-right: 0.5em;
 }
+.link-grid .link-grid-container,
+.link-grid .link-grid-container:hover {
+  transform: none !important;
+  transition: none !important;
+  margin-top: 0 !important;
+  top: auto !important;
+/* box-shadow: none !important; */
+}
+/* .link-grid .link-grid-container:hover {
+  transform: none !important;
+  margin: 0 !important;
+  top: auto !important;
+  left: auto !important;
+  box-shadow: none !important;
+  transition: none !important;
+} */
