@@ -21,27 +21,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Requires password.">
+    <meta name="description" content="还没读完, 放上来防止我半途而废. 2210.03629v3 Abstract LLM在语言理解和决策任务中表现出色, 但在推理和行动方面的能力很少被联系起来研究. 本文探讨了如何让LLM交错生成推理轨迹和针对任务的特定行动, 从而增强两者之间的协同作用: 推理轨迹帮助模型生成, 追踪并更新行动计划, 处理异常情况, 而特定行动允许模型与外部来源(知识库或环境)进行接口交互并获取额外信息. 作者将">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2025-2-23">
-<meta property="og:url" content="https://tianlipa.github.io/2025/02/2025-2-23/index.html">
+<meta property="og:title" content="ReAct: Synergizing Reasoning and Acting in Language Models">
+<meta property="og:url" content="https://tianlipa.github.io/2025/08/react/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="Requires password.">
+<meta property="og:description" content="还没读完, 放上来防止我半途而废. 2210.03629v3 Abstract LLM在语言理解和决策任务中表现出色, 但在推理和行动方面的能力很少被联系起来研究. 本文探讨了如何让LLM交错生成推理轨迹和针对任务的特定行动, 从而增强两者之间的协同作用: 推理轨迹帮助模型生成, 追踪并更新行动计划, 处理异常情况, 而特定行动允许模型与外部来源(知识库或环境)进行接口交互并获取额外信息. 作者将">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-23T12:53:27.000Z">
-<meta property="article:modified_time" content="2025-02-23T15:33:35.674Z">
+<meta property="article:published_time" content="2025-08-22T08:53:58.000Z">
+<meta property="article:modified_time" content="2025-08-22T08:55:09.248Z">
 <meta property="article:author" content="tianlipa">
-<meta property="article:tag" content="日寄">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="论文阅读">
+<meta property="article:tag" content="USTC-MINE">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://tianlipa.github.io/2025/02/2025-2-23/">
+<link rel="canonical" href="https://tianlipa.github.io/2025/08/react/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/02/2025-2-23/","path":"2025/02/2025-2-23/","title":"2025-2-23"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/react/","path":"2025/08/react/","title":"ReAct: Synergizing Reasoning and Acting in Language Models"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>2025-2-23 | tianlipa</title>
+<title>ReAct: Synergizing Reasoning and Acting in Language Models | tianlipa</title>
   
 
 
@@ -189,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/02/2025-2-23/">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/react/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,12 +204,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="2025-2-23 | tianlipa">
+      <meta itemprop="name" content="ReAct: Synergizing Reasoning and Acting in Language Models | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2025-2-23
+          ReAct: Synergizing Reasoning and Acting in Language Models
         </h1>
 
         <div class="post-meta-container">
@@ -219,7 +221,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-02-23 20:53:27 / 修改时间：23:33:35" itemprop="dateCreated datePublished" datetime="2025-02-23T20:53:27+08:00">2025-02-23</time>
+      <time title="创建时间：2025-08-22 16:53:58 / 修改时间：16:55:09" itemprop="dateCreated datePublished" datetime="2025-08-22T16:53:58+08:00">2025-08-22</time>
     </span>
 
   
@@ -231,18 +233,30 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="你没资格啊, 你没资格" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="c72840c2c9d547799329a15959c31819dfce07479acd05a938487fb3f1f7a141">65d63d5764e6e1413d7ff8079ab052ab1fc534e62f2b8e6d97cdc8ea6be350d7b1ace329a7b20f1ab86b2a9bc2a6df1b293f84ca290d132750a3e6ea3205fe3a02ce886b062b54ded82ec577010cb5767f39943e41d048821926fc359623bff1630c63ee200f2bd5203b7d4620bed2404704bf3cd1ae0ea4cc9e44be01fca1cbfed405ebb51e67b5c7daeba78049848f176bd1d2f6f3976623534232e36366de03951e4cede2737fc9ee671ba7d4929f6da3bf4770d9d5e827127e1861f6cd95075a866ef05ac015ed33b0047f9f100d2adc4df2a1e3bd34f66947334a27aa2c0dac8f1ce1054dbee3703c8a52a2fde11790ef4920f4abae4107b52dbf0f944cf74db91afb59dc432177e747ad40eefdb8665c095f1991adf05246fb8c9afb3159daccedf7e6650a6aa5318fe98c450a51ca4a05cd39b2a12a1bc14533d33bd36043bacee63a74096afac034fc3c6d578b2f89128014115b9c4ecfe14d2be12ea20a43fe250f18f65fe6132f3093301b92dbd77f037a967fccdf3d728c43321899324f9c5652a8990a7304a95dffab22bc26762401644532b0027d444c572e561dd08c038ceb9978926efbb92d0447e38b43dd1dfc9c80c392a88d5a8846012090752ee745141f0dd99260fda170370a073c3d33a2f0a9cc12a95c3b660a7af7f5b527dd90d1df14f3208131e904194fa04322b2ccd5f94d482269613209744fba48224f5a583aeda927a548538f354a3c3aff4cfa2c074651565ec6c18de439047f2de5ade5fca91c3b350635011cefc19d29421a5665458355ae34c637951835b809b99fad15fe94e9cd21d16aeeb66f0cc4674104a320507a8c8d23f97b6d83dcb0690170b5a9754d82adf9e2d21ab0c58dfc03bea3e70ff2891e10e12a9a65a91f5ec422d5a6eeca5f798c1a4e8df4be4de95efbd0956ac395986f84d069bd43317d988424545394c314bdb9173279e16f54a2c5e08bd92213b39f36775096bbc5834c9a3ba3dd57889245e09dc24c95ee9a2170d1c48677fc1bb1c9038d9211e9cd94d287e5300bafec6cff16374de4c1d6da897c136e61572a1814398ca0a1b255c82878e386abefd45ceab2869ca1ff635c398315408484845d1d09275fd7ecb9cf47bfa0cbba349c6e4555060a8903727093fff5913c831c9b64ebaf59ee3b28756c9df38480d17f8a57f8b28d35d1b4a821b583796d4faac6972638b5aa4886f1df078586e9cff3eed0bb23914414d718e062f7ac171b144d5866c2d8f549e4f2aa272d8725330aa109ca1642fda7307d3b1703ab0a2e20e54c3778744fcdc3a52fa447e162a45e9cc43e9fe55e072e5542ec56f4f909fd699b76b6ee2cff2412539a00944adc7a6b9ca4256d471f17e925b3ebdb8b6b123c704f9778b6a7b5861b129ec415913a074258e43ed43159d97ab0fad7c6227cc23fed70c6f002d74766093dea1f9aef51d32e23d225d589b599433dbbf606f815c924fc5cb5304305c25af3d120b7f0a4594fb7d08dc6c1cb5ffa36e08f098c4ee58378728005b8324034089107e520572fa0c595be4b09f5fb259a25163dbb45aeb5184508901a093eba13722397436ecf02c64b3eafc6a828db35bea4df4dcb0886eaafc2ff0a3ab3785666d1d388fd55423790afee0b5409ffa507cbac978e510b06b42ccc7c3008b153019501d9031bdbd4361b9a447e9113588d27e9d73506c43e5e69720e6eeef72e813684df0612a11cc329de7e5c8bad386e7480976b07b90783c86993009bf926d070cf8a311afc518f89888c895cdd63d54264394f9dfb2df04430102b6139c14a32d570ab2895891e05959186191202ed0a890a040062be40773aaf139e9acaec22b9e01c8edc32233568709f8ae9806eaaad4b5de15a8e8874bb74ba04b94e6523541e68491dd8c99a5b35e15c96a3bf1eda4f143d56c52e577499c4f4c1492950b4ae067cc0185604d038a8d156aa57918f68fe940a2d2147cbb52a759d40cd7b7c32706854bb7df2badf452c2617ab0b7e3b8122001c259788697c15ff9473e45945719a567183b69a79300c2796517942e7606d3cc52bfa478498e74167115107d1e638bf988ab1a45fd17f700dc45bc621791af43579e1bbb7a96e868ddaf9d936a2febc2d4eab42fe5b3f88de25d3e75f2c92d3c99866ac76013ccad245cbec18b5b65325a17929353703bd1cc0350fac78d021f497924ef9c6b36d297b5b767d9582cc50508fe47db154fa3189c39ec07d72c070da62b9a938b4dfee9e4b4c432f1bf6374e639c3acfa4db943f4664cc99c2cbe1f9cd6af325b4e68dcdd3aff592130ef116675f9878a71f813e2395df7cf6b01584bfdce77d44d3d2ed2b92d00b72278a7cb64c4699d0319da7cd53c3cc751150845bd20df39796049feda1280e9ffdc7a620223c05722cb73bb961a4091cfd5ef886cb3fef1d4eb753b56ecc78a764299381b33c221e51a2dc383a9db08f8a6fd142ef57d8ef001597cd4c94b34b8fa69312020314804bf37fe6c94ee0c61b975e8b0f814e0549823f6203e649acb59c</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-flip">
-      <input class="hbe hbe-input-field hbe-input-field-flip" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-flip" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-flip" data-content="Requires password.">Requires password.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    <div class="post-body" itemprop="articleBody"><p>还没读完, 放上来防止我半途而废.</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.03629v3">2210.03629v3</a></p>
+<h2 id="Abstract">Abstract</h2>
+<p>LLM在语言理解和决策任务中表现出色, 但在推理和行动方面的能力很少被联系起来研究. 本文探讨了如何让LLM交错生成推理轨迹和针对任务的特定行动, 从而增强两者之间的协同作用: 推理轨迹帮助模型生成, 追踪并更新行动计划, 处理异常情况, 而特定行动允许模型与外部来源(知识库或环境)进行接口交互并获取额外信息. 作者将该方法命名为ReAct(Reason+Act), 并将其应用于多种语言和决策任务, 展示了它在先进的基准上的有效性和更高的人类可读性与可靠性. ReAct在问答和事实验证中, 通过和简单的维基百科API交互, 在思维链(CoT)中克服了普遍存在的幻觉和错误传播问题, 生成了类似人类的解决任务轨迹, 比基准更具可解释性, 不带推理痕迹. 此外, 在两个交互式决策基准测试中, ReAct的成功率显著超过了模仿和强化学习方法, 只需在prompt中给出一两个上下文的例子.</p>
+<span id="more"></span>
+<h2 id="Introduction">Introduction</h2>
+<ul>
+<li><strong>Background</strong>: 人类能够将任务导向的动作与语言推理无缝结合起来, 这被认为在人类认知中起着重要作用. 人类可以在具体动作之间用语言推理跟踪进度(“菜切好了, 现在我要烧水”), 处理异常或根据情况调整计划(“酱油用完了, 我用可乐代替吧”), 并意识到需要外部信息(“我不会准备面团, 我要去小红书看看”). 人类还可以采取行动以支持推理并回答问题(打开冰箱看看现在能做什么菜). 这种<strong>行动与推理之间的紧密协同</strong>允许人类快速学习新任务, 在未见过的情况下做出稳健的决策和推理, 即使面对的信息不确定也是如此.</li>
+<li><strong>Motivation</strong>: 最近的研究暗示了在智能体中结合语言推理与行动的可能性. 一方面, LLM已经可以在有适当prompt的情况下执行多步推理轨迹以推导出算数, 常识, 符号推理任务答案. 然而, 这种思维链是一个静态的黑箱, 模型使用内在表示而非基于外部世界生成想法, 这限制了模型反应地推理和更新知识的能力, 也可能导致幻觉和推理过程中的错误传播. 另一方面, 近来的研究探索了使用预训练语言模型在交互环境中进行规划和行动, 重点关注利用语言先验预测行动. 这些方法通常将多模态观察转换为文本, 使用语言模型生成行动或计划, 再利用控制器选择或执行行动. 然而, 这些方法没有利用语言模型进行关于高级目标的抽象推理, 也没有维护工作记忆以支撑行动. 目前几乎没有研究探讨如何将推理和行动协同在一起, 以及这种协同的系统性优势.</li>
+<li><strong>Contributions</strong>: 本文提出了ReAct, 一种将推理和行动与语言模型结合在一起的一般范式, 以解决多样化的语言推理和决策任务. ReAct促使语言模型交替生成与任务相关的语言推理轨迹和行动, 使得模型能够进行动态推理, 以创建, 维护和调整高级计划, 同时与外部环境互动, 将额外信息融入推理. 评估中, ReAct表现出色, 整体表现最好的方法是结合CoT和ReAct. 总的来说, 本文贡献如下:
+<ul>
+<li>引入了ReAct, 一种新颖的基于prompt的范式, 用于在语言模型中协同推理和行动, 以解决一般任务.</li>
+<li>在多种基准测试中进行了广泛实验, 展示了在学习示例较少时, ReAct的优势.</li>
+<li>进行了系统实验与分析, 以说明在推理任务中行动的重要性, 以及行动任务中推理的重要性.</li>
+<li>分析了在prompt设置下ReAct的局限性, 并进行了初步的微调实验, 展示了ReAct通过增加训练数据进行优化的潜力. 将ReAct扩展到更多任务的训练和操作, 并将其与强化学习等互补范式结合, 将进一步释放LLM的潜力.</li>
+</ul>
+</li>
+</ul>
+<h2 id="ReAct-结合推理与行动">ReAct: 结合推理与行动</h2>
+<h2 id="Results">Results</h2>
+<h2 id="Conclusion">Conclusion</h2>
+<h2 id="Appendix">Appendix</h2>
+<h2 id="Discussion">Discussion</h2>
+
     </div>
 
     
@@ -251,21 +265,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%97%A5%E5%AF%84/" rel="tag"># 日寄</a>
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+              <a href="/tags/USTC-MINE/" rel="tag"># USTC-MINE</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/02/2025-2-19/" rel="prev" title="2025-2-19">
-                  <i class="fa fa-angle-left"></i> 2025-2-19
+                <a href="/2025/08/2025-8-21/" rel="prev" title="2025-8-21">
+                  <i class="fa fa-angle-left"></i> 2025-8-21
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/02/2025-2-24/" rel="next" title="2025-2-24">
-                  2025-2-24 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
