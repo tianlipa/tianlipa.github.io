@@ -13,7 +13,7 @@ date: 2025-08-20 09:26:44
   {% btn /hachimi, I'm Feeling Lucky,, %}
 </div>
 
-<script src="/collection/random.js"></script>
+<script src="/js/randombtn.js"></script>
 
 ## 友情链接
 
