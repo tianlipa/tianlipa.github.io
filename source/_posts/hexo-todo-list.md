@@ -1,5 +1,5 @@
 ---
-title: hexo博客如何渲染Markdown待办清单TO-DO List
+title: Hexo博客如何渲染Markdown待办清单TO-DO List
 date: 2025-08-19 10:19:29
 tags: [博客美化, 疑难解答]
 ---
@@ -19,9 +19,9 @@ tags: [博客美化, 疑难解答]
 npm install hexo-renderer-markdown-it --save
 ```
 
-在`_config.yml`中添加如下内容:
-
 <!--more-->
+
+在`_config.yml`中添加如下内容:
 
 ```yml
 markdown:
@@ -74,7 +74,7 @@ markdown:
     - markdown-it-task-lists
 ```
 
-然后运行`hexo clean && hexo g`即可.
+然后运行`hexo clean && hexo g`即可. 注意, 不`hexo clean`的话页面可能不会更新.
 
 但是这样生成的待办清单行首会有一个markdown无序列表的黑点, 让我很不爽, 大概像这样:
 
