@@ -114,7 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Tell them I said something smart.",
         "好吧, 你赢了.<br>你的音乐品味<br>小众又高级.",
         "能不能再放一遍?",
-        "接受所有饼干"
+        "接受所有饼干",
+        "浴室里没有人, 水是我开的.",
+        "<span style='display:inline-block; transform: rotate(180deg);'>恰恰相反</span>"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

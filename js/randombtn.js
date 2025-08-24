@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "https://www.bilibili.com/video/BV1nt4y147iK/",
     "https://www.bilibili.com/video/BV1Lv411r7wa/",
     "https://github.com/Red-Killer/shit/",
-    "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/"
+    "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/",
+    "https://www.bilibili.com/video/BV14Q4y1u7HY"
   ];
   const btn = document.querySelector(".random-btn a"); 
   if (btn) {
