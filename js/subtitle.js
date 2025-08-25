@@ -116,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "能不能再放一遍?",
         "接受所有饼干",
         "浴室里没有人, 水是我开的.",
-        "<span style='display:inline-block; transform: rotate(180deg);'>恰恰相反</span>"
+        "<span style='display:inline-block; transform: rotate(180deg);'>恰恰相反</span>",
+        "循此苦旅, 直抵群星.",
+        'Who/what is "Adam"?'
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="GitHub链接 数据预处理 结构化数据一般会使用Pandas中的DataFrame进行预处理. import numpy as np import pandas as pd import matplotlib.pyplot as pltimport torch from torch import nn from torch.utils.data import Dataset,DataLoader">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20天狂宴Pytorch-Day1">
+<meta property="og:url" content="https://tianlipa.github.io/2025/08/eat-pytorch-1/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="GitHub链接 数据预处理 结构化数据一般会使用Pandas中的DataFrame进行预处理. import numpy as np import pandas as pd import matplotlib.pyplot as pltimport torch from torch import nn from torch.utils.data import Dataset,DataLoader">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ceat-pytorch-1%5C1.png">
+<meta property="article:published_time" content="2025-08-25T14:32:56.000Z">
+<meta property="article:modified_time" content="2025-08-25T16:53:58.682Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="USTC-MINE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5CBlog%5Csource%5Cimg%5Ceat-pytorch-1%5C1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/08/eat-pytorch-1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/eat-pytorch-1/","path":"2025/08/eat-pytorch-1/","title":"20天狂宴Pytorch-Day1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>20天狂宴Pytorch-Day1 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <!-- <p class="site-subtitle" itemprop="description">Subtitle</p> -->
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/eat-pytorch-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="20天狂宴Pytorch-Day1 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20天狂宴Pytorch-Day1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-08-25 22:32:56" itemprop="dateCreated datePublished" datetime="2025-08-25T22:32:56+08:00">2025-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-26 00:53:58" itemprop="dateModified" datetime="2025-08-26T00:53:58+08:00">2025-08-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://github.com/lyhue1991/eat_pytorch_in_20_days">GitHub链接</a></p>
+<h2 id="数据预处理">数据预处理</h2>
+<p>结构化数据一般会使用Pandas中的DataFrame进行预处理.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> torch </span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn </span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset,DataLoader,TensorDataset</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>处理前数据长这样:</p>
+<p><img src="D:%5CBlog%5Csource%5Cimg%5Ceat-pytorch-1%5C1.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dftrain_raw = pd.read_csv(<span class="string">&#x27;./eat_pytorch_datasets/titanic/train.csv&#x27;</span>)</span><br><span class="line">dftest_raw = pd.read_csv(<span class="string">&#x27;./eat_pytorch_datasets/titanic/test.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax = dftrain_raw[<span class="string">&#x27;Survived&#x27;</span>].value_counts().plot(kind = <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">     figsize = (<span class="number">12</span>,<span class="number">8</span>),fontsize=<span class="number">15</span>,rot = <span class="number">0</span>)	<span class="comment"># 柱状图</span></span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;Counts&#x27;</span>,fontsize = <span class="number">15</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;Survived&#x27;</span>,fontsize = <span class="number">15</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">ax = dftrain_raw[<span class="string">&#x27;Age&#x27;</span>].plot(kind = <span class="string">&#x27;hist&#x27;</span>,bins = <span class="number">20</span>,color= <span class="string">&#x27;purple&#x27;</span>,</span><br><span class="line">                    figsize = (<span class="number">12</span>,<span class="number">8</span>),fontsize=<span class="number">15</span>)	<span class="comment"># 直方图 histogram</span></span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;Frequency&#x27;</span>,fontsize = <span class="number">15</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;Age&#x27;</span>,fontsize = <span class="number">15</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">ax = dftrain_raw.query(<span class="string">&#x27;Survived == 0&#x27;</span>)[<span class="string">&#x27;Age&#x27;</span>].plot(kind = <span class="string">&#x27;density&#x27;</span>,</span><br><span class="line">                      figsize = (<span class="number">12</span>,<span class="number">8</span>),fontsize=<span class="number">15</span>)	<span class="comment"># 密度图</span></span><br><span class="line">dftrain_raw.query(<span class="string">&#x27;Survived == 1&#x27;</span>)[<span class="string">&#x27;Age&#x27;</span>].plot(kind = <span class="string">&#x27;density&#x27;</span>,</span><br><span class="line">                      figsize = (<span class="number">12</span>,<span class="number">8</span>),fontsize=<span class="number">15</span>)</span><br><span class="line">ax.legend([<span class="string">&#x27;Survived==0&#x27;</span>,<span class="string">&#x27;Survived==1&#x27;</span>],fontsize = <span class="number">12</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;Density&#x27;</span>,fontsize = <span class="number">15</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;Age&#x27;</span>,fontsize = <span class="number">15</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>上面是几个常见画图示例, 下面是正式的数据预处理.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">preprocessing</span>(<span class="params">dfdata</span>):</span><br><span class="line"></span><br><span class="line">    dfresult= pd.DataFrame()	<span class="comment"># 建一个空DataFrame</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#Pclass</span></span><br><span class="line">    dfPclass = pd.get_dummies(dfdata[<span class="string">&#x27;Pclass&#x27;</span>]).astype(<span class="built_in">float</span>)</span><br><span class="line">    dfPclass.columns = [<span class="string">&#x27;Pclass_&#x27;</span> +<span class="built_in">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> dfPclass.columns ]</span><br><span class="line">    dfresult = pd.concat([dfresult,dfPclass],axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#Sex</span></span><br><span class="line">    dfSex = pd.get_dummies(dfdata[<span class="string">&#x27;Sex&#x27;</span>]).astype(<span class="built_in">float</span>)</span><br><span class="line">    dfresult = pd.concat([dfresult,dfSex],axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#Age</span></span><br><span class="line">    dfresult[<span class="string">&#x27;Age&#x27;</span>] = dfdata[<span class="string">&#x27;Age&#x27;</span>].fillna(<span class="number">0</span>)	<span class="comment"># 缺失置0</span></span><br><span class="line">    dfresult[<span class="string">&#x27;Age_null&#x27;</span>] = pd.isna(dfdata[<span class="string">&#x27;Age&#x27;</span>]).astype(<span class="built_in">float</span>)	<span class="comment"># 并用null标记是否缺失</span></span><br><span class="line">    <span class="comment"># pd.isna()可以检测数据是否为缺失值(NaN或None)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#SibSp,Parch,Fare</span></span><br><span class="line">    dfresult[<span class="string">&#x27;SibSp&#x27;</span>] = dfdata[<span class="string">&#x27;SibSp&#x27;</span>]	<span class="comment"># 是我喜欢的数值类型, 直接拷贝</span></span><br><span class="line">    dfresult[<span class="string">&#x27;Parch&#x27;</span>] = dfdata[<span class="string">&#x27;Parch&#x27;</span>]</span><br><span class="line">    dfresult[<span class="string">&#x27;Fare&#x27;</span>] = dfdata[<span class="string">&#x27;Fare&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">#Carbin</span></span><br><span class="line">    dfresult[<span class="string">&#x27;Cabin_null&#x27;</span>] =  pd.isna(dfdata[<span class="string">&#x27;Cabin&#x27;</span>]).astype(<span class="built_in">float</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#Embarked</span></span><br><span class="line">    dfEmbarked = pd.get_dummies(dfdata[<span class="string">&#x27;Embarked&#x27;</span>],dummy_na=<span class="literal">True</span>).astype(<span class="built_in">float</span>)</span><br><span class="line">    dfEmbarked.columns = [<span class="string">&#x27;Embarked_&#x27;</span> + <span class="built_in">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> dfEmbarked.columns]</span><br><span class="line">    dfresult = pd.concat([dfresult,dfEmbarked],axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>(dfresult)</span><br></pre></td></tr></table></figure>
+<p><code>pd.get_dummies()</code>可以将字符串等类型数据变成one-hot encoding, 比如Sex原本为Male/Female, 转换后形如:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">female   male</span><br><span class="line">  1       0</span><br><span class="line">  0       1</span><br></pre></td></tr></table></figure>
+<p>训练模型需要用矩阵形式, 因此转换为numpy数组并输出shape.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x_train = preprocessing(dftrain_raw).values</span><br><span class="line">y_train = dftrain_raw[[<span class="string">&#x27;Survived&#x27;</span>]].values</span><br><span class="line"></span><br><span class="line">x_test = preprocessing(dftest_raw).values</span><br><span class="line">y_test = dftest_raw[[<span class="string">&#x27;Survived&#x27;</span>]].values</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x_train.shape =&quot;</span>, x_train.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x_test.shape =&quot;</span>, x_test.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;y_train.shape =&quot;</span>, y_train.shape )</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;y_test.shape =&quot;</span>, y_test.shape)</span><br></pre></td></tr></table></figure>
+<p>接下来使用DataLoader和TensorDataset封装成可以迭代的数据管道.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dl_train = DataLoader(TensorDataset(torch.tensor(x_train).<span class="built_in">float</span>(),torch.tensor(y_train).<span class="built_in">float</span>()),</span><br><span class="line">                     shuffle = <span class="literal">True</span>, batch_size = <span class="number">8</span>)</span><br><span class="line">dl_val = DataLoader(TensorDataset(torch.tensor(x_test).<span class="built_in">float</span>(),torch.tensor(y_test).<span class="built_in">float</span>()),</span><br><span class="line">                     shuffle = <span class="literal">False</span>, batch_size = <span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<p><code>torch.tensor()</code>将numpy数组转换为PyTorch张量, 随后<code>.float()</code>转换为浮点数, 用<code>TensorDataset()</code>打包在一起. 打包后可以用<code>dataset[i]</code>读取<code>(x_i, y_i)</code>. <code>DataLoader</code>用于分批次加载数据防止显存爆炸.</p>
+<p>可以如下测试数据管道.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> features,labels <span class="keyword">in</span> dl_train:</span><br><span class="line">    <span class="built_in">print</span>(features,labels)</span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>features是乘客的特征, labels是要预测的他有没有活下来.</p>
+<h2 id="建立模型">建立模型</h2>
+<p>Pytorch通常有三种方式构建模型: 使用nn.Sequential按层顺序构建模型, 继承nn.Module基类构建自定义模型, 继承nn.Module基类构建模型并辅助应用模型容器进行封装, 叽里咕噜说什么呢, 此处选择使用最简单的nn.Sequential, 按层顺序构建模型.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">create_net</span>():</span><br><span class="line">    net = nn.Sequential()</span><br><span class="line">    net.add_module(<span class="string">&quot;linear1&quot;</span>,nn.Linear(<span class="number">15</span>,<span class="number">20</span>))</span><br><span class="line">    net.add_module(<span class="string">&quot;relu1&quot;</span>,nn.ReLU())</span><br><span class="line">    net.add_module(<span class="string">&quot;linear2&quot;</span>,nn.Linear(<span class="number">20</span>,<span class="number">15</span>))</span><br><span class="line">    net.add_module(<span class="string">&quot;relu2&quot;</span>,nn.ReLU())</span><br><span class="line">    net.add_module(<span class="string">&quot;linear3&quot;</span>,nn.Linear(<span class="number">15</span>,<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> net</span><br></pre></td></tr></table></figure>
+<p>中间层的20和15似乎都是随便取的.</p>
+<p><code>nn.Linear</code>表示全连接层/线性层, 把输入的每条样本作线性变换.</p>
+<p><code>nn.ReLu</code>是激活函数, 此处为Rectified Linear Unit(修正线性单元), 目的是给网络添加非线性, 让其能逼近任意函数, 虽然听起来很玄学.</p>
+<h2 id="训练模型">训练模型</h2>
+<p>Pytorch通常需要用户编写自定义训练循环, 训练循环的代码风格因人而异.</p>
+<p>有3类典型的训练循环代码风格:</p>
+<ul>
+<li>脚本形式训练循环</li>
+<li>函数形式训练循环</li>
+<li>类形式训练循环</li>
+</ul>
+<p>此处介绍一种较通用的仿照Keras风格的脚本形式的训练循环, 该脚本形式的训练代码与 torchkeras 库的核心代码基本一致.</p>
+<p>看了一眼代码, 真tm长, 感觉真得给代码块加个折叠功能了.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os,sys,time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> datetime </span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn </span><br><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"><span class="keyword">from</span> torchkeras.metrics <span class="keyword">import</span> Accuracy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">printlog</span>(<span class="params">info</span>):</span><br><span class="line">    nowtime = datetime.datetime.now().strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>+<span class="string">&quot;==========&quot;</span>*<span class="number">8</span> + <span class="string">&quot;%s&quot;</span>%nowtime)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">str</span>(info)+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">loss_fn = nn.BCEWithLogitsLoss() <span class="comment"># 二分类交叉熵损失, md查资料查到的全是AI</span></span><br><span class="line">optimizer= torch.optim.Adam(net.parameters(),lr = <span class="number">0.005</span>)	<span class="comment"># Adam是谁?</span></span><br><span class="line">metrics_dict = &#123;<span class="string">&quot;acc&quot;</span>:Accuracy()&#125;	<span class="comment"># 计算准确率</span></span><br><span class="line"></span><br><span class="line">epochs = <span class="number">20</span> </span><br><span class="line">ckpt_path=<span class="string">&#x27;checkpoint.pt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># early_stopping相关设置</span></span><br><span class="line">monitor=<span class="string">&quot;val_acc&quot;</span></span><br><span class="line">patience=<span class="number">5</span></span><br><span class="line">mode=<span class="string">&quot;max&quot;</span></span><br><span class="line"></span><br><span class="line">history = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, epochs+<span class="number">1</span>):</span><br><span class="line">    printlog(<span class="string">&quot;Epoch &#123;0&#125; / &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(epoch, epochs))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1，train -------------------------------------------------  </span></span><br><span class="line">    net.train()	<span class="comment"># 切换到训练模式</span></span><br><span class="line">    total_loss,step = <span class="number">0</span>,<span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    loop = tqdm(<span class="built_in">enumerate</span>(dl_train), total =<span class="built_in">len</span>(dl_train),file = sys.stdout)</span><br><span class="line">    <span class="comment"># tqdm画进度条</span></span><br><span class="line">    train_metrics_dict = deepcopy(metrics_dict) </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i, batch <span class="keyword">in</span> loop:</span><br><span class="line">        features,labels = batch <span class="comment"># features输入特征, labels真实标签</span></span><br><span class="line">        <span class="comment"># forward前向传播</span></span><br><span class="line">        preds = net(features)	<span class="comment"># 模型预测</span></span><br><span class="line">        loss = loss_fn(preds,labels)	<span class="comment"># 计算损失</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># backward反向传播</span></span><br><span class="line">        loss.backward()	<span class="comment"># 自动计算每个权重的梯度</span></span><br><span class="line">        optimizer.step() <span class="comment"># 根据梯度更新权重</span></span><br><span class="line">        optimizer.zero_grad() <span class="comment"># 清空梯度准备下一 batch</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># metrics</span></span><br><span class="line">        step_metrics = &#123;<span class="string">&quot;train_&quot;</span>+name:metric_fn(preds, labels).item() </span><br><span class="line">                        <span class="keyword">for</span> name,metric_fn <span class="keyword">in</span> train_metrics_dict.items()&#125;</span><br><span class="line">        step_log = <span class="built_in">dict</span>(&#123;<span class="string">&quot;train_loss&quot;</span>:loss.item()&#125;,**step_metrics)</span><br><span class="line">        total_loss += loss.item()</span><br><span class="line">        step+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i!=<span class="built_in">len</span>(dl_train)-<span class="number">1</span>:</span><br><span class="line">            loop.set_postfix(**step_log)</span><br><span class="line">        <span class="keyword">else</span>:	<span class="comment"># 处理最后一个batch</span></span><br><span class="line">            epoch_loss = total_loss/step</span><br><span class="line">            epoch_metrics = &#123;<span class="string">&quot;train_&quot;</span>+name:metric_fn.compute().item() </span><br><span class="line">                             <span class="keyword">for</span> name,metric_fn <span class="keyword">in</span> train_metrics_dict.items()&#125;</span><br><span class="line">            epoch_log = <span class="built_in">dict</span>(&#123;<span class="string">&quot;train_loss&quot;</span>:epoch_loss&#125;,**epoch_metrics)</span><br><span class="line">            loop.set_postfix(**epoch_log)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> name,metric_fn <span class="keyword">in</span> train_metrics_dict.items():</span><br><span class="line">                metric_fn.reset()</span><br><span class="line">                </span><br><span class="line">    <span class="keyword">for</span> name, metric <span class="keyword">in</span> epoch_log.items():</span><br><span class="line">        history[name] = history.get(name, []) + [metric]</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2，validate -------------------------------------------------</span></span><br><span class="line">    net.<span class="built_in">eval</span>()</span><br><span class="line">    </span><br><span class="line">    total_loss,step = <span class="number">0</span>,<span class="number">0</span></span><br><span class="line">    loop = tqdm(<span class="built_in">enumerate</span>(dl_val), total =<span class="built_in">len</span>(dl_val),file = sys.stdout)</span><br><span class="line">    </span><br><span class="line">    val_metrics_dict = deepcopy(metrics_dict) </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> i, batch <span class="keyword">in</span> loop: </span><br><span class="line"></span><br><span class="line">            features,labels = batch</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 前向传播计算loss</span></span><br><span class="line">            preds = net(features)</span><br><span class="line">            loss = loss_fn(preds,labels)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># metrics</span></span><br><span class="line">            step_metrics = &#123;<span class="string">&quot;val_&quot;</span>+name:metric_fn(preds, labels).item() </span><br><span class="line">                            <span class="keyword">for</span> name,metric_fn <span class="keyword">in</span> val_metrics_dict.items()&#125;</span><br><span class="line"></span><br><span class="line">            step_log = <span class="built_in">dict</span>(&#123;<span class="string">&quot;val_loss&quot;</span>:loss.item()&#125;,**step_metrics)</span><br><span class="line"></span><br><span class="line">            total_loss += loss.item()</span><br><span class="line">            step+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i!=<span class="built_in">len</span>(dl_val)-<span class="number">1</span>:</span><br><span class="line">                loop.set_postfix(**step_log)</span><br><span class="line">            <span class="keyword">else</span>:	<span class="comment"># 计算整个验证集指标</span></span><br><span class="line">                epoch_loss = (total_loss/step)</span><br><span class="line">                epoch_metrics = &#123;<span class="string">&quot;val_&quot;</span>+name:metric_fn.compute().item() </span><br><span class="line">                                 <span class="keyword">for</span> name,metric_fn <span class="keyword">in</span> val_metrics_dict.items()&#125;</span><br><span class="line">                epoch_log = <span class="built_in">dict</span>(&#123;<span class="string">&quot;val_loss&quot;</span>:epoch_loss&#125;,**epoch_metrics)</span><br><span class="line">                loop.set_postfix(**epoch_log)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> name,metric_fn <span class="keyword">in</span> val_metrics_dict.items():</span><br><span class="line">                    metric_fn.reset()</span><br><span class="line">                    </span><br><span class="line">    epoch_log[<span class="string">&quot;epoch&quot;</span>] = epoch</span><br><span class="line">    <span class="keyword">for</span> name, metric <span class="keyword">in</span> epoch_log.items():</span><br><span class="line">        history[name] = history.get(name, []) + [metric]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3，early-stopping -------------------------------------------------</span></span><br><span class="line">    arr_scores = history[monitor]</span><br><span class="line">    best_score_idx = np.argmax(arr_scores) <span class="keyword">if</span> mode==<span class="string">&quot;max&quot;</span> <span class="keyword">else</span> np.argmin(arr_scores)</span><br><span class="line">    <span class="keyword">if</span> best_score_idx==<span class="built_in">len</span>(arr_scores)-<span class="number">1</span>:</span><br><span class="line">        torch.save(net.state_dict(),ckpt_path)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&lt;&lt;&lt;&lt;&lt;&lt; reach best &#123;0&#125; : &#123;1&#125; &gt;&gt;&gt;&gt;&gt;&gt;&quot;</span>.<span class="built_in">format</span>(monitor,</span><br><span class="line">             arr_scores[best_score_idx]),file=sys.stderr)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(arr_scores)-best_score_idx&gt;patience:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&lt;&lt;&lt;&lt;&lt;&lt; &#123;&#125; without improvement in &#123;&#125; epoch, early stopping &gt;&gt;&gt;&gt;&gt;&gt;&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">            monitor,patience),file=sys.stderr)</span><br><span class="line">        <span class="keyword">break</span> </span><br><span class="line">    net.load_state_dict(torch.load(ckpt_path,weights_only=<span class="literal">True</span>))</span><br><span class="line">    </span><br><span class="line">dfhistory = pd.DataFrame(history)</span><br></pre></td></tr></table></figure>
+<h2 id="评估模型">评估模型</h2>
+<p>运行<code>print(dfhistory)</code>可以看到模型在训练集和验证集上的效果.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   train_loss  train_acc  val_loss   val_acc  epoch</span><br><span class="line">0    0.474478   0.797753  0.459934  0.787709      1</span><br><span class="line">1    0.455134   0.807584  0.434553  0.787709      2</span><br><span class="line">2    0.455908   0.799157  0.429454  0.804469      3</span><br><span class="line">3    0.446290   0.808989  0.413673  0.826816      4</span><br><span class="line">4    0.457764   0.801966  0.420200  0.798883      5</span><br><span class="line">5    0.451802   0.804775  0.420903  0.793296      6</span><br><span class="line">6    0.452846   0.806180  0.443374  0.782123      7</span><br><span class="line">7    0.448447   0.800562  0.430781  0.798883      8</span><br><span class="line">8    0.438703   0.817416  0.426437  0.798883      9</span><br></pre></td></tr></table></figure>
+<h2 id="使用模型">使用模型</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 预测概率</span></span><br><span class="line">y_pred_probs = torch.sigmoid(net(torch.tensor(x_test[<span class="number">0</span>:<span class="number">10</span>]).<span class="built_in">float</span>())).data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测类别</span></span><br><span class="line">y_pred = torch.where(y_pred_probs&gt;<span class="number">0.5</span>,</span><br><span class="line">        torch.ones_like(y_pred_probs),torch.zeros_like(y_pred_probs))</span><br></pre></td></tr></table></figure>
+<h2 id="保存模型">保存模型</h2>
+<p>Pytorch有两种保存模型的方式, 都是通过调用pickle序列化方法实现的, 分别是只保存模型参数和保存完整模型. 推荐只保存模型参数, 否则可能在切换设备和目录的时候出现各种问题.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(net.state_dict().keys())</span><br><span class="line"></span><br><span class="line">torch.save(net.state_dict(), <span class="string">&quot;./data/net_parameter.pt&quot;</span>)</span><br><span class="line">net_clone = create_net()</span><br><span class="line">net_clone.load_state_dict(torch.load(<span class="string">&quot;./data/net_parameter.pt&quot;</span>,weights_only=<span class="literal">True</span>))</span><br><span class="line">torch.sigmoid(net_clone.forward(torch.tensor(x_test[<span class="number">0</span>:<span class="number">10</span>]).<span class="built_in">float</span>())).data</span><br></pre></td></tr></table></figure>
+<p>好的囫囵吞枣看完了, 但是这对我实在有点难了. 后悔没好好学习咯.</p>
+<p>这才三颗星难度, 后面真得完蛋了.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/pytorch/" rel="tag"># pytorch</a>
+              <a href="/tags/USTC-MINE/" rel="tag"># USTC-MINE</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/08/2025-8-24/" rel="prev" title="2025-8-24">
+                  <i class="fa fa-angle-left"></i> 2025-8-24
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
