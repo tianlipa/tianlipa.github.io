@@ -1,3 +1,4 @@
+https://tianlipa.github.io/2025/08/eat-pytorch-3/
 https://tianlipa.github.io/2025/08/eat-pytorch-2/
 https://tianlipa.github.io/2025/08/eat-pytorch-1/
 https://tianlipa.github.io/2025/08/2025-8-24/
@@ -7,4 +8,3 @@ https://tianlipa.github.io/2025/08/hexo-todo-list/
 https://tianlipa.github.io/2025/08/2025-8-21/
 https://tianlipa.github.io/2025/08/2025-8-20/
 https://tianlipa.github.io/2025/08/msb-18-burp/
-https://tianlipa.github.io/2025/08/msb-10-deserialize/

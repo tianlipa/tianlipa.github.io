@@ -118,7 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "浴室里没有人, 水是我开的.",
         "<span style='display:inline-block; transform: rotate(180deg);'>恰恰相反</span>",
         "循此苦旅, 直抵群星.",
-        'Who/what is "Adam"?'
+        'Who/what is "Adam"?',
+        "在他之上, 空无所有."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

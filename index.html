@@ -143,7 +143,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -180,6 +180,116 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/eat-pytorch-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/eat-pytorch-3/" class="post-title-link" itemprop="url">20天狂宴Pytorch-Day3</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-08-29 09:44:17" itemprop="dateCreated datePublished" datetime="2025-08-29T09:44:17+08:00">2025-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-30 00:55:36" itemprop="dateModified" datetime="2025-08-30T00:55:36+08:00">2025-08-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://github.com/lyhue1991/eat_pytorch_in_20_days">GitHub链接</a></p>
+<p>配环境配了一上午, gensim需要<code>scipy&lt;1.14.0,&gt;=1.7.0</code>, 没有对应的wheel, pip决定下载源码自己编译, 然后报了个网上搜不到的罕见错误, 升级了两遍我的MinGW, 从网上下了个patch.exe, 装了个MSYS2, 试图装了pkg-config和openblas, 还把之前卸掉的visual studio装了回来, 最后还是没搞好.</p>
+<p>然后发现是python版本不兼容导致没有wheel, 换到python3.10马上就好了. 吃大份去吧.</p>
+<h2 id="准备数据">准备数据</h2>
+<p>imdb数据集的目标是根据电影评论的文本内容预测评论的情感标签, 训练集有20000条电影评论文本, 测试集有5000条电影评论文本, 其中正面评论和负面评论各占一半.</p>
+<p>这里使用gensim中的词典工具, 自定义Dataset.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gensim <span class="keyword">import</span> corpora</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 去掉标点符号, 把句子按空格分成单词</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textsplit</span>(<span class="params">text</span>):</span><br><span class="line">    translator = <span class="built_in">str</span>.maketrans(<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, string.punctuation)</span><br><span class="line">    words = text.translate(translator).split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> words</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 构建词典</span></span><br><span class="line"><span class="comment"># gensim的Dictionary会统计文本中的所有单词, 给每个单词一个唯一编号</span></span><br><span class="line">vocab = corpora.Dictionary((textsplit(text) <span class="keyword">for</span> text <span class="keyword">in</span> dftrain[<span class="string">&#x27;text&#x27;</span>]))</span><br><span class="line">vocab.filter_extremes(no_below=<span class="number">5</span>,no_above=<span class="number">5000</span>)</span><br><span class="line">special_tokens = &#123;<span class="string">&#x27;&lt;pad&gt;&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;&lt;unk&gt;&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line">vocab.patch_with_special_tokens(special_tokens)</span><br><span class="line">vocab_size = <span class="built_in">len</span>(vocab.token2id) </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;vocab_size = &#x27;</span>,vocab_size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 序列填充</span></span><br><span class="line"><span class="comment"># 深度学习中, 模型一般需要固定长度的输入, 因此需要用&lt;pad&gt;填充或截断</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pad</span>(<span class="params">seq,max_length,pad_value=<span class="number">0</span></span>):</span><br><span class="line">    n = <span class="built_in">len</span>(seq)</span><br><span class="line">    result = seq+[pad_value]*max_length</span><br><span class="line">    <span class="keyword">return</span> result[:max_length]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编码转换</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">text_pipeline</span>(<span class="params">text</span>):</span><br><span class="line">    tokens = vocab.doc2idx(textsplit(text))</span><br><span class="line">    tokens = [x <span class="keyword">if</span> x&gt;<span class="number">0</span> <span class="keyword">else</span> special_tokens[<span class="string">&#x27;&lt;unk&gt;&#x27;</span>]  <span class="keyword">for</span> x <span class="keyword">in</span> tokens ]</span><br><span class="line">    result = pad(tokens,MAX_LEN,special_tokens[<span class="string">&#x27;&lt;pad&gt;&#x27;</span>])</span><br><span class="line">    <span class="keyword">return</span> result </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(text_pipeline(<span class="string">&quot;this is an example!&quot;</span>)) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建数据管道</span></span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset,DataLoader</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ImdbDataset</span>(<span class="title class_ inherited__">Dataset</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,df</span>):</span><br><span class="line">        <span class="variable language_">self</span>.df = df</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.df)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self,index</span>):</span><br><span class="line">        text = <span class="variable language_">self</span>.df[<span class="string">&quot;text&quot;</span>].iloc[index]</span><br><span class="line">        label = torch.tensor([<span class="variable language_">self</span>.df[<span class="string">&quot;label&quot;</span>].iloc[index]]).<span class="built_in">float</span>()</span><br><span class="line">        tokens = torch.tensor(text_pipeline(text)).<span class="built_in">int</span>() </span><br><span class="line">        <span class="keyword">return</span> tokens,label</span><br><span class="line"></span><br><span class="line">ds_train = ImdbDataset(dftrain)</span><br><span class="line">ds_val = ImdbDataset(dfval)</span><br><span class="line"></span><br><span class="line">dl_train = DataLoader(ds_train,batch_size = <span class="number">50</span>,shuffle = <span class="literal">True</span>)</span><br><span class="line">dl_val = DataLoader(ds_val,batch_size = <span class="number">50</span>,shuffle = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="建立模型">建立模型</h2>
+<p>Pytorch通常有三种方式构建模型: 使用nn.Sequential按层顺序构建模型, 继承nn.Module基类构建自定义模型, 继承nn.Module基类构建模型并辅助应用模型容器进行封装, 此处选用继承nn.Module构建模型并辅助应用模型容器(nn.Sequential, nn.ModuleList, nn.ModuleDict)进行封装.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn </span><br><span class="line">torch.manual_seed(<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Net</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Net, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 嵌入层, 把句子转换为矩阵</span></span><br><span class="line">        <span class="comment"># 设置padding_idx参数后将在训练过程中将填充的token始终赋值为0向量</span></span><br><span class="line">        <span class="variable language_">self</span>.embedding = nn.Embedding(num_embeddings = vocab_size,embedding_dim = <span class="number">3</span>,padding_idx = <span class="number">0</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 卷积层, 用卷积提取特征, 并用池化层放大</span></span><br><span class="line">        <span class="variable language_">self</span>.conv = nn.Sequential()</span><br><span class="line">        <span class="variable language_">self</span>.conv.add_module(<span class="string">&quot;conv_1&quot;</span>,nn.Conv1d(in_channels = <span class="number">3</span>,out_channels = <span class="number">16</span>,kernel_size = <span class="number">5</span>))</span><br><span class="line">        <span class="variable language_">self</span>.conv.add_module(<span class="string">&quot;pool_1&quot;</span>,nn.MaxPool1d(kernel_size = <span class="number">2</span>))</span><br><span class="line">        <span class="variable language_">self</span>.conv.add_module(<span class="string">&quot;relu_1&quot;</span>,nn.ReLU())</span><br><span class="line">        <span class="variable language_">self</span>.conv.add_module(<span class="string">&quot;conv_2&quot;</span>,nn.Conv1d(in_channels = <span class="number">16</span>,out_channels = <span class="number">128</span>,kernel_size = <span class="number">2</span>))</span><br><span class="line">        <span class="variable language_">self</span>.conv.add_module(<span class="string">&quot;pool_2&quot;</span>,nn.MaxPool1d(kernel_size = <span class="number">2</span>))</span><br><span class="line">        <span class="variable language_">self</span>.conv.add_module(<span class="string">&quot;relu_2&quot;</span>,nn.ReLU())</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 全连接层</span></span><br><span class="line">        <span class="variable language_">self</span>.dense = nn.Sequential()</span><br><span class="line">        <span class="comment"># 把卷积的输出摊平成一个长向量</span></span><br><span class="line">        <span class="variable language_">self</span>.dense.add_module(<span class="string">&quot;flatten&quot;</span>,nn.Flatten())</span><br><span class="line">        <span class="comment"># 把摊平后的向量压缩到一个线性值, 6144是摊平后的长度</span></span><br><span class="line">        <span class="variable language_">self</span>.dense.add_module(<span class="string">&quot;linear&quot;</span>,nn.Linear(<span class="number">6144</span>,<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,x</span>):</span><br><span class="line">        x = <span class="variable language_">self</span>.embedding(x).transpose(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.conv(x)</span><br><span class="line">        y = <span class="variable language_">self</span>.dense(x)</span><br><span class="line">        <span class="keyword">return</span> y</span><br><span class="line">        </span><br><span class="line">net = Net() </span><br><span class="line"><span class="built_in">print</span>(net)</span><br></pre></td></tr></table></figure>
+<p>模型summary如下.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--------------------------------------------------------------------------</span><br><span class="line">Layer (type)                            Output Shape              Param #</span><br><span class="line">==========================================================================</span><br><span class="line">Embedding-1                             [-1, 200, 3]               89,772</span><br><span class="line">Conv1d-2                               [-1, 16, 196]                  256</span><br><span class="line">MaxPool1d-3                             [-1, 16, 98]                    0</span><br><span class="line">ReLU-4                                  [-1, 16, 98]                    0</span><br><span class="line">Conv1d-5                               [-1, 128, 97]                4,224</span><br><span class="line">MaxPool1d-6                            [-1, 128, 48]                    0</span><br><span class="line">ReLU-7                                 [-1, 128, 48]                    0</span><br><span class="line">Flatten-8                                 [-1, 6144]                    0</span><br><span class="line">Linear-9                                     [-1, 1]                6,145</span><br><span class="line">==========================================================================</span><br><span class="line">Total params: 100,397</span><br><span class="line">Trainable params: 100,397</span><br><span class="line">Non-trainable params: 0</span><br><span class="line">--------------------------------------------------------------------------</span><br><span class="line">Input size (MB): 0.000076</span><br><span class="line">Forward/backward pass size (MB): 0.287788</span><br><span class="line">Params size (MB): 0.382984</span><br><span class="line">Estimated Total Size (MB): 0.670849</span><br><span class="line">--------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<h2 id="训练模型">训练模型</h2>
+<p>代码和前几次基本一模一样就不放了, 我本来以为每个模型都要捯饬一遍, 合着是套模板的, 草.</p>
+<h2 id="评估模型">评估模型</h2>
+<p>似乎是过拟合了, val_acc并不高.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">%config InlineBackend.figure_format = <span class="string">&#x27;svg&#x27;</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">plot_metric</span>(<span class="params">dfhistory, metric</span>):</span><br><span class="line">    train_metrics = dfhistory[<span class="string">&quot;train_&quot;</span>+metric]</span><br><span class="line">    val_metrics = dfhistory[<span class="string">&#x27;val_&#x27;</span>+metric]</span><br><span class="line">    epochs = <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(train_metrics) + <span class="number">1</span>)</span><br><span class="line">    plt.plot(epochs, train_metrics, <span class="string">&#x27;bo--&#x27;</span>)</span><br><span class="line">    plt.plot(epochs, val_metrics, <span class="string">&#x27;ro-&#x27;</span>)</span><br><span class="line">    plt.title(<span class="string">&#x27;Training and validation &#x27;</span>+ metric)</span><br><span class="line">    plt.xlabel(<span class="string">&quot;Epochs&quot;</span>)</span><br><span class="line">    plt.ylabel(metric)</span><br><span class="line">    plt.legend([<span class="string">&quot;train_&quot;</span>+metric, <span class="string">&#x27;val_&#x27;</span>+metric])</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="使用和保存模型">使用和保存模型</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">predict</span>(<span class="params">net,dl</span>):</span><br><span class="line">    net.<span class="built_in">eval</span>()</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        result = nn.Sigmoid()(torch.cat([net.forward(t[<span class="number">0</span>]) <span class="keyword">for</span> t <span class="keyword">in</span> dl]))</span><br><span class="line">    <span class="keyword">return</span>(result.data)</span><br><span class="line"></span><br><span class="line">net_clone = Net()</span><br><span class="line">net_clone.load_state_dict(torch.load(<span class="string">&#x27;checkpoint&#x27;</span>,weights_only=<span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<p>感觉得写个总结, 不然就是看一遍代码什么都没干.</p>
+<p>文本模型的数据预处理包括:</p>
+<ol>
+<li>去掉标点符号, 按空格分成单词</li>
+<li>构建词典, 给每个词一个token</li>
+<li>添加<code>&lt;unk&gt;</code>和<code>&lt;pad&gt;</code>的对应token</li>
+<li>padding填充/切割成固定长度</li>
+<li>构造数据管道, 便于把数据喂给模型</li>
+</ol>
+<p>对处理文本的模型, 主要结构有:</p>
+<ol>
+<li>嵌入层, 把token映射成向量, 把文本转换成矩阵</li>
+<li>卷积层和池化层, 卷积类似小窗口提取关键特征, 池化压缩并保留重要信息</li>
+<li>全连接层, 把卷积输出结果摊平成一个向量, 再把这个向量加权组合左右特征, 计算得到最终结果</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1048,89 +1158,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/08/2025-8-16/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/intel-npu-deepseek/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/intel-npu-deepseek/" class="post-title-link" itemprop="url">利用Intel NPU加速库加速DeepSeek</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-08-14 09:15:48 / 修改时间：09:25:32" itemprop="dateCreated datePublished" datetime="2025-08-14T09:15:48+08:00">2025-08-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="DeepSeek-R1-Distill-Qwen-1-5B">DeepSeek-R1-Distill-Qwen-1.5B</h4>
-<p>DeepSeek-R1-Distill-Qwen-1.5B是DeepSeek第一代大模型之一, 基于Qwen架构, 经过知识蒸馏, 参数量约为15亿, 轻量化, 资源占用低, 中文适配优秀, 运行快.</p>
-<p>为使用Intel NPU加速库运行该模型, 首先从ModelScope下载所需模型, 导入所需依赖库.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> intel_npu_acceleration_library</span><br><span class="line"><span class="keyword">from</span> modelscope <span class="keyword">import</span> AutoModelForCausalLM, AutoTokenizer</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> TextStreamer</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br></pre></td></tr></table></figure>
-<p>随后设置模型基础参数.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_name = <span class="string">r&#x27;deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B&#x27;</span></span><br><span class="line">dtype = <span class="string">&quot;float16&quot;</span></span><br><span class="line">filepath = os.path.join(<span class="string">&quot;models&quot;</span>, model_name)</span><br><span class="line">filename = os.path.join(filepath, dtype, <span class="string">&quot;model.bin&quot;</span>)</span><br><span class="line">os.makedirs(os.path.join(filepath, dtype), exist_ok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p>根据NPU支持的数据类型, 指定<code>dtype</code>为<code>float16</code>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/08/intel-npu-deepseek/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
