@@ -119,7 +119,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "<span style='display:inline-block; transform: rotate(180deg);'>恰恰相反</span>",
         "循此苦旅, 直抵群星.",
         'Who/what is "Adam"?',
-        "在他之上, 空无所有."
+        "在他之上, 空无所有.",
+        "Attention Is All You Need"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
