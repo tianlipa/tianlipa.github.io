@@ -6,6 +6,8 @@ tags: [大模型, pytorch, USTC-MINE]
 
 [GitHub链接](https://github.com/lyhue1991/eat_pytorch_in_20_days)
 
+结构化数据建模.
+
 ## 数据预处理
 
 结构化数据一般会使用Pandas中的DataFrame进行预处理.

@@ -6,6 +6,8 @@ tags: [大模型, pytorch, USTC-MINE]
 
 [GitHub链接](https://github.com/lyhue1991/eat_pytorch_in_20_days)
 
+图片数据建模.
+
 ## 准备数据
 
 cifar2数据集包含5000张飞机airplane照片和5000张机动车automobile照片, 任务目标是训练一个模型区分airplane和automobile两种图片.
