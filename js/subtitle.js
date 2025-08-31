@@ -122,7 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "在他之上, 空无所有.",
         "Attention Is All You Need",
         "这台手术很成功,<br>我失败的人生结束了.",
-        "天才就是99%的天才加上1%的天才."
+        "天才就是99%的天才加上1%的天才.",
+        "Nobody knows what's inside of me"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
