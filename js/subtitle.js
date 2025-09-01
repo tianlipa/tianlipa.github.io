@@ -123,7 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Attention Is All You Need",
         "这台手术很成功,<br>我失败的人生结束了.",
         "天才就是99%的天才加上1%的天才.",
-        "Nobody knows what's inside of me"
+        "Nobody knows what's inside of me",
+        "在坚冰还盖着北海的时候,<br>我看到了怒放的梅花.",
+        "此地长眠者<br>声名水上书"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
