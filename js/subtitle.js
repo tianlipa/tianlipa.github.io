@@ -125,7 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "天才就是99%的天才加上1%的天才.",
         "Nobody knows what's inside of me",
         "在坚冰还盖着北海的时候,<br>我看到了怒放的梅花.",
-        "此地长眠者<br>声名水上书"
+        "此地长眠者<br>声名水上书",
+        "Faith, Alfred. Faith."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
