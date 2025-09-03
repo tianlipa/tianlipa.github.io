@@ -210,6 +210,7 @@ markdown:
   disable_rules:
   plugins:
     - markdown-it-task-lists
+    - '@renbaoshuo/markdown-it-katex'
   anchors:
     level: 2
     collisionSuffix: ''
