@@ -130,9 +130,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "是不是少了一抹奇幻色彩?",
         "得挠人处且挠人",
         "我不是那种你刺激我我就会努力的<br>你再刺激我我就跳楼了",
-        "Is this the real life?<br>Is it just Fanta sea?",
+        "Is this the real life?<br>Is it just Fanta Sea?",
         "服务器繁忙, 请稍后再试.",
-        "努力 未来 A BEAUTIFUL STAR"
+        "努力 未来<br>A BEAUTIFUL STAR",
+        "我忘记了所有悲剧,<br>看到的都是奇迹...",
+        "他肯定觉得这堆破句子老有意思了"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
