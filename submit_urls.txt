@@ -1,3 +1,4 @@
+https://tianlipa.github.io/2025/09/eat-pytorch-9/
 https://tianlipa.github.io/2025/09/2025-9-5/
 https://tianlipa.github.io/2025/09/eat-pytorch-8/
 https://tianlipa.github.io/2025/08/react/
@@ -7,4 +8,3 @@ https://tianlipa.github.io/2025/09/eat-pytorch-6/
 https://tianlipa.github.io/2025/08/eat-pytorch-5/
 https://tianlipa.github.io/2025/08/eat-pytorch-4/
 https://tianlipa.github.io/2025/08/eat-pytorch-3/
-https://tianlipa.github.io/2025/08/eat-pytorch-2/

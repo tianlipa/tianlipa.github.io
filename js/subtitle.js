@@ -134,7 +134,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "服务器繁忙, 请稍后再试.",
         "努力 未来<br>A BEAUTIFUL STAR",
         "我忘记了所有悲剧,<br>看到的都是奇迹...",
-        "他肯定觉得这堆破句子老有意思了"
+        "他肯定觉得这堆破句子老有意思了",
+        "生活就像国际象棋<br>我不会下国际象棋"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
