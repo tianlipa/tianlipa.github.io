@@ -1,3 +1,5 @@
+https://tianlipa.github.io/2025/09/2025-9-8/
+https://tianlipa.github.io/collection/index.html
 https://tianlipa.github.io/2025/09/eat-pytorch-9/
 https://tianlipa.github.io/2025/09/2025-9-5/
 https://tianlipa.github.io/2025/09/eat-pytorch-8/
@@ -11,7 +13,6 @@ https://tianlipa.github.io/2025/08/eat-pytorch-3/
 https://tianlipa.github.io/2025/08/eat-pytorch-2/
 https://tianlipa.github.io/2025/08/eat-pytorch-1/
 https://tianlipa.github.io/2025/08/2025-8-24/
-https://tianlipa.github.io/collection/index.html
 https://tianlipa.github.io/2025/08/llm-ma-survey/
 https://tianlipa.github.io/2025/08/hexo-todo-list/
 https://tianlipa.github.io/2025/08/2025-8-21/
