@@ -137,7 +137,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "他肯定觉得这堆破句子老有意思了",
         "生活就像国际象棋<br>我不会下国际象棋",
         "Viva La Vida.",
-        "既见君子, 云胡不喜?"
+        "既见君子, 云胡不喜?",
+        "要想见证尘封的秘密,<br>就要承受最严厉的惩罚.",
+        "Some things happen by chance.<br>And somethings happen<br>because we make them happen."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
