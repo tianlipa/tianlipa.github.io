@@ -21,27 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="昨天晚上返校了, 今天睡了一上午, 下午和高中同学出去玩了一趟. 发现我的自行车好像不见了, 明天上午如果起得来去找找. 本来想顺便去借书的, 上图书馆一查发现CTF从零到一“借出-应还日期2022-04-30”, tmd科男怎么这么坏. 考虑买本二手书. 明天开始干活.">
+    <meta name="description" content="1.1 引言 数据管理的最新技术, 计算机科学的重要分支 1.1.1 相关概念 数据Data: 信息的符号记录 数据库Database: 长期存储中计算机内, 有组织的, 可共享的相关数据的集合 数据库管理系统DBMS: 位于用户和操作系统之间的一层数据管理软件 数据库系统DBS: 计算机硬件为基础的记录保持系统, 包括数据库, DBMS, 应用系统, 管理员和用户, 有时还包括计算机硬件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2025-2-14">
-<meta property="og:url" content="https://tianlipa.github.io/2025/02/2025-2-14/index.html">
+<meta property="og:title" content="数据库基础笔记 一.绪论">
+<meta property="og:url" content="https://tianlipa.github.io/2025/09/database-1/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="昨天晚上返校了, 今天睡了一上午, 下午和高中同学出去玩了一趟. 发现我的自行车好像不见了, 明天上午如果起得来去找找. 本来想顺便去借书的, 上图书馆一查发现CTF从零到一“借出-应还日期2022-04-30”, tmd科男怎么这么坏. 考虑买本二手书. 明天开始干活.">
+<meta property="og:description" content="1.1 引言 数据管理的最新技术, 计算机科学的重要分支 1.1.1 相关概念 数据Data: 信息的符号记录 数据库Database: 长期存储中计算机内, 有组织的, 可共享的相关数据的集合 数据库管理系统DBMS: 位于用户和操作系统之间的一层数据管理软件 数据库系统DBS: 计算机硬件为基础的记录保持系统, 包括数据库, DBMS, 应用系统, 管理员和用户, 有时还包括计算机硬件">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-14T14:41:50.000Z">
-<meta property="article:modified_time" content="2025-08-18T06:51:25.025Z">
+<meta property="article:published_time" content="2025-09-13T07:51:57.000Z">
+<meta property="article:modified_time" content="2025-09-13T08:47:58.109Z">
 <meta property="article:author" content="tianlipa">
-<meta property="article:tag" content="日寄">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数据库基础">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://tianlipa.github.io/2025/02/2025-2-14/">
+<link rel="canonical" href="https://tianlipa.github.io/2025/09/database-1/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/02/2025-2-14/","path":"2025/02/2025-2-14/","title":"2025-2-14"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/09/database-1/","path":"2025/09/database-1/","title":"数据库基础笔记 一.绪论"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>2025-2-14 | tianlipa</title>
+<title>数据库基础笔记 一.绪论 | tianlipa</title>
   
 
 
@@ -197,7 +198,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/02/2025-2-14/">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/09/database-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -210,12 +211,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="2025-2-14 | tianlipa">
+      <meta itemprop="name" content="数据库基础笔记 一.绪论 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2025-2-14
+          数据库基础笔记 一.绪论
         </h1>
 
         <div class="post-meta-container">
@@ -225,15 +226,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2025-02-14 22:41:50" itemprop="dateCreated datePublished" datetime="2025-02-14T22:41:50+08:00">2025-02-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-18 14:51:25" itemprop="dateModified" datetime="2025-08-18T14:51:25+08:00">2025-08-18</time>
+      <time title="创建时间：2025-09-13 15:51:57 / 修改时间：16:47:58" itemprop="dateCreated datePublished" datetime="2025-09-13T15:51:57+08:00">2025-09-13</time>
     </span>
 
   
@@ -245,9 +240,136 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>昨天晚上返校了, 今天睡了一上午, 下午和高中同学出去玩了一趟.</p>
-<p>发现我的自行车好像不见了, 明天上午如果起得来去找找. 本来想顺便去借书的, 上图书馆一查发现CTF从零到一“借出-应还日期2022-04-30”, tmd科男怎么这么坏. 考虑买本二手书.</p>
-<p>明天开始干活.</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="1-1-引言">1.1 引言</h2>
+<p>数据管理的最新技术, 计算机科学的重要分支</p>
+<h3 id="1-1-1-相关概念">1.1.1 相关概念</h3>
+<p>数据Data: 信息的符号记录</p>
+<p>数据库Database: 长期存储中计算机内, 有组织的, 可共享的相关数据的集合</p>
+<p>数据库管理系统DBMS: 位于用户和操作系统之间的一层数据管理软件</p>
+<p>数据库系统DBS: 计算机硬件为基础的记录保持系统, 包括数据库, DBMS, 应用系统, 管理员和用户, 有时还包括计算机硬件</p>
+<span id="more"></span>
+<h3 id="1-1-2-数据管理技术的发展">1.1.2 数据管理技术的发展</h3>
+<p>数据管理是指对数据进行分类, 组织, 编码, 存储, 检索和维护</p>
+<p>分为三个阶段</p>
+<ul>
+<li>人工管理阶段</li>
+<li>文件系统阶段</li>
+<li>数据库系统阶段</li>
+</ul>
+<h3 id="1-1-3-数据库技术的研究领域">1.1.3 数据库技术的研究领域</h3>
+<p>DBMS软件的研制, 数据库设计, 数据库理论</p>
+<h3 id="1-1-4-数据库系统的特点">1.1.4 数据库系统的特点</h3>
+<ul>
+<li>数据的结构化</li>
+<li>数据的共享性好, 冗余性低</li>
+<li>数据的独立性高: 物理, 逻辑</li>
+<li>数据由DBMS统一管理: 安全性, 完整性, 并发控制, 数据库恢复</li>
+<li>良好的用户接口</li>
+</ul>
+<h3 id="1-1-5-数据库在信息科学中的应用">1.1.5 数据库在信息科学中的应用</h3>
+<table>
+<thead>
+<tr>
+<th>现实世界</th>
+<th>信息世界</th>
+<th>计算机世界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体Entity<br />实体集</td>
+<td>实体记录Record<br />记录集</td>
+<td>数据Data<br />数据集</td>
+</tr>
+<tr>
+<td>特征<br />特征值<br />特征取值范围</td>
+<td>属性Attribute<br />属性值<br />属性值域</td>
+<td>数据项(属性)<br />数据项值<br />数据项值域</td>
+</tr>
+</tbody>
+</table>
+<p>意义不明的表格.</p>
+<h2 id="1-2-数据模型">1.2 数据模型</h2>
+<p>数据的组织是数据库技术的核心问题, 数据库的数据组织是通过数据模型实现的.</p>
+<p>数据模型: 表示实体类型和实体间联系的模型.<br>
+要求:</p>
+<ul>
+<li>比较接近真实世界</li>
+<li>容易为人所理解</li>
+<li>便于计算机实现</li>
+</ul>
+<p>数据模型的两个层次:<br>
+<strong>概念(数据)模型</strong>: 也称信息模型, 实体联系模型(ER), 用于描述信息结构, 只描述抽象的实体和实体间的联系<br>
+<strong>(结构)数据模型</strong>: 也称基本数据模型, 面向数据库的逻辑结构, 直接涉及到计算机系统和DBMS, 按照计算机系统的观点对数据建模</p>
+<h3 id="1-2-1-概念模型">1.2.1 概念模型</h3>
+<p>实体联系模型Entity Relationship Model, ER模型</p>
+<p>矩形框: 实体型<br>
+菱形框: 联系<br>
+椭圆框: 实体型和联系的属性<br>
+直线: 连接实体类型和联系类型, 表示联系的种类</p>
+<h3 id="1-2-2-结构模型的要素">1.2.2 结构模型的要素</h3>
+<p>数据结构: 描述系统的静态特征, 是对实体类型和实体间联系的表达和实现, 命名依据</p>
+<p>数据操作: 描述系统的动态特征, 对数据库的检索和更新</p>
+<p>数据的约束条件: 一组完整性规则的集合, 给出数据及其联系所具有的制约和依赖原则</p>
+<h3 id="1-2-3-结构数据模型">1.2.3 结构数据模型</h3>
+<p>主要分为层次模型, 网状模型, 关系模型, 未来可能出现对象模型, 语义模型</p>
+<p>非关系模型中数据结构的单位是基本层次联系, 即两个记录以及它们之间的一对多/一对一关系</p>
+<h4 id="1-2-3-1-层次模型">1.2.3.1 层次模型</h4>
+<p>省流: 树</p>
+<p>典型代表: IMS</p>
+<p>定义: 用树形(层次)结构表示实体类型及实体间联系的数据模型</p>
+<p>特点:</p>
+<ul>
+<li>有且仅有一个结点无双亲, 即根结点</li>
+<li>其他结点有且仅有一个双亲</li>
+<li>层次模型中每个结点(片断)表示一个记录类型, 每个记录类型包含若干字段, 字段有字段名, 数据类型和长度等</li>
+</ul>
+<p>数据操纵与完整性约束:</p>
+<ul>
+<li>插入时, 没有双亲结点不能插入子女结点</li>
+<li>删除时, 删除双亲结点要删除子女结点</li>
+<li>更新时, 更新所有相应的记录</li>
+</ul>
+<p>存储结构: 邻接法, 链接法</p>
+<p>优点:</p>
+<ul>
+<li>模型本身简单</li>
+<li>实体间联系固定, 预先设计好的应用系统性能优于关系型, 不低于网状模型</li>
+<li>提供了良好的完整性支持</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>实现多对多关系时, 需要采用冗余或虚节点方式, 易形成不一致性</li>
+<li>对插入和删除限制较多</li>
+<li>查询子节点需要通过双亲节点</li>
+<li>结构严谨, 层次命令趋于程序化</li>
+</ul>
+<h4 id="1-2-3-2-网状模型">1.2.3.2 网状模型</h4>
+<p>省流: 有向图</p>
+<p>典型代表: DBTG开发系统, IMAGE/3000, IDS/II, DMS1100</p>
+<p>定义: 用有向图(网络)结构表示实体及其联系的数据模型</p>
+<p>数据结构特征:</p>
+<ul>
+<li>允许一个以上的结点无双亲</li>
+<li>至少一个结点不止一个双亲</li>
+</ul>
+<p>数据操纵与完整性约束:</p>
+<ul>
+<li>插入时, 允许插入未确定双亲结点的子女结点值</li>
+<li>删除时, 允许只删除双亲结点值</li>
+<li>更新时只需更新指定记录</li>
+</ul>
+<p>存储结构: 最常用链接法, 也有引元阵列法, 二进制阵列法, 索引法等</p>
+<p>优点:</p>
+<ul>
+<li>描述现实世界更直接</li>
+<li>存取效率高, 性能好</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>结构复杂, 不利于用户掌握</li>
+<li>数据独立性差</li>
+</ul>
 
     </div>
 
@@ -257,21 +379,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%97%A5%E5%AF%84/" rel="tag"># 日寄</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="tag"># 数据库基础</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/02/2025-2-11/" rel="prev" title="2025-2-11">
-                  <i class="fa fa-angle-left"></i> 2025-2-11
+                <a href="/2025/09/computer-network-1/" rel="prev" title="计算机网络笔记 一.概述">
+                  <i class="fa fa-angle-left"></i> 计算机网络笔记 一.概述
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/02/2025-2-16/" rel="next" title="2025-2-16">
-                  2025-2-16 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
