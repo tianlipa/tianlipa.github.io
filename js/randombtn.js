@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "https://www.bilibili.com/video/BV1Wm421g7gp/",
     "https://www.bilibili.com/video/BV1Vh411r7wt/",
     "https://www.bilibili.com/video/BV12Q4y13721/",
-    "https://www.bilibili.com/video/BV1qt411j7fV/"
+    "https://www.bilibili.com/video/BV1qt411j7fV/",
+    "https://www.zhihu.com/people/an-ling-91/posts/"
   ];
   const btn = document.querySelector(".random-btn a"); 
   if (btn) {

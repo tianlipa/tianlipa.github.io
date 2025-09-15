@@ -145,7 +145,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "在那高远的黑色穹顶下,<br>它的牺牲使圣巢永世不衰.",
         "JMM",
         "事已至此, 先吃饭吧.",
-        "Bye Bye Baby Blue"
+        "Bye Bye Baby Blue",
+        "不挑战<br>怕战胜<br>困困困<br>难难难",
+        "据说每一群蝉要在地下闷17年,<br>鸣叫两个月然后死掉,<br>和刚刚高考完的那个暑假一模一样."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
