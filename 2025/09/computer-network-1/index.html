@@ -30,8 +30,13 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-1/1.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-1/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-1/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-1/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-1/5.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-1/6.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-1/7.png">
 <meta property="article:published_time" content="2025-09-10T12:57:31.000Z">
-<meta property="article:modified_time" content="2025-09-12T14:20:20.476Z">
+<meta property="article:modified_time" content="2025-09-17T14:02:43.388Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
@@ -154,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -237,7 +242,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-09-12 22:20:20" itemprop="dateModified" datetime="2025-09-12T22:20:20+08:00">2025-09-12</time>
+      <time title="修改时间：2025-09-17 22:02:43" itemprop="dateModified" datetime="2025-09-17T22:02:43+08:00">2025-09-17</time>
     </span>
 
   
@@ -461,8 +466,111 @@ Physical</p>
 <li>数据加密和压缩相关</li>
 </ul>
 <p>应用层: 定义了满足各种应用需求的协议</p>
+<hr>
+<h3 id="Internet体系结构-TCP-IP结构">Internet体系结构(TCP/IP结构)</h3>
+<p>基于TCP/IP参考模型</p>
+<p><strong>应用层</strong>: FTP Telnet HTTP<br>
+<strong>传输层</strong>: TCP UDP<br>
+<strong>互联网层</strong>: IP<br>
+<strong>主机到网络层(网络接口层)</strong>: Ethernet, Packet Radio, Point-to-Point</p>
+<h4 id="TCP-IP协议栈">TCP/IP协议栈</h4>
+<p><img src="/img/computer-network-1/3.png" alt=""></p>
+<h4 id="主机到网络层-网络接口层">主机到网络层(网络接口层)</h4>
+<p>主机通过某个协议连接到网络上, 以便将分组发送到网络上. TCP/IP模型实际没有定义该层的具体协议, 它关注的是该层之上的内容.</p>
+<p>在Internet中通常将一个<strong>广播域</strong>称为一条链路, 与一般OSI参考模型中的链路(一对一)不同.<br>
+在广播域内, 所有主机都能接收到目的地址为广播域地址的帧.</p>
+<p>Internet中数据传输的一跳(One Hop)指跨越一个广播域.</p>
+<h4 id="互联网层">互联网层</h4>
+<p>功能上对应OSI参考模型的网络层, 主要是IP协议, 因此也称IP层.<br>
+它的任务是将分组投递到最终的目的地, 提供的是一种<strong>无连接</strong>的<strong>不可靠</strong>传输.</p>
+<p>无连接指的是不建立端对端的专用路径, 每个数据包分开发送, 不可靠就是不可靠. 不可靠性由上层协议如TCP, 应用层协议等弥补.</p>
+<p>IP的这种尽力服务(Best Effort)模型保证了Internet的可扩展性, 复杂的网络功能由用户终端设备实现, 网络只负责分组的投递.</p>
+<h4 id="传输层-2">传输层</h4>
+<p>对应OSI参考模型的传输层, 定义了两个协议:</p>
+<ul>
+<li>传输控制协议TCP(Transmission Control Protocol): 提供面向连接的可靠的传输服务</li>
+<li>用户数据协议UDP(User Datagram Protocol): 提供无连接的不可靠传输服务</li>
+</ul>
+<h4 id="应用层">应用层</h4>
+<p>包含所有高层协议, 无ISO模型中的会话层和表示层</p>
+<ul>
+<li>域名系统DNS, 域名对应IP地址</li>
+<li>HTTP协议, www应用</li>
+<li>FTP协议, 文件传输应用</li>
+<li>Telnet协议, 远程登录应用</li>
+<li>SMTP协议, 发送电子邮件</li>
+</ul>
+<p>应用层协议与应用层的关系: 应用层不仅需要实现应用层协议, 还要为用户提供操作界面等功能.</p>
+<p><img src="/img/computer-network-1/4.png" alt=""></p>
+<p>关键的网络设备:</p>
+<ul>
+<li>L2交换机: 网络内设备互连</li>
+<li>路由器(L3交换机): 不同网络互连</li>
+</ul>
+<p><img src="/img/computer-network-1/5.png" alt=""></p>
+<h3 id="主机1向主机2发送数据">主机1向主机2发送数据</h3>
+<p><img src="/img/computer-network-1/6.png" alt=""></p>
+<h3 id="网络中数据处理流程">网络中数据处理流程</h3>
+<p><img src="/img/computer-network-1/7.png" alt=""></p>
+<h3 id="OSI与TCP-IP模型的比较">OSI与TCP/IP模型的比较</h3>
+<p>相同点:</p>
+<ul>
+<li>都基于独立的协议栈概念</li>
+<li>都有功能相似的应用层, 传输层, 网络层</li>
+</ul>
+<p>不同点:</p>
+<ul>
+<li>OSI模型中严格定义了服务, 接口, 协议, 但TCP/IP模型中没有严格区分服务, 接口与协议.</li>
+<li>OSI模型支持<strong>非连接和面向连接</strong>的<strong>网络层</strong>通信, 但在<strong>传输层只支持面向连接</strong>的通信; <strong>TCP/IP</strong>模型只支持<strong>非连接</strong>的<strong>网络层</strong>通信, 但在传输层有支持<strong>非连接和面向连接</strong>的两种协议可供用户选择.</li>
+<li>TCP/IP模型中不区分, 甚至不提起物理层和数据链路层.</li>
+</ul>
 <h2 id="网络标准化">网络标准化</h2>
+<h3 id="国际电信联盟ITU">国际电信联盟ITU</h3>
+<p><strong>International Telecommunication Union</strong></p>
+<h3 id="国际标准化组织ISO">国际标准化组织ISO</h3>
+<p><strong>International Standards Organization</strong>, 制定了OSI标准</p>
+<h3 id="电气和电子工程师协会IEEE">电气和电子工程师协会IEEE</h3>
+<p><strong>Institute of Electrical and Electronics Engineers</strong></p>
+<h3 id="Internet社区">Internet社区</h3>
+<ul>
+<li>Internet体系结构委员会IAB(Internet Architecture Board): 负责定义整个Internet体系结构, 为IETF提供指导和主要方向</li>
+<li><strong>Internet工程任务组IETF</strong>(Internet Engineering Task Force): Internet协议工程化和开发力量</li>
+<li>Internet工程指导组IESG(Internet Engineering Steering Group): 负责IETF活动的技术管理和Internet标准化过程</li>
+</ul>
+<p>与ITU, ISO, IEEE等组织的标准不同, Internet社区的协议是开放的.</p>
+<h3 id="第三代合作伙伴计划3GPP">第三代合作伙伴计划3GPP</h3>
+<p>说真的, 我感觉要背这个真的很弱智.</p>
 <h2 id="网络性能度量">网络性能度量</h2>
+<h3 id="度量单位">度量单位</h3>
+<p>网络容量(速率)单位: 1kbps=1000bps,1Mbps=1000kbps,1Gbps=1000Mbps, 1Tbps=1000Gbps</p>
+<p>数据量(存储容量)单位: 1kB=2^10B, 1MB=2^10KB, 1GB=2^10M, 1TB=2^10G</p>
+<p>k代表十进制计数1000(常用于存储器制造商), K代表二进制计数1024(常用于操作系统和软件中), b代表bit, B代表Byte, QB代表想出这种东西的人应该枪毙.</p>
+<h3 id="速率和带宽">速率和带宽</h3>
+<p>速率即数据率data rate或比特率bit rate, 定义为一段时间内能传输的比特数, 常见单位是是 bps(b/s), kbps(kb/s), Mbps(Mb/s), Gbps(Gb/s) 等.</p>
+<p>带宽有两种含义:</p>
+<ul>
+<li>信号具有的频带宽度, 单位是Hz(赫兹)</li>
+<li>数字信道或者网络所能传送的&quot;最大数据率&quot;, 即信道或者网络的实际容量, 单位是bps</li>
+</ul>
+<p>二者的本质是相同的, 通信链路的&quot;带宽&quot;越宽, 其所能传输的&quot;最高数据率&quot;也越高. 在网络性能度量时, 带宽和速率常常互相通用, 不加区分.</p>
+<h3 id="吞吐量">吞吐量</h3>
+<p>吞吐量指网络的可用带宽, 应用感受到的有用带宽, 与带宽相比用吞吐量度量网络性能更有意义.</p>
+<p>原因: 协议栈每一层协议都有头标尾部等开销, 和协议实现机制的开销. 因此准确的吞吐量应当指明是哪个协议的吞吐量.</p>
+<p><strong>网络延迟Latency/Delay</strong>包括:</p>
+<ul>
+<li><strong>发送延迟Transmit</strong>: 与发送分组的大小和带宽有关</li>
+<li><strong>传播延迟Propagation</strong>: 与距离和电磁波传播速度有关</li>
+<li><strong>处理延迟Process</strong>: 节点对分组进行处理导致的延迟, 一般相对固定, 不予考虑</li>
+<li><strong>排队延迟Queue</strong>: 中间路由器或交换机将分组转发出去之前将其存储的时间</li>
+</ul>
+<p><strong>延迟抖动delay jitter</strong>: 由延迟的可变部分变化导致, 主要由中间路由器上的排队延迟的不确定性导致</p>
+<p>对大文件传输, 带宽更重要; 对小消息(HTTP, NFS), 延迟更重要.</p>
+<p>往返时间Round-Trip Time(RTT): 发送方发送完数据, 到发送方收到来自接收方确认所需时间.</p>
+<p>RTT = A到B的传播延迟+B的处理和排队延迟+B的发送延迟+B到A的传播延迟, 注意A到B和B到A传播延迟相等.</p>
+<p>延迟带宽乘积: 传播延迟×带宽.</p>
+<p>单项延迟×带宽: 第一个比特到达接收端之前, 发送者能发送的比特数</p>
+<p>RTT×带宽: 发送端在接收到接收端给出的确认之前能够发送的比特数</p>
+<p>链路的延迟带宽积又称为以比特为单位的链路长度.</p>
 
     </div>
 

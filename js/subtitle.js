@@ -146,8 +146,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "JMM",
         "事已至此, 先吃饭吧.",
         "Bye Bye Baby Blue",
-        "不挑战<br>怕战胜<br>困困困<br>难难难",
-        "据说每一群蝉要在地下闷17年,<br>鸣叫两个月然后死掉,<br>和刚刚高考完的那个暑假一模一样."
+        "不 挑 战<br>怕 战 胜<br>困 困 困<br>难 难 难",
+        "据说每一群蝉要在地下闷17年,<br>鸣叫两个月然后死掉,<br>和刚刚高考完的那个暑假一模一样.",
+        "不过, 他会想出来的.",
+        "Aal izz well.",
+        "茕茕白兔, 东走西顾.<br>衣不如新, 人不如故.",
+        "我有一所房子,<br>面朝大海, 春暖花开.",
+        "<b>命使我乃鬼殺奸除</b>"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
