@@ -1,4 +1,4 @@
-// <!-- <p class="site-subtitle" itemprop="description">{{ subtitle }}</p> -->
+    // <!-- <p class="site-subtitle" itemprop="description">{{ subtitle }}</p> -->
 
 
 
@@ -152,7 +152,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Aal izz well.",
         "茕茕白兔, 东走西顾.<br>衣不如新, 人不如故.",
         "我有一所房子,<br>面朝大海, 春暖花开.",
-        "<b>命使我乃鬼殺奸除</b>"
+        "<b>命使我乃鬼殺奸除</b>",
+        "I wanted to give you this<br>as a reminder...<br>not to look back.",
+        "人到洛阳花似锦,<br>偏我来时不逢春."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
