@@ -1,4 +1,4 @@
-// <!-- <p class="site-subtitle" itemprop="description">{{ subtitle }}</p> -->
+    // <!-- <p class="site-subtitle" itemprop="description">{{ subtitle }}</p> -->
 
 
 
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "在他之上, 空无所有.",
         "Attention Is All You Need",
         "这台手术很成功,<br>我失败的人生结束了.",
-        "天才就是99%的天才<br>加上1%的天才.",
+        "天才就是99%的天才<br>加上1%的天才",
         "Nobody knows what's inside of me",
         "在坚冰还盖着北海的时候,<br>我看到了怒放的梅花.",
         "此地长眠者<br>声名水上书",
@@ -130,11 +130,31 @@ document.addEventListener("DOMContentLoaded", function () {
         "是不是少了一抹奇幻色彩?",
         "得挠人处且挠人",
         "我不是那种你刺激我我就会努力的<br>你再刺激我我就跳楼了",
-        "Is this the real life?<br>Is it just Fanta sea?",
+        "Is this the real life?<br>Is it just Fanta Sea?",
         "服务器繁忙, 请稍后再试.",
         "努力 未来<br>A BEAUTIFUL STAR",
-        "我忘记了所有悲剧,<br>看到的都是奇迹...",
-        "他肯定觉得这堆破句子老有意思了"
+        "我忘记了所有悲剧,<br>看到的都是奇迹…",
+        "他肯定觉得这堆破句子老有意思了",
+        "生活就像国际象棋<br>我不会下国际象棋",
+        "Viva La Vida.",
+        "既见君子, 云胡不喜?",
+        "要想见证尘封的秘密,<br>就要承受最严厉的惩罚.",
+        "Some things happen by chance.<br>And somethings happen<br>because we make them happen.",
+        "Please Do Not Throw<br>Sausage Pizza Away",
+        "一曲忠诚的赞歌",
+        "在那高远的黑色穹顶下,<br>它的牺牲使圣巢永世不衰.",
+        "JMM",
+        "事已至此, 先吃饭吧.",
+        "Bye Bye Baby Blue",
+        "不 挑 战<br>怕 战 胜<br>困 困 困<br>难 难 难",
+        "据说每一群蝉要在地下闷17年,<br>鸣叫两个月然后死掉,<br>和刚刚高考完的那个暑假一模一样.",
+        "不过, 他会想出来的.",
+        "Aal izz well.",
+        "茕茕白兔, 东走西顾.<br>衣不如新, 人不如故.",
+        "我有一所房子,<br>面朝大海, 春暖花开.",
+        "<b>命使我乃鬼殺奸除</b>",
+        "I wanted to give you this<br>as a reminder...<br>not to look back.",
+        "人到洛阳花似锦,<br>偏我来时不逢春."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

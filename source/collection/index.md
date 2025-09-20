@@ -17,4 +17,4 @@ date: 2025-08-20 09:26:44
 
 ## 友情链接
 
-<div class="text-center">{% btn https://wanye1307.github.io/, Words Exist,, 但是她逃走了. %} {% btn https://517adam.github.io/, Chen Yuanzhong's Blog,, %}</div>
+<div class="text-center">{% btn https://wanye1307.github.io/, Words Exist,, 但是她逃走了. %} {% btn https://517adam.github.io/, Yuanzhong Chen's Blog,, %}</div>

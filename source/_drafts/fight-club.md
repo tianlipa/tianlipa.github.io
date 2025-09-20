@@ -107,17 +107,16 @@ Middle child是一个心理学名词, 指的是家庭中排在兄弟姐妹之间
 
 而作为上帝, 社会与父亲的弃子应该如何生活, 正是本片探讨的主题.
 
-> Fuck damnation, fuck redemption.
->
-> We are God's unwanted children? So be it!
-
-Tyler的答案是: 当你放弃了上帝, 社会与父亲对你的期许, 你才会真正自由.
-
-> It's only after we've lost everything, that we're free to do anything.
-
 ![](/img/fight-club/2.png)
-
-而Tyler, 最终也抛弃了他.
 
 ## Planet Tyler
 
+ Fuck damnation, fuck redemption.
+
+> We are God's unwanted children? So be it!
+
+Tyler对本片主题给出的答案是: 当你放弃了上帝, 社会与父亲对你的期许, 你才会真正自由.
+
+> It's only after we've lost everything, that we're free to do anything
+
+而Tyler, 最终也抛弃了他.
