@@ -1,4 +1,5 @@
 https://tianlipa.github.io/2025/09/2025-9-21/
+https://tianlipa.github.io/2025/09/2025-9-20/
 https://tianlipa.github.io/2025/09/2025-9-17/
 https://tianlipa.github.io/2025/09/computer-network-1/
 https://tianlipa.github.io/2025/09/2025-9-15/
@@ -7,4 +8,3 @@ https://tianlipa.github.io/2025/09/2025-9-13/
 https://tianlipa.github.io/2025/09/database-1/
 https://tianlipa.github.io/2025/09/2025-9-9/
 https://tianlipa.github.io/2025/09/2025-9-8/
-https://tianlipa.github.io/2025/09/eat-pytorch-9/
