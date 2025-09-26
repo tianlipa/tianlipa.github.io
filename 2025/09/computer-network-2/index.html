@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="概述 非常踏马的恐怖, 玩了十分钟手机一抬头直接吓哭了. 主要功能:  激活物理连接以便传送数据 原始比特数据传送, 分为同步传送和异步传送模式, 全双工传送和半双工传送模式 物理层连接激活  相关协议:  接口物理规范等 设备间信号的传送方式, 包括调制方式, 编码和使用信号处理与传输线路的特性匹配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络笔记 二.物理层">
+<meta property="og:url" content="https://tianlipa.github.io/2025/09/computer-network-2/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="概述 非常踏马的恐怖, 玩了十分钟手机一抬头直接吓哭了. 主要功能:  激活物理连接以便传送数据 原始比特数据传送, 分为同步传送和异步传送模式, 全双工传送和半双工传送模式 物理层连接激活  相关协议:  接口物理规范等 设备间信号的传送方式, 包括调制方式, 编码和使用信号处理与传输线路的特性匹配">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/5.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/6.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/7.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/8.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/9.png">
+<meta property="article:published_time" content="2025-09-26T14:27:37.000Z">
+<meta property="article:modified_time" content="2025-09-26T14:27:37.567Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-network-2/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/09/computer-network-2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/09/computer-network-2/","path":"2025/09/computer-network-2/","title":"计算机网络笔记 二.物理层"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机网络笔记 二.物理层 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <!-- <p class="site-subtitle" itemprop="description">Subtitle</p> -->
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/09/computer-network-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机网络笔记 二.物理层 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络笔记 二.物理层
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-09-26 22:27:37" itemprop="dateCreated datePublished" datetime="2025-09-26T22:27:37+08:00">2025-09-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="概述">概述</h2>
+<p>非常踏马的恐怖, 玩了十分钟手机一抬头直接吓哭了.</p>
+<p>主要功能:</p>
+<ul>
+<li>激活物理连接以便传送数据</li>
+<li>原始比特数据传送, 分为同步传送和异步传送模式, 全双工传送和半双工传送模式</li>
+<li>物理层连接激活</li>
+</ul>
+<p>相关协议:</p>
+<ul>
+<li>接口物理规范等</li>
+<li>设备间信号的传送方式, 包括调制方式, 编码和使用信号处理与传输线路的特性匹配</li>
+</ul>
+<span id="more"></span>
+<h2 id="数据通信的理论基础">数据通信的理论基础</h2>
+<h3 id="Fourier级数">Fourier级数</h3>
+<p>众所周知, 任何正常的周期为T的函数g(t)都可以展开成Fourier级数, 即:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">/</mi><mi>f</mi><mi>r</mi><mi>a</mi><mi>c</mi><mn>12</mn><mi>c</mi><mo>+</mo><mi mathvariant="normal">/</mi><mi>s</mi><mi>u</mi><msubsup><mi>m</mi><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">/</mi></msubsup><mi>i</mi><mi>n</mi><mi>f</mi><mi>t</mi><mi>y</mi><msub><mi>a</mi><mi>n</mi></msub><mi mathvariant="normal">/</mi><mi>s</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mn>2</mn><mi mathvariant="normal">/</mi><mi>p</mi><mi>i</mi><mi>n</mi><mi>f</mi><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">/</mi><mi>s</mi><mi>u</mi><msubsup><mi>m</mi><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">/</mi></msubsup><mi>i</mi><mi>n</mi><mi>f</mi><mi>t</mi><mi>y</mi><msub><mi>b</mi><mi>n</mi></msub><mi mathvariant="normal">/</mi><mi>c</mi><mi>o</mi><mi>s</mi><mo stretchy="false">(</mo><mn>2</mn><mi mathvariant="normal">/</mi><mi>p</mi><mi>i</mi><mi>n</mi><mi>f</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(t) = /frac{1}{2}c + /sum_{n=1}^/infty a_n /sin(2 /pi nft) + /sum_{n=1}^/infty b_n /cos(2 /pi nft)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord"><span class="mord">1</span></span><span class="mord"><span class="mord">2</span></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.3111em;vertical-align:-0.2663em;"></span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4337em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">/</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2663em;"><span></span></span></span></span></span></span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">in</span><span class="mopen">(</span><span class="mord">2/</span><span class="mord mathnormal">p</span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.3111em;vertical-align:-0.2663em;"></span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4337em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">/</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2663em;"><span></span></span></span></span></span></span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal">cos</span><span class="mopen">(</span><span class="mord">2/</span><span class="mord mathnormal">p</span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mi mathvariant="normal">/</mi><mi>f</mi><mi>r</mi><mi>a</mi><mi>c</mi><mn>1</mn><mi>T</mi></mrow><annotation encoding="application/x-tex">f = /frac{1}{T}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord"><span class="mord">1</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span></span>: 基频</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo separator="true">,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n, b_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: n次谐波(Harmonics)/Fourier分量的正弦和余弦振幅</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mi mathvariant="normal">/</mi><mi>f</mi><mi>r</mi><mi>a</mi><mi>c</mi><mn>2</mn><mi>T</mi><mi mathvariant="normal">/</mi><mi>i</mi><mi>n</mi><msubsup><mi>t</mi><mn>0</mn><mi>T</mi></msubsup><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>s</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mn>2</mn><mi mathvariant="normal">/</mi><mi>p</mi><mi>i</mi><mi>n</mi><mi>f</mi><mi>t</mi><mo stretchy="false">)</mo><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">a_n = /frac{2}{T} /int_0^T g(t)/sin(2/pi nft)dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord"><span class="mord">2</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span><span class="mord">/</span><span class="mord mathnormal">in</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.4519em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">in</span><span class="mopen">(</span><span class="mord">2/</span><span class="mord mathnormal">p</span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mi mathvariant="normal">/</mi><mi>f</mi><mi>r</mi><mi>a</mi><mi>c</mi><mn>2</mn><mi>T</mi><mi mathvariant="normal">/</mi><mi>i</mi><mi>n</mi><msubsup><mi>t</mi><mn>0</mn><mi>T</mi></msubsup><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>c</mi><mi>o</mi><mi>s</mi><mo stretchy="false">(</mo><mn>2</mn><mi mathvariant="normal">/</mi><mi>p</mi><mi>i</mi><mi>n</mi><mi>f</mi><mi>t</mi><mo stretchy="false">)</mo><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">b_n = /frac{2}{T} /int_0^T g(t)/cos(2/pi nft)dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord"><span class="mord">2</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span><span class="mord">/</span><span class="mord mathnormal">in</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.4519em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">cos</span><span class="mopen">(</span><span class="mord">2/</span><span class="mord mathnormal">p</span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mi mathvariant="normal">/</mi><mi>f</mi><mi>r</mi><mi>a</mi><mi>c</mi><mn>2</mn><mi>T</mi><mi mathvariant="normal">/</mi><mi>i</mi><mi>n</mi><msubsup><mi>t</mi><mn>0</mn><mi>T</mi></msubsup><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">c = /frac{2}{T}/int_0^Tg(t)dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord"><span class="mord">2</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span><span class="mord">/</span><span class="mord mathnormal">in</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.4519em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></p>
+<p>草, 我理解为什么有人喜欢用latex敲公式了, 好爽啊.</p>
+<p>例: 传输信号01100010:</p>
+<p><img src="/img/computer-network-2/1.png" alt=""></p>
+<p>显然谐波越多(n越大), 效果越好.</p>
+<p>RMS振幅(root mean square)的平方与对应频率的传输能量成正比(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">/</mi><mi>s</mi><mi>q</mi><mi>r</mi><mi>t</mi><mrow><msubsup><mi>a</mi><mi>n</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>b</mi><mi>n</mi><mn>2</mn></msubsup></mrow></mrow><annotation encoding="application/x-tex">/sqrt{a_n^2+b_n^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span></span>).</p>
+<h3 id="带宽">带宽</h3>
+<p>信号在物理介质中的传输总有衰减, 从0到某个频率<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">f_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 若对应Fourier分量(谐波)振幅没有明显减弱, 则这段频率范围称为带宽.</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">f_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: 截止频率, 通常为保留一半能量的频率.</p>
+<p>带宽由物理介质的材料构成, 厚度和长度等来决定.</p>
+<p>模拟信道的带宽即物理介质的截止频率, 以Hz为单位, 数字信道的带宽(传输速率)即信道的最大数据速率, 以bps或B/s为单位.</p>
+<p>数字速率是数字传输过程中采用物理信道模拟带宽所能获得的最终结果.</p>
+<p>传输速率与信道带宽成正比, 限制信道的带宽就是限制传输速率.</p>
+<h3 id="信道的最大传输速率">信道的最大传输速率</h3>
+<p>任何实际信道都不是理想的, 不可能以任意高的速率传输. 码元传输速率越高, 信号传输距离越远, 噪声干扰越大, 传输媒体质量越差, 接受端的波形失真就越严重.</p>
+<p>具体的信道所能通过的频率范围总是有限的, 信号中的许多高频分量往往不能通过信道.</p>
+<p>限制传输速率的两个因素:</p>
+<ul>
+<li>信道能通过的频率范围(截止频率)</li>
+<li>信噪比(信号功率/噪声功率)</li>
+</ul>
+<p>码间串扰: 接受端收到的信号波形失去了码元间的清晰界限</p>
+<p><strong>Nyquist定理(有限带宽的无噪声信道)</strong>: 如果一个任意的信号通过带宽为B的低通滤波器, 那么每秒采样2B次就能完整重现通过该滤波器的信号, 最大数据传输率为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>B</mi><mi mathvariant="normal">/</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>V</mi><mi mathvariant="normal">/</mi><mi>s</mi><mi>p</mi><mi>a</mi><mi>c</mi><mi>e</mi><mo stretchy="false">(</mo><mi>b</mi><mi mathvariant="normal">/</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2B/log_2V /space (b/s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">ce</span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span>.</p>
+<p>在带宽为B Hz的低通信道中, 若不考虑噪声影响, 则码元传输的最高速率是2B(码元/秒). 若传输速率超过此上限, 就会出现严重的码间串扰的问题, 使接收端对码元的判决(即识别)成为不可能.</p>
+<p>信噪比: 信号的平均功率/噪声平均功率, 常记作S/N​, 并用分贝dB作为度量单位, 即<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>信噪比</mtext><mo>=</mo><mn>10</mn><mi mathvariant="normal">/</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>10</mn></msub><mo stretchy="false">(</mo><mi>S</mi><mi mathvariant="normal">/</mi><mi>N</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>s</mi><mi>p</mi><mi>a</mi><mi>c</mi><mi>e</mi><mo stretchy="false">(</mo><mi>d</mi><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">信噪比 = 10/log_{10}(S/N)/space (dB)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">信噪比</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10/</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">ce</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span>, 20dB的信噪比S/N=100.</p>
+<p><strong>Shannon定理</strong>: 对任何带宽为B Hz, 信噪比S/N的信道, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>最大数据传输速率</mtext><mo>=</mo><mi>B</mi><mi mathvariant="normal">/</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>S</mi><mi mathvariant="normal">/</mi><mi>N</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>s</mi><mi>p</mi><mi>a</mi><mi>c</mi><mi>e</mi><mo stretchy="false">(</mo><mi>b</mi><mi mathvariant="normal">/</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">最大数据传输速率 = B/log_2(1+S/N) /space(b/s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">最大数据传输速率</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">ce</span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></p>
+<p>信道的带宽或信道中的信噪比越大, 信息的极限传输速率就越高; 只要信息传输速率低于极限速率, 就一定可以找到办法实现无差错传输.</p>
+<p>例: 带宽1MHz, SNR=63, 合适的比特率和信号等级是多少?</p>
+<p>解: Shannon公式求数据传输速率上界, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>B</mi><mi mathvariant="normal">/</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi mathvariant="normal">/</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>h</mi><mi>r</mi><mi>m</mi><mrow><mi>S</mi><mi>N</mi><mi>R</mi></mrow><mo stretchy="false">)</mo><mo>=</mo><msup><mn>10</mn><mn>6</mn></msup><mi mathvariant="normal">/</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>64</mn><mo>=</mo><mn>6</mn><mi mathvariant="normal">/</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>h</mi><mi>r</mi><mi>m</mi><mrow><mi>M</mi><mi>b</mi><mi>p</mi><mi>s</mi></mrow></mrow><annotation encoding="application/x-tex">C=B/log_2(1+/mathrm{SNR})=10^6/log_264=6/mathrm{Mbps}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">SNR</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">64</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6/</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">b</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span></span></span></span></p>
+<p>于是我们不妨取4Mbps, 代入Nyquist定理有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>h</mi><mi>r</mi><mi>m</mi><mrow><mi>M</mi><mi>b</mi><mi>p</mi><mi>s</mi></mrow><mo>=</mo><mn>2</mn><mi mathvariant="normal">/</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>s</mi><mn>1</mn><mi mathvariant="normal">/</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>h</mi><mi>r</mi><mi>m</mi><mrow><mi>M</mi><mi>H</mi><mi>z</mi></mrow><mi mathvariant="normal">/</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>s</mi><mi mathvariant="normal">/</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>L</mi></mrow><annotation encoding="application/x-tex">4/mathrm{Mbps}=2/times1/mathrm{MHz}/times /log_2L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">b</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2/</span><span class="mord mathnormal">t</span><span class="mord mathnormal">im</span><span class="mord mathnormal">es</span><span class="mord">1/</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span><span class="mord">/</span><span class="mord mathnormal">t</span><span class="mord mathnormal">im</span><span class="mord mathnormal">es</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">L</span></span></span></span>, 知L=4.</p>
+<h2 id="传输介质">传输介质</h2>
+<h3 id="双绞线">双绞线</h3>
+<p>最古老而最常用的传输介质. 把两根互相绝缘的铜导线并排放在一起, 然后用规则的方法绞合(twist)起来就构成了双绞线.</p>
+<p>绞合度越高, 可用的数据传输率越高.</p>
+<p>分为无屏蔽双绞线(无屏蔽层, 便宜)和屏蔽双绞线(有屏蔽层, 必须接地).</p>
+<p><strong>注意</strong>: 无论是哪种类别的双绞线, 衰减都随频率的升高而增大; 双绞线的最高速率与数字信号的编码方法有很大的关系.</p>
+<h3 id="同轴电缆">同轴电缆</h3>
+<p>由内导体铜质芯线(单股实心线或多股绞合线), 绝缘层, 网状编织的外导体屏蔽层(也可以是单股的)以及保护塑料外层所组成, 具有很好的抗干扰特性, 被广泛用于传输较高速率的数据.</p>
+<ul>
+<li>基带同轴电缆Baseband Coax: 阻抗匹配为50Ω, 用于数字传输, 1公里电缆可达1~2Gbps的传输速率; 又分为粗缆和细缆.</li>
+<li>宽带同轴电缆Broadband Coaxa: 阻抗匹配为75Ω, 用于模拟传输和有线电视传输(CATV), 带宽可达800MHz以上, 采用FDM技术. <strong>传输数字信号时, 要使用特殊设备如Cable MODEM</strong>, 现在综合有线电视网络已成为城域网的一种形式.</li>
+</ul>
+<h3 id="电力线">电力线</h3>
+<p>PLC power line communication, 用电力线作为信号的传输媒介, 通过载波方式传输模拟或数字信号. 被应用于中压和低压电网上, 主要面向电力行业运用, 如自动抄表, 电网负载控制, 供电管理.</p>
+<p>特点:</p>
+<ul>
+<li>用户数量最多, 不用铺设专用线路, 有电就有网</li>
+<li>负载阻抗呈随机性, 导致载波通信的收发信机的输出阻抗和输入阻抗难以与线路阻抗相匹配, 信号衰减严重.</li>
+</ul>
+<h3 id="光纤">光纤</h3>
+<p>通过传递光脉冲进行通信, 带宽远远大于其他各种传输媒体的带宽.</p>
+<p>发送端: 光源(发光二极管, 半导体激光器等), 在电脉冲的作用下产生光脉冲<br>
+接受端: 光检测器(光电二极管), 检测到光脉冲时还原出电脉冲</p>
+<p><img src="/img/computer-network-2/2.png" alt=""></p>
+<p>优点: 传输速率极高(Gbps, Tbps, Pbps), 衰减小, 不受电磁干扰<br>
+缺点: 不能过分弯曲, 连接复杂, 处理复杂, 一般处理时要转换成电信号</p>
+<p>发展方向: 全光网络</p>
+<p>光纤由传导光波的高纯石英玻璃纤维和保护层(jacket)构成, 其中纤芯(core)的折射率大于包裹着它的包层(cladding)折射率, 这样光信号就被保持在纤芯中不会散播出去.<br>
+经常将多根光纤封装在坚固的外壳(sheath)中, 形成所谓的多芯光缆.</p>
+<p>光纤分为:</p>
+<ul>
+<li>多模光纤: 多条光传播路径, 纤芯大, 短距离通信(建筑内或者校园内, 大约600m), 再分为: SI阶跃型(折射率在纤芯和包层交界处阶梯变化)和GI渐进型(折射率从纤芯中心开始向包层逐渐减小)</li>
+<li>单模光纤(Single mode fiber): 光按直线传播, 纤芯小(几个光波长), 长距离通信</li>
+</ul>
+<p><img src="/img/computer-network-2/3.png" alt=""></p>
+<h3 id="无线传输">无线传输</h3>
+<h4 id="无线电传输">无线电传输</h4>
+<p>低频LF, 中频MF波段电波沿地表传播, 高频HF和甚高频VHF波段的地表电波会被地球吸收, 但可以通过地球上空的电离层反射实现长距离传输.</p>
+<h4 id="微波传输">微波传输</h4>
+<p>在100MHz以上, 微波通过抛物状天线把能量集中于一小束, 具有极高的信噪比, 沿直线实现可视距传输. 在地面会因为地表弯曲, 需要中继站接续微波信号, 100米高的塔可接续约80公里.</p>
+<p>开放的波段: 2.4~ 2.4835 GHz, 5.735~5.860GHz, 即工业/科学/医学波段(ISM)</p>
+<h4 id="5G移动网络频段">5G移动网络频段</h4>
+<p>ITU定义的5G毫米波频段包括24.25-27.5GHz, 37-43.5GHz, 45.5-47GHz, 47.2-48.2GHz 和66-71GHz.</p>
+<h4 id="卫星通信">卫星通信</h4>
+<p>通信容量大, 通信距离远, 通信比较稳定, 通信费用与通信距离无关, 但传播时延较大, 在10~300ms之间.</p>
+<h2 id="数字调制与多路复用">数字调制与多路复用</h2>
+<h3 id="数字调制">数字调制</h3>
+<p>调制是对信号源进行处理, 使其变为适合传输形式的过程, 即把基带信号(调制信号)变为一个相对基带频率而言频率非常高的通带信号(已调信号).</p>
+<p>数字调制就是把要发送的数字信号转换到适合于传输的通带模拟信号的过程.</p>
+<p>数字调制: 比特和代表它们的信号之间的转换过程.</p>
+<p>基带Baseband传输: 比特直接转换成信号, 信号波形一般为方波; 信号的传输占用传输介质上从零到最大值之间的全部频率(有线介质).</p>
+<p>通带Passband传输: 调节载波信号的幅度, 相位或者频率, 载波波形一般为正/余弦波; 信号占据以载波信号频率为中心的一段频带.</p>
+<p><img src="/img/computer-network-2/4.png" alt=""></p>
+<p>通带传输中的调制:<br>
+<img src="/img/computer-network-2/5.png" alt=""></p>
+<h3 id="多路复用">多路复用</h3>
+<p>多路复用是将由多个信息源产生或者来自多条线路的多路信号组合在一条物理干线Trunk上进行传输.</p>
+<h4 id="频分多路复用FDM">频分多路复用FDM</h4>
+<p>将整个带宽分为多份, 用户在分配到一定的频带后, 在通信过程中自始至终都占用这个频带, 所有用户都在同样的时间占用不同的带宽(即频带)资源.</p>
+<p><img src="/img/computer-network-2/6.png" alt=""></p>
+<h4 id="波分多路复用WDM">波分多路复用WDM</h4>
+<p>光的频分复用, 使用一根光纤来同时传输多个光载波信号.</p>
+<h4 id="时分多路复用TDM">时分多路复用TDM</h4>
+<p>将时间划分为一段段等长的时分复用帧(TDM帧), 每个时分复用的用户在每一个TDM帧中占用固定序号的时隙. 每个用户占用的时隙周期性出现, 其周期就是TDM帧的长度. 所有用户在不同的时间占用同样的频道宽度.</p>
+<p>缺点: 灵活性差, 无法满足用户需求增加或减少的情况.</p>
+<p>Statistic TDM(STDM): 根据用户需求动态分配其占用的时隙.</p>
+<h4 id="码分复用CDM">码分复用CDM</h4>
+<p>每个用户可以在相同时间使用相同的频带进行通信, 各用户使用经过特殊挑选的不同码型, 因此不会造成干扰.</p>
+<p>当码分复用 CDM (Code Division Multiplexing) 信道为多个不同地址的用户所共享时, 就称为码分多址 CDMA (Code Division Multiple Access).</p>
+<p>CDMA工作原理:<br>
+将每一个比特时间划分为 m 个短的间隔, 称为码片chip, 为每个站指派一个唯一的m bit码片序列.<br>
+发送比特 1: 发送自己的 m bit 码片序列.<br>
+发送比特 0: 发送该码片序列的二进制反码.</p>
+<p>每个站分配的码片序列必须各不相同且互相<strong>正交</strong>, 即归一化内积均为0.</p>
+<h2 id="交换技术">交换技术</h2>
+<p>为什么需要交换: 减少网络中节点之间需要的通信线路, 增强可扩展性, 构建更大规模的网络.</p>
+<p>交换的概念: 交换操作由一系列过程组成: 为输入数据选择输出线路/端口, 在输入和输出之间建立连接, 通过该连接将数据放到输出线路/端口上.</p>
+<p>网络中执行交换操作的设备称为交换机. 通过一系列交换机的交换操作, 在两个通信节点之间建立一条数据传输路径, 这条路径由物理或者逻辑上的链路组成.</p>
+<h3 id="交换类型">交换类型</h3>
+<p>通信网包括<strong>用户终端</strong>, <strong>传输链路</strong>, <strong>交换系统</strong>三个基本元素, 交换系统是通信网进行信息交换的控制枢纽.</p>
+<p>交换类型:</p>
+<ul>
+<li><strong>电路交换</strong>circuit switching(TDM或FDM)</li>
+<li>存储交换(统计时分复用): <strong>分组交换</strong>packet switching, 报文交换message switching</li>
+</ul>
+<p><img src="/img/computer-network-2/7.png" alt=""></p>
+<h3 id="电路交换">电路交换</h3>
+<p>电路交换方式在通信对端之间建立物理连接(预留物理信道), 该通路在通信期间一直维持着, 并且为该通信双方专用, 直到通信结束.</p>
+<p>连接过程中, 连接请求从发送端传向接收端, 并被接收端确认, 传输路径建立后, 数据像流一样在路径上传输, 数据传输的唯一延时是电磁波的传播时间.</p>
+<p>优点: 传输可靠, 迅速, 不丢失而又保序.</p>
+<p>网络通信包括三个过程:</p>
+<ol>
+<li>(发送)端到(接收)端电路连接建立</li>
+<li>数据传输</li>
+<li>电路连接拆除</li>
+</ol>
+<p>优点: 占用固定的线路资源, 保证数据传输的速率, 延时, 可靠性及有序性</p>
+<p>缺点: 线路资源利用率低, 没有数据传输时也占用线路或者固定时隙; 电路连接建立导致延迟</p>
+<p>性能:</p>
+<p><img src="/img/computer-network-2/8.png" alt=""></p>
+<p>电路交换是为话音传输设计的, 支持固定的数据速率.</p>
+<h3 id="公用电话交换网">公用电话交换网</h3>
+<p>PSTN, Public Switched Telephone Network</p>
+<p><img src="/img/computer-network-2/9.png" alt=""></p>
+<p>本地回路: 双绞线将家庭连接到电信公司, 模拟信号<br>
+干线: 光纤将交换局连接起来, 数字信号<br>
+交换局: 将电话呼叫从一条干线交换到另一条干线</p>
+<h3 id="存储交换的方式">存储交换的方式</h3>
+<p>报文交换message switching: 数据传输以报文的整体为单位, 即端点系统一次性发送数据块, 长度不限且可变.</p>
+<p>分组交换packet switching: 将报文划分成若干个可以存放在内存中的分组进行传送, 以分组为单元统计复用线路(即链路), 只有有数据要传输才占用线路, 数据的到达具有随机性.</p>
+<p>分组过小会导致开销大, 分组过大会导致复用效率低, 影响其它分组发送</p>
+<p>数据报交换: 无连接的分组交换, 直接发送分组<br>
+虚电路交换: 面向连接的分组交换, 先建立连接再发送分组</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/09/2025-9-25/" rel="prev" title="2025-9-25">
+                  <i class="fa fa-angle-left"></i> 2025-9-25
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

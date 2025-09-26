@@ -152,10 +152,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "Aal izz well.",
         "茕茕白兔, 东走西顾.<br>衣不如新, 人不如故.",
         "我有一所房子,<br>面朝大海, 春暖花开.",
-        "<b>命使我乃鬼殺奸除</b>",
+        "命使我乃鬼殺奸除",
         "I wanted to give you this<br>as a reminder...<br>not to look back.",
         "人到洛阳花似锦,<br>偏我来时不逢春.",
-        "我们是不死之身."
+        "我们是不死之身.",
+        "在一切都被改变的未来再会",
+        "听: 隔壁是个绝对美好的宇宙;<br>我们走吧."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
