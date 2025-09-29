@@ -157,7 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "人到洛阳花似锦,<br>偏我来时不逢春.",
         "我们是不死之身.",
         "在一切都被改变的未来再会",
-        "听: 隔壁是个绝对美好的宇宙;<br>我们走吧."
+        "听: 隔壁是个绝对美好的宇宙;<br>我们走吧.",
+        "我对你透露一个大秘密,<br>这是人类最古老的玩笑:<br>向哪走, 都是向前走.",
+        "可能没有任何人比骑士卡托自己<br>更恨骑士卡托了.",
+        "如果有一天我变得很有钱"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

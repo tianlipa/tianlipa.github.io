@@ -23,7 +23,7 @@
 
     <meta name="description" content="php curl扩展： 获取网页资源，爬虫 webservice, 获取接口数据 FTP, 下载文件 php.ini extension&#x3D;php_curl.dll SSRF: Server-Side Request Forgery, 服务端请求伪造，由攻击者构造形成由服务端发起请求的一种安全漏洞。 危害：  扫描资产 获取敏感信息 绕过防火墙攻击内网服务器 访问大文件造成溢出 通过Redis写入W">
 <meta property="og:type" content="article">
-<meta property="og:title" content="7-SSRF漏洞">
+<meta property="og:title" content="7-SSRF 漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-07-ssrf/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="php curl扩展： 获取网页资源，爬虫 webservice, 获取接口数据 FTP, 下载文件 php.ini extension&#x3D;php_curl.dll SSRF: Server-Side Request Forgery, 服务端请求伪造，由攻击者构造形成由服务端发起请求的一种安全漏洞。 危害：  扫描资产 获取敏感信息 绕过防火墙攻击内网服务器 访问大文件造成溢出 通过Redis写入W">
@@ -43,10 +43,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-07-ssrf/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-07-ssrf/","path":"2025/08/msb-07-ssrf/","title":"7-SSRF漏洞"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-07-ssrf/","path":"2025/08/msb-07-ssrf/","title":"7-SSRF 漏洞"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>7-SSRF漏洞 | tianlipa</title>
+<title>7-SSRF 漏洞 | tianlipa</title>
   
 
 
@@ -215,12 +215,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="7-SSRF漏洞 | tianlipa">
+      <meta itemprop="name" content="7-SSRF 漏洞 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          7-SSRF漏洞
+          7-SSRF 漏洞
         </h1>
 
         <div class="post-meta-container">
@@ -244,63 +244,63 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>php curl扩展：<br>
-获取网页资源，爬虫<br>
-webservice, 获取接口数据<br>
-FTP, 下载文件<br>
+    <div class="post-body" itemprop="articleBody"><p>php curl 扩展：<br>
+获取网页资源，爬虫 <br>
+webservice, 获取接口数据 <br>
+FTP, 下载文件 <br>
 php.ini extension=php_curl.dll</p>
 <p>SSRF: Server-Side Request Forgery, 服务端请求伪造，由攻击者构造形成由服务端发起请求的一种安全漏洞。</p>
-<p>危害：</p>
+<p> 危害：</p>
 <ul>
-<li>扫描资产</li>
-<li>获取敏感信息</li>
-<li>绕过防火墙攻击内网服务器</li>
-<li>访问大文件造成溢出</li>
-<li>通过Redis写入WebShell或建立反弹连接</li>
+<li> 扫描资产 </li>
+<li> 获取敏感信息 </li>
+<li> 绕过防火墙攻击内网服务器 </li>
+<li> 访问大文件造成溢出 </li>
+<li> 通过 Redis 写入 WebShell 或建立反弹连接 </li>
 </ul>
-<p>可能导致SSRF漏洞的函数：<br>
-curl_exec(): 执行cURL会话<br>
-file_get_contents(): 将整个文件读入为一个字符串<br>
-fsockopen(): 打开一个网络连接或一个Unix套接字连接</p>
+<p> 可能导致 SSRF 漏洞的函数：<br>
+curl_exec(): 执行 cURL 会话 <br>
+file_get_contents(): 将整个文件读入为一个字符串 <br>
+fsockopen(): 打开一个网络连接或一个 Unix 套接字连接 </p>
 <span id="more"></span>
-<h3 id="curl协议">curl协议</h3>
+<h3 id="curl 协议">curl 协议 </h3>
 <p>file: 查看文件，curl -v ‘file:///etc/passwd’</p>
 <p>dict: 探测端口，<a target="_blank" rel="noopener" href="http://localhost/ssrf/ssrf1.php?url=dict://127.0.0.1:3306">http://localhost/ssrf/ssrf1.php?url=dict://127.0.0.1:3306</a></p>
-<p>gopher: 反弹shell</p>
-<p>gopher协议发送POST请求：</p>
+<p>gopher: 反弹 shell</p>
+<p>gopher 协议发送 POST 请求：</p>
 <ol>
-<li>写好POST请求</li>
-<li>进行一次URL编码</li>
-<li>把%0A全部替换为%0D%0A, 我也不知道为什么</li>
-<li>再进行一次URL编码，因为服务器收到请求时会解码一次，curl会再解码一次</li>
+<li> 写好 POST 请求 </li>
+<li> 进行一次 URL 编码 </li>
+<li> 把 %0A 全部替换为 %0D%0A, 我也不知道为什么 </li>
+<li> 再进行一次 URL 编码，因为服务器收到请求时会解码一次，curl 会再解码一次 </li>
 <li>/?url=gopher://127.0.0.1:80/_POST%2520…</li>
 </ol>
-<h3 id="检测工具">检测工具</h3>
+<h3 id="检测工具"> 检测工具 </h3>
 <p>SSRF-Testing<br>
 SSRFmap<br>
 Gopherus<br>
 ssrf_proxy</p>
-<h3 id="防御">防御</h3>
-<p>禁用协议<br>
-限制请求端口<br>
-设置URL白名单<br>
-过滤返回信息<br>
-统一错误信息</p>
+<h3 id="防御"> 防御 </h3>
+<p> 禁用协议 <br>
+限制请求端口 <br>
+设置 URL 白名单 <br>
+过滤返回信息 <br>
+统一错误信息 </p>
 <hr>
-<p>Server Side Request Forgery, 服务端请求伪造，通过构造数据进而伪造服务端发起请求的漏洞。因为请求是由服务端内部发起的，所以一般情况下SSRF的目标往往是从外网无法访问的内部系统。</p>
-<p>SSRF漏洞形成的原理多是服务端提供了从外部服务获取数据的功能，但没有对目标的地址、协议等重要参数进行过滤和限制，从而导致可以自由构造参数，发起预期外的请求。</p>
+<p>Server Side Request Forgery, 服务端请求伪造，通过构造数据进而伪造服务端发起请求的漏洞。因为请求是由服务端内部发起的，所以一般情况下 SSRF 的目标往往是从外网无法访问的内部系统。</p>
+<p>SSRF 漏洞形成的原理多是服务端提供了从外部服务获取数据的功能，但没有对目标的地址、协议等重要参数进行过滤和限制，从而导致可以自由构造参数，发起预期外的请求。</p>
 <p><img src="/img/msb/17378583293736.png" alt=""></p>
 <p><img src="/img/msb/17378586215344.png" alt=""></p>
-<p>常见文件路径：</p>
+<p> 常见文件路径：</p>
 <ul>
-<li>/etc/passwd: 几乎所有linux发行版都包含的文件，可用于判断能否读取本地文件，同时保存了系统中有哪些用户</li>
-<li>/ect/apache2/*: apache2的配置文件，可得知web目录，开放端口等信息</li>
-<li>/etc/issue: 一般表示该系统是什么linux发行版</li>
-<li>/proc: 存放系统运行的状态信息，其中含有以pid命名的文件夹，保存着这个进程的信息，还有一个self软连接指向当前运行的进程</li>
-<li>/proc/[pid]/cmdline: 程序运行的命令行</li>
-<li>/proc/[pid]/env: 程序运行的环境变量</li>
-<li>/proc/[pid]/fd/*: 程序打开的文件</li>
-<li>/proc/net: 系统的网络状态信息</li>
+<li>/etc/passwd: 几乎所有 linux 发行版都包含的文件，可用于判断能否读取本地文件，同时保存了系统中有哪些用户 </li>
+<li>/ect/apache2/*: apache2 的配置文件，可得知 web 目录，开放端口等信息 </li>
+<li>/etc/issue: 一般表示该系统是什么 linux 发行版 </li>
+<li>/proc: 存放系统运行的状态信息，其中含有以 pid 命名的文件夹，保存着这个进程的信息，还有一个 self 软连接指向当前运行的进程 </li>
+<li>/proc/[pid]/cmdline: 程序运行的命令行 </li>
+<li>/proc/[pid]/env: 程序运行的环境变量 </li>
+<li>/proc/[pid]/fd/*: 程序打开的文件 </li>
+<li>/proc/net: 系统的网络状态信息 </li>
 </ul>
 
     </div>
@@ -320,13 +320,13 @@ ssrf_proxy</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-06-file-include/" rel="prev" title="6-文件包含漏洞">
-                  <i class="fa fa-angle-left"></i> 6-文件包含漏洞
+                <a href="/2025/08/msb-06-file-include/" rel="prev" title="6- 文件包含漏洞">
+                  <i class="fa fa-angle-left"></i> 6- 文件包含漏洞
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/08/msb-08-xxe/" rel="next" title="8-XXE漏洞">
-                  8-XXE漏洞 <i class="fa fa-angle-right"></i>
+                <a href="/2025/08/msb-08-xxe/" rel="next" title="8-XXE 漏洞">
+                  8-XXE 漏洞 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

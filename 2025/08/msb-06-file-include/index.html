@@ -23,7 +23,7 @@
 
     <meta name="description" content="简介 本地文件包含(LFI, Local File Inclusion) 目录遍历漏洞&#x2F;文件任意访问漏洞 通过接口动态包含 可用于包含恶意代码或图片马 包含敏感文件 远程文件包含(RFI, Remote File Inclusion)    漏洞 描述 原因 后果     XXE XML外部实体注入 使用XML传输数据，并且允许解析外部实体 导致访问敏感文件，探测端口，执行系统命令等   SSRF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="6-文件包含漏洞">
+<meta property="og:title" content="6- 文件包含漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-06-file-include/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="简介 本地文件包含(LFI, Local File Inclusion) 目录遍历漏洞&#x2F;文件任意访问漏洞 通过接口动态包含 可用于包含恶意代码或图片马 包含敏感文件 远程文件包含(RFI, Remote File Inclusion)    漏洞 描述 原因 后果     XXE XML外部实体注入 使用XML传输数据，并且允许解析外部实体 导致访问敏感文件，探测端口，执行系统命令等   SSRF">
@@ -42,10 +42,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-06-file-include/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-06-file-include/","path":"2025/08/msb-06-file-include/","title":"6-文件包含漏洞"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-06-file-include/","path":"2025/08/msb-06-file-include/","title":"6- 文件包含漏洞"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>6-文件包含漏洞 | tianlipa</title>
+<title>6- 文件包含漏洞 | tianlipa</title>
   
 
 
@@ -214,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="6-文件包含漏洞 | tianlipa">
+      <meta itemprop="name" content="6- 文件包含漏洞 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          6-文件包含漏洞
+          6- 文件包含漏洞
         </h1>
 
         <div class="post-meta-container">
@@ -243,111 +243,111 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="简介">简介</h2>
-<h3 id="本地文件包含-LFI-Local-File-Inclusion">本地文件包含(LFI, Local File Inclusion)</h3>
-<p>目录遍历漏洞/文件任意访问漏洞<br>
-通过接口动态包含<br>
-可用于包含恶意代码或图片马<br>
-包含敏感文件</p>
-<h3 id="远程文件包含-RFI-Remote-File-Inclusion">远程文件包含(RFI, Remote File Inclusion)</h3>
+    <div class="post-body" itemprop="articleBody"><h2 id="简介"> 简介 </h2>
+<h3 id="本地文件包含 -LFI-Local-File-Inclusion"> 本地文件包含 (LFI, Local File Inclusion)</h3>
+<p> 目录遍历漏洞 / 文件任意访问漏洞 <br>
+通过接口动态包含 <br>
+可用于包含恶意代码或图片马 <br>
+包含敏感文件 </p>
+<h3 id="远程文件包含 -RFI-Remote-File-Inclusion"> 远程文件包含 (RFI, Remote File Inclusion)</h3>
 <table>
 <thead>
 <tr>
-<th>漏洞</th>
-<th>描述</th>
-<th>原因</th>
-<th>后果</th>
+<th> 漏洞 </th>
+<th> 描述 </th>
+<th> 原因 </th>
+<th> 后果 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>XXE</td>
-<td>XML外部实体注入</td>
-<td>使用XML传输数据，并且允许解析外部实体</td>
-<td>导致访问敏感文件，探测端口，执行系统命令等</td>
+<td>XML 外部实体注入 </td>
+<td> 使用 XML 传输数据，并且允许解析外部实体 </td>
+<td> 导致访问敏感文件，探测端口，执行系统命令等 </td>
 </tr>
 <tr>
 <td>SSRF</td>
-<td>服务顿请求伪造</td>
-<td>使用了curl_exec()之类的函数</td>
-<td>导致端口扫描，攻击内网主机，绕过防火墙，获取敏感信息，访问大文件造成内存溢出，操作Redis等问题</td>
+<td> 服务顿请求伪造 </td>
+<td> 使用了 curl_exec() 之类的函数 </td>
+<td> 导致端口扫描，攻击内网主机，绕过防火墙，获取敏感信息，访问大文件造成内存溢出，操作 Redis 等问题 </td>
 </tr>
 <tr>
 <td>RFI</td>
-<td>远程文件包含</td>
-<td>使用了include</td>
-<td>导致任意文件访问，包含shell代码</td>
+<td> 远程文件包含 </td>
+<td> 使用了 include</td>
+<td> 导致任意文件访问，包含 shell 代码 </td>
 </tr>
 </tbody>
 </table>
-<p>需要配置php.ini:<br>
+<p> 需要配置 php.ini:<br>
 allow_url_fopen=On<br>
 allow_url_include=On</p>
 <span id="more"></span>
-<h2 id="PHP相关函数和伪协议">PHP相关函数和伪协议</h2>
+<h2 id="PHP 相关函数和伪协议">PHP 相关函数和伪协议 </h2>
 <table>
 <thead>
 <tr>
-<th>函数</th>
-<th>作用</th>
+<th> 函数 </th>
+<th> 作用 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>include()</td>
-<td>包含并运行指定文件</td>
+<td> 包含并运行指定文件 </td>
 </tr>
 <tr>
 <td>include_once()</td>
-<td>只包含一次，不重复包含</td>
+<td> 只包含一次，不重复包含 </td>
 </tr>
 <tr>
 <td>require()</td>
-<td>同include，但出错时会停止</td>
+<td> 同 include，但出错时会停止 </td>
 </tr>
 <tr>
 <td>require_once()</td>
-<td>同</td>
+<td> 同 </td>
 </tr>
 <tr>
 <td>fopen()</td>
-<td>打开文件或url</td>
+<td> 打开文件或 url</td>
 </tr>
 <tr>
 <td>readfile</td>
-<td>读取文件并写入到输出缓冲</td>
+<td> 读取文件并写入到输出缓冲 </td>
 </tr>
 <tr>
 <td>highlight_file</td>
-<td>语法高亮一个文件</td>
+<td> 语法高亮一个文件 </td>
 </tr>
 <tr>
 <td>file_get_contents</td>
-<td>将整个文件读入一个字符串</td>
+<td> 将整个文件读入一个字符串 </td>
 </tr>
 <tr>
 <td>file</td>
-<td>把整个文件读入一个数组</td>
+<td> 把整个文件读入一个数组 </td>
 </tr>
 </tbody>
 </table>
-<h3 id="PHP伪协议">PHP伪协议</h3>
+<h3 id="PHP 伪协议">PHP 伪协议 </h3>
 <p><img src="media/17385011252030.png" alt=""></p>
-<p>php://filter可以作为中间流处理其他流，例如php://filter/resource=/flag</p>
-<p>?url=/etc/passwd测试是否能访问文件<br>
-?url=/var/log/nginx/access.log查看日志<br>
-日志注入</p>
-<h2 id="文件包含漏洞挖掘与利用">文件包含漏洞挖掘与利用</h2>
-<h3 id="URL关键字">URL关键字</h3>
-<p>URL参数名出现了page file filename include等关键字<br>
-URL参数值出现了文件名，如xxx.php xxx.html</p>
-<p>如：<br>
+<p>php://filter 可以作为中间流处理其他流，例如 php://filter/resource=/flag</p>
+<p>?url=/etc/passwd 测试是否能访问文件 <br>
+?url=/var/log/nginx/access.log 查看日志 <br>
+日志注入 </p>
+<h2 id="文件包含漏洞挖掘与利用"> 文件包含漏洞挖掘与利用 </h2>
+<h3 id="URL 关键字">URL 关键字 </h3>
+<p>URL 参数名出现了 page file filename include 等关键字 <br>
+URL 参数值出现了文件名，如 xxx.php xxx.html</p>
+<p> 如：<br>
 ?file=content<br>
 ?page=abc.asp<br>
 ?home=abc.html</p>
-<h3 id="利用流程">利用流程</h3>
-<p>发现漏洞，上传shell/读取敏感文件(FUZZ)，执行恶意代码</p>
-<p>自动工具：<br>
+<h3 id="利用流程"> 利用流程 </h3>
+<p> 发现漏洞，上传 shell/ 读取敏感文件 (FUZZ)，执行恶意代码 </p>
+<p> 自动工具：<br>
 LFI Suite</p>
 
     </div>
@@ -367,13 +367,13 @@ LFI Suite</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-05-file-upload/" rel="prev" title="5-文件上传漏洞">
-                  <i class="fa fa-angle-left"></i> 5-文件上传漏洞
+                <a href="/2025/08/msb-05-file-upload/" rel="prev" title="5- 文件上传漏洞">
+                  <i class="fa fa-angle-left"></i> 5- 文件上传漏洞
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/08/msb-07-ssrf/" rel="next" title="7-SSRF漏洞">
-                  7-SSRF漏洞 <i class="fa fa-angle-right"></i>
+                <a href="/2025/08/msb-07-ssrf/" rel="next" title="7-SSRF 漏洞">
+                  7-SSRF 漏洞 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

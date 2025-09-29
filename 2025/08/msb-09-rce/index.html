@@ -23,7 +23,7 @@
 
     <meta name="description" content="Remote Code&#x2F;Command Execute, RCE 危害：  获取服务器权限 获取敏感数据文件 写入恶意文件getshell 植入木马病毒勒索软件等  相关函数 命令command注入    函数 作用     system() 执行外部程序并显示输出   exec(), shell_exec() 通过shell环境执行命令，并将完整的输出返回为字符串   pcntl_exec()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="9-远程代码执行漏洞">
+<meta property="og:title" content="9- 远程代码执行漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-09-rce/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="Remote Code&#x2F;Command Execute, RCE 危害：  获取服务器权限 获取敏感数据文件 写入恶意文件getshell 植入木马病毒勒索软件等  相关函数 命令command注入    函数 作用     system() 执行外部程序并显示输出   exec(), shell_exec() 通过shell环境执行命令，并将完整的输出返回为字符串   pcntl_exec()">
@@ -40,10 +40,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-09-rce/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-09-rce/","path":"2025/08/msb-09-rce/","title":"9-远程代码执行漏洞"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-09-rce/","path":"2025/08/msb-09-rce/","title":"9- 远程代码执行漏洞"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>9-远程代码执行漏洞 | tianlipa</title>
+<title>9- 远程代码执行漏洞 | tianlipa</title>
   
 
 
@@ -212,12 +212,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="9-远程代码执行漏洞 | tianlipa">
+      <meta itemprop="name" content="9- 远程代码执行漏洞 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          9-远程代码执行漏洞
+          9- 远程代码执行漏洞
         </h1>
 
         <div class="post-meta-container">
@@ -242,108 +242,108 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>Remote Code/Command Execute, RCE</p>
-<p>危害：</p>
+<p> 危害：</p>
 <ul>
-<li>获取服务器权限</li>
-<li>获取敏感数据文件</li>
-<li>写入恶意文件getshell</li>
-<li>植入木马病毒勒索软件等</li>
+<li> 获取服务器权限 </li>
+<li> 获取敏感数据文件 </li>
+<li> 写入恶意文件 getshell</li>
+<li> 植入木马病毒勒索软件等 </li>
 </ul>
-<h3 id="相关函数">相关函数</h3>
-<p>命令command注入</p>
+<h3 id="相关函数"> 相关函数 </h3>
+<p> 命令 command 注入 </p>
 <table>
 <thead>
 <tr>
-<th>函数</th>
-<th>作用</th>
+<th> 函数 </th>
+<th> 作用 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>system()</td>
-<td>执行外部程序并显示输出</td>
+<td> 执行外部程序并显示输出 </td>
 </tr>
 <tr>
 <td>exec(), shell_exec()</td>
-<td>通过shell环境执行命令，并将完整的输出返回为字符串</td>
+<td> 通过 shell 环境执行命令，并将完整的输出返回为字符串 </td>
 </tr>
 <tr>
 <td>pcntl_exec()</td>
-<td>在当前进程空间执行指定程序</td>
+<td> 在当前进程空间执行指定程序 </td>
 </tr>
 <tr>
 <td>passthru()</td>
-<td>执行外部程序并显示原始输出</td>
+<td> 执行外部程序并显示原始输出 </td>
 </tr>
 <tr>
 <td>popen()</td>
-<td>打开进程文件指针</td>
+<td> 打开进程文件指针 </td>
 </tr>
 <tr>
 <td>proc_open()</td>
-<td>执行一个命令，并打开用来输入/输出的文件指针</td>
+<td> 执行一个命令，并打开用来输入 / 输出的文件指针 </td>
 </tr>
 </tbody>
 </table>
 <span id="more"></span>
-<p>代码code注入</p>
+<p> 代码 code 注入 </p>
 <table>
 <thead>
 <tr>
-<th>函数</th>
-<th>作用</th>
+<th> 函数 </th>
+<th> 作用 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>eval()</td>
-<td>把字符串code作为PHP代码执行</td>
+<td> 把字符串 code 作为 PHP 代码执行 </td>
 </tr>
 <tr>
 <td>assert()</td>
-<td>检查一个断言是否为false</td>
+<td> 检查一个断言是否为 false</td>
 </tr>
 <tr>
 <td>preg_replace()</td>
-<td>执行一个正则表达式的搜索和替换</td>
+<td> 执行一个正则表达式的搜索和替换 </td>
 </tr>
 <tr>
 <td>create_function()</td>
-<td>创建一个匿名函数并返回函数名</td>
+<td> 创建一个匿名函数并返回函数名 </td>
 </tr>
 <tr>
 <td>call_user_func(), call_user_func_array()</td>
-<td>把第一个参数作为回调函数调用</td>
+<td> 把第一个参数作为回调函数调用 </td>
 </tr>
 <tr>
 <td>usort(), uasort()</td>
-<td>使用用户自定义的比较函数对数组中的值进行排序并保持索引关联</td>
+<td> 使用用户自定义的比较函数对数组中的值进行排序并保持索引关联 </td>
 </tr>
 </tbody>
 </table>
-<h3 id="命令拼接符号">命令拼接符号</h3>
+<h3 id="命令拼接符号"> 命令拼接符号 </h3>
 <p>Windows:<br>
-&amp;&amp;: 左边的命令执行成功，右边才执行<br>
-&amp;: 拼接<br>
-|: 上一条命令的输出作为下一条命令的参数<br>
-||: 左边的命令执行失败，右边才执行</p>
+&amp;&amp;: 左边的命令执行成功，右边才执行 <br>
+&amp;: 拼接 <br>
+|: 上一条命令的输出作为下一条命令的参数 <br>
+||: 左边的命令执行失败，右边才执行 </p>
 <p>Linux:<br>
-;: 没有逻辑关系的连接符<br>
-&amp;&amp;: 左边的命令执行成功，右边才执行<br>
-|: 上一条命令的输出作为下一条命令的参数<br>
-||: 左边的命令执行失败，右边才执行<br>
-&amp;: 任务后台执行，类似nohup命令，如<code>java -jar test.jar &gt; log.txt &amp;</code></p>
-<h3 id="绕过过滤">绕过过滤</h3>
-<p>过滤cat:<br>
-c’’at, c””at, ca$@t, tac倒序输出，more和less按窗口大小输出，head只显示前几行，tail只显示后几行，nl类似cat -n, 显示时输出行号，tailf类似tail -f</p>
-<p>过滤目录分隔符：<br>
-用cd进入目录</p>
-<p>过滤空格：<br>
+;: 没有逻辑关系的连接符 <br>
+&amp;&amp;: 左边的命令执行成功，右边才执行 <br>
+|: 上一条命令的输出作为下一条命令的参数 <br>
+||: 左边的命令执行失败，右边才执行 <br>
+&amp;: 任务后台执行，类似 nohup 命令，如 <code>java -jar test.jar &gt; log.txt &amp;</code></p>
+<h3 id="绕过过滤"> 绕过过滤 </h3>
+<p> 过滤 cat:<br>
+c’’at, c””at, ca$@t, tac 倒序输出，more 和 less 按窗口大小输出，head 只显示前几行，tail 只显示后几行，nl 类似 cat -n, 显示时输出行号，tailf 类似 tail -f</p>
+<p> 过滤目录分隔符：<br>
+用 cd 进入目录 </p>
+<p> 过滤空格：<br>
 ${IFS}, &lt;, &lt;&gt;, %20, %09, $IFS$9, $IFS</p>
-<p>过滤关键词：<br>
-通配符</p>
-<p>过滤运算符：<br>
-url编码，%0a回车，%0d换行</p>
+<p> 过滤关键词：<br>
+通配符 </p>
+<p> 过滤运算符：<br>
+url 编码，%0a 回车，%0d 换行 </p>
 
     </div>
 
@@ -362,13 +362,13 @@ url编码，%0a回车，%0d换行</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-08-xxe/" rel="prev" title="8-XXE漏洞">
-                  <i class="fa fa-angle-left"></i> 8-XXE漏洞
+                <a href="/2025/08/msb-08-xxe/" rel="prev" title="8-XXE 漏洞">
+                  <i class="fa fa-angle-left"></i> 8-XXE 漏洞
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/08/msb-10-deserialize/" rel="next" title="10-反序列化漏洞">
-                  10-反序列化漏洞 <i class="fa fa-angle-right"></i>
+                <a href="/2025/08/msb-10-deserialize/" rel="next" title="10- 反序列化漏洞">
+                  10- 反序列化漏洞 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
