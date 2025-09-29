@@ -160,7 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "听: 隔壁是个绝对美好的宇宙;<br>我们走吧.",
         "我对你透露一个大秘密,<br>这是人类最古老的玩笑:<br>向哪走, 都是向前走.",
         "可能没有任何人比骑士卡托自己<br>更恨骑士卡托了.",
-        "如果有一天我变得很有钱"
+        "如果有一天我变得很有钱",
+        "42"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
