@@ -161,7 +161,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "我对你透露一个大秘密,<br>这是人类最古老的玩笑:<br>向哪走, 都是向前走.",
         "可能没有任何人比骑士卡托自己<br>更恨骑士卡托了.",
         "如果有一天我变得很有钱",
-        "42"
+        "42",
+        "满地都是六便士,<br>他却抬头看到了九磅十五便士.",
+        "东风夜放花千树,<br>更吹落, 星如雨.",
+        "三十年河南, 三十年河北",
+        "Peace Among Worlds"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
