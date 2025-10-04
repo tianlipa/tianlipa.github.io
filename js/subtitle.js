@@ -165,7 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "满地都是六便士,<br>他却抬头看到了九磅十五便士.",
         "东风夜放花千树,<br>更吹落, 星如雨.",
         "三十年河南, 三十年河北",
-        "Peace Among Worlds"
+        "Peace Among Worlds",
+        "你真的想让我去死吗?"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

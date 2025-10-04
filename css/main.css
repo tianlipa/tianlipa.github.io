@@ -1252,7 +1252,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #d03d8b;
+    background: #8f8f01;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2692,3 +2692,9 @@ header.header {
   box-shadow: none !important;
   transition: none !important;
 } */
+/* 让 NexT 主题下的代码块换行 */
+.highlight .code pre {
+  white-space: pre-wrap !important; /* 保留缩进同时换行 */
+  word-break: break-word !important; /* 长单词可换行 */
+  overflow-wrap: break-word !important;
+}
