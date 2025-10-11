@@ -166,7 +166,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "东风夜放花千树,<br>更吹落, 星如雨.",
         "三十年河南, 三十年河北",
         "Peace Among Worlds",
-        "你真的想让我去死吗?"
+        "你真的想让我去死吗?",
+        "大家死不是大家居住",
+        "古来圣贤皆寂寞,<br>惟有饮者留其名.",
+        "有时候我想...<br>然后我忘了"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
