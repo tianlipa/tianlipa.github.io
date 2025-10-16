@@ -172,7 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "有时候我想...<br>然后我忘了",
         "宝宝, 你是一个**kwargs",
         "每个成功男人的背后,<br>都有一条脊椎",
-        "好好吃饭"
+        "好好吃饭",
+        "Bone ApplePie!",
+        "Always like this."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

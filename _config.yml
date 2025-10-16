@@ -211,7 +211,6 @@ markdown:
   plugins:
     - markdown-it-task-lists
     - '@renbaoshuo/markdown-it-katex'
-    - force-chinese-quotes
   anchors:
     level: 2
     collisionSuffix: ''
