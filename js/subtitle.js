@@ -169,7 +169,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "你真的想让我去死吗?",
         "大家死不是大家居住",
         "古来圣贤皆寂寞,<br>惟有饮者留其名.",
-        "有时候我想...<br>然后我忘了"
+        "有时候我想...<br>然后我忘了",
+        "宝宝, 你是一个**kwargs",
+        "每个成功男人的背后,<br>都有一条脊椎",
+        "好好吃饭",
+        "Bone ApplePie!",
+        "Always like this.",
+        "生年不满百, 常怀千岁忧.<br>昼短苦夜长, 何不秉烛游!"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
