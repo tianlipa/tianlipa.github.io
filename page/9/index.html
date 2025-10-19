@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -193,6 +193,84 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/01/2025-1-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/2025-1-17/" class="post-title-link" itemprop="url">2025-1-17</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-17 23:31:49 / 修改时间：23:46:27" itemprop="dateCreated datePublished" datetime="2025-01-17T23:31:49+08:00">2025-01-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p> 把马士兵的 PHP 跳着看完了, 大概学了点 SQL, 后面的 MySQL 实在不太想看了, 直接开始看渗透了.</p>
+<p> 和网友聊了聊, 得知渗透行业前景非常一般, 而且还要和专科生竞争, 让我一度怀疑是不是出了什么问题, 我卷了十二年的高考, 现在要和大专生竞争技术岗位? 真的假的?</p>
+<p> 反正先看着吧, 这些东西估计迟早要学的.</p>
+<p> 今天开始看信息收集, 在 iPad 上下了个 Markdown 笔记软件, 认真照着网课记笔记, 记了一堆常用端口, 记到一半开始反思, 我记这些完全没屁用, 反正要用的时候直接查就行了啊. 笑话小红书五颜六色的勾股定理笔记笑话了那么久, 最后自己也走上了假努力和自我催眠的道路. 不过 Markdown 用着确实舒服.</p>
+<p> 前几天听说 VMWare Workstation 对个人用户完全免费了, 今天发现 VirtualBox 复制粘贴又有毛病, 直接卸了准备换 VMWare 了. VMWare 的正版网站藏得还挺深的, 必应也是广告一堆.</p>
+<p> 今天又看了八集芙莉莲, 很好看.</p>
+<p> 估算了一下, 网课进度好像有点太慢了, 同学已经在看逆向了. 目前难度倒没那么夸张, 但是占据了业余爱好的时间真的有点难受. 缺的还是时间, 从小到大缺的都是时间. 他妈的.</p>
+<p> 电磁 C 终于拿了个 3.7, 擦边拿了个 A-, 不容易啊.</p>
+<p> 明天继续自习.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/01/NexTSubtitle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -229,7 +307,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-15 15:32:19" itemprop="dateModified" datetime="2025-08-15T15:32:19+08:00">2025-08-15</time>
+      <time title="修改时间：2025-10-19 17:57:05" itemprop="dateModified" datetime="2025-10-19T17:57:05+08:00">2025-10-19</time>
     </span>
 
   
@@ -259,6 +337,15 @@
 <hr>
 <p>更新: 今天把 NexT 主题升级到了 8.24.0 版本, 由于新版 NexT 把所有 swig 文件都换成了 njk 格式, 原来的方法失效了.</p>
 <p>不过新版的步骤也没什么区别, 只是修改 <code>brand.swig</code> 变成了修改 <code>brand.njk</code> 而已.</p>
+<p>再更新:</p>
+<p>更优雅一点的办法是把 <code>brand.njk</code> 里的这一段:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;%- if subtitle %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;site-subtitle&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;description&quot;</span>&gt;</span>&#123;&#123; subtitle &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>替换成这样:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;%- if subtitle %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;randomParagraph&quot;</span> <span class="attr">class</span>=<span class="string">&quot;site-subtitle&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;description&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/js/subtitle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    &#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在博客的 <code>/source/js/</code> 目录下新建文件<code>subtitle.js</code>, 内容如下:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMContentLoaded&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> paragraphs = [</span><br><span class="line">        <span class="string">&quot; 你想要的 Subtitle&quot;</span>,</span><br><span class="line">        <span class="string">&quot; 我是奶龙 &quot;</span>,</span><br><span class="line">        <span class="string">&quot; 你想要的另外的 Subtitle&quot;</span>,</span><br><span class="line">        <span class="string">&quot; 再添加一个段落以供随机选择。&quot;</span></span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">var</span> randomIndex = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * paragraphs.<span class="property">length</span>);</span><br><span class="line">    <span class="keyword">var</span> selectedParagraph = paragraphs[randomIndex];</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;randomParagraph&#x27;</span>).<span class="property">innerHTML</span> = selectedParagraph;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样不会每个页面都复制一遍所有 subtitle, 效果会稍好一些.</p>
+<p>另外前段时间发现修改 <code>node_modules</code> 里的东西实际上是很不规范的行为, 但是先不管了.</p>
 
       
     </div>
