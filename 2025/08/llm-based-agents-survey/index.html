@@ -101,7 +101,8 @@
       <p class="site-title">tianlipa</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Subtitle</p>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
   </div>
 
   <div class="site-nav-right">
@@ -150,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -269,8 +270,8 @@
 <p>智能体在执行任务时常扮演特定角色(如程序员, 老师, 特定领域专家). 档案模块根据具体应用场景指示智能体所扮演的角色, 藉此影响智能体的行为, 一般通过写入 prompt 实现. 智能体的档案通常包括年龄, 性别, 职业等基本信息, 反映智能体个性的心理信息, 以及具体指出智能体之间关系的社会信息.</p>
 <p>在确认了档案类型后, 就需要为智能体创建特定的档案. 现有文献一般采取三种策略.</p>
 <ul>
-<li><strong>手工方法</strong>: 手动指定智能体档案, 如“你是一个外向的人”. 该方法被用在许多之前的工作中, 具有高度灵活性, 但在智能体数量较多时可能会导致工作量骤增.</li>
-<li><strong>LLM 生成方法 </strong>: 先给定档案的生成规则, 再阐明目标人群中智能体档案的组成和特性, (可选) 给定少量“种子档案”作为少样本实例, 最终利用 LLM 生成智能体所需要的档案. 该方法在智能体数量较多时可以省下大量时间, 但可能会缺少对档案的精确控制.</li>
+<li><strong>手工方法</strong>: 手动指定智能体档案, 如 &quot; 你是一个外向的人 &quot;. 该方法被用在许多之前的工作中, 具有高度灵活性, 但在智能体数量较多时可能会导致工作量骤增.</li>
+<li><strong>LLM 生成方法 </strong>: 先给定档案的生成规则, 再阐明目标人群中智能体档案的组成和特性, (可选) 给定少量 &quot; 种子档案 &quot; 作为少样本实例, 最终利用 LLM 生成智能体所需要的档案. 该方法在智能体数量较多时可以省下大量时间, 但可能会缺少对档案的精确控制.</li>
 <li><strong>数据集对齐方法</strong>: 该方法中, 智能体档案从真实世界的数据集中获取. 在此方法中, 可以先将数据集中真实人类的信息组织成自然语言的 prompt, 再利用其得到智能体的档案.</li>
 </ul>
 <p>大多数以前的工作都只选取了单一的档案生成策略, 但将其结合在一起或许会有额外的优势.</p>

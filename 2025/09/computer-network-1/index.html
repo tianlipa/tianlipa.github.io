@@ -108,7 +108,8 @@
       <p class="site-title">tianlipa</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Subtitle</p>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
   </div>
 
   <div class="site-nav-right">
@@ -157,7 +158,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -430,7 +431,7 @@ Physical</p>
 <p>主要功能:</p>
 <ul>
 <li>网络互连: 处理不同网络互连中存在的问题</li>
-<li>路由: 根据数据目的地址, 确定到目的网络的“最佳”路径</li>
+<li>路由: 根据数据目的地址, 确定到目的网络的 &quot; 最佳 &quot; 路径</li>
 <li>拥塞控制: 网络中出现过多分组如何处理</li>
 </ul>
 <p>主要协议:</p>
@@ -548,9 +549,9 @@ Physical</p>
 <p>带宽有两种含义:</p>
 <ul>
 <li>信号具有的频带宽度, 单位是 Hz(赫兹)</li>
-<li>数字信道或者网络所能传送的“最大数据率”, 即信道或者网络的实际容量, 单位是 bps</li>
+<li>数字信道或者网络所能传送的 &quot; 最大数据率 &quot;, 即信道或者网络的实际容量, 单位是 bps</li>
 </ul>
-<p>二者的本质是相同的, 通信链路的“带宽”越宽, 其所能传输的“最高数据率”也越高. 在网络性能度量时, 带宽和速率常常互相通用, 不加区分.</p>
+<p>二者的本质是相同的, 通信链路的 &quot; 带宽 &quot; 越宽, 其所能传输的 &quot; 最高数据率 &quot; 也越高. 在网络性能度量时, 带宽和速率常常互相通用, 不加区分.</p>
 <h3 id="吞吐量">吞吐量</h3>
 <p>吞吐量指网络的可用带宽, 应用感受到的有用带宽, 与带宽相比用吞吐量度量网络性能更有意义.</p>
 <p>原因: 协议栈每一层协议都有头标尾部等开销, 和协议实现机制的开销. 因此准确的吞吐量应当指明是哪个协议的吞吐量.</p>
