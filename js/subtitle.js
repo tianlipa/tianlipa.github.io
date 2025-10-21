@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "啊呀呀半夜时钟刚刚敲过,<br>呜呼呼他娘的霉运老跟着我.",
         "算, 称, 分",
         "可惜你不写博客, 也不知道这句Subtitle的分量...",
-        "有些人口中的看不见未来其实是看见了未来.",
+        "有些人口中的看不见未来<br>其实是看见了未来",
         "你知道吗:<br>放坏的香蕉比正常的香蕉更通便.",
         "征服世界失败, 我被瑞士干掉了.",
         "太好了, 我逐渐理解一切",
@@ -175,7 +175,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "好好吃饭",
         "Bone ApplePie!",
         "Always like this.",
-        "生年不满百, 常怀千岁忧.<br>昼短苦夜长, 何不秉烛游!"
+        "生年不满百, 常怀千岁忧.<br>昼短苦夜长, 何不秉烛游!",
+        "这个月薯条亏损二十六箱,<br>你有头绪吗?",
+        "请往前走<br>不要在此停留",
+        "青青子衿, 悠悠我心.<br>但为君故, 沉吟至今.",
+        "世界以痛吻我,<br>我报之以哈气."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

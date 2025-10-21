@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -184,6 +184,122 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/msb-06-file-include/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/msb-06-file-include/" class="post-title-link" itemprop="url">6- 文件包含漏洞</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-13 13:43:25 / 修改时间：14:11:24" itemprop="dateCreated datePublished" datetime="2025-08-13T13:43:25+08:00">2025-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简介">简介</h2>
+<h3 id="本地文件包含-LFI-Local-File-Inclusion">本地文件包含(LFI, Local File Inclusion)</h3>
+<p>目录遍历漏洞/文件任意访问漏洞<br>
+通过接口动态包含<br>
+可用于包含恶意代码或图片马<br>
+包含敏感文件</p>
+<h3 id="远程文件包含-RFI-Remote-File-Inclusion">远程文件包含(RFI, Remote File Inclusion)</h3>
+<table>
+<thead>
+<tr>
+<th>漏洞</th>
+<th>描述</th>
+<th>原因</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XXE</td>
+<td>XML外部实体注入</td>
+<td>使用XML传输数据，并且允许解析外部实体</td>
+<td>导致访问敏感文件，探测端口，执行系统命令等</td>
+</tr>
+<tr>
+<td>SSRF</td>
+<td>服务顿请求伪造</td>
+<td>使用了curl_exec()之类的函数</td>
+<td>导致端口扫描，攻击内网主机，绕过防火墙，获取敏感信息，访问大文件造成内存溢出，操作Redis等问题</td>
+</tr>
+<tr>
+<td>RFI</td>
+<td>远程文件包含</td>
+<td>使用了include</td>
+<td>导致任意文件访问，包含shell代码</td>
+</tr>
+</tbody>
+</table>
+<p>需要配置php.ini:<br>
+allow_url_fopen=On<br>
+allow_url_include=On</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/08/msb-06-file-include/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1094,112 +1210,6 @@ CSRF Tester<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/07/intel-npu-example/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/poem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/poem/" class="post-title-link" itemprop="url">神秘后现代诗词</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-07-18 14:20:34" itemprop="dateCreated datePublished" datetime="2025-07-18T14:20:34+08:00">2025-07-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-23 22:20:09" itemprop="dateModified" datetime="2025-07-23T22:20:09+08:00">2025-07-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>作者: <a target="_blank" rel="noopener" href="https://hf-mirror.com/TinyLlama/TinyLlama-1.1B-Chat-v1.0">TinyLlama/TinyLlama-1.1B-Chat-v1.0</a></p>
-<p>转载请不要注明出处</p>
-</blockquote>
-<p>Ask something: fuck you<br>
-Run inference<br>
-fuck you you and me.<br>
-You can’t go against my opinion and I am just waiting for the next round.<br>
-Fast paced rhyming poem for your students to learn and practice how to create a rhyming pattern.<br>
-To be perfect and fit.<br>
-In your heart and your eyes.<br>
-We are not afraid we are not afraid.<br>
-Is like a handshake. A hug.<br>
-For this is our fight the fight.<br>
-So when your head’s just about to burst.<br>
-You need this right now and you need this just.<br>
-This one for you right now and this one for you right.<br>
-No this one for me and this one for you.<br>
-Your life is not in danger you can’t feel.<br>
-You have a life but that is not all the.<br>
-You need to feel. That’s right you feel.<br>
-You need to hear. That’s right you hear.<br>
-You need to feel. You hear.<br>
-You need to feel. You have a life.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/poem/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
