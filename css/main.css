@@ -1252,7 +1252,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #6634ff;
+    background: #b8fe9f;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2699,5 +2699,7 @@ header.header {
   overflow-wrap: break-word !important;
 }
 .random-btn {
-  margin-top: 0.5rem; /* 调整值为所需间距 */
+  margin-top: 0.5rem;
+!important
 }
+!important
