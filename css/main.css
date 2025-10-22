@@ -1252,7 +1252,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #b8fe9f;
+    background: #fff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2700,6 +2700,4 @@ header.header {
 }
 .random-btn {
   margin-top: 0.5rem;
-!important
 }
-!important
