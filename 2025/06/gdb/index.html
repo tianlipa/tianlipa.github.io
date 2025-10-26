@@ -23,7 +23,7 @@
 
     <meta name="description" content="run [args] 运行并传参 start 运行到main()开头 break func&#x2F;地址 在func函数或地址处设置断点 delete 删除断点 info breakpoints 查看断点 info registers 查看所有寄存器 x&#x2F;s 地址 查看地址处字符串 x&#x2F;10xw 地址 查看10个4字节的十六进制 x&#x2F;20i $rip 查看当前附近的汇编指令 info frame 当前调用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gdb 调试 ELF 程序">
+<meta property="og:title" content="gdb调试ELF程序">
 <meta property="og:url" content="https://tianlipa.github.io/2025/06/gdb/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="run [args] 运行并传参 start 运行到main()开头 break func&#x2F;地址 在func函数或地址处设置断点 delete 删除断点 info breakpoints 查看断点 info registers 查看所有寄存器 x&#x2F;s 地址 查看地址处字符串 x&#x2F;10xw 地址 查看10个4字节的十六进制 x&#x2F;20i $rip 查看当前附近的汇编指令 info frame 当前调用">
@@ -39,10 +39,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/06/gdb/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/06/gdb/","path":"2025/06/gdb/","title":"gdb 调试 ELF 程序"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/06/gdb/","path":"2025/06/gdb/","title":"gdb调试ELF程序"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>gdb 调试 ELF 程序 | tianlipa</title>
+<title>gdb调试ELF程序 | tianlipa</title>
   
 
 
@@ -210,12 +210,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="gdb 调试 ELF 程序 | tianlipa">
+      <meta itemprop="name" content="gdb调试ELF程序 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          gdb 调试 ELF 程序
+          gdb调试ELF程序
         </h1>
 
         <div class="post-meta-container">
@@ -246,13 +246,13 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><code>run [args]</code> 运行并传参<br>
-<code>start</code> 运行到 <code>main()</code> 开头</p>
-<p><code>break func/ 地址 </code> 在<code>func</code> 函数或地址处设置断点<br>
+<code>start</code> 运行到<code>main()</code>开头</p>
+<p><code>break func/地址</code> 在<code>func</code>函数或地址处设置断点<br>
 <code>delete</code> 删除断点<br>
 <code>info breakpoints</code> 查看断点</p>
 <p><code>info registers</code> 查看所有寄存器<br>
 <code>x/s 地址</code> 查看地址处字符串<br>
-<code>x/10xw 地址</code> 查看 10 个 4 字节的十六进制<br>
+<code>x/10xw 地址</code> 查看10个4字节的十六进制<br>
 <code>x/20i $rip</code> 查看当前附近的汇编指令<br>
 <code>info frame</code> 当前调用栈帧<br>
 <code>info locals</code> 查看局部变量(带符号)<br>
@@ -260,8 +260,8 @@
 <span id="more"></span>
 <p><code>si</code> 逐汇编语句执行<br>
 <code>ni</code> 同上, 但不进入函数<br>
-<code>step</code> 逐 C 语句执行, 进入函数<br>
-<code>next</code> 逐 C 语句执行, 不进入函数<br>
+<code>step</code> 逐C语句执行, 进入函数<br>
+<code>next</code> 逐C语句执行, 不进入函数<br>
 <code>finish</code> 执行至当前函数返回<br>
 <code>continue</code> 运行至下个断点</p>
 <p><strong>x86_64 下函数参数位置</strong></p>
@@ -308,7 +308,7 @@
 <code>p/x varname</code>  十六进制<br>
 <code>p/d varname</code> 十进制</p>
 <p><strong>通用解</strong></p>
-<p>IDA 反汇编, 复制粘贴给 GPT 让它解决.</p>
+<p>IDA反汇编, 复制粘贴给GPT让它解决.</p>
 
     </div>
 

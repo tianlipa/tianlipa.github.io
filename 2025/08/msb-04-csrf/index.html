@@ -23,7 +23,7 @@
 
     <meta name="description" content="CSRF(XSRF): Cross-Site Request Forgery, 跨站请求伪造  典型案例：Gmail CSRF漏洞设置邮件转发，Weibo CSRF漏洞自动关注账号。 CSRF漏洞挖掘 Burp Suite CSRF Tester github.com&#x2F;s0md3v&#x2F;Bolt 防御思路 区分请求来自自己的前端页面还是第三方网站 或让自己的前端页面的请求与伪造请求不一样 HTTP R">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4-CSRF 漏洞渗透与防御">
+<meta property="og:title" content="4-CSRF漏洞渗透与防御">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-04-csrf/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="CSRF(XSRF): Cross-Site Request Forgery, 跨站请求伪造  典型案例：Gmail CSRF漏洞设置邮件转发，Weibo CSRF漏洞自动关注账号。 CSRF漏洞挖掘 Burp Suite CSRF Tester github.com&#x2F;s0md3v&#x2F;Bolt 防御思路 区分请求来自自己的前端页面还是第三方网站 或让自己的前端页面的请求与伪造请求不一样 HTTP R">
@@ -42,10 +42,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-04-csrf/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-04-csrf/","path":"2025/08/msb-04-csrf/","title":"4-CSRF 漏洞渗透与防御"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-04-csrf/","path":"2025/08/msb-04-csrf/","title":"4-CSRF漏洞渗透与防御"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>4-CSRF 漏洞渗透与防御 | tianlipa</title>
+<title>4-CSRF漏洞渗透与防御 | tianlipa</title>
   
 
 
@@ -213,12 +213,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="4-CSRF 漏洞渗透与防御 | tianlipa">
+      <meta itemprop="name" content="4-CSRF漏洞渗透与防御 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          4-CSRF 漏洞渗透与防御
+          4-CSRF漏洞渗透与防御
         </h1>
 
         <div class="post-meta-container">
@@ -242,29 +242,29 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>CSRF(XSRF): Cross-Site Request Forgery, 跨站请求伪造 </p>
+    <div class="post-body" itemprop="articleBody"><p>CSRF(XSRF): Cross-Site Request Forgery, 跨站请求伪造</p>
 <p><img src="/img/msb/17379650021685.png" alt=""></p>
-<p> 典型案例：Gmail CSRF 漏洞设置邮件转发，Weibo CSRF 漏洞自动关注账号。</p>
-<h2 id="CSRF 漏洞挖掘">CSRF 漏洞挖掘 </h2>
+<p>典型案例：Gmail CSRF漏洞设置邮件转发，Weibo CSRF漏洞自动关注账号。</p>
+<h2 id="CSRF漏洞挖掘">CSRF漏洞挖掘</h2>
 <p>Burp Suite<br>
 CSRF Tester<br>
 <a target="_blank" rel="noopener" href="http://github.com/s0md3v/Bolt">github.com/s0md3v/Bolt</a></p>
-<h2 id="防御思路"> 防御思路 </h2>
-<p> 区分请求来自自己的前端页面还是第三方网站 <br>
-或让自己的前端页面的请求与伪造请求不一样 </p>
-<p>HTTP Request Header: Referer: 引用页，来源页面，用于跟踪来源，如访问统计和广告效果 </p>
+<h2 id="防御思路">防御思路</h2>
+<p>区分请求来自自己的前端页面还是第三方网站<br>
+或让自己的前端页面的请求与伪造请求不一样</p>
+<p>HTTP Request Header: Referer: 引用页，来源页面，用于跟踪来源，如访问统计和广告效果</p>
 <span id="more"></span>
 <p>CSRF token:</p>
 <ol>
-<li> 用户使用用户名和密码登录，服务端下发一个随机 token 给客户端，并且服务端把这个字段保存在 session 中 </li>
-<li> 客户端保存 token，放在隐藏字段 </li>
-<li> 用户在登录状态下，以后访问时，都要携带这个 token 字段 </li>
-<li> 服务端从 session 中取出 token 进行对比，如果一致，说明请求合法 </li>
-<li> 用户退出，session 销毁，token 失效 </li>
+<li>用户使用用户名和密码登录，服务端下发一个随机token给客户端，并且服务端把这个字段保存在session中</li>
+<li>客户端保存token，放在隐藏字段</li>
+<li>用户在登录状态下，以后访问时，都要携带这个token字段</li>
+<li>服务端从session中取出token进行对比，如果一致，说明请求合法</li>
+<li>用户退出，session销毁，token失效</li>
 </ol>
-<p> 二次验证 </p>
-<p> 验证码 </p>
-<p> 浏览器的 Referrer Policy</p>
+<p>二次验证</p>
+<p>验证码</p>
+<p>浏览器的Referrer Policy</p>
 
     </div>
 
@@ -283,13 +283,13 @@ CSRF Tester<br>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-03-xss/" rel="prev" title="3-XSS 渗透与防御">
-                  <i class="fa fa-angle-left"></i> 3-XSS 渗透与防御
+                <a href="/2025/08/msb-03-xss/" rel="prev" title="3-XSS渗透与防御">
+                  <i class="fa fa-angle-left"></i> 3-XSS渗透与防御
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/08/msb-05-file-upload/" rel="next" title="5- 文件上传漏洞">
-                  5- 文件上传漏洞 <i class="fa fa-angle-right"></i>
+                <a href="/2025/08/msb-05-file-upload/" rel="next" title="5-文件上传漏洞">
+                  5-文件上传漏洞 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

@@ -23,7 +23,7 @@
 
     <meta name="description" content="起因是想把自己的待看清单传上来, 然后发现hexo默认不支持渲染这样的待办清单.   和人类社交  学习  吃饭  打游戏  必应搜了一下没搜到, 遂去翻了一下github issues, 找到了解决方法. 使用渲染器为hexo-renderer-markdown-it, 安装方法如下. npm install hexo-renderer-markdown-it --save">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 博客如何渲染 Markdown 待办清单 TO-DO List">
+<meta property="og:title" content="Hexo博客如何渲染Markdown待办清单TO-DO List">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/hexo-todo-list/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="起因是想把自己的待看清单传上来, 然后发现hexo默认不支持渲染这样的待办清单.   和人类社交  学习  吃饭  打游戏  必应搜了一下没搜到, 遂去翻了一下github issues, 找到了解决方法. 使用渲染器为hexo-renderer-markdown-it, 安装方法如下. npm install hexo-renderer-markdown-it --save">
@@ -39,10 +39,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/hexo-todo-list/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/hexo-todo-list/","path":"2025/08/hexo-todo-list/","title":"Hexo 博客如何渲染 Markdown 待办清单 TO-DO List"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/hexo-todo-list/","path":"2025/08/hexo-todo-list/","title":"Hexo博客如何渲染Markdown待办清单TO-DO List"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo 博客如何渲染 Markdown 待办清单 TO-DO List | tianlipa</title>
+<title>Hexo博客如何渲染Markdown待办清单TO-DO List | tianlipa</title>
   
 
 
@@ -210,12 +210,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Hexo 博客如何渲染 Markdown 待办清单 TO-DO List | tianlipa">
+      <meta itemprop="name" content="Hexo博客如何渲染Markdown待办清单TO-DO List | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo 博客如何渲染 Markdown 待办清单 TO-DO List
+          Hexo博客如何渲染Markdown待办清单TO-DO List
         </h1>
 
         <div class="post-meta-container">
@@ -245,37 +245,37 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>起因是想把自己的待看清单传上来, 然后发现 hexo 默认不支持渲染这样的待办清单.</p>
+    <div class="post-body" itemprop="articleBody"><p>起因是想把自己的待看清单传上来, 然后发现hexo默认不支持渲染这样的待办清单.</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled=""type="checkbox"> 和人类社交</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled=""type="checkbox"> 学习</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked=""disabled="" type="checkbox"> 吃饭</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked=""disabled="" type="checkbox"> 打游戏</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 和人类社交</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 学习</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 吃饭</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 打游戏</li>
 </ul>
-<p>必应搜了一下没搜到, 遂去翻了一下 github issues, 找到了解决方法.</p>
+<p>必应搜了一下没搜到, 遂去翻了一下github issues, 找到了解决方法.</p>
 <p>使用渲染器为<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-markdown-it">hexo-renderer-markdown-it</a>, 安装方法如下.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-markdown-it --save</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<p>在 <code>_config.yml</code> 中添加如下内容:</p>
+<p>在<code>_config.yml</code>中添加如下内容:</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">preset:</span> <span class="string">&#x27;default&#x27;</span></span><br><span class="line">  <span class="attr">render:</span></span><br><span class="line">    <span class="attr">html:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">xhtmlOut:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">langPrefix:</span> <span class="string">&#x27;language-&#x27;</span></span><br><span class="line">    <span class="attr">breaks:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">linkify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">typographer:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">quotes:</span> <span class="string">&#x27;“”‘’&#x27;</span></span><br><span class="line">  <span class="attr">enable_rules:</span></span><br><span class="line">  <span class="attr">disable_rules:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">  <span class="attr">anchors:</span></span><br><span class="line">    <span class="attr">level:</span> <span class="number">2</span></span><br><span class="line">    <span class="attr">collisionSuffix:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="attr">permalink:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">permalinkClass:</span> <span class="string">&#x27;header-anchor&#x27;</span></span><br><span class="line">    <span class="attr">permalinkSide:</span> <span class="string">&#x27;left&#x27;</span></span><br><span class="line">    <span class="attr">permalinkSymbol:</span> <span class="string">&#x27;¶&#x27;</span></span><br><span class="line">    <span class="attr">case:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">separator:</span> <span class="string">&#x27;-&#x27;</span></span><br><span class="line">  <span class="attr">images:</span></span><br><span class="line">    <span class="attr">lazyload:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">prepend_root:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">post_asset:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">inline:</span> <span class="literal">false</span>  <span class="comment"># https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline</span></span><br></pre></td></tr></table></figure>
-<p>hexo-renderer-markdown-it 就安装好了, 接下来需要安装 <a target="_blank" rel="noopener" href="https://github.com/revin/markdown-it-task-lists">markdown-it-task-lists</a> 插件.</p>
+<p>hexo-renderer-markdown-it就安装好了, 接下来需要安装<a target="_blank" rel="noopener" href="https://github.com/revin/markdown-it-task-lists">markdown-it-task-lists</a>插件.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install markdown-it-task-lists</span><br></pre></td></tr></table></figure>
-<p>在 <code>_config.yml</code> 里找到你刚刚添加的内容, 把</p>
+<p>在<code>_config.yml</code>里找到你刚刚添加的内容, 把</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br></pre></td></tr></table></figure>
 <p>改成</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-task-lists</span></span><br></pre></td></tr></table></figure>
-<p>然后运行 <code>hexo clean &amp;&amp; hexo g</code> 即可. 注意, 不 <code>hexo clean</code> 的话页面可能不会更新.</p>
-<p>但是这样生成的待办清单行首会有一个 markdown 无序列表的黑点, 让我很不爽, 大概像这样:</p>
+<p>然后运行<code>hexo clean &amp;&amp; hexo g</code>即可. 注意, 不<code>hexo clean</code>的话页面可能不会更新.</p>
+<p>但是这样生成的待办清单行首会有一个markdown无序列表的黑点, 让我很不爽, 大概像这样:</p>
 <ul>
 <li>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled=""type="checkbox"> 像我这样</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 像我这样</li>
 </ul>
 </li>
 </ul>
-<p>遂在 <code>_config.next.yml</code>(根据主题不同操作方法可能不同, 我用的是 NexT 主题) 找到如下内容:</p>
+<p>遂在<code>_config.next.yml</code>(根据主题不同操作方法可能不同, 我用的是NexT主题)找到如下内容:</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyStart: source/_data/post-body-start.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="comment">#style: source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
-<p>将 <code>style: source/_data/styles.styl</code> 这行取消注释, 然后在 <code>/source</code> 目录下新建 <code>/_data/styles.styl</code> 文件, 内容为:</p>
+<p>将<code>style: source/_data/styles.styl</code>这行取消注释, 然后在<code>/source</code>目录下新建<code>/_data/styles.styl</code>文件, 内容为:</p>
 <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.task-list-item</span> &#123;</span><br><span class="line">  <span class="attribute">list-style-type</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.task-list-item</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;checkbox&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">0.5em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>第一段取消前面的黑点, 第二段用于调节位置, 可以根据自己的需要修改.</p>
 

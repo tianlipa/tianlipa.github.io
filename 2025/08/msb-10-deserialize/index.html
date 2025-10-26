@@ -23,7 +23,7 @@
 
     <meta name="description" content="PHP类与对象 类：一个共享相同结构和行为的对象的集合 对象：类的实例 PHP Magic函数 魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10- 反序列化漏洞">
+<meta property="og:title" content="10-反序列化漏洞">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-10-deserialize/index.html">
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="PHP类与对象 类：一个共享相同结构和行为的对象的集合 对象：类的实例 PHP Magic函数 魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。">
@@ -43,10 +43,10 @@
 <link rel="canonical" href="https://tianlipa.github.io/2025/08/msb-10-deserialize/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-10-deserialize/","path":"2025/08/msb-10-deserialize/","title":"10- 反序列化漏洞"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/08/msb-10-deserialize/","path":"2025/08/msb-10-deserialize/","title":"10-反序列化漏洞"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>10- 反序列化漏洞 | tianlipa</title>
+<title>10-反序列化漏洞 | tianlipa</title>
   
 
 
@@ -214,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="10- 反序列化漏洞 | tianlipa">
+      <meta itemprop="name" content="10-反序列化漏洞 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          10- 反序列化漏洞
+          10-反序列化漏洞
         </h1>
 
         <div class="post-meta-container">
@@ -249,34 +249,34 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="PHP 类与对象">PHP 类与对象 </h3>
-<p> 类：一个共享相同结构和行为的对象的集合 <br>
-对象：类的实例 </p>
-<h3 id="PHP-Magic 函数">PHP Magic 函数 </h3>
-<p> 魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖 PHP 的默认操作。</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="PHP类与对象">PHP类与对象</h3>
+<p>类：一个共享相同结构和行为的对象的集合<br>
+对象：类的实例</p>
+<h3 id="PHP-Magic函数">PHP Magic函数</h3>
+<p>魔术方法是一种特殊的方法，当对对象执行某些操作时会覆盖PHP的默认操作。</p>
 <span id="more"></span>
 <p><img src="/img/msb/17387600154271.png" alt=""></p>
 <p><img src="/img/msb/17387600155299.png" alt=""></p>
-<h3 id="PHP 序列化和反序列化">PHP 序列化和反序列化 </h3>
-<p> 序列化：把对象转换为字符 <br>
-反序列化：对单一的已序列化的变量进行操作，将其转换为 PHP 的值 </p>
+<h3 id="PHP序列化和反序列化">PHP序列化和反序列化</h3>
+<p>序列化：把对象转换为字符<br>
+反序列化：对单一的已序列化的变量进行操作，将其转换为PHP的值</p>
 <p>serialize</p>
-<p> 其他序列化格式：<br>
-json 字符串 json_encode<br>
-xml 字符串  wddx_serialize_value<br>
-二进制格式 <br>
-字节数组 </p>
-<p> 若类中同时定义了__unserialize() 方法和__wakeup() 方法，则反序列化时只会调用__unserialize() 方法 </p>
-<h3 id="漏洞发生条件"> 漏洞发生条件 </h3>
+<p>其他序列化格式：<br>
+json字符串 json_encode<br>
+xml字符串  wddx_serialize_value<br>
+二进制格式<br>
+字节数组</p>
+<p>若类中同时定义了__unserialize()方法和__wakeup()方法，则反序列化时只会调用__unserialize()方法</p>
+<h3 id="漏洞发生条件">漏洞发生条件</h3>
 <ul>
-<li>unserialize 函数的参数可控 </li>
-<li> 脚本中定义了 Magic 方法，方法中有读写 php 文件或执行命令的操作，如__destruct(), unlink()</li>
-<li> 操作的内容需要有对象中的成员变量的值，如 filename</li>
+<li>unserialize函数的参数可控</li>
+<li>脚本中定义了Magic方法，方法中有读写php文件或执行命令的操作，如__destruct(), unlink()</li>
+<li>操作的内容需要有对象中的成员变量的值，如filename</li>
 </ul>
-<h3 id="常见利用函数"> 常见利用函数 </h3>
-<p> 命令执行：<br>
+<h3 id="常见利用函数">常见利用函数</h3>
+<p>命令执行：<br>
 exec(), passthru(), popen(), system(), call_user_func</p>
-<p> 文件操作：<br>
+<p>文件操作：<br>
 file_put_contents(), file_get_contents(), unlink()</p>
 
     </div>
@@ -296,13 +296,13 @@ file_put_contents(), file_get_contents(), unlink()</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/msb-09-rce/" rel="prev" title="9- 远程代码执行漏洞">
-                  <i class="fa fa-angle-left"></i> 9- 远程代码执行漏洞
+                <a href="/2025/08/msb-09-rce/" rel="prev" title="9-远程代码执行漏洞">
+                  <i class="fa fa-angle-left"></i> 9-远程代码执行漏洞
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/08/msb-11-redis/" rel="next" title="11-Redis 未授权访问漏洞">
-                  11-Redis 未授权访问漏洞 <i class="fa fa-angle-right"></i>
+                <a href="/2025/08/msb-11-redis/" rel="next" title="11-Redis未授权访问漏洞">
+                  11-Redis未授权访问漏洞 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

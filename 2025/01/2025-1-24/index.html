@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="能不能给我解释一下, 为什么这个鸟题有一个叫 ctftraining 的数据库, 里面有一个叫 FLAG_TABLE 的表, 里面有一个叫 FLAG_COLUMN 的列, 但是里面没有 FLAG? 做了几道 BUU 上的题, 大部分我能力范围内的题目都可以用 sqlmap 硬扫出来, 有一种游戏作者精心设计的谜题被数值碾压秒了的感觉. 仔细想想, 发现我做得出来的题 sqlmap 都可以乱杀, s">
+    <meta name="description" content="能不能给我解释一下, 为什么这个鸟题有一个叫ctftraining的数据库, 里面有一个叫FLAG_TABLE的表, 里面有一个叫FLAG_COLUMN的列, 但是里面没有FLAG? 做了几道BUU上的题, 大部分我能力范围内的题目都可以用sqlmap硬扫出来, 有一种游戏作者精心设计的谜题被数值碾压秒了的感觉. 仔细想想, 发现我做得出来的题sqlmap都可以乱杀, sqlmap做不出来的题我也">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2025-1-24">
 <meta property="og:url" content="https://tianlipa.github.io/2025/01/2025-1-24/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="能不能给我解释一下, 为什么这个鸟题有一个叫 ctftraining 的数据库, 里面有一个叫 FLAG_TABLE 的表, 里面有一个叫 FLAG_COLUMN 的列, 但是里面没有 FLAG? 做了几道 BUU 上的题, 大部分我能力范围内的题目都可以用 sqlmap 硬扫出来, 有一种游戏作者精心设计的谜题被数值碾压秒了的感觉. 仔细想想, 发现我做得出来的题 sqlmap 都可以乱杀, s">
+<meta property="og:description" content="能不能给我解释一下, 为什么这个鸟题有一个叫ctftraining的数据库, 里面有一个叫FLAG_TABLE的表, 里面有一个叫FLAG_COLUMN的列, 但是里面没有FLAG? 做了几道BUU上的题, 大部分我能力范围内的题目都可以用sqlmap硬扫出来, 有一种游戏作者精心设计的谜题被数值碾压秒了的感觉. 仔细想想, 发现我做得出来的题sqlmap都可以乱杀, sqlmap做不出来的题我也">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-24T03:33:20.000Z">
 <meta property="article:modified_time" content="2025-01-24T15:46:36.922Z">
@@ -238,10 +238,10 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>能不能给我解释一下, 为什么这个鸟题有一个叫 ctftraining 的数据库, 里面有一个叫 FLAG_TABLE 的表, 里面有一个叫 FLAG_COLUMN 的列, 但是里面没有 FLAG?</p>
-<p>做了几道 BUU 上的题, 大部分我能力范围内的题目都可以用 sqlmap 硬扫出来, 有一种游戏作者精心设计的谜题被数值碾压秒了的感觉. 仔细想想, 发现我做得出来的题 sqlmap 都可以乱杀, sqlmap 做不出来的题我也做不出来. 会不会其实 sqlmap 才是真正的我, 我才是 sqlmap?</p>
-<p>到底为什么[SUCTF 2019]EasySQL 这个鸟题有 28454 个人写出来了, 我看 writeup 都难以理解这个思考过程.</p>
-<p>在 B 站看到一个叫 <a target="_blank" rel="noopener" href="https://tabboo.xyz/">TabBoo</a> 的抽象 Chrome 插件, 功能是访问某些特定网站的时候有几率随机出现一个跳脸杀, 本来准备给知乎上一个的, 发现好像有点 bug, 反正我试了一下没触发.</p>
+    <div class="post-body" itemprop="articleBody"><p>能不能给我解释一下, 为什么这个鸟题有一个叫ctftraining的数据库, 里面有一个叫FLAG_TABLE的表, 里面有一个叫FLAG_COLUMN的列, 但是里面没有FLAG?</p>
+<p>做了几道BUU上的题, 大部分我能力范围内的题目都可以用sqlmap硬扫出来, 有一种游戏作者精心设计的谜题被数值碾压秒了的感觉. 仔细想想, 发现我做得出来的题sqlmap都可以乱杀, sqlmap做不出来的题我也做不出来. 会不会其实sqlmap才是真正的我, 我才是sqlmap?</p>
+<p>到底为什么[SUCTF 2019]EasySQL这个鸟题有28454个人写出来了, 我看writeup都难以理解这个思考过程.</p>
+<p>在B站看到一个叫<a target="_blank" rel="noopener" href="https://tabboo.xyz/">TabBoo</a>的抽象Chrome插件, 功能是访问某些特定网站的时候有几率随机出现一个跳脸杀, 本来准备给知乎上一个的, 发现好像有点bug, 反正我试了一下没触发.</p>
 <p>明天就回家了, 感觉回家效率可能会更低.</p>
 
     </div>

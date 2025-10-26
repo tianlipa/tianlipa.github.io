@@ -179,7 +179,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "这个月薯条亏损二十六箱,<br>你有头绪吗?",
         "请往前走<br>不要在此停留",
         "青青子衿, 悠悠我心.<br>但为君故, 沉吟至今.",
-        "世界以痛吻我,<br>我报之以哈气."
+        "世界以痛吻我,<br>我报之以哈气.",
+        "指鹿为马, 不负韶华."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
