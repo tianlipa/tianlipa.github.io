@@ -180,7 +180,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "请往前走<br>不要在此停留",
         "青青子衿, 悠悠我心.<br>但为君故, 沉吟至今.",
         "世界以痛吻我,<br>我报之以哈气.",
-        "指鹿为马, 不负韶华."
+        "指鹿为马, 不负韶华.",
+        "只要我还活着,<br>我就不会让人类灭绝这件事发生."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
