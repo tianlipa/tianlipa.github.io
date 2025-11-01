@@ -181,7 +181,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "青青子衿, 悠悠我心.<br>但为君故, 沉吟至今.",
         "世界以痛吻我,<br>我报之以哈气.",
         "指鹿为马, 不负韶华.",
-        "只要我还活着,<br>我就不会让人类灭绝这件事发生."
+        "只要我还活着,<br>我就不会让人类灭绝这件事发生.",
+        "耶  复活了",
+        "我司雇我在",
+        "这该死的沙漠!<br>我们都会淹死在这里.",
+        "Get busy living,<br>or get busy dying.",
+        "梦想一斤七毛五",
+        "这个人很懒, 什么也没留下.",
+        "只是睡着了",
+        "恐龙耗尽英雄气,<br>哺乳尽是鼠辈出.",
+        "Time flies like an arrow<br>Fruit flies like a banana",
+        "哇这个好可爱呀",
+        "我的研究表明, 世界上存在一个直径800米左右的球体, 且味道还不错"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
