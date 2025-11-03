@@ -54,3 +54,42 @@ document.getElementById('randomParagraph').innerText = selectedParagraph;
 更新: 今天把NexT主题升级到了8.24.0版本, 由于新版NexT把所有swig文件都换成了njk格式, 原来的方法失效了.
 
 不过新版的步骤也没什么区别, 只是修改`brand.swig`变成了修改`brand.njk`而已.
+
+再更新:
+
+更优雅一点的办法是把`brand.njk`里的这一段:
+
+```html
+{%- if subtitle %}
+    <p class="site-subtitle" itemprop="description">{{ subtitle }}</p>
+{%- endif %}
+```
+
+替换成这样:
+
+```html
+{%- if subtitle %}
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+    {%- endif %}
+```
+
+然后在博客的`/source/js/`目录下新建文件`subtitle.js`, 内容如下:
+
+```javascript
+document.addEventListener("DOMContentLoaded", function () {
+    var paragraphs = [
+        "你想要的Subtitle",
+        "我是奶龙",
+        "你想要的另外的Subtitle",
+        "再添加一个段落以供随机选择。"
+    ];
+    var randomIndex = Math.floor(Math.random() * paragraphs.length);
+    var selectedParagraph = paragraphs[randomIndex];
+    document.getElementById('randomParagraph').innerHTML = selectedParagraph;
+});
+```
+
+这样不会每个页面都复制一遍所有subtitle, 效果会稍好一些.
+
+另外前段时间发现修改`node_modules`里的东西实际上是很不规范的行为, 但是先不管了.
