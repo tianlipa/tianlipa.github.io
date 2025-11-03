@@ -18,8 +18,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="Requires password.">
 <meta property="og:type" content="article">
@@ -53,12 +54,15 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
 <script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
   
 
 
 
+  <script src="/js/third-party/fancybox.js" defer></script>
 
 
 
@@ -239,7 +243,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="你没资格啊, 你没资格" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="8a88986fe1221219c8e588dcde89899723736a34cd22ff3e36e445b397ecab63">65d63d5764e6e1413d7ff8079ab052abc70efc4b340c7a2f027910706e468a8e29592a3fb8037ff271d78303233ea3910263e0185ef9f355633907aa4198cf240cf22fac0ea400fbf17d0c356d0634e0eb87a285e3e692303d605cbdd427ba05253fec0b5324b9bbe23273b16e377c9d085b427188e4f3e15abd5300dbc6bd094294175361ad922ee4c0ec91df0f86d8f9b37178a0472eab1b54e06c1979336a74b89c51c20b2e9016d35f9ddbe49fcaacc75e9d6a26f0c617a8ad08343fdf0ba784a7f50c86f146bd35ccf1b7159bbc37062c5e5367cdd50c8422be4380e324d17eca8fc93f66d3c846b940b585b678e13e3f159f43ac214e455a9d16d582e46b075f016a6883a42836103a24e34b9a0d256823419bf0ca1cd2fb1170252006695c093be19a40d191d297abf90d1e8dced5828a8cf8625b86d1aed9a3cfec82091fe513ef681502a318b89500aae9167b98ead380883fec5ab1ebce44e0e3226a2dc5b78cc6e0d0160f955369a737a74afcfcb6b72299eb564fedbdf25b1c7096a149223a845690334a80eed492598df070c775d1c19c2ca128b82b06808b3f</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="8f2702d2756f54d15cd4697d1193381c03b8bc265b89c09a1f4156c946d78bcc">65d63d5764e6e1413d7ff8079ab052abc70efc4b340c7a2f027910706e468a8e29592a3fb8037ff271d78303233ea3910263e0185ef9f355633907aa4198cf240cf22fac0ea400fbf17d0c356d0634e0eb87a285e3e692303d605cbdd427ba05253fec0b5324b9bbe23273b16e377c9d085b427188e4f3e15abd5300dbc6bd094294175361ad922ee4c0ec91df0f86d8f9b37178a0472eab1b54e06c1979336a74b89c51c20b2e9016d35f9ddbe49fcaacc75e9d6a26f0c617a8ad08343fdf0ba784a7f50c86f146bd35ccf1b7159bbc37062c5e5367cdd50c8422be4380e324d17eca8fc93f66d3c846b940b585b678e13e3f159f43ac214e455a9d16d582e46b075f016a6883a42836103a24e34b9a0d256823419bf0ca1cd2fb1170252006695c093be19a40d191d297abf90d1e8dced5828a8cf8625b86d1aed9a3cfec82091fe513ef681502a318b89500aae9161826dcc7667ecb06e9da44d0936105d6f6d380d3a29f308fd0ee85045c7016724930c63be5a417bc463e6c37f4d84957871377d3a3d46f273d6641617010a2edb7460037380bebd6a91a565506066d66b30d0539f286900614f1efa40035e3fd</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-flip">
       <input class="hbe hbe-input-field hbe-input-field-flip" type="password" id="hbePass">

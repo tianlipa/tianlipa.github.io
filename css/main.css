@@ -1252,7 +1252,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #7088ff;
+    background: #f1ff32;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1576,12 +1576,12 @@ pre code {
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 1160px;
+    width: 64em;
   }
 }
 @media (min-width: 1600px) {
   .footer-inner {
-    width: 73%;
+    width: 64%;
   }
 }
 .use-motion .footer {
@@ -2371,12 +2371,12 @@ header.header {
 }
 @media (min-width: 1200px) {
   .main {
-    width: 1160px;
+    width: 64em;
   }
 }
 @media (min-width: 1600px) {
   .main {
-    width: 73%;
+    width: 64%;
   }
 }
 @media (max-width: 991px) {
@@ -2701,3 +2701,6 @@ header.header {
 .random-btn {
   margin-top: 0.5rem;
 }
+/* .main {
+  width: 64vw;
+} */

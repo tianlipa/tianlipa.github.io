@@ -18,8 +18,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="概述 这笔记越做越觉得我像用十八种颜色划勾股定理重点的小红书学习博主. 不过不做这笔记我可能就再也不会看ppt了, 所以还是坚持一下吧. 主要功能:  成帧: 在接收方从比特流中恢复出帧, 关键在于确定帧开始和结束的地方, 即帧定界 数据帧可靠传输: 差错校验和流量控制 信道(链路)多路访问: 如何寻址以及控制对共享信道(链路)的访问, 为此在数据链路层引入了一个特殊的子层, 即介质访问控制子层">
 <meta property="og:type" content="article">
@@ -60,7 +61,7 @@
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-4/30.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-4/31.png">
 <meta property="article:published_time" content="2025-10-29T14:45:31.000Z">
-<meta property="article:modified_time" content="2025-11-01T10:07:41.382Z">
+<meta property="article:modified_time" content="2025-11-03T15:03:09.620Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
@@ -86,12 +87,15 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
 <script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
   
 
 
 
+  <script src="/js/third-party/fancybox.js" defer></script>
 
 
 
@@ -265,7 +269,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-01 18:07:41" itemprop="dateModified" datetime="2025-11-01T18:07:41+08:00">2025-11-01</time>
+      <time title="修改时间：2025-11-03 23:03:09" itemprop="dateModified" datetime="2025-11-03T23:03:09+08:00">2025-11-03</time>
     </span>
 
   
@@ -300,22 +304,22 @@
 <li>用以连接设备的<strong>拓扑结构</strong></li>
 <li>用以共享资源的<strong>媒体访问控制方法</strong></li>
 </ul>
-<p>**局域网被定义为一个广播域, 早起局域网的构建基于共享(广播式)链路, 当前局域网采用L2交换机互连. **<br>
+<p><strong>局域网被定义为一个广播域, 早起局域网的构建基于共享(广播式)链路, 当前局域网采用L2交换机互连.</strong><br>
 (广播域: 局域网内目的地址为广播地址的数据链路层帧会被所有的网络节点接收和处理. )</p>
 <p>最常用的Internet接入网技术之一, 包括基于802.3的有线局域网(以太网), 基于802.11的无线局域网</p>
 <p>参考模型: IEEE 802参考模型<br>
 数据链路层被划分为两个子层<strong>LLC</strong>和<strong>MAC</strong></p>
-<p><img src="/img/computer-network-4/1.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/1.png" alt="" loading="lazy"></p>
 <p>LLC: Logic Link Control, <strong>逻辑链路控制</strong>, 与传输媒体无关<br>
 MAC: Medium Access Control, <strong>媒体接入控制</strong>, 你猜与传输媒体有没有关</p>
-<p><img src="/img/computer-network-4/2.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/2.png" alt="" loading="lazy"></p>
 <p>将数据链路层划分为两个子层的原因:</p>
 <ul>
 <li>在传统链路控制(如点对点通信的串行链路)中, 没有管理访问共享(广播式)介质的逻辑需求 , MAC子层负责对共享介质的访问进行控制</li>
 <li>对于相同的LLC子层, 可以提供不同的MAC子层. 例如, 常用以太网, 802.11无线局域网等局域网具有相同的LLC子层, 只是MAC子层不同.</li>
 </ul>
-<p><img src="/img/computer-network-4/3.png" alt=""></p>
-<p><img src="/img/computer-network-4/4.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/3.png" alt="" loading="lazy"></p>
+<p><img data-src="/img/computer-network-4/4.png" alt="" loading="lazy"></p>
 <h3 id="LLC">LLC</h3>
 <h4 id="服务">服务</h4>
 <p>LLC是一个对所有LAN都相同的链路层协议, 定义了两个用户之间数据交换的机制, 向网络层提供了三种类型的服务:</p>
@@ -344,7 +348,7 @@ MAC: Medium Access Control, <strong>媒体接入控制</strong>, 你猜与传输
 </ul>
 <p><strong>移动管理</strong>: 在无线局域网中, MAC实现移动管理(切换)</p>
 <p>经过局域网络数据链路层处理后的数据单元也被称为MAC帧, MAC帧的通用格式如下:</p>
-<p><img src="/img/computer-network-4/5.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/5.png" alt="" loading="lazy"></p>
 <p>MAC地址是网络接口设备例如网卡的物理地址, 一般购买这些设备时就固化在设备的内部, 它用来标识连接在LAN上的网络接口的物理接入点.</p>
 <h3 id="物理层技术">物理层技术</h3>
 <p>传输介质:</p>
@@ -416,10 +420,10 @@ MAC: Medium Access Control, <strong>媒体接入控制</strong>, 你猜与传输
 <p>要发送数据帧时监听信道, 若信道忙, 则等到下个时槽开始再监听信道; 若信道空闲, 以概率p发送, 以概率1-p推迟到下个时槽再重复上述过程.</p>
 <p>概率p的目的就是试图降低1-持续CSMA协议中多个站点同时发送而造成冲突的概率.</p>
 <p>采用持续监听是为了克服非持续CSMA协议带来的延迟.</p>
-<p><img src="/img/computer-network-4/6.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/6.png" alt="" loading="lazy"></p>
 <h3 id="轮询协议">轮询协议</h3>
 <p>802.11 PCF操作模式</p>
-<p><img src="/img/computer-network-4/7.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/7.png" alt="" loading="lazy"></p>
 <p>PCF: Point Coordination Function,点协调功能<br>
 AP(无线接入点Access Point)和站点工作在同一个信道(共享链路)上, 由中心点AP来控制所有站点对共享无线信道的访问, AP按顺序轮询(Poll)站点是否有帧要发送, 不会发生冲突.</p>
 <h2 id="以太网">以太网</h2>
@@ -460,7 +464,7 @@ T: 非屏蔽双绞线≤100m</li>
 勘测到冲突的必要条件是干扰信号到达发送方时发送方还在发送数据, 因此冲突检测过程与数据在传输介质上的传播延时相关.<br>
 最大电缆长度限制: 2500m<br>
 最小帧长限制: 64字节</p>
-<p><img src="/img/computer-network-4/8.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/8.png" alt="" loading="lazy"></p>
 <p>往返传播延迟2T=51.2μs, 发送1比特延迟=100ns<br>
 由帧发送延迟≥2T, 可以得到最小帧长64字节(即512比特)<br>
 最小帧长/10Mbps ≥ 51.2μs<br>
@@ -475,7 +479,7 @@ T: 非屏蔽双绞线≤100m</li>
 <li>若k&gt;16, 放弃发送并产生一个错误.</li>
 </ul>
 <p>CSMA/CD+退避算法:</p>
-<p><img src="/img/computer-network-4/9.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/9.png" alt="" loading="lazy"></p>
 <h3 id="快速以太网">快速以太网</h3>
 <p>100Mbps以太网也称快速以太网, 对应标准802.3u.</p>
 <p>向前兼容802.3, 保留原来802.3的帧格式, 接口和过程规则, 只是将发送1bit所需的时间从100ns降低到10ns, 因此电缆的最大长度也降低到原来的十分之一, 即250米.</p>
@@ -530,9 +534,9 @@ T: 非屏蔽双绞线≤100m</li>
 <li><strong>DIX Ethernet V2标准</strong>(最常用)</li>
 <li>IEEE的802.3标准</li>
 </ul>
-<p><img src="/img/computer-network-4/10.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/10.png" alt="" loading="lazy"></p>
 <p>所有类型的以太网的MAC帧格式标准都是统一的.</p>
-<p><img src="/img/computer-network-4/11.png" alt="image-20251101163600263"></p>
+<p><img data-src="/img/computer-network-4/11.png" alt="image-20251101163600263" loading="lazy"></p>
 <p>PA:  先导域 -  10101010序列, 用于使接收方与发送方同步<br>
 SFD:  帧起始定界符 – 10101011<br>
 DA:  目的MAC地址;   SA:  源MAC地址<br>
@@ -542,7 +546,7 @@ LLC PDU+pad – LLC协议数据单元加填充, 最少46字节, 最多1500字节
 Pad: 填充字段, 保证帧长不少于64字节(0~46字节, 若数据域≥46字节, 则无Pad)<br>
 FCS:  帧校验序列(CRC-32)</p>
 <h3 id="组播和广播">组播和广播</h3>
-<p><img src="/img/computer-network-4/12.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/12.png" alt="" loading="lazy"></p>
 <p><strong>组播(Multicast)</strong>: MAC地址的I/G比特为0, 表示的是普通的地址, 如果为1, 则表示组地址. 利用组地址, 在以太网内, 可以将一个数据帧发给加入了这个组的多台主机, 这种数据发送方式也称为组播.</p>
 <p><strong>广播(Broadcast)</strong>: 全1的MAC地址(FF:FF:FF:FF:FF:FF)被称为广播地址. 如果数据帧的目的地址为广播地址, 那么以太网内所有的主机都会接收该帧.</p>
 <h2 id="802-11无线局域网">802.11无线局域网</h2>
@@ -557,7 +561,7 @@ FCS:  帧校验序列(CRC-32)</p>
 <li><strong>无线站点STA(wireless STAtion)</strong>: 配置支持802.11协议的无线网卡的终端; STA通过MAC层机制来共享同一个无线信道, 最简单的WLAN仅仅由STA组成 , 它们之间直接通信.</li>
 <li><strong>无线接入点AP(wireless Access Point), 有时也被称为基站BS(Base Station)</strong>: 数据链路层设备, AP为STA之间的通信提供帧转发功能.</li>
 </ul>
-<p><img src="/img/computer-network-4/13.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/13.png" alt="" loading="lazy"></p>
 <p>在无线局域网中, AP一般同时有802.3和802.11接口, 实现网桥功能, 包括:</p>
 <ul>
 <li><strong>不同帧格式转换</strong>: 由于帧格式的不同, 需要重新组帧, 某些域需要丢弃或产生还需要重新生成检验和.</li>
@@ -566,8 +570,8 @@ FCS:  帧校验序列(CRC-32)</p>
 <h3 id="网络拓扑">网络拓扑</h3>
 <p>Ad Hoc网络, 也称为自组织网络: 仅由STA之间通过无线传输介质组成的网络, 这些STA在彼此无线信号覆盖范围内, 因此之间能够互相通信.</p>
 <p>基础设施网络: 在基础设施网络中, STA之间不能直接通信, 所有的通信都必须经过AP; 每个AP都配置了一个网络名(SSID), STA必须配置和AP相同的网络名.</p>
-<p><img src="/img/computer-network-4/14.png" alt=""></p>
-<p><img src="/img/computer-network-4/15.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/14.png" alt="" loading="lazy"></p>
+<p><img data-src="/img/computer-network-4/15.png" alt="" loading="lazy"></p>
 <p>DS (Distributed System): 分布式系统,  可以是一个交换机, 一个有线网络或者一个无线网络.</p>
 <h3 id="无线局域网的特点">无线局域网的特点</h3>
 <p>优势:</p>
@@ -585,7 +589,7 @@ FCS:  帧校验序列(CRC-32)</p>
 <p>发展历程和历代标准我懒得记了</p>
 <h3 id="体系结构">体系结构</h3>
 <p>采用IEEE802参考模型; IEEE 802参考模型由IEEE 802委员会开发,并且被所有的制定LAN标准的组织所采用.</p>
-<p><img src="/img/computer-network-4/16.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/16.png" alt="" loading="lazy"></p>
 <p>所有802.11系列协议具有相同的MAC子层, 不同的是物理层.</p>
 <h3 id="信道分配">信道分配</h3>
 <p>对于Ad Hoc网络, 要求所有的STA都工作在同一个信道;<br>
@@ -596,7 +600,7 @@ FCS:  帧校验序列(CRC-32)</p>
 <p>802.11工作在两个ISM频段(非授权频段), 即2.4GHz频段和5GHz.</p>
 <p>对于802.11b, 整个2.4G频段被划分为14个信道, 每个信道的带宽为22MHz.</p>
 <p>在802.11中, 每个站点或者AP使用某个信道, 也被称为工作信道.</p>
-<p><img src="/img/computer-network-4/17.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/17.png" alt="" loading="lazy"></p>
 <p>为了避免信道间干扰, 同一区域内的Ad Hoc网络或AP的工作信道不能重叠, 中心频率间隔最少为25MHz, 因此同一区域最多只能有3个工作在不同信道的Ad Hoc网络或AP.</p>
 <p>11个信道 : 每个信道占用22 MHz, 有且只有1个信道集合中有3个互不重叠的信道{1, 6, 11}.</p>
 <p>14信道 : 每个信道占用22MHz, 可划分为4个具有3个互不重叠信道的信道集合{1, 6, 11}, {2, 7, 12}, {3, 8, 13}, {4, 9, 14}, 但每次只能使用一个信道集合.</p>
@@ -604,7 +608,7 @@ FCS:  帧校验序列(CRC-32)</p>
 <p>5GHz频段比2.4G频段拥有更多的20MHz信道, 范围从5170MHz扩展到5835MHz, 但其可用频段并不连续. 且相邻信道之间是不重叠的.</p>
 <p>6GHz频段是一个全球统一的连续频谱块, 范围从5925MHz扩展到7125MHz, 共计1200MHz频谱, 意味着额外提供了59个20MHz信道. 对比2.4GHz和5GHz, 6GHz频段的频谱资源比前两者相加还要多.</p>
 <p>一个信道划分示例:</p>
-<p><img src="/img/computer-network-4/18.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/18.png" alt="" loading="lazy"></p>
 <h3 id="MAC子层">MAC子层</h3>
 <p>由于无线环境的不可靠性, 802.11在LLC子层使用确认无连接的服务. LLC子层对于所有基于802.11参考模型的协议都是一样的, 我们将主要关注MAC子层的功能.</p>
 <p>MAC子层功能:</p>
@@ -630,7 +634,7 @@ FCS:  帧校验序列(CRC-32)</p>
 <li>扩展CSMA/CA: 采用基于RTS/CTS的虚拟信道侦听方法, 该操作是可选的, 可以根据需要配置, 但在实际上, 目前所有WiFi设备默认都做了实现.</li>
 </ul>
 <h4 id="隐藏站点和暴露站点问题">隐藏站点和暴露站点问题</h4>
-<p><img src="/img/computer-network-4/19.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/19.png" alt="" loading="lazy"></p>
 <p>隐藏站点问题: B向C发送时, 由于D听不到, 误以为可以发送数据, C接收失败</p>
 <p>暴露站点问题: B向A发送时, C听到信道认为它不能向D发送数据, 但实际上不影响A和D接收</p>
 <p>基本CSMA/CA不能解决这两个问题, 扩展的CSMA/CA机制可以解决隐藏站点问题.</p>
@@ -640,7 +644,7 @@ FCS:  帧校验序列(CRC-32)</p>
 <li>冲突避免: 发送帧之前等待一个帧j间间隔IFS(InterFrame Spacing), 并确保在IFS时间内信道空闲.<br>
 为了防止多个站点在等待IFS时间后同时发送而导致冲突, 与以太网类似, 引入了一个随机退避算法来选择一个退避时间 (backoff time)</li>
 </ul>
-<p><img src="/img/computer-network-4/20.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/20.png" alt="" loading="lazy"></p>
 <p>IFS确定了帧的发送优先级, IFS越短发送优先级越高</p>
 <p>三种IFS:</p>
 <ul>
@@ -648,10 +652,10 @@ FCS:  帧校验序列(CRC-32)</p>
 <li>PIFS: PCF IFS, 等于SIFS+1, 中等优先级, 用于PCF(点协调功能, 轮询)操作模式下的帧</li>
 <li>DIFS: DCF IFS, 等于SIFS+2, 最低优先级, 用于DCF(分布式协调功能, CSMA/CA)操作模式下的数据帧</li>
 </ul>
-<p><img src="/img/computer-network-4/21.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/21.png" alt="" loading="lazy"></p>
 <p>站点执行随机退避算法确定退避时间, 在0到竞争窗口CS之间随机选择一个值r, 退避时间为r倍时槽.</p>
-<p>**竞争窗口CW(Contention Window)**采用类似以太网的指数退避算法设置: CW初始化为一个最小值<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">W</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathrm{CW}_{min}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">CW</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 当发送方认为发送的帧发生冲突时将CW加倍增大, 直到到达最大值<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">W</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathrm {CW}_{max}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">CW</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 初始为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^k-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9324em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>, 下一次为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{k+1}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9324em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
-<p><img src="/img/computer-network-4/22.png" alt=""></p>
+<p><strong>竞争窗口CW</strong>(Contention Window)采用类似以太网的指数退避算法设置: CW初始化为一个最小值<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">W</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathrm{CW}_{min}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">CW</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 当发送方认为发送的帧发生冲突时将CW加倍增大, 直到到达最大值<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">W</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathrm {CW}_{max}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">CW</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 初始为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^k-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9324em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>, 下一次为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{k+1}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9324em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
+<p><img data-src="/img/computer-network-4/22.png" alt="" loading="lazy"></p>
 <h4 id="接收方确认">接收方确认</h4>
 <p>接收方发送ACK帧:</p>
 <ul>
@@ -665,13 +669,13 @@ FCS:  帧校验序列(CRC-32)</p>
 <li>重传计数器到达一个设定的门限值时, 发送方将放弃发送数据帧, 并且返回一个错误.</li>
 </ul>
 <p><strong>发送方用随机退避算法选择退避时间, 即在0到CW之间选择一个随机数r, 退避时间即r倍的时槽. 而CW的确定采用的是指数退避算法, 从<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">W</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathrm{CW}_{min}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">CW</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>开始, 每次重传都加倍, 直到到达<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">W</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathrm {CW}_{max}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">CW</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</strong></p>
-<p><img src="/img/computer-network-4/23.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/23.png" alt="" loading="lazy"></p>
 <p>为什么不把这些相似甚至重复的东西合在一起讲呢, 合疑味.</p>
 <h3 id="CSMA-CA-ACK">CSMA/CA+ACK</h3>
 <p>发送方在DIFS时间内侦听到信道空闲直接发送数据帧, 不执行退避算法.</p>
-<p><img src="/img/computer-network-4/24.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/24.png" alt="" loading="lazy"></p>
 <p>例:</p>
-<p><img src="/img/computer-network-4/25.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/25.png" alt="" loading="lazy"></p>
 <h2 id="扩展局域网">扩展局域网</h2>
 <h3 id="网桥">网桥</h3>
 <p>Hub(集线器)是一种物理层设备, 网桥是用来连接局域网的互连设备, 工作在数据链路层.</p>
@@ -679,7 +683,7 @@ FCS:  帧校验序列(CRC-32)</p>
 <p>能隔离以太网中的碰撞域, 但不能隔离广播域.</p>
 <p>丢弃出错帧.</p>
 <p>工作原理如图.</p>
-<p><img src="/img/computer-network-4/26.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/26.png" alt="" loading="lazy"></p>
 <p>功能:</p>
 <ul>
 <li><strong>不同帧的格式转换</strong>: 由于帧格式的不同, 需要重新组帧, 某些域需要丢弃或产生还需要重新生成检验和.</li>
@@ -697,22 +701,22 @@ FCS:  帧校验序列(CRC-32)</p>
 <li>采用星型或树型拓扑结构, 用交换机或网桥连接多用户</li>
 <li><strong>交换机和网桥工作在数据链路层, 能隔离碰撞域</strong></li>
 </ul>
-<p><img src="/img/computer-network-4/27.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/27.png" alt="" loading="lazy"></p>
 <p>扩展局域网(Extended LAN): 一个或者多个网桥或者交换机连接的局域网集合.</p>
 <p>网桥或者交换机并不能隔离广播域, 因此扩展局域网仍然对应着一个广播域 .</p>
-<p><img src="/img/computer-network-4/28.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/28.png" alt="" loading="lazy"></p>
 <h3 id="L2交换机">L2交换机</h3>
 <p>L2交换机(switch)源自于多端口网桥(bridge), 一般采用存储转发方式将来自输入端口的帧交换到对应的输出端口.</p>
 <p>交换机检测每个到达数据的帧头.</p>
 <p>L2交换机的帧交换基于地址查找表(帧转发表), 对于输入端口的帧, 根据帧头中的目的地址查找转发表得到输出端口; 若帧转发表中没有对应的表项, 交换机就向所有端口(除接收端口)转发.</p>
 <p>帧转发表是通过帧的源地址与到达端口的对应关系建立的.</p>
 <p>存储转发: 从输入端口接收完整帧放入内存, 然后对帧进行校验, 若正确, 则根据目的MAC地址得到输出端口, 在输入和输出端口之间建立连接转发帧.</p>
-<p><img src="/img/computer-network-4/29.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/29.png" alt="" loading="lazy"></p>
 <h3 id="帧转发表">帧转发表</h3>
 <ul>
 <li>功能: 在扩展局域网中, L2交换机或者网桥会在输入端口上接收帧, 然后根据帧转发表将这些帧向合适的输出端口发送.</li>
 <li>格式: 每个表项由主机(一般用主机的MAC地址表示)和主机连接的端口组成.</li>
-<li>生成: 源地址学习: 记录接收到的帧的源MAC地址; 每个表项都动态生成.</li>
+<li>生成: 源地址学习: <strong>记录接收到的帧的源MAC地址</strong>; 每个表项都动态生成.</li>
 </ul>
 <p>为了强调帧转发表是由源MAC地址学习而来, 也被称为源地址表(Source Address Table).</p>
 <p>举例: 略, 我写一下午了实在不想写了.</p>
@@ -724,9 +728,19 @@ FCS:  帧校验序列(CRC-32)</p>
 <li>提供故障时的冗余备份, 要避免的是转发环路, 而不是物理环路</li>
 </ul>
 <p>解决方法: 在交换机或者网桥上运行生成树算法, 为交换机或者网桥选择转发帧的端口, 从而避免帧转发时出现环路.</p>
-<p><img src="/img/computer-network-4/30.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/30.png" alt="" loading="lazy"></p>
 <p>生成树算法的思想: 将扩展局域网看作是有环的图, 图的顶点表示网桥或者交换机, 图的边表示它们之间不仅直接相连, 而且还可以转发帧, 那么生成树就是覆盖这个图的所有顶点的无环子图(用于帧转发) .</p>
-<p><img src="/img/computer-network-4/31.png" alt=""></p>
+<p><img data-src="/img/computer-network-4/31.png" alt="" loading="lazy"></p>
+<h2 id="补充">补充</h2>
+<h3 id="求CSMA-CD时间槽长度">求CSMA/CD时间槽长度</h3>
+<p>CSMA/CD的竞争时间槽长度(contention slot time)即最小时隙(slot time), 必须满足大于等于信号在网络中往返一次的时间(Round Trip Time, RTT).</p>
+<p>例如, 介质长度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>, 信号速度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>, 则有</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>L</mi></mrow><mi>v</mi></mfrac></mrow><annotation encoding="application/x-tex">T = \frac{2L}{v}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="最小帧长度限制">最小帧长度限制</h3>
+<p>勘测到冲突的必要条件是干扰信号到达发送方时发送方还在发送数据, 因此最小帧长度需要满足<strong>帧的发送时间 ≥ 信号往返传播时间(即竞争时间槽长度)</strong>.</p>
+<p>例如, 竞争时间槽怎么算就在上面你自己不会看吗.</p>
+<p><strong>以太网的最小帧长是64字节.</strong></p>
 
     </div>
 

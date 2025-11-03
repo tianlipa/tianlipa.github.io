@@ -18,8 +18,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="计算机网络的起源 1954年发明transceiver, 终端到通讯线路到计算机的远程联机系统: 计算机网络的雏形 计算机网络的构建 直接连接: 硬件资源利用率低, 成本高, 线路利用率低 交换网: 先连接到交换机, 交换机再连接到硬件资源, 硬件资源和线路利用率高 交换机连交换机, 构成更复杂的网络 计算机网络的设计目标之一: 通过某种方式组建高效的网络系统, 提升计算机资源和线路的利用率.">
 <meta property="og:type" content="article">
@@ -62,12 +63,15 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
 <script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
   
 
 
 
+  <script src="/js/third-party/fancybox.js" defer></script>
 
 
 
@@ -308,7 +312,7 @@
 <p>目前, 大部分的计算机网络(包括Internet), 都使用分层的网络体系结构.</p>
 <h3 id="分层与协议">分层与协议</h3>
 <p>网络的总体设计: 层和协议的集合</p>
-<p><img src="/img/computer-network-1/1.png" alt=""></p>
+<p><img data-src="/img/computer-network-1/1.png" alt="" loading="lazy"></p>
 <p>在网络体系结构中, 采用分层的思想对网络构建问题进行分解, 分层.</p>
 <p>每一层都建立在下一层的基础之上, 为上一层提供服务. 对于每一层, 在网络体系结构中都可以定义相应的协议实现该层所需的服务.</p>
 <p><strong>层和协议(功能)的集合称为网络体系结构</strong>, 层表示了网络协议(功能)的组织结构.</p>
@@ -320,7 +324,7 @@
 <p>分层的原则: 将相似的功能集中在同一层内, 必要时可以将层的功能再分成子块, 层数不宜过多, 以避免层间借口开销变大. 功能差别较大时应分层处理, 各层只对相邻的上下层定义接口.</p>
 <p>协议栈: 一个特定的系统所使用的一组协议, 每一层一个或几个协议.</p>
 <p>例: 主机1通过网络向主机2可靠地发送文件</p>
-<p><img src="/img/computer-network-1/2.png" alt=""></p>
+<p><img data-src="/img/computer-network-1/2.png" alt="" loading="lazy"></p>
 <p>分层的优点:</p>
 <ul>
 <li>简化问题</li>
@@ -473,7 +477,7 @@ Physical</p>
 <strong>互联网层</strong>: IP<br>
 <strong>主机到网络层(网络接口层)</strong>: Ethernet, Packet Radio, Point-to-Point</p>
 <h4 id="TCP-IP协议栈">TCP/IP协议栈</h4>
-<p><img src="/img/computer-network-1/3.png" alt=""></p>
+<p><img data-src="/img/computer-network-1/3.png" alt="" loading="lazy"></p>
 <h4 id="主机到网络层-网络接口层">主机到网络层(网络接口层)</h4>
 <p>主机通过某个协议连接到网络上, 以便将分组发送到网络上. TCP/IP模型实际没有定义该层的具体协议, 它关注的是该层之上的内容.</p>
 <p>在Internet中通常将一个<strong>广播域</strong>称为一条链路, 与一般OSI参考模型中的链路(一对一)不同.<br>
@@ -500,17 +504,17 @@ Physical</p>
 <li>SMTP协议, 发送电子邮件</li>
 </ul>
 <p>应用层协议与应用层的关系: 应用层不仅需要实现应用层协议, 还要为用户提供操作界面等功能.</p>
-<p><img src="/img/computer-network-1/4.png" alt=""></p>
+<p><img data-src="/img/computer-network-1/4.png" alt="" loading="lazy"></p>
 <p>关键的网络设备:</p>
 <ul>
 <li>L2交换机: 网络内设备互连</li>
 <li>路由器(L3交换机): 不同网络互连</li>
 </ul>
-<p><img src="/img/computer-network-1/5.png" alt=""></p>
+<p><img data-src="/img/computer-network-1/5.png" alt="" loading="lazy"></p>
 <h3 id="主机1向主机2发送数据">主机1向主机2发送数据</h3>
-<p><img src="/img/computer-network-1/6.png" alt=""></p>
+<p><img data-src="/img/computer-network-1/6.png" alt="" loading="lazy"></p>
 <h3 id="网络中数据处理流程">网络中数据处理流程</h3>
-<p><img src="/img/computer-network-1/7.png" alt=""></p>
+<p><img data-src="/img/computer-network-1/7.png" alt="" loading="lazy"></p>
 <h3 id="OSI与TCP-IP模型的比较">OSI与TCP/IP模型的比较</h3>
 <p>相同点:</p>
 <ul>

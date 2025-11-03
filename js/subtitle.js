@@ -192,7 +192,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "恐龙耗尽英雄气,<br>哺乳尽是鼠辈出.",
         "Time flies like an arrow<br>Fruit flies like a banana",
         "哇这个好可爱呀",
-        "我的研究表明, 世界上存在一个直径800米左右的球体, 且味道还不错"
+        "我的研究表明, 世界上存在一个直径800米左右的球体, 且味道还不错",
+        "没有证据是没有的弱证据",
+        "吾不识青天高, 黄地厚.<br>唯见月寒日暖, 来煎人寿.",
+        "Get me off your fucking mailing list."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

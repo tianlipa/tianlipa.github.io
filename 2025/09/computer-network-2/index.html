@@ -18,8 +18,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="概述 玩了十分钟手机一抬头看到满屏幕傅里叶变换直接吓哭了. 主要功能:  激活物理连接以便传送数据 原始比特数据传送, 分为同步传送和异步传送模式, 全双工传送和半双工传送模式 物理层连接激活  相关协议:  接口物理规范等 设备间信号的传送方式, 包括调制方式, 编码和使用信号处理与传输线路的特性匹配">
 <meta property="og:type" content="article">
@@ -67,12 +68,15 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
 <script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
   
 
 
 
+  <script src="/js/third-party/fancybox.js" defer></script>
 
 
 
@@ -283,7 +287,7 @@
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mfrac><mn>2</mn><mi>T</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">c = \frac{2}{T}\int_0^Tg(t)dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3921em;vertical-align:-0.3558em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="margin-right:0.19445em;position:relative;top:-0.0006em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0362em;"><span style="top:-2.3442em;margin-left:-0.1945em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.2579em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3558em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></p>
 <p>草, 我理解为什么有人喜欢用latex敲公式了, 好爽啊.</p>
 <p>例: 传输信号01100010:</p>
-<p><img src="/img/computer-network-2/1.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/1.png" alt="" loading="lazy"></p>
 <p>显然谐波越多(n越大), 效果越好.</p>
 <p>RMS振幅(root mean square)的平方与对应频率的传输能量成正比(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><msubsup><mi>a</mi><mi>n</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>b</mi><mi>n</mi><mn>2</mn></msubsup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{a_n^2+b_n^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.3084em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9316em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8916em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
 c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
@@ -348,7 +352,7 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>通过传递光脉冲进行通信, 带宽远远大于其他各种传输媒体的带宽.</p>
 <p>发送端: 光源(发光二极管, 半导体激光器等), 在电脉冲的作用下产生光脉冲<br>
 接受端: 光检测器(光电二极管), 检测到光脉冲时还原出电脉冲</p>
-<p><img src="/img/computer-network-2/2.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/2.png" alt="" loading="lazy"></p>
 <p>优点: 传输速率极高(Gbps, Tbps, Pbps), 衰减小, 不受电磁干扰<br>
 缺点: 不能过分弯曲, 连接复杂, 处理复杂, 一般处理时要转换成电信号</p>
 <p>发展方向: 全光网络</p>
@@ -359,7 +363,7 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li>多模光纤: 多条光传播路径, 纤芯大, 短距离通信(建筑内或者校园内, 大约600m), 再分为: SI阶跃型(折射率在纤芯和包层交界处阶梯变化)和GI渐进型(折射率从纤芯中心开始向包层逐渐减小)</li>
 <li>单模光纤(Single mode fiber): 光按直线传播, 纤芯小(几个光波长), 长距离通信</li>
 </ul>
-<p><img src="/img/computer-network-2/3.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/3.png" alt="" loading="lazy"></p>
 <h3 id="无线传输">无线传输</h3>
 <h4 id="无线电传输">无线电传输</h4>
 <p>低频LF, 中频MF波段电波沿地表传播, 高频HF和甚高频VHF波段的地表电波会被地球吸收, 但可以通过地球上空的电离层反射实现长距离传输.</p>
@@ -377,14 +381,14 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>数字调制: 比特和代表它们的信号之间的转换过程.</p>
 <p>基带Baseband传输: 比特直接转换成信号, 信号波形一般为方波; 信号的传输占用传输介质上从零到最大值之间的全部频率(有线介质).</p>
 <p>通带Passband传输: 调节载波信号的幅度, 相位或者频率, 载波波形一般为正/余弦波; 信号占据以载波信号频率为中心的一段频带.</p>
-<p><img src="/img/computer-network-2/4.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/4.png" alt="" loading="lazy"></p>
 <p>通带传输中的调制:<br>
-<img src="/img/computer-network-2/5.png" alt=""></p>
+<img data-src="/img/computer-network-2/5.png" alt="" loading="lazy"></p>
 <h3 id="多路复用">多路复用</h3>
 <p>多路复用是将由多个信息源产生或者来自多条线路的多路信号组合在一条物理干线Trunk上进行传输.</p>
 <h4 id="频分多路复用FDM">频分多路复用FDM</h4>
 <p>将整个带宽分为多份, 用户在分配到一定的频带后, 在通信过程中自始至终都占用这个频带, 所有用户都在同样的时间占用不同的带宽(即频带)资源.</p>
-<p><img src="/img/computer-network-2/6.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/6.png" alt="" loading="lazy"></p>
 <h4 id="波分多路复用WDM">波分多路复用WDM</h4>
 <p>光的频分复用, 使用一根光纤来同时传输多个光载波信号.</p>
 <h4 id="时分多路复用TDM">时分多路复用TDM</h4>
@@ -410,7 +414,7 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li><strong>电路交换</strong>circuit switching(TDM或FDM)</li>
 <li>存储交换(统计时分复用): <strong>分组交换</strong>packet switching, 报文交换message switching</li>
 </ul>
-<p><img src="/img/computer-network-2/7.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/7.png" alt="" loading="lazy"></p>
 <h3 id="电路交换">电路交换</h3>
 <p>电路交换方式在通信对端之间建立物理连接(预留物理信道), 该通路在通信期间一直维持着, 并且为该通信双方专用, 直到通信结束.</p>
 <p>连接过程中, 连接请求从发送端传向接收端, 并被接收端确认, 传输路径建立后, 数据像流一样在路径上传输, 数据传输的唯一延时是电磁波的传播时间.</p>
@@ -424,11 +428,11 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>优点: 占用固定的线路资源, 保证数据传输的速率, 延时, 可靠性及有序性</p>
 <p>缺点: 线路资源利用率低, 没有数据传输时也占用线路或者固定时隙; 电路连接建立导致延迟</p>
 <p>性能:</p>
-<p><img src="/img/computer-network-2/8.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/8.png" alt="" loading="lazy"></p>
 <p>电路交换是为话音传输设计的, 支持固定的数据速率.</p>
 <h3 id="公用电话交换网">公用电话交换网</h3>
 <p>PSTN, Public Switched Telephone Network</p>
-<p><img src="/img/computer-network-2/9.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/9.png" alt="" loading="lazy"></p>
 <p>本地回路: 双绞线将家庭连接到电信公司, 模拟信号<br>
 干线: 光纤将交换局连接起来, 数字信号<br>
 交换局: 将电话呼叫从一条干线交换到另一条干线</p>
@@ -457,7 +461,7 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li>处理延时(processing delay): 检查分组头部, 寻路, 差错校验等, 与CPU速度和处理算法有关.</li>
 <li>排队延时(queue delay): 在节点上等待处理所需时间, 与网络拥塞状况有关.</li>
 </ul>
-<p><img src="/img/computer-network-2/10.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/10.png" alt="" loading="lazy"></p>
 <p>IP网络采用数据报交换, 在网络层执行交换, 交换的单元为IP分组, 执行交换的设备也被称为IP路由器.</p>
 <h4 id="虚电路交换">虚电路交换</h4>
 <p>virtual circuit, 面向连接的分组交换, 先建立连接再发送分组.</p>
@@ -471,9 +475,9 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>VCI(VC Identifier, 虚电路标识): 在每条物理线路/链路上可以同时运行很多条虚电路, 每条虚电路由VCI标识. VCI具有局部意义, 只在每条链路上唯一.</p>
 <p>每个交换机上都维护一个转发表, 基于VCI对分组进行转发 .</p>
 <p>虚电路的建立过程: A向B发送建立请求, B响应建立确认并反向分配VCI.</p>
-<p><img src="/img/computer-network-2/11.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/11.png" alt="" loading="lazy"></p>
 <p>ATM网络采用虚电路交换, 交换的单元为固定长度的ATM 信元, 执行交换的设备也被称为ATM交换机.</p>
-<p><img src="/img/computer-network-2/12.png" alt="三种交换技术的时序图"></p>
+<p><img data-src="/img/computer-network-2/12.png" alt="三种交换技术的时序图" loading="lazy"></p>
 
     </div>
 
