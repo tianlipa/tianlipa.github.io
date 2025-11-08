@@ -198,8 +198,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Get me off your fucking mailing list",
         "太阳照常升起",
         "宝宝due due delay了",
-        "<span style='color: transparent;'>很遗憾, 未中奖</span>",
-        "生活就像一盒巧克力,<br>我就像一条狗"
+        "<span style='color: transparent;'>呀哈哈! 我被发现了!</span>",
+        "生活就像一盒巧克力,<br>我就像一条狗",
+        "他们生也快乐, 死也快乐,<br>杯子里面总有酒喝."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
