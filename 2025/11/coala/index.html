@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="2309.02427 Abstract 近期研究通过外部资源(如互联网)和内部控制流程(如 prompt 链)增强了 LLM 处理需要基础(grounding)或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结构化动作空间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cognitive Architectures for Language Agents">
+<meta property="og:url" content="https://tianlipa.github.io/2025/11/coala/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="2309.02427 Abstract 近期研究通过外部资源(如互联网)和内部控制流程(如 prompt 链)增强了 LLM 处理需要基础(grounding)或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结构化动作空间">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-12T09:29:56.000Z">
+<meta property="article:modified_time" content="2025-11-12T09:31:01.114Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="USTC-MINE">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/11/coala/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/11/coala/","path":"2025/11/coala/","title":"Cognitive Architectures for Language Agents"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Cognitive Architectures for Language Agents | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/11/coala/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Cognitive Architectures for Language Agents | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cognitive Architectures for Language Agents
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-12 17:29:56 / 修改时间：17:31:01" itemprop="dateCreated datePublished" datetime="2025-11-12T17:29:56+08:00">2025-11-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2309.02427">2309.02427</a></p>
+<h2 id="Abstract">Abstract</h2>
+<p>近期研究通过外部资源(如互联网)和内部控制流程(如 prompt 链)增强了 LLM 处理需要基础(grounding)或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结构化动作空间, 和一个通用的用于选择行动的决策过程的语言智能体. CoALA 将今天的语言智能体置于 AI 更广泛的历史背景下, 并勾勒出一条通往基于语言的通用智能的道路.</p>
+<span id="more"></span>
+<h2 id="Introduction">Introduction</h2>
+<p>语言智能体联系起了 LLM 有限的知识和推理能力与内在记忆和外部环境, 最早的智能体使用 LLM 直接选择或生成动作, 更近期的智能体还使用它们进行推理, 规划和管理长期记忆以改善决策. 最新一代<em>认知的</em>语言智能体使用非常复杂的内部过程, 而现在的独立工作使用自定义术语描述这些过程, 使比较, 分析和发展不同智能体变得非常困难.</p>
+<p>为了建立一个能够组织起这些工作的框架, 作者借鉴了计算机和 AI 历史中的两个概念:<strong>产生式系统</strong>和<strong>认知架构</strong>. 产生式系统通过迭代地应用规则产出一系列结果. 最初作为字符串处理系统, 随后被AI社区用于定义能处理复杂, 分层结构的系统, 并被纳入到认知架构中.</p>
+<p>作者提出, 正如产生式系统指示了修改字符串的可能方式, LLM 也定义了一种文本变化或增加的分布. 这进一步表明, 结合产生式系统的认知架构控制可能同样适用于将 LLM 转化为语言代理.</p>
+<p>因此, 作者提出了认知架构语言智能体 CoALA, 这是一个用于描述和设计通用语言智能体的概念框架. 它将智能体按照三个关键维度进行组织:</p>
+<ul>
+<li>信息存储, 包括工作记忆和长期记忆</li>
+<li>动作空间, 分为内部动作和外部动作</li>
+<li>决策过程, 结构是一个包括计划和执行的交互式循环</li>
+</ul>
+<p>通过这三个概念<strong>记忆, 动作和决策</strong>, 这个框架可以清楚地表达现有的代理, 并确定开发新代理的方向.</p>
+<h2 id="Background">Background</h2>
+<h3 id="用于操作字符串的产生式系统">用于操作字符串的产生式系统</h3>
+<p>直观上, 产生式系统包括一系列规则, 每条规则指定一个前提和一个动作, 当满足前提时, 可以采取对应动作. 这个概念来自描述计算的极限的努力. Post 提出了用这些术语思考任意逻辑系统的想法, 其中将公式表达为字符串, 其结论被作为生产规则(如同一个字符串&quot;产生&quot;另一个字符串).</p>
+<p>这样的公式化随后被证明和一个简单的字符串重写系统等价, 在这样的系统中, 我们用如下形式的规则</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>X</mi><mtext> </mtext><mi>Y</mi><mtext> </mtext><mi>Z</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mi>W</mi><mtext> </mtext><mi>Z</mi></mrow><annotation encoding="application/x-tex">X \, Y \, Z \rightarrow X \, W \, Z
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></span></p>
+<p>以表示字符串 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>Y</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">XYZ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span> 可以被重写为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>W</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">XWZ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span>. 虽然这看起来像废话, 但字符串重写在形式语言理论中扮演着重要角色, 以 Chomsky 的短语结构语法的形式出现.</p>
+<h3 id="控制流-从字符串到算法">控制流: 从字符串到算法</h3>
+<p>一个产生式系统本身只描述了从一个起点可以生成的字符集合, 但如果我们施加控制流以决定执行哪些生产, 它们可以用来指定算法. 例如, 以下算法通过把写成笔画 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span></span></span></span> 的数字转换成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>∗</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">Q*R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 的形式来执行带余除法, 其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span></span></span></span> 表示商, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 表示余数.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>∗</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>→</mo><mi mathvariant="normal">∣</mi><mo>∗</mo><mspace linebreak="newline"></mspace><mo>∗</mo><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mo lspace="0em" rspace="0em">∙</mo></mpadded></mover><mo>∗</mo><mspace linebreak="newline"></mspace><mo>→</mo><mo>∗</mo></mrow><annotation encoding="application/x-tex">*||||| \rightarrow |* \\
+* \xrightarrow{\bullet} * \\
+\rightarrow *
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∗</span><span class="mord">∣∣∣∣∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.9441em;vertical-align:-0.011em;"></span><span class="mord">∗</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9331em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">∙</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord">∗</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord">∗</span></span></span></span></span></p>
+<p>例如, 给定输入 11, 结果为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∗</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>→</mo><mi mathvariant="normal">∣</mi><mo>∗</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>→</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>∗</mo><mi mathvariant="normal">∣</mi><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mo lspace="0em" rspace="0em">∙</mo></mpadded></mover><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>∗</mo><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">*||||||||||| \rightarrow |*|||||| \rightarrow ||*| \xrightarrow{\bullet} ||*|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∗</span><span class="mord">∣∣∣∣∣∣∣∣∣∣∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣∣∣∣∣∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1831em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9331em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">∙</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span></span></span></span>, 即 11 除以 5 等于 2 余 1. 可以证明 Markov 算法是图灵完备的.</p>
+<h3 id="认知架构-从算法到智能体">认知架构: 从算法到智能体</h3>
+<p>产生式系统超越了字符串重写, 被推广到逻辑运算: 可以与智能体目标和世界状态进行验证的前提, 和可以在前提满足时采取的行动. Allen Newell 和 Herbert Simon 给出了如下例子:</p>
+<p>(\mbox{temperature} > 70^{\circ})\wedge (\mbox{temperature} < 72^{\circ}) \rightarrow \mbox{stop}\\
+\mbox{temperature} < 32^{\circ} \rightarrow \mbox{call for repairs; turn on electric heater} \\
+(\mbox{temperature} < 70^{\circ}) \wedge \mbox{(furnace off)} \rightarrow \mbox{turn on furnace}\\
+(\mbox{temperature} > 72^{\circ}) \wedge \mbox{(furnace on)} \rightarrow \mbox{turn off furnace}
+</p>
+<p>此后, 产生式系统被人工智能社区采用. 人工智能研究人员定义了模仿人类认知的&quot;认知架构&quot;, 通过显式地实现感知, 记忆, 计划等过程实现灵活, 理性, 实时的行为, 实现了从心理学建模到机器人学的应用.</p>
+<p>一个典型例子是 Soar. Soar 将产生式存储在长期记忆中, 并根据它们的前提条件有多符合工作记忆执行它们. 这些产生式指定了哪些行为可以修改工作记忆和长期记忆. 以下是对 Soar 的简要介绍.</p>
+<p><strong>记忆</strong>: 工作记忆反映了智能体的目前情况, 存储了智能体最近的感知输入, 目标和中间推理产生的结果. 长期记忆分为三类:</p>
+<ul>
+<li>程序记忆存储产生式系统本身, 一个可以应用于工作记忆以决定智能体行为的规则集合</li>
+<li>语义记忆存储关于世界的事实</li>
+<li>情景记忆记录智能体最近的行动序列</li>
+</ul>
+<p><strong>基础</strong>: Soar 可以在模拟中或现实世界的机器人系统中实现. 在具身情境中, 各种传感器将感知流输入到工作记忆, 以供智能体进行决策. Soar 智能体也可以配备执行器, 允许其通过语言进行物理操作和交互性学习.</p>
+<p><strong>决策</strong>: Soar 实现了一个决策循环以评估产生式系统并应用最合适的一个. 每个决策循环中, 所存储的产生式前提和当前工作记忆进行核对, 在<em>提案和评估</em>阶段, 使用一系列产生式生成一系列可能的行为并排序, 随后选择最佳行动. 随后使用另一组产生式执行行动.</p>
+<p><strong>学习</strong>: Soar 支持多种学习模式. 新信息可以存储在长期记忆中, 并在需要决策时检索到工作记忆, 行动也可以被修改. 可以使用强化学习以提升效果好的行动的权重. 最显著的是, Soar 可以将新的产生式写入其程序记忆, 有效更新其源代码.</p>
+<p>过去的几十年内, 认知架构在人工智能社区中似乎热度有所下降, 这反映了此类系统涉及的两个挑战:</p>
+<ul>
+<li>它们仅限于可以用逻辑词描述的领域</li>
+<li>它们需要大量预先制定的规则才能运行</li>
+</ul>
+<p>而 LLM 似乎非常适合应对这些挑战. 它们可以在任意文本上运行, 且不要求用户指定产生式规则, 而是在语料库上进行预训练以学习产生式规则的分布. 基于此, 研究人员已经开始在认知架构中使用 LLM, 而本文选择引入认知架构的原则指导基于 LLM 的智能体的设计.</p>
+<h2 id="LLM-与产生式系统的联系">LLM 与产生式系统的联系</h2>
+<h3 id="LLM-作为概率产生式系统">LLM 作为概率产生式系统</h3>
+<p>产生式系统定义了可以从起点出发生成的字符串集合, 并将这个步骤分解为一系列的字符串重写操作. LLM 同样定义了一个对字符串(即 LLM 的 prompt)的扩展和修改的可能集合.</p>
+<p>我们可以将一个完成一段文本的任务表述为一个产生式. 如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 是 prompt, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 是续写, 我们可以把这个产生式表述为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mtext> </mtext><mi>Y</mi></mrow><annotation encoding="application/x-tex">X \rightarrow X \,\, Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span>. 如果希望允许多个可能的续写, 则对一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的集合有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mtext> </mtext><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X \rightarrow X \,\, Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> . LLM 将对这些续写中的每一个分配一个概率, 从这个角度来看, LLM 定义了一个概率分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mi>Y</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Y_i|X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>, 用于在给定输入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 时选择一个产生式, 从而得到一个可能的续写. 因此, LLM 可以被视为一个概率产生式系统, 每次调用时产生一个可能的续写.</p>
+<p>这种形式与传统产生式相比, 缺点在于 LLM 的固有不透明性, 使得分析或控制其行为变得具有挑战性. 即使如此, 它们的规模和预训练仍然提供了巨大优势.</p>
+<h3 id="Prompt工程作为控制流">Prompt工程作为控制流</h3>
+<p>LLM 的权重定义了一种对补全内容的优先级排序, 由此产生的概率分布可以被解释为一种针对特定任务的产生式优先级, 即一种简单的控制流.</p>
+<p>早期关于小样本学习和 prompt 工程的研究发现, 通过对输入的字符串进行预处理, 可以提升 LLM 给出产生式的质量.</p>
+<h3 id="向认知语言智能体迈进">向认知语言智能体迈进</h3>
+<p>语言智能体不仅仅根据预定义的 prompt 链工作, 而是把 LLM 放进外部环境的反馈循环中. 这些方法将多模态输入转换为文本并传递给 LLM, 然后解析 LLM 的输出以决定下一步动作. 早期智能体直接将 LLM 相连; 随后的工作使用了更复杂的智能体, 让 LLM 在执行动作前进行中间推理; 最新的智能体结合了更复杂的学习策略, 例如通过反思情景记忆生成新的推理, 或修改它们的程序性记忆, 通过以往经验适应未来行为.</p>
+<p>这些认知语言智能体运用了复杂的, 基于 LLM 的推理与学习能力. 作者认为, 认知架构不仅能用于构建产生式系统与智能体内部状态和外部环境的交互, 同样有助于设计基于 LLM 的认知智能体. 在本文的剩余部分, 作者将利用这一视角来梳理现有方法, 并指出前景广阔的研究方向.</p>
+<h2 id="Results">Results</h2>
+<p>CoALA 将 LLM 定义为更大的认知架构的核心组件, 在一个结构化, 分为内外两个部分的动作空间中行动.</p>
+<ul>
+<li><strong>外部动作</strong>通过<strong>基础</strong>(grounding)与外部环境交互, 如控制机器人, 与人类交流等.</li>
+<li><strong>内部动作</strong>与内在记忆交互, 可以进一步分为:
+<ul>
+<li>检索: 读取长期记忆</li>
+<li>推理: 使用 LLM 更新短期工作记忆</li>
+<li>学习: 写入长期记忆</li>
+</ul>
+</li>
+</ul>
+<p>语言智能体遵循一个循环, 通过决策选择动作. 循环中, 智能体使用推理和检索动作进行规划, 这个规划子过程会选择一个 grounding 以影响外部世界, 或选择一个学习行动以改变长期记忆. CoALA 的决策循环就像一个程序的 main 函数, 没有返回值, 循环运行, 接受新的感知输入并调用不同的动作作为相应.</p>
+<p>CoALA 利用了记忆, grounding, 学习, 决策等关键概念, 而 LLM 的引入增加了&quot;推理&quot;动作, 可以灵活地生成新知识和启发式方法, 取代了手工写入的传统认知架构; 让文字成为了实际上的内在表示, 简化了智能体的记忆模块; 视觉 LLM 可以将感知数据直接翻译为文本, 简化了 grounding.</p>
+<h3 id="记忆">记忆</h3>
+<p>LLM 不会持久化信息, 但语言智能体可以在内部存储和维护信息. 在 CoALA框架下, 记忆模块主要包括以下几种:</p>
+<ul>
+<li><strong>工作记忆</strong>为当前决策周期保存活跃且易获取的信息, 这些信息以符号变量的形式存在, 包括感知输入, 活跃知识, 从前一个决策周期传递过来的其他核心信息. 旧工作鼓励 LLM 生成中间推理步骤, 将 LLM 自身的上下文作为一种工作记忆. CoALA 框架中的工作记忆概念更为通用, 它是一种能在多次 LLM 调用间持久存在的数据结构, 每次调用的输入是从工作记忆的一个子集合成的. LLM 的输出被解析回其他变量, 存储回工作记忆并用于执行响应动作.</li>
+<li><strong>情景记忆</strong>存储先前决策周期的经验, 在决策周期的规划阶段, 可以被检索到工作记忆中以支持推理. 智能体也可以将新的经验从工作记忆写入情景记忆, 作为一种学习形式.</li>
+<li><strong>语义记忆</strong>存储智能体关于世界和自身的知识, 大部分情况下是只读的, 但语言智能体也可以选择将新知识写入语义记忆.</li>
+<li><strong>程序记忆</strong>包括存储在权重中的隐性知识和写在智能体代码中的显性知识, 后者可以进一步分为执行动作的程序和实现决策本身的程序. 程序记忆必须由设计者初始化, 且一般情况下不会修改.</li>
+</ul>
+<h3 id="Grounding-动作">Grounding 动作</h3>
+<p>该过程执行外部动作, 并将环境反馈作为文本处理到工作记忆中. 外部环境一般分为物理环境, 对话和数字环境三种.</p>
+<h3 id="检索动作">检索动作</h3>
+<p>检索过程从长期记忆中读取信息到工作记忆. 在语言智能体中, 自适应和与上下文相关的回忆机制仍未得到充分研究.</p>
+<h3 id="推理动作">推理动作</h3>
+<p>推理使语言智能体能够处理工作记忆中的内容以生成新信息. 推理既从工作记忆读取, 也向工作记忆写入, 可以用于支持学习或决策制定.</p>
+<h3 id="学习动作">学习动作</h3>
+<p>学习是通过向长期记忆写入信息发生的, 包括以下过程.</p>
+<ul>
+<li>用经验更新情景记忆</li>
+<li>用知识更新语义记忆</li>
+<li>更新程序性记忆(LLM 参数)</li>
+<li>更新程序性记忆(智能体代码), 包括更新推理过程, grounding 过程, 检索过程, 学习/决策过程</li>
+</ul>
+<h3 id="决策制定">决策制定</h3>
+<p>CoALA 将决策制定的顶层过程结构化为决策周期. 每个决策周期包括规划阶段和执行阶段.</p>
+<p>规划期间阶段包括<strong>提出</strong>候选动作, <strong>评估</strong>候选动作并分配价值, <strong>选择</strong>动作三个步骤.</p>
+<h2 id="Conclusion">Conclusion</h2>
+<p>CoALA 提供了一组独特, 具有互补性, 可行的启示.</p>
+<h3 id="模块化智能体">模块化智能体</h3>
+<p>智能体应当是结构化和模块化的, 一个用于语言智能体的框架将整合技术投入并提高兼容性.</p>
+<h3 id="智能体设计">智能体设计</h3>
+<p>CoALA 基于三个不同概念定义智能体:</p>
+<ul>
+<li>内部记忆</li>
+<li>可能的内部和外部动作</li>
+<li>基于这些动作的决策过程</li>
+</ul>
+<p>因此在设计智能体时, 应当采取以下步骤:</p>
+<ul>
+<li>确定所需记忆模块</li>
+<li>定义智能体的内部动作空间</li>
+<li>定义决策过程</li>
+</ul>
+<h3 id="结构化推理">结构化推理</h3>
+<p>CoALA 建议采用<strong>更结构化的推理过程</strong>更新工作记忆变量. 例如, LangChain 和 LlamaIndex 这样的提示框架可以用于定义更高级的推理步骤序列, 减少每次 LLM 调用的推理负担和低级 prompt 工程的工作.</p>
+<h3 id="学习">学习</h3>
+<p>重要的未来方向包括:</p>
+<ul>
+<li>修改智能体代码进行<strong>元学习</strong></li>
+<li>新的学习形式, 包括为特定推理子任务微调更小的模型, 删除不需要的记忆, 研究多种学习形式间的交互等</li>
+</ul>
+<h3 id="动作空间">动作空间</h3>
+<p>CoALA 主张定义一个清晰且适合任务的, 包含内部动作和外部动作的动作空间, 这将有助于系统化并指导智能体设计.</p>
+<p>需要注意的方面包括动作空间的规模和安全性问题.</p>
+<h3 id="决策制定-2">决策制定</h3>
+<p>这是语言智能体最令人兴奋的未来方向之一. 目前大多数工作仍局限于提出单个动作.</p>
+<ul>
+<li>混合基于语言的推理和基于代码的规划可能提供两全其美的效果, 未来工作可以整合二者.</li>
+<li>将经典的规划和树搜索方案扩展到具有 grounding 和长期记忆的复杂任务中.</li>
+<li>通过元推理提高效率.</li>
+<li>校准和对齐, 避免幻觉等.</li>
+</ul>
+<h2 id="Discussion">Discussion</h2>
+<p>推理应该是纯语言的还是多模态的?</p>
+<p>智能体与环境的边界在哪里?</p>
+<p>物理环境的智能体与数字环境的智能体的哪些差异值得关注?</p>
+<p>智能体如何持续自主地学习?</p>
+<p>更强大的大语言模型将如何改变智能体设计?</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/USTC-MINE/" rel="tag"># USTC-MINE</a>
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/11/2025-11-8/" rel="prev" title="2025-11-8">
+                  <i class="fa fa-angle-left"></i> 2025-11-8
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

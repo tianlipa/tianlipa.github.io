@@ -199,8 +199,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "太阳照常升起",
         "宝宝due due delay了",
         "<span style='color: transparent;'>呀哈哈! 我被发现了!</span>",
-        "生活就像一盒巧克力,<br>我就像一条狗",
-        "他们生也快乐, 死也快乐,<br>杯子里面总有酒喝."
+        "生活就像一盒巧克力<br>我就像一条狗",
+        "他们生也快乐, 死也快乐,<br>杯子里面总有酒喝.",
+        "Adults are just obsolete children<br>and the hell with them.",
+        "须知少日拏云志,<br>曾许人间第一流.",
+        "事情变得有趣起来了啊",
+        "时来天地皆同力,<br>运去英雄不自由."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
