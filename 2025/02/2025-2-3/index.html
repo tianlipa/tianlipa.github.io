@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="最近几天学习效率有点太低了. 昨天下午去见了一个贴吧认识的不听劝来旅游的网友, 带着他在学校里转了一圈, 然后一起被江西菜辣到怀疑人生. 大概看了一下文件上传漏洞和文件包含漏洞, 过了一下XXE, 又做了几道题, 感觉有点依赖writeup了, 以后尽量少看wp, 试试能不能自己做出来. 下了个IDA, 感觉挺好玩的, 但i春秋的逆向课看得我头疼, 开学了去借几本书, 在网上问问有没有什么资料吧.">
+    <meta name="description" content="最近几天学习效率有点太低了. 昨天下午去见了一个贴吧认识的不听劝来旅游的网友, 带着他在学校里转了一圈, 然后一起被江西菜辣到怀疑人生. 大概看了一下文件上传漏洞和文件包含漏洞, 过了一下 XXE, 又做了几道题, 感觉有点依赖 writeup 了, 以后尽量少看 wp, 试试能不能自己做出来. 下了个 IDA, 感觉挺好玩的, 但 i 春秋的逆向课看得我头疼, 开学了去借几本书, 在网上问问有没">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2025-2-3">
 <meta property="og:url" content="https://tianlipa.github.io/2025/02/2025-2-3/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="最近几天学习效率有点太低了. 昨天下午去见了一个贴吧认识的不听劝来旅游的网友, 带着他在学校里转了一圈, 然后一起被江西菜辣到怀疑人生. 大概看了一下文件上传漏洞和文件包含漏洞, 过了一下XXE, 又做了几道题, 感觉有点依赖writeup了, 以后尽量少看wp, 试试能不能自己做出来. 下了个IDA, 感觉挺好玩的, 但i春秋的逆向课看得我头疼, 开学了去借几本书, 在网上问问有没有什么资料吧.">
+<meta property="og:description" content="最近几天学习效率有点太低了. 昨天下午去见了一个贴吧认识的不听劝来旅游的网友, 带着他在学校里转了一圈, 然后一起被江西菜辣到怀疑人生. 大概看了一下文件上传漏洞和文件包含漏洞, 过了一下 XXE, 又做了几道题, 感觉有点依赖 writeup 了, 以后尽量少看 wp, 试试能不能自己做出来. 下了个 IDA, 感觉挺好玩的, 但 i 春秋的逆向课看得我头疼, 开学了去借几本书, 在网上问问有没">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-03T15:49:18.000Z">
 <meta property="article:modified_time" content="2025-02-04T04:28:32.340Z">
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -250,12 +250,12 @@
     
     <div class="post-body" itemprop="articleBody"><p>最近几天学习效率有点太低了.</p>
 <p>昨天下午去见了一个贴吧认识的不听劝来旅游的网友, 带着他在学校里转了一圈, 然后一起被江西菜辣到怀疑人生.</p>
-<p>大概看了一下文件上传漏洞和文件包含漏洞, 过了一下XXE, 又做了几道题, 感觉有点依赖writeup了, 以后尽量少看wp, 试试能不能自己做出来.</p>
-<p>下了个IDA, 感觉挺好玩的, 但i春秋的逆向课看得我头疼, 开学了去借几本书, 在网上问问有没有什么资料吧. BUU上的逆向题好像不多, 而且前几题都是纯若至题. 明天再找找有没有别的OJ.</p>
-<p>整了个中国蚁剑玩玩, 又回想起了多年以前玩神农远控的日子. 蚁剑好像不能处理中文路径和带中文名的文件, 不知道是我专属的bug还是就是这么回事, GitHub里也没看到相关issues, 搜索也没搜到解决方案, 我又不太敢提issues, 生怕是个啥比问题. byd你连中文适配都没做好你好意思叫中国蚁剑吗.</p>
-<p>图书馆借的书里关于逆向讲的也非常抽象, 不知道是我选的书有问题还是国内的书普遍有问题还是怎么回事, 似乎所有教程都觉得讲完1+1之后带我看两道二次函数题我就学会微积分了.</p>
-<p>网上查资料还会查到致死量的AI拉的屎, 再这样下去我要逐渐理解绘圈小画师了.</p>
-<p>打把杀戮尖塔睡了. 今天鸡煲过a14了.</p>
+<p>大概看了一下文件上传漏洞和文件包含漏洞, 过了一下 XXE, 又做了几道题, 感觉有点依赖 writeup 了, 以后尽量少看 wp, 试试能不能自己做出来.</p>
+<p>下了个 IDA, 感觉挺好玩的, 但 i 春秋的逆向课看得我头疼, 开学了去借几本书, 在网上问问有没有什么资料吧. BUU 上的逆向题好像不多, 而且前几题都是纯若至题. 明天再找找有没有别的 OJ.</p>
+<p>整了个中国蚁剑玩玩, 又回想起了多年以前玩神农远控的日子. 蚁剑好像不能处理中文路径和带中文名的文件, 不知道是我专属的 bug 还是就是这么回事, GitHub 里也没看到相关 issues, 搜索也没搜到解决方案, 我又不太敢提 issues, 生怕是个啥比问题. byd 你连中文适配都没做好你好意思叫中国蚁剑吗.</p>
+<p>图书馆借的书里关于逆向讲的也非常抽象, 不知道是我选的书有问题还是国内的书普遍有问题还是怎么回事, 似乎所有教程都觉得讲完 1+1 之后带我看两道二次函数题我就学会微积分了.</p>
+<p>网上查资料还会查到致死量的 AI 拉的屎, 再这样下去我要逐渐理解绘圈小画师了.</p>
+<p>打把杀戮尖塔睡了. 今天鸡煲过 a14 了.</p>
 
     </div>
 

@@ -22,19 +22,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="GitHub链接 Pytorch的动态计算图. 动态计算图 Pytorch的计算图由节点和边组成, 节点表示张量或者Function, 边表示张量和Function之间的依赖关系. Pytorch的计算图是动态图:  计算图的正向传播是立即执行的, 无需等待完整的计算图创建完毕, 每条语句都会在计算图中动态添加节点和边, 并立即执行正向传播得到计算结果. 计算图在反向传播后立即销毁. 如果在程序中">
+    <meta name="description" content="GitHub链接 Pytorch 的动态计算图. 动态计算图 Pytorch 的计算图由节点和边组成, 节点表示张量或者 Function, 边表示张量和 Function 之间的依赖关系. Pytorch 的计算图是动态图:  计算图的正向传播是立即执行的, 无需等待完整的计算图创建完毕, 每条语句都会在计算图中动态添加节点和边, 并立即执行正向传播得到计算结果. 计算图在反向传播后立即销毁.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20天狂宴Pytorch-Day7">
 <meta property="og:url" content="https://tianlipa.github.io/2025/09/eat-pytorch-7/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="GitHub链接 Pytorch的动态计算图. 动态计算图 Pytorch的计算图由节点和边组成, 节点表示张量或者Function, 边表示张量和Function之间的依赖关系. Pytorch的计算图是动态图:  计算图的正向传播是立即执行的, 无需等待完整的计算图创建完毕, 每条语句都会在计算图中动态添加节点和边, 并立即执行正向传播得到计算结果. 计算图在反向传播后立即销毁. 如果在程序中">
+<meta property="og:description" content="GitHub链接 Pytorch 的动态计算图. 动态计算图 Pytorch 的计算图由节点和边组成, 节点表示张量或者 Function, 边表示张量和 Function 之间的依赖关系. Pytorch 的计算图是动态图:  计算图的正向传播是立即执行的, 无需等待完整的计算图创建完毕, 每条语句都会在计算图中动态添加节点和边, 并立即执行正向传播得到计算结果. 计算图在反向传播后立即销毁.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-09-02T15:52:58.000Z">
 <meta property="article:modified_time" content="2025-09-02T18:08:49.717Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="大模型">
-<meta property="article:tag" content="pytorch">
 <meta property="article:tag" content="USTC-MINE">
+<meta property="article:tag" content="pytorch">
 <meta name="twitter:card" content="summary">
 
 
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -251,40 +251,40 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://github.com/lyhue1991/eat_pytorch_in_20_days">GitHub链接</a></p>
-<p>Pytorch的动态计算图.</p>
+<p>Pytorch 的动态计算图.</p>
 <h2 id="动态计算图">动态计算图</h2>
-<p>Pytorch的计算图由节点和边组成, 节点表示张量或者Function, 边表示张量和Function之间的依赖关系.</p>
-<p>Pytorch的计算图是动态图:</p>
+<p>Pytorch 的计算图由节点和边组成, 节点表示张量或者 Function, 边表示张量和 Function 之间的依赖关系.</p>
+<p>Pytorch 的计算图是动态图:</p>
 <ul>
 <li>计算图的正向传播是立即执行的, 无需等待完整的计算图创建完毕, 每条语句都会在计算图中动态添加节点和边, 并立即执行正向传播得到计算结果.</li>
-<li>计算图在反向传播后立即销毁. 如果在程序中使用了backward方法执行了反向传播, 或者利用<code>torch.autograd.grad</code>方法计算了梯度, 那么创建的计算图会被立即销毁, 下次调用需要重新创建.</li>
+<li>计算图在反向传播后立即销毁. 如果在程序中使用了 backward 方法执行了反向传播, 或者利用<code>torch.autograd.grad</code>方法计算了梯度, 那么创建的计算图会被立即销毁, 下次调用需要重新创建.</li>
 </ul>
 <span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line">w = torch.tensor([[<span class="number">3.0</span>,<span class="number">1.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">b = torch.tensor([[<span class="number">3.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">X = torch.randn(<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">Y = torch.randn(<span class="number">10</span>,<span class="number">1</span>)</span><br><span class="line">Y_hat = X @ w.t() + b</span><br><span class="line"><span class="comment"># Y_hat定义后其正向传播被立即执行，与其后面的loss创建语句无关</span></span><br><span class="line"></span><br><span class="line">loss = torch.mean(torch.<span class="built_in">pow</span>(Y_hat-Y,<span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(loss.data)</span><br><span class="line"><span class="built_in">print</span>(Y_hat.data)</span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line">loss.backward() <span class="comment"># 再次反向传播将报错</span></span><br></pre></td></tr></table></figure>
-<h2 id="计算图中的Function">计算图中的Function</h2>
-<p>计算图中的另外一种节点是Function, 即Pytorch中各种对张量操作的函数, 但其同时包括正向计算的逻辑和反向传播的逻辑.</p>
-<p>可以通过继承<code>torch.autograd.Function</code>来创建这种支持反向传播的Function.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyReLU</span>(torch.autograd.Function):</span><br><span class="line">   </span><br><span class="line">    <span class="comment"># 正向传播逻辑</span></span><br><span class="line">    <span class="comment"># 可以用ctx存储一些值供反向传播使用</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">ctx, <span class="built_in">input</span></span>):</span><br><span class="line">        ctx.save_for_backward(<span class="built_in">input</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">input</span>.clamp(<span class="built_in">min</span>=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 反向传播逻辑</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backward</span>(<span class="params">ctx, grad_output</span>):</span><br><span class="line">        <span class="built_in">input</span>, = ctx.saved_tensors</span><br><span class="line">        grad_input = grad_output.clone()</span><br><span class="line">        grad_input[<span class="built_in">input</span> &lt; <span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> grad_input</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch </span><br><span class="line">w = torch.tensor([[<span class="number">3.0</span>,<span class="number">1.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">b = torch.tensor([[<span class="number">3.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">X = torch.tensor([[-<span class="number">1.0</span>,-<span class="number">1.0</span>],[<span class="number">1.0</span>,<span class="number">1.0</span>]])</span><br><span class="line">Y = torch.tensor([[<span class="number">2.0</span>,<span class="number">3.0</span>]])</span><br><span class="line"></span><br><span class="line">relu = MyReLU.apply</span><br><span class="line">Y_hat = relu(X@w.t() + b)</span><br><span class="line">loss = torch.mean(torch.<span class="built_in">pow</span>(Y_hat-Y,<span class="number">2</span>))</span><br><span class="line">loss.backward()</span><br><span class="line"><span class="built_in">print</span>(w.grad)</span><br><span class="line"><span class="built_in">print</span>(b.grad)</span><br><span class="line"><span class="comment"># Y_hat的梯度函数即MyReLU.backward</span></span><br><span class="line"><span class="built_in">print</span>(Y_hat.grad_fn)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line">w = torch.tensor ([[<span class="number">3.0</span>,<span class="number">1.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">b = torch.tensor ([[<span class="number">3.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">X = torch.randn (<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">Y = torch.randn (<span class="number">10</span>,<span class="number">1</span>)</span><br><span class="line">Y_hat = X @ w.t () + b</span><br><span class="line"><span class="comment"># Y_hat 定义后其正向传播被立即执行，与其后面的 loss 创建语句无关</span></span><br><span class="line"></span><br><span class="line">loss = torch.mean (torch.<span class="built_in">pow</span> (Y_hat-Y,<span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span> (loss.data)</span><br><span class="line"><span class="built_in">print</span> (Y_hat.data)</span><br><span class="line"></span><br><span class="line">loss.backward ()</span><br><span class="line">loss.backward () <span class="comment"># 再次反向传播将报错</span></span><br></pre></td></tr></table></figure>
+<h2 id="计算图中的-Function">计算图中的 Function</h2>
+<p>计算图中的另外一种节点是 Function, 即 Pytorch 中各种对张量操作的函数, 但其同时包括正向计算的逻辑和反向传播的逻辑.</p>
+<p>可以通过继承<code>torch.autograd.Function</code>来创建这种支持反向传播的 Function.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyReLU</span> (torch.autograd.Function):</span><br><span class="line">   </span><br><span class="line">    <span class="comment"># 正向传播逻辑</span></span><br><span class="line">    <span class="comment"># 可以用 ctx 存储一些值供反向传播使用</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span> (<span class="params">ctx, <span class="built_in">input</span></span>):</span><br><span class="line">        ctx.save_for_backward (<span class="built_in">input</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">input</span>.clamp (<span class="built_in">min</span>=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 反向传播逻辑</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backward</span> (<span class="params">ctx, grad_output</span>):</span><br><span class="line">        <span class="built_in">input</span>, = ctx.saved_tensors</span><br><span class="line">        grad_input = grad_output.clone ()</span><br><span class="line">        grad_input[<span class="built_in">input</span> &lt; <span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> grad_input</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch </span><br><span class="line">w = torch.tensor ([[<span class="number">3.0</span>,<span class="number">1.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">b = torch.tensor ([[<span class="number">3.0</span>]],requires_grad=<span class="literal">True</span>)</span><br><span class="line">X = torch.tensor ([[-<span class="number">1.0</span>,-<span class="number">1.0</span>],[<span class="number">1.0</span>,<span class="number">1.0</span>]])</span><br><span class="line">Y = torch.tensor ([[<span class="number">2.0</span>,<span class="number">3.0</span>]])</span><br><span class="line"></span><br><span class="line">relu = MyReLU.apply</span><br><span class="line">Y_hat = relu (X@w.t () + b)</span><br><span class="line">loss = torch.mean (torch.<span class="built_in">pow</span> (Y_hat-Y,<span class="number">2</span>))</span><br><span class="line">loss.backward ()</span><br><span class="line"><span class="built_in">print</span> (w.grad)</span><br><span class="line"><span class="built_in">print</span> (b.grad)</span><br><span class="line"><span class="comment"># Y_hat 的梯度函数即 MyReLU.backward</span></span><br><span class="line"><span class="built_in">print</span> (Y_hat.grad_fn)</span><br></pre></td></tr></table></figure>
 <h2 id="计算图与反向传播">计算图与反向传播</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line"></span><br><span class="line">x = torch.tensor(<span class="number">3.0</span>,requires_grad=<span class="literal">True</span>)</span><br><span class="line">y1 = x + <span class="number">1</span></span><br><span class="line">y2 = <span class="number">2</span>*x</span><br><span class="line">loss = (y1-y2)**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">loss.backward()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line"></span><br><span class="line">x = torch.tensor (<span class="number">3.0</span>,requires_grad=<span class="literal">True</span>)</span><br><span class="line">y1 = x + <span class="number">1</span></span><br><span class="line">y2 = <span class="number">2</span>*x</span><br><span class="line">loss = (y1-y2)**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">loss.backward ()</span><br></pre></td></tr></table></figure>
 <p>调用<code>loss.backward()</code>后, 依次发生:</p>
 <ol>
-<li>从loss标量出发, loss自身的grad梯度赋值为1</li>
-<li>loss根据其自身梯度以及关联的backward方法, 计算出其对应的自变量(y1和y2)的梯度, 将该值赋值到y1.grad和y2.grad</li>
-<li>y1和y2根据其自身梯度以及关联的backward方法, 计算出其对应的自变量(x)的梯度, x.grad将收到的多个梯度值累加</li>
+<li>从 loss 标量出发, loss 自身的 grad 梯度赋值为 1</li>
+<li>loss 根据其自身梯度以及关联的 backward 方法, 计算出其对应的自变量 (y1 和 y2) 的梯度, 将该值赋值到 y1.grad 和 y2.grad</li>
+<li>y1 和 y2 根据其自身梯度以及关联的 backward 方法, 计算出其对应的自变量 (x) 的梯度, x.grad 将收到的多个梯度值累加</li>
 </ol>
-<p>因此张量的grad梯度不会自动清零, 需要手动清零.</p>
+<p>因此张量的 grad 梯度不会自动清零, 需要手动清零.</p>
 <h2 id="叶子节点和非叶子节点">叶子节点和非叶子节点</h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import torch </span><br><span class="line"></span><br><span class="line">x = torch.tensor(3.0,requires_grad=True)</span><br><span class="line">y1 = x + 1</span><br><span class="line">y2 = 2*x</span><br><span class="line">loss = (y1-y2)**2</span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line">print(&quot;loss.grad:&quot;, loss.grad)</span><br><span class="line">print(&quot;y1.grad:&quot;, y1.grad)</span><br><span class="line">print(&quot;y2.grad:&quot;, y2.grad)</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
-<p>执行上述代码发现, loss.grad并非期望的1, 而是None, 类似地y1.grad和y2.grad也是None. 原因是它们不是叶子节点张量, 在反向传播过程中, 只有<code>is_leaf=True</code>的节点, 导数结果才会被保留.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import torch </span><br><span class="line"></span><br><span class="line">x = torch.tensor (3.0,requires_grad=True)</span><br><span class="line">y1 = x + 1</span><br><span class="line">y2 = 2*x</span><br><span class="line">loss = (y1-y2)**2</span><br><span class="line"></span><br><span class="line">loss.backward ()</span><br><span class="line">print (&quot;loss.grad:&quot;, loss.grad)</span><br><span class="line">print (&quot;y1.grad:&quot;, y1.grad)</span><br><span class="line">print (&quot;y2.grad:&quot;, y2.grad)</span><br><span class="line">print (x.grad)</span><br></pre></td></tr></table></figure>
+<p>执行上述代码发现, loss.grad 并非期望的 1, 而是 None, 类似地 y1.grad 和 y2.grad 也是 None. 原因是它们不是叶子节点张量, 在反向传播过程中, 只有<code>is_leaf=True</code>的节点, 导数结果才会被保留.</p>
 <p>叶子节点张量需要满足两个条件:</p>
 <ul>
-<li>是由用户直接创建的张量, 而非由某个Function通过计算得到的张量</li>
-<li>requires_grad属性必须为True</li>
+<li>是由用户直接创建的张量, 而非由某个 Function 通过计算得到的张量</li>
+<li>requires_grad 属性必须为 True</li>
 </ul>
-<p>所有依赖于叶子节点张量的张量, 其requires_grad属性必定为True, 但其梯度值只在计算过程中被用到, 不会最终存储到grad属性中.</p>
-<p>如果需要保留中间计算结果的梯度到grad属性中, 可以使用retain_grad方法; 如果仅仅是为了调试代码查看梯度值, 可以利用register_hook打印日志. 利用retain_grad可以保留非叶子节点的梯度值, 利用register_hook可以查看非叶子节点的梯度值.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line"></span><br><span class="line"><span class="comment"># 正向传播</span></span><br><span class="line">x = torch.tensor(<span class="number">3.0</span>,requires_grad=<span class="literal">True</span>)</span><br><span class="line">y1 = x + <span class="number">1</span></span><br><span class="line">y2 = <span class="number">2</span>*x</span><br><span class="line">loss = (y1-y2)**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 非叶子节点梯度显示控制</span></span><br><span class="line">y1.register_hook(<span class="keyword">lambda</span> grad: <span class="built_in">print</span>(<span class="string">&#x27;y1 grad: &#x27;</span>, grad))</span><br><span class="line">y2.register_hook(<span class="keyword">lambda</span> grad: <span class="built_in">print</span>(<span class="string">&#x27;y2 grad: &#x27;</span>, grad))</span><br><span class="line">loss.retain_grad()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反向传播</span></span><br><span class="line">loss.backward()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;loss.grad:&quot;</span>, loss.grad)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x.grad:&quot;</span>, x.grad)</span><br></pre></td></tr></table></figure>
+<p>所有依赖于叶子节点张量的张量, 其 requires_grad 属性必定为 True, 但其梯度值只在计算过程中被用到, 不会最终存储到 grad 属性中.</p>
+<p>如果需要保留中间计算结果的梯度到 grad 属性中, 可以使用 retain_grad 方法; 如果仅仅是为了调试代码查看梯度值, 可以利用 register_hook 打印日志. 利用 retain_grad 可以保留非叶子节点的梯度值, 利用 register_hook 可以查看非叶子节点的梯度值.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line"></span><br><span class="line"><span class="comment"># 正向传播</span></span><br><span class="line">x = torch.tensor (<span class="number">3.0</span>,requires_grad=<span class="literal">True</span>)</span><br><span class="line">y1 = x + <span class="number">1</span></span><br><span class="line">y2 = <span class="number">2</span>*x</span><br><span class="line">loss = (y1-y2)**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 非叶子节点梯度显示控制</span></span><br><span class="line">y1.register_hook (<span class="keyword">lambda</span> grad: <span class="built_in">print</span> (<span class="string">&#x27;y1 grad: &#x27;</span>, grad))</span><br><span class="line">y2.register_hook (<span class="keyword">lambda</span> grad: <span class="built_in">print</span> (<span class="string">&#x27;y2 grad: &#x27;</span>, grad))</span><br><span class="line">loss.retain_grad ()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反向传播</span></span><br><span class="line">loss.backward ()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;loss.grad:&quot;</span>, loss.grad)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;x.grad:&quot;</span>, x.grad)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -294,8 +294,8 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
-              <a href="/tags/pytorch/" rel="tag"># pytorch</a>
               <a href="/tags/USTC-MINE/" rel="tag"># USTC-MINE</a>
+              <a href="/tags/pytorch/" rel="tag"># pytorch</a>
           </div>
 
         

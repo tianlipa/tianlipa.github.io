@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="run [args] 运行并传参 start 运行到main()开头 break func&#x2F;地址 在func函数或地址处设置断点 delete 删除断点 info breakpoints 查看断点 info registers 查看所有寄存器 x&#x2F;s 地址 查看地址处字符串 x&#x2F;10xw 地址 查看10个4字节的十六进制 x&#x2F;20i $rip 查看当前附近的汇编指令 info frame 当前调用">
+    <meta name="description" content="run [args] 运行并传参 start 运行到main()开头 break func&#x2F;地址 在func函数或地址处设置断点 delete 删除断点 info breakpoints 查看断点 info registers 查看所有寄存器 x&#x2F;s 地址 查看地址处字符串 x&#x2F;10xw 地址 查看 10 个 4 字节的十六进制 x&#x2F;20i $rip 查看当前附近的汇编指令 info frame">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gdb调试ELF程序">
 <meta property="og:url" content="https://tianlipa.github.io/2025/06/gdb/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="run [args] 运行并传参 start 运行到main()开头 break func&#x2F;地址 在func函数或地址处设置断点 delete 删除断点 info breakpoints 查看断点 info registers 查看所有寄存器 x&#x2F;s 地址 查看地址处字符串 x&#x2F;10xw 地址 查看10个4字节的十六进制 x&#x2F;20i $rip 查看当前附近的汇编指令 info frame 当前调用">
+<meta property="og:description" content="run [args] 运行并传参 start 运行到main()开头 break func&#x2F;地址 在func函数或地址处设置断点 delete 删除断点 info breakpoints 查看断点 info registers 查看所有寄存器 x&#x2F;s 地址 查看地址处字符串 x&#x2F;10xw 地址 查看 10 个 4 字节的十六进制 x&#x2F;20i $rip 查看当前附近的汇编指令 info frame">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-29T08:48:15.000Z">
 <meta property="article:modified_time" content="2025-08-14T01:49:37.599Z">
@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -256,16 +256,16 @@
 <code>info breakpoints</code> 查看断点</p>
 <p><code>info registers</code> 查看所有寄存器<br>
 <code>x/s 地址</code> 查看地址处字符串<br>
-<code>x/10xw 地址</code> 查看10个4字节的十六进制<br>
+<code>x/10xw 地址</code> 查看 10 个 4 字节的十六进制<br>
 <code>x/20i $rip</code> 查看当前附近的汇编指令<br>
 <code>info frame</code> 当前调用栈帧<br>
-<code>info locals</code> 查看局部变量(带符号)<br>
+<code>info locals</code> 查看局部变量 (带符号)<br>
 <code>backtrace</code> 查看调用栈</p>
 <span id="more"></span>
 <p><code>si</code> 逐汇编语句执行<br>
 <code>ni</code> 同上, 但不进入函数<br>
-<code>step</code> 逐C语句执行, 进入函数<br>
-<code>next</code> 逐C语句执行, 不进入函数<br>
+<code>step</code> 逐 C 语句执行, 进入函数<br>
+<code>next</code> 逐 C 语句执行, 不进入函数<br>
 <code>finish</code> 执行至当前函数返回<br>
 <code>continue</code> 运行至下个断点</p>
 <p><strong>x86_64 下函数参数位置</strong></p>
@@ -312,7 +312,7 @@
 <code>p/x varname</code>  十六进制<br>
 <code>p/d varname</code> 十进制</p>
 <p><strong>通用解</strong></p>
-<p>IDA反汇编, 复制粘贴给GPT让它解决.</p>
+<p>IDA 反汇编, 复制粘贴给 GPT 让它解决.</p>
 
     </div>
 

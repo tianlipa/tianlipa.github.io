@@ -22,19 +22,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="2309.02427 Abstract 近期研究通过外部资源(如互联网)和内部控制流程(如 prompt 链)增强了 LLM 处理需要基础(grounding)或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结构化动作空间">
+    <meta name="description" content="2309.02427 Abstract 近期研究通过外部资源 (如互联网) 和内部控制流程 (如 prompt 链) 增强了 LLM 处理需要基础 (grounding) 或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cognitive Architectures for Language Agents">
 <meta property="og:url" content="https://tianlipa.github.io/2025/11/coala/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="2309.02427 Abstract 近期研究通过外部资源(如互联网)和内部控制流程(如 prompt 链)增强了 LLM 处理需要基础(grounding)或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结构化动作空间">
+<meta property="og:description" content="2309.02427 Abstract 近期研究通过外部资源 (如互联网) 和内部控制流程 (如 prompt 链) 增强了 LLM 处理需要基础 (grounding) 或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-12T09:29:56.000Z">
 <meta property="article:modified_time" content="2025-11-12T09:31:01.114Z">
 <meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="论文阅读">
 <meta property="article:tag" content="大模型">
 <meta property="article:tag" content="USTC-MINE">
-<meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
 
 
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -246,11 +246,11 @@
     
     <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2309.02427">2309.02427</a></p>
 <h2 id="Abstract">Abstract</h2>
-<p>近期研究通过外部资源(如互联网)和内部控制流程(如 prompt 链)增强了 LLM 处理需要基础(grounding)或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结构化动作空间, 和一个通用的用于选择行动的决策过程的语言智能体. CoALA 将今天的语言智能体置于 AI 更广泛的历史背景下, 并勾勒出一条通往基于语言的通用智能的道路.</p>
+<p>近期研究通过外部资源 (如互联网) 和内部控制流程 (如 prompt 链) 增强了 LLM 处理需要基础 (grounding) 或推理的任务的能力, 但尚缺乏一个有效框架组织现有 LLM 并规划未来的发展. 本文借鉴了认知科学和符号人工智能的丰富历史, 提出了语言代理认知架构 CoALA, 它描述了一个带有模块化记忆组件, 能与内在记忆和外部环境交互的结构化动作空间, 和一个通用的用于选择行动的决策过程的语言智能体. CoALA 将今天的语言智能体置于 AI 更广泛的历史背景下, 并勾勒出一条通往基于语言的通用智能的道路.</p>
 <span id="more"></span>
 <h2 id="Introduction">Introduction</h2>
 <p>语言智能体联系起了 LLM 有限的知识和推理能力与内在记忆和外部环境, 最早的智能体使用 LLM 直接选择或生成动作, 更近期的智能体还使用它们进行推理, 规划和管理长期记忆以改善决策. 最新一代<em>认知的</em>语言智能体使用非常复杂的内部过程, 而现在的独立工作使用自定义术语描述这些过程, 使比较, 分析和发展不同智能体变得非常困难.</p>
-<p>为了建立一个能够组织起这些工作的框架, 作者借鉴了计算机和 AI 历史中的两个概念:<strong>产生式系统</strong>和<strong>认知架构</strong>. 产生式系统通过迭代地应用规则产出一系列结果. 最初作为字符串处理系统, 随后被AI社区用于定义能处理复杂, 分层结构的系统, 并被纳入到认知架构中.</p>
+<p>为了建立一个能够组织起这些工作的框架, 作者借鉴了计算机和 AI 历史中的两个概念:<strong>产生式系统</strong>和<strong>认知架构</strong>. 产生式系统通过迭代地应用规则产出一系列结果. 最初作为字符串处理系统, 随后被 AI 社区用于定义能处理复杂, 分层结构的系统, 并被纳入到认知架构中.</p>
 <p>作者提出, 正如产生式系统指示了修改字符串的可能方式, LLM 也定义了一种文本变化或增加的分布. 这进一步表明, 结合产生式系统的认知架构控制可能同样适用于将 LLM 转化为语言代理.</p>
 <p>因此, 作者提出了认知架构语言智能体 CoALA, 这是一个用于描述和设计通用语言智能体的概念框架. 它将智能体按照三个关键维度进行组织:</p>
 <ul>
@@ -261,7 +261,7 @@
 <p>通过这三个概念<strong>记忆, 动作和决策</strong>, 这个框架可以清楚地表达现有的代理, 并确定开发新代理的方向.</p>
 <h2 id="Background">Background</h2>
 <h3 id="用于操作字符串的产生式系统">用于操作字符串的产生式系统</h3>
-<p>直观上, 产生式系统包括一系列规则, 每条规则指定一个前提和一个动作, 当满足前提时, 可以采取对应动作. 这个概念来自描述计算的极限的努力. Post 提出了用这些术语思考任意逻辑系统的想法, 其中将公式表达为字符串, 其结论被作为生产规则(如同一个字符串&quot;产生&quot;另一个字符串).</p>
+<p>直观上, 产生式系统包括一系列规则, 每条规则指定一个前提和一个动作, 当满足前提时, 可以采取对应动作. 这个概念来自描述计算的极限的努力. Post 提出了用这些术语思考任意逻辑系统的想法, 其中将公式表达为字符串, 其结论被作为生产规则 (如同一个字符串「产生」另一个字符串).</p>
 <p>这样的公式化随后被证明和一个简单的字符串重写系统等价, 在这样的系统中, 我们用如下形式的规则</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>X</mi><mtext> </mtext><mi>Y</mi><mtext> </mtext><mi>Z</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mi>W</mi><mtext> </mtext><mi>Z</mi></mrow><annotation encoding="application/x-tex">X \, Y \, Z \rightarrow X \, W \, Z
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></span></p>
@@ -287,12 +287,9 @@
  151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span></span></span></span>, 即 11 除以 5 等于 2 余 1. 可以证明 Markov 算法是图灵完备的.</p>
 <h3 id="认知架构-从算法到智能体">认知架构: 从算法到智能体</h3>
 <p>产生式系统超越了字符串重写, 被推广到逻辑运算: 可以与智能体目标和世界状态进行验证的前提, 和可以在前提满足时采取的行动. Allen Newell 和 Herbert Simon 给出了如下例子:</p>
-<p>(\mbox{temperature} > 70^{\circ})\wedge (\mbox{temperature} < 72^{\circ}) \rightarrow \mbox{stop}\\
-\mbox{temperature} < 32^{\circ} \rightarrow \mbox{call for repairs; turn on electric heater} \\
-(\mbox{temperature} < 70^{\circ}) \wedge \mbox{(furnace off)} \rightarrow \mbox{turn on furnace}\\
-(\mbox{temperature} > 72^{\circ}) \wedge \mbox{(furnace on)} \rightarrow \mbox{turn off furnace}
+<p>(\mbox{temperature} > 70^{\circ})\wedge (\mbox{temperature} ___MASK_1___ 72^{\circ}) \wedge \mbox{(furnace on)} \rightarrow \mbox{turn off furnace}
 </p>
-<p>此后, 产生式系统被人工智能社区采用. 人工智能研究人员定义了模仿人类认知的&quot;认知架构&quot;, 通过显式地实现感知, 记忆, 计划等过程实现灵活, 理性, 实时的行为, 实现了从心理学建模到机器人学的应用.</p>
+<p>此后, 产生式系统被人工智能社区采用. 人工智能研究人员定义了模仿人类认知的「认知架构」, 通过显式地实现感知, 记忆, 计划等过程实现灵活, 理性, 实时的行为, 实现了从心理学建模到机器人学的应用.</p>
 <p>一个典型例子是 Soar. Soar 将产生式存储在长期记忆中, 并根据它们的前提条件有多符合工作记忆执行它们. 这些产生式指定了哪些行为可以修改工作记忆和长期记忆. 以下是对 Soar 的简要介绍.</p>
 <p><strong>记忆</strong>: 工作记忆反映了智能体的目前情况, 存储了智能体最近的感知输入, 目标和中间推理产生的结果. 长期记忆分为三类:</p>
 <ul>
@@ -311,10 +308,10 @@
 <p>而 LLM 似乎非常适合应对这些挑战. 它们可以在任意文本上运行, 且不要求用户指定产生式规则, 而是在语料库上进行预训练以学习产生式规则的分布. 基于此, 研究人员已经开始在认知架构中使用 LLM, 而本文选择引入认知架构的原则指导基于 LLM 的智能体的设计.</p>
 <h2 id="LLM-与产生式系统的联系">LLM 与产生式系统的联系</h2>
 <h3 id="LLM-作为概率产生式系统">LLM 作为概率产生式系统</h3>
-<p>产生式系统定义了可以从起点出发生成的字符串集合, 并将这个步骤分解为一系列的字符串重写操作. LLM 同样定义了一个对字符串(即 LLM 的 prompt)的扩展和修改的可能集合.</p>
-<p>我们可以将一个完成一段文本的任务表述为一个产生式. 如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 是 prompt, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 是续写, 我们可以把这个产生式表述为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mtext> </mtext><mi>Y</mi></mrow><annotation encoding="application/x-tex">X \rightarrow X \,\, Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span>. 如果希望允许多个可能的续写, 则对一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的集合有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mtext> </mtext><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X \rightarrow X \,\, Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> . LLM 将对这些续写中的每一个分配一个概率, 从这个角度来看, LLM 定义了一个概率分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mi>Y</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Y_i|X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>, 用于在给定输入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 时选择一个产生式, 从而得到一个可能的续写. 因此, LLM 可以被视为一个概率产生式系统, 每次调用时产生一个可能的续写.</p>
+<p>产生式系统定义了可以从起点出发生成的字符串集合, 并将这个步骤分解为一系列的字符串重写操作. LLM 同样定义了一个对字符串 (即 LLM 的 prompt) 的扩展和修改的可能集合.</p>
+<p>我们可以将一个完成一段文本的任务表述为一个产生式. 如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 是 prompt, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 是续写, 我们可以把这个产生式表述为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mtext> </mtext><mi>Y</mi></mrow><annotation encoding="application/x-tex">X \rightarrow X \,\, Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span>. 如果希望允许多个可能的续写, 则对一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的集合有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>X</mi><mtext> </mtext><mtext> </mtext><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X \rightarrow X \,\, Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> . LLM 将对这些续写中的每一个分配一个概率, 从这个角度来看, LLM 定义了一个概率分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mi>Y</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P (Y_i|X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>, 用于在给定输入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 时选择一个产生式, 从而得到一个可能的续写. 因此, LLM 可以被视为一个概率产生式系统, 每次调用时产生一个可能的续写.</p>
 <p>这种形式与传统产生式相比, 缺点在于 LLM 的固有不透明性, 使得分析或控制其行为变得具有挑战性. 即使如此, 它们的规模和预训练仍然提供了巨大优势.</p>
-<h3 id="Prompt工程作为控制流">Prompt工程作为控制流</h3>
+<h3 id="Prompt-工程作为控制流">Prompt 工程作为控制流</h3>
 <p>LLM 的权重定义了一种对补全内容的优先级排序, 由此产生的概率分布可以被解释为一种针对特定任务的产生式优先级, 即一种简单的控制流.</p>
 <p>早期关于小样本学习和 prompt 工程的研究发现, 通过对输入的字符串进行预处理, 可以提升 LLM 给出产生式的质量.</p>
 <h3 id="向认知语言智能体迈进">向认知语言智能体迈进</h3>
@@ -323,7 +320,7 @@
 <h2 id="Results">Results</h2>
 <p>CoALA 将 LLM 定义为更大的认知架构的核心组件, 在一个结构化, 分为内外两个部分的动作空间中行动.</p>
 <ul>
-<li><strong>外部动作</strong>通过<strong>基础</strong>(grounding)与外部环境交互, 如控制机器人, 与人类交流等.</li>
+<li><strong>外部动作</strong>通过<strong>基础</strong> (grounding) 与外部环境交互, 如控制机器人, 与人类交流等.</li>
 <li><strong>内部动作</strong>与内在记忆交互, 可以进一步分为:
 <ul>
 <li>检索: 读取长期记忆</li>
@@ -333,9 +330,9 @@
 </li>
 </ul>
 <p>语言智能体遵循一个循环, 通过决策选择动作. 循环中, 智能体使用推理和检索动作进行规划, 这个规划子过程会选择一个 grounding 以影响外部世界, 或选择一个学习行动以改变长期记忆. CoALA 的决策循环就像一个程序的 main 函数, 没有返回值, 循环运行, 接受新的感知输入并调用不同的动作作为相应.</p>
-<p>CoALA 利用了记忆, grounding, 学习, 决策等关键概念, 而 LLM 的引入增加了&quot;推理&quot;动作, 可以灵活地生成新知识和启发式方法, 取代了手工写入的传统认知架构; 让文字成为了实际上的内在表示, 简化了智能体的记忆模块; 视觉 LLM 可以将感知数据直接翻译为文本, 简化了 grounding.</p>
+<p>CoALA 利用了记忆, grounding, 学习, 决策等关键概念, 而 LLM 的引入增加了「推理」动作, 可以灵活地生成新知识和启发式方法, 取代了手工写入的传统认知架构; 让文字成为了实际上的内在表示, 简化了智能体的记忆模块; 视觉 LLM 可以将感知数据直接翻译为文本, 简化了 grounding.</p>
 <h3 id="记忆">记忆</h3>
-<p>LLM 不会持久化信息, 但语言智能体可以在内部存储和维护信息. 在 CoALA框架下, 记忆模块主要包括以下几种:</p>
+<p>LLM 不会持久化信息, 但语言智能体可以在内部存储和维护信息. 在 CoALA 框架下, 记忆模块主要包括以下几种:</p>
 <ul>
 <li><strong>工作记忆</strong>为当前决策周期保存活跃且易获取的信息, 这些信息以符号变量的形式存在, 包括感知输入, 活跃知识, 从前一个决策周期传递过来的其他核心信息. 旧工作鼓励 LLM 生成中间推理步骤, 将 LLM 自身的上下文作为一种工作记忆. CoALA 框架中的工作记忆概念更为通用, 它是一种能在多次 LLM 调用间持久存在的数据结构, 每次调用的输入是从工作记忆的一个子集合成的. LLM 的输出被解析回其他变量, 存储回工作记忆并用于执行响应动作.</li>
 <li><strong>情景记忆</strong>存储先前决策周期的经验, 在决策周期的规划阶段, 可以被检索到工作记忆中以支持推理. 智能体也可以将新的经验从工作记忆写入情景记忆, 作为一种学习形式.</li>
@@ -353,8 +350,8 @@
 <ul>
 <li>用经验更新情景记忆</li>
 <li>用知识更新语义记忆</li>
-<li>更新程序性记忆(LLM 参数)</li>
-<li>更新程序性记忆(智能体代码), 包括更新推理过程, grounding 过程, 检索过程, 学习/决策过程</li>
+<li>更新程序性记忆 (LLM 参数)</li>
+<li>更新程序性记忆 (智能体代码), 包括更新推理过程, grounding 过程, 检索过程, 学习/决策过程</li>
 </ul>
 <h3 id="决策制定">决策制定</h3>
 <p>CoALA 将决策制定的顶层过程结构化为决策周期. 每个决策周期包括规划阶段和执行阶段.</p>
@@ -410,9 +407,9 @@
 
     <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
               <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
               <a href="/tags/USTC-MINE/" rel="tag"># USTC-MINE</a>
-              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
           </div>
 
         
@@ -424,6 +421,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2025/11/computer-network-5/" rel="next" title="计算机网络笔记 五.网络层">
+                  计算机网络笔记 五.网络层 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>

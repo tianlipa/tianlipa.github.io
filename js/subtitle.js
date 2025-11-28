@@ -204,7 +204,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "Adults are just obsolete children<br>and the hell with them.",
         "须知少日拏云志,<br>曾许人间第一流.",
         "事情变得有趣起来了啊",
-        "时来天地皆同力,<br>运去英雄不自由."
+        "时来天地皆同力,<br>运去英雄不自由.",
+        "哇多麼好的機會啊",
+        '<div class="formula">π<sup>4</sup> + π<sup>5</sup> ≈ e<sup>6</sup></div>',
+        "安能摧眉折腰事权贵,<br>使我不得开心颜!",
+        "山在70公里以外",
+        "土豆爆炸!",
+        "Powered by Electricity!"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

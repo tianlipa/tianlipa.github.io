@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -260,28 +260,28 @@
 <h2 id="示例">示例</h2>
 <p>MIME: Multipurpose Internet Mail Extensions, 多用途互联网邮件扩展类型</p>
 <p>常见类型：<br>
-test/html   HTML格式<br>
-application/json    JSON数据格式<br>
+test/html   HTML 格式<br>
+application/json    JSON 数据格式<br>
 multipart/form-data 文件上传（二进制数据）<br>
-image/jpeg  jpg图片格式</p>
+image/jpeg  jpg 图片格式</p>
 <p>客户端使用：<br>
-GET请求不使用MIME字段<br>
-POST请求头，放在Content Type字段用来指定上传的文件类型，方便服务器解析。放在Accept，告诉服务端允许接收的响应类型。</p>
+GET 请求不使用 MIME 字段<br>
+POST 请求头，放在 Content Type 字段用来指定上传的文件类型，方便服务器解析。放在 Accept，告诉服务端允许接收的响应类型。</p>
 <p>服务端使用：<br>
-放在响应头，Content Type告诉客户端响应的数据类型，方便客户端解析。</p>
+放在响应头，Content Type 告诉客户端响应的数据类型，方便客户端解析。</p>
 <p>等价扩展名：<br>
 asp: asa, cer, cdx<br>
 aspx: ashx, asmx, ascx<br>
 php: php2, php3, php4, php5, phps, phtml<br>
 jsp: jspx, jspf</p>
-<p>.htaccess: Hypertext Access(超文本入口)<br>
-是Apache服务器中的一个配置文件，负责相关目录下的网页配置。<br>
-通过.htaccess文件，可以实现：网页301重定向，自定义404错误页面，改变文件扩展名，允许/阻止特定用户或目录的访问，禁止目录列表，配置默认文档等功能。</p>
+<p>.htaccess: Hypertext Access (超文本入口)<br>
+是 Apache 服务器中的一个配置文件，负责相关目录下的网页配置。<br>
+通过.htaccess 文件，可以实现：网页 301 重定向，自定义 404 错误页面，改变文件扩展名，允许/阻止特定用户或目录的访问，禁止目录列表，配置默认文档等功能。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;FilesMatch “a.jpg”&gt;</span><br><span class="line">        SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
 <p>Content-Disposition:<br>
 响应头指示回复的内容以内联方式展示，还是以附件形式下载并保存到本地。</p>
 <p>文件名截断：<br>
-截断字符：chr(0), 类似C++的\0, url编码为%00，ASCII编码为0<br>
+截断字符：chr (0), 类似 C++的\0, url 编码为%00，ASCII 编码为 0<br>
 filename=test.php%00.txt    -&gt;  filename=text.php<br>
 注意可能需要处理十六进制</p>
 <p>文件头：<br>
@@ -291,14 +291,14 @@ gif: 47 49 46 38 39|37 61   (GIF89a, GIF87a)<br>
 bmp: 42 4D  (BM)<br>
 .class: ca fe ba be</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">copy a.gif /b + shell.php /a shell.gif  #Windows</span><br><span class="line">cat a.gif shell.php &gt; shell.gif #Linux</span><br></pre></td></tr></table></figure>
-<p>basename():<br>
+<p>basename ():<br>
 基于全路径字符串，返回基本文件名</p>
-<p>imagecreatefromjpeg():<br>
+<p>imagecreatefromjpeg ():<br>
 创建新图片</p>
 <p>条件竞争：<br>
 在被删之前写入一个新的一句话木马文件</p>
-<p>shell.php.*会被apache当作php文件解析。</p>
-<p>Linux文件权限：<br>
+<p>shell.php.*会被 apache 当作 php 文件解析。</p>
+<p>Linux 文件权限：<br>
 所有者 用户组 其他人<br>
 r: read, w: write, x: execute<br>
 r=4, w=2, x=1</p>
@@ -311,11 +311,11 @@ r=4, w=2, x=1</p>
 <li>连接</li>
 </ol>
 <p>绕过方式：<br>
-删除/禁用JavaScript，修改MIME，等价扩展名，大小写，htaccess，双写，空格，点，::$DATA，%00截断，0x00截断，图片马，条件竞争等。</p>
+删除/禁用 JavaScript，修改 MIME，等价扩展名，大小写，htaccess，双写，空格，点，::$DATA，%00 截断，0x00 截断，图片马，条件竞争等。</p>
 <p>fuxploider</p>
 <p>防御：<br>
 扩展名黑白名单<br>
-MIME校验<br>
+MIME 校验<br>
 文件头校验<br>
 对文件进行二次渲染<br>
 重命名<br>

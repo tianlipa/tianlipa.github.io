@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="概述 主要功能:  网络互连: 处理不同类型网络互连时出现的问题 寻址: 找到地址标识的节点. 寻址建立在路由的基础上. 路由 Routing: 根据数据的目的地址, 确定到目的网络的最佳路径  相关协议: ATM, IP. 主要设备: 路由器, L3 交换机.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络笔记 五.网络层">
+<meta property="og:url" content="https://tianlipa.github.io/2025/11/computer-network-5/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="概述 主要功能:  网络互连: 处理不同类型网络互连时出现的问题 寻址: 找到地址标识的节点. 寻址建立在路由的基础上. 路由 Routing: 根据数据的目的地址, 确定到目的网络的最佳路径  相关协议: ATM, IP. 主要设备: 路由器, L3 交换机.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-5/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-5/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-5/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-5/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-5/5.png">
+<meta property="article:published_time" content="2025-11-12T13:13:12.000Z">
+<meta property="article:modified_time" content="2025-11-28T14:56:59.809Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-network-5/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/11/computer-network-5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/11/computer-network-5/","path":"2025/11/computer-network-5/","title":"计算机网络笔记 五.网络层"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机网络笔记 五.网络层 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/11/computer-network-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机网络笔记 五.网络层 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络笔记 五.网络层
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-11-12 21:13:12" itemprop="dateCreated datePublished" datetime="2025-11-12T21:13:12+08:00">2025-11-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-28 22:56:59" itemprop="dateModified" datetime="2025-11-28T22:56:59+08:00">2025-11-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="概述">概述</h2>
+<p>主要功能:</p>
+<ul>
+<li>网络互连: 处理不同类型网络互连时出现的问题</li>
+<li>寻址: 找到地址标识的节点. <strong>寻址建立在路由的基础上.</strong></li>
+<li>路由 Routing: 根据数据的目的地址, 确定到目的网络的最佳路径</li>
+</ul>
+<p>相关协议: ATM, IP.</p>
+<p>主要设备: 路由器, L3 交换机.</p>
+<span id="more"></span>
+<h2 id="网络层向传输层提供的服务">网络层向传输层提供的服务</h2>
+<p><img data-src="/img/computer-network-5/1.png" alt=""></p>
+<p>网络层的必要性:</p>
+<ul>
+<li>相距较远的局域网之间的互联互通需要有结构化的统一地址编排, 而 MAC 地址是硬件地址, 与位置无关, 无法用来路由.</li>
+<li>二层交换机不隔离广播域, 网络规模较大时易形成广播风暴.</li>
+</ul>
+<p>网络层的设计目标:</p>
+<ul>
+<li>服务应该与通信子网的技术无关</li>
+<li>对传输层而言, 通信子网的数量, 类型和拓扑结构是隐蔽的</li>
+<li>网络地址应采用统一的编号模式</li>
+</ul>
+<p>争论: 网络层提供面向连接的服务还是非连接的服务</p>
+<p>无连接的服务:</p>
+<ul>
+<li>Internet 社区: 高效, 可扩展, 网络简单, 终端智能</li>
+<li><strong>数据报网络</strong>: IP</li>
+</ul>
+<p>面向连接的服务:</p>
+<ul>
+<li>电话公司: 便于管理, 提升服务质量, 网络智能, 终端简单</li>
+<li><strong>虚电路网络</strong>: ATM</li>
+</ul>
+<p>无连接的服务和面向连接的服务都使用存储转发.</p>
+<h3 id="数据报网络">数据报网络</h3>
+<p>来自传输层的数据经过网络层处理后直接发送.</p>
+<p>每个分组中携带完整的<strong>目的地址</strong>, 路由器根据该地址<strong>查找转发表</strong>来实现分组转发</p>
+<p>数据报网络的特点:</p>
+<ul>
+<li>每个分组的<strong>寻路是独立的</strong>, 可以合理利用网络资源</li>
+<li>如果途中一个节点或一条链路故障, 可以给分组重选路由</li>
+<li>分组头需要包含地址字段, 也会增加开销 (overhead)</li>
+<li>各分组途径的路径可能不同, 可能出现<strong>后发先到</strong></li>
+<li>分组必须有生存时间限制, 生存期满时分组被抛弃, 防止在网络内死转</li>
+</ul>
+<h3 id="虚电路网络">虚电路网络</h3>
+<p>分组在发送前建立虚连接或者虚电路 (VC, Virtual Circuit), 即在源和目的主机之间的每个交换机上建立「连接状态」.</p>
+<p>分组只携带链路范围内有效的 VCI (VC Identifier), 在交换机上标识自己所属的 VC.</p>
+<p>服务质量保证: 在建立连接阶段确保每条虚电路能有足够的资源, 以保证带宽, 延时等需求.</p>
+<p>特点:</p>
+<ul>
+<li>一条物理链路可以对应多条逻辑信道</li>
+<li>一条虚电路由各物理链路上的逻辑信道级联而成, 占用了节点上的一条逻辑信道实际上是占用了该节点上缓存器内的一个存储空间</li>
+<li>分组靠逻辑信道号 LCN 选择路由, LCN 只有局部意义, 所以减少了分组头标的开销和处理的复杂度</li>
+<li>有接入控制, 能有效防止拥塞</li>
+</ul>
+<p>虚电路与数据包的比较:</p>
+<table>
+<thead>
+<tr>
+<th><strong>问题</strong></th>
+<th><strong>数据报</strong></th>
+<th><strong>虚电路</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>连接建立</strong></td>
+<td>不需要</td>
+<td>需要</td>
+</tr>
+<tr>
+<td><strong>路由与转发</strong></td>
+<td>每个分组都包含源/目的地址, 独立路由, 路由器根据分组的目的地址进行路由转发</td>
+<td>建立连接时需要路由, 一旦建立逻辑通道, 后续分组都根据分组头的逻辑通道号转发</td>
+</tr>
+<tr>
+<td><strong>路由器状态</strong></td>
+<td>不保留分组路由过的状态信息</td>
+<td>路由器需要保留每个连接的状态信息, 以便后续分组的转发</td>
+</tr>
+<tr>
+<td><strong>分组路径与到达顺序</strong></td>
+<td>同一流的分组可能沿不同的路径到达目的端, 有可能乱序</td>
+<td>同一流的分组沿建立好的虚电路到达按序目的端</td>
+</tr>
+<tr>
+<td><strong>路由器故障影响</strong></td>
+<td>通过相邻节点的路由表更新, 能迂回故障节点</td>
+<td>故障路由器上的所有连接都将中断</td>
+</tr>
+<tr>
+<td><strong>服务质量</strong></td>
+<td>较难提供</td>
+<td>易于在建立连接时在路径上的各个节点预留资源</td>
+</tr>
+<tr>
+<td><strong>拥塞控制</strong></td>
+<td>较难提供</td>
+<td>在建立连接时, 可根据网络的资源选择路径, 避免网络拥塞</td>
+</tr>
+</tbody>
+</table>
+<h2 id="路由算法">路由算法</h2>
+<p>路由 Routing: 找到从源主机到目的主机 (所在网络) 的「最佳」路径的过程, 基于路由算法得到路由表.</p>
+<p>转发 Forwarding: 在路由器内部将分组从输入端口转发到输出端口的过程, 基于转发表.</p>
+<p>注: 虽然路由算法找到的是「路径」, 但是对于执行路由算法的路由器来说, 由于分组采用逐跳转发, 所以只需要在路由表中指定转发的下一跳节点即可.</p>
+<h3 id="路由算法的分类">路由算法的分类</h3>
+<p>静态路由/非自适应算法: 事先算好, 适用于用户主机或小规模网络.</p>
+<p><strong>动态路由/自适应算法</strong>: 根据网络拓扑结构和状态的变化动态调整最优路径, 每个路由器需要动态更新路由表. 适用于动态性大的网络或大规模网络, 算法包括<strong>距离矢量算法</strong>和<strong>链路状态算法</strong>.</p>
+<p>「最优」: 跳数, 物理距离, 队列长度, 排队延迟, 可用带宽等.</p>
+<h3 id="路由算法的图模型">路由算法的图模型</h3>
+<p>图中的节点表示路由器或网络, 图中的边对应于网络中的链路, 每条边上都有一个相应的开销 Cost.</p>
+<p>Cost 是跳数, 物理距离, 队列长度, 排队延迟, 可用带宽等因素的函数.</p>
+<p>路由算法即找到开销最小的路径.</p>
+<h3 id="距离矢量算法">距离矢量算法</h3>
+<p>距离矢量算法, 也称 Bellman-Ford 算法.</p>
+<p>距离矢量 DV (Distance Vector):</p>
+<ul>
+<li>每个节点都维护一个包含了到所有其它节点的「距离」的路由表, 也称为矢量表.</li>
+<li>每个节点都将自己的路由表 (矢量表) 分发给它的邻居节点.</li>
+</ul>
+<p>基本思想: 每个节点把自己的所有路由表 (矢量表) 发给邻居节点.</p>
+<p>存在的问题:</p>
+<ul>
+<li>逐跳扩散路由信息, 对网络状态变化反映速度慢.</li>
+<li>路由表只包括下一跳的信息, 存在计数到无穷问题, 适用网络规模受限.</li>
+</ul>
+<h4 id="算法过程">算法过程</h4>
+<p>初始时每个节点都知道到自己直接邻居节点的距离, 到其它节点的距离被指定为无穷大.</p>
+<p>每个节点向它的所有直接邻居节点发送自己的所有路由表信息, 告诉邻居节点自己到其它节点的距离.</p>
+<p>A 接收到邻居节点发送的路由表信息, 则 A 计算通过该邻居到其它每个节点的距离, 如果该距离小于自己保存的路由表中到对应节点的距离, 则用该距离和邻居更新路由表</p>
+<h4 id="更新消息">更新消息</h4>
+<p>在距离矢量算法中, 节点通过发送更新消息向直接邻居节点公告自己到其它每个节点的距离.</p>
+<p>两种情况下发送更新消息:</p>
+<ul>
+<li>定期更新</li>
+<li>触发更新, 一个节点从它的邻居节点接收到消息, 导致改变路由表而引发的更新.</li>
+</ul>
+<h4 id="故障">故障</h4>
+<p>故障发现机制:</p>
+<ul>
+<li>节点通过<strong>发送控制分组</strong>持续检测另一个节点的链路, 并查看是否收到确认.</li>
+<li>如果节点在最近几次更新周期中<strong>接收不到预期的定期更新</strong>, 则确定该链路 (或链路另一端的节点) 发生故障.</li>
+</ul>
+<p>故障处理: 最先发现故障的节点会发送更新消息给邻居节点, 将到故障链路或故障节点的距离设置为无穷大.</p>
+<p>故障可能导致路由环路.</p>
+<p>解决方案:</p>
+<ul>
+<li>限制选择一个相对较小的数作为无穷大的近似值, 例如 16, 但这种方法限制了网络的可扩展性.</li>
+<li>水平分割 (split horizon), 当一个节点把路由更新发送给邻居节点时, 它并不把从各个邻居节点处学到的路由再回送给该节点. 但水平分割只对两个节点的路由循环有效, 更大的路由循环需要更强的措施.</li>
+</ul>
+<h3 id="链路状态算法">链路状态算法</h3>
+<ul>
+<li>主动测试邻接节点的状态</li>
+<li>定期地将相邻节点的状态信息传送给所有节点</li>
+<li>每个节点都拥有完整的网络拓扑信息, 然后计算到每个节点的最佳路径</li>
+</ul>
+<p>该方法也叫最短路径优先 (Shortest Path First) 算法, 简称 SPF 算法.</p>
+<p>链路状态 LS, Link State:</p>
+<ul>
+<li>每个节点都知道到自己邻居节点的链路状态 (开销).</li>
+<li>每个节点到达邻居节点的链路状态信息<strong>在整个网络中传播</strong>, 因此每个节点都有足够的网络信息来建立一个完整的网络映像, 因此能够找到到达网络中任何节点的最短路径.</li>
+</ul>
+<p>链路状态分组 LSP, LS Packet: 在 LS 算法运行过程中, 每个节点创建 LSP, 包含信息:</p>
+<ul>
+<li>创建该 LSP 的节点标识 ID</li>
+<li>与该节点直接相邻的节点列表, 包括到这些相邻节点的链路状态 (开销)</li>
+<li>一个序列号'</li>
+<li>这个分组的生存期 (TTL)</li>
+</ul>
+<p>链路状态算法的两个过程:</p>
+<ul>
+<li>LSP 的可靠传播和扩散</li>
+<li>节点根据所积累的 LSP 知识的总和进行路由计算</li>
+</ul>
+<h4 id="可靠扩散">可靠扩散</h4>
+<p>第一步: 可靠扩散/泛洪 Reliable Flooding.</p>
+<ul>
+<li>节点创建 LSP.</li>
+<li>节点沿着所有与其直接相连的链路将 LSP 发送出去, 接收到 LSP 的每个节点再沿着除接收链路以外的所有其它与它相连的链路转发出去, 这个过程一直继续, 直到 LSP 到达网络中的所有节点.</li>
+<li>相邻路由器之间的 LSP 传递使用确认和重传机制来保证可靠性.</li>
+</ul>
+<p><img data-src="/img/computer-network-5/2.png" alt=""></p>
+<p>LSP 的产生:</p>
+<ul>
+<li>周期性公告</li>
+<li>触发式公告: 拓扑结构变化, 意味着一个与节点直接相连的链路或者邻居出现故障
+<ul>
+<li>链路故障发现: 链路层协议发现</li>
+<li>邻居故障发现: 周期性的「hello」分组发现</li>
+</ul>
+</li>
+</ul>
+<p>LSP 更新:</p>
+<ul>
+<li>LSP 携带序列号, 节点每产生一个新的 LSP, 就将序列号加 1, 在节点上, 序列号大的 LSP 将替换序列号小的 LSP.</li>
+<li>LSP 携带生存期 TTL, 每个节点在将接收到的 LSP 扩散到其它节点之前, 对其 TTL 减 1. TTL 为 0 时, 看作是删除该 LSP 的信号.</li>
+</ul>
+<p>LSP 开销: 设置大的<strong>周期性公告</strong>间隔, 通常为几小时.</p>
+<h4 id="路由计算">路由计算</h4>
+<p>每个节点根据来自其它所有节点的 LSP 计算出完整的网络拓扑结构图, 在网络拓扑结构图的基础上采用 Dijkstra 算法计算到每个目的节点的最短路径, 即最佳路由.</p>
+<p>Dijkstra 算法略, 忘了去 B 站找个视频看.</p>
+<h4 id="距离矢量与链路状态的比较">距离矢量与链路状态的比较</h4>
+<p>距离矢量 (DV) 路由算法:</p>
+<ul>
+<li>每个节点只和直接相连的节点进行通信</li>
+<li>节点向相邻节点告诉它所知道的所有节点的路由信息</li>
+<li>节点根据相邻节点的路由信息更新自己的路由表</li>
+<li>分布式计算, 计算得到到所有节点的最短路径的下一跳节点</li>
+<li>可扩展性差:
+<ul>
+<li>距离矢量算法只适用于小规模网络, 为了避免计数到无穷问题, 网络直径一般不能超过 15 跳</li>
+<li>与链路状态算法相比, 对网络变化反应较慢</li>
+</ul>
+</li>
+</ul>
+<p>链路状态 (LS) 路由算法:</p>
+<ul>
+<li>节点向所有节点告诉其相邻节点的状态信息, 但只告诉它们自己确切知道的信息 (即与其直接相连的链路状态)</li>
+<li>每个节点都有一个全局的拓扑结构</li>
+<li>根据此拓扑结构计算路由表</li>
+<li>(相对来说) 可扩展性好, 可靠</li>
+</ul>
+<h2 id="拥塞控制">拥塞控制</h2>
+<p>当大量分组进入通信子网, 超出了网络的处理能力时, 就会引起网络局部或整体性能下降, 这种现象称为<strong>拥塞</strong>.</p>
+<p>路由器的<strong>队列溢出</strong>, <strong>分组丢失</strong>, 礼崩乐坏.</p>
+<p>拥塞的后果:</p>
+<ul>
+<li>分组延迟和丢包率增大</li>
+<li>加大源主机的分组重传</li>
+<li>网络有效吞吐量下降</li>
+</ul>
+<p>拥塞的原因:</p>
+<ul>
+<li>路由器的处理速度, 存储空间, 带宽受限</li>
+<li>网络负载分布不平衡</li>
+<li>主机发送分组的速率过快</li>
+</ul>
+<p>信道利用率指出某信道有百分之几的时间是被利用的 (有数据通过).</p>
+<p>网络利用率则是全网络的信道利用率的加权平均值.</p>
+<p>延时 D 与网络利用率 U 之间的关系:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>D</mi><mo>=</mo><mfrac><msub><mi>D</mi><mn>0</mn></msub><mrow><mn>1</mn><mo>−</mo><mi>U</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">D = \frac{D_0}{1-U}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span>: 网络的利用率<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">D_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: 网络空闲时的时延<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span>: 网络当前的时延</p>
+<p><img data-src="/img/computer-network-5/3.png" alt=""></p>
+<p>结论: 信道或者网络利用率过高会产生非常大的延迟, 因此, 一些拥有较大骨干网的 ISP 通常控制他们的信道或者网络利用率不超过 50%, 如果超过了就要考虑扩容, 增大线路的带宽.</p>
+<h3 id="拥塞控制与流量控制">拥塞控制与流量控制</h3>
+<p>拥塞控制:</p>
+<ul>
+<li>网络拥塞的直接原因是网络负载的不均衡引起, 例如, 某个路由器的多个输入端口向同一个输出端口传输分组.</li>
+<li>拥塞控制是一个<strong>全局</strong>问题, 涉及的节点包括主机, 路由器.</li>
+<li>拥塞发生在网络内, 但对于无连接的网络很难在网络层单独控制拥塞, 因此网络层和传输层共同承担拥塞控制.</li>
+</ul>
+<p>流量控制:</p>
+<ul>
+<li>接收端或所在网络的接收速度小于发送端的发送速度.</li>
+<li>只涉及收发两端, 是<strong>局部</strong>问题.</li>
+</ul>
+<p>注意不要混淆.</p>
+<h3 id="拥塞控制的一般原理">拥塞控制的一般原理</h3>
+<p>从控制理论观点出发, 可以分为两类:</p>
+<ul>
+<li>开环控制 (Open Loop), 基于良好的设计.
+<ul>
+<li>用良好的设计来解决问题, 尽量确保拥塞从一开始就不会发生</li>
+<li>业务量整形: 漏桶算法, 令牌桶算法</li>
+</ul>
+</li>
+<li>闭环控制 (Close Loop), 基于反馈环路的概念
+<ul>
+<li>监测系统何时, 何处发生拥塞</li>
+<li>将拥塞信息传到能控制拥塞的地方</li>
+<li>调整系统操作以缓解拥塞</li>
+</ul>
+</li>
+</ul>
+<p>指示网络拥塞的参数:</p>
+<ul>
+<li>分组丢包率/分组重传率</li>
+<li>平均队列长度</li>
+<li>平均分组延时</li>
+</ul>
+<h3 id="漏桶算法">漏桶算法</h3>
+<p>Leaky Bucket</p>
+<p>只要桶中有水, 水流出的速率就是常数; 桶中没有水的时候, 水流出的速率为 0; 桶满以后, 往里面流的水会溢出.</p>
+<p>将漏桶看做是一个有限长度的队列, 以字节为单位计数, 当分组到达的时候, 如果队列中还有空间的话, 就被添加到对列的尾部, 否则该分组将被丢弃.</p>
+<p>在每一个时间周期, 首先将计数器初始化为 n (漏桶发送速率 × 时间周期, 单位时间能发送的数据量), 如果队列中第一个分组的字节数少于计数器的当前值, 则将分组发送出去, 并且将计数器减去该分组的字节数. 然后对下一个分组执行同样的过程, 直到出现计数器的值小于队列中的分组的长度为止. 此时, 传输过程终止, 直到下一个时间再开始该该分组发送过程.</p>
+<p>省流: <strong>总是以恒定速率输出, 溢出的数据被直接丢弃.</strong></p>
+<p>例: 计算机以 25MB/秒速率产生数据, 向网络发送 1MB 的数据 (即以 25MB/秒速率发送了 40 毫秒), 而网络的最佳传输速率不超过 2MB/秒, 如果采用漏桶算法, 中间节点进行数据传输的速率和总时间需要多久?</p>
+<p>答: 为了降低传送速率取漏桶输出速率ρ=2MB/秒, 容量 C=1MB, 因此, 1MB 的数据将以 2MB/秒的速率传输 500 毫秒.</p>
+<h3 id="令牌桶算法">令牌桶算法</h3>
+<p>Token Bucket</p>
+<p>桶中保存的是令牌, 每隔 T 秒产生一个, 只有当桶中有令牌时才能传输数据.</p>
+<p>允许突发流量.</p>
+<p>溢出丢弃的是令牌, 而不是数据.</p>
+<p>例: 计算机以 25MB/秒速率产生数据, 向网络发送 1MB 的数据 (即以 25MB/秒速率发送了 40 毫秒), 而网络的最佳传输速率不超过 2MB/秒, 如果采用令牌桶算法且令牌桶容量为 250kB, 中间节点进行数据传输的速率和总时间需要多久?</p>
+<p>答: 设突发长度为 S 秒, 令牌桶容量 C 字节, 令牌产生速率为ρ字节/秒, 计算机最大数据速率 M  B/秒.<br>
+取 C=250,000B, M=25MB/s,  ρ=2MB/s</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mo>+</mo><mi>ρ</mi><mi>S</mi><mo>=</mo><mi>M</mi><mi>S</mi><mspace linebreak="newline"></mspace><mi>S</mi><mo>=</mo><mfrac><mi>C</mi><mrow><mi>M</mi><mo>−</mo><mi>ρ</mi></mrow></mfrac><mo>=</mo><mn>11</mn><mi>m</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">C+ ρS=MS \\   S=\frac{C}{M-ρ}=11ms
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">ρS</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">MS</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">ρ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">11</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span></span></span></span></span></p>
+<p>剩余数据以 2M 字节/秒发送 364 毫秒.</p>
+<h3 id="漏桶算法与令牌桶算法的比较">漏桶算法与令牌桶算法的比较</h3>
+<p>漏桶算法的输出保持的是严格的均匀速率, 不管业务流量的突发程度如何. 在漏桶算法中, 不允许将空闲时的发送许可权保存起来以便发送大的突发数据, 每个时钟嘀嗒后, 漏桶的字节计数器都将被重置.</p>
+<p>令牌桶算法在大量突发数据到来的时候, 允许输出流适当的加快. 可以将发送许可权保存起来, 直到到达桶的最大尺寸, 意味着只要突发数据不超过桶的大小, 就可以一次发送出去.</p>
+<p>在漏桶算法中, 桶中填充的是数据, 所以当桶填满后将丢弃分组; 在令牌桶中, 桶中填充的是令牌, 所以当桶填满后将丢弃令牌, 即丢弃传输许可, 而不是分组.</p>
+<h3 id="拥塞控制的闭环策略">拥塞控制的闭环策略</h3>
+<p>闭环控制 Close Loop:</p>
+<ul>
+<li>检测到拥塞时, 就发一个分组给源端或向所有主机广播.</li>
+<li>在每个分组头中保留一个位或域, 当拥塞超过一定值时, 路由器就在该位或域上填上拥塞信息通知网络节点.</li>
+<li>由主机或路由器发送询问分组打听拥塞情况.</li>
+</ul>
+<h3 id="虚电路网络中的拥塞控制">虚电路网络中的拥塞控制</h3>
+<p>用户事先与网络服务提供商协商好服务等级, 在虚电路建立过程中预留相应的资源.</p>
+<p>节点上的接纳控制 (Admission Control): 如果网络出现拥塞, 拒接建立新的虚电路.</p>
+<p>虚电路建立时绕开发生拥塞的区域.</p>
+<p><img data-src="/img/computer-network-5/4.png" alt=""></p>
+<h3 id="数据报网络中的拥塞控制">数据报网络中的拥塞控制</h3>
+<p>抑制分组:</p>
+<ul>
+<li>源抑制: 当路由器发生拥塞时, 发送抑制分组给源主机, 其中指明原分组的目的地址; 源主机收到抑制分组后, 减慢到指定目的地的流量.</li>
+<li>逐跳抑制: 抑制分组将对其通过的每跳都起作用.</li>
+</ul>
+<p><img data-src="/img/computer-network-5/5.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/11/coala/" rel="prev" title="Cognitive Architectures for Language Agents">
+                  <i class="fa fa-angle-left"></i> Cognitive Architectures for Language Agents
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/11/still-i-rise/" rel="next" title="Still I Rise">
+                  Still I Rise <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
