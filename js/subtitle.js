@@ -210,7 +210,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "安能摧眉折腰事权贵,<br>使我不得开心颜!",
         "山在70公里以外",
         "土豆爆炸!",
-        "Powered by Electricity!"
+        "Powered by Electricity!",
+        "基本无害"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
