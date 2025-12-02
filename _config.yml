@@ -204,7 +204,7 @@ markdown:
     langPrefix: 'language-'
     breaks: true
     linkify: true
-    typographer: true
+    typographer: false
     quotes: '“”‘’'
   enable_rules:
   disable_rules:
@@ -221,7 +221,7 @@ markdown:
     case: 0
     separator: '-'
   images:
-    lazyload: true
+    lazyload: false
     prepend_root: false
     post_asset: false
   inline: false  # https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline

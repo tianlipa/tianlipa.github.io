@@ -182,10 +182,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "世界以痛吻我,<br>我报之以哈气.",
         "指鹿为马, 不负韶华.",
         "只要我还活着,<br>我就不会让人类灭绝这件事发生.",
-        "耶  复活了",
+        "耶&#12288;复活了",
         "我司雇我在",
         "这该死的沙漠!<br>我们都会淹死在这里.",
-        "Get busy living,<br>or get busy dying.",
+        "Get busy living, or get busy dying.",
         "梦想一斤七毛五",
         "这个人很懒, 什么也没留下.",
         "只是睡着了",
@@ -195,7 +195,23 @@ document.addEventListener("DOMContentLoaded", function () {
         "我的研究表明, 世界上存在一个直径800米左右的球体, 且味道还不错",
         "没有证据是没有的弱证据",
         "吾不识青天高, 黄地厚.<br>唯见月寒日暖, 来煎人寿.",
-        "Get me off your fucking mailing list."
+        "Get me off your fucking mailing list",
+        "太阳照常升起",
+        "宝宝due due delay了",
+        "<span style='color: transparent;'>呀哈哈! 我被发现了!</span>",
+        "生活就像一盒巧克力<br>我就像一条狗",
+        "他们生也快乐, 死也快乐,<br>杯子里面总有酒喝.",
+        "Adults are just obsolete children<br>and the hell with them.",
+        "须知少日拏云志,<br>曾许人间第一流.",
+        "事情变得有趣起来了啊",
+        "时来天地皆同力,<br>运去英雄不自由.",
+        "哇多麼好的機會啊",
+        '<div class="formula">π<sup>4</sup> + π<sup>5</sup> ≈ e<sup>6</sup></div>',
+        "安能摧眉折腰事权贵,<br>使我不得开心颜!",
+        "山在70公里以外",
+        "土豆爆炸!",
+        "Powered by Electricity!",
+        "基本无害"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
