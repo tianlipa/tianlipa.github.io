@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">120</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -287,7 +287,10 @@
  151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span></span></span></span>, 即 11 除以 5 等于 2 余 1. 可以证明 Markov 算法是图灵完备的.</p>
 <h3 id="认知架构-从算法到智能体">认知架构: 从算法到智能体</h3>
 <p>产生式系统超越了字符串重写, 被推广到逻辑运算: 可以与智能体目标和世界状态进行验证的前提, 和可以在前提满足时采取的行动. Allen Newell 和 Herbert Simon 给出了如下例子:</p>
-<p>(\mbox{temperature} > 70^{\circ})\wedge (\mbox{temperature} ___MASK_1___ 72^{\circ}) \wedge \mbox{(furnace on)} \rightarrow \mbox{turn off furnace}
+<p>(\mbox{temperature} > 70^{\circ})\wedge (\mbox{temperature} < 72^{\circ}) \rightarrow \mbox{stop}\\
+\mbox{temperature} < 32^{\circ} \rightarrow \mbox{call for repairs; turn on electric heater} \\
+(\mbox{temperature} < 70^{\circ}) \wedge \mbox{(furnace off)} \rightarrow \mbox{turn on furnace}\\
+(\mbox{temperature} > 72^{\circ}) \wedge \mbox{(furnace on)} \rightarrow \mbox{turn off furnace}
 </p>
 <p>此后, 产生式系统被人工智能社区采用. 人工智能研究人员定义了模仿人类认知的「认知架构」, 通过显式地实现感知, 记忆, 计划等过程实现灵活, 理性, 实时的行为, 实现了从心理学建模到机器人学的应用.</p>
 <p>一个典型例子是 Soar. Soar 将产生式存储在长期记忆中, 并根据它们的前提条件有多符合工作记忆执行它们. 这些产生式指定了哪些行为可以修改工作记忆和长期记忆. 以下是对 Soar 的简要介绍.</p>

