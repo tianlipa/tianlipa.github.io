@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
   <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
   <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
 
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -310,7 +310,7 @@
 <li><strong>反馈计划</strong>: 在一开始就生成一个完美的计划非常困难, 因此在需要长期规划以解决复杂任务的实际场景中, 常常采用反馈规划, 包括<strong>环境反馈</strong>, <strong>人工反馈</strong>和<strong>模型反馈</strong>. 反馈计划的模块需要仔细设计, 但功能强大的多, 且对需要长期推理的任务效果出色.</li>
 </ul>
 <h4 id="行动模块">行动模块</h4>
-<p>行动模块负责将智能体的决策转化为具体的结果. 该模块直接与环境交互, 并受档案模块, 记忆模块和计划模块的影响. 本文从四个角度介绍行动模块, 分别是<strong>行动目标</strong> (行动的预期结果), <strong>行动产出</strong> (行动是如何产生的), <strong>行动空间</strong> (有哪些可用行动), <strong>行动影响</strong> (行动的后果).</p>
+<p>行动模块负责将智能体的决策转化为具体的结果. 该模块直接与环境交互, 并受档案模块, 记忆模块和计划模块的影响. 本文从四个角度介绍行动模块, 分别是<strong>行动目标</strong>(行动的预期结果), <strong>行动产出</strong>(行动是如何产生的), <strong>行动空间</strong>(有哪些可用行动), <strong>行动影响</strong>(行动的后果).</p>
 <p><strong>行动目标</strong>: 智能体可以为各种目的进行行动, 例如完成任务, 交流沟通, 探索环境等.</p>
 <p><strong>行动产出</strong>: 不同于普通 LLM 的输入和输出直接相关, 智能体可以根据不同的策略和来源采取行动. 常用的策略有<strong>通过记忆采取行动</strong>, 从智能体的记忆中提取信息生成行动, 如查找是否有与该任务相关的成功经验, 或<strong>通过计划采取行动</strong>, 智能体按预先生成的计划执行动作.</p>
 <p><strong>行动空间</strong>是智能体能采取的可能行动的集合, 一般分为<strong>外部工具</strong>和<strong>内在知识</strong>. 外部工具可以帮助解决需要全面专业知识领域的问题, 包括 API, 数据库, 知识库, 外部模型等. 许多智能体仅依靠 LLM 的内部知识指导其行为, 包括 LLM 的规划能力, 对话能力, 常识理解能力等.</p>

@@ -211,7 +211,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "山在70公里以外",
         "土豆爆炸!",
         "Powered by Electricity!",
-        "基本无害"
+        "基本无害",
+        "比起精神出轨和肉体出轨<br>火车出轨更为伤人"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

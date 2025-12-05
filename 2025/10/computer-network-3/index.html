@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
   <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
   <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
 
@@ -176,7 +176,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -296,7 +296,7 @@
 <ul>
 <li><strong>单工通信</strong>: 是指消息只能单方向传输的工作方式.</li>
 <li><strong>半双工通信</strong>: 是指数据可以沿两个方向传送, 但同一时刻一个信道只允许单方向传送.</li>
-<li><strong>全双工</strong> (Full Duplex) 是指在通信的任意时刻, 两个节点间可以同时双向传输信号.
+<li><strong>全双工</strong>(Full Duplex) 是指在通信的任意时刻, 两个节点间可以同时双向传输信号.
 <ul>
 <li>时分双工 TDD (Time Division Duplex) 是移动通信中上下行在同一频段上按照时间分配交叉进行传输.</li>
 <li>频分双工 FDD (Frequency Division Duplex) 是指上下行在不同频段同时进行传输.</li>
@@ -380,7 +380,7 @@
 </ul>
 <h4 id="改进的奇偶校验">改进的奇偶校验</h4>
 <p>对数据位组成一个 L 位宽, K 位高的长方形距阵来发送, 然后对每一列单独计算奇偶位, 并附在最后一行作为冗余位.</p>
-<p>该方法可以检测所有长度为 L 的<strong>突发性错误</strong> (即第一位和最后一位是错误的).</p>
+<p>该方法可以检测所有长度为 L 的<strong>突发性错误</strong>(即第一位和最后一位是错误的).</p>
 <p>当出现错误长度大于 L 时, 假设 L 列中任意一列检测出错的概率为 1/2, 那么, 整个数据块的错判率 (实际出错却判为正确的概率) 为$ (1/2)^L$.</p>
 <p>该方法用在 ICMP 报头检验中.</p>
 <h4 id="多项式编码">多项式编码</h4>
@@ -389,7 +389,7 @@
 <p>发送方: 给定一个 m 位的数据, 生成 r 位的序列 (也称为帧检验序列 FCS, Frame Check Series), 形成 (m+r) 位的码字 (帧), 该码字能被某个事先确定的多项式整除.</p>
 <p>接收方: 用相同的多项式去除收到的帧, 如果无余数, 则认为数据帧无差错.</p>
 <p>编码方法: 约定一个<strong>r+1 位 r 次</strong>生成多项式 G (x) 作除数, <strong>最高位和最低位必须为 1</strong>, 在原消息后补<strong>r 位</strong>0, 补完后除以 G (x) 得到余数, 加在补 0 后消息上发送.</p>
-<p>能检验出<strong>所有长度小于等于 r 的突发错误</strong> (即检测率 100%) (也可以检测随机错误).</p>
+<p>能检验出<strong>所有长度小于等于 r 的突发错误</strong>(即检测率 100%) (也可以检测随机错误).</p>
 <p>如果突发长度为<strong>r+1</strong>, <strong>当且仅当差错与 G (X) 相同时才被整除</strong>. 根据突发错误长度的定义, 其第 1 位和最后 1 位必须是 1, 因此与 G (X) 完全相同的概率为$ (\frac{1}{2})^{r-1}$, 检测率<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mo stretchy="false">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mo stretchy="false">)</mo><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1- (\frac{1}{2})^{r-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
 <p>对于长度<strong>大于 r+1</strong>的差错, 其错判率为$ (\frac{1}{2})^{r}$, 检测率<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mo stretchy="false">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mo stretchy="false">)</mo><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">1- (\frac{1}{2})^{r}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
 <p>常用的生成多项式国际标准:</p>
@@ -459,7 +459,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <h2 id="滑动窗口-Slide-Windows-协议">滑动窗口 (Slide Windows) 协议</h2>
 <p>滑动窗口协议是一种非常可靠, 适用于各种条件的通用<strong>流量控制</strong>协议, 特别是在效率, 复杂性及对缓冲区的需求等方面可作灵活调配.</p>
 <p>发送端和接收端分别设定发送窗口和接收窗口 , 发送窗口用来对发送端进行流量控制.</p>
-<p>主要的滑动窗口协议有<strong>回退 N 协议</strong> (go-back-n, 出错全部重发) 和<strong>选择重发协议</strong>, <strong>停-等协议是窗口大小为 1 的滑动窗</strong>.</p>
+<p>主要的滑动窗口协议有<strong>回退 N 协议</strong>(go-back-n, 出错全部重发) 和<strong>选择重发协议</strong>, <strong>停-等协议是窗口大小为 1 的滑动窗</strong>.</p>
 <p>帧序号用 n 位编码, 范围为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
 <p><img data-src="/img/computer-network-3/13.png" alt=""></p>
 <h3 id="发送窗口">发送窗口</h3>
@@ -477,7 +477,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 </ul>
 <p><img data-src="/img/computer-network-3/15.png" alt=""></p>
 <h3 id="数据的捎带确认">数据的捎带确认</h3>
-<p>在实际通信中, 通常收发双方都相互发送数据. 为了提高效率, 可以将确认信息放在数据帧中作为一个控制字段连同数据一起发送给对方, 这种方式称为<strong>捎带应答</strong> (piggybacking).</p>
+<p>在实际通信中, 通常收发双方都相互发送数据. 为了提高效率, 可以将确认信息放在数据帧中作为一个控制字段连同数据一起发送给对方, 这种方式称为<strong>捎带应答</strong>(piggybacking).</p>
 <p>当一方收到对方的数据帧后:</p>
 <ul>
 <li>若正好也有数据需发给对方, 则立即可使用捎带应答.</li>
@@ -488,7 +488,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <p>回退 N 协议 (也叫出错全部重发协议) 中, 发送窗口的尺寸大于 1, 接收窗口的尺寸等于 1.</p>
 <p>由于接收窗口的尺寸为 1, 接收端只能按顺序接受数据帧, 一旦某个帧出错或丢失, 只能丢弃该帧及其所有的后续帧 (因为发送窗口的尺寸是大于 1 的), 发送端超时后需重发出错或丢失的帧及其后续所有的帧.</p>
 <p>发送端需要为每个待确认的帧都各自设置一个定时计数器.</p>
-<p><strong>发送窗口的尺寸不能超过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></strong> (n 为序号的编码位数), 否则接收端无法分辨新, 旧数据帧.</p>
+<p><strong>发送窗口的尺寸不能超过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></strong>(n 为序号的编码位数), 否则接收端无法分辨新, 旧数据帧.</p>
 <p><img data-src="/img/computer-network-3/16.png" alt=""></p>
 <p>优点: 出错全部重发协议只要求发送端保持一定数量的缓存来保存没有确认的数据帧, <strong>对接收端没有缓存的要求</strong>.</p>
 <p>缺点: 在误码率高的情况下, 会大大降低信道的利用率.</p>
@@ -497,7 +497,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <p>选择重发协议中, 发送和接收窗口的尺寸都大于 1.</p>
 <p>由于接收窗口的尺寸大于 1, 接收端可存储坏帧之后的其它数据帧 (落在接收窗口), 接收端对错帧发否定确认帧, 因此发送端只需重发出错的帧, 而不需重发其后的所有后续帧.</p>
 <p>接收端正确收到重发的帧后, 可对其后连续的已接收的正确帧作一次总体确认 (最大序号的确认), 并交送网络层. 大大提高了信道的利用率.</p>
-<p><strong>接收窗口的尺寸不能超过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></strong> (即序号范围的 1/2), 否则可能造成帧的重叠.</p>
+<p><strong>接收窗口的尺寸不能超过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></strong>(即序号范围的 1/2), 否则可能造成帧的重叠.</p>
 <p>发送窗口的尺寸一般和接收窗口的尺寸相同, 发送端为每一个输出缓存区设置一个定时计数器, 定时器一旦超时, 相应输出缓存区中的帧就被重发.</p>
 <p>选择重发协议可以和否定确认 (Negative Acknowledgement, NAK) 结合起来, 进一步提高协议效率.</p>
 <ul>
@@ -533,8 +533,8 @@ P/F: 在命令帧中作为询问, 在响应帧中表示数据发送结束</p>
 <p><img data-src="/img/computer-network-3/20.png" alt=""></p>
 <p>PPP 由以下几部分组成:</p>
 <ul>
-<li><strong>串行链路上的数据的封装方法</strong> (多协议封装能力)</li>
-<li><strong>链路控制协议</strong> (LCP: Link Control Protocol): 用来建立, 配置, 测试数据链路连接</li>
+<li><strong>串行链路上的数据的封装方法</strong>(多协议封装能力)</li>
+<li><strong>链路控制协议</strong>(LCP: Link Control Protocol): 用来建立, 配置, 测试数据链路连接</li>
 <li>认证协议 (可选): 对拨号接入的用户进行认证, 以便于计费, 例如 PAP, CHAP</li>
 <li>网络控制协议 (NCP): 对不同的网络层协议定义了对应的网络控制协议, 例如 IPCP</li>
 </ul>

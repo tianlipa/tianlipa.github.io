@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="网络互连需要一个全局统一的规则, 所有通讯设备运行 IP 协议.  不同网络采用的数据链路层和物理层协议可能不同, 对于这种网络, 可以采用相同的网络层协议实现它们的互连. 对于 Internet, 这个协议就是 IP, 使用的网络互连设备就是路由器. 路由器负责处理 IP 分组, 连接不同的网络, 在不同的网络之间提供数据转发服务. Internet 设备主要包括:  网络侧设备: 例如路由器等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络笔记 六.Internet 协议">
+<meta property="og:url" content="https://tianlipa.github.io/2025/12/computer-network-6/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="网络互连需要一个全局统一的规则, 所有通讯设备运行 IP 协议.  不同网络采用的数据链路层和物理层协议可能不同, 对于这种网络, 可以采用相同的网络层协议实现它们的互连. 对于 Internet, 这个协议就是 IP, 使用的网络互连设备就是路由器. 路由器负责处理 IP 分组, 连接不同的网络, 在不同的网络之间提供数据转发服务. Internet 设备主要包括:  网络侧设备: 例如路由器等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/5.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/6.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/7.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/8.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/9.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/10.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/11.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/12.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/13.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/14.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/15.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/16.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/17.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/18.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/19.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/20.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-6/21.png">
+<meta property="article:published_time" content="2025-12-04T04:38:55.000Z">
+<meta property="article:modified_time" content="2025-12-05T15:08:40.095Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-network-6/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/12/computer-network-6/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/12/computer-network-6/","path":"2025/12/computer-network-6/","title":"计算机网络笔记 六.Internet 协议"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机网络笔记 六.Internet 协议 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/12/computer-network-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机网络笔记 六.Internet 协议 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络笔记 六.Internet 协议
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-04 12:38:55" itemprop="dateCreated datePublished" datetime="2025-12-04T12:38:55+08:00">2025-12-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-05 23:08:40" itemprop="dateModified" datetime="2025-12-05T23:08:40+08:00">2025-12-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>网络互连需要一个全局统一的规则, 所有通讯设备运行 IP 协议.</p>
+<p><img data-src="/img/computer-network-6/1.png" alt=""></p>
+<p>不同网络采用的数据链路层和物理层协议可能不同, 对于这种网络, 可以采用相同的网络层协议实现它们的互连. 对于 Internet, 这个协议就是 IP, 使用的网络互连设备就是路由器.</p>
+<p>路由器负责处理 IP 分组, 连接不同的网络, 在不同的网络之间提供数据转发服务.</p>
+<p>Internet 设备主要包括:</p>
+<ul>
+<li><strong>网络侧设备</strong>: 例如路由器等, 提供数据转发服务, 通过多个设备之间的协作, 将数据投递到最终的目的地, 是<strong>数据传输服务的提供者</strong>.</li>
+<li><strong>用户侧设备</strong>: 例如用户终端, 服务器等, 产生数据, 利用网络进行传输, 或者从网络从接收数据, 是<strong>数据传输服务的使用者</strong>.</li>
+</ul>
+<span id="more"></span>
+<h3 id="Internet-协议族">Internet 协议族</h3>
+<p>网络中的设备运行以 TCP 和 IP 协议为核心的一系列协议, 也称为 TCP/IP 协议族.</p>
+<p><img data-src="/img/computer-network-6/2.png" alt=""></p>
+<h3 id="选择-IP-协议的原因">选择 IP 协议的原因</h3>
+<p>对 Internet 来说, 可扩展性极其重要, 因此需要解决<strong>异构性</strong>和<strong>效率</strong>问题, Internet 以 IP 为核心, 采用细腰体系架构互连各种异构网络; 采用基于 IP 的尽力服务模型, 实现简单, 保证大规模网络的传输效率.</p>
+<p>IP 提供的是尽力传送服务, 不可靠且乱序.</p>
+<p>设计原则是令网络尽可能简单, 这保证了 Internet 的可扩展性.</p>
+<h3 id="数据封装流程">数据封装流程</h3>
+<ol>
+<li>发送端运行 FTP 应用程序</li>
+<li>应用层调用 FTP 应用层模块, 将内容封装在 FTP 协议中</li>
+<li>传输层调用 TCP 模块, 将上层内容封装在 TCP 协议中</li>
+<li>网络层调用 IP 模块, 对每个数据段加上 IP 分组头</li>
+<li>数据链路层对每个 IP 分组加上以太帧头或帧尾</li>
+<li>物理层将数据帧的二进制码转换成光电信号</li>
+</ol>
+<p>IP 协议本质上是定义了一种数据的封装格式, 在数据前面加上一些协议相关的重要信息, 这些信息里最重要的就是 IP 地址.</p>
+<p>IP 地址的双重作用: 身份标识和位置标识.</p>
+<h2 id="IP-地址">IP 地址</h2>
+<p>IPv4 地址由 4 个字节 (32 位) 组成, 点分十进制表示</p>
+<p>分为五类:</p>
+<ul>
+<li>A 类: 0 + 7 位网络号 + 24 位主机号, <strong>单播地址</strong>, 标识 126 个 A 类网络, 每个网络可以有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>24</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{24}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">24</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 个主机, - 2 是因为避免全 0 和全 1 出现</li>
+<li>B 类: 10 + 14 位网络号 + 8 位主机号, <strong>单播地址</strong>, 标识 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>14</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{14}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">14</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 个 B 类网络, 每个网络可以有  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>16</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{16}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 个主机</li>
+<li><strong>C 类</strong>: 110 + 21 位网络号 + 8 位主机号, <strong>单播地址</strong>, 标识 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>21</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{21}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">21</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 个 B 类网络, 每个网络可以有  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{8}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 个主机</li>
+<li>D 类: 1110 开头, <strong>组播地址</strong>, 标识一个组的地址</li>
+<li>E 类: 11110 开头, <strong>保留地址</strong></li>
+</ul>
+<p>IP 地址中网络号或主机号为全 0 或全 1 的一般用做特殊处理, 不用来标识网络或主机. 例如:</p>
+<ul>
+<li>有限广播: 全 1</li>
+<li>定向广播: 网络号 + 全 1</li>
+<li>回环地址 loopback: 127 + 任意</li>
+<li>测试: 全 0, 全 0 + 主机号</li>
+</ul>
+<h3 id="IP-地址分配">IP 地址分配</h3>
+<p>Internet 上的 IP 地址由互联网编号分配机构 IANA (Internet Assigned Numbers Authority) 负责分配和管理.</p>
+<ul>
+<li>RIR 地区级, 范围为一个指定的地理区域, 例如亚太网络信息中心</li>
+<li>NIR 国家级, 范围为一个国家或者特定的经济区域, 例如中国互联网中心</li>
+<li>LIR 本地级, 通常为 Internet 服务提供商 (ISP: Internet Service Provider), 包括可进一步进行地址分配的下游 ISP</li>
+</ul>
+<h3 id="IP-地址配置">IP 地址配置</h3>
+<ul>
+<li>手动配置</li>
+<li>拨号用户通过 PPP 协议分配</li>
+<li><strong>基于 DHCP 的配置</strong>: RFC 2131; 采用客户/服务器模式, 消息采用 UDP 协议封装; 分配机制包括:
+<ul>
+<li>自动分配: 给客户端分配一个永久地址</li>
+<li>动态分配: 分配一个一段时间内有效的地址</li>
+<li>手动分配: 由网络管理员分配, DHCP 仅用来将分配的地址通报给客户端</li>
+</ul>
+</li>
+</ul>
+<p>DHCP 过程:</p>
+<ol>
+<li>客户端在广播 DHCPDISCOVER 消息, 源 IP 地址为 0.0.0.0, 目的 IP 地址为 255.255.255.255, 使用 MAC 地址标识客户端</li>
+<li>DHCP 服务器回应 DHCPOFFER 消息给客户端, 其中包含分配的 IP 地址, 租用期限和其它配置参数</li>
+<li>客户端选择一个 DHCP 服务器并且在整个网络上广播 DHCPREQUEST 消息, 告诉其它 DHCP 服务器它选择哪个服务器提供的 IP 地址</li>
+<li>DHCPREQUEST 选定的服务器给客户端回应 DHCPACK, 其中包含有配置参数</li>
+<li>客户端接收到 DHCPACK 后, 应该对参数进行最后的检查, 然后开始使用分配的 IP 地址</li>
+<li>客户端可以通过向 DHCP 服务器发送 DHCPRELEASE 消息来释放对 IP 地址的租用, 其中包含有客户端的 MAC 地址和租用 IP 地址</li>
+</ol>
+<h3 id="DHCP-协议关键点">DHCP 协议关键点</h3>
+<p>**如何确保 IP 地址的唯一性? **<br>
+DHCP 服务器统一管理和分配.</p>
+<p>**客户端最开始如何标识? **<br>
+使用 MAC 地址, IP 地址使用 0.0.0.0.</p>
+<p>**如何找到 DHCP 服务器? **<br>
+通过广播.</p>
+<p>**多个 DHCP 服务器如何处理? **<br>
+客户端选择.</p>
+<h3 id="DHCP-中继">DHCP 中继</h3>
+<p><img data-src="/img/computer-network-6/3.png" alt=""></p>
+<h2 id="地址解析协议">地址解析协议</h2>
+<h3 id="IP-地址和-MAC-地址的区别">IP 地址和 MAC 地址的区别</h3>
+<p>IP 地址在整个网络中标识不同的节点, 而 MAC 地址在链路或者局域网内标识不同的节点.</p>
+<p>IP 地址包含有网络号 (前缀), 因此节点配置的 IP 地址与其所在的网络相关, 而 MAC 地址与节点位置无关, 因此一般事先固化在网络设备中.</p>
+<p><img data-src="/img/computer-network-6/4.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>MAC</th>
+<th>IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>物理地址  (数据链路层地址)</td>
+<td>逻辑地址 (网络层地址)</td>
+</tr>
+<tr>
+<td>局部意义</td>
+<td>全局意义</td>
+</tr>
+<tr>
+<td>随机获得</td>
+<td>上级分配</td>
+</tr>
+<tr>
+<td>48 位, 如 08:00:39:00:2f:c3</td>
+<td>32 位,如 202.38.64.1</td>
+</tr>
+</tbody>
+</table>
+<p><img data-src="/img/computer-network-6/5.png" alt=""></p>
+<h3 id="网络寻址与链路寻址">网络寻址与链路寻址</h3>
+<p>网络寻址: 数据基于 IP 地址跨网络传输, 路由器基于 IP 地址将分组从一个网络转发到另一个网络</p>
+<p>链路寻址: 数据基于 MAC 地址在网络内传输, L2 交换机基于 MAC 地址将分组从一条物理链路转发到另一条物理链路 (这两条链路在同一个网络内)</p>
+<p>数据帧在不同链路上传输时, 源和目的 MAC 地址变化, 而源和目的 IP 地址不变.</p>
+<p>需要在网络中传输数据时, 如果目标主机和源主机不在一个局域网内, 需要查转发表, 将数据交给下一跳对应的地址, 其中 0.0.0.0 是缺省路由, 可以匹配所有 IP 地址, 也可以表示为 default.</p>
+<p><strong>通过网络寻址查到下一跳对应的 IP 地址之后, 需要通过链路寻址将数据传到下一跳.</strong></p>
+<h4 id="数据帧的封装">数据帧的封装</h4>
+<p><img data-src="/img/computer-network-6/6.png" alt=""></p>
+<p>LLC: Logical Link Control, 逻辑链路控制<br>
+PDU: Protocol Data Unit, 协议数据单元<br>
+不写 IP 数据包是因为可能不是 IP 协议.</p>
+<p>分组的目的 IP 地址由发送主机指定, 那么封装分组的数据帧的目的 MAC 地址如何确定呢?</p>
+<p>给定 IP 地址, 通过<strong>地址解析协议 ARP</strong>找到对应节点的 MAC 地址.</p>
+<p>注: 帧的目的 MAC 地址始终为转发 IP 分组的下一跳网络节点的 MAC 地址, 因此在执行 ARP 协议之前首先要查找转发表, 得到下一跳网络节点的目的 IP 地址, 下一跳网络节点可能为目的主机, 也可能为路由器, 然后再执行 ARP 过程</p>
+<h3 id="地址解析">地址解析</h3>
+<p>ARP, Address Resolution Protocol.</p>
+<p><strong>情况 1: 目的 IP 地址所对应的主机和发送主机在同一个网络内</strong></p>
+<p>每个主机都有 <strong>ARP 缓存</strong>, 用来存放一些 IP 地址与 MAC 地址的对应关系. 主机根据分组头上的目的 IP 地址查阅自己的 ARP 缓存, 如果没查到, 就向广播地址发送 ARP 请求.</p>
+<p>被请求的 IP 地址所对应的主机返回一个 ARP 响应, 主机收到响应后, 就可发送数据帧, 并将该 IP 地址与 MAC 地址对存放在 ARP 缓存中.</p>
+<p>每个节点一般都维护 ARP 缓存, 通过 ARP 缓存可以减少频繁的 ARP 操作, 从而减少网络开销, 提高性能.</p>
+<p><strong>情况 2: 目的 IP 地址所对应的主机和发送主机在两个不同的网络内</strong></p>
+<p>发送主机通过查找转发表得到转发的下一跳网络节点 IP 地址 (第一跳路由器), 对该 IP 地址执行 ARP 过程, 然后发送数据;</p>
+<p>第一跳路由器查找转发表得到第二跳路由器的 IP 地址, 对该 IP 地址执行 ARP 过程, 然后发送数据;</p>
+<p>如此重复, 直到目的网络的路由器查找转发表知道目的节点和自己在同一个网络中, 对目的 IP 地址执行 ARP 过程, 然后将数据发送到目的节点.</p>
+<p><img data-src="/img/computer-network-6/7.png" alt=""></p>
+<p>ARP 过程被限制在链路范围 (同一个网络) 内, 始终是查找转发表得到转发的下一跳节点的 IP 地址, 然后对该 IP 地址做 ARP. 在数据传输频繁时, ARP 缓存表中一般有对应的表项, 节点间不需要交互 ARP 过程.</p>
+<p>ARP 非常重要, 它决定了在链路上, 封装 IP 分组的帧会被哪个网络接口接收.</p>
+<p>Windows 查看 ARP 缓存表:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
+<h4 id="潜在的安全问题">潜在的安全问题</h4>
+<p>在链路层次上窃听数据, ARP Spoofing</p>
+<p>防范措施:</p>
+<ul>
+<li>监测可疑的 ARP 流量, 特别是路由器等关键设备的 MAC 地址的变化</li>
+<li>通过划分子网, VLAN 等措施限制 ARP 的广播域</li>
+<li>在 ARP Cache 中静态配置 IP 和 MAC 地址的映射表项</li>
+</ul>
+<h4 id="反向-ARP">反向 ARP</h4>
+<p>用于查找物理地址所对应的 IP 地址, 例如对于打印机, 无盘工作站等小型嵌入式设备, 启动时需要知道自己的 IP 地址.</p>
+<h4 id="ARP-协议帧格式">ARP 协议帧格式</h4>
+<p>对于以太网, ARP 协议 (RFC 826) 采用 MAC 帧进行封装.</p>
+<p><img data-src="/img/computer-network-6/8.png" alt=""></p>
+<p>帧类型 (Type): ARP 请求及响应为 0x0806</p>
+<p>硬件类型: 指发送者的网络接口类型, 如以太网为 1</p>
+<p>协议类型: 指发送者所采用的网络层协议类型, 如 IP 协议为 0x0800</p>
+<p>操作: ARP 请求—1, ARP 响应—2, RARP 请求—3, RARP 响应—4</p>
+<p>特殊情况:</p>
+<ul>
+<li>目的 IP 地址为广播地址, 则目的 MAC 地址为 FF:FF:FF:FF:FF:FF</li>
+<li>目的 IP 地址为组播地址, 则目的 MAC 地址采用地址映射, 将 IP 组播地址的低 23 位映射到 MAC 地址的低 23 位, 前面加上 01005E</li>
+</ul>
+<p>注意: IP 组播地址是低 28 位不同 (最高四位为 1110), 但低 23 位可能存在重复, 这样的映射会造成多对一的地址重复问题.</p>
+<h2 id="IP-协议">IP 协议</h2>
+<p>Internet Protocol</p>
+<h3 id="IPv4-头标">IPv4 头标</h3>
+<p><img data-src="/img/computer-network-6/9.png" alt=""></p>
+<p>版本号 (VERS): 4bits, IPv4 协议填 4, IPv6 协议填 6.</p>
+<p>IP 分组头长度 (LEN): 4bits, 单位为 4 字节, 取值范围 5-15 (确省值为 5, 即标准头标长 20 字节), 指示 IP 分组头的长度.</p>
+<p>服务类型 (TOS):</p>
+<p><img data-src="/img/computer-network-6/10.png" alt=""></p>
+<p>注意: TOS 域最初的设计并没有得到应用. 后来在引入区分服务时, 这前 6 个比特又被用来标记分组的服务类别. 然而, 实际的网络中, 服务质量控制并没有在全网范围内流行.</p>
+<h4 id="总长度和分段">总长度和分段</h4>
+<p>总长度: 16bits , 单位为字节, 描述 IP 分组的总长 (包括头标和数据), 最大分组长度为 65535 字节≈64KB.</p>
+<p>标识符 Identification: 16bits, 用于唯一标识分段所属的分组.</p>
+<p>标志 Flags: 3bits, 第 1 位未定义, 第 2 位为 0 表示该分组可分段, 否则表示不可分段; 第 3 位为 0 表示这是最后的分段, 否则则表示还有后续分段.</p>
+<p>段偏移 Fragment Offset: 13bits, 单位为 8 字节. 取值 0-8191, 标明当前分段在原分组中位置.</p>
+<p>MTU: Maximum Transmission Unit, 最大传输单元, 即一帧所能携带的最大 IP 分组, 包括 IP 头标.</p>
+<p>在 IPv4 中, 发送主机和中间路由器执行分段, 而目的主机执行分段重组 (即非透明的分段重组过程, 目的是减少多次重组操作带来的开销)</p>
+<p>例: IP 头标取固定长度 20 字节</p>
+<p><img data-src="/img/computer-network-6/11.png" alt=""></p>
+<p><strong>段偏移的单位是 8 字节, 所有分段后段的长度必须是 8 字节的整数倍.</strong></p>
+<h4 id="TTL-和协议">TTL 和协议</h4>
+<p>生存时间 (TTL: Time to Live): 8bits, 单位秒, 表示分组的生存时间. 实际操作时, 分组每经过一个路由器, TTL 值减一, 当 TTL 值为 0 时, 该分组被丢弃.</p>
+<p>协议 (Protocol): 表示封装在 IP 分组中的载荷的协议类型.</p>
+<ul>
+<li>0 Reserved</li>
+<li><strong>1 Internet Control Message Protocol (ICMP)</strong></li>
+<li>2 Internet Group Management Protocol (IGMP)</li>
+<li>3 Gateway-to-Gateway Protocol (GGP)</li>
+<li>4 IP (IP encapsulation)</li>
+<li>5 Stream</li>
+<li><strong>6 Transmission Control (TCP)</strong></li>
+<li>8 Exterior Gateway Protocol (EGP)</li>
+<li>9 Private Interior Routing Protocol</li>
+<li><strong>17 User Datagram (UDP)</strong></li>
+<li>89 Open Shortest Path First (OSPF)</li>
+</ul>
+<h4 id="校验和与地址">校验和与地址</h4>
+<p>分组头校验和: 16bits, 用来检验 IP 头标在传输过程中是否被破坏. 只检验 IP 头标, 不管数据部分.</p>
+<p>源地址: 32bits, 分组发送者的 IP 地址.</p>
+<p>目的地址: 32bits, 分组接收者的 IP 地址.</p>
+<p>填充 (padding): 分组头长度必须为 4 字节的整数倍, 如果选项的长度不是 4 字节的整数倍, 那么就要进行填充.</p>
+<p>校验和计算方法: 每两个字节切开成 10 段, 校验和位设置为零, 回卷累加 (进位回加到结果的最后一位), 取反, 得到结果即为校验和.</p>
+<p>接收方将 10 段数字回卷累加, 如果全为 1 则正确, 否则传输出错.</p>
+<h4 id="可变部分">可变部分</h4>
+<p>用于提供排错, 测量, 安全等措施, 1-40 字节</p>
+<ul>
+<li>安全性 (Security): 指明分组的机密性</li>
+<li>严格的源路由选择 (Strict Source routing): 给出分组经过的完整路由</li>
+<li>松散的源路由选择 (Loose Source routing): 给出分组经过的某些路由器列表</li>
+<li>路由记录 (Route recording): 使每个路由器都附上它的 IP 地址</li>
+<li>时间标记 (Time stamping): 使每个路由器都附上它的 IP 地址和时间标记</li>
+</ul>
+<p>优点: 增加了 IP 数据报的功能, 具有可选择性</p>
+<p>缺点: IP 数据报首部长度可变, 增加了每个路由器处理开销, 但实际上很少选用选项</p>
+<p>TLV 格式, 1B TYPE + 1B LENGTH + nB VALUE</p>
+<h3 id="路由器对-IP-分组执行的操作">路由器对 IP 分组执行的操作</h3>
+<ul>
+<li>验证校验和</li>
+<li>TTL 值减 1</li>
+<li>重新计算校验和</li>
+<li>根据需要执行分段操作</li>
+<li>处理一些需要路由器处理的选项</li>
+<li><strong>分组转发</strong>
+<ul>
+<li><strong>根据目的 IP 地址查找转发表</strong></li>
+<li><strong>交换</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="IP-路由和转发">IP 路由和转发</h2>
+<h3 id="分组转发">分组转发</h3>
+<p>在 Internet 中, 数据从源主机发送到目的主机, 中间可能要经过多个路由器.</p>
+<p>路由器接收完整 IP 分组后, 根据接收到的头标中的目的 IP 地址查找转发表, 从而确定其转发的下一跳网络节点, 这种方式也称为逐跳转发.</p>
+<h3 id="路由表和转发表">路由表和转发表</h3>
+<p>路由表 Routing Table, 每个表项至少包含两个内容:</p>
+<ul>
+<li>目的网络 (网络号或前缀)/目的主机的地址</li>
+<li>下一跳 (Next Hop) 地址</li>
+</ul>
+<p>在路由器上, 一般通过路由协议来动态建立和维护路由表.</p>
+<p>转发表 Forwarding Table, 与路由表相比, 转发表包含了更多的信息, 包括包含目的网络的网络号/目的主机的地址, 输出端口以及一些 MAC 地址等信息.</p>
+<p>主机 (用户终端) 上的转发表一般是手动或者通过 DHCP 等动态配置.</p>
+<p>在 IP 网络中, 每个网络都使用网络号或者网络前缀来标识, 我们用 IP 地址/网络号长度 (或者前缀长度) 的方式来表示网络号或者网络前缀</p>
+<p>例:</p>
+<p>路由表:</p>
+<table>
+<thead>
+<tr>
+<th>网络号或前缀</th>
+<th>下一跳</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 或者 10.0.0.0/8</td>
+<td>171.69.245.10</td>
+</tr>
+</tbody>
+</table>
+<p>转发表:</p>
+<table>
+<thead>
+<tr>
+<th>网络号或前缀</th>
+<th>输出端口</th>
+<th>下一跳 MAC 地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 或者 10.0.0.0/8</td>
+<td>0</td>
+<td>00:02:2b:e4:b:1:2</td>
+</tr>
+</tbody>
+</table>
+<p>注意:</p>
+<p>路由表是建立转发表的前奏, 也就是说转发表可以基于路由表的信息建立.</p>
+<p>在路由器上, 一般是先通过路由算法 (协议) 生成路由表, 然后得到转发表.</p>
+<p>在以后的叙述中, 如果不特别注明, 我们将不区分路由表和转发表, 路由器上一般采用路由表的形式, 而主机上一般采用转发表的形式.</p>
+<p>路由表实例:</p>
+<p><img data-src="/img/computer-network-6/12.png" alt=""></p>
+<p>缺省路由:</p>
+<p><img data-src="/img/computer-network-6/13.png" alt=""></p>
+<p>查看路由表/转发表:</p>
+<p>Linux:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip route show</span><br></pre></td></tr></table></figure>
+<p>Windows:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route print</span><br></pre></td></tr></table></figure>
+<h3 id="路由协议">路由协议</h3>
+<p>自治系统 AS, Autonomous System</p>
+<p>在 Internet 中, 自治系统一般是在同一个管理实体控制之下并且具有相同路由选择策略 (执行相同的路由算法) 的 IP 网络和路由器的集合, 也称为<strong>路由选择域 (Domain)</strong>.</p>
+<p>路由协议分为</p>
+<ul>
+<li>内部网关路由协议 IGP (Interior Gateway Protocols), 也称为域内路由协议, 指路由选择的范围被限制在一个路由选择域内</li>
+<li>外部网关路由协议 EGP (Exterior Gateway Protocols), 也称为域间路由协议, 指路由选择在不同的路由选择域中的路由器之间进行</li>
+</ul>
+<h3 id="内部网关路由协议">内部网关路由协议</h3>
+<ul>
+<li>距离矢量路由协议, 基于距离矢量算法, 是一种分布式算法, 例如 Bellman-Ford 算法</li>
+<li>链路状态路由协议, 基于链路状态算法, 也称为最短路径算法, 是一种全局算法. 例如 Dijkstra 最短路径算法</li>
+</ul>
+<p>在距离矢量算法中, 每个节点只和直接相连的节点进行通信, 但是它把所知的全部信息 (即到所有节点的距离) 都告诉它们.</p>
+<p>在链路状态算法中, 每个节点和其余各个节点通过扩散或者泛洪的方式都进行通信, 但是它只告诉它们自己确切知道的信息 (即与其直接相连的链路状态).</p>
+<p>距离矢量算法只适用于小规模网络, 为了避免计数到无穷问题, 网络直径一般不能超过 15 跳.</p>
+<p>与链路状态算法相比, 距离矢量算法对网络变化反应较慢.</p>
+<h4 id="路由信息协议">路由信息协议</h4>
+<p>Routing Information Protocol, RIP, 这好像不太吉利</p>
+<p>距离矢量算法的具体实现, 路由器向邻居路由器通告到达所有网络的距离.</p>
+<p>RIP 分组格式:</p>
+<p><img data-src="/img/computer-network-6/14.png" alt=""></p>
+<p>分组的主要部分采用&lt;网络地址, 距离&gt;对.</p>
+<p>一个路由条目占 20 字节, 最多一次发 25 个.</p>
+<p>注: 子网掩码是一个特殊的 IP 地址, 这个 IP 地址中的若干个比特为 1, 其它比特为 0, 比特为 1 的位置对应着网络前缀, 例如: 255.255.128.0, 常与 IP 地址组合使用, 用以区分网络号和主机号</p>
+<h4 id="开放最短路径优先协议">开放最短路径优先协议</h4>
+<p>Open Shortest Path First, OSPF</p>
+<p>基于链路状态算法的具体实现, 只有链路状态变化时才采用 flooding 的方式.</p>
+<p>在基本链路状态算法的基础上增加了特性:</p>
+<ul>
+<li>路由选择消息的认证: 只有彼此信任的路由器才能参与 AS 的路由选择, 避免恶意的路由器通告恶意的路由选择消息, 例如开销为 0 的路由选择消息</li>
+<li>直接采用 IP 分组 (协议号为 89), 而不是 UDP</li>
+<li>使得 OSPF 适合规模很大的网络, 附加的层次性允许将路由选择域 (Domain) 划分为区 (Area), 多个网络组成一个区, 对于 AS 的其余部分隐藏 , 以减少路由信令开销, 区域内的路由选择仅仅由区域自己的拓扑来决定</li>
+<li>负载均衡, 允许到同一位置的多条路由具有相同的开销, 网络业务在这些路径上均匀分配</li>
+</ul>
+<p><img data-src="/img/computer-network-6/15.png" alt=""></p>
+<h3 id="外部网关路由协议">外部网关路由协议</h3>
+<p>AS 间为什么不采用 RIP 或者 OSPF?</p>
+<ul>
+<li>规模: Internet 规模庞大, 平坦式的路由协议不现实;</li>
+<li>管理: 不同自治域之间还需要考虑其他因素, 例如政治, 安全等因素;</li>
+<li>性能: 不同自治系统的声明的路径代价不同, 同时由于策略的原因, 寻找最佳路由不现实.</li>
+</ul>
+<p>BGP:  Border Gateway Protocol, 边界网关协议</p>
+<ul>
+<li>基于距离矢量的外部网关协议, 在边界路由器之间交换网络可达信息</li>
+<li>触发更新消息, 并使用 TCP 来实现更新消息的可靠性</li>
+<li>丰富的路由度量, 被称为路径向量或者属性</li>
+<li>能够扩展到大规模互联网络, 例如 Internet</li>
+</ul>
+<p>路由协议的作用范围:</p>
+<p><img data-src="/img/computer-network-6/16.png" alt=""></p>
+<h2 id="ICMP-协议">ICMP 协议</h2>
+<p>Internet Control Message Protocol</p>
+<ul>
+<li>定义在 RFC 792 和 RFC 950</li>
+<li>IP 在网络层提供尽力服务 (best effort service), 当分组由于各种原因无法投递而遭丢弃时, 就用 ICMP 发送差错报告</li>
+<li>通过 ICMP 获取网络相关的信息, 例如可达性, 网络前缀等</li>
+<li>尽管 ICMP 也是网络层协议, 但它也需要经过 IP 协议封装. 同样 ICMP 也不能保证可靠传输</li>
+</ul>
+<p>ICMP 定义了两类消息, <strong>差错消息</strong>和<strong>信息消息</strong>.</p>
+<p>差错消息:</p>
+<ul>
+<li>源抑制 (Source quench): 抑制发送过多分组的主机</li>
+<li><strong>超时</strong>(Time exceeded) : 分组的 TTL 为 0</li>
+<li>信宿不可达 (Destination unreachable) : 报告子网, 主机不能定位的信宿</li>
+<li>重定向 (Redirect): 路由重定向</li>
+<li>参数问题 (Parameter problem): 分组头参数出错</li>
+</ul>
+<p>信息消息/查询消息:</p>
+<ul>
+<li><strong>回音请求/响应</strong>(Echo request/reply)</li>
+<li>路由器发现 (Router discovery)</li>
+<li>地址掩码请求/响应 (Address mask request/reply)</li>
+</ul>
+<p>超时和回音请求是常用的网络诊断工具.</p>
+<p>常用网络诊断工具包括:</p>
+<ul>
+<li>ping: 测试主机的可到达性和往返延迟等网络信息<br>
+采用 ICMP 的回音请求/响应 (Echo request/reply) 报文, 通过向目的主机发送回音请求, 返回响应消息, 来测试目的主机的可达性, 往返延迟以及丢包率.</li>
+<li>traceroute in linux (tracert in windows): 发现从源主机到目的主机路径上的网络节点<br>
+首先发送 TTL=1 的 echo request, 第一跳节点向源端返回 ICMP 的 Time Exceeded 错误, 然后发送 TTL=2 的 echo request, 第二跳节点返回 Time Exceeded 错误, 不断递增 TTL, 直到到达目的主机</li>
+</ul>
+<p>潜在的安全性问题: ICMP 协议本身不具备任何验证机制, 任意节点都可以发起请求. 对单一节点的大量 ping 请求, 会占用节点大量的带宽和计算资源, 严重者可以形成 DDoS 攻击.</p>
+<p>解决方法: 可以设置参数禁用 ping</p>
+<h2 id="IP-组播">IP 组播</h2>
+<p>单播 Unicast: 一对一</p>
+<p>组播 Multicast: 一对多, 多对多</p>
+<p>组播也称多播, 可用于会议电视, 分布式计算, 视频转播, 网络游戏, 讨论组等.</p>
+<p>IP 采用 D 类地址作为组播地址, 每个 D 类地址代表一组主机, 共有 28 位可用来标识小组. 因此可同时支持多达 25 亿个小组.</p>
+<p>Internet 支持两类组地址: 永久组地址和临时组地址.</p>
+<h3 id="组播和广播的区别">组播和广播的区别</h3>
+<p>组播使用 D 类地址, 广播使用特定的广播地址.</p>
+<p>组播可以按需发送, 它允许一个或多个组播源发送同一报文到指定的多个接收者; 广播不管用户是否有需求, 都会把数据报文发送给本网段中的所有用户, 需要占用更多带宽.</p>
+<p>广播传输数据源必须与用户在同一个网段, 组播可以跨网段传输.</p>
+<p><strong>组播可以选择路由路径 (组播路由); 广播处理流程简单 (网段内泛洪), 不用选择路径.</strong></p>
+<h3 id="组播相关协议">组播相关协议</h3>
+<p>Router to Router: 组播路由协议, 如 DVMRP, PIM, 负责生成组播路由表</p>
+<p>Host to Router: 组播组管理协议, IGMP (Internet Group Management<br>
+Protocol), 负责处理组成员的加入和退出</p>
+<h4 id="组播路由协议">组播路由协议</h4>
+<p>基于源的组播协议, 以发送方为组播树的根, 并且包含了所有的组成员</p>
+<ul>
+<li>DVMRP (Distance Vector Multicast Routing Protocol)</li>
+<li>MOSPF (Multicast Extension to OSPF)</li>
+</ul>
+<p>基于共享树的协议, 对于每个组使用同一颗树</p>
+<ul>
+<li>CBT (Core Based Trees)</li>
+</ul>
+<p>混合以上两种方法的协议</p>
+<ul>
+<li>PIM (Protocol Independent Multicast)</li>
+<li>PIM-DM (Dense Mode), PIM-SM (Sparse Mode)</li>
+</ul>
+<h4 id="IGMP">IGMP</h4>
+<p>Internet Group Management Protocol, 组成员管理协议</p>
+<h3 id="L2-交换机与组播">L2 交换机与组播</h3>
+<p>交换机的所有端口都转发组播分组, 包括那些没有连接组成员的端口, 导致带宽资源浪费.</p>
+<p>启用 IGMP Snooping 后, 交换机只向连接有组成员的端口转发分组.</p>
+<h2 id="IPv4-的可扩展性">IPv4 的可扩展性</h2>
+<p>问题:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span></span></span></span></span></span></span></span>大约 43 亿个 IPv4 地址不够用, IP 地址的利用率不高, 分配粒度太大.</li>
+<li>路由器特别是核心网络路由器路由表 (转发表) 表项急剧膨胀, 降低路由效率.</li>
+</ul>
+<p>每个路由器上都有一个路由表, 手动配置或者根据路由协议自动生成, 对于 Internet, 每增加一个网络, 必须在路由表中建立该网络网络号所对应路由表表项.</p>
+<p>解决方案概述:</p>
+<p>采用<strong>层次化地址结构</strong></p>
+<ul>
+<li>通过细粒度分配 IP 地址块来提高 IP 地址的利用率划分子网 (提高 IP 地址利用率)</li>
+<li>IP 地址进行汇聚, 以减少路由协议中路由选择消息携带的和路由器的路由表中储存的网络号的数量 (提高 IP 地址利用率, 减少路由表表项)</li>
+<li>多台主机共享一个全局的 IP (解决 IP 地址不够用)</li>
+</ul>
+<p><strong>划分子网</strong>, <strong>无类别域间寻路 CIDR</strong>, <strong>网络地址转换 NAT</strong>.</p>
+<h3 id="划分子网">划分子网</h3>
+<p>子网 subnet: 将大的 A/B/C 类网络划分为多个小的子网, 对外仍然表现为一个单独的网络, 只有一个网络号.</p>
+<p><strong>IP = 网络号 + 子网 ID + 主机号</strong><br>
+子网号为前两项</p>
+<p>用子网掩码配置每个子网中所有的主机, 确保具有相同的子网号.</p>
+<p>子网掩码 Subnet Mask 为 1 表示此处是子网号, 0 对应主机号, 也可以通过地址/掩码长度表示.</p>
+<p>划分子网的步骤:</p>
+<p>在得到一个有类别的 IP 地址后:</p>
+<ol>
+<li>根据实际需求, 确定子网号的长度或者主机号的长度:
+<ul>
+<li>子网数量决定子网 ID 的长度, 从而决定了子网号的长度<br>
+子网数量≤<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">2^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>, 其中 m 为子网 ID 的长度</li>
+<li>主机数量决定了主机号的长度<br>
+主机数量≤ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^n-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>, 其中 n 为主机号的长度</li>
+</ul>
+</li>
+<li>为每个子网选定子网 ID, 确定子网号, 然后根据子网号 (网络号+子网 ID) 的长度确定子网掩码</li>
+<li>确定主机号, 给子网内的主机分配 IP 地址, 注意主机号最大值由主机号的长度决定</li>
+<li>根据子网掩码, 子网号等信息配置每个路由器上的转发表</li>
+</ol>
+<p>在网络外面, 子网划分是不可见的. 因此, 分配一个新的子网无需联系 ICANN 或改变外部数据库.</p>
+<p>划分子网的本质是将一个大的地址块根据需要划分成地址空间互不重叠的小的地址块, 这种划分是有约束的, 即要求这些小的地址块的子网号不同.</p>
+<p>分组转发时, 通过子网掩码得 IP 地址所对应子网号, 然后查找路由表.</p>
+<h3 id="无类别域间寻路">无类别域间寻路</h3>
+<p>Classless Inter-Domain Routing, CIDR</p>
+<p>采用可变长度的网络前缀 (network prefix) 来取代地址分类中网络号长度固定的做法, 具有相同前缀的 IP 地址组成 CIDR Block, 表示为 A.B.C.D/N, 其中 N 为前缀长度, 例如 202.38.208.0/20.</p>
+<p>可以将有类别地址分配看作是网络前缀长度固定为 8, 16, 24 的 CIDR 分配.</p>
+<p>具有相同前缀的连续的 IP 地址组成 CIDR Block, 对于 CIDR Block, 前缀越短, block 越大, 该 block 包含的地址数量越多</p>
+<p>关键词: 前缀汇聚, 前缀最长匹配</p>
+<h4 id="路由">路由</h4>
+<p>由于前缀长度不固定, CIDR 的路由操作比采用有类别地址分配更加复杂.</p>
+<p>路由表结构: &lt;网络前缀/前缀长度, 下一跳&gt;</p>
+<p>实际的 IP 地址分配不一定是严格层次的, 大的 CIDR Block 划分为小的 CIDR Block 时, 到某些小的 CIDR Block 网络可能具有不同路由.</p>
+<p>在 CIDR 中, 如果路由器上的路由表中有多条表项满足要求, 则采用前缀最长匹配规则.</p>
+<p><strong>前缀汇聚 + 前缀最长匹配减少路由表表项</strong></p>
+<p>前缀汇聚: R0 告诉邻居路由器: 目的地址为 200.25.16.0/21 的分组发给我</p>
+<p>前缀最长匹配: R0 上对于目的地址为 200.25.22.32 的 IP 分组分组, 匹配的路由表表项包括 200.25.16.0/21 和 200.25.22.0/24, 但使用最长匹配规则选择下一跳为直接相连的端口 eth1.</p>
+<p><img data-src="/img/computer-network-6/17.png" alt=", "></p>
+<p>划分子网并不改变 Internet 的 IP 地址分配机制, 而 CIDR 是目前 Internet 采用的 IP 地址分配机制. 企业或者机构分配得到 CIDR 地址块以后, 可以根据实际需求对该 CIDR 地址块进行进一步的细分, 即将其划分成多个子网.</p>
+<h3 id="网络地址转换">网络地址转换</h3>
+<p>Network Address Translation, NAT</p>
+<p>根据作用范围的不同, 分两种 IP 地址</p>
+<ul>
+<li>全局 IP 地址, 也称公共 IP 地址: 用于 Internet 上的分组转发, 要求在 Internet 范围内唯一</li>
+<li>私有 IP 地址: 用于指定网络内的分组转发, 只要求在指定网内部唯一</li>
+</ul>
+<p><strong>NAT 实现网络内的多台主机共享一个或者少量全局的 IP 地址.</strong></p>
+<h4 id="原理">原理</h4>
+<p>最简单的 NAT: 只使用 IP 地址信息</p>
+<p>NAT 设备上需维护一个全局 IP 地址池, 对于每个访问外部网络的内部主机, 都需要使用一个全局的 IP 地址</p>
+<p><img data-src="/img/computer-network-6/18.png" alt=""></p>
+<p>问题: 如果只使用 IP 地址信息, 在只有一个全局 IP 地址的情况下, 对于从 Internet 到内部网络上的分组, NAT 设备无法知道分组所对应的内部主机.</p>
+<p>注意到: Internet 上的大部分应用都是基于 TCP 或者 UDP, 且大部分的应用会话可以用&lt;源IP地址, 目的IP地址, 源端口号, 目的端口号, 协议&gt;这样一个五元组来标识.</p>
+<p>解决方法: 使用 TCP 或者 UDP 端口号来区分, 也就是说 NAT 的依据不再仅仅是 IP 地址, 还包括端口号 (IP 地址+端口).</p>
+<h4 id="NAT-的一种-NAPT">NAT 的一种: NAPT</h4>
+<p>网络地址和端口转换 NAPT: Network Address and Port Translation</p>
+<p>最常用的一种 NAT 方式, 同时使用 IP 地址和 TCP/UDP 端口号.</p>
+<p>端口号标识了同一台主机上不同的应用, 例如 FTP 服务器进程一般运行在 21 号端口, web 服务进程一般运行在 80 号端口, TCP/UDP 根据端口号将数据投递给相应的应用进程.</p>
+<p>NAPT 操作不仅仅要修改分组的 IP 头标, 还要修改 TCP/UDP 头标中的端口号.</p>
+<p>在 NAT 设备上, 虽然内部网络所有的主机共享同一个全局 IP 地址, 但是它们所使用的端口号不同.</p>
+<p>NAPT 下的数据访问流程:</p>
+<p>出:</p>
+<p><img data-src="/img/computer-network-6/19.png" alt=""></p>
+<p>入:</p>
+<p><img data-src="/img/computer-network-6/20.png" alt=""></p>
+<h4 id="NAT-的局限性">NAT 的局限性</h4>
+<p>地址和端口转换将带来比较大的开销.</p>
+<p>IP 地址和端口号可能存在于载荷的任何位置, 因此需要软件针对具体的应用做额外的处理. 例如, FTP 在 PORT 命令的 FTP 头标中包含有十进制表示的 IPv4 地址, 如果不处理则将导致连接问题.</p>
+<p>并不是所有的数据都是使用 UDP 或者 TCP 来传输. PPTP (Point-to-Point Tunneling Protcol) 使用 GRE (Generic Routing Encapsulation) 封装数据, 使用 GRE 头标中 Call ID 域来标识一个数据流, 因此需要 NAT 设备对 GRE 头标中的 Call ID 进行转换处理; ping 使用 ICMP 协议, 只有 IP 地址没有端口号.</p>
+<p>破坏了原有的主机到主机的通信模型.</p>
+<p>IPv4 地址长度只有 32 比特, 不论是 CIDR, 还是 NAT, 都只能延缓 IPv4 地址空间的耗尽速度, 而不能从根本上解决 IPv4 地址不足的问题.</p>
+<p>根本的解决方法就是增加 IP 地址的长度, 从而扩展地址空间, 也就是采用 IPv6.</p>
+<h2 id="IPv6-协议">IPv6 协议</h2>
+<h3 id="IPv6-的优势">IPv6 的优势</h3>
+<ul>
+<li>扩展地址空间: 地址长度长达 128 比特</li>
+<li>层次化地址分配: 与 CIDR 类似, 通过前缀汇聚减少了路由表 (转发表) 表项</li>
+<li>简化头标: 去掉了校验和, 分段等 IPv4 网络中的路由器操作, 提高路由器处理效率</li>
+<li>增强自动配置: IPv6 地址甚至网络前缀自动配置</li>
+<li>增加移动性支持: 移动性支持已成为协议的组成部分</li>
+<li>更高的安全性: IPsec (实现认证, 加密传输以及这些操作所需的密钥管理) 成为协议的强制要求实现部分</li>
+</ul>
+<h3 id="基本头标格式">基本头标格式</h3>
+<p><img data-src="/img/computer-network-6/21.png" alt=""></p>
+<p>采用 16 进制冒号分割表示.</p>
+<p>地址前缀表示: IPv6 地址/前缀长度<br>
+2001:DA8:D800::3/64<br>
+子网前缀: 2001:DB8:2A0:2F3B::/64<br>
+汇聚路由前缀 (地址范围): 2001:DB8:3F::/48</p>
+<p>目前所有 IPv6 子网的前缀长度都是 64 比特, 因此 IPv6 地址表示时可以不用指出前缀长度.</p>
+<p>连续的 0 可以省略, 例如:</p>
+<p>2001:0000:0000:00A1:0000:0000:0000:1E2A</p>
+<p>省略为 2001:0:0:A1::1E2A</p>
+<h3 id="IPv6-地址类型">IPv6 地址类型</h3>
+<ul>
+<li>单播地址, 分配给节点上的某个特定网络接口, 目的地为单播地址的分组被转发到该接口上</li>
+<li>组播地址, 分配给一组网络接口, 这些网络接口一般位于不同的节点, 目的地为组播地址被转发到这组接口上</li>
+<li>任播地址 Anycast, 分配给一组网络接口,这些网络接口一般位于不同的网络节点, 目的地为任播地址的分组被转发到该组接口中距离发送主机最近的节点 (依据路由协议度量的最近距离)</li>
+</ul>
+<p>IPv6 中没有了广播的概念, 原来 IPv4 中的一些需要广播实现的功能通过 IPv6 组播/多播来实现.</p>
+<p>这也太多了, 整理完都近万字了.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/wsl-miniconda/" rel="prev" title="安装 WSL 并安装 Miniconda">
+                  <i class="fa fa-angle-left"></i> 安装 WSL 并安装 Miniconda
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
