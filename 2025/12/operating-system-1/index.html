@@ -29,17 +29,17 @@
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="操作系统的概念  系统资源的管理者 给用户和其他软件提供接口和环境, 向上层提供方便易用的服务. 封装思想 最接近硬件的一层软件  联机命令接口: 交互式命令接口, 用户说一句系统做一句, 如 cmd 脱机命令接口: 批处理命令接口, 用户说一堆系统做一堆, 如 .bat 文件 可以在程序中进行系统调用来使用程序接口, 普通用户不能直接使用, 只能通过程序代码间接使用.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/operating-system-1/2.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/operating-system-1/1.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C3.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/operating-system-1/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/operating-system-1/4.png">
 <meta property="article:published_time" content="2025-12-06T15:01:54.000Z">
-<meta property="article:modified_time" content="2025-12-06T15:06:12.099Z">
+<meta property="article:modified_time" content="2025-12-07T08:31:57.308Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C2.png">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/operating-system-1/2.png">
 
 
 <link rel="canonical" href="https://tianlipa.github.io/2025/12/operating-system-1/">
@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -234,9 +234,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-12-06 23:01:54 / 修改时间：23:06:12" itemprop="dateCreated datePublished" datetime="2025-12-06T23:01:54+08:00">2025-12-06</time>
+      <time title="创建时间：2025-12-06 23:01:54" itemprop="dateCreated datePublished" datetime="2025-12-06T23:01:54+08:00">2025-12-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-07 16:31:57" itemprop="dateModified" datetime="2025-12-07T16:31:57+08:00">2025-12-07</time>
     </span>
 
   
@@ -331,7 +337,7 @@
 <h2 id="操作系统体系结构">操作系统体系结构</h2>
 <h3 id="操作系统的内核">操作系统的内核</h3>
 <p>操作系统最基本最核心的部分, 实现操作系统内核功能的程序就是内核程序.</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C2.png" alt="image-20251206221753233"></p>
+<p><img data-src="/img/operating-system-1/2.png" alt="image-20251206221753233"></p>
 <p><img data-src="/img/operating-system-1/1.png" alt=""></p>
 <p>大内核:</p>
 <ul>
@@ -377,7 +383,7 @@
 </ul>
 <p>缺点: 降低了系统的一致性, 系统变得更复杂.</p>
 <h2 id="操作系统引导">操作系统引导</h2>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C3.png" alt="image-20251206223757095"></p>
+<p><img data-src="/img/operating-system-1/3.png" alt="image-20251206223757095"></p>
 <p>分区表包含各盘的大小等信息.</p>
 <p>C 盘是活动分区, 安装了操作系统.</p>
 <p>开机时, ROM 引导程序 (自举程序) 指引 CPU 把主引导记录读入主存的 RAM, 据此找到 C 盘, 读入 C 盘里的引导记录, 找到 (根目录下的) 启动管理器, 启动启动管理器 (即操作系统初始化程序), 完成开机.</p>
@@ -385,7 +391,7 @@
 <p>传统计算机一台物理机上只能运行一个操作系统.</p>
 <p>虚拟机: 使用虚拟化技术, 把一台物理机器虚拟化为多台虚拟机器 Virtual Machine, 每台虚拟机都可以独立运行一个操作系统.</p>
 <p>虚拟机管理程序 (又称虚拟机监控程序, Virtual Machine Monitor, VMM, Hypervisor)</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C4.png" alt="image-20251206224147827"></p>
+<p><img data-src="/img/operating-system-1/4.png" alt="image-20251206224147827"></p>
 <table>
 <thead>
 <tr>
@@ -397,33 +403,33 @@
 <tbody>
 <tr>
 <td>对物理资源的控制权</td>
-<td>直接运行在硬件之上，能直接控制和分配物理资源</td>
-<td>运行在 Host OS 之上，依赖于 Host OS 为其分配物理资源</td>
+<td>直接运行在硬件之上, 能直接控制和分配物理资源</td>
+<td>运行在 Host OS 之上, 依赖于 Host OS 为其分配物理资源</td>
 </tr>
 <tr>
 <td>资源分配方式</td>
-<td>在安装 Guest OS 时，VMM 要在原本的硬盘上自行分配存储空间，类似于「外核」的分配方式，分配未经抽象的物理硬件</td>
-<td>Guest OS 拥有自己的虚拟磁盘，该盘实际上是 Host OS 文件系统中的一个大文件。GuestOS 分配到的内存是虚拟内存</td>
+<td>在安装 Guest OS 时, VMM 要在原本的硬盘上自行分配存储空间, 类似于「外核」的分配方式, 分配未经抽象的物理硬件</td>
+<td>Guest OS 拥有自己的虚拟磁盘, 该盘实际上是 Host OS 文件系统中的一个大文件. GuestOS 分配到的内存是虚拟内存</td>
 </tr>
 <tr>
 <td>性能</td>
 <td>性能更好</td>
-<td>性能更差，需要 HostOS 作为「中介」</td>
+<td>性能更差, 需要 HostOS 作为「中介」</td>
 </tr>
 <tr>
 <td>可支持的虚拟机数量</td>
-<td>更多，不需要和 Host OS 竞争资源，相同的硬件资源可以支持更多的虚拟机</td>
-<td>更少，Host OS 本身需要使用物理资源，Host OS 上运行的其他进程也需要物理资源</td>
+<td>更多, 不需要和 Host OS 竞争资源, 相同的硬件资源可以支持更多的虚拟机</td>
+<td>更少, Host OS 本身需要使用物理资源, Host OS 上运行的其他进程也需要物理资源</td>
 </tr>
 <tr>
 <td>虚拟机的可迁移性</td>
 <td>更差</td>
-<td>更好，只需导出虚拟机镜像文件即可迁移到另一台 HostOS 上，商业化应用更广泛</td>
+<td>更好, 只需导出虚拟机镜像文件即可迁移到另一台 HostOS 上, 商业化应用更广泛</td>
 </tr>
 <tr>
 <td>运行模式</td>
-<td>第一类 VMM 运行在最高特权级（Ring 0），可以执行最高特权的指令</td>
-<td>第二类 VMM 部分运行在用户态、部分运行在内核态。GuestOS 发出的系统调用会被 VMM 截获，并转化为 VMM 对 HostOS 的系统调用</td>
+<td>第一类 VMM 运行在最高特权级 (Ring 0), 可以执行最高特权的指令</td>
+<td>第二类 VMM 部分运行在用户态, 部分运行在内核态. GuestOS 发出的系统调用会被 VMM 截获, 并转化为 VMM 对 HostOS 的系统调用</td>
 </tr>
 </tbody>
 </table>
@@ -450,6 +456,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2025/12/2025-12-7/" rel="next" title="2025-12-7">
+                  2025-12-7 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
