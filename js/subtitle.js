@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "95%的可能我们会寄",
         "我不想吃拼好饭了, 我想被爱",
         "It's not faith you need.<br>It's fear.",
-        "关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!关注加州消防栓!!!",
+        "喜剧就是重复, 喜剧就是重复, 喜剧就是重复, 喜剧就是重复, 喜剧就是重复, 喜剧就是重复, 喜剧就是重复.",
         "愿您坦然释怀",
         "永远别放弃!",
         "愿指引明路的苍蓝星为你闪耀",
@@ -212,7 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "土豆爆炸!",
         "Powered by Electricity!",
         "基本无害",
-        "比起精神出轨和肉体出轨<br>火车出轨更为伤人"
+        "比起精神出轨和肉体出轨<br>火车出轨更为伤人",
+        "最是人间留不住,<br>朱颜辞镜花辞树."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

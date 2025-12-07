@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.css" integrity="sha256-yE0aDX61mjiw8FoDuGetFttFoGJMeWsU/iYEFOfpMhA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="操作系统的概念  系统资源的管理者 给用户和其他软件提供接口和环境, 向上层提供方便易用的服务. 封装思想 最接近硬件的一层软件  联机命令接口: 交互式命令接口, 用户说一句系统做一句, 如 cmd 脱机命令接口: 批处理命令接口, 用户说一堆系统做一堆, 如 .bat 文件 可以在程序中进行系统调用来使用程序接口, 普通用户不能直接使用, 只能通过程序代码间接使用.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统笔记 一.操作系统概述">
+<meta property="og:url" content="https://tianlipa.github.io/2025/12/operating-system-1/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="操作系统的概念  系统资源的管理者 给用户和其他软件提供接口和环境, 向上层提供方便易用的服务. 封装思想 最接近硬件的一层软件  联机命令接口: 交互式命令接口, 用户说一句系统做一句, 如 cmd 脱机命令接口: 批处理命令接口, 用户说一堆系统做一堆, 如 .bat 文件 可以在程序中进行系统调用来使用程序接口, 普通用户不能直接使用, 只能通过程序代码间接使用.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/operating-system-1/1.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C3.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C4.png">
+<meta property="article:published_time" content="2025-12-06T15:01:54.000Z">
+<meta property="article:modified_time" content="2025-12-06T15:06:12.099Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C2.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/12/operating-system-1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/12/operating-system-1/","path":"2025/12/operating-system-1/","title":"操作系统笔记 一.操作系统概述"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>操作系统笔记 一.操作系统概述 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.17/fancybox/fancybox.umd.js" integrity="sha256-32A/chfN6JgQkwK/QFZY8siVcOZj3LUt1vSKIcDvshM=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/12/operating-system-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="操作系统笔记 一.操作系统概述 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统笔记 一.操作系统概述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-12-06 23:01:54 / 修改时间：23:06:12" itemprop="dateCreated datePublished" datetime="2025-12-06T23:01:54+08:00">2025-12-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="操作系统的概念">操作系统的概念</h2>
+<ul>
+<li>系统资源的管理者</li>
+<li>给用户和其他软件提供接口和环境, 向上层提供方便易用的服务. <strong>封装思想</strong></li>
+<li>最接近硬件的一层软件</li>
+</ul>
+<p>联机命令接口: 交互式命令接口, 用户说一句系统做一句, 如 cmd</p>
+<p>脱机命令接口: 批处理命令接口, 用户说一堆系统做一堆, 如 .bat 文件</p>
+<p>可以在程序中进行<strong>系统调用</strong>来使用程序接口, 普通用户不能直接使用, 只能通过程序代码间接使用.</p>
+<span id="more"></span>
+<h3 id="操作系统的特征">操作系统的特征</h3>
+<h4 id="并发">并发</h4>
+<p>多个事件在同一时间间隔内发生, 宏观上是同时的, 微观上是交替发生的.</p>
+<p>操作系统的并发性指计算机中「同时」运行多个程序.</p>
+<p>注意: <strong>并行</strong>指同一时刻进行多个任务, 和并发不同.</p>
+<p>单核 CPU 同一时刻只能执行一个程序, 程序只能并发运行; 多核 CPU 可以同时执行多个程序, 程序可以并行执行, 例如 4 核 CPU 可以同时运行 4 个程序.</p>
+<h4 id="共享">共享</h4>
+<p>即资源共享, 系统中的资源可供内存中多个并发执行的进程共同使用.</p>
+<p>两种资源共享方式:</p>
+<ul>
+<li>互斥共享: 虽然可以给多个进程使用, 但一个时间段内只允许一个进程访问该资源, 例如同时用 QQ 和微信视频</li>
+<li>同时共享: 允许一个时间段内多个进程「同时」对它们进行访问, 例如 QQ 发送文件 A, 微信发送文件 B, 二者共享硬盘资源</li>
+</ul>
+<p>「同时」是宏观上的, 微观上可能仍是交替的.</p>
+<h4 id="虚拟">虚拟</h4>
+<p>把一个物理上的实体变为若干个逻辑上的对应物. 例如, 虚拟处理器, 虚拟内存.</p>
+<h4 id="异步">异步</h4>
+<p>在多道程序环境下, 允许多个程序并发执行, 但由于资源有限, 进程的执行不是一贯到底的, 而是走走停停, 以不可预知的速度向前推进.</p>
+<h2 id="操作系统的发展与分类">操作系统的发展与分类</h2>
+<p>手工操作阶段, 批处理阶段 (单道批处理系统, 多道批处理系统), 分时操作系统, 实时操作系统.</p>
+<h2 id="操作系统的运行机制">操作系统的运行机制</h2>
+<h3 id="内核态和用户态">内核态和用户态</h3>
+<h4 id="内核程序和应用程序">内核程序和应用程序</h4>
+<p>内核程序组成了操作系统内核, 简称<strong>内核</strong>, 是操作系统的核心部分, 也是最接近硬件的部分.</p>
+<h4 id="特权指令和非特权指令">特权指令和非特权指令</h4>
+<p>应用程序只能使用非特权指令, 如加法指令, 减法指令; 操作系统的内核可以使用特权指令, 如内存清零指令.</p>
+<h4 id="内核态和用户态-2">内核态和用户态</h4>
+<p>为了区分运行的是内核程序还是应用程序, CPU 有内核态 (管态) 和用户态 (目态).</p>
+<p>CPU 中有一个寄存器叫程序状态字寄存器 PSW, 1 表示内核态, 0 表示用户态.</p>
+<p>内核在让出 CPU 之前, 会使用一条特权指令把 PSW 标志位用户态.</p>
+<p>程序试图在用户态执行特权指令, 会触发中断信号, CPU 检测到中断信号, 会立即变为内核态, 操作系统会强行夺取 CPU 的控制权, 停止当前应用程序, 转而运行内核程序.</p>
+<p><strong>但凡需要操作系统介入的地方, 都会触发中断信号.</strong></p>
+<h3 id="中断和异常">中断和异常</h3>
+<h4 id="中断的作用">中断的作用</h4>
+<p>合适的情况下, 操作系统内核会把 CPU 的使用权交给应用程序, 中断是内核夺回 CPU 使用权的唯一途径.</p>
+<h4 id="中断的类型">中断的类型</h4>
+<p>中断分为<strong>内中断</strong>和<strong>外中断</strong>.</p>
+<p>内中断也称<strong>异常</strong>, 与当前执行的指令有关, 中断信号来自 CPU 内部.</p>
+<p>分为:</p>
+<ul>
+<li>陷阱/陷入 trap, 由陷入指令引发, 是应用程序故意触发的.</li>
+<li>故障 fault, 由错误条件引起, 可能被内核程序修复, 修复后把使用权还给应用程序.</li>
+<li>终止 abort, 由致命错误引起, 内核程序无法修复该错误, 直接终止该应用程序, 如除以 0, 非法使用特权指令.</li>
+</ul>
+<p>例:</p>
+<ul>
+<li>试图在用户态执行特权指令</li>
+<li>执行除法指令发现除数为 0</li>
+<li>应用程序想请求操作系统内核的服务, 此时会执行陷入指令, 该指令会引发一个内中断信号</li>
+</ul>
+<p>外中断也称<strong>中断</strong>, 与当前执行的指令无关, 中断信号来自 CPU 外部.</p>
+<p>例:</p>
+<ul>
+<li>时钟中断, 时钟部件发来的中断信号</li>
+<li>I/O 中断, 输入/输出设备发来的中断信号</li>
+</ul>
+<p>CPU 在每条指令结束时, 都会检查有无外中断信号.</p>
+<h4 id="中断机制的基本原理">中断机制的基本原理</h4>
+<p>不同中断信号需要用不同的中断处理程序处理. CPU 检测到中断信号后, 会根据其类型查询<strong>中断向量表</strong>, 找到相应的中断处理程序在内存中存放的位置.</p>
+<h3 id="系统调用">系统调用</h3>
+<p>操作系统需要向上提供一些简单易用的服务, 主要包括命令接口和程序接口. 其中, 程序接口由一组系统调用组成.</p>
+<p>系统调用是操作系统提供给应用程序使用的接口, 可以理解为一种可供应用程序调用的特殊函数, 应用程序可以通过系统调用请求获得操作系统内核的服务.</p>
+<ul>
+<li>设备管理</li>
+<li>文件管理</li>
+<li>进程控制</li>
+<li>进程通信</li>
+<li>内存管理</li>
+</ul>
+<p>过程: 传递系统调用参数 -&gt; (用户态) 执行陷入指令 -&gt; (内核态) 响应的内核程序被调用, 执行请求 -&gt; 返回应用程序</p>
+<h2 id="操作系统体系结构">操作系统体系结构</h2>
+<h3 id="操作系统的内核">操作系统的内核</h3>
+<p>操作系统最基本最核心的部分, 实现操作系统内核功能的程序就是内核程序.</p>
+<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C2.png" alt="image-20251206221753233"></p>
+<p><img data-src="/img/operating-system-1/1.png" alt=""></p>
+<p>大内核:</p>
+<ul>
+<li>将操作系统的主要功能模块都作为系统内核, 运行在内核态.</li>
+<li>优点: 性能高</li>
+<li>缺点: 内核代码庞大, 结构混乱, 难以维护</li>
+<li>Linux, UNIX</li>
+</ul>
+<p>微内核:</p>
+<ul>
+<li>只把最基本的功能保留在内核</li>
+<li>优点: 内核功能少, 结构清晰, 方便维护</li>
+<li>缺点:CPU 运行程序的时候需要更频繁地转换 CPU 状态, 性能低</li>
+<li>Windows NT</li>
+</ul>
+<h3 id="分层结构">分层结构</h3>
+<p>内核分多层, 每层可以单向调用<strong>更低一层</strong>提供的接口.</p>
+<p>优点: 便于调试和验证, 易扩充和维护, 接口清晰固定.</p>
+<p>缺点: 难以合理定义各层边界, 效率低, 不能跨层调用, 系统调用执行时间长</p>
+<h3 id="模块化">模块化</h3>
+<p>将内核划分为多个模块, 各模块之间互相协作.</p>
+<p>内核 = 主模块 + 可加载内核模块</p>
+<p>主模块只负责核心功能, 如进程调度, 内存管理;</p>
+<p>可加载内核模块可以动态加载新模块到内核, 而无需重新编译整个内核.</p>
+<p>优点:</p>
+<ul>
+<li>模块间逻辑清晰易于维护, 确定接口后可以多模块同时开发;</li>
+<li>支持动态加载新的内核模块 (如安装设备驱动, 文件系统模块等), 增强操作系统的适应性</li>
+<li>任何模块都能直接调用其他模块, 效率高</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>模块间接口定义未必合理实用</li>
+<li>模块间相互依赖, 更难调试</li>
+</ul>
+<h3 id="外核">外核</h3>
+<p>Exokernel</p>
+<p>内核负责进程调度, 进程通信等功能, 外核负责为用户进程分配未经抽象的硬件资源, 并保证资源使用安全.</p>
+<p>优点:</p>
+<ul>
+<li>外核可以给用户进程分配「不虚拟, 不抽象」的硬件资源, 用户进程可以更灵活地使用硬件资源</li>
+<li>减少了虚拟硬件资源的「映射层」, 提升效率</li>
+</ul>
+<p>缺点: 降低了系统的一致性, 系统变得更复杂.</p>
+<h2 id="操作系统引导">操作系统引导</h2>
+<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C3.png" alt="image-20251206223757095"></p>
+<p>分区表包含各盘的大小等信息.</p>
+<p>C 盘是活动分区, 安装了操作系统.</p>
+<p>开机时, ROM 引导程序 (自举程序) 指引 CPU 把主引导记录读入主存的 RAM, 据此找到 C 盘, 读入 C 盘里的引导记录, 找到 (根目录下的) 启动管理器, 启动启动管理器 (即操作系统初始化程序), 完成开机.</p>
+<h2 id="虚拟机">虚拟机</h2>
+<p>传统计算机一台物理机上只能运行一个操作系统.</p>
+<p>虚拟机: 使用虚拟化技术, 把一台物理机器虚拟化为多台虚拟机器 Virtual Machine, 每台虚拟机都可以独立运行一个操作系统.</p>
+<p>虚拟机管理程序 (又称虚拟机监控程序, Virtual Machine Monitor, VMM, Hypervisor)</p>
+<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Coperating-system-1%5C4.png" alt="image-20251206224147827"></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>第一类 VMM</th>
+<th>第二类 VMM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对物理资源的控制权</td>
+<td>直接运行在硬件之上，能直接控制和分配物理资源</td>
+<td>运行在 Host OS 之上，依赖于 Host OS 为其分配物理资源</td>
+</tr>
+<tr>
+<td>资源分配方式</td>
+<td>在安装 Guest OS 时，VMM 要在原本的硬盘上自行分配存储空间，类似于「外核」的分配方式，分配未经抽象的物理硬件</td>
+<td>Guest OS 拥有自己的虚拟磁盘，该盘实际上是 Host OS 文件系统中的一个大文件。GuestOS 分配到的内存是虚拟内存</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>性能更好</td>
+<td>性能更差，需要 HostOS 作为「中介」</td>
+</tr>
+<tr>
+<td>可支持的虚拟机数量</td>
+<td>更多，不需要和 Host OS 竞争资源，相同的硬件资源可以支持更多的虚拟机</td>
+<td>更少，Host OS 本身需要使用物理资源，Host OS 上运行的其他进程也需要物理资源</td>
+</tr>
+<tr>
+<td>虚拟机的可迁移性</td>
+<td>更差</td>
+<td>更好，只需导出虚拟机镜像文件即可迁移到另一台 HostOS 上，商业化应用更广泛</td>
+</tr>
+<tr>
+<td>运行模式</td>
+<td>第一类 VMM 运行在最高特权级（Ring 0），可以执行最高特权的指令</td>
+<td>第二类 VMM 部分运行在用户态、部分运行在内核态。GuestOS 发出的系统调用会被 VMM 截获，并转化为 VMM 对 HostOS 的系统调用</td>
+</tr>
+</tbody>
+</table>
+<p>你说, 我能坚持把网课看完吗.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/computer-network-6/" rel="prev" title="计算机网络笔记 六.Internet 协议">
+                  <i class="fa fa-angle-left"></i> 计算机网络笔记 六.Internet 协议
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
