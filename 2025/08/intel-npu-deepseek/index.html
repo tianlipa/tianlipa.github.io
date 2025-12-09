@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -245,7 +245,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="DeepSeek-R1-Distill-Qwen-1-5B">DeepSeek-R1-Distill-Qwen-1.5B</h4>
+    <div class="post-body" itemprop="articleBody"><h4><span id="deepseek-r1-distill-qwen-1-5b">DeepSeek-R1-Distill-Qwen-1.5B</span><a href="#deepseek-r1-distill-qwen-1-5b" class="header-anchor">#</a></h4>
 <p>DeepSeek-R1-Distill-Qwen-1.5B 是 DeepSeek 第一代大模型之一, 基于 Qwen 架构, 经过知识蒸馏, 参数量约为 15 亿, 轻量化, 资源占用低, 中文适配优秀, 运行快.</p>
 <p>为使用 Intel NPU 加速库运行该模型, 首先从 ModelScope 下载所需模型, 导入所需依赖库.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> intel_npu_acceleration_library</span><br><span class="line"><span class="keyword">from</span> modelscope <span class="keyword">import</span> AutoModelForCausalLM, AutoTokenizer</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> TextStreamer</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br></pre></td></tr></table></figure>

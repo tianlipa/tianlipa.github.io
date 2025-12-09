@@ -214,7 +214,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "基本无害",
         "比起精神出轨和肉体出轨<br>火车出轨更为伤人",
         "最是人间留不住,<br>朱颜辞镜花辞树.",
-        "刚刚发生了什么?"
+        "刚刚发生了什么?",
+        "早起的鸟儿有普罗米修斯吃",
+        "Checkmate is now unavoidable.",
+        "你变得懦弱了, 老东西"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

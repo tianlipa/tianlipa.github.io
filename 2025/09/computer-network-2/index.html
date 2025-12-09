@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/11.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-2/12.png">
 <meta property="article:published_time" content="2025-09-26T14:27:37.000Z">
-<meta property="article:modified_time" content="2025-11-29T07:22:26.817Z">
+<meta property="article:modified_time" content="2025-12-08T11:47:36.064Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -250,7 +250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-29 15:22:26" itemprop="dateModified" datetime="2025-11-29T15:22:26+08:00">2025-11-29</time>
+      <time title="修改时间：2025-12-08 19:47:36" itemprop="dateModified" datetime="2025-12-08T19:47:36+08:00">2025-12-08</time>
     </span>
 
   
@@ -262,7 +262,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="概述">概述</h2>
+    <div class="post-body" itemprop="articleBody"><h2><span id="gai-shu">概述</span><a href="#gai-shu" class="header-anchor">#</a></h2>
 <p>玩了十分钟手机一抬头看到满屏幕傅里叶变换直接吓哭了.</p>
 <p>主要功能:</p>
 <ul>
@@ -276,8 +276,8 @@
 <li>设备间信号的传送方式, 包括调制方式, 编码和使用信号处理与传输线路的特性匹配</li>
 </ul>
 <span id="more"></span>
-<h2 id="数据通信的理论基础">数据通信的理论基础</h2>
-<h3 id="Fourier-级数">Fourier 级数</h3>
+<h2><span id="shu-ju-tong-xin-de-li-lun-ji-chu">数据通信的理论基础</span><a href="#shu-ju-tong-xin-de-li-lun-ji-chu" class="header-anchor">#</a></h2>
+<h3><span id="fourier-ji-shu">Fourier 级数</span><a href="#fourier-ji-shu" class="header-anchor">#</a></h3>
 <p>众所周知, 任何正常的周期为 T 的函数 g (t) 都可以展开成 Fourier 级数, 即:</p>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></msubsup><msub><mi>a</mi><mi>n</mi></msub><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>n</mi><mi>f</mi><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></msubsup><msub><mi>b</mi><mi>n</mi></msub><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>n</mi><mi>f</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g (t) = \frac{1}{2}c + \sum_{n=1}^\infty a_n \sin (2 \pi nft) + \sum_{n=1}^\infty b_n \cos (2 \pi nft)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal">πn</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal">πn</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></p>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mfrac><mn>1</mn><mi>T</mi></mfrac></mrow><annotation encoding="application/x-tex">f = \frac{1}{T}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>: 基频</p>
@@ -287,9 +287,9 @@
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mfrac><mn>2</mn><mi>T</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">c = \frac{2}{T}\int_0^Tg (t) dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3921em;vertical-align:-0.3558em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="margin-right:0.19445em;position:relative;top:-0.0006em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0362em;"><span style="top:-2.3442em;margin-left:-0.1945em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.2579em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3558em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></p>
 <p>草, 我理解为什么有人喜欢用 latex 敲公式了, 好爽啊.</p>
 <p>例: 传输信号 01100010:</p>
-<p><img data-src="/img/computer-network-2/1.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/1.png" alt></p>
 <p>显然谐波越多 (n 越大), 效果越好.</p>
-<p>RMS 振幅 (root mean square) 的平方与对应频率的传输能量成正比 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><msubsup><mi>a</mi><mi>n</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>b</mi><mi>n</mi><mn>2</mn></msubsup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{a_n^2+b_n^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.3084em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9316em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8916em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+<p>RMS 振幅 (root mean square) 的平方与对应频率的传输能量成正比 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><msubsup><mi>a</mi><mi>n</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>b</mi><mi>n</mi><mn>2</mn></msubsup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{a_n^2+b_n^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.3084em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9316em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8916em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
 c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
 c340,-704.7,510.7,-1060.3,512,-1067
 l0 -0
@@ -300,14 +300,14 @@ c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
 s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
 c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
 M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3084em;"><span></span></span></span></span></span></span></span></span>).</p>
-<h3 id="带宽">带宽</h3>
+<h3><span id="dai-kuan">带宽</span><a href="#dai-kuan" class="header-anchor">#</a></h3>
 <p>信号在物理介质中的传输总有衰减, 从 0 到某个频率<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">f_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 若对应 Fourier 分量 (谐波) 振幅没有明显减弱, 则这段频率范围称为带宽.</p>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">f_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: 截止频率, 通常为保留一半能量的频率.</p>
 <p>带宽由物理介质的材料构成, 厚度和长度等来决定.</p>
 <p>模拟信道的带宽即物理介质的截止频率, 以 Hz 为单位, 数字信道的带宽 (传输速率) 即信道的最大数据速率, 以 bps 或 B/s 为单位.</p>
 <p>数字速率是数字传输过程中采用物理信道模拟带宽所能获得的最终结果.</p>
 <p>传输速率与信道带宽成正比, 限制信道的带宽就是限制传输速率.</p>
-<h3 id="信道的最大传输速率">信道的最大传输速率</h3>
+<h3><span id="xin-dao-de-zui-da-chuan-shu-su-lu">信道的最大传输速率</span><a href="#xin-dao-de-zui-da-chuan-shu-su-lu" class="header-anchor">#</a></h3>
 <p>任何实际信道都不是理想的, 不可能以任意高的速率传输. 码元传输速率越高, 信号传输距离越远, 噪声干扰越大, 传输媒体质量越差, 接受端的波形失真就越严重.</p>
 <p>具体的信道所能通过的频率范围总是有限的, 信号中的许多高频分量往往不能通过信道.</p>
 <p>限制传输速率的两个因素:</p>
@@ -329,30 +329,30 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>例: 带宽 1MHz, SNR=63, 合适的比特率和信号等级是多少?</p>
 <p>解: Shannon 公式求数据传输速率上界, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>B</mi><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">R</mi></mrow><mo stretchy="false">)</mo><mo>=</mo><msup><mn>10</mn><mn>6</mn></msup><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mn>64</mn><mo>=</mo><mn>6</mn><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">C=B\log_2 (1+\mathrm{SNR})=10^6\log_264=6\mathrm{Mbps}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">SNR</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0582em;vertical-align:-0.2441em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">64</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">6</span><span class="mord"><span class="mord mathrm">Mbps</span></span></span></span></span></p>
 <p>于是我们不妨取 4Mbps, 代入 Nyquist 定理有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">s</mi></mrow><mo>=</mo><mn>2</mn><mo>×</mo><mn>1</mn><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">H</mi><mi mathvariant="normal">z</mi></mrow><mo>×</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>L</mi></mrow><annotation encoding="application/x-tex">4\mathrm{Mbps}=2\times1\mathrm{MHz}\times \log_2L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">4</span><span class="mord"><span class="mord mathrm">Mbps</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord mathrm">MHz</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">L</span></span></span></span>, 知 L=4.</p>
-<h2 id="传输介质">传输介质</h2>
-<h3 id="双绞线">双绞线</h3>
+<h2><span id="chuan-shu-jie-zhi">传输介质</span><a href="#chuan-shu-jie-zhi" class="header-anchor">#</a></h2>
+<h3><span id="shuang-jiao-xian">双绞线</span><a href="#shuang-jiao-xian" class="header-anchor">#</a></h3>
 <p>最古老而最常用的传输介质. 把两根互相绝缘的铜导线并排放在一起, 然后用规则的方法绞合 (twist) 起来就构成了双绞线.</p>
 <p>绞合度越高, 可用的数据传输率越高.</p>
 <p>分为无屏蔽双绞线 (无屏蔽层, 便宜) 和屏蔽双绞线 (有屏蔽层, 必须接地).</p>
 <p><strong>注意</strong>: 无论是哪种类别的双绞线, 衰减都随频率的升高而增大; 双绞线的最高速率与数字信号的编码方法有很大的关系.</p>
-<h3 id="同轴电缆">同轴电缆</h3>
+<h3><span id="tong-zhou-dian-lan">同轴电缆</span><a href="#tong-zhou-dian-lan" class="header-anchor">#</a></h3>
 <p>由内导体铜质芯线 (单股实心线或多股绞合线), 绝缘层, 网状编织的外导体屏蔽层 (也可以是单股的) 以及保护塑料外层所组成, 具有很好的抗干扰特性, 被广泛用于传输较高速率的数据.</p>
 <ul>
 <li>基带同轴电缆 Baseband Coax: 阻抗匹配为 50Ω, 用于数字传输, 1 公里电缆可达 1~2Gbps 的传输速率; 又分为粗缆和细缆.</li>
 <li>宽带同轴电缆 Broadband Coaxa: 阻抗匹配为 75Ω, 用于模拟传输和有线电视传输 (CATV), 带宽可达 800MHz 以上, 采用 FDM 技术. <strong>传输数字信号时, 要使用特殊设备如 Cable MODEM</strong>, 现在综合有线电视网络已成为城域网的一种形式.</li>
 </ul>
-<h3 id="电力线">电力线</h3>
+<h3><span id="dian-li-xian">电力线</span><a href="#dian-li-xian" class="header-anchor">#</a></h3>
 <p>PLC power line communication, 用电力线作为信号的传输媒介, 通过载波方式传输模拟或数字信号. 被应用于中压和低压电网上, 主要面向电力行业运用, 如自动抄表, 电网负载控制, 供电管理.</p>
 <p>特点:</p>
 <ul>
 <li>用户数量最多, 不用铺设专用线路, 有电就有网</li>
 <li>负载阻抗呈随机性, 导致载波通信的收发信机的输出阻抗和输入阻抗难以与线路阻抗相匹配, 信号衰减严重.</li>
 </ul>
-<h3 id="光纤">光纤</h3>
+<h3><span id="guang-xian">光纤</span><a href="#guang-xian" class="header-anchor">#</a></h3>
 <p>通过传递光脉冲进行通信, 带宽远远大于其他各种传输媒体的带宽.</p>
 <p>发送端: 光源 (发光二极管, 半导体激光器等), 在电脉冲的作用下产生光脉冲<br>
 接受端: 光检测器 (光电二极管), 检测到光脉冲时还原出电脉冲</p>
-<p><img data-src="/img/computer-network-2/2.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/2.png" alt></p>
 <p>优点: 传输速率极高 (Gbps, Tbps, Pbps), 衰减小, 不受电磁干扰<br>
 缺点: 不能过分弯曲, 连接复杂, 处理复杂, 一般处理时要转换成电信号</p>
 <p>发展方向: 全光网络</p>
@@ -363,39 +363,39 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li>多模光纤: 多条光传播路径, 纤芯大, 短距离通信 (建筑内或者校园内, 大约 600m), 再分为: SI 阶跃型 (折射率在纤芯和包层交界处阶梯变化) 和 GI 渐进型 (折射率从纤芯中心开始向包层逐渐减小)</li>
 <li>单模光纤 (Single mode fiber): 光按直线传播, 纤芯小 (几个光波长), 长距离通信</li>
 </ul>
-<p><img data-src="/img/computer-network-2/3.png" alt=""></p>
-<h3 id="无线传输">无线传输</h3>
-<h4 id="无线电传输">无线电传输</h4>
+<p><img data-src="/img/computer-network-2/3.png" alt></p>
+<h3><span id="wu-xian-chuan-shu">无线传输</span><a href="#wu-xian-chuan-shu" class="header-anchor">#</a></h3>
+<h4><span id="wu-xian-dian-chuan-shu">无线电传输</span><a href="#wu-xian-dian-chuan-shu" class="header-anchor">#</a></h4>
 <p>低频 LF, 中频 MF 波段电波沿地表传播, 高频 HF 和甚高频 VHF 波段的地表电波会被地球吸收, 但可以通过地球上空的电离层反射实现长距离传输.</p>
-<h4 id="微波传输">微波传输</h4>
+<h4><span id="wei-bo-chuan-shu">微波传输</span><a href="#wei-bo-chuan-shu" class="header-anchor">#</a></h4>
 <p>在 100MHz 以上, 微波通过抛物状天线把能量集中于一小束, 具有极高的信噪比, 沿直线实现可视距传输. 在地面会因为地表弯曲, 需要中继站接续微波信号, 100 米高的塔可接续约 80 公里.</p>
 <p>开放的波段: 2.4~2.4835 GHz, 5.735~5.860GHz, 即工业/科学/医学波段 (ISM)</p>
-<h4 id="5G-移动网络频段">5G 移动网络频段</h4>
+<h4><span id="5g-yi-dong-wang-luo-pin-duan">5G 移动网络频段</span><a href="#5g-yi-dong-wang-luo-pin-duan" class="header-anchor">#</a></h4>
 <p>ITU 定义的 5G 毫米波频段包括 24.25-27.5GHz, 37-43.5GHz, 45.5-47GHz, 47.2-48.2GHz 和 66-71GHz.</p>
-<h4 id="卫星通信">卫星通信</h4>
+<h4><span id="wei-xing-tong-xin">卫星通信</span><a href="#wei-xing-tong-xin" class="header-anchor">#</a></h4>
 <p>通信容量大, 通信距离远, 通信比较稳定, 通信费用与通信距离无关, 但传播时延较大, 在 10~300ms 之间.</p>
-<h2 id="数字调制与多路复用">数字调制与多路复用</h2>
-<h3 id="数字调制">数字调制</h3>
+<h2><span id="shu-zi-diao-zhi-yu-duo-lu-fu-yong">数字调制与多路复用</span><a href="#shu-zi-diao-zhi-yu-duo-lu-fu-yong" class="header-anchor">#</a></h2>
+<h3><span id="shu-zi-diao-zhi">数字调制</span><a href="#shu-zi-diao-zhi" class="header-anchor">#</a></h3>
 <p>调制是对信号源进行处理, 使其变为适合传输形式的过程, 即把基带信号 (调制信号) 变为一个相对基带频率而言频率非常高的通带信号 (已调信号).</p>
 <p>数字调制就是把要发送的数字信号转换到适合于传输的通带模拟信号的过程.</p>
 <p>数字调制: 比特和代表它们的信号之间的转换过程.</p>
 <p>基带 Baseband 传输: 比特直接转换成信号, 信号波形一般为方波; 信号的传输占用传输介质上从零到最大值之间的全部频率 (有线介质).</p>
 <p>通带 Passband 传输: 调节载波信号的幅度, 相位或者频率, 载波波形一般为正/余弦波; 信号占据以载波信号频率为中心的一段频带.</p>
-<p><img data-src="/img/computer-network-2/4.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/4.png" alt></p>
 <p>通带传输中的调制:<br>
-<img data-src="/img/computer-network-2/5.png" alt=""></p>
-<h3 id="多路复用">多路复用</h3>
+<img data-src="/img/computer-network-2/5.png" alt></p>
+<h3><span id="duo-lu-fu-yong">多路复用</span><a href="#duo-lu-fu-yong" class="header-anchor">#</a></h3>
 <p>多路复用是将由多个信息源产生或者来自多条线路的多路信号组合在一条物理干线 Trunk 上进行传输.</p>
-<h4 id="频分多路复用-FDM">频分多路复用 FDM</h4>
+<h4><span id="pin-fen-duo-lu-fu-yong-fdm">频分多路复用 FDM</span><a href="#pin-fen-duo-lu-fu-yong-fdm" class="header-anchor">#</a></h4>
 <p>将整个带宽分为多份, 用户在分配到一定的频带后, 在通信过程中自始至终都占用这个频带, 所有用户都在同样的时间占用不同的带宽 (即频带) 资源.</p>
-<p><img data-src="/img/computer-network-2/6.png" alt=""></p>
-<h4 id="波分多路复用-WDM">波分多路复用 WDM</h4>
+<p><img data-src="/img/computer-network-2/6.png" alt></p>
+<h4><span id="bo-fen-duo-lu-fu-yong-wdm">波分多路复用 WDM</span><a href="#bo-fen-duo-lu-fu-yong-wdm" class="header-anchor">#</a></h4>
 <p>光的频分复用, 使用一根光纤来同时传输多个光载波信号.</p>
-<h4 id="时分多路复用-TDM">时分多路复用 TDM</h4>
+<h4><span id="shi-fen-duo-lu-fu-yong-tdm">时分多路复用 TDM</span><a href="#shi-fen-duo-lu-fu-yong-tdm" class="header-anchor">#</a></h4>
 <p>将时间划分为一段段等长的时分复用帧 (TDM 帧), 每个时分复用的用户在每一个 TDM 帧中占用固定序号的时隙. 每个用户占用的时隙周期性出现, 其周期就是 TDM 帧的长度. 所有用户在不同的时间占用同样的频道宽度.</p>
 <p>缺点: 灵活性差, 无法满足用户需求增加或减少的情况.</p>
 <p>Statistic TDM (STDM): 根据用户需求动态分配其占用的时隙.</p>
-<h4 id="码分复用-CDM">码分复用 CDM</h4>
+<h4><span id="ma-fen-fu-yong-cdm">码分复用 CDM</span><a href="#ma-fen-fu-yong-cdm" class="header-anchor">#</a></h4>
 <p>每个用户可以在相同时间使用相同的频带进行通信, 各用户使用经过特殊挑选的不同码型, 因此不会造成干扰.</p>
 <p>当码分复用 CDM (Code Division Multiplexing) 信道为多个不同地址的用户所共享时, 就称为码分多址 CDMA (Code Division Multiple Access).</p>
 <p>CDMA 工作原理:<br>
@@ -403,19 +403,19 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 发送比特 1: 发送自己的 m bit 码片序列.<br>
 发送比特 0: 发送该码片序列的二进制反码.</p>
 <p>每个站分配的码片序列必须各不相同且互相<strong>正交</strong>, 即归一化内积均为 0.</p>
-<h2 id="交换技术">交换技术</h2>
+<h2><span id="jiao-huan-ji-zhu">交换技术</span><a href="#jiao-huan-ji-zhu" class="header-anchor">#</a></h2>
 <p>为什么需要交换: 减少网络中节点之间需要的通信线路, 增强可扩展性, 构建更大规模的网络.</p>
 <p>交换的概念: 交换操作由一系列过程组成: 为输入数据选择输出线路/端口, 在输入和输出之间建立连接, 通过该连接将数据放到输出线路/端口上.</p>
 <p>网络中执行交换操作的设备称为交换机. 通过一系列交换机的交换操作, 在两个通信节点之间建立一条数据传输路径, 这条路径由物理或者逻辑上的链路组成.</p>
-<h3 id="交换类型">交换类型</h3>
+<h3><span id="jiao-huan-lei-xing">交换类型</span><a href="#jiao-huan-lei-xing" class="header-anchor">#</a></h3>
 <p>通信网包括<strong>用户终端</strong>, <strong>传输链路</strong>, <strong>交换系统</strong>三个基本元素, 交换系统是通信网进行信息交换的控制枢纽.</p>
 <p>交换类型:</p>
 <ul>
 <li><strong>电路交换</strong>circuit switching (TDM 或 FDM)</li>
 <li>存储交换 (统计时分复用): <strong>分组交换</strong>packet switching, 报文交换 message switching</li>
 </ul>
-<p><img data-src="/img/computer-network-2/7.png" alt=""></p>
-<h3 id="电路交换">电路交换</h3>
+<p><img data-src="/img/computer-network-2/7.png" alt></p>
+<h3><span id="dian-lu-jiao-huan">电路交换</span><a href="#dian-lu-jiao-huan" class="header-anchor">#</a></h3>
 <p>电路交换方式在通信对端之间建立物理连接 (预留物理信道), 该通路在通信期间一直维持着, 并且为该通信双方专用, 直到通信结束.</p>
 <p>连接过程中, 连接请求从发送端传向接收端, 并被接收端确认, 传输路径建立后, 数据像流一样在路径上传输, 数据传输的唯一延时是电磁波的传播时间.</p>
 <p>优点: 传输可靠, 迅速, 不丢失而又保序.</p>
@@ -428,16 +428,16 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>优点: 占用固定的线路资源, 保证数据传输的速率, 延时, 可靠性及有序性</p>
 <p>缺点: 线路资源利用率低, 没有数据传输时也占用线路或者固定时隙; 电路连接建立导致延迟</p>
 <p>性能:</p>
-<p><img data-src="/img/computer-network-2/8.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/8.png" alt></p>
 <p>电路交换是为话音传输设计的, 支持固定的数据速率.</p>
-<h3 id="公用电话交换网">公用电话交换网</h3>
+<h3><span id="gong-yong-dian-hua-jiao-huan-wang">公用电话交换网</span><a href="#gong-yong-dian-hua-jiao-huan-wang" class="header-anchor">#</a></h3>
 <p>PSTN, Public Switched Telephone Network</p>
-<p><img data-src="/img/computer-network-2/9.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/9.png" alt></p>
 <p>本地回路: 双绞线将家庭连接到电信公司, 模拟信号<br>
 干线: 光纤将交换局连接起来, 数字信号<br>
 交换局: 将电话呼叫从一条干线交换到另一条干线</p>
 <p>传统电话网络中的话音业务采用电路交换技术, 除端局到用户的本地回路 (Subscriber Loop) 是模拟的以外, 其它部分都是数字的.</p>
-<h3 id="存储交换的方式">存储交换的方式</h3>
+<h3><span id="cun-chu-jiao-huan-de-fang-shi">存储交换的方式</span><a href="#cun-chu-jiao-huan-de-fang-shi" class="header-anchor">#</a></h3>
 <p>存储交换指节点要先存储报文/分组, 再发送出去.</p>
 <p><strong>报文交换 message switching</strong>: 数据传输以报文的整体为单位, 即端点系统一次性发送数据块, 长度不限且可变.</p>
 <p><strong>分组交换 packet switching</strong>: 将报文划分成若干个可以存放在内存中的分组进行传送, 以分组为单元统计复用线路 (即链路), 只有有数据要传输才占用线路, 数据的到达具有随机性.</p>
@@ -445,7 +445,7 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>分组交换的优点: 线路利用率高, 节点只有在有数据要传输时才占用通信线路, 因此多个节点的分组可以共享一条通信线路.<br>
 缺点: 需要资源管理机制来保证数据传输的速率, 延时, 可靠性和有序性, 增加了复杂性.</p>
 <p>分组交换最初是为数据传输设计的, 支持可变的数据速率.</p>
-<h4 id="数据报交换">数据报交换</h4>
+<h4><span id="shu-ju-bao-jiao-huan">数据报交换</span><a href="#shu-ju-bao-jiao-huan" class="header-anchor">#</a></h4>
 <p>datagram, 无连接的分组交换, 直接发送分组.</p>
 <p>每个分组的传送被单独处理, <strong>每个分组头中都包含目的节点的地址</strong>, 一个节点收到数据报后, 根据报头中的地址信息和节点所存储的路由信息, 找出一个合适的出口, 把数据报发送到下一个节点. 同一报文中的数据报可以走不同的路径, 也可以按不同的顺序到达.</p>
 <p>特征:</p>
@@ -461,9 +461,9 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li>处理延时 (processing delay): 检查分组头部, 寻路, 差错校验等, 与 CPU 速度和处理算法有关.</li>
 <li>排队延时 (queue delay): 在节点上等待处理所需时间, 与网络拥塞状况有关.</li>
 </ul>
-<p><img data-src="/img/computer-network-2/10.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/10.png" alt></p>
 <p>IP 网络采用数据报交换, 在网络层执行交换, 交换的单元为 IP 分组, 执行交换的设备也被称为 IP 路由器.</p>
-<h4 id="虚电路交换">虚电路交换</h4>
+<h4><span id="xu-dian-lu-jiao-huan">虚电路交换</span><a href="#xu-dian-lu-jiao-huan" class="header-anchor">#</a></h4>
 <p>virtual circuit, 面向连接的分组交换, 先建立连接再发送分组.</p>
 <p>首先在源节点和目的节点间建立一条逻辑通路 (即虚电路, 在沿路的链路上分配了一个虚通道号, 相应的节点上占用了一条表项), 然后进行通信, 最后拆除虚电路.</p>
 <p>特征:</p>
@@ -475,7 +475,7 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>VCI (VC Identifier, 虚电路标识): 在每条物理线路/链路上可以同时运行很多条虚电路, 每条虚电路由 VCI 标识. VCI 具有局部意义, 只在每条链路上唯一.</p>
 <p>每个交换机上都维护一个转发表, 基于 VCI 对分组进行转发 .</p>
 <p>虚电路的建立过程: A 向 B 发送建立请求, B 响应建立确认并反向分配 VCI.</p>
-<p><img data-src="/img/computer-network-2/11.png" alt=""></p>
+<p><img data-src="/img/computer-network-2/11.png" alt></p>
 <p>ATM 网络采用虚电路交换, 交换的单元为固定长度的 ATM 信元, 执行交换的设备也被称为 ATM 交换机.</p>
 <p><img data-src="/img/computer-network-2/12.png" alt="三种交换技术的时序图"></p>
 

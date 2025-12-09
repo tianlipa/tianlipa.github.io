@@ -158,7 +158,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -266,7 +266,7 @@ curl_exec (): 执行 cURL 会话<br>
 file_get_contents (): 将整个文件读入为一个字符串<br>
 fsockopen (): 打开一个网络连接或一个 Unix 套接字连接</p>
 <span id="more"></span>
-<h3 id="curl-协议">curl 协议</h3>
+<h3><span id="curl-xie-yi">curl 协议</span><a href="#curl-xie-yi" class="header-anchor">#</a></h3>
 <p>file: 查看文件，curl -v ‘file:///etc/passwd’</p>
 <p>dict: 探测端口，<a target="_blank" rel="noopener" href="http://localhost/ssrf/ssrf1.php?url=dict://127.0.0.1:3306">http://localhost/ssrf/ssrf1.php?url=dict://127.0.0.1:3306</a></p>
 <p>gopher: 反弹 shell</p>
@@ -278,12 +278,12 @@ fsockopen (): 打开一个网络连接或一个 Unix 套接字连接</p>
 <li>再进行一次 URL 编码，因为服务器收到请求时会解码一次，curl 会再解码一次</li>
 <li>/?url=gopher://127.0.0.1:80/_POST%2520…</li>
 </ol>
-<h3 id="检测工具">检测工具</h3>
+<h3><span id="jian-ce-gong-ju">检测工具</span><a href="#jian-ce-gong-ju" class="header-anchor">#</a></h3>
 <p>SSRF-Testing<br>
 SSRFmap<br>
 Gopherus<br>
 ssrf_proxy</p>
-<h3 id="防御">防御</h3>
+<h3><span id="fang-yu">防御</span><a href="#fang-yu" class="header-anchor">#</a></h3>
 <p>禁用协议<br>
 限制请求端口<br>
 设置 URL 白名单<br>
@@ -292,8 +292,8 @@ ssrf_proxy</p>
 <hr>
 <p>Server Side Request Forgery, 服务端请求伪造，通过构造数据进而伪造服务端发起请求的漏洞。因为请求是由服务端内部发起的，所以一般情况下 SSRF 的目标往往是从外网无法访问的内部系统。</p>
 <p>SSRF 漏洞形成的原理多是服务端提供了从外部服务获取数据的功能，但没有对目标的地址、协议等重要参数进行过滤和限制，从而导致可以自由构造参数，发起预期外的请求。</p>
-<p><img data-src="/img/msb/17378583293736.png" alt=""></p>
-<p><img data-src="/img/msb/17378586215344.png" alt=""></p>
+<p><img data-src="/img/msb/17378583293736.png" alt></p>
+<p><img data-src="/img/msb/17378586215344.png" alt></p>
 <p>常见文件路径：</p>
 <ul>
 <li>/etc/passwd: 几乎所有 linux 发行版都包含的文件，可用于判断能否读取本地文件，同时保存了系统中有哪些用户</li>

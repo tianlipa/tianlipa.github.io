@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -246,13 +246,13 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="简介">简介</h2>
-<h3 id="本地文件包含-LFI-Local-File-Inclusion">本地文件包含 (LFI, Local File Inclusion)</h3>
+    <div class="post-body" itemprop="articleBody"><h2><span id="jian-jie">简介</span><a href="#jian-jie" class="header-anchor">#</a></h2>
+<h3><span id="ben-di-wen-jian-bao-han-lfi-local-file-inclusion">本地文件包含 (LFI, Local File Inclusion)</span><a href="#ben-di-wen-jian-bao-han-lfi-local-file-inclusion" class="header-anchor">#</a></h3>
 <p>目录遍历漏洞/文件任意访问漏洞<br>
 通过接口动态包含<br>
 可用于包含恶意代码或图片马<br>
 包含敏感文件</p>
-<h3 id="远程文件包含-RFI-Remote-File-Inclusion">远程文件包含 (RFI, Remote File Inclusion)</h3>
+<h3><span id="yuan-cheng-wen-jian-bao-han-rfi-remote-file-inclusion">远程文件包含 (RFI, Remote File Inclusion)</span><a href="#yuan-cheng-wen-jian-bao-han-rfi-remote-file-inclusion" class="header-anchor">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -287,7 +287,7 @@
 allow_url_fopen=On<br>
 allow_url_include=On</p>
 <span id="more"></span>
-<h2 id="PHP-相关函数和伪协议">PHP 相关函数和伪协议</h2>
+<h2><span id="php-xiang-guan-han-shu-he-wei-xie-yi">PHP 相关函数和伪协议</span><a href="#php-xiang-guan-han-shu-he-wei-xie-yi" class="header-anchor">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -334,21 +334,21 @@ allow_url_include=On</p>
 </tr>
 </tbody>
 </table>
-<h3 id="PHP-伪协议">PHP 伪协议</h3>
-<p><img data-src="media/17385011252030.png" alt=""></p>
+<h3><span id="php-wei-xie-yi">PHP 伪协议</span><a href="#php-wei-xie-yi" class="header-anchor">#</a></h3>
+<p><img data-src="media/17385011252030.png" alt></p>
 <p>php://filter 可以作为中间流处理其他流，例如 php://filter/resource=/flag</p>
 <p>?url=/etc/passwd 测试是否能访问文件<br>
 ?url=/var/log/nginx/access.log 查看日志<br>
 日志注入</p>
-<h2 id="文件包含漏洞挖掘与利用">文件包含漏洞挖掘与利用</h2>
-<h3 id="URL-关键字">URL 关键字</h3>
+<h2><span id="wen-jian-bao-han-lou-dong-wa-jue-yu-li-yong">文件包含漏洞挖掘与利用</span><a href="#wen-jian-bao-han-lou-dong-wa-jue-yu-li-yong" class="header-anchor">#</a></h2>
+<h3><span id="url-guan-jian-zi">URL 关键字</span><a href="#url-guan-jian-zi" class="header-anchor">#</a></h3>
 <p>URL 参数名出现了 page file filename include 等关键字<br>
 URL 参数值出现了文件名，如 xxx.php xxx.html</p>
 <p>如：<br>
 ?file=content<br>
 ?page=abc.asp<br>
 ?home=abc.html</p>
-<h3 id="利用流程">利用流程</h3>
+<h3><span id="li-yong-liu-cheng">利用流程</span><a href="#li-yong-liu-cheng" class="header-anchor">#</a></h3>
 <p>发现漏洞，上传 shell/读取敏感文件 (FUZZ)，执行恶意代码</p>
 <p>自动工具：<br>
 LFI Suite</p>

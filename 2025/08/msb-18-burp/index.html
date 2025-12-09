@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -255,41 +255,41 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>集成化，自动化，可扩展的渗透测试工具</p>
-<p><img data-src="/img/msb/17375355782024.png" alt=""></p>
+<p><img data-src="/img/msb/17375355782024.png" alt></p>
 <span id="more"></span>
-<h2 id="Target-模块">Target 模块</h2>
-<h3 id="作用">作用</h3>
+<h2><span id="target-mo-kuai">Target 模块</span><a href="#target-mo-kuai" class="header-anchor">#</a></h2>
+<h3><span id="zuo-yong">作用</span><a href="#zuo-yong" class="header-anchor">#</a></h3>
 <p>按主机或域名分类记录并归纳整理所有经过 Burp 的 HTTP 流量。</p>
 <ul>
 <li>把握网站的整体情况</li>
 <li>对一次工作的域进行分析</li>
 <li>分析网站存在的攻击面</li>
 </ul>
-<h3 id="设置作用域">设置作用域</h3>
-<p><img data-src="/img/msb/17375364043663.png" alt=""></p>
+<h3><span id="she-zhi-zuo-yong-yu">设置作用域</span><a href="#she-zhi-zuo-yong-yu" class="header-anchor">#</a></h3>
+<p><img data-src="/img/msb/17375364043663.png" alt></p>
 <p>使用场景：</p>
 <ul>
 <li>限定 Sitemap 和 HTTP history 记录哪些域的内容</li>
 <li>限定 Spider 抓取哪些域的内容</li>
 <li>限定 Scanner 扫描哪些域的安全漏洞</li>
 </ul>
-<h3 id="站点地图-Sitemap">站点地图 Sitemap</h3>
-<h2 id="漏洞扫描">漏洞扫描</h2>
+<h3><span id="zhan-dian-di-tu-sitemap">站点地图 Sitemap</span><a href="#zhan-dian-di-tu-sitemap" class="header-anchor">#</a></h3>
+<h2><span id="lou-dong-sao-miao">漏洞扫描</span><a href="#lou-dong-sao-miao" class="header-anchor">#</a></h2>
 <p>Scan: 主动扫描，给定地址爬取内容，检测漏洞<br>
 Live task: 被动扫描，对经过 proxy, repeater, intruder 的请求进行漏洞检测<br>
 crawl: 来自 proxy 的被动流量抓取<br>
 live audit from proxy: 流量的实时审计</p>
-<h3 id="主动扫描-actively-scan-crawl-and-audit">主动扫描 (actively scan, crawl and audit)</h3>
+<h3><span id="zhu-dong-sao-miao-actively-scan-crawl-and-audit">主动扫描 (actively scan, crawl and audit)</span><a href="#zhu-dong-sao-miao-actively-scan-crawl-and-audit" class="header-anchor">#</a></h3>
 <p>爬取所有链接检测漏洞，发送大量请求<br>
 针对：</p>
 <ul>
 <li>客户端的漏洞，如 XSS，HTTP 头注入，操作重定向</li>
 <li>服务端的漏洞，如 SQL 注入，命令行注入，文件遍历</li>
 </ul>
-<h3 id="被动扫描-passively-scan-live-audit">被动扫描 (passively scan, live audit)</h3>
+<h3><span id="bei-dong-sao-miao-passively-scan-live-audit">被动扫描 (passively scan, live audit)</span><a href="#bei-dong-sao-miao-passively-scan-live-audit" class="header-anchor">#</a></h3>
 <p>只检测经过 BP 代理服务器的地址，不爬取，发送有限请求<br>
 针对：<br>
-<img data-src="/img/msb/17375495181302.png" alt=""></p>
+<img data-src="/img/msb/17375495181302.png" alt></p>
 
     </div>
 

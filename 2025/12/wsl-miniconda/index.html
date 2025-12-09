@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -244,18 +244,18 @@
     
     <div class="post-body" itemprop="articleBody"><p>给 Pettingzoo 配环境把自己配红温了, 查 issues 发现 Windows 的问题导致某个库不支持, 遂改用 WSL.</p>
 <span id="more"></span>
-<h2 id="安装-WSL">安装 WSL</h2>
+<h2><span id="an-zhuang-wsl">安装 WSL</span><a href="#an-zhuang-wsl" class="header-anchor">#</a></h2>
 <p>官方的安装方法是打开管理员 PowerShell, 运行<code>wsl --install</code>, 然后你就会发现 250MB 的东西需要下载两个小时. 当然你要是网速够快就当我没说.</p>
 <p>所以正确方法是打开 <a target="_blank" rel="noopener" href="https://github.com/microsoft/WSL/releases">GitHub Releases</a>, 找到最新版本下载 msi 安装包, 运行, 之后再打开 PowerShell, 运行:</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span></span><br></pre></td></tr></table></figure>
 <p>默认安装 Ubuntu, 如果想装别的系统要指定参数.</p>
 <p>然后就完事了, 顺利得难以置信.</p>
-<h2 id="换源">换源</h2>
+<h2><span id="huan-yuan">换源</span><a href="#huan-yuan" class="header-anchor">#</a></h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt</span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.bak</span><br><span class="line"><span class="built_in">sudo</span> vim sources.list</span><br></pre></td></tr></table></figure>
 <p>中科大源:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 默认注释了源码仓库，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ noble main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ noble main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ noble-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ noble-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ noble-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ noble-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ noble-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ noble-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https://mirrors.ustc.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
 <p>然后<code>sudo apt update</code>即可.</p>
-<h2 id="安装-Miniconda3">安装 Miniconda3</h2>
+<h2><span id="an-zhuang-miniconda3">安装 Miniconda3</span><a href="#an-zhuang-miniconda3" class="header-anchor">#</a></h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/miniconda3</span><br><span class="line">wget https://mirrors.ustc.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh</span><br><span class="line">bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3</span><br><span class="line"><span class="built_in">rm</span> -rf ~/miniconda3/miniconda.sh</span><br><span class="line">~/miniconda3/bin/conda init bash</span><br></pre></td></tr></table></figure>
 <p>重启 shell 即可.</p>
 <p>然后就遇到了和 Windows 一样的问题, <s>我 cnm</s></p>

