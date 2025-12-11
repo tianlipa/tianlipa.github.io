@@ -2,6 +2,7 @@
 title: Live Forever
 date: 2025-10-18 23:04:45
 tags: 艺术细菌
+abstract: 永生不死.
 password: 55555
 ---
 

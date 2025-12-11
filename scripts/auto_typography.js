@@ -280,9 +280,109 @@
 // });
 
 
+// /**
+//  * Hexo Auto Typography Script (Fixed Version)
+//  * 修复：彻底解决代码块、HTML内容、Hexo标签被误伤的问题
+//  */
+
+// hexo.extend.filter.register('before_post_render', function(data) {
+//     let content = data.content;
+//     const markers = []; 
+    
+//     // --- 1. 保护机制 (Masking Phase) ---
+//     // 核心逻辑：将不需要处理的部分先替换成占位符，处理完后再换回来
+//     const mask = (str, regex) => {
+//         return str.replace(regex, (match) => {
+//             const key = `___MASK_${markers.length}___`;
+//             markers.push(match);
+//             return key;
+//         });
+//     };
+
+//     // 【重要】保护顺序调整：先保护大块结构，再保护行内结构
+    
+//     // 1.1 Hexo 专用标签 (如 {% codeblock %}, {% raw %} 等)
+//     // 必须最先保护，因为它们可能包含复杂的代码或 HTML
+//     content = mask(content, /\{%[\s\S]*?%\}/g);
+
+//     // 1.2 HTML 块级保护 (保护 <script>, <style>, <pre>, <code> 及其内部所有内容)
+//     // 原来的 <[^>]+> 只能保护标签本身，这里我们需要保护标签+内容
+//     content = mask(content, /<script[\s\S]*?<\/script>/gi);
+//     content = mask(content, /<style[\s\S]*?<\/style>/gi);
+//     content = mask(content, /<pre[\s\S]*?<\/pre>/gi);
+//     content = mask(content, /<code[\s\S]*?<\/code>/gi);
+
+//     // 1.3 Markdown 代码块 (支持 ``` 和 ~~~)
+//     content = mask(content, /```[\s\S]*?```/g);
+//     content = mask(content, /~~~[\s\S]*?~~~/g);
+
+//     // 1.4 Markdown 行内代码
+//     content = mask(content, /`[^`]+`/g);
+
+//     // 1.5 数学公式 (LaTeX)
+//     content = mask(content, /\$\$[\s\S]*?\$\$/g);
+//     content = mask(content, /\\\[[\s\S]*?\\\]/g);
+//     content = mask(content, /\\\([\s\S]*?\\\)/g);
+
+//     // 1.6 普通 HTML 标签 (保护属性中的引号，如 <a title="Text">)
+//     // 此时 <pre><code> 等已被上面 1.2 保护，这里只剩普通的 div, span, img 等
+//     content = mask(content, /<[^>]+>/g);
+
+//     // 1.7 Markdown 链接/图片语法 (防止破坏 URL)
+//     content = mask(content, /!{0,1}\[[^\]]*\]\([^)]+\)/g);
+
+
+//     // --- 2. 文本替换 (Processing Phase) ---
+//     // (这部分逻辑保持不变)
+
+//     // 2.1 英文撇号优化
+//     content = content.replace(/([a-zA-Z])'([a-zA-Z])/g, "$1’$2");
+
+//     // 2.2 括号间距处理
+//     content = content.replace(/([^\s(])\(/g, '$1 (');
+//     content = content.replace(/\)([\u4e00-\u9fa5a-zA-Z0-9])/g, ') $1');
+
+//     // 2.3 中英文/数字间距优化 (盘古之白)
+//     content = content.replace(/([\u4e00-\u9fa5])([a-zA-Z0-9])/g, '$1 $2');
+//     content = content.replace(/([a-zA-Z0-9])([\u4e00-\u9fa5])/g, '$1 $2');
+
+//     // 2.4 透视眼智能引号
+//     content = content.replace(/"([^"]*?)"/g, (match, inner, offset, fullStr) => {
+//         if (/[\u4e00-\u9fa5]/.test(inner)) return `「${inner}」`;
+
+//         const lookBackDist = 10;
+//         const start = Math.max(0, offset - lookBackDist);
+//         const beforeChunk = fullStr.slice(start, offset);
+        
+//         const end = Math.min(fullStr.length, offset + match.length + lookBackDist);
+//         const afterChunk = fullStr.slice(offset + match.length, end);
+
+//         const hasChinesePre = /[\u4e00-\u9fa5][\s!.,:;?]*$/.test(beforeChunk);
+//         const hasChinesePost = /^[\s!.,:;?]*[\u4e00-\u9fa5]/.test(afterChunk);
+
+//         if (hasChinesePre || hasChinesePost) {
+//             return `「${inner}」`;
+//         } else {
+//             return `“${inner}”`; 
+//         }
+//     });
+
+
+//     // --- 3. 还原机制 (Restore Phase) ---
+//     markers.forEach((val, idx) => {
+//         const key = `___MASK_${idx}___`;
+//         // 使用函数返回 val，防止 val 中包含特殊字符（如 $&）导致 replace 错误
+//         content = content.replace(key, () => val);
+//     });
+
+//     data.content = content;
+//     return data;
+// });
+
+
 /**
- * Hexo Auto Typography Script (Fixed Version)
- * 修复：彻底解决代码块、HTML内容、Hexo标签被误伤的问题
+ * Hexo Auto Typography Script (Version 1.2)
+ * 修复：解决 Markdown 语法标记（如删除线、粗体）紧贴括号时被误加空格导致渲染失效的问题
  */
 
 hexo.extend.filter.register('before_post_render', function(data) {
@@ -290,7 +390,6 @@ hexo.extend.filter.register('before_post_render', function(data) {
     const markers = []; 
     
     // --- 1. 保护机制 (Masking Phase) ---
-    // 核心逻辑：将不需要处理的部分先替换成占位符，处理完后再换回来
     const mask = (str, regex) => {
         return str.replace(regex, (match) => {
             const key = `___MASK_${markers.length}___`;
@@ -299,50 +398,50 @@ hexo.extend.filter.register('before_post_render', function(data) {
         });
     };
 
-    // 【重要】保护顺序调整：先保护大块结构，再保护行内结构
-    
-    // 1.1 Hexo 专用标签 (如 {% codeblock %}, {% raw %} 等)
-    // 必须最先保护，因为它们可能包含复杂的代码或 HTML
+    // 1.1 Hexo 专用标签
     content = mask(content, /\{%[\s\S]*?%\}/g);
 
-    // 1.2 HTML 块级保护 (保护 <script>, <style>, <pre>, <code> 及其内部所有内容)
-    // 原来的 <[^>]+> 只能保护标签本身，这里我们需要保护标签+内容
+    // 1.2 HTML 块级保护
     content = mask(content, /<script[\s\S]*?<\/script>/gi);
     content = mask(content, /<style[\s\S]*?<\/style>/gi);
     content = mask(content, /<pre[\s\S]*?<\/pre>/gi);
     content = mask(content, /<code[\s\S]*?<\/code>/gi);
 
-    // 1.3 Markdown 代码块 (支持 ``` 和 ~~~)
+    // 1.3 Markdown 代码块
     content = mask(content, /```[\s\S]*?```/g);
     content = mask(content, /~~~[\s\S]*?~~~/g);
 
     // 1.4 Markdown 行内代码
     content = mask(content, /`[^`]+`/g);
 
-    // 1.5 数学公式 (LaTeX)
+    // 1.5 数学公式
     content = mask(content, /\$\$[\s\S]*?\$\$/g);
     content = mask(content, /\\\[[\s\S]*?\\\]/g);
     content = mask(content, /\\\([\s\S]*?\\\)/g);
 
-    // 1.6 普通 HTML 标签 (保护属性中的引号，如 <a title="Text">)
-    // 此时 <pre><code> 等已被上面 1.2 保护，这里只剩普通的 div, span, img 等
+    // 1.6 普通 HTML 标签
     content = mask(content, /<[^>]+>/g);
 
-    // 1.7 Markdown 链接/图片语法 (防止破坏 URL)
+    // 1.7 Markdown 链接/图片语法
     content = mask(content, /!{0,1}\[[^\]]*\]\([^)]+\)/g);
 
 
     // --- 2. 文本替换 (Processing Phase) ---
-    // (这部分逻辑保持不变)
 
     // 2.1 英文撇号优化
     content = content.replace(/([a-zA-Z])'([a-zA-Z])/g, "$1’$2");
 
-    // 2.2 括号间距处理
-    content = content.replace(/([^\s(])\(/g, '$1 (');
+    // 2.2 括号间距处理 (已修复)
+    // 逻辑：如果在左括号前不是空格、且不是(、也不是Markdown标记符(~*_\[#)，则加空格
+    // 这样 `~~(text)~~` 或 `**(text)**` 就不会被拆开了
+    content = content.replace(/([^\s(~*_\[#])\(/g, '$1 (');
+    
+    // 右括号逻辑保持不变，通常右括号后接中文或英文都需要空格，但如果是 Markdown 结束符通常会在 mask 阶段或后续渲染处理，
+    // 为了保险起见，如果右括号紧挨着 ~ * _ 等也不加空格可能更稳妥，但目前的问题主要是左括号。
+    // 这里保持原样即可，因为 `)~~` 中 `~` 不在 \u4e00-\u9fa5a-zA-Z0-9 范围内，所以不会被加空格。
     content = content.replace(/\)([\u4e00-\u9fa5a-zA-Z0-9])/g, ') $1');
 
-    // 2.3 中英文/数字间距优化 (盘古之白)
+    // 2.3 中英文/数字间距优化
     content = content.replace(/([\u4e00-\u9fa5])([a-zA-Z0-9])/g, '$1 $2');
     content = content.replace(/([a-zA-Z0-9])([\u4e00-\u9fa5])/g, '$1 $2');
 
@@ -371,7 +470,6 @@ hexo.extend.filter.register('before_post_render', function(data) {
     // --- 3. 还原机制 (Restore Phase) ---
     markers.forEach((val, idx) => {
         const key = `___MASK_${idx}___`;
-        // 使用函数返回 val，防止 val 中包含特殊字符（如 $&）导致 replace 错误
         content = content.replace(key, () => val);
     });
 

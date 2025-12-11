@@ -157,6 +157,7 @@ filter_optimize:
     # use preload to load css elements dynamically
     delivery:
       - '@fortawesome/fontawesome-free'
+      # - '@fortawesome/fontawesome-free@6.5.1'
       - 'fonts.googleapis.com'
     # make specific css content inline into the html page
     inlines:
@@ -225,3 +226,13 @@ markdown:
     prepend_root: false
     post_asset: false
   inline: false  # https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline
+
+toc:
+  maxdepth: 3
+  class: toc
+  slugify: transliteration
+  decodeEntities: false
+  anchor:
+    position: false
+    symbol: '#'
+    style: header-anchor
