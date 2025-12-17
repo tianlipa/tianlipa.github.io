@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="数据定义语言 DDL 定义、删除与修改基本表 CREATE TABLE 表名 (    列名1  数据类型  [列级完整性约束],    列名2  数据类型  [列级完整性约束],    ...    [表级完整性约束]);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库复习笔记 三.关系数据库标准查询语言SQL">
+<meta property="og:url" content="https://tianlipa.github.io/2025/12/database-3/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="数据定义语言 DDL 定义、删除与修改基本表 CREATE TABLE 表名 (    列名1  数据类型  [列级完整性约束],    列名2  数据类型  [列级完整性约束],    ...    [表级完整性约束]);">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cdatabase-2%5C8.png">
+<meta property="article:published_time" content="2025-12-16T15:03:31.000Z">
+<meta property="article:modified_time" content="2025-12-17T10:11:33.426Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数据库基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5CBlog%5Csource%5Cimg%5Cdatabase-2%5C8.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/12/database-3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/12/database-3/","path":"2025/12/database-3/","title":"数据库复习笔记 三.关系数据库标准查询语言SQL"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据库复习笔记 三.关系数据库标准查询语言SQL | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/12/database-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据库复习笔记 三.关系数据库标准查询语言SQL | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库复习笔记 三.关系数据库标准查询语言SQL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-16 23:03:31" itemprop="dateCreated datePublished" datetime="2025-12-16T23:03:31+08:00">2025-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-17 18:11:33" itemprop="dateModified" datetime="2025-12-17T18:11:33+08:00">2025-12-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="shu-ju-ding-yi-yu-yan-ddl">数据定义语言 DDL</span><a href="#shu-ju-ding-yi-yu-yan-ddl" class="header-anchor">#</a></h2>
+<p>定义、删除与修改基本表</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> 表名 (</span><br><span class="line">    列名<span class="number">1</span>  数据类型  [列级完整性约束],</span><br><span class="line">    列名<span class="number">2</span>  数据类型  [列级完整性约束],</span><br><span class="line">    ...</span><br><span class="line">    [表级完整性约束]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>例:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> S()</span><br><span class="line">		S＃ <span class="type">CHAR</span>(<span class="number">5</span>),</span><br><span class="line">		SN <span class="type">CHAR</span>(<span class="number">20</span>) <span class="keyword">NOT NULL</span> <span class="keyword">UNIQUE</span>,</span><br><span class="line">		SA <span class="type">INT</span>,</span><br><span class="line">		SD <span class="type">CHAR</span>(<span class="number">3</span>),</span><br><span class="line">		<span class="keyword">PRIMARY KEY</span> (S#)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>CHAR (n): 定长，如身份证、学号，长度固定。<br>
+VARCHAR (n): 变长，如名字、地址，长度不固定，省空间。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> Student (</span><br><span class="line">    Sno    <span class="type">CHAR</span>(<span class="number">9</span>) <span class="keyword">PRIMARY KEY</span>,       <span class="comment">/* 学号，设为主键（唯一且不为空） */</span></span><br><span class="line">    Sname  <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNIQUE</span>,        <span class="comment">/* 姓名，设为唯一（不能重名） */</span></span><br><span class="line">    Ssex   <span class="type">CHAR</span>(<span class="number">2</span>),                   <span class="comment">/* 性别 */</span></span><br><span class="line">    Sage   <span class="type">SMALLINT</span>,                  <span class="comment">/* 年龄 */</span></span><br><span class="line">    Sdept  <span class="type">CHAR</span>(<span class="number">20</span>)                   <span class="comment">/* 所在系 */</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>修改表:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> </span><br><span class="line">	[<span class="keyword">ADD</span> <span class="operator">&lt;</span>新列名<span class="operator">&gt;</span><span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>[列级约束条件]]</span><br><span class="line">	[<span class="keyword">DROP</span> <span class="operator">&lt;</span>完整性约束条件<span class="operator">&gt;</span>]</span><br><span class="line">	[MODIFY <span class="operator">&lt;</span>列名<span class="operator">&gt;</span><span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> Student <span class="keyword">ADD</span> EntTime <span class="type">DATE</span>; </span><br><span class="line"><span class="comment">-- 给Student表增加一个叫EntTime的列，类型是日期</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> Student MODIFY Sage <span class="type">INT</span>;</span><br><span class="line"><span class="comment">-- 把Sage列属性换成INT</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> Student <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> Sdept;</span><br><span class="line"><span class="comment">-- 删掉某一列，不是删掉整个表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student;</span><br><span class="line"><span class="comment">-- 删库跑路</span></span><br></pre></td></tr></table></figure>
+<h4><span id="suo-yin">索引</span><a href="#suo-yin" class="header-anchor">#</a></h4>
+<p>类似书籍目录, 能加速查询等操作, 但占用磁盘, 写操作变慢.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>][CLUSTER] INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">ON</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>（<span class="operator">&lt;</span>列名<span class="number">1</span><span class="operator">&gt;</span>[<span class="operator">&lt;</span>次序<span class="operator">&gt;</span>][，<span class="operator">&lt;</span>列名<span class="number">2</span><span class="operator">&gt;</span><span class="operator">&lt;</span>次序<span class="operator">&gt;</span>... ...]）</span><br><span class="line"><span class="operator">&lt;</span>次序<span class="operator">&gt;</span>可以是<span class="keyword">ASC</span>和<span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] INDEX Stusname <span class="keyword">ON</span> Student(Sname);</span><br><span class="line"><span class="comment">-- UNIQUE表示唯一索引（如果该列有重复值就不能建UNIQUE）</span></span><br><span class="line"><span class="comment">-- Stusname 是你给这个索引起的名字</span></span><br><span class="line"><span class="comment">-- Student 是表名</span></span><br><span class="line"><span class="comment">-- Sname 是你要给哪一列建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX S_S# <span class="keyword">ON</span> S(S#)</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX C_C# <span class="keyword">ON</span> C(C#)</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX SC_S#_C# <span class="keyword">ON</span> SC(S# <span class="keyword">ASC</span>,C# <span class="keyword">DESC</span>) </span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> INDEX [<span class="operator">&lt;</span>表名<span class="operator">&gt;</span>.]<span class="operator">&lt;</span>索引名<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">DROP</span> INDEX [S.]S_S# </span><br><span class="line"><span class="comment">-- 删除索引</span></span><br></pre></td></tr></table></figure>
+<h2><span id="sql-de-shu-ju-cha-xun-dml">SQL 的数据查询 DML</span><a href="#sql-de-shu-ju-cha-xun-dml" class="header-anchor">#</a></h2>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">ALL</span><span class="operator">|</span><span class="keyword">DISTINCT</span>] &#123;<span class="operator">*</span><span class="operator">|</span><span class="operator">&lt;</span>目标表达式<span class="number">1</span><span class="operator">&gt;</span> [,<span class="operator">&lt;</span>目标表达式<span class="number">2</span><span class="operator">&gt;</span> ... ...]&#125;</span><br><span class="line">	<span class="keyword">FROM</span> <span class="operator">&lt;</span>表名或视图名<span class="number">1</span><span class="operator">&gt;</span> [，<span class="operator">&lt;</span>表名或视图名<span class="number">2</span><span class="operator">&gt;</span>]... ...</span><br><span class="line">	[<span class="keyword">WHERE</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span>]</span><br><span class="line">	[<span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>列名表达式<span class="number">1</span><span class="operator">&gt;</span>[，<span class="operator">&lt;</span>列名表达式<span class="number">2</span><span class="operator">&gt;</span>]] [<span class="keyword">HAVING</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span> ]</span><br><span class="line">	[<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>列名表达式<span class="number">1</span><span class="operator">&gt;</span> [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>]], <span class="operator">&lt;</span>列名表达式<span class="number">2</span><span class="operator">&gt;</span> [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>]]</span><br></pre></td></tr></table></figure>
+<p>执行流程:</p>
+<ol>
+<li>先按 WHERE 子句条件从 FROM 子句指定的表/视图中找出满足条件的元组（选择）</li>
+<li>如有 GROUP 子句，则将结果按&lt;列名表达式&gt;的值分组，该&lt;列名表达式&gt;值相等的元组为一个组，通常会在每组中使用聚合函数。</li>
+<li>如果 GROUP 子句带 HAVING 子句，则对组进行过滤，只输出满足条件的组</li>
+<li>再按 SELECT 子句中的目标表达式选择出元组中的属性，形成结果表（投影）</li>
+<li>如果有 ORDER 子句，则将结果按&lt;列名表达式1&gt;的值升序或降序排列</li>
+</ol>
+<p>WHERE 对应个体, 如 age &gt; 18, HAVING 对应统计结果, 如 AVG, SUM, COUNT, HAVING AVG (Score) &gt; 80.</p>
+<p>查询平均成绩大于 80 分的学生的学号:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno, <span class="built_in">AVG</span>(Grade)</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">AVG</span>(Grade) <span class="operator">&gt;</span> <span class="number">80</span>;</span><br></pre></td></tr></table></figure>
+<p>这里用 WHERE 会报错, 因为按 WHERE 匹配的时候还没有分组, 平均分还没法算.</p>
+<p>查询不及格的课程门数超过 2 门的学生的学号:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">WHERE</span> Grade <span class="operator">&lt;</span> <span class="number">60</span>          <span class="comment">-- 只留不及格的记录</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno              <span class="comment">-- 按人分组</span></span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">2</span>;      <span class="comment">-- 只留挂科数量超过2门的人</span></span><br></pre></td></tr></table></figure>
+<p>COUNT (*): 统计行数, 如果是 NULL 也会被算进去.</p>
+<p>COUNT (列名): 不包括 NULL.</p>
+<ul>
+<li>DISTINCT 去重.</li>
+<li>比较大小：&lt;、&lt;= 、&gt;、&gt;=、=、&lt;&gt;<br>
+<code>SELECT SN,SA FROM S WHERE SD=’CS’</code><br>
+<code>SELECT * FROM S WHERE SA&lt;20</code></li>
+<li>确定范围：BETWEEN... AND<br>
+<code>SELECT * FROM S WHERE SA BETWEEN 20 AND 21</code></li>
+<li>确定集合：IN<br>
+<code>SELECT * FROM S WHERE SD IN ('CS','IS','MA')</code></li>
+<li>字符匹配：LIKE，% 表示任意长度的任意字符, _ 表示单个字符, 反斜线 \ 转义.<br>
+<code>SELECT * FROM S WHERE S# LIKE 'TB%'</code><br>
+<code>SELECT * FROM S WHERE SN LIKE '刘_'</code></li>
+<li>涉及空值的查询：IS NULL<br>
+<code>SELECT * FROM SC WHERE GR IS NULL</code></li>
+<li>多重条件查询：<br>
+<code>SELECT * FROM S WHERE SD='CS' AND SA&lt;20 </code></li>
+<li>查询结果排序: ASCending 升序, DESCending 降序<br>
+<code>ORDER BY &lt;字段表达式&gt; ASC|DESC </code><br>
+<code>SELECT * FROM SC WHERE C#='3' ORDER BY GR DESC</code></li>
+<li>使用集 (聚合) 函数<br>
+<code>COUNT 、SUM、AVG、MAX、MIN</code><br>
+<code>SELECT COUNT(*) FROM S</code><br>
+<code>SELECT COUNT(DISTINCT S#) FROM SC</code><br>
+<code>SELECT AVG(GR) FROM SC WHERE S#='95001'</code><br>
+<code>SELECT MAX(GR) FROM SC WHERE C#='1'</code></li>
+<li>查询分组：GROUP BY<br>
+<code>SELECT C#,COUNT(*) FROM SC GROUP BY C#</code><br>
+<code>SELECT S# FROM SC GROUP BY S# HAVING COUNT(*) &gt;2</code><br>
+检索选修 &gt; 3 门的课学生学号</li>
+</ul>
+<h3><span id="lian-jie-cha-xun">连接查询</span><a href="#lian-jie-cha-xun" class="header-anchor">#</a></h3>
+<h4><span id="deng-zhi-lian-jie">等值连接</span><a href="#deng-zhi-lian-jie" class="header-anchor">#</a></h4>
+<p>学生表 (Student)：[学号 Sno, 姓名 Sname]<br>
+数据：001 张三，002 李四</p>
+<p>成绩表 (SC)：[学号 Sno, 成绩 Grade]<br>
+数据：001 90 分</p>
+<p>查询每个学生的姓名和成绩:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.<span class="operator">*</span>, SC.<span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> Student, SC </span><br><span class="line"><span class="keyword">WHERE</span> Student.Sno <span class="operator">=</span> SC.Sno;</span><br></pre></td></tr></table></figure>
+<p>结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">001 | 张三 | 001 | 90</span><br></pre></td></tr></table></figure>
+<h4><span id="zi-ran-lian-jie">自然连接</span><a href="#zi-ran-lian-jie" class="header-anchor">#</a></h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.Sno, Sname, Grade</span><br><span class="line"><span class="keyword">FROM</span> Student, SC </span><br><span class="line"><span class="keyword">WHERE</span> Student.Sno <span class="operator">=</span> SC.Sno;</span><br></pre></td></tr></table></figure>
+<p>结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">001 | 张三 | 90</span><br></pre></td></tr></table></figure>
+<h4><span id="wai-lian-jie">外连接</span><a href="#wai-lian-jie" class="header-anchor">#</a></h4>
+<p>李四没有成绩, 于是结果里没有李四.</p>
+<p>左外连接: 保留左边表里的所有人.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.Sname, SC.Grade</span><br><span class="line"><span class="keyword">FROM</span> Student <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> SC <span class="keyword">ON</span> Student.Sno <span class="operator">=</span> SC.Sno;</span><br></pre></td></tr></table></figure>
+<h4><span id="fu-he-tiao-jian-lian-jie">复合条件连接</span><a href="#fu-he-tiao-jian-lian-jie" class="header-anchor">#</a></h4>
+<p>就是复合条件连接.</p>
+<h4><span id="zi-lian-jie">自连接</span><a href="#zi-lian-jie" class="header-anchor">#</a></h4>
+<p>自己↗连↘自己.</p>
+<table>
+<thead>
+<tr>
+<th>员工编号 (ID)</th>
+<th>姓名 (Name)</th>
+<th><strong>上司编号 (BossID)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td><strong>马云</strong></td>
+<td>NULL (没上司)</td>
+</tr>
+<tr>
+<td>002</td>
+<td><strong>张勇</strong></td>
+<td>001</td>
+</tr>
+<tr>
+<td>003</td>
+<td><strong>吉米</strong></td>
+<td>002</td>
+</tr>
+</tbody>
+</table>
+<p>查询吉米的上司的名字:</p>
+<ol>
+<li>先找到吉米</li>
+<li>找到吉米的上司编号 002</li>
+<li>根据 002 回到同一张表里找名字</li>
+<li>是张勇</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.Name <span class="keyword">AS</span> 员工名,  B.Name <span class="keyword">AS</span> 上司名</span><br><span class="line"><span class="keyword">FROM</span>   Employee A,  Employee B     <span class="comment">-- 给 Employee 表起别名 A 和 B</span></span><br><span class="line"><span class="keyword">WHERE</span>  A.BossID <span class="operator">=</span> B.ID;            <span class="comment">-- A的上司编号 = B的自己的编号</span></span><br></pre></td></tr></table></figure>
+<p>另外 Gemini 的攻击性疑似有点强了.</p>
+<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Cdatabase-2%5C8.png" alt></p>
+<h3><span id="qian-tao-cha-xun">嵌套查询</span><a href="#qian-tao-cha-xun" class="header-anchor">#</a></h3>
+<p>把一个查询的结果当成另一个查询的条件.</p>
+<h4><span id="in">IN</span><a href="#in" class="header-anchor">#</a></h4>
+<p>查询和刘晨在同一个系的同学:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno, Sname</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sdept <span class="keyword">IN</span> (                <span class="comment">-- IN：只要在下面这个括号里出现过就算</span></span><br><span class="line">    <span class="keyword">SELECT</span> Sdept</span><br><span class="line">    <span class="keyword">FROM</span> Student</span><br><span class="line">    <span class="keyword">WHERE</span> Sname <span class="operator">=</span> <span class="string">&#x27;刘晨&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>可以用连接实现.</p>
+<h4><span id="dai-bi-jiao-yun-suan-de-zi-cha-xun">带比较运算的子查询</span><a href="#dai-bi-jiao-yun-suan-de-zi-cha-xun" class="header-anchor">#</a></h4>
+<p>当确定子查询的返回值是唯一时，可以使用比较运算符.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno, Grade</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">WHERE</span> Grade <span class="operator">&gt;</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">AVG</span>(Grade)</span><br><span class="line">    <span class="keyword">FROM</span> SC</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4><span id="any-he-all">ANY 和 ALL</span><a href="#any-he-all" class="header-anchor">#</a></h4>
+<p>查询比 CS 系中年龄最大的一个学生年龄小的非计算机系学生:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname, Sage</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sage <span class="operator">&lt;</span> <span class="keyword">ANY</span> (              <span class="comment">-- 小于任意一个 = 小于最大的</span></span><br><span class="line">    <span class="keyword">SELECT</span> Sage</span><br><span class="line">    <span class="keyword">FROM</span> Student</span><br><span class="line">    <span class="keyword">WHERE</span> Sdept <span class="operator">=</span> <span class="string">&#x27;CS&#x27;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">AND</span> Sdept <span class="operator">&lt;&gt;</span> <span class="string">&#x27;CS&#x27;</span>;              <span class="comment">-- 记得排除计算机系自己</span></span><br></pre></td></tr></table></figure>
+<p><s>(到底是什么情况需要用到这种查询)</s></p>
+<h4><span id="exists">EXISTS</span><a href="#exists" class="header-anchor">#</a></h4>
+<p>查到了返回 True, 否则返回 False.</p>
+<p>查询选修了 1 号课程的学生姓名:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (                  <span class="comment">-- 只要下面这个括号里能查到记录，就把这个学生选出来</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">FROM</span> SC</span><br><span class="line">    <span class="keyword">WHERE</span> Sno <span class="operator">=</span> Student.Sno     <span class="comment">-- 关键：拿着外面的学号，去SC表里找</span></span><br><span class="line">      <span class="keyword">AND</span> Cno <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span>             <span class="comment">-- 看看有没有选 1号课</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>然而实际上可以直接写:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.Sname</span><br><span class="line"><span class="keyword">FROM</span> Student, SC</span><br><span class="line"><span class="keyword">WHERE</span> Student.Sno <span class="operator">=</span> SC.Sno</span><br><span class="line">  <span class="keyword">AND</span> SC.Cno <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>注意 NOT EXISTS</strong>: 查询选择了所有课程 -&gt; 没有一门课是没选的:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (                  <span class="comment">-- 第一层否定：不存在这样一门课...</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">FROM</span> Course</span><br><span class="line">    <span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (              <span class="comment">-- 第二层否定：...这门课学生没有选</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">        <span class="keyword">FROM</span> SC</span><br><span class="line">        <span class="keyword">WHERE</span> Sno <span class="operator">=</span> Student.Sno     <span class="comment">-- 学生对学生</span></span><br><span class="line">          <span class="keyword">AND</span> Cno <span class="operator">=</span> Course.Cno      <span class="comment">-- 课对课</span></span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>查询至少选修了学生哈基米选修的全部课程的学生号码:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Sno</span><br><span class="line"><span class="keyword">FROM</span> SC <span class="keyword">AS</span> SCX              <span class="comment">-- 我们要找的人叫 SCX</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">FROM</span> SC <span class="keyword">AS</span> SCY          <span class="comment">-- 这里的 SCY 代表 哈基米 的选课单</span></span><br><span class="line">    <span class="keyword">WHERE</span> SCY.Sname <span class="operator">=</span> <span class="string">&#x27;哈基米&#x27;</span> <span class="comment">-- 找出哈基米选的所有课</span></span><br><span class="line">      <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (      <span class="comment">-- 看看有没有哪门课是 SCX 没选的</span></span><br><span class="line">          <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">          <span class="keyword">FROM</span> SC <span class="keyword">AS</span> SCZ</span><br><span class="line">          <span class="keyword">WHERE</span> SCZ.Sno <span class="operator">=</span> SCX.Sno   <span class="comment">-- SCX 选了</span></span><br><span class="line">            <span class="keyword">AND</span> SCZ.Cno <span class="operator">=</span> SCY.Cno   <span class="comment">-- 哈基米选的那门课</span></span><br><span class="line">      )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3><span id="ji-he-cha-xun">集合查询</span><a href="#ji-he-cha-xun" class="header-anchor">#</a></h3>
+<p><strong>列的数量要一样</strong>：前面的查了 2 列，后面的也得查 2 列。</p>
+<p><strong>对应的数据类型要一样</strong>：不能第一列是学号（数字），对应的那一列却是姓名（文字）。</p>
+<h4><span id="union">UNION</span><a href="#union" class="header-anchor">#</a></h4>
+<p>UNION: 并集</p>
+<p>查询计算机系（CS）的学生 或者 年龄不大于 19 岁的学生：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sdept <span class="operator">=</span> <span class="string">&#x27;CS&#x27;</span></span><br><span class="line"><span class="keyword">UNION</span>    <span class="comment">-- 把上面的一堆人和下面的一堆人合在一起</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="operator">&lt;=</span> <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+<h4><span id="intersect">INTERSECT</span><a href="#intersect" class="header-anchor">#</a></h4>
+<p>INTERSECT: 交集</p>
+<p>查询计算机系（CS）的学生并且年龄不大于 19 岁的学生:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sdept <span class="operator">=</span> <span class="string">&#x27;CS&#x27;</span></span><br><span class="line"><span class="keyword">INTERSECT</span>   <span class="comment">-- 只要两边都有的人（既是CS系，又&lt;=19岁）</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="operator">&lt;=</span> <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+<h4><span id="minus">MINUS</span><a href="#minus" class="header-anchor">#</a></h4>
+<p>MINUS: 差集</p>
+<p>查询计算机系（CS）的学生，但是排除掉年龄不大于 19 岁的:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sdept <span class="operator">=</span> <span class="string">&#x27;CS&#x27;</span></span><br><span class="line">MINUS       <span class="comment">-- 苕皮不行</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="operator">&lt;=</span> <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+<p>查询没选 1 号课的学生:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno <span class="keyword">FROM</span> Student               <span class="comment">-- 全班名单</span></span><br><span class="line">MINUS                                 <span class="comment">-- 减去</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> Cno <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span>;   <span class="comment">-- 选了1号课的名单</span></span><br></pre></td></tr></table></figure>
+<p>就不用用 NOT EXISTS 嗯套了.</p>
+<h2><span id="sql-de-shu-ju-geng-xin-dml">SQL 的数据更新 DML</span><a href="#sql-de-shu-ju-geng-xin-dml" class="header-anchor">#</a></h2>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="tag"># 数据库基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/database-2/" rel="prev" title="数据库复习笔记 二.关系数据库">
+                  <i class="fa fa-angle-left"></i> 数据库复习笔记 二.关系数据库
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

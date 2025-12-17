@@ -22,28 +22,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="1.1 引言 数据管理的最新技术, 计算机科学的重要分支 1.1.1 相关概念 数据 Data: 信息的符号记录 数据库 Database: 长期存储中计算机内, 有组织的, 可共享的相关数据的集合 数据库管理系统 DBMS: 位于用户和操作系统之间的一层数据管理软件 数据库系统 DBS: 计算机硬件为基础的记录保持系统, 包括数据库, DBMS, 应用系统, 管理员和用户, 有时还包括计算机硬件">
+    <meta name="description" content="数据库系统的特点  数据结构化 数据共享性好, 冗余度低 数据独立性高, 物理和逻辑上都是 数据由 DBMS 统一管理:  安全性 完整性 并发控制 数据库恢复   良好的用户接口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库基础笔记 一.绪论">
-<meta property="og:url" content="https://tianlipa.github.io/2025/09/database-1/index.html">
+<meta property="og:title" content="数据库复习笔记 一.绪论">
+<meta property="og:url" content="https://tianlipa.github.io/2025/12/database-1/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="1.1 引言 数据管理的最新技术, 计算机科学的重要分支 1.1.1 相关概念 数据 Data: 信息的符号记录 数据库 Database: 长期存储中计算机内, 有组织的, 可共享的相关数据的集合 数据库管理系统 DBMS: 位于用户和操作系统之间的一层数据管理软件 数据库系统 DBS: 计算机硬件为基础的记录保持系统, 包括数据库, DBMS, 应用系统, 管理员和用户, 有时还包括计算机硬件">
+<meta property="og:description" content="数据库系统的特点  数据结构化 数据共享性好, 冗余度低 数据独立性高, 物理和逻辑上都是 数据由 DBMS 统一管理:  安全性 完整性 并发控制 数据库恢复   良好的用户接口">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-13T07:51:57.000Z">
-<meta property="article:modified_time" content="2025-09-13T08:47:58.109Z">
+<meta property="og:image" content="https://tianlipa.github.io/img/database-1/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/database-1/2.png">
+<meta property="article:published_time" content="2025-12-15T15:01:53.000Z">
+<meta property="article:modified_time" content="2025-12-15T15:03:12.712Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数据库基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/database-1/1.png">
 
 
-<link rel="canonical" href="https://tianlipa.github.io/2025/09/database-1/">
+<link rel="canonical" href="https://tianlipa.github.io/2025/12/database-1/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/09/database-1/","path":"2025/09/database-1/","title":"数据库基础笔记 一.绪论"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/12/database-1/","path":"2025/12/database-1/","title":"数据库复习笔记 一.绪论"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>数据库基础笔记 一.绪论 | tianlipa</title>
+<title>数据库复习笔记 一.绪论 | tianlipa</title>
   
 
 
@@ -154,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,7 +204,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/09/database-1/">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/12/database-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -214,12 +217,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="数据库基础笔记 一.绪论 | tianlipa">
+      <meta itemprop="name" content="数据库复习笔记 一.绪论 | tianlipa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数据库基础笔记 一.绪论
+          数据库复习笔记 一.绪论
         </h1>
 
         <div class="post-meta-container">
@@ -231,7 +234,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-09-13 15:51:57 / 修改时间：16:47:58" itemprop="dateCreated datePublished" datetime="2025-09-13T15:51:57+08:00">2025-09-13</time>
+      <time title="创建时间：2025-12-15 23:01:53 / 修改时间：23:03:12" itemprop="dateCreated datePublished" datetime="2025-12-15T23:01:53+08:00">2025-12-15</time>
     </span>
 
   
@@ -243,115 +246,59 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2><span id="1-1-yin-yan">1.1 引言</span><a href="#1-1-yin-yan" class="header-anchor">#</a></h2>
-<p>数据管理的最新技术, 计算机科学的重要分支</p>
-<h3><span id="1-1-1-xiang-guan-gai-nian">1.1.1 相关概念</span><a href="#1-1-1-xiang-guan-gai-nian" class="header-anchor">#</a></h3>
-<p>数据 Data: 信息的符号记录</p>
-<p>数据库 Database: 长期存储中计算机内, 有组织的, 可共享的相关数据的集合</p>
-<p>数据库管理系统 DBMS: 位于用户和操作系统之间的一层数据管理软件</p>
-<p>数据库系统 DBS: 计算机硬件为基础的记录保持系统, 包括数据库, DBMS, 应用系统, 管理员和用户, 有时还包括计算机硬件</p>
-<span id="more"></span>
-<h3><span id="1-1-2-shu-ju-guan-li-ji-zhu-de-fa-zhan">1.1.2 数据管理技术的发展</span><a href="#1-1-2-shu-ju-guan-li-ji-zhu-de-fa-zhan" class="header-anchor">#</a></h3>
-<p>数据管理是指对数据进行分类, 组织, 编码, 存储, 检索和维护</p>
-<p>分为三个阶段</p>
+    <div class="post-body" itemprop="articleBody"><p><strong>数据库系统的特点</strong></p>
 <ul>
-<li>人工管理阶段</li>
-<li>文件系统阶段</li>
-<li>数据库系统阶段</li>
+<li>数据结构化</li>
+<li>数据共享性好, 冗余度低</li>
+<li>数据独立性高, 物理和逻辑上都是</li>
+<li>数据由 DBMS 统一管理:
+<ul>
+<li>安全性</li>
+<li>完整性</li>
+<li>并发控制</li>
+<li>数据库恢复</li>
 </ul>
-<h3><span id="1-1-3-shu-ju-ku-ji-zhu-de-yan-jiu-ling-yu">1.1.3 数据库技术的研究领域</span><a href="#1-1-3-shu-ju-ku-ji-zhu-de-yan-jiu-ling-yu" class="header-anchor">#</a></h3>
-<p>DBMS 软件的研制, 数据库设计, 数据库理论</p>
-<h3><span id="1-1-4-shu-ju-ku-xi-tong-de-te-dian">1.1.4 数据库系统的特点</span><a href="#1-1-4-shu-ju-ku-xi-tong-de-te-dian" class="header-anchor">#</a></h3>
-<ul>
-<li>数据的结构化</li>
-<li>数据的共享性好, 冗余性低</li>
-<li>数据的独立性高: 物理, 逻辑</li>
-<li>数据由 DBMS 统一管理: 安全性, 完整性, 并发控制, 数据库恢复</li>
+</li>
 <li>良好的用户接口</li>
 </ul>
-<h3><span id="1-1-5-shu-ju-ku-zai-xin-xi-ke-xue-zhong-de-ying-yong">1.1.5 数据库在信息科学中的应用</span><a href="#1-1-5-shu-ju-ku-zai-xin-xi-ke-xue-zhong-de-ying-yong" class="header-anchor">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>现实世界</th>
-<th>信息世界</th>
-<th>计算机世界</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体 Entity<br>实体集</td>
-<td>实体记录 Record<br>记录集</td>
-<td>数据 Data<br>数据集</td>
-</tr>
-<tr>
-<td>特征<br>特征值<br>特征取值范围</td>
-<td>属性 Attribute<br>属性值<br>属性值域</td>
-<td>数据项 (属性)<br>数据项值<br>数据项值域</td>
-</tr>
-</tbody>
-</table>
-<p>意义不明的表格.</p>
-<h2><span id="1-2-shu-ju-mo-xing">1.2 数据模型</span><a href="#1-2-shu-ju-mo-xing" class="header-anchor">#</a></h2>
-<p>数据的组织是数据库技术的核心问题, 数据库的数据组织是通过数据模型实现的.</p>
-<p>数据模型: 表示实体类型和实体间联系的模型.<br>
-要求:</p>
+<span id="more"></span>
+<p>数据模型: 表示实体类型和实体间联系的模型</p>
 <ul>
-<li>比较接近真实世界</li>
-<li>容易为人所理解</li>
-<li>便于计算机实现</li>
+<li>概念数据模型: 信息模型, 描述信息结构, 按照用户观点建模, 又称 ER 模型</li>
+<li>结构数据模型: 基本数据模型, 或者直接就叫数据模型因为它很牛逼, 面向数据库的逻辑结构, 直接涉及到计算机系统和 DBMS, 按照计算机系统的观点对数据建模</li>
 </ul>
-<p>数据模型的两个层次:<br>
-<strong>概念 (数据) 模型</strong>: 也称信息模型, 实体联系模型 (ER), 用于描述信息结构, 只描述抽象的实体和实体间的联系<br>
-<strong>(结构) 数据模型</strong>: 也称基本数据模型, 面向数据库的逻辑结构, 直接涉及到计算机系统和 DBMS, 按照计算机系统的观点对数据建模</p>
-<h3><span id="1-2-1-gai-nian-mo-xing">1.2.1 概念模型</span><a href="#1-2-1-gai-nian-mo-xing" class="header-anchor">#</a></h3>
-<p>实体联系模型 Entity Relationship Model, ER 模型</p>
-<p>矩形框: 实体型<br>
-菱形框: 联系<br>
-椭圆框: 实体型和联系的属性<br>
-直线: 连接实体类型和联系类型, 表示联系的种类</p>
-<h3><span id="1-2-2-jie-gou-mo-xing-de-yao-su">1.2.2 结构模型的要素</span><a href="#1-2-2-jie-gou-mo-xing-de-yao-su" class="header-anchor">#</a></h3>
-<p>数据结构: 描述系统的静态特征, 是对实体类型和实体间联系的表达和实现, 命名依据</p>
-<p>数据操作: 描述系统的动态特征, 对数据库的检索和更新</p>
-<p>数据的约束条件: 一组完整性规则的集合, 给出数据及其联系所具有的制约和依赖原则</p>
-<h3><span id="1-2-3-jie-gou-shu-ju-mo-xing">1.2.3 结构数据模型</span><a href="#1-2-3-jie-gou-shu-ju-mo-xing" class="header-anchor">#</a></h3>
-<p>主要分为层次模型, 网状模型, 关系模型, 未来可能出现对象模型, 语义模型</p>
-<p>非关系模型中数据结构的单位是基本层次联系, 即两个记录以及它们之间的一对多/一对一关系</p>
-<h4><span id="1-2-3-1-ceng-ci-mo-xing">1.2.3.1 层次模型</span><a href="#1-2-3-1-ceng-ci-mo-xing" class="header-anchor">#</a></h4>
-<p>省流: 树</p>
-<p>典型代表: IMS</p>
-<p>定义: 用树形 (层次) 结构表示实体类型及实体间联系的数据模型</p>
-<p>特点:</p>
+<p>ER 图, 不会画的打死</p>
+<p><strong>结构模型的要素</strong></p>
 <ul>
-<li>有且仅有一个结点无双亲, 即根结点</li>
+<li>数据结构</li>
+<li>数据操作</li>
+<li>数据的约束条件</li>
+</ul>
+<h3><span id="jie-gou-shu-ju-mo-xing">结构数据模型</span><a href="#jie-gou-shu-ju-mo-xing" class="header-anchor">#</a></h3>
+<h4><span id="ceng-ci-mo-xing">层次模型</span><a href="#ceng-ci-mo-xing" class="header-anchor">#</a></h4>
+<p>用树形结构表示实体类型和关系</p>
+<ul>
+<li>有且仅有一个结点无双亲, 该结点是根结点</li>
 <li>其他结点有且仅有一个双亲</li>
-<li>层次模型中每个结点 (片断) 表示一个记录类型, 每个记录类型包含若干字段, 字段有字段名, 数据类型和长度等</li>
+<li>层次模型中每个结点 (片断) 表示一个记录类型</li>
+<li>每个记录类型包含若干个字段, 字段有字段名, 数据类型和长度等</li>
 </ul>
 <p>数据操纵与完整性约束:</p>
 <ul>
 <li>插入时, 没有双亲结点不能插入子女结点</li>
-<li>删除时, 删除双亲结点要删除子女结点</li>
-<li>更新时, 更新所有相应的记录</li>
+<li>删除时, 删除双亲结点要同时删除子女结点</li>
+<li>更新时, 要更新所有相应的记录</li>
 </ul>
 <p>存储结构: 邻接法, 链接法</p>
-<p>优点:</p>
-<ul>
-<li>模型本身简单</li>
-<li>实体间联系固定, 预先设计好的应用系统性能优于关系型, 不低于网状模型</li>
-<li>提供了良好的完整性支持</li>
-</ul>
+<p>优点: 模型简单, 速度快, 实体间联系固定</p>
 <p>缺点:</p>
 <ul>
-<li>实现多对多关系时, 需要采用冗余或虚节点方式, 易形成不一致性</li>
-<li>对插入和删除限制较多</li>
+<li><strong>实现多对多关系时, 需要采用冗余或虚结点方式, 易形成不一致性</strong></li>
+<li>插入和删除限制多</li>
 <li>查询子节点需要通过双亲节点</li>
-<li>结构严谨, 层次命令趋于程序化</li>
 </ul>
-<h4><span id="1-2-3-2-wang-zhuang-mo-xing">1.2.3.2 网状模型</span><a href="#1-2-3-2-wang-zhuang-mo-xing" class="header-anchor">#</a></h4>
-<p>省流: 有向图</p>
-<p>典型代表: DBTG 开发系统, IMAGE/3000, IDS/II, DMS1100</p>
-<p>定义: 用有向图 (网络) 结构表示实体及其联系的数据模型</p>
-<p>数据结构特征:</p>
+<h4><span id="wang-zhuang-mo-xing">网状模型</span><a href="#wang-zhuang-mo-xing" class="header-anchor">#</a></h4>
+<p>用有向图 (网络) 结构表示实体类型及实体间联系的数据模型.</p>
 <ul>
 <li>允许一个以上的结点无双亲</li>
 <li>至少一个结点不止一个双亲</li>
@@ -360,19 +307,142 @@
 <ul>
 <li>插入时, 允许插入未确定双亲结点的子女结点值</li>
 <li>删除时, 允许只删除双亲结点值</li>
-<li>更新时只需更新指定记录</li>
+<li>更新时, 只需更新指定记录</li>
 </ul>
-<p>存储结构: 最常用链接法, 也有引元阵列法, 二进制阵列法, 索引法等</p>
+<p>存储结构: 常用链接法, 其它如引元阵列法, 二进制阵列法, 索引法等</p>
+<p>优点: 更加直接描述现实世界, 存取效率高, 性能好</p>
+<p>缺点: 结构复杂, 不利于用户掌握, DDL, DML 语言复杂; <strong>数据独立性差</strong></p>
+<h4><span id="guan-xi-mo-xing">关系模型</span><a href="#guan-xi-mo-xing" class="header-anchor">#</a></h4>
+<p>用表格表示实体集和实体间联系, 用外键来实现关系间的联系.</p>
+<ul>
+<li>关系 (Relation) = 一张表.</li>
+<li>元组 (Tuple) = 表里的一行 (一条记录).</li>
+<li>属性 (Attribute) = 表里的一列 (一个字段).</li>
+<li>主键 (Primary Key) = 身份证号, 能唯一区分每一行的那一列.</li>
+<li>域 (Domain) = 这一列的取值范围 (比如性别只能填男女 LGBTQABCDEFGHAJIMI)</li>
+<li>分量: 元组中的一个属性的取值</li>
+</ul>
+<p>关系模式<strong>R (U, D, DOM, F)</strong>:</p>
+<ul>
+<li>R: 表名</li>
+<li>U: 表有哪些列</li>
+<li>D&amp;DOM: 表填什么样的数据</li>
+<li>F: 数据之间的依赖规则</li>
+</ul>
+<p>各种键:</p>
+<ul>
+<li>候选键 Candidate Key: 能唯一标识一行数据且不多余的属性, 或属性组, 如学号, 身份证号</li>
+<li>主键 Primary Key: 候选键可以不唯一, 我爱用的那个就是主键</li>
+<li>超键 Super Key: 能唯一标识一行数据的属性集, <strong>包含所有候选键</strong>. 可能多余, 例如 (姓名 + 学号 + 身份证号 + 玩不玩原神)</li>
+<li>组合键和全键: 如果主键不是单一的属性则称为组合键, 如果包含所有属性则称为全键.<br>
+「说明这表设计得挺烂. 」 -- Gemini 3 Pro</li>
+<li><strong>外键</strong>Foreign Key: 这张表里不是主键, 但是在其它表里是主键, 用于建立两张表的联系.<br>
+例子:<br>
+学生表 (学号, 姓名, 班级号), 学号是主键, 班级号是外键<br>
+班级表 (班级号, 班级名), 班级号是主键</li>
+<li>主属性: 只要是候选键里的, 不管是不是完整的主键, 都是主属性, 否则是非主属性</li>
+</ul>
+<p>操纵与完整性约束:</p>
+<p>插入, 删除和更新操作必须满足关系的完整性约束;<br>
+关系的完整性约束包括: 实体完整性, 参照完整性和自定义完整性</p>
+<p>存储结构: 实体和实体间的联系都用表来表示, 表通常以文件形式存储</p>
 <p>优点:</p>
 <ul>
-<li>描述现实世界更直接</li>
-<li>存取效率高, 性能好</li>
+<li>建立在严格的数学概念基础上</li>
+<li>概念单一, 实体, 联系均用关系来表示</li>
+<li>存取路径对用户透明, 数据独立性更高, 保密性更好, 简化程序员工作和数据库开发建立工作.</li>
 </ul>
 <p>缺点:</p>
 <ul>
-<li>结构复杂, 不利于用户掌握</li>
-<li>数据独立性差</li>
+<li>存取路径对用户透明, 查询效率不高</li>
+<li>因存取路径对用户透明, 必须对用户查询进行优化, 增加了开发 DBMS 的难度</li>
 </ul>
+<h3><span id="shu-ju-ku-xi-tong-de-mo-shi-jie-gou">数据库系统的模式结构</span><a href="#shu-ju-ku-xi-tong-de-mo-shi-jie-gou" class="header-anchor">#</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>schema</strong></th>
+<th><strong>view</strong></th>
+<th><strong>level</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>External</strong></td>
+<td>外模式<br>子模式</td>
+<td>用户视图<br>外视图</td>
+<td>外部级<br>局部逻辑级</td>
+</tr>
+<tr>
+<td><strong>conceptual</strong></td>
+<td>模式<br>概念模式</td>
+<td>概念视图<br>DBA 视图</td>
+<td>概念级<br>全局逻辑</td>
+</tr>
+<tr>
+<td><strong>internal</strong></td>
+<td>内模式<br>存储模式</td>
+<td>内部视图</td>
+<td>内部级<br>物理级<br>存储级</td>
+</tr>
+</tbody>
+</table>
+<p>外模式 External Schema: 用户视图, 局部, 多对一</p>
+<p>外模式映像: 数据库逻辑结构改变, 只需修改外模式映像, 应用程序不变, <strong>逻辑独立性</strong></p>
+<p>模式 Conceptual Schema: 总清单, 全局, 逻辑结构, 全体数据, 唯一</p>
+<p>内模式映像: 数据存储结构改变, 修改内模式映像, 外部级和应用程序不用改变, <strong>物理独立性</strong></p>
+<p>内模式 Internal Schema: 物理存储, 存储路径, 唯一</p>
+<p><img data-src="/img/database-1/1.png" alt></p>
+<h3><span id="shu-ju-ku-guan-li-xi-tong">数据库管理系统</span><a href="#shu-ju-ku-guan-li-xi-tong" class="header-anchor">#</a></h3>
+<p>DBMS, 包括:</p>
+<ul>
+<li>数据定义语言 DDL, Data Definition/Description Language
+<ul>
+<li>建表, 删表</li>
+<li>CREATE, DROP, ALTER</li>
+</ul>
+</li>
+<li>数据操纵语言 DML, Data Manipulation Language
+<ul>
+<li>查数据, 改数据</li>
+<li>SELECT, INSERT, UPDATE</li>
+</ul>
+</li>
+<li>数据库运行控制语言 DCL, Data Control Language
+<ul>
+<li>管权限, 保安全</li>
+<li>GRANT, REVOKE</li>
+</ul>
+</li>
+<li>实用程序</li>
+</ul>
+<p>工作流程:</p>
+<ol>
+<li>用户在程序中嵌入 DML 的一个读记录语句. 控制转向 DBMS</li>
+<li>DBMS 检查合法性, 查找子模式表, 确定对应的存取权限</li>
+<li>DBMS 依据子模式/模式映象的定义, 确定应读入的模式记录</li>
+<li>DBMS 依据模式/内模式映象的定义, 确定应读入的物理记录</li>
+<li>DBMS 向 OS 发送读取所需物理记录的命令</li>
+<li>OS 启动 IO 程序, 执行读操作</li>
+<li>OS 将数据从数据库的存储区送到系统缓冲区</li>
+<li>DBMS 依据子模式/模式映象定义, 导出用户所要读取的记录格式</li>
+<li>DBMS 将数据记录从系统缓冲区传送到程序的用户工作区</li>
+<li>DBMS 向应用程序返回命令执行情况和状态信息</li>
+</ol>
+<p>实现方法:</p>
+<ul>
+<li>N 方案<br>
+DBMS 模块加入到用户进程, DBMS 代码出现多副本, 性能大幅下降</li>
+<li>2N 方案<br>
+每个用户有一个 DBMSshdow 进程和一个后台负责读写和日值的进程</li>
+<li>M＋N 方案<br>
+2N 方案的改进方案, N 用户, M 个 DBMS 进程 (M&lt;N)</li>
+<li>N＋1 方案<br>
+1 个 DBMS 进程 (可设计成多线程的), N 个用户进程, 消息开销大</li>
+</ul>
+<p>数据库的设计, 巴拉巴拉巴拉巴拉巴拉巴拉</p>
+<p><img data-src="/img/database-1/2.png" alt></p>
 
     </div>
 
@@ -390,13 +460,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/09/computer-network-1/" rel="prev" title="计算机网络笔记 一.概述">
-                  <i class="fa fa-angle-left"></i> 计算机网络笔记 一.概述
+                <a href="/2025/12/2025-12-11/" rel="prev" title="2025-12-11">
+                  <i class="fa fa-angle-left"></i> 2025-12-11
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/09/2025-9-13/" rel="next" title="2025-9-13">
-                  2025-9-13 <i class="fa fa-angle-right"></i>
+                <a href="/2025/12/database-2/" rel="next" title="数据库复习笔记 二.关系数据库">
+                  数据库复习笔记 二.关系数据库 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
