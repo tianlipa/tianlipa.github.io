@@ -29,15 +29,6 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/what-to-read/index.html</loc>
-    
-    <lastmod>2025-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tianlipa.github.io/2025/12/llm-full-stack-safety-survey/</loc>
     
     <lastmod>2025-12-13</lastmod>
@@ -518,6 +509,15 @@
     <loc>https://tianlipa.github.io/2025/11/coala/</loc>
     
     <lastmod>2025-11-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/shitpost/index.html</loc>
+    
+    <lastmod>2025-11-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1231,6 +1231,13 @@
   </url>
   
   <url>
+    <loc>https://tianlipa.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/tags/%E9%83%BD%E5%B8%82%E4%BC%A0%E8%AF%B4/</loc>
     <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1260,13 +1267,6 @@
   
   <url>
     <loc>https://tianlipa.github.io/tags/USTC-MINE/</loc>
-    <lastmod>2025-12-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tianlipa.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1315,14 +1315,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E8%89%BA%E6%9C%AF%E7%BB%86%E8%8F%8C/</loc>
+    <loc>https://tianlipa.github.io/tags/%E5%AE%9E%E4%B9%A0/</loc>
     <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E5%AE%9E%E4%B9%A0/</loc>
+    <loc>https://tianlipa.github.io/tags/%E8%89%BA%E6%9C%AF%E7%BB%86%E8%8F%8C/</loc>
     <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

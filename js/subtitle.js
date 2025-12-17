@@ -220,8 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "你变得懦弱了, 老东西",
         "WAS HERE",
         "只有风暴才能击倒大树",
-        "行不得也, 哥哥",
-        "形而上学, 不行就退学"
+        "行不得也, 哥哥"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
