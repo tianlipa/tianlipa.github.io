@@ -1,5 +1,5 @@
 ---
-title: NexT主题Hexo博客如何显示动态Subtitle（随机显示Subtitle）
+title: NexT主题Hexo博客如何显示动态Subtitle(随机显示Subtitle)
 date: 2025-01-14 16:53:48
 tags: 博客美化
 ---

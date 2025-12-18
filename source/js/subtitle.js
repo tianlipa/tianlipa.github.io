@@ -218,7 +218,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "早起的鸟儿有普罗米修斯吃",
         "Checkmate is now unavoidable.",
         "你变得懦弱了, 老东西",
-        "WAS HERE"
+        "WAS HERE",
+        "只有风暴才能击倒大树",
+        "行不得也, 哥哥"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
