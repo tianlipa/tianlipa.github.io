@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tianlipa.github.io/img/database-2/8.png">
 <meta property="article:published_time" content="2025-12-16T15:03:31.000Z">
-<meta property="article:modified_time" content="2025-12-17T15:20:38.099Z">
+<meta property="article:modified_time" content="2025-12-18T11:31:47.847Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数据库基础">
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">133</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -239,7 +239,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-12-17 23:20:38" itemprop="dateModified" datetime="2025-12-17T23:20:38+08:00">2025-12-17</time>
+      <time title="修改时间：2025-12-18 19:31:47" itemprop="dateModified" datetime="2025-12-18T19:31:47+08:00">2025-12-18</time>
     </span>
 
   
@@ -315,6 +315,10 @@ VARCHAR (n): 变长, 如名字, 地址, 长度不固定, 省空间.</p>
 <code>SELECT C#,COUNT(*) FROM SC GROUP BY C#</code><br>
 <code>SELECT S# FROM SC GROUP BY S# HAVING COUNT(*) &gt;2</code><br>
 检索选修 &gt; 3 门的课学生学号</li>
+<li>输出前 n 条<br>
+<code>SELECT * FROM student LIMIT n</code></li>
+<li>输出第 n 条, 其中 OFFSET n-1 表示跳过前 n-1 条<br>
+<code>SELECT * FROM student LIMIT 1 OFFSET n-1</code></li>
 </ul>
 <h3><span id="lian-jie-cha-xun">连接查询</span><a href="#lian-jie-cha-xun" class="header-anchor">#</a></h3>
 <h4><span id="deng-zhi-lian-jie">等值连接</span><a href="#deng-zhi-lian-jie" class="header-anchor">#</a></h4>
@@ -544,8 +548,8 @@ VARCHAR (n): 变长, 如名字, 地址, 长度不固定, 省空间.</p>
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/12/2025-12-17/" rel="next" title="2025-12-17">
-                  2025-12-17 <i class="fa fa-angle-right"></i>
+                <a href="/2025/12/database-4/" rel="next" title="数据库复习笔记 四.关系数据库设计理论">
+                  数据库复习笔记 四.关系数据库设计理论 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
