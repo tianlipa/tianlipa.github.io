@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="数据库的安全性 用户标识和鉴别 CREATE USER &lt;username&gt; IDENTIFIED BY &lt;password&gt; 存取权限控制  数据对象 操作类型  对谁, 干什么. GRANT SELECT(操作类型) ON Student(数据对象) TO User1; 操作类型: SELECT, INSERT, DELETE, UPDATE, ALTER, INDEX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库复习笔记 五.数据库的保护">
+<meta property="og:url" content="https://tianlipa.github.io/2025/12/database-5/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="数据库的安全性 用户标识和鉴别 CREATE USER &lt;username&gt; IDENTIFIED BY &lt;password&gt; 存取权限控制  数据对象 操作类型  对谁, 干什么. GRANT SELECT(操作类型) ON Student(数据对象) TO User1; 操作类型: SELECT, INSERT, DELETE, UPDATE, ALTER, INDEX">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/database-5/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/database-5/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/database-5/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/database-5/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/database-5/5.png">
+<meta property="article:published_time" content="2025-12-18T05:36:37.000Z">
+<meta property="article:modified_time" content="2025-12-18T08:08:02.503Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数据库基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/database-5/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/12/database-5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/12/database-5/","path":"2025/12/database-5/","title":"数据库复习笔记 五.数据库的保护"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据库复习笔记 五.数据库的保护 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/12/database-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据库复习笔记 五.数据库的保护 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库复习笔记 五.数据库的保护
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-12-18 13:36:37 / 修改时间：16:08:02" itemprop="dateCreated datePublished" datetime="2025-12-18T13:36:37+08:00">2025-12-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="shu-ju-ku-de-an-quan-xing">数据库的安全性</span><a href="#shu-ju-ku-de-an-quan-xing" class="header-anchor">#</a></h2>
+<h4><span id="yong-hu-biao-shi-he-jian-bie">用户标识和鉴别</span><a href="#yong-hu-biao-shi-he-jian-bie" class="header-anchor">#</a></h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="operator">&lt;</span>username<span class="operator">&gt;</span> IDENTIFIED <span class="keyword">BY</span> <span class="operator">&lt;</span>password<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h4><span id="cun-qu-quan-xian-kong-zhi">存取权限控制</span><a href="#cun-qu-quan-xian-kong-zhi" class="header-anchor">#</a></h4>
+<ul>
+<li>数据对象</li>
+<li>操作类型</li>
+</ul>
+<p>对谁, 干什么.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>(操作类型) <span class="keyword">ON</span> Student(数据对象) <span class="keyword">TO</span> User1;</span><br></pre></td></tr></table></figure>
+<p>操作类型: SELECT, INSERT, DELETE, UPDATE, ALTER, INDEX, ALL</p>
+<p>收回权限:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> [<span class="keyword">CONNECT</span> <span class="operator">|</span> RESOURCE <span class="operator">|</span> DBA] <span class="keyword">FROM</span> <span class="operator">&lt;</span>username<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>数据对象的粒度: <strong>粒度越细, 灵活性/安全性越高, 但开销越大.</strong></p>
+<p>粗粒度: 例如给你整个表的访问权限; 细粒度: 例如只给你表中某一列的权限.</p>
+<p>列级控制: SQL 原生支持.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>(name, age) <span class="keyword">ON</span> Student <span class="keyword">TO</span> User1</span><br></pre></td></tr></table></figure>
+<p>行级控制一般通过视图实现:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> Boys <span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sex<span class="operator">=</span><span class="string">&#x27;男&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> Boys <span class="keyword">TO</span> User1;</span><br></pre></td></tr></table></figure>
+<h4><span id="shi-yong-shi-tu"><strong>使用视图</strong></span><a href="#shi-yong-shi-tu" class="header-anchor">#</a></h4>
+<p>可以通过建立视图屏蔽用户不该看到的数据内容, 但视图的主要功能是实现数据独立性, 其安全保护功能不够精细.</p>
+<h4><span id="shu-ju-jia-mi">数据加密</span><a href="#shu-ju-jia-mi" class="header-anchor">#</a></h4>
+<h4><span id="shen-ji">审计</span><a href="#shen-ji" class="header-anchor">#</a></h4>
+<p>记录对数据库的访问存取痕迹.</p>
+<p>分为用户级和系统级:</p>
+<ul>
+<li>用户级主要是由用户设置, 针对用户自己创建的对象的审计, 包括对这些对象的各种访问</li>
+<li>系统级审计是 DBA 进行的, 针对用户登录的成功与否以及对数据库级权限的操作</li>
+</ul>
+<p>消耗大量时间和空间资源, 所以一般作为可选项可灵活打开和关闭.</p>
+<p>例:</p>
+<p>对 SC 表的 ALTER 和 UPDATE 进行审计:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">AUDIT <span class="keyword">ALTER</span>, <span class="keyword">UPDATE</span> <span class="keyword">ON</span> SC</span><br></pre></td></tr></table></figure>
+<p>取消对 SC 表的任何审计:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">NOAUDIT <span class="keyword">ALL</span> <span class="keyword">ON</span> SC</span><br></pre></td></tr></table></figure>
+<h3><span id="shu-ju-ku-de-wan-zheng-xing">数据库的完整性</span><a href="#shu-ju-ku-de-wan-zheng-xing" class="header-anchor">#</a></h3>
+<p>数据库安全性是防止非法用户的非法操作, 而完整性是是<strong>防止不合语义的数据</strong>, 例如防止出现负数年龄.</p>
+<p>加在数据库数据之上的语义约束条件称为<strong>数据库完整性约束条件</strong>, DBMS 中检查数据是否满足完整性条件的机制称为<strong>完整性检查</strong>.</p>
+<p>完整性约束条件作用的对象可以分为: 列级, 元组级和关系级三个粒度.</p>
+<ul>
+<li>列级约束: 列的取值类型, 范围, 精度排序等</li>
+<li>元组级约束: 记录中各个字段之间的联系</li>
+<li>关系级约束: 多个记录或关系之间的联系</li>
+</ul>
+<p>完整性约束就其状态可以分为静态和动态的.</p>
+<ul>
+<li>静态: 反映数据库的状态是合理的</li>
+<li>动态: 反映数据库的状态变迁是否合理</li>
+</ul>
+<h4><span id="wan-zheng-xing-kong-zhi">完整性控制</span><a href="#wan-zheng-xing-kong-zhi" class="header-anchor">#</a></h4>
+<ul>
+<li>定义功能: 定义约束条件</li>
+<li>检查功能: 检查用户的操作请求是否违背了完整性约束条件</li>
+<li>执行动作: 在发现用户的操作违背了完整性约束条件后, 能采取一定的动作来保证数据的完整性</li>
+</ul>
+<p>分为:</p>
+<ul>
+<li>立即执行:每执行一条 SQL 语句就检查</li>
+<li>延迟执行: 完成了一套复杂的动作 (事务) 再检查</li>
+</ul>
+<h4><span id="wan-zheng-xing-gui-ze-de-xing-shi-hua-biao-shi">完整性规则的形式化表示</span><a href="#wan-zheng-xing-gui-ze-de-xing-shi-hua-biao-shi" class="header-anchor">#</a></h4>
+<p>(D, O, A, C, P)</p>
+<p>Data 数据对象, 例如「工资」属性.</p>
+<p>Operation 触发操作, 例如进行 INSERT 和 UPDATE 时检查.</p>
+<p>Condition 条件, 例如我们只检查教授的工资.</p>
+<p>Assertion 断言/约束, 例如工资必须 &gt;= 1000.</p>
+<p>Procedure 违约处理, 例如违规就拒绝执行, 你想违规就报警也可以.</p>
+<h4><span id="can-zhao-wan-zheng-xing-ying-kao-lu-de-wen-ti">参照完整性应考虑的问题</span><a href="#can-zhao-wan-zheng-xing-ying-kao-lu-de-wen-ti" class="header-anchor">#</a></h4>
+<ul>
+<li>外键能否为空值: 看情况.</li>
+<li>父表 (被参照表) 发生变化/删除时怎么办:
+<ul>
+<li>级联: 诛九族, 改父亲就把孩子也改了, 删父亲就把孩子也鲨了</li>
+<li>受限: 还有孩子就不许改/删</li>
+<li>置空: 把孩子的相应外键置为 NULL</li>
+</ul>
+</li>
+</ul>
+<h2><span id="shu-ju-ku-de-bing-fa-kong-zhi">数据库的并发控制</span><a href="#shu-ju-ku-de-bing-fa-kong-zhi" class="header-anchor">#</a></h2>
+<h4><span id="shi-wu">事务</span><a href="#shi-wu" class="header-anchor">#</a></h4>
+<ul>
+<li><strong>原子性</strong>: 不可分割, 要么干完要么不干.</li>
+<li><strong>一致性</strong>: 事务的执行将保持数据库的一致性, 即数据不会因事务的执行而被破坏.</li>
+<li><strong>隔离性</strong>: 并发执行的事务之间不会互相干扰, 最终结果应该和这些事务先后单独执行的结果相同.</li>
+<li><strong>持久性</strong>: 一个事务一旦完成提交, 它对数据库的更新将永久反映在数据库中, 不会因为系统的故障而丢失.</li>
+</ul>
+<h3><span id="shu-ju-ku-de-bing-fa-cao-zuo-dao-zhi-de-wen-ti">数据库的并发操作导致的问题</span><a href="#shu-ju-ku-de-bing-fa-cao-zuo-dao-zhi-de-wen-ti" class="header-anchor">#</a></h3>
+<h4><span id="xiu-gai-diu-shi">修改丢失</span><a href="#xiu-gai-diu-shi" class="header-anchor">#</a></h4>
+<p><img data-src="/img/database-5/1.png" alt></p>
+<h4><span id="wu-du-wen-ti">污读问题</span><a href="#wu-du-wen-ti" class="header-anchor">#</a></h4>
+<p>读到脏数据, 正确值应该是读到 A = 5.</p>
+<p><img data-src="/img/database-5/2.png" alt></p>
+<p>现已推出周边污读娃娃, 欢迎大家购买!</p>
+<h4><span id="bu-ke-chong-fu-du-wen-ti">不可重复读问题</span><a href="#bu-ke-chong-fu-du-wen-ti" class="header-anchor">#</a></h4>
+<p>两次读到的 A 不一致.</p>
+<p><img data-src="/img/database-5/3.png" alt></p>
+<h4><span id="huan-ying-du-wen-ti">幻影读问题</span><a href="#huan-ying-du-wen-ti" class="header-anchor">#</a></h4>
+<p>同样的操作返回不同结果.</p>
+<p><img data-src="/img/database-5/4.png" alt="image-20251218145800821"></p>
+<p><strong>幻影读和不可重复读的区别</strong>: 不可重复读是由于别人 UPDATE 了数据, 导致读到的内容发生了变化; 幻影读是由于别人 INSERT 或 DELETE 了数据, 导致读到的行数发生了变化.</p>
+<h3><span id="ke-chuan-xing-xing">可串行性</span><a href="#ke-chuan-xing-xing" class="header-anchor">#</a></h3>
+<p>并发调度的唯一标准<strong>可串行性</strong>: 不管怎么乱序执行, 只要最后的结果和轮流执行 (即串行) 相同, 那就是对的.</p>
+<p>串行顺序可能有多种 (A -&gt; B 或 B -&gt; A), 只要并发结果等于其中任意一种串行结果, 就算正确.</p>
+<h3><span id="shu-ju-ku-de-feng-suo-ji-zhi">数据库的封锁机制</span><a href="#shu-ju-ku-de-feng-suo-ji-zhi" class="header-anchor">#</a></h3>
+<ul>
+<li><strong>排它锁</strong>: eXclusive, X 锁, 独占锁, 修改数据时对 A 加 X 锁, 其它事务不能再读写 A, 也不能对 A 加任何类型的锁.</li>
+<li><strong>共享锁</strong>: Share, S 锁, 别的事务能读, 但不能修改, 可以再加 S 锁, 但不能加 X 锁.</li>
+<li><strong>修改锁</strong>: Update, U 锁, 预备马上要更改时加 U 锁, 允许其他人读, 但不允许其他人加 U 锁或 X 锁, 等真正修改时, U 锁升级成 X 锁. 不是所有 DBMS 都有 U 锁.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>当前锁 / 请求锁</th>
+<th><strong>X 锁 (排它)</strong></th>
+<th><strong>S 锁 (共享)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>无锁</strong></td>
+<td>✅ 可以</td>
+<td>✅ 可以</td>
+</tr>
+<tr>
+<td><strong>有 X 锁</strong></td>
+<td>❌ 冲突</td>
+<td>❌ 冲突</td>
+</tr>
+<tr>
+<td><strong>有 S 锁</strong></td>
+<td>❌ 冲突</td>
+<td>✅ <strong>相容</strong></td>
+</tr>
+</tbody>
+</table>
+<p>锁的粒度: 粗粒度锁整个数据库/表, 细粒度锁某一行或某一页.</p>
+<p>封锁力度大则开销小, 并发度低; 封锁力度小则开销大, 并发度高.</p>
+<h4><span id="shi-wu-ge-chi-ji-bie">事务隔离级别</span><a href="#shi-wu-ge-chi-ji-bie" class="header-anchor">#</a></h4>
+<p><strong>事务隔离级别 0 (READ UNCOMMITTED)</strong>: 即<strong>一级封锁协议</strong></p>
+<ul>
+<li>事务 T 在修改数据前必须先对其加 X 锁, 直到事务结束才释放. 事务结束可以是正常结束 (Commit) 或非正常结束 (Rollback).</li>
+<li>事务 T 读数据不加锁.</li>
+<li>本事务级别防止了修改丢失问题.</li>
+<li>不能防止脏读和保证重复读.</li>
+</ul>
+<p><strong>事务隔离级别 1 (READ COMMITTED)</strong>: 即<strong>二级封锁协议</strong></p>
+<ul>
+<li>事务 T 在修改数据前必须先对其加 X 锁, 直到事务结束才释放.</li>
+<li>事务 T 读数据前必须先对其加 S 锁, 读完后即释放 S 锁, 而不是到事务结束才释放.</li>
+<li>防止了脏读问题.</li>
+<li>不能保证重复读.</li>
+</ul>
+<p><strong>事务隔离级别 2 (REPEATABLE READ)</strong>: 即<strong>二级封锁协议</strong></p>
+<ul>
+<li>事务 T 在修改数据前必须先对其加 X 锁, 直到事务结束才释放.</li>
+<li>事务 T 读数据前必须先对其加 S 锁, 直到事务结束才释放.</li>
+<li>保证重复读.</li>
+</ul>
+<p><strong>事务隔离级别 3 (SEARIALIZABLE)</strong>: 即<strong>两阶段封锁协议</strong>, <strong>可串行性封锁协议</strong></p>
+<ul>
+<li>事务中, 在对任何数据读写前首先要获得对数据的锁, 称扩展阶段 (锁的粒度与事务隔离级别 2 有区别).</li>
+<li>在释放一个锁以后, 不再申请任何锁, 称收缩阶段</li>
+<li>保证事务可串化执行.</li>
+</ul>
+<p><img data-src="/img/database-5/5.png" alt="image-20251218155646072"></p>
+<h4><span id="huo-suo">活锁</span><a href="#huo-suo" class="header-anchor">#</a></h4>
+<p>由于系统并不是按照事务申请锁的先后来决定哪个事务获得资源锁, 从而导致某个事务可能永远等下去的情况称活锁, 也叫饥饿.</p>
+<p>避免活锁的办法: 对锁资源的分配采用先申请先服务的策略.</p>
+<h4><span id="si-suo">死锁</span><a href="#si-suo" class="header-anchor">#</a></h4>
+<p>事务 T1 封锁了 A, 事务 T2 封锁了 B, 然后事务 T1 申请封锁 B, 而事务 2 申请封锁 A, 这种 T1 等待 T2 而 T2 又等待 T1 释放资源的情况称死锁.</p>
+<p>死锁避免的方法:</p>
+<ul>
+<li>一次封锁法: 一次将所有用到的数据全部加锁.</li>
+<li>顺序封锁法: 尽量按照同一次序去访问数据资源.</li>
+</ul>
+<h2><span id="shu-ju-ku-de-hui-fu">数据库的恢复</span><a href="#shu-ju-ku-de-hui-fu" class="header-anchor">#</a></h2>
+<p>使发生故障的数据库恢复到一致性状态.</p>
+<h4><span id="gu-zhang-chong-lei">故障种类</span><a href="#gu-zhang-chong-lei" class="header-anchor">#</a></h4>
+<ul>
+<li>事务故障: 逻辑错误, 除以零等, 需要强制回滚 UNDO.</li>
+<li>系统故障: 系统崩溃, 外设上的数据正常, 内存中的数据全部丢失, 需要 REDO.</li>
+<li>介质故障: 硬盘爆炸了, 需要装入数爆炸前某个时刻的数据库副本, 并重做自此时刻开始的所有成功事务, 直到发生故障前一时刻.</li>
+</ul>
+<h4><span id="shu-ju-zhuan-chu">数据转储</span><a href="#shu-ju-zhuan-chu" class="header-anchor">#</a></h4>
+<p>说人话就是备份.</p>
+<ul>
+<li>
+<p>静态转储: 转储时数据库必须无运行的事务, 会影响数据库的生产.</p>
+</li>
+<li>
+<p>动态转储: 转储和事务可以并发运行, 减少对生产的影响, 但转储数据库副本的同时必须记录转储期间的事务, 即事务日志文件, 这样才可以用该后数据库副本和日志文件进行数据库恢复.</p>
+</li>
+<li>
+<p>海量转储 (完全转储): 完全备份所有数据.</p>
+</li>
+<li>
+<p>增量转储: 每次备份在前一次基础上增加的数据.</p>
+</li>
+<li>
+<p>差值转储: 每次备份自上次完全转储以来数据库增加的数据.</p>
+</li>
+</ul>
+<h4><span id="ri-zhi-wen-jian">日志文件</span><a href="#ri-zhi-wen-jian" class="header-anchor">#</a></h4>
+<p>用来记录事务对数据库的更新操作的文件.</p>
+<h3><span id="hui-fu-ce-lue">恢复策略</span><a href="#hui-fu-ce-lue" class="header-anchor">#</a></h3>
+<ul>
+<li>事务故障: 反向扫描日志文件, 查找该事务更新操作, 对该事务的更新操作执行逆操作 (UNDO) .</li>
+<li>系统故障: UNDO, 然后正向扫描日志文件, 对重做队列中的事务进行重做 (REDO) .</li>
+<li>介质故障: 装入最新副本和日志文件, 重做相关事务.</li>
+</ul>
+<h3><span id="shu-ju-ku-de-fu-zhi-yu-jing-xiang">数据库的复制与镜像</span><a href="#shu-ju-ku-de-fu-zhi-yu-jing-xiang" class="header-anchor">#</a></h3>
+<ul>
+<li>对等复制: 各个结点平等, 可以互相复制数据.</li>
+<li>主从复制: 数据只会从主数据库复制到从数据库.</li>
+<li>级联复制: 数据从主数据库复制到从数据库后, 再从从数据库复制到其他数据库.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="tag"># 数据库基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/database-4/" rel="prev" title="数据库复习笔记 四.关系数据库设计理论">
+                  <i class="fa fa-angle-left"></i> 数据库复习笔记 四.关系数据库设计理论
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
