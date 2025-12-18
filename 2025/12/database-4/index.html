@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="数据依赖 函数依赖: 有了 A 就能绝对确定 B, 例如知道学号确定姓名, 知道身份证号确定生日. 平凡函数依赖: (学号, 课程号) → 学号, 废话依赖. 非平凡函数依赖: 学号 → 姓名, 有用的依赖. 部分函数依赖: 只需要其中的一部分就能确定, 例如姓名部分依赖于 (学号, 课程号). 完全函数依赖: 必须凑齐才能确定, 例如分数依赖于 (学号, 课程号). 传递函数依赖: 学号 → 宿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库复习笔记 四.关系数据库设计理论">
+<meta property="og:url" content="https://tianlipa.github.io/2025/12/database-4/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="数据依赖 函数依赖: 有了 A 就能绝对确定 B, 例如知道学号确定姓名, 知道身份证号确定生日. 平凡函数依赖: (学号, 课程号) → 学号, 废话依赖. 非平凡函数依赖: 学号 → 姓名, 有用的依赖. 部分函数依赖: 只需要其中的一部分就能确定, 例如姓名部分依赖于 (学号, 课程号). 完全函数依赖: 必须凑齐才能确定, 例如分数依赖于 (学号, 课程号). 传递函数依赖: 学号 → 宿">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-17T15:18:35.000Z">
+<meta property="article:modified_time" content="2025-12-18T05:25:33.392Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数据库基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/12/database-4/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/12/database-4/","path":"2025/12/database-4/","title":"数据库复习笔记 四.关系数据库设计理论"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据库复习笔记 四.关系数据库设计理论 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/12/database-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据库复习笔记 四.关系数据库设计理论 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库复习笔记 四.关系数据库设计理论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-17 23:18:35" itemprop="dateCreated datePublished" datetime="2025-12-17T23:18:35+08:00">2025-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-18 13:25:33" itemprop="dateModified" datetime="2025-12-18T13:25:33+08:00">2025-12-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="shu-ju-yi-lai">数据依赖</span><a href="#shu-ju-yi-lai" class="header-anchor">#</a></h2>
+<p><strong>函数依赖</strong>: 有了 A 就能绝对确定 B, 例如知道学号确定姓名, 知道身份证号确定生日.</p>
+<p><strong>平凡函数依赖</strong>: (学号, 课程号) → 学号, 废话依赖.</p>
+<p><strong>非平凡函数依赖</strong>: 学号 → 姓名, 有用的依赖.</p>
+<p><strong>部分函数依赖</strong>: 只需要其中的一部分就能确定, 例如姓名部分依赖于 (学号, 课程号).</p>
+<p><strong>完全函数依赖</strong>: 必须凑齐才能确定, 例如分数依赖于 (学号, 课程号).</p>
+<p><strong>传递函数依赖</strong>: 学号 → 宿舍楼, 宿舍楼 → 楼长, 所以学号 → 楼长.</p>
+<p><strong>码</strong>: 设 K 是关系模式 R 中的属性集合. 如果 K<strong>完全函数依赖</strong>决定 R 中的所有其他属性, 那么 K 就是<strong>候选码</strong> (Candidate Key).</p>
+<p>实际上候选码主码超码就是第一章的候选键主键超键, 这里叫码是因为 PPT 不知道发什么癫, 第一章 Key 翻译成键, 这里又翻译成码了.</p>
+<p>参考: <a href="/2025/12/database-1/" title="数据库复习笔记 一.绪论">数据库复习笔记 一.绪论</a></p>
+<span id="more"></span>
+<h4><span id="shu-ju-yi-lai-dui-guan-xi-mo-shi-de-ying-xiang">数据依赖对关系模式的影响</span><a href="#shu-ju-yi-lai-dui-guan-xi-mo-shi-de-ying-xiang" class="header-anchor">#</a></h4>
+<p>U＝{Sno,Sdept,Mname,Cname,Grade}<br>
+F＝{Sno-&gt;Sdept, Sdept-&gt;Mname, (Sno,Cname)-&gt;Grade}</p>
+<p>(U 表示所有属性, F 表示依赖)</p>
+<p>该关系模式存在如下问题 :</p>
+<ul>
+<li>数据冗余太大: 系主任名字重复出现, 和所有学生的所有课程成绩次数一样</li>
+<li>更新异常: 更换系主任必须修改每一个学生信息</li>
+<li>插入异常: 刚成立的系如果还没有招生就无法存储系主任信息</li>
+<li>删除异常: 某个系的学生全部毕业删除时会丢失系主任信息</li>
+</ul>
+<h2><span id="fan-shi">范式</span><a href="#fan-shi" class="header-anchor">#</a></h2>
+<p>1NF ∈ 2NF ∈ 3NF ∈ BCNF ∈ 4NF ∈ 5NF.</p>
+<h3><span id="di-yi-fan-shi">第一范式</span><a href="#di-yi-fan-shi" class="header-anchor">#</a></h3>
+<p>1NF, 原子性, <strong>不可再分</strong>.</p>
+<p>现在的关系型数据库根本创建不出不满足 1NF 的表, 所以考试应该不用管.</p>
+<h3><span id="di-er-fan-shi">第二范式</span><a href="#di-er-fan-shi" class="header-anchor">#</a></h3>
+<p>如果一个关系模式 R ∈ 1NF, 并且每一非主属性都完全依赖于 R 的码, 则 R ∈ 2NF.</p>
+<p>若 R 的码只包含一个属性, 且 R 是 1NF, 则 R 必是 2NF.</p>
+<p>人话: <strong>不存在部分函数依赖</strong>.</p>
+<p>例:</p>
+<p>R (学号, 课程, 姓名, 成绩), 主键 (学号, 课程), 但姓名只依赖于学号, 对主键是部分依赖, 不满足 2NF.</p>
+<p>解决方法: 拆成两张表, (学号, 课程, 成绩) 和 (学号, 姓名).</p>
+<h3><span id="di-san-fan-shi">第三范式</span><a href="#di-san-fan-shi" class="header-anchor">#</a></h3>
+<p>如果一个关系模式 R 中不存在非主属性对码的传递依赖, 则 R ∈ 3NF .</p>
+<p>人话: <strong>不存在传递函数依赖</strong>.</p>
+<p>例:</p>
+<p>学生表 (学号, 系名, 系主任), 系主任传递依赖于学号, 不满足 3NF.</p>
+<h3><span id="bc-fan-shi">BC 范式</span><a href="#bc-fan-shi" class="header-anchor">#</a></h3>
+<p>如果一个关系模式 R (U,F) ∈ 1NF, 对 R 中的任意一个非平凡的函数依赖 X-&gt;Y, X 都含有候选码, 则 R ∈ BCNF.</p>
+<p>人话: 任何能决定某一项的东西, 都必须包含候选键.</p>
+<p>例:</p>
+<p>R (学生, 课程, 老师)</p>
+<p>老师能决定课程, 但老师不能决定学生, 故不满足 BCNF.</p>
+<h3><span id="di-si-fan-shi">第四范式</span><a href="#di-si-fan-shi" class="header-anchor">#</a></h3>
+<p>不允许有非平凡且非函数依赖的多值依赖.</p>
+<p><strong>多值依赖</strong>: 存在独立的一对多依赖.</p>
+<p>例如, 学生有两个属性, 选课和爱好, 选课包括英语和数学, 爱好包括唱歌和篮球, 选课和爱好无关, 如果放在一张表里:</p>
+<table>
+<thead>
+<tr>
+<th>学生</th>
+<th>课程</th>
+<th>爱好</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>英语</td>
+<td>篮球</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>英语</td>
+<td>唱歌</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>数学</td>
+<td>篮球</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>数学</td>
+<td>唱歌</td>
+</tr>
+</tbody>
+</table>
+<p>这张表非常唐, 所以需要拆成 (学生, 课程) 和 (学生, 爱好), 满足 4NF.</p>
+<h3><span id="di-wu-fan-shi">第五范式</span><a href="#di-wu-fan-shi" class="header-anchor">#</a></h3>
+<p>消除了由连接依赖导致的异常.</p>
+<p>很复杂, 一般不考.</p>
+<h2><span id="guan-xi-mo-shi-de-gui-fan-hua">关系模式的规范化</span><a href="#guan-xi-mo-shi-de-gui-fan-hua" class="header-anchor">#</a></h2>
+<p><strong>无损连接性</strong>: 把大表拆成小表后, 将小表自然连接回去, 得到的数据必须和原本相同.</p>
+<p><strong>保持函数依赖</strong>: 原来大表里有的规则, 在拆分后的小表里, 依然能找到地方验证, 不需要把表拼起来就能验证.</p>
+<h3><span id="wu-sun-lian-jie-de-pan-duan">无损连接的判断</span><a href="#wu-sun-lian-jie-de-pan-duan" class="header-anchor">#</a></h3>
+<p>若 R 分解为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">R_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">R_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的交集是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">R_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的主键 (或超键), 当且仅当分解是无损的.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="tag"># 数据库基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/2025-12-17/" rel="prev" title="2025-12-17">
+                  <i class="fa fa-angle-left"></i> 2025-12-17
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
