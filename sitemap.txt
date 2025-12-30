@@ -1,3 +1,6 @@
+https://tianlipa.github.io/2025/12/2025-summary/
+https://tianlipa.github.io/2025/11/perfume/
+https://tianlipa.github.io/2025/10/live-forever/
 https://tianlipa.github.io/2025/12/2025-12-24/
 https://tianlipa.github.io/2025/12/database-4/
 https://tianlipa.github.io/2025/12/database-3/
@@ -12,7 +15,6 @@ https://tianlipa.github.io/2025/01/NexTSubtitle/
 https://tianlipa.github.io/2025/12/2025-12-8/
 https://tianlipa.github.io/2025/09/computer-network-2/
 https://tianlipa.github.io/2025/09/2025-9-20/
-https://tianlipa.github.io/2025/10/live-forever/
 https://tianlipa.github.io/2025/12/2025-12-1/
 https://tianlipa.github.io/2025/02/2025-2-9/
 https://tianlipa.github.io/2025/02/2025-2-23/
@@ -49,7 +51,6 @@ https://tianlipa.github.io/2025/12/operating-system-1/
 https://tianlipa.github.io/2025/12/computer-network-6/
 https://tianlipa.github.io/2025/11/computer-network-5/
 https://tianlipa.github.io/2025/12/wsl-miniconda/
-https://tianlipa.github.io/2025/11/perfume/
 https://tianlipa.github.io/what-to-do/index.html
 https://tianlipa.github.io/2025/11/2025-11-21/
 https://tianlipa.github.io/2025/11/2025-11-17/
@@ -60,7 +61,6 @@ https://tianlipa.github.io/2025/09/computer-network-1/
 https://tianlipa.github.io/2025/01/Start/
 https://tianlipa.github.io/2025/01/2025-1-12/
 https://tianlipa.github.io/2025/11/coala/
-https://tianlipa.github.io/shitpost/index.html
 https://tianlipa.github.io/2025/11/2025-11-8/
 https://tianlipa.github.io/2025/11/2025-11-5/
 https://tianlipa.github.io/2025/11/2025-11-4/
@@ -157,3 +157,6 @@ https://tianlipa.github.io/tags/%E8%89%BA%E6%9C%AF%E7%BB%86%E8%8F%8C/
 https://tianlipa.github.io/tags/web/
 https://tianlipa.github.io/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/
 https://tianlipa.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/
+https://tianlipa.github.io/tags/%E9%9A%8F%E7%AC%94/
+https://tianlipa.github.io/tags/%E7%94%B5%E5%BD%B1/
+https://tianlipa.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/
