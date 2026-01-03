@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/15.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/16.png">
 <meta property="article:published_time" content="2026-01-02T14:35:02.000Z">
-<meta property="article:modified_time" content="2026-01-03T09:50:35.671Z">
+<meta property="article:modified_time" content="2026-01-03T09:52:45.451Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
@@ -254,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-01-03 17:50:35" itemprop="dateModified" datetime="2026-01-03T17:50:35+08:00">2026-01-03</time>
+      <time title="修改时间：2026-01-03 17:52:45" itemprop="dateModified" datetime="2026-01-03T17:52:45+08:00">2026-01-03</time>
     </span>
 
   
@@ -417,15 +417,15 @@
 <li>QUIC: Quick UDP Internet Connection, 基于 UDP 的低时延的互联网传输层协议</li>
 </ul>
 <p>虽然已经重复不知道多少次了, 但是:</p>
-<p>**UDP 提供无连接的服务, 在传送数据之前不需要先建立连接.**对方的传输层在收到 UDP 数据报后, 不需要给出任何确认. 虽然 UDP 不提供可靠投递, 但在某些情况下 UDP 是一种最简单有效的工作方式. 例如视频点播, 在线游戏等实时应用常使用 UDP.</p>
-<p>**TCP 提供可靠的, 面向连接的服务.**由于 TCP 要提供可靠的, 面向连接的传输服务, 因此不可避免地增加了许多的开销. 这不仅使协议数据单元的头标增加了更多的域, 还要占用许多的处理资源.</p>
+<p><strong>UDP 提供无连接的服务, 在传送数据之前不需要先建立连接.</strong> 对方的传输层在收到 UDP 数据报后, 不需要给出任何确认. 虽然 UDP 不提供可靠投递, 但在某些情况下 UDP 是一种最简单有效的工作方式. 例如视频点播, 在线游戏等实时应用常使用 UDP.</p>
+<p><strong>TCP 提供可靠的, 面向连接的服务.</strong> 由于 TCP 要提供可靠的, 面向连接的传输服务, 因此不可避免地增加了许多的开销. 这不仅使协议数据单元的头标增加了更多的域, 还要占用许多的处理资源.</p>
 <p>TCP/UDP 中的传输服务访问点 (TSAP) 对应为端口, 端口用来标识应用进程.</p>
 <ul>
 <li>每一个网络应用进程都与端口相关联</li>
 <li>各种网络应用进程都能将其数据通过端口向下交付给传输层</li>
 <li>传输层根据接收到的 TCP/UDP 协议数据单元中包含的端口信息将其递交给与该端口关联的网络应用进程</li>
 </ul>
-<p><img data-src="/img/computer-network-7/8.png" alt="image-20260102232032875"></p>
+<p><img data-src="/img/computer-network-7/8.png" alt></p>
 <p>端口用一个 16 bit 端口号进行标志, 共 64K 个端口号, 对一台主机来说是足够的.</p>
 <p><strong>端口号只具有本地意义</strong>, 即端口号只是为了标识本机上的各个应用进程, 在 Internet 中不同主机的相同端口号是没有联系的.</p>
 <p>端口号分为两类:</p>
