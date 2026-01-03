@@ -1,14 +1,14 @@
 ---
 title: "Perfume: The Story of a Murderer"
 date: 2025-11-30 22:13:09
-tags: 艺术细菌
+tags: [艺术细菌, 电影, 随笔]
 ---
 
 今天在放映中心看的老电影, 香水. 我很怀疑副标题完全是为了吸引观众放上来的.
 
 {% note warning %}
 
-以下内容包含对电影 *Perfumer: The Story of a Murderer* 的剧透.
+以下内容包含对电影 *Perfume: The Story of a Murderer* 的剧透.
 
 我是文盲, 这些东西都是我家猫写的, 有问题你找它去.
 

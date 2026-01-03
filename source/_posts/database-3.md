@@ -167,6 +167,10 @@ COUNT(列名): 不包括NULL.
   `SELECT C#,COUNT(*) FROM SC GROUP BY C#`
   `SELECT S# FROM SC GROUP BY S# HAVING COUNT(*) >2`
   检索选修 > 3 门的课学生学号
+- 输出前n条
+  `SELECT * FROM student LIMIT n`
+- 输出第n条, 其中OFFSET n-1 表示跳过前n-1条
+  `SELECT * FROM student LIMIT 1 OFFSET n-1`
 
 ### 连接查询
 
@@ -775,7 +779,7 @@ END;
 CALL CheckPass(1001); -- 检查学号为 1001 的学生
 ```
 
-##函数
+## 函数
 
 预定义的代码块, 接受一个或多个参数, 返回且必须返回一个结果值.
 
