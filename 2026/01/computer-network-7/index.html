@@ -22,36 +22,36 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="传输层服务  主要功能: 向上层应用（进程）提供不同类型的端到端传输服务.  无连接：没有连接建立过程，直接发送数据 面向连接：在数据传输开始之前通过连接建立过程在两个端点之间协商参数（序列号、流量控制参数、最大传输单元等）  我已经记不清这是第几次在这里重复无连接和面向连接的区别了.">
+    <meta name="description" content="传输层服务  主要功能: 向上层应用 (进程) 提供不同类型的端到端传输服务.  无连接: 没有连接建立过程, 直接发送数据 面向连接: 在数据传输开始之前通过连接建立过程在两个端点之间协商参数 (序列号, 流量控制参数, 最大传输单元等)  我已经记不清这是第几次在这里重复无连接和面向连接的区别了.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络笔记 七.传输层">
 <meta property="og:url" content="https://tianlipa.github.io/2026/01/computer-network-7/index.html">
 <meta property="og:site_name" content="tianlipa">
-<meta property="og:description" content="传输层服务  主要功能: 向上层应用（进程）提供不同类型的端到端传输服务.  无连接：没有连接建立过程，直接发送数据 面向连接：在数据传输开始之前通过连接建立过程在两个端点之间协商参数（序列号、流量控制参数、最大传输单元等）  我已经记不清这是第几次在这里重复无连接和面向连接的区别了.">
+<meta property="og:description" content="传输层服务  主要功能: 向上层应用 (进程) 提供不同类型的端到端传输服务.  无连接: 没有连接建立过程, 直接发送数据 面向连接: 在数据传输开始之前通过连接建立过程在两个端点之间协商参数 (序列号, 流量控制参数, 最大传输单元等)  我已经记不清这是第几次在这里重复无连接和面向连接的区别了.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C1.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C2.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C3.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C4.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C5.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C6.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C7.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C8.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C9.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C10.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C11.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C12.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C13.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C14.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C15.png">
-<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C16.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/5.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/6.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/7.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/8.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/9.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/10.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/11.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/12.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/13.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/14.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/15.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-7/16.png">
 <meta property="article:published_time" content="2026-01-02T14:35:02.000Z">
-<meta property="article:modified_time" content="2026-01-03T09:46:27.538Z">
+<meta property="article:modified_time" content="2026-01-03T09:50:35.671Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C1.png">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-network-7/1.png">
 
 
 <link rel="canonical" href="https://tianlipa.github.io/2026/01/computer-network-7/">
@@ -254,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-01-03 17:46:27" itemprop="dateModified" datetime="2026-01-03T17:46:27+08:00">2026-01-03</time>
+      <time title="修改时间：2026-01-03 17:50:35" itemprop="dateModified" datetime="2026-01-03T17:50:35+08:00">2026-01-03</time>
     </span>
 
   
@@ -267,16 +267,16 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2><span id="chuan-shu-ceng-fu-wu">传输层服务</span><a href="#chuan-shu-ceng-fu-wu" class="header-anchor">#</a></h2>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C1.png" alt></p>
-<p>主要功能: 向上层应用（进程）提供不同类型的端到端传输服务.</p>
+<p><img data-src="/img/computer-network-7/1.png" alt></p>
+<p>主要功能: 向上层应用 (进程) 提供不同类型的端到端传输服务.</p>
 <ul>
-<li>无连接：没有连接建立过程，直接发送数据</li>
-<li>面向连接：在数据传输开始之前通过连接建立过程在两个端点之间协商参数（序列号、流量控制参数、最大传输单元等）</li>
+<li>无连接: 没有连接建立过程, 直接发送数据</li>
+<li>面向连接: 在数据传输开始之前通过连接建立过程在两个端点之间协商参数 (序列号, 流量控制参数, 最大传输单元等)</li>
 </ul>
 <p>我已经记不清这是第几次在这里重复无连接和面向连接的区别了.</p>
 <span id="more"></span>
-<p><strong>端到端</strong>（end-to-end）：在两个通信的端点上运行，而不在中间路由器运行，服务质量独立于物理网络.</p>
-<p><strong>传输层是端到端协议，与使用的网络无关.</strong></p>
+<p><strong>端到端</strong>(end-to-end): 在两个通信的端点上运行, 而不在中间路由器运行, 服务质量独立于物理网络.</p>
+<p><strong>传输层是端到端协议, 与使用的网络无关.</strong></p>
 <p>相关协议: UDP 和 TCP.</p>
 <p><strong>TCP: 可靠, 按序的传输</strong></p>
 <ul>
@@ -291,13 +291,13 @@
 <li>没有为尽力而为的 IP 服务添加更多的其它额外服务</li>
 </ul>
 <p>二者都不能提供延时或带宽保证.</p>
-<p>主机上的每个应用进程与不同的传输层端口相关联，因此，传输层提供了运行在不同主机上的应用进程之间的逻辑通信管道，管道的两端由<strong>端口</strong>来标识。</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C2.png" alt></p>
+<p>主机上的每个应用进程与不同的传输层端口相关联, 因此, 传输层提供了运行在不同主机上的应用进程之间的逻辑通信管道, 管道的两端由<strong>端口</strong>来标识.</p>
+<p><img data-src="/img/computer-network-7/2.png" alt></p>
 <h3><span id="yin-ru-chuan-shu-ceng-de-yuan-yin">引入传输层的原因</span><a href="#yin-ru-chuan-shu-ceng-de-yuan-yin" class="header-anchor">#</a></h3>
 <ul>
-<li>实现用户对数据传输的控制: 网络层运行在用户终端和路由器上，而传输层运行在用户主机上, 用户可以根据应用需求选择不同的传输层服务.</li>
-<li>实现运行在不同主机上的进程之间的通信: 每个应用进程都至少与一个传输层地址（端口）相关联</li>
-<li>屏蔽下层网络的异质性: 对上层应用提供了一个标准的原语集合 (服务调用接口)，提供传输层的虚拟管道</li>
+<li>实现用户对数据传输的控制: 网络层运行在用户终端和路由器上, 而传输层运行在用户主机上, 用户可以根据应用需求选择不同的传输层服务.</li>
+<li>实现运行在不同主机上的进程之间的通信: 每个应用进程都至少与一个传输层地址 (端口) 相关联</li>
+<li>屏蔽下层网络的异质性: 对上层应用提供了一个标准的原语集合 (服务调用接口), 提供传输层的虚拟管道</li>
 </ul>
 <h3><span id="chuan-shu-fu-wu-yuan-yu">传输服务原语</span><a href="#chuan-shu-fu-wu-yuan-yu" class="header-anchor">#</a></h3>
 <table>
@@ -318,11 +318,11 @@
 </tr>
 <tr>
 <td>LISTEN</td>
-<td>宣布愿意接收连接，给出队列大小</td>
+<td>宣布愿意接收连接, 给出队列大小</td>
 </tr>
 <tr>
 <td>ACCEPT</td>
-<td>阻塞调用方，直到有人企图连接上来</td>
+<td>阻塞调用方, 直到有人企图连接上来</td>
 </tr>
 <tr>
 <td>CONNECT</td>
@@ -343,229 +343,229 @@
 </tbody>
 </table>
 <h2><span id="chuan-shu-ceng-xun-zhi">传输层寻址</span><a href="#chuan-shu-ceng-xun-zhi" class="header-anchor">#</a></h2>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C3.png" alt></p>
+<p><img data-src="/img/computer-network-7/3.png" alt></p>
 <p>TSAP: 端口号</p>
 <p>NSAP: IP 地址</p>
 <p>一个传输层进程需要与另一个进程建立连接, 就需要知道对方的 TSAP 端口号.</p>
 <p>方法:</p>
 <ul>
 <li>一些服务进程固定在特定的 TSAP 上, 知名端口</li>
-<li>端口映射器，给出服务名和 TSAP，用户先向端口映射器发起查询</li>
-<li>进程服务器，用户必须与进程服务器通信，通过它启动目标服务进程</li>
+<li>端口映射器, 给出服务名和 TSAP, 用户先向端口映射器发起查询</li>
+<li>进程服务器, 用户必须与进程服务器通信, 通过它启动目标服务进程</li>
 </ul>
-<p>{NSAP，TSAP}标识了一个主机上的进程..</p>
-<p>{IP 地址，端口号，协议类型}唯一标识一个主机上传输服务的应用进程，而{源/目的 IP 地址，源/目的端口号，协议类型}五元组标识一个传输连接的数据流.</p>
+<p>{NSAP, TSAP}标识了一个主机上的进程..</p>
+<p>{IP 地址, 端口号, 协议类型}唯一标识一个主机上传输服务的应用进程, 而{源/目的 IP 地址, 源/目的端口号, 协议类型}五元组标识一个传输连接的数据流.</p>
 <h2><span id="jian-li-lian-jie">建立连接</span><a href="#jian-li-lian-jie" class="header-anchor">#</a></h2>
 <p>可靠传输服务需要满足:</p>
 <ul>
-<li>在发送端和接收端协商保证这种可靠性 (包括流量控制) 的参数, 例如序列号、接收端缓存大小等.</li>
-<li>对于面向连接的传输层，在发送数据之前要在发送端和接收端之间先进行连接建立过程.</li>
+<li>在发送端和接收端协商保证这种可靠性 (包括流量控制) 的参数, 例如序列号, 接收端缓存大小等.</li>
+<li>对于面向连接的传输层, 在发送数据之前要在发送端和接收端之间先进行连接建立过程.</li>
 </ul>
 <p>传输层连接本质上是在发送端和接收端上为实现可靠传输而维护的一些参数状态.</p>
 <blockquote>
-<p>你好，我想听一个 TCP 的笑话。</p>
-<p>你好，你想听一个 TCP 的笑话么？</p>
-<p>嗯，我想听一个 TCP 的笑话。</p>
-<p>好的，我会给你讲一个 TCP 的笑话。</p>
-<p>好的，我会听一个 TCP 的笑话。</p>
-<p>你准备好听一个 TCP 的笑话么？</p>
-<p>嗯，我准备好听一个 TCP 的笑话了.</p>
-<p>OK，那我要发 TCP 笑话了。大概有 10 秒，20 个字。</p>
-<p>嗯，我准备收你那个 10 秒时长，20 个字的笑话了。</p>
-<p>抱歉，你的连接超时了。你好，你想听 TCP 的笑话么？</p>
+<p>你好, 我想听一个 TCP 的笑话.</p>
+<p>你好, 你想听一个 TCP 的笑话么?</p>
+<p>嗯, 我想听一个 TCP 的笑话.</p>
+<p>好的, 我会给你讲一个 TCP 的笑话.</p>
+<p>好的, 我会听一个 TCP 的笑话.</p>
+<p>你准备好听一个 TCP 的笑话么?</p>
+<p>嗯, 我准备好听一个 TCP 的笑话了.</p>
+<p>OK, 那我要发 TCP 笑话了. 大概有 10 秒, 20 个字.</p>
+<p>嗯, 我准备收你那个 10 秒时长, 20 个字的笑话了.</p>
+<p>抱歉, 你的连接超时了. 你好, 你想听 TCP 的笑话么?</p>
 </blockquote>
 <p>经典咏流传.</p>
 <h3><span id="san-bu-wo-shou">三步握手</span><a href="#san-bu-wo-shou" class="header-anchor">#</a></h3>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C4.png" alt="image-20260102225540285"></p>
+<p><img data-src="/img/computer-network-7/4.png" alt="image-20260102225540285"></p>
 <ol>
-<li>主机 1 选择一个序号 x，并向主机 2 发送包含该序号的连接请求 CR</li>
-<li>主机 2 应答连接确认 ACK，其中包含确认号 x 和序列号 y</li>
-<li>主机 1 在其发送的第一个数据中采用序列号 x，并确认主机 2 的序列号 y</li>
+<li>主机 1 选择一个序号 x, 并向主机 2 发送包含该序号的连接请求 CR</li>
+<li>主机 2 应答连接确认 ACK, 其中包含确认号 x 和序列号 y</li>
+<li>主机 1 在其发送的第一个数据中采用序列号 x, 并确认主机 2 的序列号 y</li>
 </ol>
 <p>延迟重复分组:</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C5.png" alt="image-20260102225633395"></p>
+<p><img data-src="/img/computer-network-7/5.png" alt="image-20260102225633395"></p>
 <p>图 b 为重复的 CR 突然出现, 图 c 为重复的 CR 和重复的 ACK.</p>
 <p>CR 即 connection request, 在 TCP/IP 协议里为 SYN (Synchronize).</p>
 <h3><span id="shi-fang-lian-jie">释放连接</span><a href="#shi-fang-lian-jie" class="header-anchor">#</a></h3>
 <ul>
 <li>非对称释放: 连接的任何一方都可以断开整个连接</li>
-<li>对称释放: 把连接看作是由两个独立的单向连接，并要求单独释放每一个单向连接</li>
+<li>对称释放: 把连接看作是由两个独立的单向连接, 并要求单独释放每一个单向连接</li>
 </ul>
 <h4><span id="fei-dui-cheng-shi-fang">非对称释放</span><a href="#fei-dui-cheng-shi-fang" class="header-anchor">#</a></h4>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C6.png" alt="image-20260102230429453"></p>
-<p>当连接建立以后，主机 1 发送一个 DATA，它正确地到达了主机 2，然后，主机 1 又发送一个 DATA，但是由于主机 2 在第二个 DATA 到达之前就已经发送了断开请求 DR, 该连接虽然被释放，但是数据丢失了.</p>
+<p><img data-src="/img/computer-network-7/6.png" alt="image-20260102230429453"></p>
+<p>当连接建立以后, 主机 1 发送一个 DATA, 它正确地到达了主机 2, 然后, 主机 1 又发送一个 DATA, 但是由于主机 2 在第二个 DATA 到达之前就已经发送了断开请求 DR, 该连接虽然被释放, 但是数据丢失了.</p>
 <h4><span id="dui-cheng-shi-fang">对称释放</span><a href="#dui-cheng-shi-fang" class="header-anchor">#</a></h4>
-<p>释放连接再次用到三步握手，一方发出断开请求 DR 后不立即拆除连接，而要等待对方确认 ACK；对方收到 DR，发送 ACK 确认报文，并拆除连接，发起方收到 ACK 确认后拆除连接.</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C7.png" alt="image-20260102230603281"></p>
+<p>释放连接再次用到三步握手, 一方发出断开请求 DR 后不立即拆除连接, 而要等待对方确认 ACK; 对方收到 DR, 发送 ACK 确认报文, 并拆除连接, 发起方收到 ACK 确认后拆除连接.</p>
+<p><img data-src="/img/computer-network-7/7.png" alt="image-20260102230603281"></p>
 <h4><span id="dui-cheng-shi-fang-zhong-de-fen-zu-diu-shi">对称释放中的分组丢失</span><a href="#dui-cheng-shi-fang-zhong-de-fen-zu-diu-shi" class="header-anchor">#</a></h4>
-<p>两军问题: 在不可靠的通信信道上，无法通过有限次的消息交换，使分布式系统中的双方就“关闭连接”这一状态达成 100% 的共识。</p>
+<p>两军问题: 在不可靠的通信信道上, 无法通过有限次的消息交换, 使分布式系统中的双方就「关闭连接」这一状态达成 100% 的共识.</p>
 <p>解决方案:</p>
 <ul>
-<li>超时重传, 主机 2 如果在规定时间内未收到 ACK，会重传 FIN/DR 报文。</li>
-<li>主机 1 在发送完最后一个 ACK 后，不能立即释放资源，而必须进入 TIME_WAIT 状态, 等待 2 倍的最大报文生存时间, 确保如果有迷路的 DR 到达, 主机 1 仍然能存在并补发 ACK.</li>
-<li>保持计时器：如果连接一方长时间无响应（死锁），另一方通过计时器强制断开.</li>
+<li>超时重传, 主机 2 如果在规定时间内未收到 ACK, 会重传 FIN/DR 报文.</li>
+<li>主机 1 在发送完最后一个 ACK 后, 不能立即释放资源, 而必须进入 TIME_WAIT 状态, 等待 2 倍的最大报文生存时间, 确保如果有迷路的 DR 到达, 主机 1 仍然能存在并补发 ACK.</li>
+<li>保持计时器: 如果连接一方长时间无响应 (死锁), 另一方通过计时器强制断开.</li>
 </ul>
 <h2><span id="internet-zhong-de-chuan-shu-ceng-xie-yi">Internet 中的传输层协议</span><a href="#internet-zhong-de-chuan-shu-ceng-xie-yi" class="header-anchor">#</a></h2>
 <ul>
-<li><strong>用户数据报协议</strong>（<strong>UDP</strong>：User Datagram Protocol），提供无连接的服务，高效，适合实时传输； UDP 中, TPDU 称为数据报 (datagram).</li>
-<li><strong>传输控制协议</strong>（<strong>TCP</strong>：Transmission Control Protocol），提供可靠的，面向连接的服务；TCP 中，TPDU 称为 TCP 数据段 (segment).</li>
+<li><strong>用户数据报协议</strong>(<strong>UDP</strong>: User Datagram Protocol), 提供无连接的服务, 高效, 适合实时传输;  UDP 中, TPDU 称为数据报 (datagram).</li>
+<li><strong>传输控制协议</strong>(<strong>TCP</strong>: Transmission Control Protocol), 提供可靠的, 面向连接的服务; TCP 中, TPDU 称为 TCP 数据段 (segment).</li>
 </ul>
 <p>没有人关心的协议:</p>
 <ul>
 <li>SCTP: Stream Control Transmission Protocol 流控制传输协议</li>
-<li>MPTCP: Multi-path TCP, 基于多网络接口，提供多路径流服务</li>
+<li>MPTCP: Multi-path TCP, 基于多网络接口, 提供多路径流服务</li>
 <li>QUIC: Quick UDP Internet Connection, 基于 UDP 的低时延的互联网传输层协议</li>
 </ul>
 <p>虽然已经重复不知道多少次了, 但是:</p>
-<p>**UDP 提供无连接的服务，在传送数据之前不需要先建立连接.**对方的传输层在收到 UDP 数据报后，不需要给出任何确认。虽然 UDP 不提供可靠投递，但在某些情况下 UDP 是一种最简单有效的工作方式。例如视频点播、在线游戏等实时应用常使用 UDP.</p>
-<p>**TCP 提供可靠的，面向连接的服务.**由于 TCP 要提供可靠的、面向连接的传输服务，因此不可避免地增加了许多的开销。这不仅使协议数据单元的头标增加了更多的域，还要占用许多的处理资源。</p>
-<p>TCP/UDP 中的传输服务访问点（TSAP）对应为端口，端口用来标识应用进程.</p>
+<p>**UDP 提供无连接的服务, 在传送数据之前不需要先建立连接.**对方的传输层在收到 UDP 数据报后, 不需要给出任何确认. 虽然 UDP 不提供可靠投递, 但在某些情况下 UDP 是一种最简单有效的工作方式. 例如视频点播, 在线游戏等实时应用常使用 UDP.</p>
+<p>**TCP 提供可靠的, 面向连接的服务.**由于 TCP 要提供可靠的, 面向连接的传输服务, 因此不可避免地增加了许多的开销. 这不仅使协议数据单元的头标增加了更多的域, 还要占用许多的处理资源.</p>
+<p>TCP/UDP 中的传输服务访问点 (TSAP) 对应为端口, 端口用来标识应用进程.</p>
 <ul>
 <li>每一个网络应用进程都与端口相关联</li>
 <li>各种网络应用进程都能将其数据通过端口向下交付给传输层</li>
 <li>传输层根据接收到的 TCP/UDP 协议数据单元中包含的端口信息将其递交给与该端口关联的网络应用进程</li>
 </ul>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C8.png" alt="image-20260102232032875"></p>
-<p>端口用一个 16 bit 端口号进行标志，共 64K 个端口号, 对一台主机来说是足够的.</p>
-<p><strong>端口号只具有本地意义</strong>，即端口号只是为了标识本机上的各个应用进程, 在 Internet 中不同主机的相同端口号是没有联系的.</p>
+<p><img data-src="/img/computer-network-7/8.png" alt="image-20260102232032875"></p>
+<p>端口用一个 16 bit 端口号进行标志, 共 64K 个端口号, 对一台主机来说是足够的.</p>
+<p><strong>端口号只具有本地意义</strong>, 即端口号只是为了标识本机上的各个应用进程, 在 Internet 中不同主机的相同端口号是没有联系的.</p>
 <p>端口号分为两类:</p>
 <ul>
-<li>知名端口，一般为 0-1023，分配给一些常用的服务进程</li>
-<li>一般端口，用来随时分配给请求通信的客户进程</li>
+<li>知名端口, 一般为 0-1023, 分配给一些常用的服务进程</li>
+<li>一般端口, 用来随时分配给请求通信的客户进程</li>
 </ul>
 <h3><span id="internet-xun-zhi-mo-xing-zong-jie">Internet 寻址模型总结</span><a href="#internet-xun-zhi-mo-xing-zong-jie" class="header-anchor">#</a></h3>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C9.png" alt="image-20260102232214021"></p>
-<p>端口号：在主机上标识应用进程，数据中的端口号由程序或者系统指定</p>
-<p>IP 地址：标识 Internet 上的某台主机，数据中的 IP 地址由程序或者系统指定<br>
-发送数据包括发送方的地址或者端口（源地址和源端口），接收方地址或者端口（目的地址和目的端口），<strong>一般来说跨越网络传输保持不变</strong></p>
-<p>链路地址（MAC 地址）：标识共享链路上的某个接口设备，固化在设备中，数据中的 MAC 地址一般由系统指定. <strong>帧的源和目的 MAC 地址随链路变化.</strong></p>
+<p><img data-src="/img/computer-network-7/9.png" alt="image-20260102232214021"></p>
+<p>端口号: 在主机上标识应用进程, 数据中的端口号由程序或者系统指定</p>
+<p>IP 地址: 标识 Internet 上的某台主机, 数据中的 IP 地址由程序或者系统指定<br>
+发送数据包括发送方的地址或者端口 (源地址和源端口), 接收方地址或者端口 (目的地址和目的端口), <strong>一般来说跨越网络传输保持不变</strong></p>
+<p>链路地址 (MAC 地址): 标识共享链路上的某个接口设备, 固化在设备中, 数据中的 MAC 地址一般由系统指定. <strong>帧的源和目的 MAC 地址随链路变化.</strong></p>
 <h3><span id="yong-hu-shu-ju-bao-xie-yi-udp">用户数据报协议 UDP</span><a href="#yong-hu-shu-ju-bao-xie-yi-udp" class="header-anchor">#</a></h3>
 <h4><span id="udp-tou-biao">UDP 头标</span><a href="#udp-tou-biao" class="header-anchor">#</a></h4>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C10.png" alt="image-20260103142219672"></p>
-<p>UDP 中校验和是可选的，当不做校验和计算时，将该字段全部置零。</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C11.png" alt></p>
+<p><img data-src="/img/computer-network-7/10.png" alt="image-20260103142219672"></p>
+<p>UDP 中校验和是可选的, 当不做校验和计算时, 将该字段全部置零.</p>
+<p><img data-src="/img/computer-network-7/11.png" alt></p>
 <p>计算步骤:</p>
 <ol>
 <li>在 UDP 数据段前面加上 IP 伪头标.</li>
-<li>当数据域的长度为奇数字节时，则用 0 填充成偶数字节.</li>
+<li>当数据域的长度为奇数字节时, 则用 0 填充成偶数字节.</li>
 <li>将校验和域的值置为 0.</li>
-<li>（伪头标+UDP 头标+数据+可能的全 0 填充）以 16 比特为单位反码求和，再取反。当结果为 0 时，将校验和置为全 1 (FFFF)。除此之外的情况，将结果原封不动地作为校验和.</li>
+<li>(伪头标+UDP 头标+数据+可能的全 0 填充) 以 16 比特为单位反码求和, 再取反. 当结果为 0 时, 将校验和置为全 1 (FFFF). 除此之外的情况, 将结果原封不动地作为校验和.</li>
 </ol>
-<p>注意：伪头标只在校验和计算过程中使用，不会用于实际 UDP 数据段传输.</p>
+<p>注意: 伪头标只在校验和计算过程中使用, 不会用于实际 UDP 数据段传输.</p>
 <h3><span id="chuan-shu-kong-zhi-xie-yi-tcp">传输控制协议 TCP</span><a href="#chuan-shu-kong-zhi-xie-yi-tcp" class="header-anchor">#</a></h3>
 <ul>
 <li>可靠
 <ul>
-<li>发送端：超时重传</li>
-<li>接收端：发送确认，缓存处理乱序</li>
+<li>发送端: 超时重传</li>
+<li>接收端: 发送确认, 缓存处理乱序</li>
 </ul>
 </li>
 <li>流量控制</li>
 <li>拥塞控制</li>
 <li>字节流传输
 <ul>
-<li>滑动窗口机制：发送端每次发送的数据量由发送窗口大小决定，而不是以应用层递交的消息为单位；接收端每次向上层递交的数据量由落在接收窗口中并且有序的数据决定</li>
+<li>滑动窗口机制: 发送端每次发送的数据量由发送窗口大小决定, 而不是以应用层递交的消息为单位; 接收端每次向上层递交的数据量由落在接收窗口中并且有序的数据决定</li>
 </ul>
 </li>
 <li>全双工</li>
 </ul>
 <h4><span id="tcp-tou-biao">TCP 头标</span><a href="#tcp-tou-biao" class="header-anchor">#</a></h4>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C12.png" alt></p>
+<p><img data-src="/img/computer-network-7/12.png" alt></p>
 <ul>
 <li>源端口/目的端口, 16 位的端口号</li>
 <li><strong>序列号</strong>Sequence Number: 标识本数据段中第一个字节在数据流中的位置</li>
 <li><strong>确认号</strong>Acknowledgment Number: 标识发送本数据段的端点下一个期待接收的字节编号</li>
-<li>头标长度: 4bits, 指明数据段的头标长度，单位是 32 位（4 字节），随选项长度而定</li>
-<li>保留：6bits，置 0</li>
+<li>头标长度: 4bits, 指明数据段的头标长度, 单位是 32 位 (4 字节), 随选项长度而定</li>
+<li>保留: 6bits, 置 0</li>
 <li>URG: 紧急指针</li>
 <li><strong>ACK: 指示确认段有效</strong></li>
-<li>PSH: Push 操作，告诉接收主机立即将数据递交给应用进程</li>
+<li>PSH: Push 操作, 告诉接收主机立即将数据递交给应用进程</li>
 <li><strong>RST: 重置连接</strong></li>
-<li><strong>SYN: 同步序列号，用于建立连接</strong></li>
-<li><strong>FIN: 发送此数据段的一端已发送完数据，用于释放连接</strong></li>
+<li><strong>SYN: 同步序列号, 用于建立连接</strong></li>
+<li><strong>FIN: 发送此数据段的一端已发送完数据, 用于释放连接</strong></li>
 <li><strong>窗口大小 Window size : 指示在对方确认了的字节之后还可发送的字节数</strong></li>
-<li>检验和 Checksum: 用来检验 TCP 头标和数据的完整性，检验时，要加上<strong>伪 IP 头标</strong></li>
-<li>紧急指针 : 指向紧急数据的最后一个字节，该指针仅在 URG 置 1 时有效</li>
+<li>检验和 Checksum: 用来检验 TCP 头标和数据的完整性, 检验时, 要加上<strong>伪 IP 头标</strong></li>
+<li>紧急指针 : 指向紧急数据的最后一个字节, 该指针仅在 URG 置 1 时有效</li>
 <li>选项: 最大数据段尺寸选项, 窗口尺度 (扩大) 选项</li>
 </ul>
-<p>设置窗口尺度 (扩大) 的作用: 提升信道利用率，避免高速网络中由于较小的窗口尺寸限制了允许发送的数据量.</p>
-<p>协商最大数据段尺寸 (MSS) 的作用: 提升传输效率，避免网络中的路由器执行分段操作.</p>
+<p>设置窗口尺度 (扩大) 的作用: 提升信道利用率, 避免高速网络中由于较小的窗口尺寸限制了允许发送的数据量.</p>
+<p>协商最大数据段尺寸 (MSS) 的作用: 提升传输效率, 避免网络中的路由器执行分段操作.</p>
 <p>TCP 校验和强制.</p>
 <h4><span id="tcp-lian-jie">TCP 连接</span><a href="#tcp-lian-jie" class="header-anchor">#</a></h4>
 <p>TCP 连接的端点称为套接字 socket.</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C13.png" alt="image-20260103152116089"></p>
-<p>一条 TCP 连接是由发送端套接口和接收端套接口加上协议类型来唯一标识的，即 TCP 连接用五元组**&lt;源端IP地址、源端口号、目的IP地址、目的端口号、协议&gt;**来唯一标识。</p>
-<p>例：&lt;136.6.23.13,1500, 130.42.85.15,25, TCP&gt;</p>
-<p>在计算机网络中，五元组常用来标识一个应用层会话（session），包括基于 UDP 和 TCP 的会话</p>
+<p><img data-src="/img/computer-network-7/13.png" alt="image-20260103152116089"></p>
+<p>一条 TCP 连接是由发送端套接口和接收端套接口加上协议类型来唯一标识的, 即 TCP 连接用五元组**&lt;源端IP地址, 源端口号, 目的IP地址, 目的端口号, 协议&gt;**来唯一标识.</p>
+<p>例: &lt;136.6.23.13,1500, 130.42.85.15,25, TCP&gt;</p>
+<p>在计算机网络中, 五元组常用来标识一个应用层会话 (session), 包括基于 UDP 和 TCP 的会话</p>
 <h4><span id="san-ci-wo-shou">三次握手</span><a href="#san-ci-wo-shou" class="header-anchor">#</a></h4>
 <p>前面讲过一次这里再讲一次到底是想干嘛.</p>
-<p><strong>Host 1 请求连接数据段</strong>：SYN 标志置 1，ACK 标志置 0，选择初始序列号 SEQ=x (简称 SYN 数据段).</p>
-<p><strong>Host 2 响应连接确认数据段</strong>：SYN 标志置 1，ACK 标志置 1，选择初始序列号 SEQ=y，并且对 x 进行确认，设置 ACK=x+1 (简称 SYN+ACK 数据段), SYN 数据段看作是 1 字节数据.</p>
-<p><strong>Host 1 响应连接确认数据段</strong>： ACK 标志置 1，SEQ=x+1，对 y 进行确认，设置 ACK=y+1, SYN+ACK 数据段看作是 1 字节数据.</p>
-<p>通过三步握手，host1 和 host2 之间完成初始序列号、窗口大小、最大数据段尺寸等参数的协商，并且分配连接所需要端点资源.</p>
+<p><strong>Host 1 请求连接数据段</strong>: SYN 标志置 1, ACK 标志置 0, 选择初始序列号 SEQ=x (简称 SYN 数据段).</p>
+<p><strong>Host 2 响应连接确认数据段</strong>: SYN 标志置 1, ACK 标志置 1, 选择初始序列号 SEQ=y, 并且对 x 进行确认, 设置 ACK=x+1 (简称 SYN+ACK 数据段), SYN 数据段看作是 1 字节数据.</p>
+<p><strong>Host 1 响应连接确认数据段</strong>:  ACK 标志置 1, SEQ=x+1, 对 y 进行确认, 设置 ACK=y+1, SYN+ACK 数据段看作是 1 字节数据.</p>
+<p>通过三步握手, host1 和 host2 之间完成初始序列号, 窗口大小, 最大数据段尺寸等参数的协商, 并且分配连接所需要端点资源.</p>
 <h4><span id="dui-cheng-shi-fang">对称释放</span><a href="#dui-cheng-shi-fang" class="header-anchor">#</a></h4>
-<p>TCP 采用对称释放法释放连接, TCP 的全双工连接可看成一个双单工的连接，每个单工连接都独立地释放.</p>
-<p>通信双方必须都向对方发送 FIN=1 的 TCP 段并得到对方的应答，连接才能被释放，有四个阶段.</p>
-<p>可以将第一个 ACK 数据段和第二个 FIN 数据段合并，从而变为三步握手.</p>
-<p>为防止半连接，必须使用闲置定时器计时，对 FIN 数据段的应答在两倍最大数据段生命期内未到达，就释放连接。对方也会超时释放。</p>
-<p><strong>主机发送 FIN 数据段后，就不再向对方发送数据.</strong></p>
-<p><strong>闲置定时器</strong>(Quiet Timer)：当 TCP 连接断开后，为防止该连接上的数据段还在网络上，并被后续打开的相同五元组的连接接收，要设置闲置定时器以防止刚刚断开连接的端口号被立即重新使用.</p>
-<p><strong>保持存活定时器</strong>(Keep-Alive Timer)：当一个连接长时间闲置时，保持存活定时器会超时而使一方去检测另一方是否仍然存在，如果它未得到响应，便终止该连接.</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C14.png" alt="image-20260103154043675"></p>
+<p>TCP 采用对称释放法释放连接, TCP 的全双工连接可看成一个双单工的连接, 每个单工连接都独立地释放.</p>
+<p>通信双方必须都向对方发送 FIN=1 的 TCP 段并得到对方的应答, 连接才能被释放, 有四个阶段.</p>
+<p>可以将第一个 ACK 数据段和第二个 FIN 数据段合并, 从而变为三步握手.</p>
+<p>为防止半连接, 必须使用闲置定时器计时, 对 FIN 数据段的应答在两倍最大数据段生命期内未到达, 就释放连接. 对方也会超时释放.</p>
+<p><strong>主机发送 FIN 数据段后, 就不再向对方发送数据.</strong></p>
+<p><strong>闲置定时器</strong>(Quiet Timer): 当 TCP 连接断开后, 为防止该连接上的数据段还在网络上, 并被后续打开的相同五元组的连接接收, 要设置闲置定时器以防止刚刚断开连接的端口号被立即重新使用.</p>
+<p><strong>保持存活定时器</strong>(Keep-Alive Timer): 当一个连接长时间闲置时, 保持存活定时器会超时而使一方去检测另一方是否仍然存在, 如果它未得到响应, 便终止该连接.</p>
+<p><img data-src="/img/computer-network-7/14.png" alt="image-20260103154043675"></p>
 <h4><span id="hua-dong-chuang-kou-ji-zhi">滑动窗口机制</span><a href="#hua-dong-chuang-kou-ji-zhi" class="header-anchor">#</a></h4>
 <p><strong>允许发送方在收到确认之前连续发送多个分组.</strong></p>
 <ul>
-<li>可靠有序的传输: 使用发送缓存和接收缓存，只有被确认，窗口才滑动</li>
-<li>流量控制: 接收端可根据可用剩余缓冲区来指定窗口大小，并通知发送端，发送端根据窗口大小来设置发送窗口. 当缓冲区满，接收端可以发送一个窗口大小为 0 的数据段，指示发送端停止发送数据，但此时仍可以发送紧急数据 （如用户紧急停止进程）和一字节的通知对方更新窗口大小的数据段</li>
+<li>可靠有序的传输: 使用发送缓存和接收缓存, 只有被确认, 窗口才滑动</li>
+<li>流量控制: 接收端可根据可用剩余缓冲区来指定窗口大小, 并通知发送端, 发送端根据窗口大小来设置发送窗口. 当缓冲区满, 接收端可以发送一个窗口大小为 0 的数据段, 指示发送端停止发送数据, 但此时仍可以发送紧急数据 (如用户紧急停止进程) 和一字节的通知对方更新窗口大小的数据段</li>
 <li>拥塞控制</li>
 </ul>
-<p><strong>傻瓜窗口症状</strong>：</p>
+<p><strong>傻瓜窗口症状</strong>:</p>
 <ul>
-<li>情况 1：当发送端的 TCP 每次接收到来自应用的一字节的数据后就发送</li>
-<li>情况 2：当接收端的 TCP 缓冲区已满，接收端会向发送端发送窗口大小为 0 的数据，而此时接收端的应用进程以交互方式每次只读取一个字节，于是接收端又发送窗口大小为一个字节的更新数据段，发送端应邀发送一个字节的数据，于是窗口又满了，循环往复.</li>
+<li>情况 1: 当发送端的 TCP 每次接收到来自应用的一字节的数据后就发送</li>
+<li>情况 2: 当接收端的 TCP 缓冲区已满, 接收端会向发送端发送窗口大小为 0 的数据, 而此时接收端的应用进程以交互方式每次只读取一个字节, 于是接收端又发送窗口大小为一个字节的更新数据段, 发送端应邀发送一个字节的数据, 于是窗口又满了, 循环往复.</li>
 </ul>
 <p>解决方法:</p>
 <ul>
-<li>Nagle 算法：禁止发送端发送太小的数据段，而是等到有一定数量的数据后再发送</li>
-<li>Clark 算法：禁止接收端发送 1 个字节大小的窗口更新信息，而是要等到有了一定数量的可用空间后再通知对方</li>
+<li>Nagle 算法: 禁止发送端发送太小的数据段, 而是等到有一定数量的数据后再发送</li>
+<li>Clark 算法: 禁止接收端发送 1 个字节大小的窗口更新信息, 而是要等到有了一定数量的可用空间后再通知对方</li>
 </ul>
-<p><strong>持续定时器</strong>: 为了让发送端暂停发送数据，接收端发送一个窗口大小为 0 的确认。后来，接收端又发送了一个更新了窗口大小的数据段，但该数据段丢失，于是，双方都处于等待, 进入死锁.</p>
-<p>为了防止上述事情发生，发送端在收到接收端发来一个窗口大小为 0 的数据段时，就启动持续定时器，等该定时器超时还没有收到对方修改窗口大小的数据段的话，发送端就发一个 1 字节的探测数据段，对该探测数据段的响应应包含了窗口大小，若仍为 0，则定时器清 0，否则则可以发送数据.</p>
+<p><strong>持续定时器</strong>: 为了让发送端暂停发送数据, 接收端发送一个窗口大小为 0 的确认. 后来, 接收端又发送了一个更新了窗口大小的数据段, 但该数据段丢失, 于是, 双方都处于等待, 进入死锁.</p>
+<p>为了防止上述事情发生, 发送端在收到接收端发来一个窗口大小为 0 的数据段时, 就启动持续定时器, 等该定时器超时还没有收到对方修改窗口大小的数据段的话, 发送端就发一个 1 字节的探测数据段, 对该探测数据段的响应应包含了窗口大小, 若仍为 0, 则定时器清 0, 否则则可以发送数据.</p>
 <h4><span id="chao-shi-chong-chuan">超时重传</span><a href="#chao-shi-chong-chuan" class="header-anchor">#</a></h4>
-<p>对每条连接，TCP 均保存变量 RTT (Round-Trip Time)，用于存放到目的端的往返时间的估计值. 当发送一个数据段时，启动定时器，如果时间超时就重传该数据段，如果在超时之前得到确认，TCP 就测量所花费的时间，记为 M，并根据下面公式修正 RTT:</p>
+<p>对每条连接, TCP 均保存变量 RTT (Round-Trip Time), 用于存放到目的端的往返时间的估计值. 当发送一个数据段时, 启动定时器, 如果时间超时就重传该数据段, 如果在超时之前得到确认, TCP 就测量所花费的时间, 记为 M, 并根据下面公式修正 RTT:</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mi>T</mi><mi>T</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="false">)</mo><mo>×</mo><mi>M</mi><mo>+</mo><mi>α</mi><mo>×</mo><mi>R</mi><mi>T</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">RTT = (1 - \alpha) \times M + \alpha \times RTT
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span></span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>是修正因子，一般为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>7</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{7}{8}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>是修正因子, 一般为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>7</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{7}{8}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.</p>
 <p>超时间隔 Timeout:</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mi>β</mi><mo>×</mo><mi>R</mi><mi>T</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">Timeout = \beta \times RTT
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">im</span><span class="mord mathnormal">eo</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span></span></span></span></span></p>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\beta = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>.</p>
 <p>Jacobson 公式:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>D</mi><mo>=</mo><mi>α</mi><mtext>’</mtext><mi>D</mi><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mtext>’</mtext><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>−</mo><mi>M</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">D= \alpha’D+(1- \alpha’)|RTT-M|
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord">’</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord">’</span><span class="mclose">)</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord">∣</span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>D</mi><mo>=</mo><msup><mi>α</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mi>D</mi><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msup><mi>α</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>−</mo><mi>M</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">D= \alpha&#x27;D+(1- \alpha&#x27;)|RTT-M|
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8852em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord">∣</span></span></span></span></span></p>
 <p>这里<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>α</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">\alpha&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>一般取<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>3</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3}{4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, 超时间隔为:</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mn>4</mn><mi>D</mi></mrow><annotation encoding="application/x-tex">Timeout=RTT+4D
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">im</span><span class="mord mathnormal">eo</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">4</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span></p>
-<p>每个 TCP 连接都只维护一个 Timeout/RTT 变量，该变量利用 Jacobson 算法来更新.</p>
-<p>对于第一次发送的 TCP 数据段，设置重传定时器的值为 Timeout, 其后根据 Jacobson 算法更新 Timeout. 注意, 重传后收到的数据段不会导致 Timeout/RTT 值更新.</p>
-<p><strong>对于已发送过一次的 TCP 数据段，如果在 Timeout 之前仍然没有收到对该数据段的 ACK，则根据 Karn 算法来设置下次发送的重传定时器的超时值.</strong></p>
-<p>Karn 算法: 对发生重传的数据段无需修改 RTT，而是在每次传输失败时将超时时间 Timeout 加倍，直到该数据段被成功传输.</p>
-<p>ACK 延时定时器: 收到数据段不必立刻返回确认, 可以在 0-500ms 内（见 RFC 1122）发送 ACK 数据段，如果在这段时间内它恰好有数据段要发送，它就可以在数据段内包含确认信息，因此需要 ACK 延时定时器.</p>
+<p>每个 TCP 连接都只维护一个 Timeout/RTT 变量, 该变量利用 Jacobson 算法来更新.</p>
+<p>对于第一次发送的 TCP 数据段, 设置重传定时器的值为 Timeout, 其后根据 Jacobson 算法更新 Timeout. 注意, 重传后收到的数据段不会导致 Timeout/RTT 值更新.</p>
+<p><strong>对于已发送过一次的 TCP 数据段, 如果在 Timeout 之前仍然没有收到对该数据段的 ACK, 则根据 Karn 算法来设置下次发送的重传定时器的超时值.</strong></p>
+<p>Karn 算法: 对发生重传的数据段无需修改 RTT, 而是在每次传输失败时将超时时间 Timeout 加倍, 直到该数据段被成功传输.</p>
+<p>ACK 延时定时器: 收到数据段不必立刻返回确认, 可以在 0-500ms 内 (见 RFC 1122) 发送 ACK 数据段, 如果在这段时间内它恰好有数据段要发送, 它就可以在数据段内包含确认信息, 因此需要 ACK 延时定时器.</p>
 <p>选择确认 SACK: 告诉发送方已接收到数据包, 不必重复发送.</p>
 <h4><span id="yong-sai-kong-zhi">拥塞控制</span><a href="#yong-sai-kong-zhi" class="header-anchor">#</a></h4>
-<p>接收窗口 rwnd 是接收端根据其目前的可用接收缓存大小所许诺的最新的窗口值，是来自接收端的流量控制。接收端将此窗口值放在 TCP 数据段头标中的窗口大小域传送给发送端.</p>
+<p>接收窗口 rwnd 是接收端根据其目前的可用接收缓存大小所许诺的最新的窗口值, 是来自接收端的流量控制. 接收端将此窗口值放在 TCP 数据段头标中的窗口大小域传送给发送端.</p>
 <p>拥塞窗口 cwnd 是发送端根据自己估计的网络拥塞程度而设置的窗口值.</p>
 <p>发送方实际发送窗口 = min ( rwnd, cwnd )</p>
-<p><strong>慢启动算法</strong>: 在连接建立初期，拥塞窗口初始化为该连接最大数据段的长度<br>
-发送端发送一个最大数据段，得到确认后，其拥塞窗口大小加倍，依次类推，直到发送端认为出现数据段丢失或已达到接收窗口大小（兼顾拥塞和流量控制）.</p>
-<p><strong>拥塞避免</strong>: 拥塞窗口增长到 ssthresh 时，就每次将拥塞窗口加 1，使拥塞窗口按线性规律增长. 如果出现超时或者认为发送的数据段出现丢失时，就将当时拥塞窗口值减半，作为新的 ssthresh，同时将拥塞窗口变为 1.</p>
+<p><strong>慢启动算法</strong>: 在连接建立初期, 拥塞窗口初始化为该连接最大数据段的长度<br>
+发送端发送一个最大数据段, 得到确认后, 其拥塞窗口大小加倍, 依次类推, 直到发送端认为出现数据段丢失或已达到接收窗口大小 (兼顾拥塞和流量控制).</p>
+<p><strong>拥塞避免</strong>: 拥塞窗口增长到 ssthresh 时, 就每次将拥塞窗口加 1, 使拥塞窗口按线性规律增长. 如果出现超时或者认为发送的数据段出现丢失时, 就将当时拥塞窗口值减半, 作为新的 ssthresh, 同时将拥塞窗口变为 1.</p>
 <p><strong>快速重传</strong>: 接收方连续收到三个重复确认 (ACK), 不等 Timeout 了, 立刻重传.</p>
 <p><strong>发生拥塞/丢包/超时/快重传时, 新的 ssthresh = 发生拥塞时 cwnd 值的一半.</strong></p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C15.png" alt="image-20260103173937019"></p>
-<p><strong>加法增大</strong>: 执行拥塞避免算法后，在收到对所有数据段的确认后（即经过一个往返时间），就把拥塞窗口增加一个 MSS 大小，使拥塞窗口缓慢增大，以防止网络过早出现拥塞.</p>
-<p><strong>乘法减小</strong>: 不论在慢启动阶段还是拥塞避免阶段，只要出现一次超时或者认为发送的数据段出现丢失时（即出现一次网络拥塞），就把慢启动阈值 ssthresh 设置为当前的拥塞窗口乘以 0.5. 当网络频繁出现拥塞时，ssthresh 就下降得很快，以大大减少注入到网络中的数据量.</p>
+<p><img data-src="/img/computer-network-7/15.png" alt="image-20260103173937019"></p>
+<p><strong>加法增大</strong>: 执行拥塞避免算法后, 在收到对所有数据段的确认后 (即经过一个往返时间), 就把拥塞窗口增加一个 MSS 大小, 使拥塞窗口缓慢增大, 以防止网络过早出现拥塞.</p>
+<p><strong>乘法减小</strong>: 不论在慢启动阶段还是拥塞避免阶段, 只要出现一次超时或者认为发送的数据段出现丢失时 (即出现一次网络拥塞), 就把慢启动阈值 ssthresh 设置为当前的拥塞窗口乘以 0.5. 当网络频繁出现拥塞时, ssthresh 就下降得很快, 以大大减少注入到网络中的数据量.</p>
 <p><strong>快速恢复</strong>: TCP Reno, cwnd 不是设置为 1, 而是减半. 是的 PPT 教的是 TCP Tahoe, 已经废弃了.</p>
-<p><img data-src="D:%5CBlog%5Csource%5Cimg%5Ccomputer-network-7%5C16.png" alt="image-20260103174601380"></p>
+<p><img data-src="/img/computer-network-7/16.png" alt="image-20260103174601380"></p>
 
     </div>
 
