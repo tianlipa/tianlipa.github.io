@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "太好了, 我逐渐理解一切",
         "Escape, now",
         "Subtitle加载失败,<br>请刷新页面重试.",
-        "幸福就像巧克力,<br>我这种狗一吃就似了.",
+        // "幸福就像巧克力,<br>我这种狗一吃就似了.",
         "逮住蛤蟆, 攥出尿来.",
         "生活就像海洋,<br>只有意志坚强的人, 才能到达彼岸.",
         "<b>活下去</b>",
@@ -222,7 +222,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "只有风暴才能击倒大树",
         "行不得也, 哥哥",
         "井, 井, 井",
-        "子非我, 安知我非鱼?"
+        "子非我, 安知我非鱼?",
+        "Let's go Justin!",
+        "El Psy Kongroo",
+        "你们两家都倒八辈子霉去吧!",
+        "历史就是死人名字"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
