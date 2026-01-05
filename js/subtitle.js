@@ -226,7 +226,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Let's go Justin!",
         "El Psy Kongroo",
         "你们两家都倒八辈子霉去吧!",
-        "历史就是死人名字"
+        "历史就是死人名字",
+        "据不完全统计, 一年有11个月.",
+        "418 I'm a teapot"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

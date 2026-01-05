@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="网络的访问模式:  客户端&#x2F;服务器 (Client&#x2F;Server) 模式: 系统使用了客户和服务器双方的资源和计算能力来执行一个特定的任务, 前端 (客户)+后端 (服务器). 对等 (Peer To Peer, P2P) 模式: 用户和资源处于对等状态, 采用去中心化架构, 每个节点既可以充当服务器为他人服务, 也可以充当客户端享受他人提供的服务.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络笔记 八.应用层">
+<meta property="og:url" content="https://tianlipa.github.io/2026/01/computer-network-8/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="网络的访问模式:  客户端&#x2F;服务器 (Client&#x2F;Server) 模式: 系统使用了客户和服务器双方的资源和计算能力来执行一个特定的任务, 前端 (客户)+后端 (服务器). 对等 (Peer To Peer, P2P) 模式: 用户和资源处于对等状态, 采用去中心化架构, 每个节点既可以充当服务器为他人服务, 也可以充当客户端享受他人提供的服务.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/5.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/6.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/7.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/8.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-8/9.png">
+<meta property="article:published_time" content="2026-01-05T06:49:44.000Z">
+<meta property="article:modified_time" content="2026-01-05T13:20:39.507Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-network-8/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/01/computer-network-8/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/01/computer-network-8/","path":"2026/01/computer-network-8/","title":"计算机网络笔记 八.应用层"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机网络笔记 八.应用层 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/01/computer-network-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机网络笔记 八.应用层 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络笔记 八.应用层
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-01-05 14:49:44 / 修改时间：21:20:39" itemprop="dateCreated datePublished" datetime="2026-01-05T14:49:44+08:00">2026-01-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>网络的访问模式:</p>
+<ul>
+<li>客户端/服务器 (Client/Server) 模式: 系统使用了客户和服务器双方的资源和计算能力来执行一个特定的任务, 前端 (客户)+后端 (服务器).</li>
+<li>对等 (Peer To Peer, P2P) 模式: 用户和资源处于对等状态, 采用去中心化架构, 每个节点既可以充当服务器为他人服务, 也可以充当客户端享受他人提供的服务.</li>
+</ul>
+<span id="more"></span>
+<h2><span id="yu-ming-xi-tong-dns">域名系统 (DNS)</span><a href="#yu-ming-xi-tong-dns" class="header-anchor">#</a></h2>
+<p>DNS: Domain Name System 负责域名的维护和管理, 用户的绝大部分网络服务访问都需要 DNS.</p>
+<p>引入域名的主要原因:</p>
+<ul>
+<li>提升可读性和易用性</li>
+<li>实现服务地址与网络地址的解耦</li>
+</ul>
+<p>DNS 提供基于层次化设计的域名解析服务, 主要用于解决可扩展性问题.</p>
+<p>问题:</p>
+<ul>
+<li>域名数量庞大, 维护开销大, 容易成为性能瓶颈</li>
+<li>名字管理困难, 难以避免重名冲突</li>
+</ul>
+<p>解决方案: 名字层次化, 管理分布化.</p>
+<h3><span id="ceng-ci-hua-ming-zi-kong-jian">层次化名字空间</span><a href="#ceng-ci-hua-ming-zi-kong-jian" class="header-anchor">#</a></h3>
+<p>顶级域, 次级域 (二级域), 三级域, ...</p>
+<p>感觉没啥好说的.</p>
+<h3><span id="fen-bu-shi-yu-ming-guan-li">分布式域名管理</span><a href="#fen-bu-shi-yu-ming-guan-li" class="header-anchor">#</a></h3>
+<p>DNS 采用分布式的域名管理, 以域为单位, 在网络中分布多个服务器对域名进行管理, 这些服务器也被称为名字服务器.</p>
+<p>某个域如果设置了名字服务器, 则该服务器负责此域下子域的域名管理 (有可能包括子域下层的域) .</p>
+<p>DNS 实现: 采用客户/服务器通信模式, 客户端通过解析器 (resolver) 向名字服务器发送查询请求.</p>
+<p>DNS 解析时使用 UDP 协议, 端口号为 53 号.</p>
+<p><img data-src="/img/computer-network-8/1.png" alt></p>
+<p>DNS 名字空间被划分为一些不重叠的区域 (Zone), 每个区域的信息保存在该区域对应的名字服务器上, 该服务器也被称为所在区域的授权名字服务器.</p>
+<p>Internet 允许各个组织根据具体情况将本组织内的域划分为若干个区域 (zone), 并在各区域中设置相应的授权名字服务器.</p>
+<p><img data-src="/img/computer-network-8/2.png" alt></p>
+<p>根名字服务器: 保存了所有顶级域名字服务器的 IP 地址. 为确保可靠性和响应性能, 每个根名字服务器在全球多地部署.</p>
+<h3><span id="zi-yuan-ji-lu">资源记录</span><a href="#zi-yuan-ji-lu" class="header-anchor">#</a></h3>
+<p>Resource Record, 名字服务器以资源记录的形式来维护本区域内的域名相关信息.</p>
+<p>当解析器给名字服务器一个域名, 取回的是一个与该域名相对应的资源记录, DNS 系统的实际功能就是把域名映射到一条记录上.</p>
+<p>资源记录包括 5 个字段: Domain_name, Time_to_live, Type , Class, Value</p>
+<ul>
+<li>Time_to_live: 生存时间, 例如, 时间较长的有一天 (86400 秒), 短的有一分钟 (60 秒)</li>
+<li>Type: 指出记录的类型</li>
+<li>Class: 对 Internet, 它总是 IN</li>
+<li>Value: 可以是数字, 域名或 ASCII 字符, 其语义基于记录类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型 (Type)</th>
+<th>含义 (Meaning)</th>
+<th>值 (Value)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOA</td>
+<td>起始授权记录</td>
+<td>本区域的参数, 如主服务器, 序列号, 刷新间隔等</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>主机 IPv4 地址</td>
+<td>IPv4 地址 (例如: 192.0.2.1)</td>
+</tr>
+<tr>
+<td><strong>MX</strong></td>
+<td>邮件交换记录</td>
+<td>优先级, 负责接收邮件的域名</td>
+</tr>
+<tr>
+<td><strong>NS</strong></td>
+<td>域名服务器记录</td>
+<td>为本域提供权威解析的服务器的域名</td>
+</tr>
+<tr>
+<td><strong>CNAME</strong></td>
+<td>规范名称 (别名)</td>
+<td>指向另一个域名 (规范名称)</td>
+</tr>
+<tr>
+<td>PTR</td>
+<td>指针记录</td>
+<td>用于反向 DNS 查找, 将 IP 地址映射到域名</td>
+</tr>
+<tr>
+<td>HINFO</td>
+<td>主机信息</td>
+<td>主机的 CPU 类型和操作系统 (ASCII 文本)</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td>文本记录</td>
+<td>任意文本信息, 常用于验证, SPF, DMARC 等</td>
+</tr>
+</tbody>
+</table>
+<p>资源记录的类型:</p>
+<ul>
+<li>权威记录 Authoritative Record, 来自管理该记录的授权名字服务器, 因此总是正确的. 例如 <a target="_blank" rel="noopener" href="http://eeis.ustc.edu.cn">eeis.ustc.edu.cn</a> 在 <a target="_blank" rel="noopener" href="http://ustc.edu.cn">ustc.edu.cn</a> 域所对应的名字服务器所管辖的范围内, 因此该名字服务器返回的关于 <a target="_blank" rel="noopener" href="http://eeis.ustc.edu.cn">eeis.ustc.edu.cn</a> 的记录为权威记录.</li>
+<li>缓存记录 Cached Record, 名字服务器缓存来自其它名字服务器的记录, 这些有效期由 TTL 域指定, 当 TTL 过期时, 该记录被删除.</li>
+</ul>
+<p><img data-src="/img/computer-network-8/3.png" alt></p>
+<h3><span id="dns-cha-xun-guo-cheng">DNS 查询过程</span><a href="#dns-cha-xun-guo-cheng" class="header-anchor">#</a></h3>
+<p>当用户要访问 web 服务时, 在浏览器中键入 web 服务器的域名, 主机上的域名解析器先查询本机上的 cache 以及 hosts 文件, 如果没有对应表项, 则向名字服务器请求域名服务.</p>
+<p>查询类型:</p>
+<ul>
+<li><strong>迭代查询</strong>(iterative query, 常用):  本地名字服务器如果没有域名对应的记录, 就向更高层次的名字服务器请求, 被请求的名字服务器如果也没有该域名对应的记录就会返回一个可供查询的名字服务器地址.</li>
+<li><strong>递归查询</strong>(recursive query, 不常用):  被请求的名字服务器如果没有域名所对应的记录, 它就会向其它域名服务器查询, 并沿着查询的路径逐个返回记录.</li>
+</ul>
+<p>例: 查询 <a target="_blank" rel="noopener" href="http://if.ee.ustc.edu">if.ee.ustc.edu</a> 所对应的资源记录.</p>
+<p>迭代查询:</p>
+<p><img data-src="/img/computer-network-8/4.png" alt></p>
+<p>递归查询:</p>
+<p><img data-src="/img/computer-network-8/5.png" alt="image-20260105152241394"></p>
+<h2><span id="www-wan-wei-wang-http">WWW 万维网 (HTTP)</span><a href="#www-wan-wei-wang-http" class="header-anchor">#</a></h2>
+<p>万维网 (World Wide Web, 也称为 WWW) 由庞大的, 分布在世界各地的 web 页面的集合组成.</p>
+<p>Web 页面编写采用 HTML (HyperText Markup Language) 等语言, 客户端 (浏览器) 采用 HTTP (HyperText Transfer Protocol) 协议来访问 web 页面.</p>
+<p>万维网可以看作是分布式超媒体 (hypermedia) 系统, 它是超文本 (hypertext) 系统的扩充. 超文本是万维网的基础, 一个超文本由多个文本页面链接 (link) 成. 利用一个链接可使用户找到另一个文本页面.</p>
+<p>超媒体与超文本的区别是页面内容不同, 超文本页面仅包含文本信息, 而超媒体页面还包含其他表示方式的信息, 如图形, 图像, 声音, 动画, 视频等.</p>
+<p><strong>超链接是链接到其它页面的文本字符串, 通过超链接, 用户可以访问一个又一个的 web 页面.</strong></p>
+<h3><span id="tong-yi-zi-yuan-ding-wei-fu-url">统一资源定位符 URL</span><a href="#tong-yi-zi-yuan-ding-wei-fu-url" class="header-anchor">#</a></h3>
+<p><strong>使用统一资源定位符 URL (Uniform Resource Locator) 来命名万维网上的各种 web 页面, 每个页面在整个 Internet 的范围内具有唯一的标识符即 URL.</strong></p>
+<p>URL 的一般形式: &lt;协议&gt;://&lt;主机域名&gt;:&lt;端口&gt;/&lt;路径及文件名&gt;</p>
+<p>HTTP 中, 若文件名省略, 则 URL 指向某个名为 index.html 的缺省页面.</p>
+<h3><span id="chao-wen-ben-chuan-shu-xie-yi-http">超文本传输协议 HTTP</span><a href="#chao-wen-ben-chuan-shu-xie-yi-http" class="header-anchor">#</a></h3>
+<p>传输层使用 TCP 协议.</p>
+<p>HTTP 是万维网上能够可靠地交换文件 (包括文本, 声音, 图像等各种多媒体文件) 的重要基础.</p>
+<p>工作在客户/服务器模式, 指定客户可以向服务器发送什么样的消息, 并且得到什么样的响应消息.</p>
+<ul>
+<li>客户向服务器发出 TCP 连接请求, 服务器缺省工作在 80 端口, 服务器接受连接请求并与客户建立 TCP 连接</li>
+<li>在客户与服务器之间交互 HTTP 消息</li>
+<li>客户或者服务器发起关闭 TCP 连接</li>
+</ul>
+<h4><span id="wan-wei-wang-de-gong-zuo-guo-cheng">万维网的工作过程</span><a href="#wan-wei-wang-de-gong-zuo-guo-cheng" class="header-anchor">#</a></h4>
+<ol>
+<li>用户在浏览器的地址栏键入 URL, 或者点击某个超链接所对应的 URL</li>
+<li>浏览器分析 URL 的主机域名, 通过 DNS 系统找到资源所在的节点即 web 服务器的 IP 地址</li>
+<li>浏览器与 web 服务器的 80 端口建立 TCP 连接 (HTTP 协议的默认端口)</li>
+<li>向 web 服务器发出 HTTP 请求消息, 要求获得某个 web 页面</li>
+<li>服务器服务器通过 HTTP 响应消息传送 web 页面</li>
+<li>TCP 连接被释放</li>
+<li>浏览器在本机上显示 web 页面</li>
+</ol>
+<h4><span id="http-de-xiao-xi-ge-shi">HTTP 的消息格式</span><a href="#http-de-xiao-xi-ge-shi" class="header-anchor">#</a></h4>
+<p>HTTP 有两类消息:</p>
+<ul>
+<li>请求消息, 客户端发向 web 服务器</li>
+<li>响应消息, 从 web 服务器发往客户端</li>
+</ul>
+<p><strong>请求消息</strong>:</p>
+<p><img data-src="/img/computer-network-8/6.png" alt="image-20260105153435222"></p>
+<p>方法:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法 (操作)</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">OPTION</td>
+<td style="text-align:left">查询特定选项</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>GET</strong></td>
+<td style="text-align:left"><strong>请求读取一个 web 页面</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">HEAD</td>
+<td style="text-align:left">请求读取一个 web 页面的头部</td>
+</tr>
+<tr>
+<td style="text-align:left">POST</td>
+<td style="text-align:left">给服务器添加信息 (例如, 注释)</td>
+</tr>
+<tr>
+<td style="text-align:left">PUT</td>
+<td style="text-align:left">请求存储一个 web 页面</td>
+</tr>
+<tr>
+<td style="text-align:left">DELETE</td>
+<td style="text-align:left">删除 web 页面</td>
+</tr>
+<tr>
+<td style="text-align:left">TRACE</td>
+<td style="text-align:left">送回收到的请求</td>
+</tr>
+</tbody>
+</table>
+<p>HTTP 请求示例:</p>
+<p><img data-src="/img/computer-network-8/7.png" alt="image-20260105153558748"></p>
+<p><strong>响应消息</strong>:</p>
+<p><img data-src="/img/computer-network-8/8.png" alt="image-20260105203837184"></p>
+<p>响应消息的开始行是<strong>状态行</strong>, 状态行包括 HTTP 的版本, 状态码, 以及解释状态码的简单短语.</p>
+<p>例:</p>
+<p><img data-src="/img/computer-network-8/9.png" alt="image-20260105203902741"></p>
+<p>1xx 表示通知信息, 如服务器同意处理客户请求 (100)<br>
+2xx 表示成功, 如请求成功 (200) 或没有内容存在 (204)<br>
+3xx 表示重定向, 如页面移动 (301) 或者缓存的页面仍然有效 (304)<br>
+4xx 表示客户错误, 例如禁止页面 (403) 或者页面没有找到 (404)<br>
+5xx 表示服务器错误, 如服务器内部错误 (500) 或者以后再试 (503)</p>
+<p>4xx 表示请求的内容/方式有问题, 所以 I’m a teapot 是 418.</p>
+<h2><span id="dian-zi-you-jian">电子邮件</span><a href="#dian-zi-you-jian" class="header-anchor">#</a></h2>
+<h3><span id="xiang-guan-xie-yi">相关协议</span><a href="#xiang-guan-xie-yi" class="header-anchor">#</a></h3>
+<p>消息交换协议:</p>
+<ul>
+<li>发送 email: 简单邮件传输协议 SMTP (Simple Mail Transfer Protocol)</li>
+<li>接收 email:
+<ul>
+<li>邮局协议第 3 版 POP3 (Post Office Protocol version 3)</li>
+<li>Internet 消息访问协议 IMAP (Internet Message Access Protocol)</li>
+</ul>
+</li>
+</ul>
+<p>消息格式协议:</p>
+<ul>
+<li>基本的 ASCII 的文本邮件</li>
+<li>多用途 Internet 邮件扩展 MIME (Multipurpose Internet Mail Extensions), 支持多媒体邮件, 不仅仅限于 ASCII 字符及文本信息</li>
+</ul>
+<h3><span id="dian-zi-you-jian-xi-tong-jia-gou">电子邮件系统架构</span><a href="#dian-zi-you-jian-xi-tong-jia-gou" class="header-anchor">#</a></h3>
+<p>发送用 MTA: Message Transfer Agent, 是 Push 过程, 用的协议通常是 SMTP.</p>
+<p>接收用 MAA: Message Access Agent, 是 Pull 过程, 把信从服务器取回本地, 用的协议是 POP3 或 IMAP.</p>
+<p>UA: User Agent, 给人类用的, 例如 Outlook, Foxmail.</p>
+<h3><span id="dian-zi-you-jian-di-zhi-ge-shi">电子邮件地址格式</span><a href="#dian-zi-you-jian-di-zhi-ge-shi" class="header-anchor">#</a></h3>
+<p>用户名@邮件服务器的域名</p>
+<p>域名是邮件服务器的域, 进行 DNS 查询 (MX 记录) 可获得该域的邮件服务器 IP 地址.</p>
+<h3><span id="mime">MIME</span><a href="#mime" class="header-anchor">#</a></h3>
+<p>Multipurpose Internet Mail Extensions, 多用途 Internet 邮件扩展, 传统电子邮件只能发送 NVT 7-bit ASCII 格式的消息, MIME 协议进行了扩张, 使得非 NVT ASCII 数据能够通过 Email 发送.</p>
+<p>不是独立的传输协议.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/2026-1-3/" rel="prev" title="2026-1-3">
+                  <i class="fa fa-angle-left"></i> 2026-1-3
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
