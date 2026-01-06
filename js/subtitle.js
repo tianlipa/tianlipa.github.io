@@ -229,7 +229,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "历史就是死人名字",
         "据不完全统计, 一年有11个月.",
         "418 I'm a teapot",
-        "在这个年代, 找不到浪漫"
+        "在这个年代, 找不到浪漫",
+        "来到了天津卫, 嘛也没学会",
+        "46. Qe4+ Rg6"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-4/30.png">
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-4/31.png">
 <meta property="article:published_time" content="2025-10-29T14:45:31.000Z">
-<meta property="article:modified_time" content="2025-11-03T15:03:09.620Z">
+<meta property="article:modified_time" content="2026-01-06T07:33:47.905Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
@@ -269,7 +269,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-03 23:03:09" itemprop="dateModified" datetime="2025-11-03T23:03:09+08:00">2025-11-03</time>
+      <time title="修改时间：2026-01-06 15:33:47" itemprop="dateModified" datetime="2026-01-06T15:33:47+08:00">2026-01-06</time>
     </span>
 
   
@@ -315,7 +315,7 @@ MAC: Medium Access Control, <strong>媒体接入控制</strong>, 你猜与传输
 <p><img data-src="/img/computer-network-4/2.png" alt></p>
 <p>将数据链路层划分为两个子层的原因:</p>
 <ul>
-<li>在传统链路控制 (如点对点通信的串行链路) 中, 没有管理访问共享 (广播式) 介质的逻辑需求 , MAC 子层负责对共享介质的访问进行控制</li>
+<li>在传统链路控制 (如点对点通信的串行链路) 中, 没有管理访问共享 (广播式) 介质的逻辑需求, MAC 子层负责对共享介质的访问进行控制</li>
 <li>对于相同的 LLC 子层, 可以提供不同的 MAC 子层. 例如, 常用以太网, 802.11 无线局域网等局域网具有相同的 LLC 子层, 只是 MAC 子层不同.</li>
 </ul>
 <p><img data-src="/img/computer-network-4/3.png" alt></p>
@@ -373,7 +373,7 @@ MAC: Medium Access Control, <strong>媒体接入控制</strong>, 你猜与传输
 <li><strong>静态分配</strong>: 如 FDM 和 TDM, 如果有 N 个用户, 把带宽 (频率范围) 或时间分成 N 份, 每个用户静态地占用一个. 缺点: 不能有效处理突发数据, 且用户无数据传输时浪费资源, 灵活性差</li>
 <li><strong>动态分配</strong>: 异步时分复用, 主要分为:
 <ul>
-<li><strong>随机访问 (争用 contention)</strong>: 只要有数据就可以发送, 发生冲突后再采取措施解决冲突, 适用于负载轻的网络, 负载重时效率低, 如<strong>ALOHA</strong>, <strong>CSMA</strong>.</li>
+<li><strong>随机访问 (争用 contention)</strong>: 只要有数据就可以发送, 发生冲突后再采取措施解决冲突, 适用于负载轻的网络, 负载重时效率低, 如 <strong>ALOHA</strong>, <strong>CSMA</strong>.</li>
 <li><strong>控制访问 (无争用 contention-free)</strong>: 发送用户必须先获得发送的权利再发送数据, 不会发生冲突. 在负载重的网络中可获得很高的信道利用率, 主要有<strong>轮询</strong>(round-robin-polling) 和预留 (reservation) 两种方式.</li>
 </ul>
 </li>
@@ -428,6 +428,7 @@ MAC: Medium Access Control, <strong>媒体接入控制</strong>, 你猜与传输
 AP (无线接入点 Access Point) 和站点工作在同一个信道 (共享链路) 上, 由中心点 AP 来控制所有站点对共享无线信道的访问, AP 按顺序轮询 (Poll) 站点是否有帧要发送, 不会发生冲突.</p>
 <h2><span id="yi-tai-wang">以太网</span><a href="#yi-tai-wang" class="header-anchor">#</a></h2>
 <h3><span id="gai-shu">概述</span><a href="#gai-shu" class="header-anchor">#</a></h3>
+<p><strong>由于以太网使用的传输介质的误码率很小, 因此以太网的 LLC 一般提供的是无确认的非连接服务.</strong></p>
 <p>经典以太网在总线型共享链路上以 10Mbps 的速率工作, 也称为 10M 以太网, 对应标准 802.3. 注意, 一般使用时常常不区分「以太网」和「IEEE 802.3」.</p>
 <p>传输介质:</p>
 <ul>
@@ -439,7 +440,68 @@ SX (短波长): 多模光纤≤220m (62.5/125um), 以及≤500m (50/125um)<br>
 CX: 屏蔽双绞线≤25m, 交换机之间, 以及主干交换机和主服务器之间的短距离连接<br>
 T: 非屏蔽双绞线≤100m</li>
 </ul>
-<p><strong>由于以太网使用的传输介质的误码率很小, 因此以太网的 LLC 一般提供的是无确认的非连接服务.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">后缀</th>
+<th style="text-align:left">标准举例</th>
+<th style="text-align:left">传输介质 (核心考点)</th>
+<th style="text-align:left">介质详情</th>
+<th style="text-align:left">典型距离</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>-T</strong></td>
+<td style="text-align:left">10Base-T<br>100Base-TX<br>1000Base-T</td>
+<td style="text-align:left"><strong>双绞线 (铜)</strong></td>
+<td style="text-align:left">无屏蔽双绞线 (UTP)<br>Cat5/Cat5e</td>
+<td style="text-align:left">100 米</td>
+<td style="text-align:left"><strong>T</strong> = <strong>T</strong>wisted Pair (双绞线)<br>最常见的网线</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>-F</strong> / <strong>-FX</strong></td>
+<td style="text-align:left">100Base-FX</td>
+<td style="text-align:left"><strong>光纤</strong></td>
+<td style="text-align:left">通常指多模光纤</td>
+<td style="text-align:left">2 公里</td>
+<td style="text-align:left"><strong>F</strong> = <strong>F</strong>iber (光纤)<br>老式光纤标准</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>-SX</strong></td>
+<td style="text-align:left">1000Base-SX</td>
+<td style="text-align:left"><strong>光纤 (多模)</strong></td>
+<td style="text-align:left">850nm 短波<br>多模光纤</td>
+<td style="text-align:left">550 米</td>
+<td style="text-align:left"><strong>S</strong> = <strong>S</strong>hort (短波/短距)<br><strong>S</strong>X = <strong>S</strong>hort &amp; <strong>Cheap</strong> (便宜/多模)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>-LX</strong></td>
+<td style="text-align:left">1000Base-LX</td>
+<td style="text-align:left"><strong>光纤 (单模)</strong></td>
+<td style="text-align:left">1310nm 长波<br>单模光纤 (也能跑多模)</td>
+<td style="text-align:left">5~10 公里</td>
+<td style="text-align:left"><strong>L</strong> = <strong>L</strong>ong (长波/长距)<br><strong>L</strong>X = <strong>L</strong>ong &amp; <strong>Expensive</strong> (贵/单模)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>-CX</strong></td>
+<td style="text-align:left">1000Base-CX</td>
+<td style="text-align:left"><strong>屏蔽双绞线</strong> (屏蔽铜缆)</td>
+<td style="text-align:left">屏蔽双绞线 (STP)<br>两头有特殊的接头</td>
+<td style="text-align:left">25 米</td>
+<td style="text-align:left"><strong>C</strong> = <strong>C</strong>opper (铜)<br><strong>C</strong> = <strong>C</strong>loset (机柜内短连)<br>短而精的铜线</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>-ZX</strong></td>
+<td style="text-align:left">1000Base-ZX</td>
+<td style="text-align:left"><strong>光纤 (单模)</strong></td>
+<td style="text-align:left">极长波单模光纤</td>
+<td style="text-align:left">70~100 公里</td>
+<td style="text-align:left"><strong>Z</strong> = <strong>Z</strong>ero limit (超长)<br>考试少见，知道是很远的光纤就行</td>
+</tr>
+</tbody>
+</table>
 <h3><span id="jing-dian-yi-tai-wang">经典以太网</span><a href="#jing-dian-yi-tai-wang" class="header-anchor">#</a></h3>
 <p>经典以太网在总线型共享链路上以 10Mbps 的速率工作, 也称为 10M 以太网, 对应标准为 802.3.</p>
 <p>传输介质: 同轴电缆 (10Base-5, 10Base-2, 已经很少使用了), 双绞线 (10Base-T) 及光纤 (10Base-F)</p>
@@ -457,8 +519,8 @@ T: 非屏蔽双绞线≤100m</li>
 <p>CSMA/CD: Carrier Sense Multiple Access with Collision Detection, <strong>带冲突检测的载波侦听多路访问</strong>.</p>
 <p>关键步骤:</p>
 <ul>
-<li><strong>载波侦听</strong>Carrier Sense: 发前先听, 想要发送数据时首先侦听介质是否繁忙.</li>
-<li><strong>冲突检测</strong>Collision Detection: 如果主机在发送过程中检测到冲突, 则发送干扰信号, 确保所有主机都知道发生了冲突并且取消发送.</li>
+<li><strong>载波侦听</strong> Carrier Sense: 发前先听, 想要发送数据时首先侦听介质是否繁忙.</li>
+<li><strong>冲突检测</strong> Collision Detection: 如果主机在发送过程中检测到冲突, 则发送干扰信号, 确保所有主机都知道发生了冲突并且取消发送.</li>
 </ul>
 <p><strong>传播延迟机制</strong>:<br>
 勘测到冲突的必要条件是干扰信号到达发送方时发送方还在发送数据, 因此冲突检测过程与数据在传输介质上的传播延时相关.<br>
@@ -540,7 +602,7 @@ T: 非屏蔽双绞线≤100m</li>
 <p>PA:  先导域 -  10101010 序列, 用于使接收方与发送方同步<br>
 SFD:  帧起始定界符 -- 10101011<br>
 DA:  目的 MAC 地址;   SA:  源 MAC 地址<br>
-LEN: 数据长度 (数据部分的字节数) (0-1500B)<br>
+LEN: 数据长度 (数据部分的字节数)(0-1500B)<br>
 大于 1500 标识高层协议 (0X0800,上层使用 IP)<br>
 LLC PDU+pad – LLC 协议数据单元加填充, 最少 46 字节, 最多 1500 字节<br>
 Pad: 填充字段, 保证帧长不少于 64 字节 (0~46 字节, 若数据域≥46 字节, 则无 Pad)<br>
