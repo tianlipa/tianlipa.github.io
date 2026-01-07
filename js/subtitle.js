@@ -231,7 +231,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "418 I'm a teapot",
         "在这个年代, 找不到浪漫",
         "来到了天津卫, 嘛也没学会",
-        "46. Qe4+ Rg6"
+        "46. Qe4+ Rg6",
+        "Only a fool would take anything posted here as fact.",
+        "When I knew him, he was."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
