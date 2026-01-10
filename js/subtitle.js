@@ -233,7 +233,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "来到了天津卫, 嘛也没学会",
         "46. Qe4+ Rg6",
         "Only a fool would take anything posted here as fact.",
-        "When I knew him, he was."
+        "When I knew him, he was.",
+        "Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.",
+        "Don't you dare go Hollow.",
+        "+C"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
