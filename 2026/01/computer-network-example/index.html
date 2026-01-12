@@ -29,12 +29,14 @@
 <meta property="og:site_name" content="tianlipa">
 <meta property="og:description" content="学期初这个老师提到了往届学生对他不调分的政策的「好评如潮」, 然后他表示为了解决这个问题, 他决定在每章的 PPT 最后放上一些「有助于应试」的例题. 然后因为课程时间不够了九个章节他只有前三个章节放了例题, byd 还没我记笔记坚持的时间长.">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-network-example/1.png">
 <meta property="article:published_time" content="2026-01-12T04:40:16.000Z">
-<meta property="article:modified_time" content="2026-01-12T09:49:47.842Z">
+<meta property="article:modified_time" content="2026-01-12T16:10:15.700Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-network-example/1.png">
 
 
 <link rel="canonical" href="https://tianlipa.github.io/2026/01/computer-network-example/">
@@ -229,9 +231,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-01-12 12:40:16 / 修改时间：17:49:47" itemprop="dateCreated datePublished" datetime="2026-01-12T12:40:16+08:00">2026-01-12</time>
+      <time title="创建时间：2026-01-12 12:40:16" itemprop="dateCreated datePublished" datetime="2026-01-12T12:40:16+08:00">2026-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-13 00:10:15" itemprop="dateModified" datetime="2026-01-13T00:10:15+08:00">2026-01-13</time>
     </span>
 
   
@@ -260,52 +268,52 @@
 <tbody>
 <tr>
 <td style="text-align:left"><strong>应用层</strong><br>(Application)</td>
-<td style="text-align:left"><strong>为应用程序提供网络服务接口</strong>。用户直接打交道的一层。</td>
+<td style="text-align:left"><strong>为应用程序提供网络服务接口</strong>. 用户直接打交道的一层.</td>
 <td style="text-align:left">报文 (Message)</td>
 <td style="text-align:left"><strong>HTTP/HTTPS</strong>, FTP, SMTP, DNS, Telnet</td>
-<td style="text-align:left"><strong>点外卖</strong>。<br>你要发邮件、看网页，就在这一层。</td>
+<td style="text-align:left"><strong>点外卖</strong>. <br>你要发邮件, 看网页, 就在这一层.</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>表示层</strong><br>(Presentation)</td>
-<td style="text-align:left"><strong>数据格式化、加密解密、压缩解压</strong>。确保一个系统的应用层发送的数据能被另一个系统读取。</td>
+<td style="text-align:left"><strong>数据格式化, 加密解密, 压缩解压</strong>. 确保一个系统的应用层发送的数据能被另一个系统读取.</td>
 <td style="text-align:left">数据 (Data)</td>
 <td style="text-align:left">ASCII, JPEG, MPEG, SSL/TLS</td>
-<td style="text-align:left"><strong>打包/翻译</strong>。<br>把你的中文翻译成英语，或者把文件压缩打包，加密。</td>
+<td style="text-align:left"><strong>打包/翻译</strong>. <br>把你的中文翻译成英语, 或者把文件压缩打包, 加密.</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>会话层</strong><br>(Session)</td>
-<td style="text-align:left"><strong>建立、管理和终止会话</strong>。控制两个通信应用之间的对话。</td>
+<td style="text-align:left"><strong>建立, 管理和终止会话</strong>. 控制两个通信应用之间的对话.</td>
 <td style="text-align:left">数据 (Data)</td>
 <td style="text-align:left">RPC, SQL, NFS</td>
-<td style="text-align:left"><strong>打电话</strong>。<br>负责建立连接（拨通）、保持连接（通话）、断开连接（挂机）。</td>
+<td style="text-align:left"><strong>打电话</strong>. <br>负责建立连接 (拨通), 保持连接 (通话), 断开连接 (挂机).</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>传输层</strong><br>(Transport)</td>
-<td style="text-align:left"><strong>提供端到端的可靠（或不可靠）传输</strong>。负责流量控制、差错控制。<strong>区分进程（端口号）</strong>。</td>
+<td style="text-align:left"><strong>提供端到端的可靠 (或不可靠) 传输</strong>. 负责流量控制, 差错控制. <strong>区分进程 (端口号)</strong>.</td>
 <td style="text-align:left">段 (Segment) - TCP<br>用户数据报 - UDP</td>
 <td style="text-align:left"><strong>TCP</strong> (可靠), <strong>UDP</strong> (不可靠)<br>端口号 (Port)</td>
-<td style="text-align:left"><strong>快递公司</strong>。<br>不管你怎么运，反正我保证把货送到对方手里（TCP），或者扔过去就不管了（UDP）。<strong>重点：端口号在这里！</strong></td>
+<td style="text-align:left"><strong>快递公司</strong>. <br>不管你怎么运, 反正我保证把货送到对方手里 (TCP), 或者扔过去就不管了 (UDP). **重点: 端口号在这里! **</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>网络层</strong><br>(Network)</td>
-<td style="text-align:left"><strong>逻辑寻址（IP 地址）和路由选择</strong>。决定数据包从源到目的地的最佳路径。</td>
+<td style="text-align:left"><strong>逻辑寻址 (IP 地址) 和路由选择</strong>. 决定数据包从源到目的地的最佳路径.</td>
 <td style="text-align:left">包/分组 (Packet)</td>
 <td style="text-align:left"><strong>IP</strong>, ICMP, ARP, OSPF, BGP<br><strong>路由器 (Router)</strong></td>
-<td style="text-align:left"><strong>导航仪</strong>。<br>看地图，查 IP 地址，决定走哪条路（路由）能最快到达目的地。<strong>重点：路由器、IP 地址！</strong></td>
+<td style="text-align:left"><strong>导航仪</strong>. <br>看地图, 查 IP 地址, 决定走哪条路 (路由) 能最快到达目的地. **重点: 路由器, IP 地址! **</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>数据链路层</strong><br>(Data Link)</td>
-<td style="text-align:left"><strong>物理寻址（MAC 地址）、成帧、差错检测</strong>。在相邻节点间传输数据。</td>
+<td style="text-align:left"><strong>物理寻址 (MAC 地址), 成帧, 差错检测</strong>. 在相邻节点间传输数据.</td>
 <td style="text-align:left">帧 (Frame)</td>
 <td style="text-align:left"><strong>Ethernet (以太网)</strong>, WiFi, PPP<br><strong>交换机 (Switch)</strong>, 网桥</td>
-<td style="text-align:left"><strong>交警/路牌</strong>。<br>只负责如果你要从这个路口去下个路口怎么走。<strong>重点：MAC 地址、交换机、VLAN！</strong></td>
+<td style="text-align:left"><strong>交警/路牌</strong>. <br>只负责如果你要从这个路口去下个路口怎么走. **重点: MAC 地址, 交换机, VLAN! **</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>物理层</strong><br>(Physical)</td>
-<td style="text-align:left"><strong>传输比特流</strong>。定义电压、接口形状、线缆规格等物理特性。</td>
+<td style="text-align:left"><strong>传输比特流</strong>. 定义电压, 接口形状, 线缆规格等物理特性.</td>
 <td style="text-align:left">比特 (Bit)</td>
 <td style="text-align:left">双绞线, 光纤, <strong>集线器 (Hub)</strong>, 中继器</td>
-<td style="text-align:left"><strong>修路的</strong>。<br>网线、光缆、电流信号 0 和 1。不管内容，只管发信号。</td>
+<td style="text-align:left"><strong>修路的</strong>. <br>网线, 光缆, 电流信号 0 和 1. 不管内容, 只管发信号.</td>
 </tr>
 </tbody>
 </table>
@@ -322,30 +330,30 @@
 <tr>
 <td style="text-align:left"><strong>应用层</strong><br>(Application)</td>
 <td style="text-align:left">应用层<br>表示层<br>会话层</td>
-<td style="text-align:left">处理特定的应用程序细节，涵盖了 OSI 上三层的功能。</td>
+<td style="text-align:left">处理特定的应用程序细节, 涵盖了 OSI 上三层的功能.</td>
 <td style="text-align:left"><strong>HTTP</strong> (80), <strong>HTTPS</strong> (443), <strong>DNS</strong> (53), <strong>FTP</strong> (21), <strong>SMTP</strong> (25), <strong>SSH</strong> (22), <strong>DHCP</strong></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>传输层</strong><br>(Transport)</td>
 <td style="text-align:left">传输层</td>
-<td style="text-align:left">提供端到端的数据传输服务。</td>
-<td style="text-align:left"><strong>TCP</strong> (三次握手、四次挥手、可靠)<br><strong>UDP</strong> (直播、视频、快但不靠谱)</td>
+<td style="text-align:left">提供端到端的数据传输服务.</td>
+<td style="text-align:left"><strong>TCP</strong> (三次握手, 四次挥手, 可靠)<br><strong>UDP</strong> (直播, 视频, 快但不靠谱)</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>互联网层</strong><br>(Internet)</td>
 <td style="text-align:left">网络层</td>
-<td style="text-align:left">处理分组在网络中的活动（路由）。</td>
+<td style="text-align:left">处理分组在网络中的活动 (路由).</td>
 <td style="text-align:left"><strong>IP</strong> (IPv4/IPv6), <strong>ICMP</strong> (Ping 命令用这个), <strong>ARP</strong> (IP 查 MAC), RARP</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>网络接口层</strong><br>(Network Interface)</td>
 <td style="text-align:left">数据链路层<br>物理层</td>
-<td style="text-align:left">处理与电缆（或其他传输介质）的物理接口细节。</td>
+<td style="text-align:left">处理与电缆 (或其他传输介质) 的物理接口细节.</td>
 <td style="text-align:left"><strong>Ethernet</strong>, Wi-Fi, 驱动程序</td>
 </tr>
 </tbody>
 </table>
-<p><strong>一个系统具有 n 层协议的层次结构。应用层产生长度为 M 字节的消息，在每一层加上长度为 h 字节的头。头所占的网络带宽比例是多少?</strong></p>
+<p><strong>一个系统具有 n 层协议的层次结构. 应用层产生长度为 M 字节的消息, 在每一层加上长度为 h 字节的头. 头所占的网络带宽比例是多少?</strong></p>
 <p>看题干: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>n</mi><mi>h</mi></mrow><mrow><mi>M</mi><mo>+</mo><mi>n</mi><mi>h</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{nh}{M+nh}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2834em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">nh</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">nh</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
 <p>考虑实际 OSI 模型: 物理层不加头, 题目「默认应用层的报头在消息长度内」, 所以是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mi>h</mi></mrow><mrow><mi>M</mi><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mi>h</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{(n-2) h}{M+(n-2) h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">2</span><span class="mclose mtight">)</span><span class="mord mathnormal mtight">h</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">2</span><span class="mclose mtight">)</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
 <p>我觉得应用层到底有没有头这个问题非常唐, 实际考试建议直接问监考老师.</p>
@@ -366,7 +374,7 @@
 <p>奈奎斯特公式: 由编码方式决定的传输速率</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mo>=</mo><mn>2</mn><mi>B</mi><mo>×</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C = 2B \times \log_2(V)
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span></span></p>
-<p><strong>在一条信噪比为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mtext>dB</mtext></mrow><annotation encoding="application/x-tex">40\text{dB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">40</span><span class="mord text"><span class="mord">dB</span></span></span></span></span> 的信道上发送一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mtext>GHz</mtext></mrow><annotation encoding="application/x-tex">5\text{GHz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">5</span><span class="mord text"><span class="mord">GHz</span></span></span></span></span> 的二进制信号，最大数据速率的最低上界为多少？解释你的答案.</strong></p>
+<p><strong>在一条信噪比为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mtext>dB</mtext></mrow><annotation encoding="application/x-tex">40\text{dB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">40</span><span class="mord text"><span class="mord">dB</span></span></span></span></span> 的信道上发送一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mtext>GHz</mtext></mrow><annotation encoding="application/x-tex">5\text{GHz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">5</span><span class="mord text"><span class="mord">GHz</span></span></span></span></span> 的二进制信号, 最大数据速率的最低上界为多少? 解释你的答案.</strong></p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mtext>Shannon</mtext></msub><mo>=</mo><mn>5</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup><mo>×</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mn>10</mn><mo separator="true">,</mo><mn>000</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_{\text{Shannon}} = 5 \times 10^9 \times \log_2(1 + 10,000)
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Shannon</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span><span class="mclose">)</span></span></span></span></span></p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mtext>Nyquist</mtext></msub><mo>=</mo><mn>2</mn><mo>×</mo><mi>B</mi><mo>×</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_{\text{Nyquist}} = 2 \times B \times \log_2(2)
@@ -374,24 +382,24 @@
 <p>答案 10Gbps.</p>
 <p><strong>每 1ms 对一条无噪声 3kHz 信道采样一次, 最大数据速率是多少? 如果信道上有<br>
 噪声, 且信噪比是 30dB, 最大数据速率将如何变化?</strong></p>
-<p>典中典之钓鱼题, 无噪声信道每个码元的信息量可以无限大，因此最大数据速率无限大.</p>
+<p>典中典之钓鱼题, 无噪声信道每个码元的信息量可以无限大, 因此最大数据速率无限大.</p>
 <p>如果默认采用二进制信道, 每个码元信息量是 1bit, 速率 1000bps.</p>
 <p>30dB 情况用香农定理即可.</p>
 <h3><span id="cdma-ma-fen-fu-yong">CDMA 码分复用</span><a href="#cdma-ma-fen-fu-yong" class="header-anchor">#</a></h3>
 <p>点乘一下, 为-1 是发送了 0, 为 1 是发送了 1, 为 0 是什么都没发.</p>
 <p>这是为数不多我觉得我会了的内容之一, 所以我就不放例题了.</p>
 <h3><span id="fen-zu-jiao-huan-de-yan-chi">分组交换的延迟</span><a href="#fen-zu-jiao-huan-de-yan-chi" class="header-anchor">#</a></h3>
-<p><strong>假定在一个数据包交换网络中用户数据长度为 x 位，将以一系列数据包的形式沿<br>
+<p><strong>假定在一个数据包交换网络中用户数据长度为 x 位, 将以一系列数据包的形式沿<br>
 着一条 k 跳路径传输,每个数据包包含位数据和 h 位包头,这里 x&gt;&gt;p 十 h, 线路的比特率<br>
-为 b 位/秒,传播延迟忽略不计。什么样的 p 值使得总延迟最小?</strong></p>
-<p>包越小 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 小)：头部的比例 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span>) 就越高，浪费的带宽越多（拆快递拆得累死）。</p>
-<p>包越大 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 大)：虽然头部比例小了，但是因为是<strong>存储转发</strong>机制，大包在每个路由器的等待转发时间变长了（堵车）。</p>
-<p><strong>总延迟的计算方法：所有数据包的发送时间 + 最后一个数据包在路径上产生的延迟</strong></p>
-<p>数据总量：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></p>
-<p>每个包的数据量：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></p>
-<p>包的数量：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mo stretchy="false">⌈</mo><mi>x</mi><mi mathvariant="normal">/</mi><mi>p</mi><mo stretchy="false">⌉</mo><mo>≈</mo><mi>x</mi><mi mathvariant="normal">/</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">N = \lceil x/p \rceil \approx x/p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord mathnormal">p</span><span class="mclose">⌉</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord mathnormal">p</span></span></span></span> （因为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≫</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">x \gg p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≫</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>，忽略向上取整的微小差异）</p>
-<p>每个包的总长度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">p + h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span> （数据+头）</p>
-<p>单跳传输一个包的时间：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>e</mi><mi>t</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>p</mi><mo>+</mo><mi>h</mi></mrow><mi>b</mi></mfrac></mrow><annotation encoding="application/x-tex">t_{packet} = \frac{p+h}{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2772em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+为 b 位/秒,传播延迟忽略不计. 什么样的 p 值使得总延迟最小?</strong></p>
+<p>包越小 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 小): 头部的比例 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span>) 就越高, 浪费的带宽越多 (拆快递拆得累死).</p>
+<p>包越大 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 大): 虽然头部比例小了, 但是因为是<strong>存储转发</strong>机制, 大包在每个路由器的等待转发时间变长了 (堵车).</p>
+<p><strong>总延迟的计算方法: 所有数据包的发送时间 + 最后一个数据包在路径上产生的延迟</strong></p>
+<p>数据总量: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></p>
+<p>每个包的数据量: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></p>
+<p>包的数量: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mo stretchy="false">⌈</mo><mi>x</mi><mi mathvariant="normal">/</mi><mi>p</mi><mo stretchy="false">⌉</mo><mo>≈</mo><mi>x</mi><mi mathvariant="normal">/</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">N = \lceil x/p \rceil \approx x/p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord mathnormal">p</span><span class="mclose">⌉</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord mathnormal">p</span></span></span></span> (因为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≫</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">x \gg p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≫</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>, 忽略向上取整的微小差异)</p>
+<p>每个包的总长度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">p + h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span> (数据+头)</p>
+<p>单跳传输一个包的时间: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>e</mi><mi>t</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>p</mi><mo>+</mo><mi>h</mi></mrow><mi>b</mi></mfrac></mrow><annotation encoding="application/x-tex">t_{packet} = \frac{p+h}{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2772em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mo>=</mo><mtext>源主机发送所有N个包的时间</mtext><mo>+</mo><mtext>最后一个包穿过剩余</mtext><mo stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mtext>跳的时间</mtext></mrow><annotation encoding="application/x-tex">T = \text{源主机发送所有N个包的时间} + \text{最后一个包穿过剩余}(k-1)\text{跳的时间}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord cjk_fallback">源主机发送所有</span><span class="mord">N</span><span class="mord cjk_fallback">个包的时间</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord cjk_fallback">最后一个包穿过剩余</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord text"><span class="mord cjk_fallback">跳的时间</span></span></span></span></span></span></p>
 <p>代入, 求导找极值点即可.</p>
@@ -401,14 +409,14 @@
 <p><strong>偶校验: 1 的个数是偶数.</strong> 奇校验同理.</p>
 <p><strong>数据 10101111, 偶校验, 求海明码.</strong></p>
 <p>4 个校验位, 分别在 1, 2, 4, 8, 结果为 101001001111.</p>
-<p><strong>接收方收到一个 12 位的奇校验和海明码, 其十六进制值为 0xB4D。该码的原始值是多少? 假设至多发生了一位错.</strong></p>
+<p><strong>接收方收到一个 12 位的奇校验和海明码, 其十六进制值为 0xB4D. 该码的原始值是多少? 假设至多发生了一位错.</strong></p>
 <p>二进制为 1011 0100 1101, 分别检查.</p>
 <h3><span id="jiu-cuo-ma">纠错码</span><a href="#jiu-cuo-ma" class="header-anchor">#</a></h3>
-<p><strong>为了纠正所有的单个错误和两个错误，需要在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 位消息上增加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 个冗余位，请给出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 的下界公式.</strong></p>
+<p><strong>为了纠正所有的单个错误和两个错误, 需要在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 位消息上增加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 个冗余位, 请给出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 的下界公式.</strong></p>
 <p>码字总长度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>m</mi><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">n = m + r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>, 总共有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 种可能, 需要覆盖没有错 + 一位错 + 两位错的情况, 有:</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mn>2</mn><mi>r</mi></msup><mo>≥</mo><mn>1</mn><mo>+</mo><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo><mo>+</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>r</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">2^r \ge 1 + (m+r) + \frac{(m+r)(m+r-1)}{2}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8504em;vertical-align:-0.136em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<p><strong>假设数据以块形式传输，每块大小为 1000 比特。在什么样的最大错误率下，错误检测和重传机制（每块 1 个校验位）比使用海明码更好？假设比特错误相互独立，并且在重传过程中不会发生比特错误.</strong></p>
+<p><strong>假设数据以块形式传输, 每块大小为 1000 比特. 在什么样的最大错误率下, 错误检测和重传机制 (每块 1 个校验位) 比使用海明码更好? 假设比特错误相互独立, 并且在重传过程中不会发生比特错误.</strong></p>
 <p>设出错率为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span>.</p>
 <p>计算海明码的开销: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>r</mi></msup><mo>≥</mo><mi>m</mi><mo>+</mo><mi>r</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^r \ge m + r + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8004em;vertical-align:-0.136em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></p>
 <p>r = 9 不中, r = 10 中嘞, 所以海明码固定开销 10bit.</p>
@@ -433,66 +441,247 @@
 <h3><span id="csma-cd">CSMA/CD</span><a href="#csma-cd" class="header-anchor">#</a></h3>
 <p><strong>试问在下列两种情况下 CSMA/CD 的竞争时间槽长度是多少?(1) 一个 2 千米长的双导电缆 (信号的传播速度是信号在真空中传播速度的 82%)?(2) 40 千米长的多模光纤 (信号的传播速度是信号在真空中传播速度的 65%)?</strong></p>
 <p>直接算传输时间然后乘 2 就可以了.</p>
-<p><strong>考虑建立一个 CSMA/CD 网络，在 1km 的线缆上运行速度为 1Gb/s，线缆中间没有中继器。线缆上的信号速度为 200 000km/s。最小帧长度是多少?</strong></p>
+<p><strong>考虑建立一个 CSMA/CD 网络, 在 1km 的线缆上运行速度为 1Gb/s, 线缆中间没有中继器. 线缆上的信号速度为 200 000km/s. 最小帧长度是多少?</strong></p>
 <p>发送时间大于上一题算出来的争用期 (传播时间乘 2) 就可以了.</p>
-<p><strong>一个通过以太网传送的 IP 数据包长 60 字节，其中包括所有的头。如果没有使用 LLC,需要往以太网帧中填补字节吗?如果需要，那么需要填补多少字节?</strong></p>
+<p><strong>一个通过以太网传送的 IP 数据包长 60 字节, 其中包括所有的头. 如果没有使用 LLC,需要往以太网帧中填补字节吗?如果需要, 那么需要填补多少字节?</strong></p>
 <p><strong>以太网的最小帧长是 64 字节.</strong></p>
 <p>但是这里要加上:</p>
-<p>目的地址 (MAC)：6 字节<br>
-源地址 (MAC)：6 字节<br>
-类型 (Type)：2 字节<br>
-数据 (Payload/IP Packet)：60 字节 （题目给的）<br>
-FCS (校验尾)：4 字节</p>
+<p>目的地址 (MAC): 6 字节<br>
+源地址 (MAC): 6 字节<br>
+类型 (Type): 2 字节<br>
+数据 (Payload/IP Packet): 60 字节 (题目给的)<br>
+FCS (校验尾): 4 字节</p>
 <p>然后就够了, 不用填补.</p>
-<p><strong>考虑两个以太网网络：在网络 A 中，站通过全双工的线缆连接到集线器；在网络 B 中， 站通过半双工的线缆连接到一台交换机。对于这两个网络中的每一个，为什么需要或者不需要 CSMA/CD?</strong></p>
+<p><strong>考虑两个以太网网络: 在网络 A 中, 站通过全双工的线缆连接到集线器; 在网络 B 中,  站通过半双工的线缆连接到一台交换机. 对于这两个网络中的每一个, 为什么需要或者不需要 CSMA/CD?</strong></p>
 <p>如果是集线器 Hub, 一定需要 CSMA/CD;</p>
 <p>如果是交换机 <s>Nintendo</s> Switch, 全双工线缆就不用, 半双工就用.</p>
 <p><strong>补充题: 描述 CSMA/CD 和 CSMA/CA 的基本原理.</strong></p>
 <p>我在这里坐了几个小时受不了了所以我直接上 AI 了.</p>
-<p><strong>1. CSMA/CD（用于有线以太网)</strong></p>
-<p><strong>载波侦听、冲突检测、二进制指数退避算法.</strong></p>
+<p><strong>1. CSMA/CD (用于有线以太网)</strong></p>
+<p><strong>载波侦听, 冲突检测, 二进制指数退避算法.</strong></p>
 <ul>
-<li><strong>核心</strong>: 冲突检测。</li>
+<li><strong>核心</strong>: 冲突检测.</li>
 <li><strong>过程</strong>:
 <ol>
-<li><strong>先听后发</strong>: 监听信道，空闲才发送。</li>
-<li><strong>边发边听</strong>: 发送时继续监测电压。</li>
-<li><strong>冲突停发</strong>: 发现电压异常（冲突），立即停止发送并广播干扰信号。</li>
-<li><strong>随机重发</strong>: 等待一个随机时间（二进制指数退避）后再试。</li>
+<li><strong>先听后发</strong>: 监听信道, 空闲才发送.</li>
+<li><strong>边发边听</strong>: 发送时继续监测电压.</li>
+<li><strong>冲突停发</strong>: 发现电压异常 (冲突), 立即停止发送并广播干扰信号.</li>
+<li><strong>随机重发</strong>: 等待一个随机时间 (二进制指数退避) 后再试.</li>
 </ol>
 </li>
 </ul>
-<p><strong>2. CSMA/CA（用于无线 WiFi)</strong></p>
-<p><strong>载波侦听、冲突避免、随机退避算法.</strong></p>
+<p><strong>2. CSMA/CA (用于无线 WiFi)</strong></p>
+<p><strong>载波侦听, 冲突避免, 随机退避算法.</strong></p>
 <ul>
-<li><strong>核心</strong>: 冲突避免（因为无线网无法做到“边发边听”）。</li>
+<li><strong>核心</strong>: 冲突避免 (因为无线网无法做到「边发边听」).</li>
 <li><strong>过程</strong>:
 <ol>
-<li><strong>预约/等待</strong>: 监听到信道空闲，也要先等待一段随机时间（降低碰撞概率），然后再发。</li>
-<li><strong>ACK 确认</strong>: 发完数据后，必须收到接收方的 ACK 确认帧。</li>
-<li><strong>重传</strong>: 如果没收到 ACK，就默认为发生了冲突，进行重传。</li>
-<li><strong>RTS/CTS（可选)</strong>: 发送前先发请求 (RTS)，对方同意 (CTS) 后再发，解决隐蔽站问题。</li>
+<li><strong>预约/等待</strong>: 监听到信道空闲, 也要先等待一段随机时间 (降低碰撞概率), 然后再发.</li>
+<li><strong>ACK 确认</strong>: 发完数据后, 必须收到接收方的 ACK 确认帧.</li>
+<li><strong>重传</strong>: 如果没收到 ACK, 就默认为发生了冲突, 进行重传.</li>
+<li><strong>RTS/CTS (可选)</strong>: 发送前先发请求 (RTS), 对方同意 (CTS) 后再发, 解决隐蔽站问题.</li>
 </ol>
 </li>
 </ul>
-<p><strong>补充题: 局域网内安装一台新的交换机，简要说明其工作机理.</strong></p>
-<p>假设交换机是全新的，MAC 地址表为空。当一个帧从端口进入时：</p>
+<p><strong>补充题: 局域网内安装一台新的交换机, 简要说明其工作机理.</strong></p>
+<p>假设交换机是全新的, MAC 地址表为空. 当一个帧从端口进入时:</p>
 <ol>
-<li><strong>自学习（记源地址）</strong>:<br>
-提取帧的 <strong>源 MAC 地址</strong> 和 <strong>进入的端口号</strong>，记录到交换机的 MAC 地址表中。</li>
-<li><strong>转发决策（查目的地址）</strong>:<br>
-查看帧的 <strong>目的 MAC 地址</strong>：
+<li><strong>自学习 (记源地址)</strong>:<br>
+提取帧的 <strong>源 MAC 地址</strong> 和 <strong>进入的端口号</strong>, 记录到交换机的 MAC 地址表中.</li>
+<li><strong>转发决策 (查目的地址)</strong>:<br>
+查看帧的 <strong>目的 MAC 地址</strong>:
 <ul>
-<li><strong>情况 A（表中没有）</strong>: 找不到目的地址，进行 <strong>泛洪</strong>（向除了入口之外的所有端口转发）。</li>
-<li><strong>情况 B（表中有）</strong>: 查到了对应的端口，进行 <strong>精确转发</strong>（只发给那个端口）。</li>
-<li><strong>情况 C（在同一端口）</strong>: 目的地址就在入口的网段内，直接 <strong>丢弃</strong>（不转发）。</li>
+<li><strong>情况 A (表中没有)</strong>: 找不到目的地址, 进行<strong>泛洪</strong>(向除了入口之外的所有端口转发).</li>
+<li><strong>情况 B (表中有)</strong>: 查到了对应的端口, 进行<strong>精确转发</strong>(只发给那个端口).</li>
+<li><strong>情况 C (在同一端口)</strong>: 目的地址就在入口的网段内, 直接<strong>丢弃</strong>(不转发).</li>
 </ul>
 </li>
 <li><strong>更新与老化</strong>:<br>
-表中的记录有生存时间，长时间不通信会自动删除。</li>
+表中的记录有生存时间, 长时间不通信会自动删除.</li>
 </ol>
-<p><strong>考试必背关键词</strong>:<br>
-自学习源 MAC、泛洪未知帧、转发已知帧。</p>
+<h2><span id="wang-luo-ceng">网络层</span><a href="#wang-luo-ceng" class="header-anchor">#</a></h2>
+<h3><span id="lian-lu-zhuang-tai-suan-fa-he-ju-chi-shi-liang-suan-fa">链路状态算法和距离矢量算法</span><a href="#lian-lu-zhuang-tai-suan-fa-he-ju-chi-shi-liang-suan-fa" class="header-anchor">#</a></h3>
+<p>例题略, 因为我很懒.</p>
+<h3><span id="lou-tong-suan-fa-he-ling-pai-tong-suan-fa">漏桶算法和令牌桶算法</span><a href="#lou-tong-suan-fa-he-ling-pai-tong-suan-fa" class="header-anchor">#</a></h3>
+<p><strong>一台计算机使用一个容量为 500MB 的令牌桶,速率为 5MB/s. 当该桶包含 300MB 时.计算机每秒产生 15MB 的数据. 请问它发送 1000MB 的数据要花多长时间?</strong></p>
+<p>数据到达速率 15MB/s, 令牌生成速率 5MB/s, 故令牌消耗速率为 10MB/s, 一开始令牌桶包含 300MB 令牌, 在 30s 时令牌消耗完毕, 此时一共发送了 15MB/s x 30s = 450MB 的数据, 剩下 550MB 的数据只能以 5MB/s 的速率发送完毕, 需要 110s 发送完成, 故总需 140s.</p>
+<h2><span id="internet-xie-yi">Internet 协议</span><a href="#internet-xie-yi" class="header-anchor">#</a></h2>
+<h3><span id="ip-fen-pian">IP 分片</span><a href="#ip-fen-pian" class="header-anchor">#</a></h3>
+<p><strong>假设主机 A 和路由器 R1 连接, R1 又与另一个路由器 R2 连接, R2 与主机 B 连接, 假定一个要发给主机 B 的 TCP 消息被传递给主机 A 的 IP 代码, 其中包含了 900 个字节的数据包和 20 个字节的 TCP 头. 请写出在三条链路上传输的每个数据包中 IP 头部的 Totallength, Identification, DF, MF, 和 Fragment Offset 字段. 假定链路 A-R1 链路可以支持的最大帧长为 1024 字节, 其中包括 14 字节的帧头; 链路 R1-R2 可以支持的最大帧长为 512 字节, 其中包括 8 字节的帧头; 链路 R2-B 可以支持的最大帧长为 512 字节, 其中包括 12 字节的帧头.</strong></p>
+<ul>
+<li><strong>原始 IP 数据报总长度</strong> = 20 (IP 头) + 20 (TCP 头) + 900 (数据) = <strong>940 字节</strong>.</li>
+<li><strong>需要运输的净负荷 (Payload)</strong> = 20 (TCP 头) + 900 (数据) = <strong>920 字节</strong>.<br>
+IP 分片切的是这 920 字节.</li>
+</ul>
+<p>MTU (最大传输单元, 即 IP 层能发出的最大包大小)</p>
+<ul>
+<li>链路 A-R1: 1024 - 14 = <strong>1010 字节</strong> (MTU)</li>
+<li>链路 R1-R2: 512 - 8 = <strong>504 字节</strong> (MTU)</li>
+<li>链路 R2-B: 512 - 12 = <strong>500 字节</strong> (MTU)</li>
+</ul>
+<p>第一段链路: 主机 A -&gt; 路由器 R1</p>
+<ul>
+<li>路况: MTU = 1010 字节.</li>
+<li>我们的车**: ** 总长 940 字节.</li>
+<li>结论: 940 &lt; 1010, 不用拆!  直接过.</li>
+</ul>
+<p>**填写字段: **</p>
+<ul>
+<li>Total Length (总长度): 940</li>
+<li>Identification (ID): 随便给个号, 比如 666(同一个包的所有分片ID必须一样).</li>
+<li>DF (Don't Fragment): 0 (允许分片).</li>
+<li>MF (More Fragments): 0 (后面没有分片了).</li>
+<li>Fragment Offset (片偏移): 0 (这是开头).</li>
+</ul>
+<p>第二段链路: 路由器 R1 -&gt; 路由器 R2 (重难点! )</p>
+<ul>
+<li>路况: MTU = 504 字节.</li>
+<li>我们的车: 940 字节.</li>
+<li>结论**: ** 940 &gt; 504, 必须拆分!</li>
+</ul>
+<p>MTU 是 504, 减去 20 字节 IP 头, 剩下 <strong>484 字节</strong> 给数据.<br>
+但是 IP 协议规定, 除了最后一片, 前面所有分片的数据长度必须是 8 字节的倍数.</p>
+<ul>
+<li>
+<p>484 除以 8 = 60.5</p>
+</li>
+<li>
+<p>所以我们只能向下取整: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mo>×</mo><mn>8</mn><mo>=</mo><mn>480</mn></mrow><annotation encoding="application/x-tex">60 \times 8 = 480</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">60</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">480</span></span></span></span>.</p>
+</li>
+<li>
+<p>**结论: 每个分片最多只能带 480 字节的数据. **</p>
+</li>
+<li>
+<p>**第一片 (分片 1): **</p>
+<ul>
+<li>装货: 480 字节.</li>
+<li>总长: 480 (数据) + 20 (IP 头) = <strong>500 字节</strong>.</li>
+<li>MF = 1 (后面还有货).</li>
+<li>Offset = 0.</li>
+</ul>
+</li>
+<li>
+<p>**第二片 (分片 2): **</p>
+<ul>
+<li>剩多少货?  总货量 920 - 运走的 480 = <strong>440 字节</strong>.</li>
+<li>440 + 20 (IP 头) = 460 字节. 这个长度小于 MTU (504), 能装下.</li>
+<li>总长: 460 字节.</li>
+<li>MF = 0 (这是最后一片了).</li>
+<li>Offset = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>480</mn><mi mathvariant="normal">/</mi><mn>8</mn><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">480 / 8 = 60</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">480/8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span> (片偏移的单位是 8 字节, 所以填 60).</li>
+</ul>
+</li>
+</ul>
+<p>第三段链路: 路由器 R2 -&gt; 主机 B</p>
+<ul>
+<li>**路况: ** MTU = 500 字节.</li>
+<li>**来的车: ** R1 发过来的两个分片.
+<ul>
+<li>分片 1: 总长 500 字节.</li>
+<li>分片 2: 总长 460 字节.</li>
+</ul>
+</li>
+<li>**结论: **
+<ul>
+<li>分片 1: 500 &lt;= 500, 刚好能过, 不用再拆.</li>
+<li>分片2: 460 &lt;= 500, 能过, 不用再拆.</li>
+<li>所以, R2 这一站<strong>没有发生新的分片</strong>, 原样转发.</li>
+</ul>
+</li>
+</ul>
+<p>假设 Identification (ID) 设为 x (比如 100), 最终答案:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">链路</th>
+<th style="text-align:left">包序号</th>
+<th style="text-align:left">Total Length (总长)</th>
+<th style="text-align:left">ID (标识)</th>
+<th style="text-align:left">DF</th>
+<th style="text-align:left">MF</th>
+<th style="text-align:left">Fragment Offset (偏移)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A -&gt; R1</strong></td>
+<td style="text-align:left">原始包</td>
+<td style="text-align:left"><strong>940</strong></td>
+<td style="text-align:left"><strong>x</strong></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"><strong>0</strong></td>
+<td style="text-align:left"><strong>0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>R1 -&gt; R2</strong></td>
+<td style="text-align:left">分片 1</td>
+<td style="text-align:left"><strong>500</strong></td>
+<td style="text-align:left"><strong>x</strong></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"><strong>1</strong></td>
+<td style="text-align:left"><strong>0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(发生分片)</strong></td>
+<td style="text-align:left">分片 2</td>
+<td style="text-align:left"><strong>460</strong></td>
+<td style="text-align:left"><strong>x</strong></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"><strong>0</strong></td>
+<td style="text-align:left"><strong>60</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>R2 -&gt; B</strong></td>
+<td style="text-align:left">分片 1</td>
+<td style="text-align:left"><strong>500</strong></td>
+<td style="text-align:left"><strong>x</strong></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"><strong>1</strong></td>
+<td style="text-align:left"><strong>0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(透传)</strong></td>
+<td style="text-align:left">分片 2</td>
+<td style="text-align:left"><strong>460</strong></td>
+<td style="text-align:left"><strong>x</strong></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"><strong>0</strong></td>
+<td style="text-align:left"><strong>60</strong></td>
+</tr>
+</tbody>
+</table>
+<p>注意点:</p>
+<ol>
+<li><strong>Offset 怎么算? ** 是用</strong>前面的数据量**除以 <strong>8</strong>. 比如第二片的 Offset 是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>480</mn><mi mathvariant="normal">/</mi><mn>8</mn><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">480 / 8 = 60</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">480/8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span>.</li>
+<li>**数据要对齐 8 字节: ** 虽然 MTU 允许带 484 字节数据, 但必须砍掉 4 字节变成 480.</li>
+<li>**Total Length 包含头: ** 填表的时候, 长度一定要加上 20 字节的 IP 头.</li>
+<li>**R2-B 为什么没分片? ** 因为 R1 分好的片 (500 字节) 刚好等于 R2-B 的 MTU (500 字节). 如果有哪怕多出 1 个字节, 就要再次分片.</li>
+</ol>
+<h3><span id="ip-di-zhi">IP 地址</span><a href="#ip-di-zhi" class="header-anchor">#</a></h3>
+<p><strong>Internet 上一个网络的子网掩码为 255.255.240.0. 试问它最多能容纳多少主机.</strong></p>
+<p>全 0 全 1 不使用, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>12</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{12}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>.</p>
+<p><strong>从 198.16.0.0 开始有大量连续的 IP 地址可以使用. 假设 4 个组织 A, B, C, D 按照顺序依次申请 4000, 2000, 4000, 和 8000 个地址. 对于每一个申请, 请用 w.x.y.z/s 的形式写出所分配的第一个 IP 地址, 最后一个 IP 地址以及掩码.</strong></p>
+<p>这里有一个错位问题, 原理我没怎么搞明白, 马上考试了我也没空搞明白了.</p>
+<p>A: 198.16.0.0-198.16.15.255 written as 198.16.0.0/20<br>
+B: 198.16.16.0 -198.16.23.255 writtenas 198.16.16.0/21<br>
+C:198.16.32.0 -198.16.47.255 writtenas 198.16.32.0/20<br>
+D: 198.16.64.0 -198.16.95.255 writtenas 198.16.64.0/19</p>
+<p><strong>一个路由器刚刚接收到以下新的 IP 地址:57.6.96.0/21,57.6.104.0/21,57.6.112.0/21 和 57.6.120.0./21. 如果所有这些地址都使用同一条出境线路, 试问它们可以被聚合吗?如果可以, 将被聚合到哪个地址上?</strong></p>
+<p>聚合地址为 57.6.96.0/19.</p>
+<p>转成二进制找最长前缀.</p>
+<h2><span id="chuan-shu-ceng">传输层</span><a href="#chuan-shu-ceng" class="header-anchor">#</a></h2>
+<h3><span id="tcp-wu-yuan-zu">TCP 五元组</span><a href="#tcp-wu-yuan-zu" class="header-anchor">#</a></h3>
+<p>&lt;源/目的IP地址, 源/目的端口号, 协议&gt;</p>
+<h3><span id="man-qi-dong-suan-fa">慢启动算法</span><a href="#man-qi-dong-suan-fa" class="header-anchor">#</a></h3>
+<p><strong>考虑在一条往返时间为 10 毫秒的无拥塞线路上使用慢速启动算法的效果. 接收窗口为 24KB, 最大段长为 2KB. 试问需要多长时间才能首次发送满窗口的数据?</strong></p>
+<p>0ms-2KB;10ms-4KB;20ms-8KB;30ms-16KB,40ms-min (32KB, 24KB)</p>
+<p><strong>假设 TCP 的拥塞窗口被设置为 18KB, 并且发生了超时. 如果接下来的 4 次突发传输全部成功, 试问拥塞窗口将达到多大?假设最大段长为 1KB.</strong></p>
+<p>由于超时, 所以接下来的第一次突发还是 1K, 到第四次即为 8K.</p>
+<p><strong>考虑一个使用 TCP Reno 的连接. 该连接的初始拥塞窗口大小为 1KB, 初始的阈值是 64. 假设加法递增使用了一个 1KB 的步进大小. 如果最初一轮传输称为第 0 轮, 那么, 在第 8 轮传输中, 拥塞窗口的大小是多少?</strong></p>
+<p>66KB.</p>
+<p><strong>如果 TCP 往返时间 RTT 的当前值是 30 毫秒, 紧接着分别在 26, 32, 24 毫秒确认到达, 那么, 若使用 Jacobson 算法, 试问新的 RTT 估计值为多少? a=0.9.</strong></p>
+<p><img data-src="/img/computer-network-example/1.png" alt="image-20260112235928393"></p>
+<p><strong>一台 TCP 主机正在通过一跳 1Gb/s 的信道发送满窗口的 65535 字节数据, 该信道的单向延迟为 10ms,可以达到的最大吞吐量是多少? 线路的效率是多少?</strong></p>
+<p>RTT 为 20ms,因此理论上每秒可以发送 50 个窗口的数据. 最后算出来是 2.6%.</p>
 
     </div>
 
