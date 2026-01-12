@@ -236,7 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "When I knew him, he was.",
         "Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.",
         "Don't you dare go Hollow.",
-        "+C"
+        "+C",
+        "与心爱的你行至世界尽头",
+        "胜败乃兵家常事,<br>大侠请重新来过."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
