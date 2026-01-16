@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tianlipa.github.io/img/computer-network-example/1.png">
 <meta property="article:published_time" content="2026-01-12T04:40:16.000Z">
-<meta property="article:modified_time" content="2026-01-12T16:10:15.700Z">
+<meta property="article:modified_time" content="2026-01-13T12:31:58.755Z">
 <meta property="article:author" content="tianlipa">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="计算机网络">
@@ -239,7 +239,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-01-13 00:10:15" itemprop="dateModified" datetime="2026-01-13T00:10:15+08:00">2026-01-13</time>
+      <time title="修改时间：2026-01-13 20:31:58" itemprop="dateModified" datetime="2026-01-13T20:31:58+08:00">2026-01-13</time>
     </span>
 
   
@@ -251,7 +251,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>学期初这个老师提到了往届学生对他不调分的政策的「好评如潮」, 然后他表示为了解决这个问题, 他决定在每章的 PPT 最后放上一些「有助于应试」的例题. 然后因为课程时间不够了九个章节他只有前三个章节放了例题, byd 还没我记笔记坚持的时间长.</p>
+    <div class="post-body" itemprop="articleBody"><p>学期初这个老师提到了往届学生对他不调分的政策的「好评如潮」, 然后他表示为了解决这个问题, 他决定在每章的 PPT 最后放上一些「有助于应试」的例题.</p>
+<p>然后因为课程时间不够了九个章节他只有前三个章节放了例题, byd 还没我记笔记坚持的时间长.</p>
 <span id="more"></span>
 <h2><span id="gai-shu">概述</span><a href="#gai-shu" class="header-anchor">#</a></h2>
 <h3><span id="wang-luo-ceng-ci-mo-xing">网络层次模型</span><a href="#wang-luo-ceng-ci-mo-xing" class="header-anchor">#</a></h3>
@@ -522,10 +523,10 @@ IP 分片切的是这 920 字节.</li>
 <p>第一段链路: 主机 A -&gt; 路由器 R1</p>
 <ul>
 <li>路况: MTU = 1010 字节.</li>
-<li>我们的车**: ** 总长 940 字节.</li>
+<li>我们的车:  总长 940 字节.</li>
 <li>结论: 940 &lt; 1010, 不用拆!  直接过.</li>
 </ul>
-<p>**填写字段: **</p>
+<p><strong>填写字段</strong>:</p>
 <ul>
 <li>Total Length (总长度): 940</li>
 <li>Identification (ID): 随便给个号, 比如 666(同一个包的所有分片ID必须一样).</li>
@@ -537,7 +538,7 @@ IP 分片切的是这 920 字节.</li>
 <ul>
 <li>路况: MTU = 504 字节.</li>
 <li>我们的车: 940 字节.</li>
-<li>结论**: ** 940 &gt; 504, 必须拆分!</li>
+<li>结论****:  940 &gt; 504, 必须拆分!</li>
 </ul>
 <p>MTU 是 504, 减去 20 字节 IP 头, 剩下 <strong>484 字节</strong> 给数据.<br>
 但是 IP 协议规定, 除了最后一片, 前面所有分片的数据长度必须是 8 字节的倍数.</p>
@@ -552,7 +553,7 @@ IP 分片切的是这 920 字节.</li>
 <p>**结论: 每个分片最多只能带 480 字节的数据. **</p>
 </li>
 <li>
-<p>**第一片 (分片 1): **</p>
+<p><strong>第一片 (分片 1)</strong>:</p>
 <ul>
 <li>装货: 480 字节.</li>
 <li>总长: 480 (数据) + 20 (IP 头) = <strong>500 字节</strong>.</li>
@@ -561,7 +562,7 @@ IP 分片切的是这 920 字节.</li>
 </ul>
 </li>
 <li>
-<p>**第二片 (分片 2): **</p>
+<p><strong>第二片 (分片 2)</strong>:</p>
 <ul>
 <li>剩多少货?  总货量 920 - 运走的 480 = <strong>440 字节</strong>.</li>
 <li>440 + 20 (IP 头) = 460 字节. 这个长度小于 MTU (504), 能装下.</li>
@@ -573,14 +574,14 @@ IP 分片切的是这 920 字节.</li>
 </ul>
 <p>第三段链路: 路由器 R2 -&gt; 主机 B</p>
 <ul>
-<li>**路况: ** MTU = 500 字节.</li>
-<li>**来的车: ** R1 发过来的两个分片.
+<li><strong>路况</strong>:  MTU = 500 字节.</li>
+<li><strong>来的车</strong>:  R1 发过来的两个分片.
 <ul>
 <li>分片 1: 总长 500 字节.</li>
 <li>分片 2: 总长 460 字节.</li>
 </ul>
 </li>
-<li>**结论: **
+<li><strong>结论</strong>:
 <ul>
 <li>分片 1: 500 &lt;= 500, 刚好能过, 不用再拆.</li>
 <li>分片2: 460 &lt;= 500, 能过, 不用再拆.</li>
@@ -652,8 +653,8 @@ IP 分片切的是这 920 字节.</li>
 <p>注意点:</p>
 <ol>
 <li><strong>Offset 怎么算? ** 是用</strong>前面的数据量**除以 <strong>8</strong>. 比如第二片的 Offset 是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>480</mn><mi mathvariant="normal">/</mi><mn>8</mn><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">480 / 8 = 60</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">480/8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span>.</li>
-<li>**数据要对齐 8 字节: ** 虽然 MTU 允许带 484 字节数据, 但必须砍掉 4 字节变成 480.</li>
-<li>**Total Length 包含头: ** 填表的时候, 长度一定要加上 20 字节的 IP 头.</li>
+<li><strong>数据要对齐 8 字节</strong>:  虽然 MTU 允许带 484 字节数据, 但必须砍掉 4 字节变成 480.</li>
+<li><strong>Total Length 包含头</strong>:  填表的时候, 长度一定要加上 20 字节的 IP 头.</li>
 <li>**R2-B 为什么没分片? ** 因为 R1 分好的片 (500 字节) 刚好等于 R2-B 的 MTU (500 字节). 如果有哪怕多出 1 个字节, 就要再次分片.</li>
 </ol>
 <h3><span id="ip-di-zhi">IP 地址</span><a href="#ip-di-zhi" class="header-anchor">#</a></h3>

@@ -238,7 +238,15 @@ document.addEventListener("DOMContentLoaded", function () {
         "Don't you dare go Hollow.",
         "+C",
         "与心爱的你行至世界尽头",
-        "胜败乃兵家常事,<br>大侠请重新来过."
+        "胜败乃兵家常事,<br>大侠请重新来过.",
+        "凡可以被真相摧毁的<br>都应该被真相摧毁",
+        "Now on Firefox!",
+        "🥔",
+        "O brave new world,<br>That has such people in't.",
+        "我恨你",
+        "我爱你",
+        "You are the player.<br>Wake up.",
+        "Tomorrow is in your hands"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
