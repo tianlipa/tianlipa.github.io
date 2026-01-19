@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "是不是少了一抹奇幻色彩?",
         "得挠人处且挠人",
         "我不是那种你刺激我我就会努力的<br>你再刺激我我就跳楼了",
-        "Is this the real life?<br>Is it just Fanta Sea?",
+        "Is this the real life?<br>Is this just Fanta Sea?",
         "服务器繁忙, 请稍后再试.",
         "努力 未来<br>A BEAUTIFUL STAR",
         "我忘记了所有悲剧,<br>看到的都是奇迹…",
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Viva La Vida.",
         "既见君子, 云胡不喜?",
         "要想见证尘封的秘密,<br>就要承受最严厉的惩罚.",
-        "Some things happen by chance.<br>And somethings happen<br>because we make them happen.",
+        "Some things happen by chance.<br>And some things happen<br>because we make them happen.",
         "Please Do Not Throw<br>Sausage Pizza Away",
         "一曲忠诚的赞歌",
         "在那高远的黑色穹顶下,<br>它的牺牲使圣巢永世不衰.",
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "El Psy Kongroo",
         "你们两家都倒八辈子霉去吧!",
         "历史就是死人名字",
-        "据不完全统计, 一年有11个月.",
+        "据不完全统计,<br>一年有11个月.",
         "418 I'm a teapot",
         "在这个年代, 找不到浪漫",
         "来到了天津卫, 嘛也没学会",
@@ -246,7 +246,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "我恨你",
         "我爱你",
         "You are the player.<br>Wake up.",
-        "Tomorrow is in your hands"
+        "Tomorrow is in your hands.",
+        "Understand.",
+        "上帝赐予我<br>接受我无法改变之事物的平静,<br>改变可改变之事物的勇气,<br>以及区分这两者之不同的<br>永恒智慧.",
+        "十七张牌你能秒我?",
+        "字母G其实是一个旋转的箭头",
+        "But man is not made for defeat.",
+        "宇宙很大, 生活更大,<br>我们一定还有缘相见.",
+        "一个半小时是三个半小时"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
