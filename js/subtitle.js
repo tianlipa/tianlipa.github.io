@@ -253,7 +253,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "字母G其实是一个旋转的箭头",
         "But man is not made for defeat.",
         "宇宙很大, 生活更大,<br>我们一定还有缘相见.",
-        "一个半小时是三个半小时"
+        "一个半小时是三个半小时",
+        "苯环的碳碳键键能能否否定定论一",
+        "温柔吗, 半条命3换的",
+        "人生不相见, 动如参与商.",
+        "和我一起逃走吧?"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
