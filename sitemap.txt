@@ -1,5 +1,5 @@
+https://tianlipa.github.io/2026/02/2026-2-6/
 https://tianlipa.github.io/what-to-read/index.html
-https://tianlipa.github.io/what-to-write/index.html
 https://tianlipa.github.io/2026/01/2026-1-19/
 https://tianlipa.github.io/2026/01/computer-network-example/
 https://tianlipa.github.io/2025/10/computer-network-3/
@@ -171,3 +171,4 @@ https://tianlipa.github.io/tags/web/
 https://tianlipa.github.io/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/
 https://tianlipa.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/
 https://tianlipa.github.io/tags/%E7%94%B5%E5%BD%B1/
+https://tianlipa.github.io/tags/%E6%B8%B8%E6%88%8F/
