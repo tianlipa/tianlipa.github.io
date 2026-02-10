@@ -257,7 +257,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "苯环的碳碳键键能能否否定定论一",
         "温柔吗, 半条命3换的",
         "人生不相见, 动如参与商.",
-        "和我一起逃走吧?"
+        "和我一起逃走吧?",
+        "Within cells interlinked.",
+        "欲说还休, 却道: 天凉好个秋!",
+        "The quick brown fox jumps over the lazy dog.",
+        "明天会更好.",
+        "将我的爱,<br>弃置于此."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
