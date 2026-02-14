@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "https://www.bilibili.com/video/BV1qt411j7fV/",
     "https://www.zhihu.com/people/an-ling-91/posts/",
     "https://xkcd.in/",
-    "https://www.bilibili.com/video/BV1rRTBzyEBV/"
+    "https://www.bilibili.com/video/BV1rRTBzyEBV/",
+    "http://pvpin.com/"
   ];
   const btn = document.querySelector(".random-btn a"); 
   if (btn) {

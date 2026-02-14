@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "宝宝, 你是一个**kwargs",
         "每个成功男人的背后,<br>都有一条脊椎.",
         "好好吃饭",
-        "Bone ApplePie!",
+        "Bone Apple Pie!",
         "Always like this.",
         "生年不满百, 常怀千岁忧.<br>昼短苦夜长, 何不秉烛游!",
         "这个月薯条亏损二十六箱,<br>你有头绪吗?",
@@ -262,7 +262,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "欲说还休, 却道: 天凉好个秋!",
         "The quick brown fox jumps over the lazy dog.",
         "明天会更好.",
-        "将我的爱,<br>弃置于此."
+        "将我的爱, 弃置于此.",
+        "既然你诚心诚意地发问了<br>我就大发慈悲地回答你",
+        "Creeper?"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

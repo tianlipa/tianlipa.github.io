@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="知乎屏蔽词名单. tampermonkey 前几天炸了一次, 导致数据差点丢了, 遂在此做个备份. 相关脚本: 知乎增强 一些屏蔽词可能不是因为我反对其中的任何内容, 而是推送重复度过高让我感到厌烦. 虽然我说过无数遍了但我还是想再说一遍, 知乎这几年真的是江河日下, 已经变成了表层互联网的究极粪坑, 这里面一些关键词光是看到都能升血压. 越南女|向杨Alan|波士顿圆脸|小约翰可汗|基本盘|过芙">
+<meta property="og:type" content="website">
+<meta property="og:title" content="知乎屏蔽词名单">
+<meta property="og:url" content="https://tianlipa.github.io/blocklist/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="知乎屏蔽词名单. tampermonkey 前几天炸了一次, 导致数据差点丢了, 遂在此做个备份. 相关脚本: 知乎增强 一些屏蔽词可能不是因为我反对其中的任何内容, 而是推送重复度过高让我感到厌烦. 虽然我说过无数遍了但我还是想再说一遍, 知乎这几年真的是江河日下, 已经变成了表层互联网的究极粪坑, 这里面一些关键词光是看到都能升血压. 越南女|向杨Alan|波士顿圆脸|小约翰可汗|基本盘|过芙">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-12T15:40:24.000Z">
+<meta property="article:modified_time" content="2026-02-12T15:47:21.099Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="甜力怕, tianlipa, 博客">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/blocklist/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/blocklist/index.html","path":"blocklist/index.html","title":"知乎屏蔽词名单"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>知乎屏蔽词名单 | tianlipa
+</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">知乎屏蔽词名单
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <p>知乎屏蔽词名单.</p>
+<p>tampermonkey 前几天炸了一次, 导致数据差点丢了, 遂在此做个备份.</p>
+<p>相关脚本: <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/419081-zhihu-enhancement">知乎增强</a></p>
+<p>一些屏蔽词可能不是因为我反对其中的任何内容, 而是推送重复度过高让我感到厌烦.</p>
+<p>虽然我说过无数遍了但我还是想再说一遍, 知乎这几年真的是江河日下, 已经变成了表层互联网的究极粪坑, 这里面一些关键词光是看到都能升血压.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">越南女|向杨Alan|波士顿圆脸|小约翰可汗|基本盘|过芙|顺直|全女|全男|赢学|牢A|达尔文事变|嘲讽西藏|未明子|马督工|头号玩家|支持国产|不是处|incel|笔电男大|湾湾|章北海official|有没有可乐|洗衣机洗内裤|大伟哥|雨之城|睡前消息|戒网瘾|辱美|驭民|翁法洛斯|饭圈|男女对立|留岛不留人|大毛|恨美国|殖|恨日本|配得上苦难|大国崛起|小民尊严|户晨风|DEI|巴勒斯坦|弃地|反建制|安那其|拳头就是拥有|吴京|仇日|打拳|反犹|钟离|麻辣运动|第一伟人|我先是人|明末|吞噬星球|董宇辉|二加二|开不了口|对他使用炎拳|雄狮少年|逻辑|装甲尼禄|扶弟魔|为什么菩提祖师|我感到被侮辱了|婚事都搞黄了|恶搞之家|秦舞阳|哈尔滨早饭|变相拒绝|天津大学食堂|孝心满满|斯内普一直|家庭主妇|皮特|刘师兄|文明误伤|黑神话|屠宰场|女厕|反驳|托福|GRE|再见爱人|淄博职业学院|好东西|这是二战|生物爹|蓝兔|生意越来越难做|同期的战士自相残杀|负蓝兔|TGA|京东|杨笠|张桂梅|黑丝小男孩|女拳|欣赏不|中指|天赋极高|vim|无知|虐|助人情|尊重他人命运|尊重祝福|普信|掉分|很装|神圣泰拉|这句是六个字|难以理解|中国校服|看待AI|散兵|讲逻辑|NT人|哈迷|这种稿|画成这样|黑袍纠察队|OC|唐三|绘圈|约稿|约的稿|绝区零|米池|乌合麒麟|泽连斯基|姜萍|体面的婚礼|日本必胜|萧炎|斗破苍穹|温迪|迪卢克|纳粹带着|自由主义|宵宫|原批|谭竹|诡秘之主|罗翔|爆典|詹姆斯|科密|月飞|亲乌|女频|男频|人口吧|少前|受难日|校园霸凌|暴力执法|庆余年|mhy|适合女生|女生第一次买房|抵制美|空芙|鸣潮|贫困生|演唱会|文笔算绝吗|心理承受能力|甘雨|胡桃|刻晴|香菱|青雀|素裳|停云|欣赏不来|黄谣|恶意|纹身|日货|数学界天才|中医|尘白禁区|王者|雅思|赵菊英|胖猫|小米|社达|达尔文主义|免费医疗|欧金金|羡慕生在北欧|亲美|伪史|5g|氪金|二游|高贵|风纪委员小组|小鬼|张元英|性侵|核污水|核废水|动物保护|环保|保护动物|伪善|哈马斯|哈友|以色列|乌克兰|俄友|福建明确|贾玲|INTP|MBTI|ENFP|ENTP|INFP|长辈|女性|无耻|双标|合乎|流萤|文身|慢热|成分|贞洁|三观|NGA|公共洗衣机|崩铁|可莉|反战败|耽美|公公|何同学|谷爱凌|不如|好文|畸形|女性是否|是否女|粉红|婚姻|女性福利|留学|S3|芯片|禁女|禁男|地雷|厌女|厌男|肖战|激怒|流浪|王一博|追星|多男|多女|拜金|TFBOY|孙吧|沙丘|贴吧还不凉|汉奸|乳化|辱华|郭楠|虐待动物|虐狗|狗肉|国男|反原|仙家|沙雕故事|民科|卫生巾|志愿|争取|润|左|时代少年团|亲戚|纳西妲|水神|TNT|政治|AA|文化输出|男A|男朋友|女朋友|逆天|女人|世人皆苦|低龄|鸿蒙|张雪峰|无神论|批评|讨厌|不喜欢|圣母|代号鸢|少女前线|羽中|是我错|是我的问题|虐文|甜文|原神|麻辣仙人|好男人|芙宁娜|键政|鸿蒙|真正的恶|ml|人性|分手|失望|接受不了|心寒|婆婆|父母|爸爸|妈妈|儿子|孩子|女儿|献血|鸿蒙|米乎|有男不玩|乙女|乙游|百合|观察者网|星穹|开拓者|旅行者|派蒙|恶评|宏大叙事|没素质|小仙女|来自星尘|鹰角|剩女|大龄剩女|大龄剩男|米哈游|绝区零|莫言|国际关系|国际政治|共青团|雷军|性张力|崩坏：星穹铁道|崩坏三|彩礼|黑人|女权|小红书|不能按时间顺序查看回答|苹果|华为|手机|手机品牌|苹果公司|苹果产品|iPhone|消费观|虐猫|爱猫|爱猫人士|华为|华为手机|任正非|偷拍|恶心|相亲|婚恋|讨人厌</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">故事档案局|盐选推荐|盐选科普|盐选成长计划|知乎盐选会员故事档案局|盐选推荐|盐选科普|盐选成长计划|知乎盐选会员|知乎盐选创作者|盐选心理|盐选健康必修课|盐选奇妙物语|盐选生活馆|盐选职场|盐选文学甄选|盐选作者小管家|盐选博物馆|盐选点金|盐选测评室|盐选科技前沿|盐选会员精品|lll LLL|枳实|宵夜要注意|Daniel|Equfed|EDWARD|lonely mr|离为火|昏睡魔南|小黄蜂|弥河恶劣|Libra|林先生|小团子|知乎家居|alter|周泽珺|alonely|Camus|纯粹的科比粉丝|巨大人形气动熊|小苏西|ArgelK|richard you|梅川酷几|杜永文|队长我是肥皂|RDS-220|bukuda|lbbhjj|To 73939133|游标卡尺|皇冠|想上分的木乃伊|Evass|pissflaubert|一九八四|Mr.iku|无味方糖|楼下别抬杠|AI技能研究所|killlori|1风府|聪哥|Erika-Von|知乎知学堂|正曦|waterboy|Solnice·Mar|傻傻的香蕉君|知乎用户cht|迟迟不到|11111111|水能载舟 亦能|大蒜猪|michael|整容脸|秋风|保科冲港|一只解忧兔|姜丝的馄饨|好相逢|朴朴|陈曙早|三车之眼|Tony老师|实名用户|宫酱自宫|雨路青松|皇马乳华俱乐部|镜子恐怕不明|坐忘道|大汉魏王曹孟德|青镜影|北雁云依|游民|invalid s|李杭帆|elielek|abstract|我就是想做啊|quetzacoatl|fengzheyuduan|蒙恬握的戟|如是你闻|88738496|种花家的叮咚兔|离|文德嗣|黑兔子老歪|战狼|Lxq的小笨蛋|如月群鼙|杨喵利元帅|变巨|平江故人|室女座总督|雷小雨|古典流氓|龙吟九霄|徐洋|Speasss|真理战士|炸乎|小小小oil 汰|杨逸|一切黑锅归美利坚|池之以恒|千界一业|00125|我爱教员|虽远必诛|山川壮丽大中华|momo|白马令李云|我就是侃侃|朝夕泅客|哈迪怂|武路|凤死落坡东|半文艺青年|七海|雪花梨|远方风景|大猫|归去来兮|很晚的夜|陈扬|天羽之尘|商鞅|孔令旗|画画的花噎菜|1984必须消灭异见|科韵路精神研究员|空真理神奈备命|泡菜我买好了|风华天煞|流觞曲水醉江蛟|邦邦卡邦|柳亚飞|知乎用户怎么你了|湘佑|...神|阿那克萨戈拉斯|Dark Apollo|胶合批发商|大王巨足虫|末学肤受|苏灿想要吃鱼|知乎用户e92DIj|范进|蓝鹅|麒麟小老鼠|哥飞|哲欢|南溪一钓叟|李子明|竹观月|白日梦想家|嘤嘤|解放路上的碎煤渣|没猫饼|沈群D|河岳日星|贺书凤|jls18|萤火流原|妄论|面瘫杀坯师兄|正确的|罗大肉|梁小小|東雪蓮Official|李庸正|勇者木木|这是一个好问题|超级魔封波|龙傲天|张师傅|穆东|CX330|奉天战神我少帅|苏三|红小兵建设边疆|我不想听你说|abcdzz|无望之人|柏临和小昭|今天在学格式塔|琴台街长|树袋鼠阿帕奇|pwbfsjoy|Phantom|淮水|征北喵|阿勇|仿生圆陆鲨|柳柳柳柳柳|无力狂怒人|白鸟ACG|黒野恵里|Temuni|Guts|注销了|hikikaya|flywhck|加密飞龙|hans|Justin WAY|海鸥|多喝水不要饮料啦|孤独的冒菜|屙了么|噢耶|善良的自行车|零壹柒LIO|N.Zjing|硅谷码农|一一二三|Epicurus|小杰瑞|木兽|苏子衿|甲贺忍蛙|Achtermanns|海岛老熊|野王|微光-1450拜登版|毛毛虫|wicky|原来可以改名丶|白翼持有者|潮起|pasta618|当代圣人|何大哥|沙海狂鳄|Eric|甜甜圈真好吃|abby|洒墨|Iolol|没有名字|君子无争|WuenGe|斗笠|FreddyHz|就晒一百八十天|懒猫|pornmaker|不识春风|oforyou|飞越三万里|麻雀与白鹤|Neko|苏苏苏|原神启动|Allen|饶冰青|tyty|越丑越作怪|蝌蚪|一只色孽兽|MANGUS|圈圈眼|凌曦云上|居然没上天|沉默的海燕|唐人枫|陈枫|拖拉机手王铁柱|point|风骤|蓝狐陛下|XXX|卖韭菜的雄大夫|子凡|冰之荧|你们都|张悅|Nice|天才在北京|南国小汉子|sonicfree|字句|墨子飛燊|虫巢意志|知乎用户HKFR6m|amuro|靠山屯王大锤|划水|连山归藏|鱼之森|无视|格竹子|测试人员9527|Kevin Zhang|爱笑的女孩是我|贵贵1668|幻影|寒夜不要黑色双眼|布莱克德拉贡|南子|阿塔尼斯|波钢叉|阿飞|kidneyball|歌谭大使贪猪|蜀黎|猪儿虫|千石|大国公民|啦咯啦咯啦|随风问事|小艾哇呀|佛丁|xiaogg|静待花开|Nacky视角</span><br></pre></td></tr></table></figure>
+<!-- flag of hidden posts -->
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
