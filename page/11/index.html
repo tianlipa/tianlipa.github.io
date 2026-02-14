@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -188,6 +188,90 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/03/302git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/302git/" class="post-title-link" itemprop="url">如何解决启用SteamCommunity302后git命令行无法连接</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-16 20:23:43" itemprop="dateCreated datePublished" datetime="2025-03-16T20:23:43+08:00">2025-03-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-18 14:49:54" itemprop="dateModified" datetime="2025-08-18T14:49:54+08:00">2025-08-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>众所周知国内对 GitHub 的访问非常不稳定, 大部分稳定访问方法都需要借助非常规手段, 其中比较靠谱且免费的是 SteamCommunity302, 不仅能加速 Steam 商店, 还能稳定访问 GitHub. 然而, 启动 SteamCommunity302 的时候, 虽然浏览器能流畅访问 GitHub, 但是命令行中的 git 会连接失败, 报错类似</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSL peer certificate or SSH remote key was not OK</span><br></pre></td></tr></table></figure>
+<p>解决方案如下:</p>
+<p>方法一 (推荐):</p>
+<p>找到 SteamCommunity302 根目录下的<code>steamcommunity.crt</code>证书文件, 双击打开, 点击安装证书-下一步-将所有证书放入下列存储-浏览, 选择“受信任的根证书颁发机构”, 点击安装即可.</p>
+<p>方法二 (不推荐):</p>
+<p>终端运行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>暂时关闭 git 的 SSL 安全验证, 但存在安全隐患, 不建议长期关闭.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1031,84 +1115,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/02/2025-2-14/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/02/2025-2-14/" class="post-title-link" itemprop="url">2025-2-14</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-02-14 22:41:50" itemprop="dateCreated datePublished" datetime="2025-02-14T22:41:50+08:00">2025-02-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-18 14:51:25" itemprop="dateModified" datetime="2025-08-18T14:51:25+08:00">2025-08-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>昨天晚上返校了, 今天睡了一上午, 下午和高中同学出去玩了一趟.</p>
-<p>发现我的自行车好像不见了, 明天上午如果起得来去找找. 本来想顺便去借书的, 上图书馆一查发现 CTF 从零到一“借出-应还日期 2022-04-30”, tmd 科男怎么这么坏. 考虑买本二手书.</p>
-<p>明天开始干活.</p>
-
       
     </div>
 
