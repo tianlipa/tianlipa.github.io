@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "My eyes are open.",
         "Memento Mori.",
         "we will get out of babbdi",
-        "谁也不会把迷宫的出口告诉小白鼠的, 伦吾同学.",
+        "谁也不会把迷宫的出口<br>告诉小白鼠的, 伦吾同学.",
         "那些没有天赋的人呢?",
         "本人今年就30了, 和很多校友一样",
         "即使引导早已破碎,<br>也请您当上艾尔登之王.",
