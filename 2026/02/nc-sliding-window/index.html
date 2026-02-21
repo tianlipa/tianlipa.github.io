@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Best Time to Buy and Sell Stock 买卖股票的最佳时机 其实从左往右扫也可以. class Solution &#123;public:    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;        int ans &#x3D; 0;        int sell &#x3D; -1;        for(int i &#x3D; p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NeetCode 150 Sliding Window 题解">
+<meta property="og:url" content="https://tianlipa.github.io/2026/02/nc-sliding-window/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="Best Time to Buy and Sell Stock 买卖股票的最佳时机 其实从左往右扫也可以. class Solution &#123;public:    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;        int ans &#x3D; 0;        int sell &#x3D; -1;        for(int i &#x3D; p">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-21T15:39:10.000Z">
+<meta property="article:modified_time" content="2026-02-21T15:39:10.785Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/02/nc-sliding-window/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/02/nc-sliding-window/","path":"2026/02/nc-sliding-window/","title":"NeetCode 150 Sliding Window 题解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>NeetCode 150 Sliding Window 题解 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/02/nc-sliding-window/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="NeetCode 150 Sliding Window 题解 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NeetCode 150 Sliding Window 题解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-02-21 23:39:10" itemprop="dateCreated datePublished" datetime="2026-02-21T23:39:10+08:00">2026-02-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3><span id="best-time-to-buy-and-sell-stock">Best Time to Buy and Sell Stock</span><a href="#best-time-to-buy-and-sell-stock" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/">买卖股票的最佳时机</a></p>
+<p>其实从左往右扫也可以.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> sell = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = prices.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, sell - prices[i]);</span><br><span class="line">            sell = <span class="built_in">max</span>(sell, prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3><span id="longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</span><a href="#longest-substring-without-repeating-characters" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">无重复字符的最长子串</a></p>
+<p>滑动窗口里最多只重复一次, 不算很难.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">char</span>&gt; flag;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">1</span>, temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.<span class="built_in">size</span>() == <span class="number">0</span>)   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(flag.<span class="built_in">count</span>(s[right])) &#123;</span><br><span class="line">                <span class="keyword">while</span>(s[left] != s[right]) &#123;</span><br><span class="line">                    flag.<span class="built_in">erase</span>(s[left]);</span><br><span class="line">                    <span class="comment">// cout&lt;&lt;&quot;erase &quot;&lt;&lt;s[left]&lt;&lt;endl;</span></span><br><span class="line">                    ++left;</span><br><span class="line">                    --temp;</span><br><span class="line">                &#125;</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            flag.<span class="built_in">insert</span>(s[right]);</span><br><span class="line">            <span class="comment">// cout&lt;&lt;&quot;insert &quot;&lt;&lt;s[right]&lt;&lt;endl;</span></span><br><span class="line">            ++temp;</span><br><span class="line">            ++right;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, right - left);</span><br><span class="line">        &#125; <span class="keyword">while</span>(left &lt; right &amp;&amp; right &lt; s.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> ans;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="longest-repeating-character-replacement">Longest Repeating Character Replacement</span><a href="#longest-repeating-character-replacement" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-repeating-character-replacement/">替换后的最长重复字符</a></p>
+<p>解法略微有点反直觉.</p>
+<p>对每个合法窗口, 只要找到其中出现次数最多的字母, 然后把其他所有字母都换掉. 不需要具体记录出现最多的是哪个字母, 只要记录出现最多的字母出现的次数, 每次扩展窗口时, 比较一下变化的字符和 <code>max_count</code> 哪个大即可.</p>
+<p><strong>由于需要寻找的是最大的合法窗口, 可以在右移左指针的同时右移右指针, 确保窗口长度只会增加, 不考虑窗口减小的情况.</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">characterReplacement</span><span class="params">(string s, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>, max_count = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> count[<span class="number">30</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            ++count[s[right] - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">            max_count = <span class="built_in">max</span>(max_count, count[s[right] - <span class="string">&#x27;A&#x27;</span>]);</span><br><span class="line">            <span class="keyword">if</span>(right - left + <span class="number">1</span> - max_count &lt;= k) &#123;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, right - left + <span class="number">1</span>);</span><br><span class="line">                ++right;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                --count[s[left] - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">                ++left;</span><br><span class="line">                ++right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">while</span>(left &lt; right &amp;&amp; right &lt; s.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="permutation-in-string">Permutation in String</span><a href="#permutation-in-string" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutation-in-string/">字符串的排列</a></p>
+<p>实际遍历右指针应该会方便一点. 如果 <code>count</code> 数组用 <code>array</code> 或者 <code>vector</code> 还可以直接用 <code>==</code> 比较, 不过我写的时候还不知道.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">checkInclusion</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s<span class="number">2.</span><span class="built_in">size</span>() &lt; s<span class="number">1.</span><span class="built_in">size</span>())   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">int</span> count[<span class="number">27</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s<span class="number">1.</span><span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            ++count[s1[i] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> count2[<span class="number">27</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt; left + s<span class="number">1.</span><span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            ++count2[s2[i] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(left + s<span class="number">1.</span><span class="built_in">size</span>() &lt;= s<span class="number">2.</span><span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span>(count[i] != count2[i]) &#123;</span><br><span class="line">                    flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag)    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            ++left;</span><br><span class="line">            <span class="keyword">if</span>(left + s<span class="number">1.</span><span class="built_in">size</span>() &gt; s<span class="number">2.</span><span class="built_in">size</span>())   <span class="keyword">break</span>;</span><br><span class="line">            ++count2[s2[left + s<span class="number">1.</span><span class="built_in">size</span>() - <span class="number">1</span>] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">            --count2[s2[left - <span class="number">1</span>] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="minimum-window-substring">Minimum Window Substring</span><a href="#minimum-window-substring" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">最小覆盖子串</a></p>
+<p>写了一坨极其丑陋的代码.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">minWindow</span><span class="params">(string s, string t)</span> </span>&#123;</span><br><span class="line">        array&lt;<span class="type">int</span>, 60&gt; count = &#123;<span class="number">0</span>&#125;, count2 = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> start, len = <span class="number">114514</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.<span class="built_in">size</span>() &lt; t.<span class="built_in">size</span>()) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; t.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            ++count[t[i] - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = t.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt;= right; ++i)</span><br><span class="line">            ++count2[s[i] - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right &amp;&amp; right &lt; s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">60</span> &amp;&amp; flag; ++i) &#123;</span><br><span class="line">                <span class="keyword">while</span>(count2[i] &lt; count[i]) &#123;</span><br><span class="line">                    ++right;</span><br><span class="line">                    <span class="keyword">if</span>(right &gt;= s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">                        flag = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    ++count2[s[right] - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// for(int i = 0; i &lt; 60; ++i) &#123;</span></span><br><span class="line">            <span class="comment">//     if(count2[i] &gt; count[i]) &#123;</span></span><br><span class="line">            <span class="comment">//         while(count2[s[left] - &#x27;A&#x27;] &gt; count[s[left] - &#x27;A&#x27;]) &#123;</span></span><br><span class="line">            <span class="comment">//             --count2[s[left] - &#x27;A&#x27;];</span></span><br><span class="line">            <span class="comment">//             ++left;</span></span><br><span class="line">            <span class="comment">//         &#125;</span></span><br><span class="line">            <span class="comment">//     &#125;</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="keyword">while</span>(left &lt; s.<span class="built_in">size</span>() &amp;&amp; count2[s[left] - <span class="string">&#x27;A&#x27;</span>] &gt; count[s[left] - <span class="string">&#x27;A&#x27;</span>]) &#123;</span><br><span class="line">                --count2[s[left] - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">bool</span> ok = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(len &gt; right - left) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">60</span>; ++i) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(count2[i] &lt; count[i])</span><br><span class="line">                        ok = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(ok) &#123;</span><br><span class="line">                    start = left;</span><br><span class="line">                    len = right - left;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(left &lt; s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">                --count2[s[left] - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">114514</span>)    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;      <span class="comment">// 未找到符合要求的字符串</span></span><br><span class="line">        string ans = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= len; ++i)</span><br><span class="line">            ans += s[start + i];</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="sliding-window-maximum">Sliding Window Maximum</span><a href="#sliding-window-maximum" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">滑动窗口最大值</a></p>
+<p>可以用优先队列, 复杂度是 O (nlogn), 用滑动窗口可以达到 O (n), 但是我觉得挺难想到的.</p>
+<p>核心思路是双向队列, 窗口右移, 新元素加入队尾, 同时把队尾所有比新元素小的元素踢出去 (因为比新元素早离开窗口且更小, 不可能是最大值). 这样队列是单调的, 每次从队首取最大值即可.</p>
+<p>注意这里队列存的是下标, 方便判断是否还在窗口内.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        deque&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; k - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">            <span class="comment">// 记得判断 empty 否则会 RE</span></span><br><span class="line">            <span class="keyword">while</span>(!q.<span class="built_in">empty</span>() &amp;&amp; nums[i] &gt;= nums[q.<span class="built_in">back</span>()])</span><br><span class="line">                q.<span class="built_in">pop_back</span>();</span><br><span class="line">            q.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = k - <span class="number">1</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">while</span>(!q.<span class="built_in">empty</span>() &amp;&amp; nums[i] &gt;= nums[q.<span class="built_in">back</span>()])</span><br><span class="line">                q.<span class="built_in">pop_back</span>();</span><br><span class="line">            q.<span class="built_in">push_back</span>(i);</span><br><span class="line">            <span class="keyword">while</span>(q.<span class="built_in">front</span>() &lt;= i - k || q.<span class="built_in">front</span>() &gt; i) &#123;</span><br><span class="line">                q.<span class="built_in">pop_front</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(nums[q.<span class="built_in">front</span>()]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>一边看今天 vibe coding 又整了什么超牛逼大活一边让 LLM 教我刷算法题, 前途真是一片光明啊.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/02/2026-2-21/" rel="prev" title="2026-2-21">
+                  <i class="fa fa-angle-left"></i> 2026-2-21
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
