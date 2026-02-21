@@ -264,7 +264,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "明天会更好.",
         "将我的爱, 弃置于此.",
         "既然你诚心诚意地发问了<br>我就大发慈悲地回答你",
-        "Creeper?"
+        "Creeper?",
+        "现在的时间是 04:20<br>(这个钟一天有两次是对的.)"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
