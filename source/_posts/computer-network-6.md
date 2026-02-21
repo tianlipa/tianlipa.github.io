@@ -50,7 +50,7 @@ IP地址的双重作用: 身份标识和位置标识.
 
 ## IP地址
 
-IPv4 地址由 4 个字节(32 位)组成, 点分十进制表示
+IPv4 地址由 4 个字节(32 位)组成, 点分十进制表示.
 
 分为五类:
 
@@ -93,18 +93,20 @@ DHCP过程:
 5. 客户端接收到DHCPACK后, 应该对参数进行最后的检查, 然后开始使用分配的IP地址
 6. 客户端可以通过向DHCP服务器发送DHCPRELEASE消息来释放对IP地址的租用, 其中包含有客户端的MAC地址和租用IP地址
 
+DISCOVER OFFER REQUEST ACK, 爱探险的DORA
+
 ### DHCP 协议关键点
 
-**如何确保IP地址的唯一性? **
+**如何确保IP地址的唯一性?**
 DHCP服务器统一管理和分配.
 
-**客户端最开始如何标识? **
+**客户端最开始如何标识?**
 使用MAC地址, IP地址使用0.0.0.0.
 
-**如何找到DHCP服务器? **
+**如何找到DHCP服务器?**
 通过广播.
 
-**多个DHCP服务器如何处理? **
+**多个DHCP服务器如何处理?**
 客户端选择.
 
 ### DHCP中继
@@ -475,14 +477,14 @@ ICMP 定义了两类消息, **差错消息**和**信息消息**.
 差错消息:
 
 - 源抑制(Source quench): 抑制发送过多分组的主机
-- **超时**(Time exceeded) : 分组的TTL为0
+- **超时** (Time exceeded) : 分组的TTL为0
 - 信宿不可达(Destination unreachable) : 报告子网, 主机不能定位的信宿
 - 重定向(Redirect): 路由重定向
 - 参数问题(Parameter problem): 分组头参数出错
 
 信息消息/查询消息:
 
-- **回音请求/响应**(Echo request/reply)
+- **回音请求/响应** (Echo request/reply)
 - 路由器发现(Router discovery)
 - 地址掩码请求/响应(Address mask request/reply)
 

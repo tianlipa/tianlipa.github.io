@@ -385,6 +385,113 @@
  * 修复：解决 Markdown 语法标记（如删除线、粗体）紧贴括号时被误加空格导致渲染失效的问题
  */
 
+// hexo.extend.filter.register('before_post_render', function(data) {
+//     let content = data.content;
+//     const markers = []; 
+    
+//     // --- 1. 保护机制 (Masking Phase) ---
+//     const mask = (str, regex) => {
+//         return str.replace(regex, (match) => {
+//             const key = `___MASK_${markers.length}___`;
+//             markers.push(match);
+//             return key;
+//         });
+//     };
+
+//     // 1.1 Hexo 专用标签
+//     content = mask(content, /\{%[\s\S]*?%\}/g);
+
+//     // 1.2 HTML 块级保护
+//     content = mask(content, /<script[\s\S]*?<\/script>/gi);
+//     content = mask(content, /<style[\s\S]*?<\/style>/gi);
+//     content = mask(content, /<pre[\s\S]*?<\/pre>/gi);
+//     content = mask(content, /<code[\s\S]*?<\/code>/gi);
+
+//     // 1.3 Markdown 代码块
+//     content = mask(content, /```[\s\S]*?```/g);
+//     content = mask(content, /~~~[\s\S]*?~~~/g);
+
+//     // 1.4 Markdown 行内代码
+//     content = mask(content, /`[^`]+`/g);
+
+//     // 1.5 数学公式
+//     content = mask(content, /\$\$[\s\S]*?\$\$/g);
+//     content = mask(content, /\\\[[\s\S]*?\\\]/g);
+//     content = mask(content, /\\\([\s\S]*?\\\)/g);
+
+//     // 1.6 普通 HTML 标签
+//     content = mask(content, /<[^>]+>/g);
+
+//     // 1.7 Markdown 链接/图片语法
+//     content = mask(content, /!{0,1}\[[^\]]*\]\([^)]+\)/g);
+
+
+//     // --- 2. 文本替换 (Processing Phase) ---
+
+//     // 2.1 英文撇号优化
+//     content = content.replace(/([a-zA-Z])'([a-zA-Z])/g, "$1’$2");
+
+//     // 2.2 括号间距处理 (已修复)
+//     // 逻辑：如果在左括号前不是空格、且不是(、也不是Markdown标记符(~*_\[#)，则加空格
+//     // 这样 `~~(text)~~` 或 `**(text)**` 就不会被拆开了
+//     content = content.replace(/([^\s(~*_\[#])\(/g, '$1 (');
+    
+//     // 右括号逻辑保持不变，通常右括号后接中文或英文都需要空格，但如果是 Markdown 结束符通常会在 mask 阶段或后续渲染处理，
+//     // 为了保险起见，如果右括号紧挨着 ~ * _ 等也不加空格可能更稳妥，但目前的问题主要是左括号。
+//     // 这里保持原样即可，因为 `)~~` 中 `~` 不在 \u4e00-\u9fa5a-zA-Z0-9 范围内，所以不会被加空格。
+//     content = content.replace(/\)([\u4e00-\u9fa5a-zA-Z0-9])/g, ') $1');
+
+//     // 2.3 中英文/数字间距优化
+//     content = content.replace(/([\u4e00-\u9fa5])([a-zA-Z0-9])/g, '$1 $2');
+//     content = content.replace(/([a-zA-Z0-9])([\u4e00-\u9fa5])/g, '$1 $2');
+
+//     // 2.4 透视眼智能引号
+//     content = content.replace(/"([^"]*?)"/g, (match, inner, offset, fullStr) => {
+//         if (/[\u4e00-\u9fa5]/.test(inner)) return `「${inner}」`;
+
+//         const lookBackDist = 10;
+//         const start = Math.max(0, offset - lookBackDist);
+//         const beforeChunk = fullStr.slice(start, offset);
+        
+//         const end = Math.min(fullStr.length, offset + match.length + lookBackDist);
+//         const afterChunk = fullStr.slice(offset + match.length, end);
+
+//         const hasChinesePre = /[\u4e00-\u9fa5][\s!.,:;?]*$/.test(beforeChunk);
+//         const hasChinesePost = /^[\s!.,:;?]*[\u4e00-\u9fa5]/.test(afterChunk);
+
+//         if (hasChinesePre || hasChinesePost) {
+//             return `「${inner}」`;
+//         } else {
+//             return `“${inner}”`; 
+//         }
+//     });
+
+
+//     // --- 3. 还原机制 (Restore Phase) ---
+//     markers.forEach((val, idx) => {
+//         const key = `___MASK_${idx}___`;
+//         content = content.replace(key, () => val);
+//     });
+
+//     data.content = content;
+//     return data;
+// });
+
+
+
+
+/**
+ * Hexo Auto Typography Script (Version 1.3 - Stability Fix)
+ * 
+ * 修复记录 (V1.3):
+ * 1. 彻底解决 Markdown/LaTeX 语法破坏问题：
+ *    - 修复了 `$(1/2)$` 被拆分为 `$ (1/2) $` 的 Bug。
+ *    - 修复了 `**banana**` 等 Markdown 标记被误加空格的问题。
+ * 2. 逻辑变更：括号间距逻辑由“黑名单排除”改为“白名单匹配”。
+ *    - 旧逻辑：只要前面不是 * ~ _ 就加空格（容易误伤 $ 等符号）。
+ *    - 新逻辑：只有前面是【汉字、字母、数字】时，才加空格。
+ */
+
 hexo.extend.filter.register('before_post_render', function(data) {
     let content = data.content;
     const markers = []; 
@@ -414,15 +521,17 @@ hexo.extend.filter.register('before_post_render', function(data) {
     // 1.4 Markdown 行内代码
     content = mask(content, /`[^`]+`/g);
 
-    // 1.5 数学公式
+    // 1.5 数学公式 (Block & Inline)
     content = mask(content, /\$\$[\s\S]*?\$\$/g);
     content = mask(content, /\\\[[\s\S]*?\\\]/g);
     content = mask(content, /\\\([\s\S]*?\\\)/g);
+    // 【建议】如果你的文章大量使用 $...$ 行内公式，建议开启下方这行（需小心误伤 $价格$）
+    // content = mask(content, /\$(?!\s)[^$\n]+?(?<!\s)\$/g); 
 
     // 1.6 普通 HTML 标签
     content = mask(content, /<[^>]+>/g);
 
-    // 1.7 Markdown 链接/图片语法
+    // 1.7 Markdown 链接/图片 URL
     content = mask(content, /!{0,1}\[[^\]]*\]\([^)]+\)/g);
 
 
@@ -431,19 +540,25 @@ hexo.extend.filter.register('before_post_render', function(data) {
     // 2.1 英文撇号优化
     content = content.replace(/([a-zA-Z])'([a-zA-Z])/g, "$1’$2");
 
-    // 2.2 括号间距处理 (已修复)
-    // 逻辑：如果在左括号前不是空格、且不是(、也不是Markdown标记符(~*_\[#)，则加空格
-    // 这样 `~~(text)~~` 或 `**(text)**` 就不会被拆开了
-    content = content.replace(/([^\s(~*_\[#])\(/g, '$1 (');
+    // 2.2 括号间距处理 (Fixed V1.3 - Whitelist Mode)
+    // 逻辑变更：只在【汉字/字母/数字】与【括号】之间加空格。
+    // 这样 $、*、_、~、#、@ 等所有符号都不会触发加空格，彻底保护 Markdown/LaTeX 语法。
     
-    // 右括号逻辑保持不变，通常右括号后接中文或英文都需要空格，但如果是 Markdown 结束符通常会在 mask 阶段或后续渲染处理，
-    // 为了保险起见，如果右括号紧挨着 ~ * _ 等也不加空格可能更稳妥，但目前的问题主要是左括号。
-    // 这里保持原样即可，因为 `)~~` 中 `~` 不在 \u4e00-\u9fa5a-zA-Z0-9 范围内，所以不会被加空格。
+    // 左括号：前一个字符必须是 汉字、字母、数字
+    // 修复：$(1/2) -> 保持 $(1/2) (因为 $ 不在白名单)
+    // 修复：**(text) -> 保持 **(text) (因为 * 不在白名单)
+    // 正常：text(text) -> text (text)
+    content = content.replace(/([\u4e00-\u9fa5a-zA-Z0-9])\(/g, '$1 (');
+    
+    // 右括号：后一个字符必须是 汉字、字母、数字
+    // 修复：(1/2)$ -> 保持 (1/2)$ (因为 $ 不在白名单)
     content = content.replace(/\)([\u4e00-\u9fa5a-zA-Z0-9])/g, ') $1');
 
-    // 2.3 中英文/数字间距优化
+
+    // 2.3 中英文/数字间距优化 (盘古之白)
     content = content.replace(/([\u4e00-\u9fa5])([a-zA-Z0-9])/g, '$1 $2');
     content = content.replace(/([a-zA-Z0-9])([\u4e00-\u9fa5])/g, '$1 $2');
+
 
     // 2.4 透视眼智能引号
     content = content.replace(/"([^"]*?)"/g, (match, inner, offset, fullStr) => {

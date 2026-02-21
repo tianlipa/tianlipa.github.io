@@ -205,7 +205,7 @@ markdown:
     langPrefix: 'language-'
     breaks: true
     linkify: true
-    typographer: false
+    typographer: true
     quotes: '“”‘’'
   enable_rules:
   disable_rules:

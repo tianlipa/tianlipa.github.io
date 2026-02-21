@@ -5,7 +5,7 @@ tags: [USTC-MINE, 论文阅读, 大模型]
 ---
 
 ## CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society
-让两个 LLM 互相对话, 人类提出idea, 由**任务细化员**把idea变成具体任务, 由**AI User**提需求并验收代码, **AI Assistant**写代码, 二者进行多轮对话.
+让两个 LLM 互相对话, 人类提出idea, 由**任务细化员**把idea变成具体任务, 由 **AI User** 提需求并验收代码, **AI Assistant** 写代码, 二者进行多轮对话.
 
 容易出现的问题:
 
