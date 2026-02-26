@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection 间接提示词注入 (IPI), 把攻击内容放在检索数据中, 模型很难防御. 威胁:  信息窃取: 通过说服模型构造搜索请求, 拼接 URL, 调用 API, 获取用户信息.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能体安全相关论文阅读">
+<meta property="og:url" content="https://tianlipa.github.io/2026/02/g-safeguard-etc/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection 间接提示词注入 (IPI), 把攻击内容放在检索数据中, 模型很难防御. 威胁:  信息窃取: 通过说服模型构造搜索请求, 拼接 URL, 调用 API, 获取用户信息.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-25T11:18:16.000Z">
+<meta property="article:modified_time" content="2026-02-25T15:09:34.097Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="USTC-MINE">
+<meta property="article:tag" content="论文阅读">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/02/g-safeguard-etc/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/02/g-safeguard-etc/","path":"2026/02/g-safeguard-etc/","title":"智能体安全相关论文阅读"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>智能体安全相关论文阅读 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/02/g-safeguard-etc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="智能体安全相关论文阅读 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          智能体安全相关论文阅读
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-02-25 19:18:16 / 修改时间：23:09:34" itemprop="dateCreated datePublished" datetime="2026-02-25T19:18:16+08:00">2026-02-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="not-what-you-ve-signed-up-for-compromising-real-world-llm-integrated-applications-with-indirect-prompt-injection">Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</span><a href="#not-what-you-ve-signed-up-for-compromising-real-world-llm-integrated-applications-with-indirect-prompt-injection" class="header-anchor">#</a></h2>
+<p>间接提示词注入 (IPI), 把攻击内容放在检索数据中, 模型很难防御.</p>
+<p>威胁:</p>
+<ul>
+<li>信息窃取: 通过说服模型构造搜索请求, 拼接 URL, 调用 API, 获取用户信息.</li>
+<li>诈骗: 伪造假信息.</li>
+<li>恶意软件传播: AI worm</li>
+<li>系统入侵: 远程控制, 持久化感染, API 操控, 代码补全污染, 能达到很接近传统后门的行为.</li>
+<li>生成内容操控.</li>
+<li>可用性攻击: 让模型执行耗时任务, 破坏 query, 插入零宽连接符, 禁止调用 API 等.</li>
+</ul>
+<p>隐藏注入技术:</p>
+<ul>
+<li>多阶段注入: 小注入触发模型下载更大的 payload.</li>
+<li>编码注入: 如 base64 编码 prompt, 即使没有明确指示, 模型也会解码.</li>
+</ul>
+<p>作者还注意到了三点:</p>
+<ul>
+<li>攻击者可以仅仅概括攻击目标, 模型可能会自主执行 (什么内鬼).</li>
+<li>可以通过与主题边缘相关的上下文操纵模型生成内容.</li>
+<li>模型可能会发出受注入提示影响并加强的后续 API 调用, 这对智能体尤其危险.</li>
+</ul>
+<span id="more"></span>
+<h2><span id="g-safeguard-a-topology-guided-security-lens-and-treatment-on-llm-based-multi-agent-systems">G-Safeguard: A Topology-Guided Security Lens and Treatment on LLM-based Multi-agent Systems</span><a href="#g-safeguard-a-topology-guided-security-lens-and-treatment-on-llm-based-multi-agent-systems" class="header-anchor">#</a></h2>
+<p>现有的防御机制主要针对单智能体, 忽略了 MAS 中智能体之间通过拓扑结构进行交互的特性. 如果一个智能体被攻击, 它产生的恶意信息会通过通信网络传播并感染其他正常的智能体.</p>
+<p>G-Safeguard 引入了一种基于拓扑引导的「检测与修复」范式.</p>
+<ul>
+<li><strong>构建多智能体话语图 (Multi-agent Utterance Graph)</strong>:
+<ul>
+<li>在每一轮对话结束时, 系统会将智能体作为图的节点 (nodes), 将它们之间的交互历史作为边 (edges), 构建出一个动态的通信图 .</li>
+<li>节点的特征提取自智能体的历史记录, 而边的特征则编码了智能体之间传递的具体话语 .</li>
+</ul>
+</li>
+<li><strong>基于图的攻击检测 (Graph-based Attack Detection)</strong>:
+<ul>
+<li>G-Safeguard 将攻击检测形式化为图上的<strong>节点分类问题 (node classification problem)</strong> .</li>
+<li>它利用图神经网络 (Graph Neural Network, GNN) 对节点和边的特征进行迭代更新, 通过感知智能体之间的信息流, 精准识别出表现异常, 可能被攻击的高风险智能体 .</li>
+</ul>
+</li>
+<li><strong>通过边缘剪枝进行修复 (Edge Pruning for Remediation)</strong>:
+<ul>
+<li>一旦检测到受损的智能体, G-Safeguard 会实施拓扑干预, 即切断 (剪枝) 这些高风险节点向外发送信息的边缘 (outgoing edges) .</li>
+<li>这种针对性的边缘剪枝能有效阻断对抗性恶意信息的进一步传播, 保证剩余智能体之间的无污染通信 .</li>
+</ul>
+</li>
+</ul>
+<p>效果:</p>
+<ul>
+<li><strong>防御效果显著</strong>: 在多种常见的拓扑结构 (Chain/链状, Tree/树状, Star/星状, Random/随机) 和不同的攻击策略下, G-Safeguard 都能大幅降低攻击成功率 (Attack Success Rate, ASR) . 例如, 在应对提示词注入攻击时, 它帮助系统恢复了超过 40% 的性能 .</li>
+<li><strong>规模扩展性强 (Scalability)</strong>: 得益于图神经网络的归纳学习能力, 在一个仅有 8 个智能体的小型 MAS 上训练出的 G-Safeguard, 可以直接应用于包含高达 80 个智能体的大规模 MAS 中, 且无需重新训练即可保持稳定的防御性能 .</li>
+<li><strong>跨模型通用性与实际应用</strong>: 该框架不仅能适应多种底层 LLM (如 GPT-4o, LLaMA-3.1-70b, Claude-3.5, Deepseek 等), 还能无缝集成到如 CAMEL 这样真实世界的主流多智能体框架中, 并在基准测试中保持 80% 以上的攻击者识别准确率 .</li>
+</ul>
+<h2><span id="the-attacker-moves-second-stronger-adaptive-attacks-bypass-defenses-against-llm-jailbreaks-and-prompt-injections">THE ATTACKER MOVES SECOND: STRONGER ADAPTIVE ATTACKS BYPASS DEFENSES AGAINST LLM JAILBREAKS AND PROMPT INJECTIONS</span><a href="#the-attacker-moves-second-stronger-adaptive-attacks-bypass-defenses-against-llm-jailbreaks-and-prompt-injections" class="header-anchor">#</a></h2>
+<p>防御必须在 adaptive attacker 面前评估, 攻击者应当知道防御设计, 针对防御优化攻击策略, 且拥有足够算力.</p>
+<ul>
+<li>Whilebox: 攻击者拥有模型结构, 参数, 内部状态, 梯度.</li>
+<li>Blackbox with logits: 可以查询模型, 获得 logits 或 probability.</li>
+<li>Blackbox: 只能看到输出文本.</li>
+</ul>
+<p>所有 adaptive attack 都可以抽象为一个循环:</p>
+<ol>
+<li>Propose: 生成候选攻击</li>
+<li>Score: 根据攻击效果评分</li>
+<li>Select: 在多个候选中选出更有希望的攻击</li>
+<li>Update: 更新策略</li>
+</ol>
+<p>现有的防御都非常脆弱, 作者呼吁采用更科学的评估方法.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/USTC-MINE/" rel="tag"># USTC-MINE</a>
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+              <a href="/tags/LLM/" rel="tag"># LLM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/02/2026-2-23/" rel="prev" title="2026-2-23">
+                  <i class="fa fa-angle-left"></i> 2026-2-23
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/02/2026-2-26/" rel="next" title="2026-2-26">
+                  2026-2-26 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

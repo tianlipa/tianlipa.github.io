@@ -1,3 +1,6 @@
+https://tianlipa.github.io/2026/02/2026-2-26/
+https://tianlipa.github.io/2026/02/g-safeguard-etc/
+https://tianlipa.github.io/2026/02/2026-2-23/
 https://tianlipa.github.io/2026/02/nc-sliding-window/
 https://tianlipa.github.io/2026/02/2026-2-21/
 https://tianlipa.github.io/2025/12/database-1/
@@ -5,6 +8,3 @@ https://tianlipa.github.io/2025/05/2025-5-5/
 https://tianlipa.github.io/2025/11/still-i-rise/
 https://tianlipa.github.io/2026/02/nc-two-pointers/
 https://tianlipa.github.io/2026/02/nc-arrays-and-hashing/
-https://tianlipa.github.io/2026/02/2026-2-18/
-https://tianlipa.github.io/2026/02/2026-2-14/
-https://tianlipa.github.io/2026/02/machine-learning-review/
