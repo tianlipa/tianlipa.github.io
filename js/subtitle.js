@@ -276,7 +276,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "那一年, 我也十七岁",
         "现已加入肯德基豪华午餐",
         "人生是美丽的.",
-        "我都这样了你就不能让让我吗"
+        "我都这样了你就不能让让我吗",
+        "你指的是非洲燕子还是欧洲燕子?"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
