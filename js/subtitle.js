@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "永远别放弃!",
         "愿指引明路的苍蓝星为你闪耀",
         "&lt;script>alert(1)&lt;/script>",
-        "你终于醒了, 现在是2019年, 我们一起玩MC",
+        "你终于醒了, 现在是2019年,<br>我们一起玩MC",
         "诸位祖先, 敬请见证!",
         "我只是嘴甜, 我心里没你",
         "我在跟你说现在的事.",
@@ -277,7 +277,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "现已加入肯德基豪华午餐",
         "人生是美丽的.",
         "我都这样了你就不能让让我吗",
-        "你指的是非洲燕子还是欧洲燕子?"
+        "你指的是非洲燕子还是欧洲燕子?",
+        "头部没有受到破坏,<br>吐息目前处于威力最强的状态!",
+        "我克藝吃玻璃, 我不毁受傷."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
