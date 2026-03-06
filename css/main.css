@@ -1298,7 +1298,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #8affff;
+    background: #ffe939;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2723,7 +2723,7 @@ header.header {
 }
 .task-list-item input[type="checkbox"] {
   margin-left: -1em;
-  margin-right: 0.5em;
+  margin-right: 0.25em;
 }
 .link-grid .link-grid-container,
 .link-grid .link-grid-container:hover {

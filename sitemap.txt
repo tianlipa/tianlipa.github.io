@@ -1,5 +1,4 @@
 https://tianlipa.github.io/2026/03/not-your-fault/
-https://tianlipa.github.io/shitpost/index.html
 https://tianlipa.github.io/2025/12/wsl-miniconda/
 https://tianlipa.github.io/what-to-read/index.html
 https://tianlipa.github.io/what-to-write/index.html
@@ -95,6 +94,7 @@ https://tianlipa.github.io/2025/11/2025-11-4/
 https://tianlipa.github.io/2025/10/2025-10-30/
 https://tianlipa.github.io/2025/10/2025-10-28/
 https://tianlipa.github.io/2025/10/2025-10-19/
+https://tianlipa.github.io/proust-questionnaire/index.html
 https://tianlipa.github.io/2025/10/proust-2025/
 https://tianlipa.github.io/2025/01/2025-1-26/
 https://tianlipa.github.io/2025/09/2025-9-25/
