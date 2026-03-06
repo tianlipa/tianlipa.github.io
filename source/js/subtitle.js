@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "永远别放弃!",
         "愿指引明路的苍蓝星为你闪耀",
         "&lt;script>alert(1)&lt;/script>",
-        "你终于醒了, 现在是2019年, 我们一起玩MC",
+        "你终于醒了, 现在是2019年,<br>我们一起玩MC",
         "诸位祖先, 敬请见证!",
         "我只是嘴甜, 我心里没你",
         "我在跟你说现在的事.",
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "宝宝, 你是一个**kwargs",
         "每个成功男人的背后,<br>都有一条脊椎.",
         "好好吃饭",
-        "Bone Apple Pie!",
+        "Bone Apple Tea!",
         "Always like this.",
         "生年不满百, 常怀千岁忧.<br>昼短苦夜长, 何不秉烛游!",
         "这个月薯条亏损二十六箱,<br>你有头绪吗?",
@@ -265,7 +265,22 @@ document.addEventListener("DOMContentLoaded", function () {
         "将我的爱, 弃置于此.",
         "既然你诚心诚意地发问了<br>我就大发慈悲地回答你",
         "Creeper?",
-        "现在的时间是 04:20<br>(这个钟一天有两次是对的.)"
+        "现在的时间是 04:20<br>(这个钟一天有两次是对的.)",
+        "❤ 盐酸左西替利嗪重度依赖 ❤",
+        "我们是死人.",
+        "Choose life.",
+        "付之一炬吧<br>我贱烂的生命",
+        "一大波僵尸正在接近!",
+        "然后他就用棍子打我.",
+        "So, this is what it feels like.",
+        "那一年, 我也十七岁",
+        "现已加入肯德基豪华午餐",
+        "人生是美丽的.",
+        "我都这样了你就不能让让我吗",
+        "你指的是非洲燕子还是欧洲燕子?",
+        "头部没有受到破坏,<br>吐息目前处于威力最强的状态!",
+        "我克藝吃玻璃, 我不毁受傷.",
+        "@grok is this true?"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

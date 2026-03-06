@@ -10,7 +10,7 @@ tags: 疑难解答
 
 ## 安装WSL
 
-官方的安装方法是打开管理员PowerShell, 运行`wsl --install`, 然后你就会发现250MB的东西需要下载两个小时. 当然你要是网速够快就当我没说.
+官方的安装方法是打开管理员PowerShell, 运行`wsl --install`, 然后你就会发现250MB的东西需要下载两个小时. 微软的服务器到底是怎么做到开不开梯子都不稳定的, 这可能是某种技术壁垒
 
 所以正确方法是打开 [GitHub Releases](https://github.com/microsoft/WSL/releases), 找到最新版本下载msi安装包, 运行, 之后再打开PowerShell, 运行:
 
@@ -26,7 +26,7 @@ wsl --install
 
 ```bash
 cd /etc/apt
-cp sources.list sources.list.bak
+sudo cp sources.list sources.list.bak
 sudo vim sources.list
 ```
 
