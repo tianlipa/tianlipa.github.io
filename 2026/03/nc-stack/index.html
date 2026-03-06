@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Valid Parentheses 有效的括号 显然. class Solution &#123;public:    bool isValid(string s) &#123;        stack&lt;char&gt; st;        for(int i &#x3D; 0; i &lt; s.size(); ++i) &#123;            if(s[i] &#x3D;&#x3D; &#x27;(&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NeetCode 150 Stack 题解">
+<meta property="og:url" content="https://tianlipa.github.io/2026/03/nc-stack/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="Valid Parentheses 有效的括号 显然. class Solution &#123;public:    bool isValid(string s) &#123;        stack&lt;char&gt; st;        for(int i &#x3D; 0; i &lt; s.size(); ++i) &#123;            if(s[i] &#x3D;&#x3D; &#x27;(&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-06T14:46:55.000Z">
+<meta property="article:modified_time" content="2026-03-06T14:46:55.395Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/03/nc-stack/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/03/nc-stack/","path":"2026/03/nc-stack/","title":"NeetCode 150 Stack 题解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>NeetCode 150 Stack 题解 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">162</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/03/nc-stack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="NeetCode 150 Stack 题解 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NeetCode 150 Stack 题解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-03-06 22:46:55" itemprop="dateCreated datePublished" datetime="2026-03-06T22:46:55+08:00">2026-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3><span id="valid-parentheses">Valid Parentheses</span><a href="#valid-parentheses" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-parentheses/">有效的括号</a></p>
+<p>显然.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] == <span class="string">&#x27;(&#x27;</span> || s[i] == <span class="string">&#x27;[&#x27;</span> || s[i] == <span class="string">&#x27;&#123;&#x27;</span>)</span><br><span class="line">                st.<span class="built_in">push</span>(s[i]);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i] == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(st.<span class="built_in">empty</span>())  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span>(st.<span class="built_in">top</span>() != <span class="string">&#x27;(&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i] == <span class="string">&#x27;]&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(st.<span class="built_in">empty</span>())  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span>(st.<span class="built_in">top</span>() != <span class="string">&#x27;[&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i] == <span class="string">&#x27;&#125;&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(st.<span class="built_in">empty</span>())  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span>(st.<span class="built_in">top</span>() != <span class="string">&#x27;&#123;&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!st.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3><span id="min-stack">Min Stack</span><a href="#min-stack" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-stack/">最小栈</a></p>
+<p>对每一个元素, 额外记录它对应的此时最小元素即可, 使用额外的 O (n) 空间.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">        <span class="type">int</span> data;</span><br><span class="line">        <span class="type">int</span> min;</span><br><span class="line">    &#125;;</span><br><span class="line">    stack&lt;node&gt; st;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(st.<span class="built_in">empty</span>())</span><br><span class="line">            st.<span class="built_in">push</span>(&#123;val, val&#125;);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            st.<span class="built_in">push</span>(&#123;val, <span class="built_in">min</span>(val, st.<span class="built_in">top</span>().min)&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        st.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">top</span>().data;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">top</span>().min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>字节一面题要求只能用额外的 O (1) 空间, 看得我猪脑过载了.</p>
+<p>核心问题是: 如果当前最小值被弹出了, 不知道接下来的最小值是多少.</p>
+<p>思路是: 不在栈里存数字, 而是存储「当前数字与当时的最小值的差」 <code>diff</code>.</p>
+<p>注意即使所有数据都在 <code>int</code> 范围内, <code>diff</code> 也完全有可能超出 <code>int</code> 范围.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> diff = <span class="number">0</span>;   <span class="comment">// diff = val - min;</span></span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> cur_min = <span class="number">2147483647</span>;</span><br><span class="line">    stack&lt;<span class="type">long</span> <span class="type">long</span>&gt; st;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(st.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            diff = <span class="number">0</span>;</span><br><span class="line">            cur_min = val;</span><br><span class="line">            st.<span class="built_in">push</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            diff = val - cur_min;</span><br><span class="line">            st.<span class="built_in">push</span>(diff);</span><br><span class="line">            <span class="keyword">if</span>(diff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                cur_min = val;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        diff = st.<span class="built_in">top</span>();</span><br><span class="line">        <span class="keyword">if</span>(diff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            cur_min = cur_min - diff;</span><br><span class="line">        &#125;</span><br><span class="line">        st.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        diff = st.<span class="built_in">top</span>();</span><br><span class="line">        <span class="comment">// cout&lt;&lt;&quot;diff = &quot;&lt;&lt;diff&lt;&lt;endl;</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;&quot;cur_min = &quot;&lt;&lt;cur_min&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">if</span>(diff &gt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> (diff + cur_min);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> cur_min;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cur_min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="evaluate-reverse-polish-notation">Evaluate Reverse Polish Notation</span><a href="#evaluate-reverse-polish-notation" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/evaluate-reverse-polish-notation/">逆波兰表达式求值</a></p>
+<p>真没啥好说的. 注意一下负数和运算顺序.</p>
+<p>C++ <code>string</code> 转 <code>int</code> 可以用 <code>stoi()</code> 函数.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">evalRPN</span><span class="params">(vector&lt;string&gt;&amp; tokens)</span> </span>&#123;</span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; num;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; tokens.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="comment">// 注意负数</span></span><br><span class="line">            <span class="keyword">if</span>((tokens[i][<span class="number">0</span>] &lt;= <span class="string">&#x27;9&#x27;</span> &amp;&amp; tokens[i][<span class="number">0</span>] &gt;= <span class="string">&#x27;0&#x27;</span>) ||</span><br><span class="line">                (tokens[i][<span class="number">0</span>] == <span class="string">&#x27;-&#x27;</span> &amp;&amp; tokens[i].<span class="built_in">size</span>() != <span class="number">1</span>)) &#123;</span><br><span class="line">                num.<span class="built_in">push</span>(<span class="built_in">stoi</span>(tokens[i]));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="type">int</span> a = num.<span class="built_in">top</span>();</span><br><span class="line">                num.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="type">int</span> b = num.<span class="built_in">top</span>();</span><br><span class="line">                num.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">switch</span> (tokens[i][<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">                    num.<span class="built_in">push</span>(b + a);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">                    num.<span class="built_in">push</span>(b * a);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;/&#x27;</span>:</span><br><span class="line">                    num.<span class="built_in">push</span>(b / a);    <span class="comment">// 注意顺序!</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">                    num.<span class="built_in">push</span>(b - a);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="daily-temperatures">Daily Temperatures</span><a href="#daily-temperatures" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/">每日温度</a></p>
+<p>正常解法单调栈, 注意要事先给 <code>vector</code> 分配空间.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(temperatures.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; temperatures.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">while</span>(!st.<span class="built_in">empty</span>() &amp;&amp; temperatures[st.<span class="built_in">top</span>()] &lt; temperatures[i]) &#123;</span><br><span class="line">                ans[st.<span class="built_in">top</span>()] = i - st.<span class="built_in">top</span>();</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            st.<span class="built_in">push</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以像 Min Stack 一样压缩到只使用 O (1) 额外空间.</p>
+<p>这里的关键是, 每个元素最多只会被「访问之后发现不够大再跳到下一个」一次, 下次会通过 <code>ans</code> 数组直接跳过去, 不会再次访问, 所以最终时间复杂度仍然是 O (n).</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(temperatures.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = temperatures.<span class="built_in">size</span>() - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="type">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(temperatures[i] &lt; temperatures[j]) &#123;</span><br><span class="line">                    ans[i] = j - i;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(ans[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    ans[i] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    j += ans[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="car-fleet">Car Fleet</span><a href="#car-fleet" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/car-fleet/">车队</a></p>
+<p>有点绕的一道题. 为了避免麻烦地判断到目的地之前 A 能不能追上 B, 可以直接把每辆车到目的地剩余时间算出来.</p>
+<p>然后其实没必要用栈, 遍历一遍就行了, 还能省点空间. 但是确实有点绕.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">        <span class="type">int</span> position;</span><br><span class="line">        <span class="type">float</span> time;</span><br><span class="line">        <span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> Car&amp; other) <span class="type">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> position &gt; other.position;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">carFleet</span><span class="params">(<span class="type">int</span> target, vector&lt;<span class="type">int</span>&gt;&amp; position, vector&lt;<span class="type">int</span>&gt;&amp; speed)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;Car&gt; <span class="title">car</span><span class="params">(position.size())</span></span>;</span><br><span class="line">        stack&lt;<span class="type">float</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; position.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            car[i].position = position[i];</span><br><span class="line">            car[i].time = (target - position[i]) * <span class="number">1.0</span> / speed[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(car.<span class="built_in">begin</span>(), car.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; car.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() &lt; car[i].time) &#123;</span><br><span class="line">                st.<span class="built_in">push</span>(car[i].time);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">size</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3><span id="largest-rectangle-in-histogram">Largest Rectangle In Histogram</span><a href="#largest-rectangle-in-histogram" class="header-anchor">#</a></h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">柱状图中最大的矩形</a></p>
+<p>核心思路在于, 对于每个柱子, 怎么找到它左边和右边分别比它矮的最近两根柱子.</p>
+<p>采用单调栈, 保证栈底到栈顶柱子高度递增, 这样入栈时, 如果遇到比栈顶矮的柱子, 则右边界已经确定, 左边界就是栈顶下一个元素所对应的柱子, 很巧妙.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">largestRectangleArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; heights)</span> </span>&#123;</span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">        heights.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; heights.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(st.<span class="built_in">empty</span>() || heights[st.<span class="built_in">top</span>()] &lt;= heights[i]) &#123;</span><br><span class="line">                st.<span class="built_in">push</span>(i);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="type">int</span> t;</span><br><span class="line">                <span class="keyword">while</span>(heights[st.<span class="built_in">top</span>()] &gt; heights[i]) &#123;</span><br><span class="line">                    t = st.<span class="built_in">top</span>();</span><br><span class="line">                    st.<span class="built_in">pop</span>();</span><br><span class="line">                    <span class="keyword">if</span>(st.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                        ans = <span class="built_in">max</span>(ans, i * heights[t]);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        ans = <span class="built_in">max</span>(ans, (i - st.<span class="built_in">top</span>() - <span class="number">1</span>) * heights[t]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                st.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/03/wsl-vpn-docker/" rel="prev" title="如何给 WSL 使用宿主机 VPN 并配置 Docker">
+                  <i class="fa fa-angle-left"></i> 如何给 WSL 使用宿主机 VPN 并配置 Docker
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
