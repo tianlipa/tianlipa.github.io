@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -308,7 +308,7 @@ information_schema.tables 查找表名<br>
 <blockquote>
 <p>权限存储在 mysql 库的 user, db, tables_priv, columns_priv, and procs_priv 这几个系统表中，待 MySQL 实例启动后就加载到内存中</p>
 </blockquote>
-<p><img data-src="/img/msb/17372058872557.png" alt></p>
+<figure><img data-src="/img/msb/17372058872557.png" alt></figure>
 <h3><span id="wen-jian-du-xie">文件读写</span><a href="#wen-jian-du-xie" class="header-anchor">#</a></h3>
 <p>前提条件：高权限</p>
 <p>高版本 MySQL 添加了一个新的特性 secure_file.priv, 限制了 MySQL 导出文件的权限。</p>
@@ -423,7 +423,7 @@ or  ||<br>
 <p>换行 (\N) 绕过</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">union #/*%0a select/*!1,2,3*/ —-+</span><br><span class="line">union/*//—-/*/ /*!—-+/*%0aselect/*11,database(),3*/ —+</span><br></pre></td></tr></table></figure>
 <p>HTTP 参污染：如果 WAF 没有对多参数进行多次过滤，则只会识别其中一个</p>
-<p><img data-src="/img/msb/17374514447604.png" alt></p>
+<figure><img data-src="/img/msb/17374514447604.png" alt></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1&amp;id=-1%20union%20select%201,2,3%23*/</span><br></pre></td></tr></table></figure>
 <h2><span id="sqlmap">sqlmap</span><a href="#sqlmap" class="header-anchor">#</a></h2>
 <ul>

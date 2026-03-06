@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -339,8 +339,8 @@
 <h2><span id="cao-zuo-xi-tong-ti-xi-jie-gou">操作系统体系结构</span><a href="#cao-zuo-xi-tong-ti-xi-jie-gou" class="header-anchor">#</a></h2>
 <h3><span id="cao-zuo-xi-tong-de-nei-he">操作系统的内核</span><a href="#cao-zuo-xi-tong-de-nei-he" class="header-anchor">#</a></h3>
 <p>操作系统最基本最核心的部分, 实现操作系统内核功能的程序就是内核程序.</p>
-<p><img data-src="/img/operating-system-1/2.png" alt="image-20251206221753233"></p>
-<p><img data-src="/img/operating-system-1/1.png" alt></p>
+<figure><img data-src="/img/operating-system-1/2.png" alt="image-20251206221753233"><figcaption>image-20251206221753233</figcaption></figure>
+<figure><img data-src="/img/operating-system-1/1.png" alt></figure>
 <p>大内核:</p>
 <ul>
 <li>将操作系统的主要功能模块都作为系统内核, 运行在内核态.</li>
@@ -385,7 +385,7 @@
 </ul>
 <p>缺点: 降低了系统的一致性, 系统变得更复杂.</p>
 <h2><span id="cao-zuo-xi-tong-yin-dao">操作系统引导</span><a href="#cao-zuo-xi-tong-yin-dao" class="header-anchor">#</a></h2>
-<p><img data-src="/img/operating-system-1/3.png" alt="image-20251206223757095"></p>
+<figure><img data-src="/img/operating-system-1/3.png" alt="image-20251206223757095"><figcaption>image-20251206223757095</figcaption></figure>
 <p>分区表包含各盘的大小等信息.</p>
 <p>C 盘是活动分区, 安装了操作系统.</p>
 <p>开机时, ROM 引导程序 (自举程序) 指引 CPU 把主引导记录读入主存的 RAM, 据此找到 C 盘, 读入 C 盘里的引导记录, 找到 (根目录下的) 启动管理器, 启动启动管理器 (即操作系统初始化程序), 完成开机.</p>
@@ -393,7 +393,7 @@
 <p>传统计算机一台物理机上只能运行一个操作系统.</p>
 <p>虚拟机: 使用虚拟化技术, 把一台物理机器虚拟化为多台虚拟机器 Virtual Machine, 每台虚拟机都可以独立运行一个操作系统.</p>
 <p>虚拟机管理程序 (又称虚拟机监控程序, Virtual Machine Monitor, VMM, Hypervisor)</p>
-<p><img data-src="/img/operating-system-1/4.png" alt="image-20251206224147827"></p>
+<figure><img data-src="/img/operating-system-1/4.png" alt="image-20251206224147827"><figcaption>image-20251206224147827</figcaption></figure>
 <table>
 <thead>
 <tr>

@@ -162,7 +162,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -340,17 +340,17 @@
 </ul>
 <h3><span id="shu-ju-ku-de-bing-fa-cao-zuo-dao-zhi-de-wen-ti">数据库的并发操作导致的问题</span><a href="#shu-ju-ku-de-bing-fa-cao-zuo-dao-zhi-de-wen-ti" class="header-anchor">#</a></h3>
 <h4><span id="xiu-gai-diu-shi">修改丢失</span><a href="#xiu-gai-diu-shi" class="header-anchor">#</a></h4>
-<p><img data-src="/img/database-5/1.png" alt></p>
+<figure><img data-src="/img/database-5/1.png" alt></figure>
 <h4><span id="wu-du-wen-ti">污读问题</span><a href="#wu-du-wen-ti" class="header-anchor">#</a></h4>
 <p>读到脏数据, 正确值应该是读到 A = 5.</p>
-<p><img data-src="/img/database-5/2.png" alt></p>
+<figure><img data-src="/img/database-5/2.png" alt></figure>
 <p>现已推出周边污读娃娃, 欢迎大家购买!</p>
 <h4><span id="bu-ke-chong-fu-du-wen-ti">不可重复读问题</span><a href="#bu-ke-chong-fu-du-wen-ti" class="header-anchor">#</a></h4>
 <p>两次读到的 A 不一致.</p>
-<p><img data-src="/img/database-5/3.png" alt></p>
+<figure><img data-src="/img/database-5/3.png" alt></figure>
 <h4><span id="huan-ying-du-wen-ti">幻影读问题</span><a href="#huan-ying-du-wen-ti" class="header-anchor">#</a></h4>
 <p>同样的操作返回不同结果.</p>
-<p><img data-src="/img/database-5/4.png" alt="image-20251218145800821"></p>
+<figure><img data-src="/img/database-5/4.png" alt="image-20251218145800821"><figcaption>image-20251218145800821</figcaption></figure>
 <p><strong>幻影读和不可重复读的区别</strong>: 不可重复读是由于别人 UPDATE 了数据, 导致读到的内容发生了变化; 幻影读是由于别人 INSERT 或 DELETE 了数据, 导致读到的行数发生了变化.</p>
 <h3><span id="ke-chuan-xing-xing">可串行性</span><a href="#ke-chuan-xing-xing" class="header-anchor">#</a></h3>
 <p>并发调度的唯一标准<strong>可串行性</strong>: 不管怎么乱序执行, 只要最后的结果和轮流执行 (即串行) 相同, 那就是对的.</p>
@@ -416,7 +416,7 @@
 <li>在释放一个锁以后, 不再申请任何锁, 称收缩阶段</li>
 <li>保证事务可串化执行.</li>
 </ul>
-<p><img data-src="/img/database-5/5.png" alt="image-20251218155646072"></p>
+<figure><img data-src="/img/database-5/5.png" alt="image-20251218155646072"><figcaption>image-20251218155646072</figcaption></figure>
 <h4><span id="huo-suo">活锁</span><a href="#huo-suo" class="header-anchor">#</a></h4>
 <p>由于系统并不是按照事务申请锁的先后来决定哪个事务获得资源锁, 从而导致某个事务可能永远等下去的情况称活锁, 也叫饥饿.</p>
 <p>避免活锁的办法: 对锁资源的分配采用先申请先服务的策略.</p>

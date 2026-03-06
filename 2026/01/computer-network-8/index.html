@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,10 +283,10 @@
 <p>某个域如果设置了名字服务器, 则该服务器负责此域下子域的域名管理 (有可能包括子域下层的域) .</p>
 <p>DNS 实现: 采用客户/服务器通信模式, 客户端通过解析器 (resolver) 向名字服务器发送查询请求.</p>
 <p>DNS 解析时使用 UDP 协议, 端口号为 53 号.</p>
-<p><img data-src="/img/computer-network-8/1.png" alt></p>
+<figure><img data-src="/img/computer-network-8/1.png" alt></figure>
 <p>DNS 名字空间被划分为一些不重叠的区域 (Zone), 每个区域的信息保存在该区域对应的名字服务器上, 该服务器也被称为所在区域的授权名字服务器.</p>
 <p>Internet 允许各个组织根据具体情况将本组织内的域划分为若干个区域 (zone), 并在各区域中设置相应的授权名字服务器.</p>
-<p><img data-src="/img/computer-network-8/2.png" alt></p>
+<figure><img data-src="/img/computer-network-8/2.png" alt></figure>
 <p>根名字服务器: 保存了所有顶级域名字服务器的 IP 地址. 为确保可靠性和响应性能, 每个根名字服务器在全球多地部署.</p>
 <h3><span id="zi-yuan-ji-lu">资源记录</span><a href="#zi-yuan-ji-lu" class="header-anchor">#</a></h3>
 <p>Resource Record, 名字服务器以资源记录的形式来维护本区域内的域名相关信息.</p>
@@ -354,7 +354,7 @@
 <li>权威记录 Authoritative Record, 来自管理该记录的授权名字服务器, 因此总是正确的. 例如 <a target="_blank" rel="noopener" href="http://eeis.ustc.edu.cn">eeis.ustc.edu.cn</a> 在 <a target="_blank" rel="noopener" href="http://ustc.edu.cn">ustc.edu.cn</a> 域所对应的名字服务器所管辖的范围内, 因此该名字服务器返回的关于 <a target="_blank" rel="noopener" href="http://eeis.ustc.edu.cn">eeis.ustc.edu.cn</a> 的记录为权威记录.</li>
 <li>缓存记录 Cached Record, 名字服务器缓存来自其它名字服务器的记录, 这些有效期由 TTL 域指定, 当 TTL 过期时, 该记录被删除.</li>
 </ul>
-<p><img data-src="/img/computer-network-8/3.png" alt></p>
+<figure><img data-src="/img/computer-network-8/3.png" alt></figure>
 <h3><span id="dns-cha-xun-guo-cheng">DNS 查询过程</span><a href="#dns-cha-xun-guo-cheng" class="header-anchor">#</a></h3>
 <p>当用户要访问 web 服务时, 在浏览器中键入 web 服务器的域名, 主机上的域名解析器先查询本机上的 cache 以及 hosts 文件, 如果没有对应表项, 则向名字服务器请求域名服务.</p>
 <p>查询类型:</p>
@@ -364,9 +364,9 @@
 </ul>
 <p>例: 查询 <a target="_blank" rel="noopener" href="http://if.ee.ustc.edu">if.ee.ustc.edu</a> 所对应的资源记录.</p>
 <p>迭代查询:</p>
-<p><img data-src="/img/computer-network-8/4.png" alt></p>
+<figure><img data-src="/img/computer-network-8/4.png" alt></figure>
 <p>递归查询:</p>
-<p><img data-src="/img/computer-network-8/5.png" alt="image-20260105152241394"></p>
+<figure><img data-src="/img/computer-network-8/5.png" alt="image-20260105152241394"><figcaption>image-20260105152241394</figcaption></figure>
 <h2><span id="www-wan-wei-wang-http">WWW 万维网 (HTTP)</span><a href="#www-wan-wei-wang-http" class="header-anchor">#</a></h2>
 <p>万维网 (World Wide Web, 也称为 WWW) 由庞大的, 分布在世界各地的 web 页面的集合组成.</p>
 <p>Web 页面编写采用 HTML (HyperText Markup Language) 等语言, 客户端 (浏览器) 采用 HTTP (HyperText Transfer Protocol) 协议来访问 web 页面.</p>
@@ -403,7 +403,7 @@
 <li>响应消息, 从 web 服务器发往客户端</li>
 </ul>
 <p><strong>请求消息</strong>:</p>
-<p><img data-src="/img/computer-network-8/6.png" alt="image-20260105153435222"></p>
+<figure><img data-src="/img/computer-network-8/6.png" alt="image-20260105153435222"><figcaption>image-20260105153435222</figcaption></figure>
 <p>方法:</p>
 <table>
 <thead>
@@ -444,12 +444,12 @@
 </tbody>
 </table>
 <p>HTTP 请求示例:</p>
-<p><img data-src="/img/computer-network-8/7.png" alt="image-20260105153558748"></p>
+<figure><img data-src="/img/computer-network-8/7.png" alt="image-20260105153558748"><figcaption>image-20260105153558748</figcaption></figure>
 <p><strong>响应消息</strong>:</p>
-<p><img data-src="/img/computer-network-8/8.png" alt="image-20260105203837184"></p>
+<figure><img data-src="/img/computer-network-8/8.png" alt="image-20260105203837184"><figcaption>image-20260105203837184</figcaption></figure>
 <p>响应消息的开始行是<strong>状态行</strong>, 状态行包括 HTTP 的版本, 状态码, 以及解释状态码的简单短语.</p>
 <p>例:</p>
-<p><img data-src="/img/computer-network-8/9.png" alt="image-20260105203902741"></p>
+<figure><img data-src="/img/computer-network-8/9.png" alt="image-20260105203902741"><figcaption>image-20260105203902741</figcaption></figure>
 <p>1xx 表示通知信息, 如服务器同意处理客户请求 (100)<br>
 2xx 表示成功, 如请求成功 (200) 或没有内容存在 (204)<br>
 3xx 表示重定向, 如页面移动 (301) 或者缓存的页面仍然有效 (304)<br>

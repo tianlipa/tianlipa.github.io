@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -275,7 +275,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dl_train = DataLoader(ds_train,batch_size = <span class="number">50</span>,shuffle = <span class="literal">True</span>)</span><br><span class="line">dl_val = DataLoader(ds_val,batch_size = <span class="number">50</span>,shuffle = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 <p>可以运行如下代码查看部分样本和 shape.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt </span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">8</span>)) </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    img,label = ds_train[i]</span><br><span class="line">    img = img.permute(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">    ax=plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i+<span class="number">1</span>)</span><br><span class="line">    ax.imshow(img.numpy())</span><br><span class="line">    ax.set_title(<span class="string">&quot;label = %d&quot;</span>%label.item())</span><br><span class="line">    ax.set_xticks([])</span><br><span class="line">    ax.set_yticks([]) </span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> features,labels <span class="keyword">in</span> dl_train:</span><br><span class="line">    <span class="built_in">print</span>(features.shape,labels.shape) </span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="/img/eat-pytorch-2/1.png" alt></p>
+<figure><img data-src="/img/eat-pytorch-2/1.png" alt></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">torch.Size([50, 3, 32, 32]) torch.Size([50, 1])</span><br></pre></td></tr></table></figure>
 <p>Pytorch 的图片默认顺序是 Batch, Channel, Width, Height.</p>
 <h2><span id="jian-li-mo-xing">建立模型</span><a href="#jian-li-mo-xing" class="header-anchor">#</a></h2>

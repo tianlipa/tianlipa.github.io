@@ -158,7 +158,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -379,7 +379,7 @@ VARCHAR (n): 变长, 如名字, 地址, 长度不固定, 省空间.</p>
 </ol>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.Name <span class="keyword">AS</span> 员工名,  B.Name <span class="keyword">AS</span> 上司名</span><br><span class="line"><span class="keyword">FROM</span>   Employee A,  Employee B     <span class="comment">-- 给 Employee 表起别名 A 和 B</span></span><br><span class="line"><span class="keyword">WHERE</span>  A.BossID <span class="operator">=</span> B.ID;            <span class="comment">-- A的上司编号 = B的自己的编号</span></span><br></pre></td></tr></table></figure>
 <p>另外 Gemini 的攻击性疑似有点强了.</p>
-<p><img data-src="/img/database-2/8.png" alt></p>
+<figure><img data-src="/img/database-2/8.png" alt></figure>
 <h3><span id="qian-tao-cha-xun">嵌套查询</span><a href="#qian-tao-cha-xun" class="header-anchor">#</a></h3>
 <p>把一个查询的结果当成另一个查询的条件.</p>
 <h4><span id="in">IN</span><a href="#in" class="header-anchor">#</a></h4>

@@ -173,7 +173,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -269,7 +269,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2><span id="chuan-shu-ceng-fu-wu">传输层服务</span><a href="#chuan-shu-ceng-fu-wu" class="header-anchor">#</a></h2>
-<p><img data-src="/img/computer-network-7/1.png" alt></p>
+<figure><img data-src="/img/computer-network-7/1.png" alt></figure>
 <p>主要功能: 向上层应用 (进程) 提供不同类型的端到端传输服务.</p>
 <ul>
 <li>无连接: 没有连接建立过程, 直接发送数据</li>
@@ -294,7 +294,7 @@
 </ul>
 <p>二者都不能提供延时或带宽保证.</p>
 <p>主机上的每个应用进程与不同的传输层端口相关联, 因此, 传输层提供了运行在不同主机上的应用进程之间的逻辑通信管道, 管道的两端由<strong>端口</strong>来标识.</p>
-<p><img data-src="/img/computer-network-7/2.png" alt></p>
+<figure><img data-src="/img/computer-network-7/2.png" alt></figure>
 <h3><span id="yin-ru-chuan-shu-ceng-de-yuan-yin">引入传输层的原因</span><a href="#yin-ru-chuan-shu-ceng-de-yuan-yin" class="header-anchor">#</a></h3>
 <ul>
 <li>实现用户对数据传输的控制: 网络层运行在用户终端和路由器上, 而传输层运行在用户主机上, 用户可以根据应用需求选择不同的传输层服务.</li>
@@ -345,7 +345,7 @@
 </tbody>
 </table>
 <h2><span id="chuan-shu-ceng-xun-zhi">传输层寻址</span><a href="#chuan-shu-ceng-xun-zhi" class="header-anchor">#</a></h2>
-<p><img data-src="/img/computer-network-7/3.png" alt></p>
+<figure><img data-src="/img/computer-network-7/3.png" alt></figure>
 <p>TSAP: 端口号</p>
 <p>NSAP: IP 地址</p>
 <p>一个传输层进程需要与另一个进程建立连接, 就需要知道对方的 TSAP 端口号.</p>
@@ -378,14 +378,14 @@
 </blockquote>
 <p>经典咏流传.</p>
 <h3><span id="san-bu-wo-shou">三步握手</span><a href="#san-bu-wo-shou" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-7/4.png" alt="image-20260102225540285"></p>
+<figure><img data-src="/img/computer-network-7/4.png" alt="image-20260102225540285"><figcaption>image-20260102225540285</figcaption></figure>
 <ol>
 <li>主机 1 选择一个序号 x, 并向主机 2 发送包含该序号的连接请求 CR</li>
 <li>主机 2 应答连接确认 ACK, 其中包含确认号 x 和序列号 y</li>
 <li>主机 1 在其发送的第一个数据中采用序列号 x, 并确认主机 2 的序列号 y</li>
 </ol>
 <p>延迟重复分组:</p>
-<p><img data-src="/img/computer-network-7/5.png" alt="image-20260102225633395"></p>
+<figure><img data-src="/img/computer-network-7/5.png" alt="image-20260102225633395"><figcaption>image-20260102225633395</figcaption></figure>
 <p>图 b 为重复的 CR 突然出现, 图 c 为重复的 CR 和重复的 ACK.</p>
 <p>CR 即 connection request, 在 TCP/IP 协议里为 SYN (Synchronize).</p>
 <h3><span id="shi-fang-lian-jie">释放连接</span><a href="#shi-fang-lian-jie" class="header-anchor">#</a></h3>
@@ -394,11 +394,11 @@
 <li>对称释放: 把连接看作是由两个独立的单向连接, 并要求单独释放每一个单向连接</li>
 </ul>
 <h4><span id="fei-dui-cheng-shi-fang">非对称释放</span><a href="#fei-dui-cheng-shi-fang" class="header-anchor">#</a></h4>
-<p><img data-src="/img/computer-network-7/6.png" alt="image-20260102230429453"></p>
+<figure><img data-src="/img/computer-network-7/6.png" alt="image-20260102230429453"><figcaption>image-20260102230429453</figcaption></figure>
 <p>当连接建立以后, 主机 1 发送一个 DATA, 它正确地到达了主机 2, 然后, 主机 1 又发送一个 DATA, 但是由于主机 2 在第二个 DATA 到达之前就已经发送了断开请求 DR, 该连接虽然被释放, 但是数据丢失了.</p>
 <h4><span id="dui-cheng-shi-fang">对称释放</span><a href="#dui-cheng-shi-fang" class="header-anchor">#</a></h4>
 <p>释放连接再次用到三步握手, 一方发出断开请求 DR 后不立即拆除连接, 而要等待对方确认 ACK; 对方收到 DR, 发送 ACK 确认报文, 并拆除连接, 发起方收到 ACK 确认后拆除连接.</p>
-<p><img data-src="/img/computer-network-7/7.png" alt="image-20260102230603281"></p>
+<figure><img data-src="/img/computer-network-7/7.png" alt="image-20260102230603281"><figcaption>image-20260102230603281</figcaption></figure>
 <h4><span id="dui-cheng-shi-fang-zhong-de-fen-zu-diu-shi">对称释放中的分组丢失</span><a href="#dui-cheng-shi-fang-zhong-de-fen-zu-diu-shi" class="header-anchor">#</a></h4>
 <p>两军问题: 在不可靠的通信信道上, 无法通过有限次的消息交换, 使分布式系统中的双方就「关闭连接」这一状态达成 100% 的共识.</p>
 <p>解决方案:</p>
@@ -427,7 +427,7 @@
 <li>各种网络应用进程都能将其数据通过端口向下交付给传输层</li>
 <li>传输层根据接收到的 TCP/UDP 协议数据单元中包含的端口信息将其递交给与该端口关联的网络应用进程</li>
 </ul>
-<p><img data-src="/img/computer-network-7/8.png" alt></p>
+<figure><img data-src="/img/computer-network-7/8.png" alt></figure>
 <p>端口用一个 16 bit 端口号进行标志, 共 64K 个端口号, 对一台主机来说是足够的.</p>
 <p><strong>端口号只具有本地意义</strong>, 即端口号只是为了标识本机上的各个应用进程, 在 Internet 中不同主机的相同端口号是没有联系的.</p>
 <p>端口号分为两类:</p>
@@ -436,16 +436,16 @@
 <li>一般端口, 用来随时分配给请求通信的客户进程</li>
 </ul>
 <h3><span id="internet-xun-zhi-mo-xing-zong-jie">Internet 寻址模型总结</span><a href="#internet-xun-zhi-mo-xing-zong-jie" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-7/9.png" alt="image-20260102232214021"></p>
+<figure><img data-src="/img/computer-network-7/9.png" alt="image-20260102232214021"><figcaption>image-20260102232214021</figcaption></figure>
 <p>端口号: 在主机上标识应用进程, 数据中的端口号由程序或者系统指定</p>
 <p>IP 地址: 标识 Internet 上的某台主机, 数据中的 IP 地址由程序或者系统指定<br>
 发送数据包括发送方的地址或者端口 (源地址和源端口), 接收方地址或者端口 (目的地址和目的端口), <strong>一般来说跨越网络传输保持不变</strong></p>
 <p>链路地址 (MAC 地址): 标识共享链路上的某个接口设备, 固化在设备中, 数据中的 MAC 地址一般由系统指定. <strong>帧的源和目的 MAC 地址随链路变化.</strong></p>
 <h3><span id="yong-hu-shu-ju-bao-xie-yi-udp">用户数据报协议 UDP</span><a href="#yong-hu-shu-ju-bao-xie-yi-udp" class="header-anchor">#</a></h3>
 <h4><span id="udp-tou-biao">UDP 头标</span><a href="#udp-tou-biao" class="header-anchor">#</a></h4>
-<p><img data-src="/img/computer-network-7/10.png" alt="image-20260103142219672"></p>
+<figure><img data-src="/img/computer-network-7/10.png" alt="image-20260103142219672"><figcaption>image-20260103142219672</figcaption></figure>
 <p>UDP 中校验和是可选的, 当不做校验和计算时, 将该字段全部置零.</p>
-<p><img data-src="/img/computer-network-7/11.png" alt></p>
+<figure><img data-src="/img/computer-network-7/11.png" alt></figure>
 <p>计算步骤:</p>
 <ol>
 <li>在 UDP 数据段前面加上 IP 伪头标.</li>
@@ -473,7 +473,7 @@
 <li>全双工</li>
 </ul>
 <h4><span id="tcp-tou-biao">TCP 头标</span><a href="#tcp-tou-biao" class="header-anchor">#</a></h4>
-<p><img data-src="/img/computer-network-7/12.png" alt></p>
+<figure><img data-src="/img/computer-network-7/12.png" alt></figure>
 <ul>
 <li>源端口/目的端口, 16 位的端口号</li>
 <li><strong>序列号</strong> Sequence Number: 标识本数据段中第一个字节在数据流中的位置</li>
@@ -496,7 +496,7 @@
 <p>TCP 校验和强制.</p>
 <h4><span id="tcp-lian-jie">TCP 连接</span><a href="#tcp-lian-jie" class="header-anchor">#</a></h4>
 <p>TCP 连接的端点称为套接字 socket.</p>
-<p><img data-src="/img/computer-network-7/13.png" alt="image-20260103152116089"></p>
+<figure><img data-src="/img/computer-network-7/13.png" alt="image-20260103152116089"><figcaption>image-20260103152116089</figcaption></figure>
 <p>一条 TCP 连接是由发送端套接口和接收端套接口加上协议类型来唯一标识的, 即 TCP 连接用五元组**&lt;源端IP地址, 源端口号, 目的IP地址, 目的端口号, 协议&gt;**来唯一标识.</p>
 <p>例: &lt;136.6.23.13,1500, 130.42.85.15,25, TCP&gt;</p>
 <p>在计算机网络中, 五元组常用来标识一个应用层会话 (session), 包括基于 UDP 和 TCP 的会话</p>
@@ -514,7 +514,7 @@
 <p><strong>主机发送 FIN 数据段后, 就不再向对方发送数据.</strong></p>
 <p><strong>闲置定时器</strong>(Quiet Timer): 当 TCP 连接断开后, 为防止该连接上的数据段还在网络上, 并被后续打开的相同五元组的连接接收, 要设置闲置定时器以防止刚刚断开连接的端口号被立即重新使用.</p>
 <p><strong>保持存活定时器</strong>(Keep-Alive Timer): 当一个连接长时间闲置时, 保持存活定时器会超时而使一方去检测另一方是否仍然存在, 如果它未得到响应, 便终止该连接.</p>
-<p><img data-src="/img/computer-network-7/14.png" alt="image-20260103154043675"></p>
+<figure><img data-src="/img/computer-network-7/14.png" alt="image-20260103154043675"><figcaption>image-20260103154043675</figcaption></figure>
 <h4><span id="hua-dong-chuang-kou-ji-zhi">滑动窗口机制</span><a href="#hua-dong-chuang-kou-ji-zhi" class="header-anchor">#</a></h4>
 <p><strong>允许发送方在收到确认之前连续发送多个分组.</strong></p>
 <ul>
@@ -564,11 +564,11 @@
 <p><strong>拥塞避免</strong>: 拥塞窗口增长到 ssthresh 时, 就每次将拥塞窗口加 1, 使拥塞窗口按线性规律增长. 如果出现超时或者认为发送的数据段出现丢失时, 就将当时拥塞窗口值减半, 作为新的 ssthresh, 同时将拥塞窗口变为 1.</p>
 <p><strong>快速重传</strong>: 接收方连续收到三个重复确认 (ACK), 不等 Timeout 了, 立刻重传.</p>
 <p><strong>发生拥塞/丢包/超时/快重传时, 新的 ssthresh = 发生拥塞时 cwnd 值的一半.</strong></p>
-<p><img data-src="/img/computer-network-7/15.png" alt="image-20260103173937019"></p>
+<figure><img data-src="/img/computer-network-7/15.png" alt="image-20260103173937019"><figcaption>image-20260103173937019</figcaption></figure>
 <p><strong>加法增大</strong>: 执行拥塞避免算法后, 在收到对所有数据段的确认后 (即经过一个往返时间), 就把拥塞窗口增加一个 MSS 大小, 使拥塞窗口缓慢增大, 以防止网络过早出现拥塞.</p>
 <p><strong>乘法减小</strong>: 不论在慢启动阶段还是拥塞避免阶段, 只要出现一次超时或者认为发送的数据段出现丢失时 (即出现一次网络拥塞), 就把慢启动阈值 ssthresh 设置为当前的拥塞窗口乘以 0.5. 当网络频繁出现拥塞时, ssthresh 就下降得很快, 以大大减少注入到网络中的数据量.</p>
 <p><strong>快速恢复</strong>: TCP Reno, cwnd 不是设置为 1, 而是减半. 是的 PPT 教的是 TCP Tahoe, 已经废弃了.</p>
-<p><img data-src="/img/computer-network-7/16.png" alt="image-20260103174601380"></p>
+<figure><img data-src="/img/computer-network-7/16.png" alt="image-20260103174601380"><figcaption>image-20260103174601380</figcaption></figure>
 
     </div>
 

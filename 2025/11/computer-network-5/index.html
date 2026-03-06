@@ -162,7 +162,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -268,7 +268,7 @@
 <p>主要设备: 路由器, L3 交换机.</p>
 <span id="more"></span>
 <h2><span id="wang-luo-ceng-xiang-chuan-shu-ceng-ti-gong-de-fu-wu">网络层向传输层提供的服务</span><a href="#wang-luo-ceng-xiang-chuan-shu-ceng-ti-gong-de-fu-wu" class="header-anchor">#</a></h2>
-<p><img data-src="/img/computer-network-5/1.png" alt></p>
+<figure><img data-src="/img/computer-network-5/1.png" alt></figure>
 <p>网络层的必要性:</p>
 <ul>
 <li>相距较远的局域网之间的互联互通需要有结构化的统一地址编排, 而 MAC 地址是硬件地址, 与位置无关, 无法用来路由.</li>
@@ -442,7 +442,7 @@
 <li>节点沿着所有与其直接相连的链路将 LSP 发送出去, 接收到 LSP 的每个节点再沿着除接收链路以外的所有其它与它相连的链路转发出去, 这个过程一直继续, 直到 LSP 到达网络中的所有节点.</li>
 <li>相邻路由器之间的 LSP 传递使用确认和重传机制来保证可靠性.</li>
 </ul>
-<p><img data-src="/img/computer-network-5/2.png" alt></p>
+<figure><img data-src="/img/computer-network-5/2.png" alt></figure>
 <p>LSP 的产生:</p>
 <ul>
 <li>周期性公告</li>
@@ -506,7 +506,7 @@
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span>: 网络的利用率<br>
 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">D_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: 网络空闲时的时延<br>
 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span>: 网络当前的时延</p>
-<p><img data-src="/img/computer-network-5/3.png" alt></p>
+<figure><img data-src="/img/computer-network-5/3.png" alt></figure>
 <p>结论: 信道或者网络利用率过高会产生非常大的延迟, 因此, 一些拥有较大骨干网的 ISP 通常控制他们的信道或者网络利用率不超过 50%, 如果超过了就要考虑扩容, 增大线路的带宽.</p>
 <h3><span id="yong-sai-kong-zhi-yu-liu-liang-kong-zhi">拥塞控制与流量控制</span><a href="#yong-sai-kong-zhi-yu-liu-liang-kong-zhi" class="header-anchor">#</a></h3>
 <p>拥塞控制:</p>
@@ -578,14 +578,14 @@
 <p>用户事先与网络服务提供商协商好服务等级, 在虚电路建立过程中预留相应的资源.</p>
 <p>节点上的接纳控制 (Admission Control): 如果网络出现拥塞, 拒接建立新的虚电路.</p>
 <p>虚电路建立时绕开发生拥塞的区域.</p>
-<p><img data-src="/img/computer-network-5/4.png" alt></p>
+<figure><img data-src="/img/computer-network-5/4.png" alt></figure>
 <h3><span id="shu-ju-bao-wang-luo-zhong-de-yong-sai-kong-zhi">数据报网络中的拥塞控制</span><a href="#shu-ju-bao-wang-luo-zhong-de-yong-sai-kong-zhi" class="header-anchor">#</a></h3>
 <p>抑制分组:</p>
 <ul>
 <li>源抑制: 当路由器发生拥塞时, 发送抑制分组给源主机, 其中指明原分组的目的地址; 源主机收到抑制分组后, 减慢到指定目的地的流量.</li>
 <li>逐跳抑制: 抑制分组将对其通过的每跳都起作用.</li>
 </ul>
-<p><img data-src="/img/computer-network-5/5.png" alt></p>
+<figure><img data-src="/img/computer-network-5/5.png" alt></figure>
 
     </div>
 

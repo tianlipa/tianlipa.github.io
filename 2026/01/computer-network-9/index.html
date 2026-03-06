@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -281,7 +281,7 @@
 <li>不可否认性 No-repudiation</li>
 </ul>
 <p>网络安全的设计原则: 真正安全的机器是没有联网并且深埋在地下的机器.</p>
-<p><img data-src="/img/computer-network-9/1.png" alt></p>
+<figure><img data-src="/img/computer-network-9/1.png" alt></figure>
 <p>网络安全的重要性: 一想到网络安全涵盖政务, 商务, 金融, 军事, 社会稳定等方面, 即使是 GPA 最低的网安学生也不禁自豪地挺起胸膛.</p>
 <h2><span id="an-quan-mo-xing">安全模型</span><a href="#an-quan-mo-xing" class="header-anchor">#</a></h2>
 <p>网络安全模型: 实现端到端的安全通信, 包括身份认证, 信息的机密性, 完整性, 不可否认性.</p>
@@ -314,7 +314,7 @@
 <li>解密算法: 对密文进行解密时采用的规则</li>
 <li>密钥 (key):参与变换的参数, 分别有加密密钥和解密密钥</li>
 </ul>
-<p><img data-src="/img/computer-network-9/2.png" alt="image-20260105220438140"></p>
+<figure><img data-src="/img/computer-network-9/2.png" alt="image-20260105220438140"><figcaption>image-20260105220438140</figcaption></figure>
 <p>柯克霍夫斯原则: 即使密码系统中的所有算法细节被密码分析员所知, 也应该无助于用来推导出明文或者密钥 (只要密钥没有发生泄露, 系统就应该是安全的).</p>
 <ul>
 <li>对称密钥体制 (Symmetric System): 加密密钥和解密密钥相同, 这些算法也叫作单钥密码体制 (one-key system), 如 DES, 3DES, AES, IDEA 等.</li>
@@ -338,13 +338,13 @@
 <p>消息认证: 确保消息的完整可靠</p>
 <h3><span id="shu-zi-qian-ming">数字签名</span><a href="#shu-zi-qian-ming" class="header-anchor">#</a></h3>
 <p>公钥密码学的一个重要应用就是数字签名, 数字签名的基本思想就是利用私钥生成签名, 而用公钥验证签名.</p>
-<p><img data-src="/img/computer-network-9/3.png" alt></p>
+<figure><img data-src="/img/computer-network-9/3.png" alt></figure>
 <p>由于无法识别数字签名与其拷贝之间的差异, 所以在数字签名前应加上时间戳.</p>
 <h3><span id="xiao-xi-ren-zheng">消息认证</span><a href="#xiao-xi-ren-zheng" class="header-anchor">#</a></h3>
 <p>加密函数, 消息认证码 (Message Authentication Code, MAC), 散列函数+签名算法</p>
 <h4><span id="mac">MAC</span><a href="#mac" class="header-anchor">#</a></h4>
 <p>利用函数 f 和密钥 k, 对要发送的明文 x 或密文 y 变换成 r bit 的消息认证码 f (k,x)(或 f (k,y)), 将其称为认证符附加在 x (或 y) 之后发出, 接收者收到发送的消息序列后, 按发送方同样的方法对接收的数据 (或解密后) 进行计算, 应得到相应的 r bit 数据.</p>
-<p><img data-src="/img/computer-network-9/4.png" alt="image-20260105223751356"></p>
+<figure><img data-src="/img/computer-network-9/4.png" alt="image-20260105223751356"><figcaption>image-20260105223751356</figcaption></figure>
 <h4><span id="san-lie-han-shu">散列函数</span><a href="#san-lie-han-shu" class="header-anchor">#</a></h4>
 <p>从一段很长的报文中计算出一个固定长度的比特串, 这种散列函数通常称为报文摘要 (message digest), 用于消息的完整性检验.</p>
 <p><strong>弱碰撞抵抗</strong>: 对于任意给定的数据 X, 寻找满足 H (Y)=H (X),Y≠X,在计算上是不可行的. 满足称为弱哈希函数.</p>

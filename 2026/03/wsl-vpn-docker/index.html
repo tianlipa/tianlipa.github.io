@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="国内正常工作的 Docker 镜像站越来越少了, 导致配 Docker 环境也越来越痛苦了. 于是自然想到可以利用 VPN 给 Docker 做一个代理, 具体方法如下. 打开代理软件的这个设置:  找到代理软件的端口, 我用的 FlClash 端口号是 7890, 需要在防火墙新建一条规则放行入站.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何给 WSL 使用宿主机 VPN 并配置 Docker">
+<meta property="og:url" content="https://tianlipa.github.io/2026/03/wsl-vpn-docker/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="国内正常工作的 Docker 镜像站越来越少了, 导致配 Docker 环境也越来越痛苦了. 于是自然想到可以利用 VPN 给 Docker 做一个代理, 具体方法如下. 打开代理软件的这个设置:  找到代理软件的端口, 我用的 FlClash 端口号是 7890, 需要在防火墙新建一条规则放行入站.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/wsl-vpn-docker/1.png">
+<meta property="article:published_time" content="2026-03-06T13:41:28.000Z">
+<meta property="article:modified_time" content="2026-03-06T14:22:09.990Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="疑难解答">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/wsl-vpn-docker/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/03/wsl-vpn-docker/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/03/wsl-vpn-docker/","path":"2026/03/wsl-vpn-docker/","title":"如何给 WSL 使用宿主机 VPN 并配置 Docker"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>如何给 WSL 使用宿主机 VPN 并配置 Docker | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/03/wsl-vpn-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="如何给 WSL 使用宿主机 VPN 并配置 Docker | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何给 WSL 使用宿主机 VPN 并配置 Docker
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-03-06 21:41:28 / 修改时间：22:22:09" itemprop="dateCreated datePublished" datetime="2026-03-06T21:41:28+08:00">2026-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>国内正常工作的 Docker 镜像站越来越少了, 导致配 Docker 环境也越来越痛苦了. 于是自然想到可以利用 VPN 给 Docker 做一个代理, 具体方法如下.</p>
+<p>打开代理软件的这个设置:</p>
+<figure><img data-src="/img/wsl-vpn-docker/1.png" alt></figure>
+<p>找到代理软件的端口, 我用的 FlClash 端口号是 7890, 需要在防火墙新建一条规则放行入站.</p>
+<span id="more"></span>
+<p>(其实这一步理论上不做也行, 可以先跳过, 出问题了再回头试试.)</p>
+<p>可以直接在管理员 PowerShell 里运行:</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;Allow WSL Proxy 7890&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-Action</span> Allow <span class="literal">-Protocol</span> TCP <span class="literal">-LocalPort</span> <span class="number">7890</span></span><br></pre></td></tr></table></figure>
+<p>或者 Win+R 打开 <code>wf.msc</code>, 入站规则 - 新建规则 - 端口 - TCP - 本地端口输入 7890 - 允许连接, 然后一路下一步.</p>
+<p>然后 Win11 有一个非常好的功能, 可以让 WSL 直接和 Windows 共享网络配置.</p>
+<p>在用户文件夹 (例如 <code>C:\Users\用户名</code>, 如果找不到可以 Win+R 输入 <code>%USERPROFILE%</code>) 新建一个名叫 <code>.wslconfig</code> 的文件, 内容为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">networkingMode=mirrored</span><br></pre></td></tr></table></figure>
+<p>然后 <code>wsl --shutdown</code> 重启 WSL.</p>
+<p>在 WSL 的终端运行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">&quot;http://127.0.0.1:7890&quot;</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="variable">$http_proxy</span></span><br><span class="line"><span class="built_in">export</span> HTTP_PROXY=<span class="variable">$http_proxy</span></span><br><span class="line"><span class="built_in">export</span> HTTPS_PROXY=<span class="variable">$http_proxy</span></span><br></pre></td></tr></table></figure>
+<p>即可.</p>
+<p>想测试可以运行 <code>curl https://www.google.com</code>, 有正常响应就是成功了, 如果很长时间没反应大概率是寄了.</p>
+<p>需要关掉代理的时候, 运行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">unset</span> HTTP_PROXY HTTPS_PROXY NO_PROXY http_proxy https_proxy no_proxy</span><br></pre></td></tr></table></figure>
+<p>注意, 如果需要 <code>sudo</code> 执行某个需要代理的程序, 要带上 <code>-E</code> 参数, 否则 <code>sudo</code> 默认不会传递环境变量, 例如:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -E ./installer</span><br></pre></td></tr></table></figure>
+<p>Docker 配置需要在终端执行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /etc/systemd/system/docker.service.d</span><br><span class="line"><span class="built_in">sudo</span> nano /etc/systemd/system/docker.service.d/http-proxy.conf</span><br></pre></td></tr></table></figure>
+<p>写入:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Environment=&quot;HTTP_PROXY=http://127.0.0.1:7890&quot;</span><br><span class="line">Environment=&quot;HTTPS_PROXY=http://127.0.0.1:7890&quot;</span><br><span class="line">Environment=&quot;NO_PROXY=localhost,127.0.0.1,docker-registry.somecorporation.com&quot;</span><br></pre></td></tr></table></figure>
+<p>然后重启 Docker:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>即可.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94/" rel="tag"># 疑难解答</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/03/2026-3-6/" rel="prev" title="2026-3-6">
+                  <i class="fa fa-angle-left"></i> 2026-3-6
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

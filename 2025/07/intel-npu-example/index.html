@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -282,11 +282,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AttributeError: &#x27;GenerationConfig&#x27; object has no attribute &#x27;compile_config&#x27;</span><br></pre></td></tr></table></figure>
 <p>查阅资料得知是由于<code>transformers</code>库版本不兼容所致, 修改<code>transformers</code>版本为 4.43.0 后解决.</p>
 <p>再次运行, 发现<code>torch</code>2.6 及以后版本将<code>weights_only</code>默认设为<code>true</code>, 导致模型无法直接运行, 修改其版本为 2.5.1 后解决, 模型成功运行, 效果如图, 且在任务管理器中查看 NPU 利用率为 50%左右, 说明成功利用 NPU 运行模型.</p>
-<p><img data-src="/img/intel-npu-example/tinyllama.png" alt="img"></p>
+<figure><img data-src="/img/intel-npu-example/tinyllama.png" alt="img"><figcaption>img</figcaption></figure>
 <h3><span id="phi-2">Phi-2</span><a href="#phi-2" class="header-anchor">#</a></h3>
 <p>尝试通过 NPU 运行<code>microsoft/Phi-2</code>模型.</p>
 <p>直接运行<code>examples/phi-2.py</code>输出结果均为乱码, 如图.</p>
-<p><img data-src="/img/intel-npu-example/%E4%B9%B1%E7%A0%81.png" alt="乱码"></p>
+<figure><img data-src="/img/intel-npu-example/%E4%B9%B1%E7%A0%81.png" alt="乱码"><figcaption>乱码</figcaption></figure>
 <p>尝试不通过 NPU 运行, 代码如下.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForCausalLM, AutoTokenizer, pipeline</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&quot;HF_ENDPOINT&quot;</span>] = <span class="string">&quot;https://hf-mirror.com&quot;</span></span><br><span class="line">model_id = <span class="string">&quot;microsoft/Phi-2&quot;</span></span><br><span class="line">model = AutoModelForCausalLM.from_pretrained(model_id)</span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_id)</span><br><span class="line">pipe = pipeline(<span class="string">&quot;text-generation&quot;</span>, model=model, tokenizer=tokenizer, max_length=<span class="number">256</span>, temperature=<span class="number">0.9</span>, top_p=<span class="number">0.95</span>, repetition_penalty=<span class="number">1.2</span>, do_sample=<span class="literal">True</span>, truncation=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(pipe(<span class="string">&quot;What&#x27;s the distance between the Earth and the Moon?&quot;</span>))</span><br></pre></td></tr></table></figure>
 <p>输出结果正常, 说明问题出现在 NPU 部分. 查阅资料和 github issues 知, 将</p>
@@ -294,7 +294,7 @@
 <p>改为</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">compiler_conf = CompilerConfig(dtype=torch.float16)</span><br></pre></td></tr></table></figure>
 <p>后运行, 结果正常, 如图, 且 NPU 占用率在 50%左右, 说明成功利用 NPU 运行模型.</p>
-<p><img data-src="/img/intel-npu-example/phi2.png" alt="img"></p>
+<figure><img data-src="/img/intel-npu-example/phi2.png" alt="img"><figcaption>img</figcaption></figure>
 <p>将</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pipe.model.config.pad_token_id = pipe.model.config.eos_token_id</span><br></pre></td></tr></table></figure>
 <p>改为</p>
@@ -302,7 +302,7 @@
 <p>可以关闭开放式对话, 避免回答问题后自问自答.</p>
 <h3><span id="phi-3">Phi-3</span><a href="#phi-3" class="header-anchor">#</a></h3>
 <p>直接运行<code>examples/phi-3.py</code>成功, 效果如图.</p>
-<p><img data-src="/img/intel-npu-example/phi-3.png" alt="img"></p>
+<figure><img data-src="/img/intel-npu-example/phi-3.png" alt="img"><figcaption>img</figcaption></figure>
 <h3><span id="xing-neng-ce-shi">性能测试</span><a href="#xing-neng-ce-shi" class="header-anchor">#</a></h3>
 <p>选取八个较为有代表性的问题提问语言模型, 并分别统计用时, 根据结果手动分析模型性能.</p>
 <p>问题如下:</p>

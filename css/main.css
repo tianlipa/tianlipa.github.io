@@ -1298,7 +1298,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #ffe939;
+    background: #5385c1;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2753,3 +2753,13 @@ header.header {
 /* .main {
   width: 64vw;
 } */
+/* 图片下方题注样式 */
+/* 强制覆盖图片下方题注样式 */
+.post-body figcaption {
+/* text-align: center !important; */
+/* font-size: 16px !important; */
+  font-weight: 400 !important;
+  color: #999 !important;
+  margin-top: 6px !important;
+  line-height: 0.75 !important;
+}

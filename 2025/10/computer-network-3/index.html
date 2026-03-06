@@ -178,7 +178,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -305,7 +305,7 @@
 </ul>
 </li>
 </ul>
-<p><img data-src="/img/computer-network-3/1.png" alt></p>
+<figure><img data-src="/img/computer-network-3/1.png" alt></figure>
 <p>数据链路层的功能:</p>
 <ul>
 <li>向网络层提供良好的服务接口</li>
@@ -313,33 +313,33 @@
 <li>流量控制</li>
 <li>介质访问控制</li>
 </ul>
-<p><img data-src="/img/computer-network-3/2.png" alt></p>
-<p><img data-src="/img/computer-network-3/3.png" alt></p>
+<figure><img data-src="/img/computer-network-3/2.png" alt></figure>
+<figure><img data-src="/img/computer-network-3/3.png" alt></figure>
 <h3><span id="wei-wang-luo-ceng-ti-gong-fu-wu">为网络层提供服务</span><a href="#wei-wang-luo-ceng-ti-gong-fu-wu" class="header-anchor">#</a></h3>
 <p><strong>无确认, 无连接的服务 (有线局域网)</strong>: 发送方不需要建立连接就向接收方发送<strong>独立</strong>的数据帧, 而接收方也不需要对收到的帧进行确认</p>
 <p><strong>有确认, 无连接的服务 (无线局域网)</strong>: 发送方不需要建立连接就向接收方发送<strong>独立</strong>的数据帧, 但接收方需要对收到的帧进行确认</p>
 <p><strong>面向连接的服务 (无线城域网)</strong>: 发送方与接收方在通信前要先建立连接, 然后在此连接上互相传输数据帧, 每一个帧都被编号, 保证数据链路层保证传送的帧被对方<strong>收到, 且只收到一次</strong>, 并且<strong>确保接收帧的顺序</strong>, 双方通信完毕后拆除连接</p>
-<p><img data-src="/img/computer-network-3/4.png" alt></p>
+<figure><img data-src="/img/computer-network-3/4.png" alt></figure>
 <h3><span id="cheng-zheng-framing">成帧 framing</span><a href="#cheng-zheng-framing" class="header-anchor">#</a></h3>
 <p>物理层传输比特流可能发生错误, 此时需要在数据链路层以帧为单位重发.<br>
 在共享链路上, 发送方以帧为单位竞争对共享链路的访问.</p>
 <p>成帧的方法如下.</p>
 <h4><span id="zi-fu-ji-shu-fa">字符计数法</span><a href="#zi-fu-ji-shu-fa" class="header-anchor">#</a></h4>
 <p>帧的帧头描述帧的长度.</p>
-<p><img data-src="/img/computer-network-3/5.png" alt></p>
+<figure><img data-src="/img/computer-network-3/5.png" alt></figure>
 <p>缺点: 帧头出错不仅影响本数据帧, 还影响后续的帧.</p>
 <h4><span id="han-zi-jie-tian-chong-de-fen-jie-fu-fa">含字节填充的分界符法</span><a href="#han-zi-jie-tian-chong-de-fen-jie-fu-fa" class="header-anchor">#</a></h4>
 <p>帧起始和结束用特殊字节标志, 称为标志字节 Flag.</p>
-<p><img data-src="/img/computer-network-3/6.png" alt></p>
+<figure><img data-src="/img/computer-network-3/6.png" alt></figure>
 <p>若数据中有标志字节, 在它前面插入转义字节 ESC, 接收方的数据链路层将数据递交给网络层之前删除转义字节.</p>
 <h4><span id="han-wei-tian-chong-de-fen-jie-biao-zhi-fa">含位填充的分界标志法</span><a href="#han-wei-tian-chong-de-fen-jie-biao-zhi-fa" class="header-anchor">#</a></h4>
 <p>帧起始和结束为特殊的位模式: 01111110, 读取到 6 个连续的比特 1 代表帧结束.</p>
 <p>若发送方数据有 5 个连续的比特 1, 则在输出比特流中填充一个比特 0.</p>
 <h4><span id="wu-li-ceng-bian-ma-wei-li-fa">物理层编码违例法</span><a href="#wu-li-ceng-bian-ma-wei-li-fa" class="header-anchor">#</a></h4>
 <p>使用没有用来表示数据比特的物理层比特作为帧的起始和结束.</p>
-<p><img data-src="/img/computer-network-3/7.png" alt></p>
+<figure><img data-src="/img/computer-network-3/7.png" alt></figure>
 <h3><span id="chai-cuo-kong-zhi">差错控制</span><a href="#chai-cuo-kong-zhi" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-3/8.png" alt="谁教你这么嵌字的.jpg"></p>
+<figure><img data-src="/img/computer-network-3/8.png" alt="谁教你这么嵌字的.jpg"><figcaption>谁教你这么嵌字的.jpg</figcaption></figure>
 <p>对于 ARQ 和 HEC, 如果发送的数据丢失, 那么接收方是不可能进行确认的.<br>
 解决方案: 在发送方引入定时器, 进行<strong>超时重发</strong>;<br>
 为了避免相同的帧收到多次, 需要对帧进行<strong>编号</strong>;<br>
@@ -347,7 +347,7 @@
 <h3><span id="liu-liang-kong-zhi">流量控制</span><a href="#liu-liang-kong-zhi" class="header-anchor">#</a></h3>
 <p>避免一个快速的发送方淹没慢速的接收方.</p>
 <p>基于反馈的流量控制: 接收方通过反馈告诉发送方能够发送多少数据, 发送方常用窗口机制控制发送速率.</p>
-<p><img data-src="/img/computer-network-3/9.png" alt></p>
+<figure><img data-src="/img/computer-network-3/9.png" alt></figure>
 <p>基于速率的流量控制: 无反馈, 通过协议内置机制控制发送方发送速率.</p>
 <h2><span id="chai-cuo-jian-ce-yu-jiu-zheng">差错检测与纠正</span><a href="#chai-cuo-jian-ce-yu-jiu-zheng" class="header-anchor">#</a></h2>
 <p><strong>检错码</strong>: 差错检测码, 在发送数据中加入一定的冗余位, 使接收方能够知道数据是否出错, 但不知道是哪里出错, 适用于噪声小的可靠链路 (检错码+确认重传), 例如电缆或光纤.</p>
@@ -360,7 +360,7 @@
 <p>对于 n 位码字 d 集合, 只有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">2^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>个码字是有效的 (对应 m 个数据位), 在任意两个码字间找到具有最小海明距离的两个码字, 该距离定义为全部码字的海明距离.</p>
 <p>为了<strong>检测出 d 个比特的错, 需使用距离为 d+1 的编码</strong>. 例如: 数据后加奇偶校验位, 编码后的最小海明距离为 2, 能检测 1 比特错.</p>
 <p>为了<strong>纠正 d 个比特的错, 必须用距离为 2d+1 的编码</strong>. 例如有 4 个有效码字: 它们是 0000000000, 0000011111, 1111100000, 1111111111, 最小海明距离为 5, 能纠正 2 比特错.</p>
-<p><img data-src="/img/computer-network-3/10.png" alt></p>
+<figure><img data-src="/img/computer-network-3/10.png" alt></figure>
 <h4><span id="jiu-zheng-dan-bi-te-cuo-de-xiao-yan-wei-xia-jie">纠正单比特错的校验位下界</span><a href="#jiu-zheng-dan-bi-te-cuo-de-xiao-yan-wei-xia-jie" class="header-anchor">#</a></h4>
 <p>设计一种编码, 它有 m 个信息位和 r 个校验位, 希望纠正所有单比特错.</p>
 <p>码字长度 n=m+r, 总共有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>个种组合, 其中有效码字数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">2^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>. 单比特的错误可能性有 n+1 种 (包括无错误), 想象在 n 维二进制空间中有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">2^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>个半径为 1 的球, 整个空间大小为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>, 有</p>
@@ -430,7 +430,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <p>条件与一个无限制的单工协议基本相同, 区别在于信道无噪, 但<strong>接收端需要一定的接收处理时间, 接收缓冲只能存放一个帧</strong>.</p>
 <p>为了<strong>防止发送快于接收</strong>而造成数据丢失, 发送端发送一帧后必须停止发送, 等待接收端发回的<strong>反馈确认</strong>; 接收端在收到一个帧并发送网络层后, 需向发送端发送一个反馈确认短帧, 表示可发新帧.</p>
 <p>由于需要反馈, 且<strong>帧的发送和反馈是严格交替进行的</strong>, 所以相当于采用半双工信道.</p>
-<p><img data-src="/img/computer-network-3/11.png" alt></p>
+<figure><img data-src="/img/computer-network-3/11.png" alt></figure>
 <h3><span id="you-zao-sheng-xin-dao-de-ting-deng-xie-yi">有噪声信道的停-等协议</span><a href="#you-zao-sheng-xin-dao-de-ting-deng-xie-yi" class="header-anchor">#</a></h3>
 <p>考虑实际有噪信道, 帧既可能损坏 (接收端可通过校验检查出错误), 也可能完全丢失.</p>
 <p>由于帧会丢失, 发送端可能收不到反馈的确认帧, 因此发送端必须引入超时机制 (time out), 即增加一个定时计数器, 在一定时间后对没有确认的帧进行重发, 也称作 ARQ (Automatic Retransmit reQuest). 时间值应稍大于两倍端到端的信号传播时间和接收端的接收处理时间之和.</p>
@@ -452,7 +452,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <li>若不等, 则将确认帧中的序列号赋予 N (S), 发送新的帧 (序列号 N (S))</li>
 </ul>
 <p>发送方每发送一帧, 都重新启动定时器然后停下来等待其确认帧.</p>
-<p><img data-src="/img/computer-network-3/12.png" alt></p>
+<figure><img data-src="/img/computer-network-3/12.png" alt></figure>
 <h3><span id="ting-deng-xie-yi-dui-xin-dao-li-yong-lu-de-ying-xiang">停-等协议对信道利用率的影响</span><a href="#ting-deng-xie-yi-dui-xin-dao-li-yong-lu-de-ying-xiang" class="header-anchor">#</a></h3>
 <p>在时延大的信道 (如卫星通信) 中, 停-等协议的效率是很低的.</p>
 <p>考虑卫星通信, 典型的传播时间约为 270ms. 假设一个帧的发送时间为 20ms, 则从发送站开始发送算起, 经 20ms+270ms=290ms, 数据帧才能到达目的站. 假设不考虑目的站的处理时间, 且认为确认帧非常短, 其发送时间可忽略不计, 则又需 270ms 确认帧才能被发送站收到. 因此信道的利用率为 20ms/(290ms+270ms)=1/28, 非常低.</p>
@@ -463,12 +463,12 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <p>发送端和接收端分别设定发送窗口和接收窗口 , 发送窗口用来对发送端进行流量控制.</p>
 <p>主要的滑动窗口协议有<strong>回退 N 协议</strong>(go-back-n, 出错全部重发) 和<strong>选择重发协议</strong>, <strong>停-等协议是窗口大小为 1 的滑动窗</strong>.</p>
 <p>帧序号用 n 位编码, 范围为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
-<p><img data-src="/img/computer-network-3/13.png" alt></p>
+<figure><img data-src="/img/computer-network-3/13.png" alt></figure>
 <h3><span id="fa-song-chuang-kou">发送窗口</span><a href="#fa-song-chuang-kou" class="header-anchor">#</a></h3>
 <p>发送窗口就是发送端允许不等确认而连续发送的帧的序号表.</p>
 <p>允许连续发送的帧的数量称为发送窗口尺寸, 表示为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">W_T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. 发送端必须<strong>有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">W_T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>个输出缓冲区</strong>来存放<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">W_T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>个数据帧的副本以备数据帧的重发.</p>
 <p>当发送端收到发送窗口下沿帧的肯定确认时, 将发送窗口整体向前滑动一个序号, 并从输出缓冲区中将相应的数据帧副本删除.</p>
-<p><img data-src="/img/computer-network-3/14.png" alt></p>
+<figure><img data-src="/img/computer-network-3/14.png" alt></figure>
 <h3><span id="jie-shou-chuang-kou">接收窗口</span><a href="#jie-shou-chuang-kou" class="header-anchor">#</a></h3>
 <p>接收窗口是接收端允许接收的帧的序号表.</p>
 <p>允许接收的帧的数量称为接收窗口尺寸<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">W_R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. 同样接收端也必须设置相应数量的缓冲区来支持接收窗口.</p>
@@ -477,7 +477,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <li>当接收的帧不是接收窗口下沿帧时, 必须暂存在输入缓冲区.</li>
 <li>当接收到接收窗口下沿帧时, 会将其连同后面连续的若干个检验过的正确帧按顺序交给网络层, 在发回确认帧的同时将接收窗口向前滑动相应的数量.</li>
 </ul>
-<p><img data-src="/img/computer-network-3/15.png" alt></p>
+<figure><img data-src="/img/computer-network-3/15.png" alt></figure>
 <h3><span id="shu-ju-de-shao-dai-que-ren">数据的捎带确认</span><a href="#shu-ju-de-shao-dai-que-ren" class="header-anchor">#</a></h3>
 <p>在实际通信中, 通常收发双方都相互发送数据. 为了提高效率, 可以将确认信息放在数据帧中作为一个控制字段连同数据一起发送给对方, 这种方式称为<strong>捎带应答</strong>(piggybacking).</p>
 <p>当一方收到对方的数据帧后:</p>
@@ -491,7 +491,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <p>由于接收窗口的尺寸为 1, 接收端只能按顺序接受数据帧, 一旦某个帧出错或丢失, 只能丢弃该帧及其所有的后续帧 (因为发送窗口的尺寸是大于 1 的), 发送端超时后需重发出错或丢失的帧及其后续所有的帧.</p>
 <p>发送端需要为每个待确认的帧都各自设置一个定时计数器.</p>
 <p><strong>发送窗口的尺寸不能超过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></strong>(n 为序号的编码位数), 否则接收端无法分辨新, 旧数据帧.</p>
-<p><img data-src="/img/computer-network-3/16.png" alt></p>
+<figure><img data-src="/img/computer-network-3/16.png" alt></figure>
 <p>优点: 出错全部重发协议只要求发送端保持一定数量的缓存来保存没有确认的数据帧, <strong>对接收端没有缓存的要求</strong>.</p>
 <p>缺点: 在误码率高的情况下, 会大大降低信道的利用率.</p>
 <p>累计确认: 当确认序号为 n 时, 意味着 n 之前的帧如 n-1, n-2 等帧都自动得到确认.</p>
@@ -507,7 +507,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <li>如果 NAK 被发送方成功接收, 立即重新发送 2 号数据帧</li>
 <li>如果 NAK 被丢失, 等待发送方的 2 号数据帧计时器超时后, 重发 2 号帧</li>
 </ul>
-<p><img data-src="/img/computer-network-3/17.png" alt></p>
+<figure><img data-src="/img/computer-network-3/17.png" alt></figure>
 <table>
 <thead>
 <tr>
@@ -542,7 +542,7 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <p>高级数据链路控制 ( HDLC: High-Level Data Link Control) 是由国际标准化组织 (ISO) 制定的<strong>面向位 (比特)<strong>的有序链路层协议, 提供</strong>基于滑动窗口, 确认和超时机制的可靠数据传输</strong>.</p>
 <p>采用主从结构, 链路上一个主站控制多个从站, 主站向从站发命令, 从站向主站返回响应.</p>
 <p>HDLC 中只有一个地址域, 即从站的地址, 在命令帧中, 它是目的地址, 在响应帧中, 它是源地址.</p>
-<p><img data-src="/img/computer-network-3/18.png" alt></p>
+<figure><img data-src="/img/computer-network-3/18.png" alt></figure>
 <ul>
 <li>帧标志序列: 01111110, 作为起始和结束标志, 在数据位有 5 个连续的 1 出现时, 就插入 1 个 0 (位填充)</li>
 <li>地址域: 在命令帧中表示目的地址, 在响应帧中表示源地址, 全 1 为广播地址, 全 0 为测试地址</li>
@@ -555,14 +555,14 @@ CRC-32= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w
 <li>管理帧 (S: Supervision): 帧中不包含信息字段, 具有监控链路的作用, 并能对收到的帧进行确认</li>
 <li>无序号帧 (U: Unnumbered): 对数据链路进行附加控制</li>
 </ul>
-<p><img data-src="/img/computer-network-3/19.png" alt></p>
+<figure><img data-src="/img/computer-network-3/19.png" alt></figure>
 <p><strong>Seq</strong>: 发送方发送序列编号, 这里是 3 比特<br>
 <strong>Next</strong>: 表示发送方准备接收的序列号 (捎带确认, 尚未接收到的第一帧序列号)<br>
 Type: 表示管理帧类型<br>
 P/F: 在命令帧中作为询问, 在响应帧中表示数据发送结束</p>
 <h2><span id="internet-zhong-de-shu-ju-lian-lu-ceng">Internet 中的数据链路层</span><a href="#internet-zhong-de-shu-ju-lian-lu-ceng" class="header-anchor">#</a></h2>
 <p>PPP (Point to Point Protocol)</p>
-<p><img data-src="/img/computer-network-3/20.png" alt></p>
+<figure><img data-src="/img/computer-network-3/20.png" alt></figure>
 <p>PPP 由以下几部分组成:</p>
 <ul>
 <li><strong>串行链路上的数据的封装方法</strong>(多协议封装能力)</li>
@@ -571,7 +571,7 @@ P/F: 在命令帧中作为询问, 在响应帧中表示数据发送结束</p>
 <li>网络控制协议 (NCP): 对不同的网络层协议定义了对应的网络控制协议, 例如 IPCP</li>
 </ul>
 <p>PPPoE:</p>
-<p><img data-src="/img/computer-network-3/21.png" alt></p>
+<figure><img data-src="/img/computer-network-3/21.png" alt></figure>
 <h2><span id="li-ti">例题</span><a href="#li-ti" class="header-anchor">#</a></h2>
 <h3><span id="xuan-ze-ti">选择题</span><a href="#xuan-ze-ti" class="header-anchor">#</a></h3>
 <ul>

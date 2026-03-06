@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -256,7 +256,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = <span class="number">400</span></span><br><span class="line">X = <span class="number">10</span>*torch.rand([n,<span class="number">2</span>])-<span class="number">5.0</span>	<span class="comment"># torch.rand是均匀分布 </span></span><br><span class="line">w0 = torch.tensor([[<span class="number">2.0</span>],[-<span class="number">3.0</span>]])</span><br><span class="line">b0 = torch.tensor([[<span class="number">10.0</span>]])</span><br><span class="line">Y = X@w0 + b0 + torch.normal(<span class="number">0.0</span>,<span class="number">2.0</span>,size = [n,<span class="number">1</span>])	<span class="comment"># @表示矩阵乘法,增加正态扰动</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <p>数据大概长这样.</p>
-<p><img data-src="/img/eat-pytorch-8/1.png" alt></p>
+<figure><img data-src="/img/eat-pytorch-8/1.png" alt></figure>
 <p>接下来构建数据管道迭代器.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">data_iter</span>(<span class="params">features, labels, batch_size=<span class="number">8</span></span>):</span><br><span class="line">    num_examples = <span class="built_in">len</span>(features)</span><br><span class="line">    indices = <span class="built_in">list</span>(<span class="built_in">range</span>(num_examples))</span><br><span class="line">    np.random.shuffle(indices)	<span class="comment"># 样本的读取顺序是随机的</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        indexs = torch.LongTensor(indices[i: <span class="built_in">min</span>(i + batch_size, num_examples)])</span><br><span class="line">        <span class="keyword">yield</span>  features.index_select(<span class="number">0</span>, indexs), labels.index_select(<span class="number">0</span>, indexs)</span><br><span class="line"></span><br><span class="line">batch_size = <span class="number">8</span></span><br><span class="line">(features,labels) = <span class="built_in">next</span>(data_iter(X,Y,batch_size))</span><br><span class="line"><span class="built_in">print</span>(features)</span><br><span class="line"><span class="built_in">print</span>(labels)</span><br></pre></td></tr></table></figure>
 <p>接下来定义并训练模型.</p>

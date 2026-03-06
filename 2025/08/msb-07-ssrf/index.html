@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -294,8 +294,8 @@ ssrf_proxy</p>
 <hr>
 <p>Server Side Request Forgery, 服务端请求伪造，通过构造数据进而伪造服务端发起请求的漏洞。因为请求是由服务端内部发起的，所以一般情况下 SSRF 的目标往往是从外网无法访问的内部系统。</p>
 <p>SSRF 漏洞形成的原理多是服务端提供了从外部服务获取数据的功能，但没有对目标的地址、协议等重要参数进行过滤和限制，从而导致可以自由构造参数，发起预期外的请求。</p>
-<p><img data-src="/img/msb/17378583293736.png" alt></p>
-<p><img data-src="/img/msb/17378586215344.png" alt></p>
+<figure><img data-src="/img/msb/17378583293736.png" alt></figure>
+<figure><img data-src="/img/msb/17378586215344.png" alt></figure>
 <p>常见文件路径：</p>
 <ul>
 <li>/etc/passwd: 几乎所有 linux 发行版都包含的文件，可用于判断能否读取本地文件，同时保存了系统中有哪些用户</li>

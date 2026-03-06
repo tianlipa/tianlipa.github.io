@@ -178,7 +178,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -274,7 +274,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>网络互连需要一个全局统一的规则, 所有通讯设备运行 IP 协议.</p>
-<p><img data-src="/img/computer-network-6/1.png" alt></p>
+<figure><img data-src="/img/computer-network-6/1.png" alt></figure>
 <p>不同网络采用的数据链路层和物理层协议可能不同, 对于这种网络, 可以采用相同的网络层协议实现它们的互连. 对于 Internet, 这个协议就是 IP, 使用的网络互连设备就是路由器.</p>
 <span id="more"></span>
 <p>路由器负责处理 IP 分组, 连接不同的网络, 在不同的网络之间提供数据转发服务.</p>
@@ -285,7 +285,7 @@
 </ul>
 <h3><span id="internet-xie-yi-zu">Internet 协议族</span><a href="#internet-xie-yi-zu" class="header-anchor">#</a></h3>
 <p>网络中的设备运行以 TCP 和 IP 协议为核心的一系列协议, 也称为 TCP/IP 协议族.</p>
-<p><img data-src="/img/computer-network-6/2.png" alt></p>
+<figure><img data-src="/img/computer-network-6/2.png" alt></figure>
 <h3><span id="xuan-ze-ip-xie-yi-de-yuan-yin">选择 IP 协议的原因</span><a href="#xuan-ze-ip-xie-yi-de-yuan-yin" class="header-anchor">#</a></h3>
 <p>对 Internet 来说, 可扩展性极其重要, 因此需要解决<strong>异构性</strong>和<strong>效率</strong>问题, Internet 以 IP 为核心, 采用细腰体系架构互连各种异构网络; 采用基于 IP 的尽力服务模型, 实现简单, 保证大规模网络的传输效率.</p>
 <p>IP 提供的是尽力传送服务, 不可靠且乱序.</p>
@@ -357,12 +357,12 @@ DHCP 服务器统一管理和分配.</p>
 <p><strong>多个 DHCP 服务器如何处理?</strong><br>
 客户端选择.</p>
 <h3><span id="dhcp-zhong-ji">DHCP 中继</span><a href="#dhcp-zhong-ji" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-6/3.png" alt></p>
+<figure><img data-src="/img/computer-network-6/3.png" alt></figure>
 <h2><span id="di-zhi-jie-xi-xie-yi">地址解析协议</span><a href="#di-zhi-jie-xi-xie-yi" class="header-anchor">#</a></h2>
 <h3><span id="ip-di-zhi-he-mac-di-zhi-de-qu-bie">IP 地址和 MAC 地址的区别</span><a href="#ip-di-zhi-he-mac-di-zhi-de-qu-bie" class="header-anchor">#</a></h3>
 <p>IP 地址在整个网络中标识不同的节点, 而 MAC 地址在链路或者局域网内标识不同的节点.</p>
 <p>IP 地址包含有网络号 (前缀), 因此节点配置的 IP 地址与其所在的网络相关, 而 MAC 地址与节点位置无关, 因此一般事先固化在网络设备中.</p>
-<p><img data-src="/img/computer-network-6/4.png" alt></p>
+<figure><img data-src="/img/computer-network-6/4.png" alt></figure>
 <table>
 <thead>
 <tr>
@@ -389,7 +389,7 @@ DHCP 服务器统一管理和分配.</p>
 </tr>
 </tbody>
 </table>
-<p><img data-src="/img/computer-network-6/5.png" alt></p>
+<figure><img data-src="/img/computer-network-6/5.png" alt></figure>
 <h3><span id="wang-luo-xun-zhi-yu-lian-lu-xun-zhi">网络寻址与链路寻址</span><a href="#wang-luo-xun-zhi-yu-lian-lu-xun-zhi" class="header-anchor">#</a></h3>
 <p>网络寻址: 数据基于 IP 地址跨网络传输, 路由器基于 IP 地址将分组从一个网络转发到另一个网络</p>
 <p>链路寻址: 数据基于 MAC 地址在网络内传输, L2 交换机基于 MAC 地址将分组从一条物理链路转发到另一条物理链路 (这两条链路在同一个网络内)</p>
@@ -397,7 +397,7 @@ DHCP 服务器统一管理和分配.</p>
 <p>需要在网络中传输数据时, 如果目标主机和源主机不在一个局域网内, 需要查转发表, 将数据交给下一跳对应的地址, 其中 0.0.0.0 是缺省路由, 可以匹配所有 IP 地址, 也可以表示为 default.</p>
 <p><strong>通过网络寻址查到下一跳对应的 IP 地址之后, 需要通过链路寻址将数据传到下一跳.</strong></p>
 <h4><span id="shu-ju-zheng-de-feng-zhuang">数据帧的封装</span><a href="#shu-ju-zheng-de-feng-zhuang" class="header-anchor">#</a></h4>
-<p><img data-src="/img/computer-network-6/6.png" alt></p>
+<figure><img data-src="/img/computer-network-6/6.png" alt></figure>
 <p>LLC: Logical Link Control, 逻辑链路控制<br>
 PDU: Protocol Data Unit, 协议数据单元<br>
 不写 IP 数据包是因为可能不是 IP 协议.</p>
@@ -414,7 +414,7 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <p>发送主机通过查找转发表得到转发的下一跳网络节点 IP 地址 (第一跳路由器), 对该 IP 地址执行 ARP 过程, 然后发送数据;</p>
 <p>第一跳路由器查找转发表得到第二跳路由器的 IP 地址, 对该 IP 地址执行 ARP 过程, 然后发送数据;</p>
 <p>如此重复, 直到目的网络的路由器查找转发表知道目的节点和自己在同一个网络中, 对目的 IP 地址执行 ARP 过程, 然后将数据发送到目的节点.</p>
-<p><img data-src="/img/computer-network-6/7.png" alt></p>
+<figure><img data-src="/img/computer-network-6/7.png" alt></figure>
 <p>ARP 过程被限制在链路范围 (同一个网络) 内, 始终是查找转发表得到转发的下一跳节点的 IP 地址, 然后对该 IP 地址做 ARP. 在数据传输频繁时, ARP 缓存表中一般有对应的表项, 节点间不需要交互 ARP 过程.</p>
 <p>ARP 非常重要, 它决定了在链路上, 封装 IP 分组的帧会被哪个网络接口接收.</p>
 <p>Windows 查看 ARP 缓存表:</p>
@@ -431,7 +431,7 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <p>用于查找物理地址所对应的 IP 地址, 例如对于打印机, 无盘工作站等小型嵌入式设备, 启动时需要知道自己的 IP 地址.</p>
 <h4><span id="arp-xie-yi-zheng-ge-shi">ARP 协议帧格式</span><a href="#arp-xie-yi-zheng-ge-shi" class="header-anchor">#</a></h4>
 <p>对于以太网, ARP 协议 (RFC 826) 采用 MAC 帧进行封装.</p>
-<p><img data-src="/img/computer-network-6/8.png" alt></p>
+<figure><img data-src="/img/computer-network-6/8.png" alt></figure>
 <p>帧类型 (Type): ARP 请求及响应为 0x0806</p>
 <p>硬件类型: 指发送者的网络接口类型, 如以太网为 1</p>
 <p>协议类型: 指发送者所采用的网络层协议类型, 如 IP 协议为 0x0800</p>
@@ -445,11 +445,11 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <h2><span id="ip-xie-yi">IP 协议</span><a href="#ip-xie-yi" class="header-anchor">#</a></h2>
 <p>Internet Protocol</p>
 <h3><span id="ipv4-tou-biao">IPv4 头标</span><a href="#ipv4-tou-biao" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-6/9.png" alt></p>
+<figure><img data-src="/img/computer-network-6/9.png" alt></figure>
 <p>版本号 (VERS): 4bits, IPv4 协议填 4, IPv6 协议填 6.</p>
 <p>IP 分组头长度 (LEN): 4bits, 单位为 4 字节, 取值范围 5-15 (确省值为 5, 即标准头标长 20 字节), 指示 IP 分组头的长度.</p>
 <p>服务类型 (TOS):</p>
-<p><img data-src="/img/computer-network-6/10.png" alt></p>
+<figure><img data-src="/img/computer-network-6/10.png" alt></figure>
 <p>注意: TOS 域最初的设计并没有得到应用. 后来在引入区分服务时, 这前 6 个比特又被用来标记分组的服务类别. 然而, 实际的网络中, 服务质量控制并没有在全网范围内流行.</p>
 <h4><span id="zong-chang-du-he-fen-duan">总长度和分段</span><a href="#zong-chang-du-he-fen-duan" class="header-anchor">#</a></h4>
 <p>总长度: 16bits , 单位为字节, 描述 IP 分组的总长 (包括头标和数据), 最大分组长度为 65535 字节≈64KB.</p>
@@ -459,7 +459,7 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <p>MTU: Maximum Transmission Unit, 最大传输单元, 即一帧所能携带的最大 IP 分组, 包括 IP 头标.</p>
 <p>在 IPv4 中, 发送主机和中间路由器执行分段, 而目的主机执行分段重组 (即非透明的分段重组过程, 目的是减少多次重组操作带来的开销)</p>
 <p>例: IP 头标取固定长度 20 字节</p>
-<p><img data-src="/img/computer-network-6/11.png" alt></p>
+<figure><img data-src="/img/computer-network-6/11.png" alt></figure>
 <p><strong>段偏移的单位是 8 字节, 所有分段后段的长度必须是 8 字节的整数倍.</strong></p>
 <h4><span id="ttl-he-xie-yi">TTL 和协议</span><a href="#ttl-he-xie-yi" class="header-anchor">#</a></h4>
 <p>生存时间 (TTL: Time to Live): 8bits, 单位秒, 表示分组的生存时间. 实际操作时, 分组每经过一个路由器, TTL 值减一, 当 TTL 值为 0 时, 该分组被丢弃.</p>
@@ -562,9 +562,9 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <p>在路由器上, 一般是先通过路由算法 (协议) 生成路由表, 然后得到转发表.</p>
 <p>在以后的叙述中, 如果不特别注明, 我们将不区分路由表和转发表, 路由器上一般采用路由表的形式, 而主机上一般采用转发表的形式.</p>
 <p>路由表实例:</p>
-<p><img data-src="/img/computer-network-6/12.png" alt></p>
+<figure><img data-src="/img/computer-network-6/12.png" alt></figure>
 <p>缺省路由:</p>
-<p><img data-src="/img/computer-network-6/13.png" alt></p>
+<figure><img data-src="/img/computer-network-6/13.png" alt></figure>
 <p>查看路由表/转发表:</p>
 <p>Linux:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip route show</span><br></pre></td></tr></table></figure>
@@ -591,7 +591,7 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <p>Routing Information Protocol, RIP, 这好像不太吉利</p>
 <p>距离矢量算法的具体实现, 路由器向邻居路由器通告到达所有网络的距离.</p>
 <p>RIP 分组格式:</p>
-<p><img data-src="/img/computer-network-6/14.png" alt></p>
+<figure><img data-src="/img/computer-network-6/14.png" alt></figure>
 <p>分组的主要部分采用&lt;网络地址, 距离&gt;对.</p>
 <p>一个路由条目占 20 字节, 最多一次发 25 个.</p>
 <p>注: 子网掩码是一个特殊的 IP 地址, 这个 IP 地址中的若干个比特为 1, 其它比特为 0, 比特为 1 的位置对应着网络前缀, 例如: 255.255.128.0, 常与 IP 地址组合使用, 用以区分网络号和主机号</p>
@@ -605,7 +605,7 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <li>使得 OSPF 适合规模很大的网络, 附加的层次性允许将路由选择域 (Domain) 划分为区 (Area), 多个网络组成一个区, 对于 AS 的其余部分隐藏 , 以减少路由信令开销, 区域内的路由选择仅仅由区域自己的拓扑来决定</li>
 <li>负载均衡, 允许到同一位置的多条路由具有相同的开销, 网络业务在这些路径上均匀分配</li>
 </ul>
-<p><img data-src="/img/computer-network-6/15.png" alt></p>
+<figure><img data-src="/img/computer-network-6/15.png" alt></figure>
 <h3><span id="wai-bu-wang-guan-lu-you-xie-yi">外部网关路由协议</span><a href="#wai-bu-wang-guan-lu-you-xie-yi" class="header-anchor">#</a></h3>
 <p>AS 间为什么不采用 RIP 或者 OSPF?</p>
 <ul>
@@ -621,7 +621,7 @@ PDU: Protocol Data Unit, 协议数据单元<br>
 <li>能够扩展到大规模互联网络, 例如 Internet</li>
 </ul>
 <p>路由协议的作用范围:</p>
-<p><img data-src="/img/computer-network-6/16.png" alt></p>
+<figure><img data-src="/img/computer-network-6/16.png" alt></figure>
 <h2><span id="icmp-xie-yi">ICMP 协议</span><a href="#icmp-xie-yi" class="header-anchor">#</a></h2>
 <p>Internet Control Message Protocol</p>
 <ul>
@@ -743,7 +743,7 @@ Protocol), 负责处理组成员的加入和退出</p>
 <p><strong>前缀汇聚 + 前缀最长匹配减少路由表表项</strong></p>
 <p>前缀汇聚: R0 告诉邻居路由器: 目的地址为 200.25.16.0/21 的分组发给我</p>
 <p>前缀最长匹配: R0 上对于目的地址为 200.25.22.32 的 IP 分组分组, 匹配的路由表表项包括 200.25.16.0/21 和 200.25.22.0/24, 但使用最长匹配规则选择下一跳为直接相连的端口 eth1.</p>
-<p><img data-src="/img/computer-network-6/17.png" alt=", "></p>
+<figure><img data-src="/img/computer-network-6/17.png" alt=", "><figcaption>, </figcaption></figure>
 <p>划分子网并不改变 Internet 的 IP 地址分配机制, 而 CIDR 是目前 Internet 采用的 IP 地址分配机制. 企业或者机构分配得到 CIDR 地址块以后, 可以根据实际需求对该 CIDR 地址块进行进一步的细分, 即将其划分成多个子网.</p>
 <h3><span id="wang-luo-di-zhi-zhuan-huan">网络地址转换</span><a href="#wang-luo-di-zhi-zhuan-huan" class="header-anchor">#</a></h3>
 <p>Network Address Translation, NAT</p>
@@ -756,7 +756,7 @@ Protocol), 负责处理组成员的加入和退出</p>
 <h4><span id="yuan-li">原理</span><a href="#yuan-li" class="header-anchor">#</a></h4>
 <p>最简单的 NAT: 只使用 IP 地址信息</p>
 <p>NAT 设备上需维护一个全局 IP 地址池, 对于每个访问外部网络的内部主机, 都需要使用一个全局的 IP 地址</p>
-<p><img data-src="/img/computer-network-6/18.png" alt></p>
+<figure><img data-src="/img/computer-network-6/18.png" alt></figure>
 <p>问题: 如果只使用 IP 地址信息, 在只有一个全局 IP 地址的情况下, 对于从 Internet 到内部网络上的分组, NAT 设备无法知道分组所对应的内部主机.</p>
 <p>注意到: Internet 上的大部分应用都是基于 TCP 或者 UDP, 且大部分的应用会话可以用&lt;源IP地址, 目的IP地址, 源端口号, 目的端口号, 协议&gt;这样一个五元组来标识.</p>
 <p>解决方法: 使用 TCP 或者 UDP 端口号来区分, 也就是说 NAT 的依据不再仅仅是 IP 地址, 还包括端口号 (IP 地址+端口).</p>
@@ -768,9 +768,9 @@ Protocol), 负责处理组成员的加入和退出</p>
 <p>在 NAT 设备上, 虽然内部网络所有的主机共享同一个全局 IP 地址, 但是它们所使用的端口号不同.</p>
 <p>NAPT 下的数据访问流程:</p>
 <p>出:</p>
-<p><img data-src="/img/computer-network-6/19.png" alt></p>
+<figure><img data-src="/img/computer-network-6/19.png" alt></figure>
 <p>入:</p>
-<p><img data-src="/img/computer-network-6/20.png" alt></p>
+<figure><img data-src="/img/computer-network-6/20.png" alt></figure>
 <h4><span id="nat-de-ju-xian-xing">NAT 的局限性</span><a href="#nat-de-ju-xian-xing" class="header-anchor">#</a></h4>
 <p>地址和端口转换将带来比较大的开销.</p>
 <p>IP 地址和端口号可能存在于载荷的任何位置, 因此需要软件针对具体的应用做额外的处理. 例如, FTP 在 PORT 命令的 FTP 头标中包含有十进制表示的 IPv4 地址, 如果不处理则将导致连接问题.</p>
@@ -789,7 +789,7 @@ Protocol), 负责处理组成员的加入和退出</p>
 <li>更高的安全性: IPsec (实现认证, 加密传输以及这些操作所需的密钥管理) 成为协议的强制要求实现部分</li>
 </ul>
 <h3><span id="ji-ben-tou-biao-ge-shi">基本头标格式</span><a href="#ji-ben-tou-biao-ge-shi" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-6/21.png" alt></p>
+<figure><img data-src="/img/computer-network-6/21.png" alt></figure>
 <p>采用 16 进制冒号分割表示.</p>
 <p>地址前缀表示: IPv6 地址/前缀长度<br>
 2001:DA8:D800::3/64<br>

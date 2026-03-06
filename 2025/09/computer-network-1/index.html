@@ -164,7 +164,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -314,7 +314,7 @@
 <p>目前, 大部分的计算机网络 (包括 Internet), 都使用分层的网络体系结构.</p>
 <h3><span id="fen-ceng-yu-xie-yi">分层与协议</span><a href="#fen-ceng-yu-xie-yi" class="header-anchor">#</a></h3>
 <p>网络的总体设计: 层和协议的集合</p>
-<p><img data-src="/img/computer-network-1/1.png" alt></p>
+<figure><img data-src="/img/computer-network-1/1.png" alt></figure>
 <p>在网络体系结构中, 采用分层的思想对网络构建问题进行分解, 分层.</p>
 <p>每一层都建立在下一层的基础之上, 为上一层提供服务. 对于每一层, 在网络体系结构中都可以定义相应的协议实现该层所需的服务.</p>
 <p><strong>层和协议 (功能) 的集合称为网络体系结构</strong>, 层表示了网络协议 (功能) 的组织结构.</p>
@@ -326,7 +326,7 @@
 <p>分层的原则: 将相似的功能集中在同一层内, 必要时可以将层的功能再分成子块, 层数不宜过多, 以避免层间接口开销变大. 功能差别较大时应分层处理, 各层只对相邻的上下层定义接口.</p>
 <p>协议栈: 一个特定的系统所使用的一组协议, 每一层一个或几个协议.</p>
 <p>例: 主机 1 通过网络向主机 2 可靠地发送文件</p>
-<p><img data-src="/img/computer-network-1/2.png" alt></p>
+<figure><img data-src="/img/computer-network-1/2.png" alt></figure>
 <p>分层的优点:</p>
 <ul>
 <li>简化问题</li>
@@ -480,7 +480,7 @@ Physical</p>
 <strong>互联网层</strong>: IP<br>
 <strong>主机到网络层 (网络接口层)</strong>: Ethernet, Packet Radio, Point-to-Point</p>
 <h4><span id="tcp-ip-xie-yi-zhan">TCP/IP 协议栈</span><a href="#tcp-ip-xie-yi-zhan" class="header-anchor">#</a></h4>
-<p><img data-src="/img/computer-network-1/3.png" alt></p>
+<figure><img data-src="/img/computer-network-1/3.png" alt></figure>
 <h4><span id="zhu-ji-dao-wang-luo-ceng-wang-luo-jie-kou-ceng">主机到网络层 (网络接口层)</span><a href="#zhu-ji-dao-wang-luo-ceng-wang-luo-jie-kou-ceng" class="header-anchor">#</a></h4>
 <p>主机通过某个协议连接到网络上, 以便将分组发送到网络上. TCP/IP 模型实际没有定义该层的具体协议, 它关注的是该层之上的内容.</p>
 <p>在 Internet 中通常将一个<strong>广播域</strong>称为一条链路, 与一般 OSI 参考模型中的链路 (一对一) 不同.<br>
@@ -507,17 +507,17 @@ Physical</p>
 <li>SMTP 协议, 发送电子邮件</li>
 </ul>
 <p>应用层协议与应用层的关系: 应用层不仅需要实现应用层协议, 还要为用户提供操作界面等功能.</p>
-<p><img data-src="/img/computer-network-1/4.png" alt></p>
+<figure><img data-src="/img/computer-network-1/4.png" alt></figure>
 <p>关键的网络设备:</p>
 <ul>
 <li>L2 交换机: 网络内设备互连</li>
 <li>路由器 (L3 交换机): 不同网络互连</li>
 </ul>
-<p><img data-src="/img/computer-network-1/5.png" alt></p>
+<figure><img data-src="/img/computer-network-1/5.png" alt></figure>
 <h3><span id="zhu-ji-1-xiang-zhu-ji-2-fa-song-shu-ju">主机 1 向主机 2 发送数据</span><a href="#zhu-ji-1-xiang-zhu-ji-2-fa-song-shu-ju" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-1/6.png" alt></p>
+<figure><img data-src="/img/computer-network-1/6.png" alt></figure>
 <h3><span id="wang-luo-zhong-shu-ju-chu-li-liu-cheng">网络中数据处理流程</span><a href="#wang-luo-zhong-shu-ju-chu-li-liu-cheng" class="header-anchor">#</a></h3>
-<p><img data-src="/img/computer-network-1/7.png" alt></p>
+<figure><img data-src="/img/computer-network-1/7.png" alt></figure>
 <h3><span id="osi-yu-tcp-ip-mo-xing-de-bi-jiao">OSI 与 TCP/IP 模型的比较</span><a href="#osi-yu-tcp-ip-mo-xing-de-bi-jiao" class="header-anchor">#</a></h3>
 <p>相同点:</p>
 <ul>
