@@ -279,7 +279,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "我都这样了你就不能让让我吗",
         "你指的是非洲燕子还是欧洲燕子?",
         "头部没有受到破坏,<br>吐息目前处于威力最强的状态!",
-        "我克藝吃玻璃, 我不毁受傷."
+        "我克藝吃玻璃, 我不毁受傷.",
+        "@grok is this true?"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
