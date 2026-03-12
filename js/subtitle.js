@@ -284,7 +284,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "你可以去你想去的任何地方.",
         "让咱们走吧, 就你还有我<br>当十一日帝国正将天空吞没<br>宛如人形溶烂得像蛤蜊摆上早餐桌",
         "黎明的曙光驱散了恐怖之夜",
-        "总之, 一起加油吧!"
+        "总之, 一起加油吧!",
+        "伴火同进者,<br>终有一天会遇见命定之死.",
+        "作者已死"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
