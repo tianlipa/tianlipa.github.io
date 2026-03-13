@@ -286,7 +286,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "黎明的曙光驱散了恐怖之夜",
         "总之, 一起加油吧!",
         "伴火同进者,<br>终有一天会遇见命定之死.",
-        "作者已死"
+        "作者已死",
+        "Men always remember love because of romance only."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
