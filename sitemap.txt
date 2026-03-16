@@ -1,3 +1,8 @@
+https://tianlipa.github.io/what-to-write/index.html
+https://tianlipa.github.io/what-to-read/index.html
+https://tianlipa.github.io/2026/03/computer-security-3/
+https://tianlipa.github.io/2026/03/computer-security-2/
+https://tianlipa.github.io/2026/03/computer-security-1/
 https://tianlipa.github.io/2026/03/cosmic-princess-kaguya/
 https://tianlipa.github.io/2026/03/2026-3-12/
 https://tianlipa.github.io/2026/03/2026-3-7/
@@ -193,3 +198,4 @@ https://tianlipa.github.io/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/
 https://tianlipa.github.io/tags/LeetCode/
 https://tianlipa.github.io/tags/%E7%AE%97%E6%B3%95/
 https://tianlipa.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/
+https://tianlipa.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/

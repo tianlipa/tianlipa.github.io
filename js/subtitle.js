@@ -287,7 +287,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "总之, 一起加油吧!",
         "伴火同进者,<br>终有一天会遇见命定之死.",
         "作者已死",
-        "Men always remember love because of romance only."
+        "Men always remember love because of romance only.",
+        "圆枘不纳方凿."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];

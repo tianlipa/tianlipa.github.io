@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":150,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="CIA Confidentiality 保密性 只有经授权的用户&#x2F;系统可以访问受保护的数据 (系统资源, 系统服务).  加密保护: 阻止未授权实体理解信息 访问控制: 阻止未授权实体获取信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机安全笔记 二.计算机安全基础">
+<meta property="og:url" content="https://tianlipa.github.io/2026/03/computer-security-2/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="CIA Confidentiality 保密性 只有经授权的用户&#x2F;系统可以访问受保护的数据 (系统资源, 系统服务).  加密保护: 阻止未授权实体理解信息 访问控制: 阻止未授权实体获取信息">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-14T15:05:35.000Z">
+<meta property="article:modified_time" content="2026-03-14T15:25:25.636Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机安全">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/03/computer-security-2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/03/computer-security-2/","path":"2026/03/computer-security-2/","title":"计算机安全笔记 二.计算机安全基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机安全笔记 二.计算机安全基础 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+      <script src="/js/subtitle.js"></script>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">168</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/03/computer-security-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机安全笔记 二.计算机安全基础 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机安全笔记 二.计算机安全基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-03-14 23:05:35 / 修改时间：23:25:25" itemprop="dateCreated datePublished" datetime="2026-03-14T23:05:35+08:00">2026-03-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="cia">CIA</span><a href="#cia" class="header-anchor">#</a></h2>
+<h3><span id="confidentiality-bao-mi-xing">Confidentiality 保密性</span><a href="#confidentiality-bao-mi-xing" class="header-anchor">#</a></h3>
+<p>只有经授权的用户/系统可以访问受保护的数据 (系统资源, 系统服务).</p>
+<ul>
+<li><strong>加密保护</strong>: 阻止未授权实体理解信息</li>
+<li><strong>访问控制</strong>: 阻止未授权实体获取信息</li>
+</ul>
+<span id="more"></span>
+<p><strong>开源情报</strong>(Open Source Intelligence, <strong>OSINT</strong>): 从公开的信息资源中寻找有价值的情报</p>
+<ul>
+<li>Discovery 发现</li>
+<li>Discrimination 鉴别</li>
+<li>Distillation 浓缩</li>
+<li>Dissemination 分发</li>
+</ul>
+<h3><span id="integrity-wan-zheng-xing">Integrity 完整性</span><a href="#integrity-wan-zheng-xing" class="header-anchor">#</a></h3>
+<p>完整性即外部一致性, 存储在计算机系统中的数据应当<strong>正确地反映</strong>计算机<strong>系统外</strong>的某些事实.</p>
+<ul>
+<li><strong>数据完整性</strong>: 确保数据 (包括软件代码) 只能按照授权的指定方式进行修改的属性</li>
+<li><strong>系统完整性</strong>: 指系统没有受到未经授权的操控, 能完好无损地执行预定功能的属性</li>
+</ul>
+<h3><span id="availability-ke-yong-xing">Availability 可用性</span><a href="#availability-ke-yong-xing" class="header-anchor">#</a></h3>
+<p>确保系统及时工作并向授权用户提供所需服务的属性.</p>
+<h2><span id="qi-ta-te-xing">其他特性</span><a href="#qi-ta-te-xing" class="header-anchor">#</a></h2>
+<p><strong>Survivability 可生存性</strong>: 系统在遭受攻击, 故障或意外事故的情况下, 能够及时完成其主要任务的能力.</p>
+<p><strong>Accountability 可审计性/问责性</strong>: 审计信息必须有选择地保存和保护, 以便影响安全的行为可以被追溯到责任方.</p>
+<p><strong>Non-repudiation 不可否认性</strong>: 可审计性的更强形式, 能对发生的具体行为提供不可欺骗的证据.</p>
+<h3><span id="3a-ren-zheng-shou-quan-shen-ji">3A: 认证, 授权, 审计</span><a href="#3a-ren-zheng-shou-quan-shen-ji" class="header-anchor">#</a></h3>
+<ul>
+<li><strong>Authentication</strong>, 验证一个被声称的身份的过程, <strong>不同强度的认证方式</strong></li>
+<li><strong>Authorization</strong>, 控制主体如何访问客体的策略, <strong>资源访问权限</strong></li>
+<li><strong>Auditing</strong>, 记录和跟踪与安全有关的事件, <strong>操作日志集中记录管理和分析</strong></li>
+</ul>
+<p>第四个 A: <strong>Accounting</strong> 记账, <strong>统一集中的账号管理</strong></p>
+<p><strong>Controllability 可控性</strong>: 对于风险的控制能力, 对风险进行事前识别, 预测, 防范和化解.</p>
+<h2><span id="ji-suan-ji-an-quan">计算机安全</span><a href="#ji-suan-ji-an-quan" class="header-anchor">#</a></h2>
+<p>计算机安全: 研究如何预防和检测计算机系统用户的非授权行为.</p>
+<h3><span id="information-assurance-xin-xi-bao-zhang">Information Assurance 信息保障</span><a href="#information-assurance-xin-xi-bao-zhang" class="header-anchor">#</a></h3>
+<p>通过确保信息和信息系统的<strong>可用性, 完整性, 可审计性, 保密性和不可抵赖性</strong>来保护信息和信息系统的信息作战行动, 包括综合利用<strong>保护, 检测和响应</strong>能力以恢复系统.</p>
+<p>核心要素:</p>
+<ul>
+<li>管理 (人)</li>
+<li>技术: PDRR</li>
+<li>操作</li>
+</ul>
+<h4><span id="pdrr-mo-xing">PDRR 模型</span><a href="#pdrr-mo-xing" class="header-anchor">#</a></h4>
+<ul>
+<li>Protect</li>
+<li>Detect</li>
+<li>React</li>
+<li>Restore</li>
+</ul>
+<h2><span id="shu-ju-yu-xin-xi">数据与信息</span><a href="#shu-ju-yu-xin-xi" class="header-anchor">#</a></h2>
+<p>隐蔽信道/隐信道: 不受安全机制控制的信息流.</p>
+<h2><span id="ji-suan-ji-an-quan-xi-tong-de-she-ji-yuan-ze">计算机安全系统的设计原则</span><a href="#ji-suan-ji-an-quan-xi-tong-de-she-ji-yuan-ze" class="header-anchor">#</a></h2>
+<ul>
+<li>整体性: 从整体上构思和设计</li>
+<li>分层性: 设置多个防护层次</li>
+<li>最小授权: 权限分割, 互相制约, 最小化原则</li>
+<li>简单性: 安全过程尽量简洁, 工具易于使用且便于管理</li>
+<li>等级性: 安全层次和安全级别</li>
+</ul>
+<p>刚看完一堆 SCP 文档记这个笔记真是太有感觉了.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/" rel="tag"># 计算机安全</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/03/computer-security-1/" rel="prev" title="计算机安全笔记 一.绪论">
+                  <i class="fa fa-angle-left"></i> 计算机安全笔记 一.绪论
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/03/computer-security-3/" rel="next" title="计算机安全笔记 三.身份识别与认证">
+                  计算机安全笔记 三.身份识别与认证 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
