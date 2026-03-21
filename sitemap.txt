@@ -1,5 +1,5 @@
-https://tianlipa.github.io/what-to-write/index.html
-https://tianlipa.github.io/what-to-read/index.html
+https://tianlipa.github.io/2026/03/couch-fort/
+https://tianlipa.github.io/collection/index.html
 https://tianlipa.github.io/2026/03/computer-security-3/
 https://tianlipa.github.io/2026/03/computer-security-2/
 https://tianlipa.github.io/2026/03/computer-security-1/
@@ -26,7 +26,6 @@ https://tianlipa.github.io/2026/02/nc-arrays-and-hashing/
 https://tianlipa.github.io/2026/02/2026-2-18/
 https://tianlipa.github.io/2026/02/2026-2-14/
 https://tianlipa.github.io/2026/02/machine-learning-review/
-https://tianlipa.github.io/collection/index.html
 https://tianlipa.github.io/2025/12/camel-rolellm/
 https://tianlipa.github.io/2026/02/2026-2-6/
 https://tianlipa.github.io/2025/06/2025-6-26/

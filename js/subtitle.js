@@ -288,7 +288,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "伴火同进者,<br>终有一天会遇见命定之死.",
         "作者已死",
         "Men always remember love because of romance only.",
-        "圆枘不纳方凿."
+        "圆枘不纳方凿.",
+        "然而, 然而.",
+        "We become what we behold.",
+        "砍掉她的头!"
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
