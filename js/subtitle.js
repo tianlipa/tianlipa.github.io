@@ -291,7 +291,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "圆枘不纳方凿.",
         "然而, 然而.",
         "We become what we behold.",
-        "砍掉她的头!"
+        "砍掉她的头!",
+        "WE APOLOGISE FOR THE INCONVENIENCE",
+        "我已出舱, 感觉良好."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
