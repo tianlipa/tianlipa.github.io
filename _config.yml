@@ -144,7 +144,7 @@ encrypt:
 #   format: html
 
 archive_generator:
-  per_page: 15
+  per_page: 20
 
 filter_optimize:
   enable: false
@@ -212,6 +212,11 @@ markdown:
   plugins:
     - markdown-it-task-lists
     - '@renbaoshuo/markdown-it-katex'
+    - name: markdown-it-implicit-figures
+      options:
+        figcaption: true
+        keepAlt: true
+    - markdown-it-footnote
   anchors:
     level: 2
     collisionSuffix: ''

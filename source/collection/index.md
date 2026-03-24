@@ -5,17 +5,21 @@ date: 2025-08-20 09:26:44
 
 ## 笔记
 
-<div class="text-center">{% btn /tags/数据库基础/, 数据库基础,, %} {% btn /tags/计算机网络, 计算机网络,, %}</div>
+<div class="text-center">{% btn /tags/数据库基础/, 数据库基础,, %} {% btn /tags/计算机网络, 计算机网络,, %} {% btn /tags/计算机安全, 计算机安全,, %}</div>
 
 ## 随笔
 
-<div class="text-center">
+<div class="text-center" style="margin-top: 1rem;">
   {% btn /what-to-read, 待看清单,, 总有一天我会全部看完的 %} {% btn /what-to-write, 待写清单,, 听说每个作家都有个小本子记这些 %}
+</div>
+
+<div class="text-center">
+  {% btn /tags/随笔, 随笔合集,, %}
 </div>
 
 ## 资料
 
-<div class="text-center">{% btn https://about.oi-wiki.org/, OI Wiki,, %} {% btn https://www.hello-algo.com/chapter_hello_algo/, Hello 算法,, %}{% btn https://www.programmercarl.com/, 代码随想录,, %} {% btn https://neetcode.io/practice/practice/neetcode150, NeetCode 150,, %} {% btn https://www.runoob.com/, 菜鸟教程,, %}</div>
+<div class="text-center">{% btn https://about.oi-wiki.org/, OI Wiki,, %} {% btn https://www.hello-algo.com/chapter_hello_algo/, Hello 算法,, %} {% btn https://www.programmercarl.com/, 代码随想录,, %} {% btn https://neetcode.io/practice/practice/neetcode150, NeetCode 150,, %} {% btn https://www.runoob.com/, 菜鸟教程,, %}</div>
 
 ## 杂项
 

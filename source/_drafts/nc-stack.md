@@ -7,6 +7,8 @@ tags: [LeetCode, 算法]
 
 [有效的括号](https://leetcode.cn/problems/valid-parentheses/)
 
+显然.
+
 ```cpp
 class Solution {
 public:
@@ -38,6 +40,8 @@ public:
     }
 };
 ```
+
+<!--more-->
 
 ### Min Stack
 
@@ -245,4 +249,77 @@ public:
 [车队](https://leetcode.cn/problems/car-fleet/)
 
 有点绕的一道题. 为了避免麻烦地判断到目的地之前A能不能追上B, 可以直接把每辆车到目的地剩余时间算出来.
+
+然后其实没必要用栈, 遍历一遍就行了, 还能省点空间. 但是确实有点绕.
+
+```cpp
+class Solution {
+private:
+    struct Car {
+        int position;
+        float time;
+        bool operator<(const Car& other) const {
+            return position > other.position;
+        }
+    };
+    
+public:
+    int carFleet(int target, vector<int>& position, vector<int>& speed) {
+        vector<Car> car(position.size());
+        stack<float> st;
+        for(int i = 0; i < position.size(); ++i) {
+            car[i].position = position[i];
+            car[i].time = (target - position[i]) * 1.0 / speed[i];
+        }
+        sort(car.begin(), car.end());
+        for(int i = 0; i < car.size(); ++i) {
+            if(st.empty() || st.top() < car[i].time) {
+                st.push(car[i].time);
+            }
+        }
+        return st.size();
+    }
+};
+```
+
+### Largest Rectangle In Histogram
+
+[柱状图中最大的矩形](https://leetcode.cn/problems/largest-rectangle-in-histogram/)
+
+核心思路在于, 对于每个柱子, 怎么找到它左边和右边分别比它矮的最近两根柱子.
+
+采用单调栈, 保证栈底到栈顶柱子高度递增, 这样入栈时, 如果遇到比栈顶矮的柱子, 则右边界已经确定, 左边界就是栈顶下一个元素所对应的柱子, 很巧妙.
+
+```cpp
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int> st;
+        heights.push_back(0);
+        int ans = 0;
+        for(int i = 0; i < heights.size(); ++i) {
+            if(st.empty() || heights[st.top()] <= heights[i]) {
+                st.push(i);
+                continue;
+            }
+            else {
+                int t;
+                while(heights[st.top()] > heights[i]) {
+                    t = st.top();
+                    st.pop();
+                    if(st.empty()) {
+                        ans = max(ans, i * heights[t]);
+                        break;
+                    }
+                    else {
+                        ans = max(ans, (i - st.top() - 1) * heights[t]);
+                    }
+                }
+                st.push(i);
+            }
+        }
+        return ans;
+    }
+};
+```
 

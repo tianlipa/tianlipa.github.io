@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "https://www.zhihu.com/people/an-ling-91/posts/",
     "https://xkcd.in/",
     "https://www.bilibili.com/video/BV1rRTBzyEBV/",
-    "http://pvpin.com/"
+    "http://pvpin.com/",
+    "https://hextris.io/"
   ];
   const btn = document.querySelector(".random-btn a"); 
   if (btn) {
