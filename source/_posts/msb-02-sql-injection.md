@@ -2,6 +2,7 @@
 title: 2-SQL注入
 date: 2025-08-13 13:34:26
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 ## 第一章

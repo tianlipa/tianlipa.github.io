@@ -50,3 +50,91 @@
   margin-top: 6px !important;
   line-height: 0.75 !important;
 }
+
+
+
+
+/* =========================================================
+   分类页面美化：卡片式布局与悬浮动效
+   ========================================================= */
+
+/* 针对分类页面的容器进行设置 */
+.category-all-page .category-list {
+    display: flex;
+    flex-wrap: wrap;               /* 允许换行 */
+    justify-content: space-between;/* 两端对齐 */
+    padding: 0;
+    list-style: none;              /* 移除默认的列表圆点 */
+}
+
+/* 每一个分类项（卡片）的初始样式 */
+.category-all-page .category-list-item {
+    width: calc(33.33% - 10px);    /* 默认 PC 端显示 3 列 */
+    margin-bottom: 15px;
+    background: #ffffff;           /* 卡片背景色设为纯白 */
+    border-radius: 8px;            /* 圆角效果 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* 轻微的基础阴影 */
+    transition: all 0.3s ease;     /* 添加 0.3 秒的平滑过渡动画 */
+    display: flex;
+    align-items: center;           /* 内容垂直居中 */
+    padding: 12px 15px;
+    box-sizing: border-box;
+}
+
+/* 鼠标悬浮在卡片上时的动效 */
+.category-all-page .category-list-item:hover {
+    transform: translateY(-4px);   /* 整体向上浮动 4 像素 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 阴影加深、扩散 */
+    background: #fafafa;           /* 背景色变为非常淡的蓝色，呼应你的签名 */
+}
+
+/* 分类名称（链接）样式调整 */
+.category-all-page .category-list-link {
+    flex-grow: 1;                  /* 让文字占据主要宽度，把数字挤到右边 */
+    border-bottom: none !important;/* 强制移除 NexT 默认的文字下划线 */
+    text-decoration: none;
+    color: #444;                   /* 字体颜色稍微加深 */
+    font-weight: 500;
+}
+
+/* 鼠标悬浮时分类名称的颜色变化 */
+.category-all-page .category-list-item:hover .category-list-link {
+    color: #222222;                
+}
+
+/* 右侧分类文章数量的徽章样式调整 */
+.category-all-page .category-list-count {
+    background: #eee;
+    color: #888;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+}
+
+/* 隐藏默认可能存在的括号 (如果你的主题默认带括号的话) */
+.category-all-page .category-list-count::before,
+.category-all-page .category-list-count::after {
+    display: none; 
+}
+
+/* 鼠标悬浮时，右侧数字徽章的颜色也会跟着变化 */
+.category-all-page .category-list-item:hover .category-list-count {
+    background: #666666;
+    color: #ffffff;
+}
+
+/* =========================================================
+   移动端响应式适配（屏幕变小时自动调整列数）
+   ========================================================= */
+@media (max-width: 768px) {
+    .category-all-page .category-list-item {
+        width: calc(50% - 8px);    /* 平板或大屏手机显示 2 列 */
+    }
+}
+
+@media (max-width: 480px) {
+    .category-all-page .category-list-item {
+        width: 100%;               /* 小屏手机显示 1 列 */
+    }
+}

@@ -1,6 +1,7 @@
 ---
 title: 2025 地球 OL 年度报告
 tags: [日寄, 年终总结]
+categories: 日寄
 password: 55555
 date: 2025-12-31 00:51:25
 ---

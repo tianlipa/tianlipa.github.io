@@ -2,6 +2,7 @@
 title: 11-Redis未授权访问漏洞
 date: 2025-08-13 13:49:08
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 ### Redis常见用途

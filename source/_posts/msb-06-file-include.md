@@ -2,6 +2,7 @@
 title: 6-文件包含漏洞
 date: 2025-08-13 13:43:25
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 ## 简介

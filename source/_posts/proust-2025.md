@@ -1,7 +1,9 @@
 ---
 title: 普鲁斯特问卷(2025)
+hidden: true
 date: 2025-10-06 11:24:25
 password: 55555
+categories: 随笔
 ---
 
 1. **你认为完美的快乐是怎样的?**

@@ -2,6 +2,7 @@
 title: 7-SSRF漏洞
 date: 2025-08-13 13:44:18
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 php curl扩展：

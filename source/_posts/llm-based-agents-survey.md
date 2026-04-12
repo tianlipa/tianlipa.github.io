@@ -2,6 +2,7 @@
 title: A survey on large language model based autonomous agents
 date: 2025-08-18 17:01:46
 tags: [论文阅读, 大模型, USTC-MINE]
+categories: 科研
 ---
 
 [s11704-024-40231-1](https://link.springer.com/article/10.1007/s11704-024-40231-1)

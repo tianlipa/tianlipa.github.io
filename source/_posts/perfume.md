@@ -2,6 +2,7 @@
 title: "Perfume: The Story of a Murderer"
 date: 2025-11-30 22:13:09
 tags: [艺术细菌, 电影, 随笔]
+categories: 影视作品
 ---
 
 今天在放映中心看的老电影, 香水. 我很怀疑副标题完全是为了吸引观众放上来的.

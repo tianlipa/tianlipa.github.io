@@ -2,6 +2,7 @@
 title: 18-Burp Suite
 date: 2025-08-13 13:58:39
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 集成化，自动化，可扩展的渗透测试工具

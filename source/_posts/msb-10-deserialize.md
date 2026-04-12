@@ -2,6 +2,7 @@
 title: 10-反序列化漏洞
 date: 2025-08-13 13:47:44
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 ### PHP类与对象

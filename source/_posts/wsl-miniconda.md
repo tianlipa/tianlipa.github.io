@@ -1,7 +1,8 @@
 ---
 title: 安装 WSL 并安装 Miniconda
 date: 2025-12-02 23:12:16
-tags: 疑难解答
+tags: WSL
+categories: 疑难解答
 ---
 
 给Pettingzoo配环境把自己配红温了, 查issues发现Windows的问题导致某个库不支持, 遂改用WSL.

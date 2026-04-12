@@ -1,7 +1,8 @@
 ---
 title: 如何给 WSL 使用宿主机 VPN 并配置 Docker
 date: 2026-03-06 21:41:28
-tags: 疑难解答
+tags: [WSL, Docker]
+categories: 疑难解答
 ---
 
 国内正常工作的Docker镜像站越来越少了, 导致配Docker环境也越来越痛苦了. 于是自然想到可以利用VPN给Docker做一个代理, 具体方法如下.

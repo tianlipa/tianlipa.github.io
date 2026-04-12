@@ -2,6 +2,7 @@
 title: 17-MSF+Combalt Strike
 date: 2025-08-13 13:57:37
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 ## Msfvenom

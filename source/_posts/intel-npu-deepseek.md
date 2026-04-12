@@ -2,6 +2,7 @@
 title: 利用Intel NPU加速库加速DeepSeek
 date: 2025-08-14 09:15:48
 tags: [大模型, 实习]
+categories: 工作
 ---
 
 #### DeepSeek-R1-Distill-Qwen-1.5B

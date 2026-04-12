@@ -2,6 +2,7 @@
 title: 智能体安全相关论文阅读
 date: 2026-02-25 19:18:16
 tags: [USTC-MINE, 论文阅读, LLM]
+categories: 科研
 ---
 
 ## Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection

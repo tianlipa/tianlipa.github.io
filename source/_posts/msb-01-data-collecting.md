@@ -2,6 +2,7 @@
 title: 1-信息收集
 date: 2025-08-13 13:29:51
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 ## 域名信息收集

@@ -2,6 +2,7 @@
 title: 9-远程代码执行漏洞
 date: 2025-08-13 13:45:54
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 Remote Code/Command Execute, RCE

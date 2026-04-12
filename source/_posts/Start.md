@@ -2,6 +2,7 @@
 title: Start
 date: 2025-01-11 21:15:57
 tags: 日寄
+categories: 日寄
 hidden: false
 ---
 今天从头开始看马士兵的课看到了HTML, 把HTML看了一半, 开了这个博客, 顺便稍微学了点Markdown用来写博客.

@@ -2,6 +2,7 @@
 title: CAMEL, RoleLLM
 date: 2025-12-31 16:29:51
 tags: [USTC-MINE, 论文阅读, 大模型]
+categories: 科研
 ---
 
 ## CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society

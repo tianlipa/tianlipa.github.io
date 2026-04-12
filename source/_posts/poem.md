@@ -1,7 +1,8 @@
 ---
 title: 神秘后现代诗词
 date: 2025-07-18 14:20:34
-tags:
+tags: 随笔
+categories: 随笔
 ---
 
 > 作者: [TinyLlama/TinyLlama-1.1B-Chat-v1.0](https://hf-mirror.com/TinyLlama/TinyLlama-1.1B-Chat-v1.0)

@@ -2,6 +2,7 @@
 title: 5-文件上传漏洞
 date: 2025-08-13 13:42:16
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 ## 原理

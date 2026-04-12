@@ -1,6 +1,7 @@
     // <!-- <p class="site-subtitle" itemprop="description">{{ subtitle }}</p> -->
 
-
+    // <div id="randomParagraph" class="site-subtitle" itemprop="description"></div>
+    //   <script src="/js/subtitle.js"></script>
 
 document.addEventListener("DOMContentLoaded", function () {
     var paragraphs = [
@@ -293,9 +294,24 @@ document.addEventListener("DOMContentLoaded", function () {
         "We become what we behold.",
         "砍掉她的头!",
         "WE APOLOGISE FOR THE INCONVENIENCE",
-        "我已出舱, 感觉良好."
+        "我已出舱, 感觉良好.",
+        "有僵尸在你的草坪上",
+        "你这么长久地沉睡究竟为了什么?",
+        "2147483648",
+        "请参见Subtitle.",
+        "式微, 式微, 胡不归?",
+        "它们是肉做的.",
+        "越过长城, 走向世界.",
+        "用更好的理念.",
+        "It sucks.<br>You're gonna love it!",
+        "N=1或P=0",
+        "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
     var selectedParagraph = paragraphs[randomIndex];
-    document.getElementById('randomParagraph').innerHTML = selectedParagraph;
+    // document.getElementById('randomParagraph').innerHTML = selectedParagraph;
+    var subtitleElement = document.querySelector('.site-subtitle');
+    if (subtitleElement) {
+        subtitleElement.innerHTML = selectedParagraph;
+    }
 });

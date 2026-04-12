@@ -2,6 +2,7 @@
 title: 3-XSS渗透与防御
 date: 2025-08-13 13:37:07
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 客户端的Cookie: 记录登录状态，跟踪用户行为

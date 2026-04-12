@@ -2,6 +2,7 @@
 title: 'Large Language Model based Multi-Agents: A Survey of Progress and Challenges'
 date: 2025-08-19 22:25:50
 tags: [论文阅读, 大模型, USTC-MINE]
+categories: 科研
 ---
 
 [2402.01680v](https://arxiv.org/abs/2402.01680v2)

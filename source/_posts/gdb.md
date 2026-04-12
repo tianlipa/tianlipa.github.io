@@ -2,6 +2,7 @@
 title: gdb调试ELF程序
 date: 2025-06-29 16:48:15
 tags: [CTF, reverse]
+categories: 笔记
 ---
 `run [args]` 运行并传参
 `start` 运行到`main()`开头

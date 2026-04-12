@@ -5,6 +5,7 @@ tags:
   - USTC-MINE
   - 大模型
 date: 2025-12-09 14:36:02
+categories: 科研
 ---
 
 [2504.15585v4](https://arxiv.org/abs/2504.15585v4)

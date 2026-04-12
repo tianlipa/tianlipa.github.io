@@ -2,6 +2,7 @@
 title: 8-XXE漏洞
 date: 2025-08-13 13:45:17
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 XML: eXtensible Markup Language, 可扩展标记语言

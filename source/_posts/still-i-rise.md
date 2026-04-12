@@ -2,6 +2,7 @@
 title: Still I Rise
 date: 2025-11-18 01:27:53
 tags: [转载, 艺术细菌]
+categories: 文章转载
 ---
 
 原作者 Maya Angelou, 美国作家.

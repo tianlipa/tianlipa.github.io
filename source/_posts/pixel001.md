@@ -2,6 +2,7 @@
 title: 无题
 date: 2025-08-11 14:07:22
 tags: 艺术细菌
+categories: 像素画
 ---
 
 ![img](/img/Pixel/山田凉.png)

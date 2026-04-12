@@ -2,6 +2,7 @@
 title: Intel NPU加速库使用样例
 date: 2025-07-23 16:53:23
 tags: [大模型, 实习]
+categories: 工作
 ---
 
 ### 矩阵乘法

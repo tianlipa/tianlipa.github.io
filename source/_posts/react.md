@@ -2,6 +2,7 @@
 title: 'ReAct: Synergizing Reasoning and Acting in Language Models'
 date: 2025-08-22 16:53:58
 tags: [论文阅读, 大模型, USTC-MINE]
+categories: 科研
 ---
 
 [2210.03629v3](https://arxiv.org/abs/2210.03629v3)

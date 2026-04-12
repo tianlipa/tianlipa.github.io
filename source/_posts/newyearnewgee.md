@@ -2,6 +2,7 @@
 title: 新年日寄
 date: 2025-01-28 22:16:01
 tags: 日寄
+categories: 日寄
 password: idontgiveafuck
 ---
 今天除夕, 没有回老家.

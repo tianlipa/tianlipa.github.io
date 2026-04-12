@@ -2,6 +2,7 @@
 title: 4-CSRF漏洞渗透与防御
 date: 2025-08-13 13:38:26
 tags: [CTF, web, 马士兵]
+categories: 笔记
 ---
 
 CSRF(XSRF): Cross-Site Request Forgery, 跨站请求伪造

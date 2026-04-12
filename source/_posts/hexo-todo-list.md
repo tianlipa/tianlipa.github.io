@@ -2,6 +2,7 @@
 title: Hexo博客如何渲染Markdown待办清单TO-DO List
 date: 2025-08-19 10:19:29
 tags: [博客美化, 疑难解答]
+categories: 博客
 ---
 
 起因是想把自己的待看清单传上来, 然后发现hexo默认不支持渲染这样的待办清单.

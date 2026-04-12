@@ -2,6 +2,7 @@
 title: Cognitive Architectures for Language Agents
 date: 2025-11-12 17:29:56
 tags: [论文阅读, 大模型, USTC-MINE]
+categories: 科研
 ---
 
 [2309.02427](https://arxiv.org/abs/2309.02427)

@@ -2,6 +2,7 @@
 title: 20天狂宴Pytorch-Day6
 date: 2025-09-01 23:38:45
 tags: [大模型, pytorch, USTC-MINE]
+categories: 笔记
 ---
 
 [GitHub链接](https://github.com/lyhue1991/eat_pytorch_in_20_days)
