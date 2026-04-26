@@ -2,7 +2,7 @@
 title: Leetcode Binary Search 题解
 date: 2026-04-02 18:48:17
 tags: [LeetCode, 算法]
-categories: 算法
+categories: LeetCode
 ---
 
 ### Binary Search

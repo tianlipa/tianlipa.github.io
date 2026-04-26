@@ -39,7 +39,8 @@ date: 2025-08-20 09:26:44
 <div id="insult-counter"></div>
 
 <script>
-  const startDate = new Date('2026-01-07T00:00:00+08:00');
+  // 2026-1-07
+  const startDate = new Date('2026-04-17T00:00:00+08:00');
   const now = new Date();
   const utc8Now = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Shanghai' }));
   const diffDays = Math.floor((utc8Now - startDate) / (1000 * 60 * 60 * 24));
@@ -50,4 +51,4 @@ date: 2025-08-20 09:26:44
 
 ## 友情链接
 
-<div class="text-center">{% btn https://wanye1307.github.io/, Words Exist,, 但是她逃走了. %} {% btn https://517adam.github.io/, Yuanzhong Chen's Blog,, %}</div>
+<div class="text-center">{% btn https://wanye1307.github.io/, Words Exist,, %} {% btn https://517adam.github.io/, Yuanzhong Chen's Blog,, %}</div>

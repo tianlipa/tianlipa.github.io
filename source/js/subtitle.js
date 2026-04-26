@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "一大波僵尸正在接近!",
         "然后他就用棍子打我.",
         "So, this is what it feels like.",
-        "那一年, 我也十七岁",
+        "那年, 我也十七岁",
         "现已加入肯德基豪华午餐",
         "人生是美丽的.",
         "我都这样了你就不能让让我吗",
@@ -303,8 +303,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "它们是肉做的.",
         "越过长城, 走向世界.",
         "用更好的理念.",
-        "It sucks.<br>You're gonna love it!",
+        "It sucks!<br>You're gonna love it.",
         "N=1或P=0",
+        "如此, 永恒已过去了一秒.",
+        "怎么会事呢",
+        // "铁鸟没看见,<br>不过我看见了一架美国波音公司<br>研制的AH-64阿帕奇直升机",
+        "因为它就是<i>想</i>被看着!",
+        "我受够繁文缛节了.",
+        "谨以此物纪念我的童年,<br>那是一段小有遗憾的幸福时光.",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);

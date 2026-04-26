@@ -2,7 +2,7 @@
 title: LeetCode Trees 题解
 date: 2026-04-04 16:00:50
 tags: [LeetCode, 算法]
-categories: 算法
+categories: LeetCode
 ---
 
 终于做到搜索了.

@@ -217,6 +217,7 @@ markdown:
         figcaption: true
         keepAlt: true
     - markdown-it-footnote
+    - markdown-it-imsize
   anchors:
     level: 2
     collisionSuffix: ''

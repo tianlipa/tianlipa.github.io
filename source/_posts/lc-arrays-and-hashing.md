@@ -2,7 +2,7 @@
 title: LeetCode Arrays & Hashing 题解
 date: 2026-02-14 16:13:52
 tags: [LeetCode, 算法]
-categories: 算法
+categories: LeetCode
 ---
 
 <img src="/img/nc-arrays-and-hashing/1.png" style="zoom:50%;" />
