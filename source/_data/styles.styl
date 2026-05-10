@@ -143,7 +143,53 @@
    TO-DO LIST 让鼠标点击无效
    ========================================================= */
 
-.task-list-item-checkbox {
+/* .task-list-item-checkbox {
     accent-color: #0969da !important; 
     pointer-events: none !important; 
+} */
+
+/* 1. 缩小复选框，并应用自定义的负边距 */
+input[type="checkbox"].task-list-item-checkbox:disabled {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px !important;
+  height: 14px !important;
+  border: 1px solid #d0d7de;
+  border-radius: 3px;
+  background-color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  /* 应用你提供的完美 margin 方案 */
+  margin-left: -1em !important; 
+  margin-right: 0.5em !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.228em !important;
+  padding: 0 !important;
+  cursor: default;
+}
+
+/* 2. 选中时的样式：蓝底蓝边 */
+input[type="checkbox"].task-list-item-checkbox:disabled:checked {
+  background-color: #0969da;
+  border-color: #0969da;
+}
+
+/* 3. 调整白勾的大小和位置，适配 14px 的小框 */
+input[type="checkbox"].task-list-item-checkbox:disabled:checked::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(0%, -5%) rotate(45deg);
+}
+
+/* 4. 确保外层 li 不再有多余的 text-indent */
+li.task-list-item {
+  text-indent: 0 !important; 
+  list-style-type: none !important; 
 }

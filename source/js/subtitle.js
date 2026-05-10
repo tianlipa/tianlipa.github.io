@@ -195,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "哇这个好可爱呀",
         "我的研究表明, 世界上存在一个直径800米左右的球体, 且味道还不错",
         "没有证据是没有的弱证据",
-        "吾不识青天高, 黄地厚.<br>唯见月寒日暖, 来煎人寿.",
         "Get me off your fucking mailing list",
         "太阳照常升起",
         "宝宝due due delay了",
@@ -311,6 +310,15 @@ document.addEventListener("DOMContentLoaded", function () {
         "因为它就是<i>想</i>被看着!",
         "我受够繁文缛节了.",
         "谨以此物纪念我的童年,<br>那是一段小有遗憾的幸福时光.",
+        "你好",
+        "飞光飞光, 劝尔一杯酒",
+        "吾不识青天高, 黄地厚.<br>唯见月寒日暖, 来煎人寿.",
+        "天东有若木, 下置衔烛龙.<br>吾将斩龙足, 嚼龙肉,<br>使之朝不得回, 夜不得伏.<br>自然老者不死, 少者不哭.",
+        "刘彻茂陵多滞骨,<br>嬴政梓棺费鲍鱼.",
+        "盗跖庄蹻流誉后,<br>更陈王奋起挥黄钺.<br>歌未竟, 东方白.",
+        "我的问题在于读书太少而想得太多",
+        "把字刻在石头上.",
+        "Because I'm Batman!",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
