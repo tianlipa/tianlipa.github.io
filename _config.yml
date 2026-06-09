@@ -242,3 +242,13 @@ toc:
     position: false
     symbol: '#'
     style: header-anchor
+
+
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+  wpm: 280
+  suffix: "mins."

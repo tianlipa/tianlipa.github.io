@@ -257,7 +257,7 @@ read_more_btn: true
 
 # Post meta display settings
 post_meta:
-  item_text: true
+  item_text: false
   created_at: true
   updated_at:
     enable: true
@@ -269,6 +269,7 @@ post_meta:
 symbols_count_time:
   separated_meta: true
   item_text_total: false
+  item_text_post: false
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
@@ -937,3 +938,4 @@ vendors:
 css: css
 js: js
 images: images
+
