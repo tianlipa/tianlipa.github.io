@@ -1272,7 +1272,9 @@ Get me off your fucking mailing list
 <span style='color: transparent;'>呀哈哈! 我被发现了!</span>
 ```
 
+梗自<<塞尔达传说>>系列, html会让这句话显示为透明, 只有用鼠标选中才能看见.
 
+没有人觉得很巧妙吗.
 
 ```
 生活就像一盒巧克力<br>我就像一条狗
@@ -1506,7 +1508,7 @@ Don't you dare go Hollow.
 与心爱的你行至世界尽头
 ```
 
-
+出自游戏<<怪物猎人世界>>.
 
 ```
 胜败乃兵家常事,<br>大侠请重新来过.
@@ -1530,7 +1532,7 @@ Now on Firefox!
 🥔
 ```
 
-
+这是一个土豆.
 
 ```
 O brave new world,<br>That has such people in't.
@@ -1644,7 +1646,7 @@ Within cells interlinked.
 The quick brown fox jumps over the lazy dog.
 ```
 
-
+英语中最短的包含全部26个字母的句子, 常用于测试.
 
 ```
 明天会更好.
@@ -1662,7 +1664,7 @@ The quick brown fox jumps over the lazy dog.
 既然你诚心诚意地发问了<br>我就大发慈悲地回答你
 ```
 
-
+出自<<神奇宝贝>>动画, 反派组合火箭队的出厂台词.
 
 ```
 Creeper?
@@ -1890,7 +1892,7 @@ WE APOLOGISE FOR THE INCONVENIENCE
 越过长城, 走向世界.
 ```
 
-
+中国发出的第一封电子邮件.
 
 ```
 用更好的理念.

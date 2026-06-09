@@ -135,6 +135,14 @@ CIFAR-10是一个包含10个类别, 每个类别6000个图像的小型数据集,
 
 跑了400个epoch, loss是4.7510左右, best acc 0.7928, 但我这个线性层是接着上次100个epoch后面跑的, 我觉得可以重新试试.
 
+clean成功率: 0.8186
+
+
+
+Epoch 3 | Clean Acc (CDA): 0.6996 | Attack Success Rate (ASR): 0.9787
+
+Epoch 60 | Clean Acc (CDA): 0.7008 | Attack Success Rate (ASR): 0.7890
+
 正常模型和植入模型, 比较干净输入的准确率(99.3%), 和攻击成功率(95%)
 
 找一个具体的场景

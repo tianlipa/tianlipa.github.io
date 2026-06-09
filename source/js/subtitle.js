@@ -319,6 +319,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "我的问题在于读书太少而想得太多",
         "把字刻在石头上.",
         "Because I'm Batman!",
+        "唉, 我是多么憎恨夜晚.",
+        "暗影大师69的编年史",
+        "世上终究没有不停的雨,<br>但或许有无止境的冒险.",
+        "This APT has Super Cow Powers.",
+        "...like tears in rain.",
+        "DON'T PANIC",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
