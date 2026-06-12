@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":150,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="访问控制的含义 在身份认证的基础上, 依据授权对提出的资源访问请求加以控制. 授权和访问监控.  保密性控制: 保证数据资源不被非法读出 完整性控制: 保证数据资源不被非法改写或删除 可用性控制: 保证网络&#x2F;系统中所有客体不被非法主体破坏  在保证安全的前提下最大限度共享资源.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机安全笔记 四.访问控制">
+<meta property="og:url" content="https://tianlipa.github.io/2026/03/computer-security-4/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="访问控制的含义 在身份认证的基础上, 依据授权对提出的资源访问请求加以控制. 授权和访问监控.  保密性控制: 保证数据资源不被非法读出 完整性控制: 保证数据资源不被非法改写或删除 可用性控制: 保证网络&#x2F;系统中所有客体不被非法主体破坏  在保证安全的前提下最大限度共享资源.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-security-4/1.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-security-4/2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-security-4/3.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-security-4/4.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-security-4/5.png">
+<meta property="article:published_time" content="2026-03-28T14:14:38.000Z">
+<meta property="article:modified_time" content="2026-04-12T13:32:34.260Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-security-4/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/03/computer-security-4/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/03/computer-security-4/","path":"2026/03/computer-security-4/","title":"计算机安全笔记 四.访问控制"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机安全笔记 四.访问控制 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Subtitle</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tianlipa"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/03/computer-security-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机安全笔记 四.访问控制 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机安全笔记 四.访问控制
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间: 2026-03-28 22:14:38" itemprop="dateCreated datePublished" datetime="2026-03-28T22:14:38+08:00">2026-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间: 2026-04-12 21:32:34" itemprop="dateModified" datetime="2026-04-12T21:32:34+08:00">2026-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数: </span>
+      <span>3.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="fang-wen-kong-zhi-de-han-yi">访问控制的含义</span><a href="#fang-wen-kong-zhi-de-han-yi" class="header-anchor">#</a></h2>
+<p>在<strong>身份认证</strong>的基础上, <strong>依据授权</strong>对提出的资源访问请求加以控制.</p>
+<p>授权和访问监控.</p>
+<ul>
+<li><strong>保密性控制</strong>: 保证数据资源不被非法读出</li>
+<li><strong>完整性控制</strong>: 保证数据资源不被非法改写或删除</li>
+<li><strong>可用性控制</strong>: 保证网络/系统中所有客体不被非法主体破坏</li>
+</ul>
+<p>在保证安全的前提下最大限度共享资源.</p>
+<span id="more"></span>
+<p>核心: <strong>授权控制</strong>, 控制不同用户对信息资源的访问权限.</p>
+<p>授权控制的要求:</p>
+<ul>
+<li><strong>一致性</strong>: 对信息资源的控制没有二义性, 各种定义之间不冲突</li>
+<li><strong>统一性</strong>:
+<ul>
+<li>对所有信息资源进行集中管理, 安全策略统一贯彻</li>
+<li>要求有审计功能, 对所授权记录可以核查</li>
+<li>尽可能地提供细粒度的控制</li>
+</ul>
+</li>
+</ul>
+<p>访问控制包括:</p>
+<ul>
+<li><strong>系统访问控制</strong>: 为不同用户赋予不同<strong>主机资源</strong>的访问权限, 属性包括用户, 组, 资源, 权限等</li>
+<li><strong>网络访问控制</strong>: 限制外部对网络服务的访问, 系统内部对外部的访问, 属性包括源 IP 地址, 端口地址, 目的 IP 地址, 端口地址等</li>
+<li><strong>物理访问控制</strong></li>
+</ul>
+<p>最直接的方法: <strong>隔离</strong></p>
+<p>基本原则:</p>
+<ul>
+<li><strong>最小权限原则</strong>: 限定每个主体所必须的最小权限</li>
+<li><strong>多人负责原则</strong>: 授权分散化, 保证没有任何个人具有完成任务的全部授权或信息</li>
+<li><strong>职责分离原则</strong>: 将不同的责任分派给不同的人员以期达到互相牵制, 消除一个人执行两项不相容的工作的风险</li>
+</ul>
+<p>实现机制:</p>
+<ul>
+<li>基于访问控制属性</li>
+<li>基于用户和资源分级</li>
+</ul>
+<h2><span id="shou-quan">授权</span><a href="#shou-quan" class="header-anchor">#</a></h2>
+<p>主体 (用户等) 访问客体 (软硬件资源)</p>
+<p>SOA: 主体 Subject, 客体 Object, 访问操作 Access operation</p>
+<p>授权: 访问监控器决定是否同意.</p>
+<p>主体和客体给出了关注控制的两个选项, 可以规定以下任一种:</p>
+<ul>
+<li>一个主体允许做什么</li>
+<li>可以对一个客体做什么</li>
+</ul>
+<p>传统上, 多用户操作系统的主要任务是管理文件和资源, 也就是客体, 因此访问控制主要使用第二种方法.</p>
+<p>像数据库管理系统这样的面向应用的 IT 系统直接面向终端用户提供服务, 这种系统适当地加入了控制主体行为的机制.</p>
+<h2><span id="fang-wen-cao-zuo">访问操作</span><a href="#fang-wen-cao-zuo" class="header-anchor">#</a></h2>
+<p><strong>访问权限</strong>: 访问的具体形式. BLP 模型有四种访问权限:</p>
+<ul>
+<li>读 read</li>
+<li>写 write</li>
+<li>添加 (盲写) append</li>
+<li>执行 execute</li>
+</ul>
+<p>区分: 数据部分的访问属性和目录部分的访问属性</p>
+<h2><span id="suo-you-quan">所有权</span><a href="#suo-you-quan" class="header-anchor">#</a></h2>
+<ul>
+<li>自主访问控制 (DAC, Discretionary Access Control) : 为每个资源定义一个所有者, 让所有者规定谁可以访问, 这类策略被称为自主的, 因为访问控制由所有者来处理</li>
+<li>强制访问控制 (MAC, Mandatory Access Control) : 系统策略规定谁可以访问, 这类策略被称为强制的</li>
+</ul>
+<h2><span id="fang-wen-kong-zhi-jie-gou">访问控制结构</span><a href="#fang-wen-kong-zhi-jie-gou" class="header-anchor">#</a></h2>
+<p>访问权限可为每个主体和客体的组合单独定义, 即访问控制矩阵.</p>
+<p>对于数量众多的主体和客体或者主体和客体的集合频繁改变时, 这种结构管理起来很不方便, 可以采用<strong>中间控制层</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>file1</th>
+<th>file2</th>
+<th>file3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice</td>
+<td></td>
+<td>{execute}</td>
+<td>{execute, read}</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>{read, write}</td>
+<td>{execute}</td>
+<td>{read, write}</td>
+</tr>
+</tbody>
+</table>
+<p>访问控制矩阵是一个抽象概念, 不适用于直接实现, 不方便进行安全管理.</p>
+<p>能力表: 访问权限和主体保存在一起</p>
+<p>访问控制列表: 访问权限和客体保存在一起</p>
+<p><strong>能力</strong>: 每个主体被赋予一个能力, 即访问控制矩阵中的主体行</p>
+<p><strong>访问控制列表 ACL</strong>: 访问控制矩阵中的一列</p>
+<h2><span id="zhong-jian-kong-zhi">中间控制</span><a href="#zhong-jian-kong-zhi" class="header-anchor">#</a></h2>
+<p>访问权限的管理依靠单个主体是相当麻烦的, 因此通常将用户置于组中, 并也可以从用户组取得访问权限.</p>
+<p>在主体和客体之间引入中间层, 以一种更易管理的方式来表示这种策略.</p>
+<p>否定的许可: 规定一个主体不允许执行的访问操作.</p>
+<p>可插入的中间层:</p>
+<ul>
+<li><strong>角色</strong>: 系统不再把权限直接给到某个具体的人, 而是给到一个岗位.</li>
+<li><strong>过程</strong>: 一套带有业务逻辑的操作方法, 例如用户不能直接操作数据库, 而是必须通过过程.</li>
+<li><strong>数据类型</strong>: 每个客体 (即数据对象) 都属于一种特定的类型. 系统规定, 某种数据类型只能被专门为它定义的「过程」所访问.</li>
+</ul>
+<p><strong>保护环</strong>: 通过比较主体与客体的数字进行访问控制决策, 主要用于完整性保护</p>
+<h2><span id="pian-xu">偏序</span><a href="#pian-xu" class="header-anchor">#</a></h2>
+<p>参考数理逻辑与图论.</p>
+<p>安全级别上的格.</p>
+<h2><span id="ji-yu-jiao-se-de-fang-wen-kong-zhi-rbac">基于角色的访问控制 RBAC</span><a href="#ji-yu-jiao-se-de-fang-wen-kong-zhi-rbac" class="header-anchor">#</a></h2>
+<ul>
+<li><strong>自主访问控制</strong>(DAC)<br>
+基于请求者的身份和访问规则 (授权) 控制访问, 规定请求者可以 (或不可以) 做什么</li>
+<li><strong>强制访问控制</strong>(MAC)<br>
+通过比较具有安全许可 (表明系统实体有资格访问某种资源) 的安全标签 (表明系统资源的敏感或关键程度) 来控制访问</li>
+<li><strong>基于角色的访问控制</strong>(RBAC)<br>
+基于用户在系统中所具有的角色和说明各种角色用户享有哪些访问权的规则来控制访问</li>
+</ul>
+<p>将访问权限分配给角色, 用户通过被指派为角色从而获得角色所拥有的访问权限.</p>
+<p>RBAC 模型是各类基于角色的访问控制模型的基础, 由 4 个子模型组成:</p>
+<ul>
+<li>RBAC0 <strong>基本模型</strong></li>
+<li>RBAC1 <strong>层次模型</strong></li>
+<li>RBAC2 <strong>约束模型</strong></li>
+<li>RBAC3 <strong>统一模型</strong></li>
+</ul>
+<h3><span id="rbac0-ji-ben-mo-xing">RBAC0 基本模型</span><a href="#rbac0-ji-ben-mo-xing" class="header-anchor">#</a></h3>
+<figure><img data-src="/img/computer-security-4/1.png" alt></figure>
+<p>用户分配 (User Assignment):</p>
+<ul>
+<li>一个用户可经授权而拥有多个角色</li>
+<li>一个角色可由多个用户构成</li>
+</ul>
+<p>许可分配 (Permission Assignment):</p>
+<ul>
+<li>每个角色可拥有多种许可</li>
+<li>每个许可也可授权给多个不同的角色</li>
+<li>每个操作可施加于多个客体 (受控对象)</li>
+<li>每个客体也可以接受多个操作</li>
+</ul>
+<p><strong>权限被赋予角色, 而不是用户.</strong></p>
+<h3><span id="rbac1-ceng-ci-mo-xing">RBAC1 层次模型</span><a href="#rbac1-ceng-ci-mo-xing" class="header-anchor">#</a></h3>
+<p>角色层次, 权限可以继承.</p>
+<p>上面角色包含下面角色的所有访问权及下面角色不具有的其它访问权.</p>
+<ul>
+<li>一般继承关系仅要求角色继承关系是一个绝对偏序关系, 允许角色间的多继承</li>
+<li>受限继承关系则进一步要求角色继承关系是一个树结构, 要求角色间单继承</li>
+</ul>
+<h3><span id="rbac2-yue-shu-mo-xing">RBAC2 约束模型</span><a href="#rbac2-yue-shu-mo-xing" class="header-anchor">#</a></h3>
+<p>增加约束.</p>
+<p>互斥约束支持一个组织中的职责和能力的分离.</p>
+<p>互斥角色指一个用户只能被分配给集合中的一个角色.</p>
+<p>基数指设置关于角色的最大数值.</p>
+<p>先决条件: 用户在分配某个角色之前, 必须先拥有另一个或一组先决条件角色.</p>
+<h3><span id="rbac3-tong-yi-mo-xing">RBAC3 统一模型</span><a href="#rbac3-tong-yi-mo-xing" class="header-anchor">#</a></h3>
+<p>RBAC1 和 RBAC2 的合集, 所以 RBAC3 既有角色分层, 也可以增加各种约束.</p>
+<h3><span id="rbac-mo-xing-de-you-dian">RBAC 模型的优点</span><a href="#rbac-mo-xing-de-you-dian" class="header-anchor">#</a></h3>
+<p>支持最小权限原则, 责任分离原则. 这些原则是任何组织的管理工作都需要的. 这就使得 RBAC 模型有广泛的应用前景.</p>
+<p>支持数据抽象原则和继承概念. 由于目前主流程序设计语言都支持面向对象技术, RBAC 的这一特性便于在实际系统中应用实现.</p>
+<p>模型中概念与实际系统紧密对应. RBAC 模型中的角色, 用户和许可权等概念都是实际系统实际存在的实体, 便于设计者建立现存的或待建系统的 RBAC 模型.</p>
+<h3><span id="rbac-mo-xing-de-que-dian">RBAC 模型的缺点</span><a href="#rbac-mo-xing-de-que-dian" class="header-anchor">#</a></h3>
+<p>本质是对访问矩阵模型的扩充, 能够很好的解决系统中主体对客体的访问控制, 访问权力的分配与控制问题, 但模型没有提供信息流控制机制, 不能完全满足信息系统的全部安全需求.</p>
+<p>没有提供操作顺序控制机制. 很难应用于要求有严格操作次序的实体系统, 例如, 在购物控制系统中要求系统对购买步骤的控制, 在客户未付款之前不应让他把商品拿走.</p>
+<p>其他问题: 如是否允许一个正在会话的用户再创建一个新会话, 管理模型不支持用户和许可权的增加与删除等管理工作.</p>
+<h2><span id="ji-yu-ren-wu-de-fang-wen-kong-zhi-tbac">基于任务的访问控制 TBAC</span><a href="#ji-yu-ren-wu-de-fang-wen-kong-zhi-tbac" class="header-anchor">#</a></h2>
+<p>从应用的角度来解决安全问题, 基于主动式安全模型, 以面向任务的观点来建立安全模型和实现安全机制, 在任务处理的过程中提供动态实时的安全管理.</p>
+<p><strong>工作流</strong>: 是为完成某一目标而由多个相关的任务 (活动) 构成的业务流程</p>
+<p><strong>授权结构体</strong>: 由一个或多个授权步组成的结构体</p>
+<p>一般授权结构体内的授权步依次执行.</p>
+<p>原子授权结构体内部的每个授权步紧密联系, 其中任何一个授权步失败都会导致整个结构体失败.</p>
+<p><strong>授权步</strong>: 访问控制所能控制的最小单元, 由受托人集 (trustee-set) 和多个许可集 (permissions set) 组成.</p>
+<p>受托人集是可被授予执行授权步的用户的集合, 许可集则是受托人集的成员被授予授权步时拥有的访问许可.</p>
+<p>当授权步初始化以后, 一个来自受托人集中的成员将被授予授权步, 我们称这个受托人为授权步的执行委托者, 该受托人执行授权步过程中所需许可的集合称为执行者许可集.</p>
+<p>任务</p>
+<p>依赖: 授权步之间或授权结构体之间的相互关系</p>
+<p>TBAC 模型的授权用五元组 (S,O,P,L,AS) 表示.</p>
+<p>SOP: 主题, 客体, 许可</p>
+<p>L: 生命期 lifecycle, AS: 授权步</p>
+<p>支持最小特权和职责分离原则, 也支持数据抽象原则</p>
+<p>TBAC 不仅能对不同工作流实行不同的访问控制策略, 而且还能对同一工作流的不同任务实例实行不同的访问控制策略.</p>
+<h2><span id="ji-yu-dui-xiang-de-fang-wen-kong-zhi-obac">基于对象的访问控制 OBAC</span><a href="#ji-yu-dui-xiang-de-fang-wen-kong-zhi-obac" class="header-anchor">#</a></h2>
+<p>控制策略和控制规则是 OBAC 访问控制的核心所在.</p>
+<ul>
+<li>将访问控制列表与受控对象或受控对象的属性相关联</li>
+<li>将访问控制选项设计成为用户, 组或角色及其对应权限的集合</li>
+</ul>
+<p>允许对策略和规则进行重用, 继承和派生操作.</p>
+<p>当受控对象的属性发生改变, 或受控对象发生继承和派生时, 无须更新访问主体的权限, 只要修改受控对象的相应访问控制项即可, 减少了访问主体的权限管理, 降低了授权数据管理的复杂性.</p>
+<h2><span id="ji-yu-shu-xing-de-fang-wen-kong-zhi-abac">基于属性的访问控制 ABAC</span><a href="#ji-yu-shu-xing-de-fang-wen-kong-zhi-abac" class="header-anchor">#</a></h2>
+<p>允许更大规模的离散式输入进入访问控制决策, 并且提供更大的可能的变量组合集合, 以此来反映更大且更明确的可能规则, 策略或访问限制的集合.</p>
+<p>策略 (policy): 是一组用来管理组织内部的允许行为的规则和关系, 其基础是主体所具有的特权, 以及在哪种环境条件下资源或客体需要被保护.</p>
+<p>特权 (privilege) 代表主体的授权行为; 它们由机构定义并体现在策略中.</p>
+<h2><span id="shen-fen-ping-zheng-he-fang-wen-guan-li-icam">身份, 凭证和访问管理 ICAM</span><a href="#shen-fen-ping-zheng-he-fang-wen-guan-li-icam" class="header-anchor">#</a></h2>
+<p>ICAM: Identity, Credential, Access Management</p>
+<p>身份管理: 将属性分配到数字身份上去, 并且将数字身份与个体或 NPE (Non-Practicing Entities, 非执业实体) 连接起来.</p>
+<p>凭证是一个对象或数据结构, 将身份 (及可选的附加属性) 权威地绑定到用户所拥有并控制的权标.</p>
+<p>访问管理组件对实体被授权访问资源的方法进行管理和控制, 包括逻辑上访问和物理访问.</p>
+<p>企业级访问控制设施的支持要素:</p>
+<ul>
+<li>资源管理</li>
+<li>特权管理</li>
+<li>策略管理</li>
+</ul>
+<p>身份联合, 身份信息交换</p>
+<h2><span id="shi-yong-kong-zhi-usage-control">使用控制 Usage CONtrol</span><a href="#shi-yong-kong-zhi-usage-control" class="header-anchor">#</a></h2>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>UCON</mtext><mtext>ABC</mtext></msub></mrow><annotation encoding="application/x-tex">\text{UCON}_{\text{ABC}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">UCON</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ABC</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>模型</p>
+<figure><img data-src="/img/computer-security-4/2.png" alt><figcaption>image-20260329141430287</figcaption></figure>
+<ul>
+<li>S: 主体</li>
+<li>ATT (S): 主体属性, 如用户名用户组, 角色, 安全级别等</li>
+<li>O: 客体</li>
+<li>ATT (O): 客体属性</li>
+<li>R: 权限, 主体能够对客体进行控制和执行的特权, 由主体可以对客体进行的访问操作 (如读, 写, 运行) 集组成</li>
+<li>A: Authorization Rules, 授权规则, 允许主体使用客体特定权限必须满足的规则集, 是判定主体是否能够访问客体的<strong>决定因素</strong></li>
+<li>B: oBligations, 义务, 主体获得或行使对客体的访问权利<strong>前或过程中</strong>必须完成的操作</li>
+<li>C: Conditions, 条件, 主体获得或行使对客体的访问权利前或中必须满足的系统或执行环境的强制约束条件</li>
+</ul>
+<p>连续性: 授权决策在资源的使用过程中对访问请求进行不间断的或重复的判断</p>
+<p>可变性: 属性需随着主体行为而被改变, 这种改变必将影响到主体的下次或本次访问权限的判断</p>
+<p>若决策因素为 preA 或 preB , 则属性改变只能在使用前或使用后, 而不可能在使用中.</p>
+<p>以条件为决策因素 (preC, onC) 的访问模型中所有更新属性的组合都标为 N, 因为条件只与环境或系统状态有关, 不能改变任何主客体属性.</p>
+<h3><span id="zi-zhu-fang-wen-kong-zhi-dac">自主访问控制 DAC</span><a href="#zi-zhu-fang-wen-kong-zhi-dac" class="header-anchor">#</a></h3>
+<p>所有权制, 获得访问许可的主体能够向其它主体转让访问权</p>
+<p>可由<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>UCON</mtext><mtext>preA0</mtext></msub></mrow><annotation encoding="application/x-tex">\text{UCON}_{\text{preA0}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord text"><span class="mord">UCON</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">preA0</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>模型支持</p>
+<figure><img data-src="/img/computer-security-4/3.png" alt></figure>
+<h3><span id="qiang-zhi-fang-wen-kong-zhi-mac">强制访问控制 MAC</span><a href="#qiang-zhi-fang-wen-kong-zhi-mac" class="header-anchor">#</a></h3>
+<p>主体属性为安全等级 (clearance), 而客体属性为安全类别 (classificatoin)</p>
+<p>给每一个主体和个体都分标签 (机密等级)</p>
+<p>由<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>UCON</mtext><mtext>preA0</mtext></msub></mrow><annotation encoding="application/x-tex">\text{UCON}_{\text{preA0}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord text"><span class="mord">UCON</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">preA0</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>模型支持</p>
+<figure><img data-src="/img/computer-security-4/4.png" alt></figure>
+<h3><span id="ji-yu-jiao-se-de-fang-wen-kong-zhi-ce-lue-rbac">基于角色的访问控制策略 RBAC</span><a href="#ji-yu-jiao-se-de-fang-wen-kong-zhi-ce-lue-rbac" class="header-anchor">#</a></h3>
+<p>用户/角色的映射关系可作为主体属性</p>
+<p>角色/许可的映射关系可作为客体属性</p>
+<p>由<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>UCON</mtext><mtext>preA0</mtext></msub></mrow><annotation encoding="application/x-tex">\text{UCON}_{\text{preA0}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord text"><span class="mord">UCON</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">preA0</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>模型支持</p>
+<figure><img data-src="/img/computer-security-4/5.png" alt></figure>
+<h3><span id="xin-ren-guan-li-tm">信任管理 TM</span><a href="#xin-ren-guan-li-tm" class="header-anchor">#</a></h3>
+<p>解决开放环境下对系统陌生用户的授权问题</p>
+<h3><span id="shu-zi-ban-quan-guan-li-drm">数字版权管理 DRM</span><a href="#shu-zi-ban-quan-guan-li-drm" class="header-anchor">#</a></h3>
+<h3><span id="yi-wu-dong-zuo">义务动作</span><a href="#yi-wu-dong-zuo" class="header-anchor">#</a></h3>
+<h3><span id="ling-xin-ren">零信任</span><a href="#ling-xin-ren" class="header-anchor">#</a></h3>
+<p>零信任网络建立在以下 5 个基本假定之上:</p>
+<ul>
+<li>网络环境一直存在着各类威胁因素</li>
+<li>网络环境中的威胁不仅仅来自于外部, 甚至内部威胁造成的危害更大</li>
+<li>传统基于 IP 地址的位置信息条件不足以认定该访问请求安全</li>
+<li>传统的聚焦于访问主体身份的认证不足以认定该访问请求安全, 即访问主体所使用的设备, 所处的真实地理位置等也需作为认证条件</li>
+<li>访问控制策略的评判依据需根据实际应用场景, 详细列举影响因子, 设定各影响影子比重, 实现个性化, 动态化策略制定</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/" rel="tag"># 计算机安全</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/03/2026-3-24/" rel="prev" title="草率的结局">
+                  <i class="fa fa-angle-left"></i> 草率的结局
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/03/2026-3-29/" rel="next" title="2026-3-29">
+                  2026-3-29 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">196k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:40</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/subtitle.js"></script>
+
+<script>
+  function removeTaskListSpaces() {
+      const checkboxes = document.querySelectorAll('.task-list-item-checkbox');
+      checkboxes.forEach(function(box) {
+          let nextNode = box.nextSibling;
+        
+          // 如果它确实是一段文本
+          if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+            // 把开头的空白字符（包括空格、换行）强制删掉
+            nextNode.textContent = nextNode.textContent.replace(/^\s+/, '');
+          }
+      });
+  }
+
+  // 页面常规加载时执行
+  document.addEventListener("DOMContentLoaded", removeTaskListSpaces);
+  // 兼容开启 PJAX 的主题（无刷新跳转）
+  document.addEventListener("pjax:complete", removeTaskListSpaces);
+  document.addEventListener("pjax:success", removeTaskListSpaces);
+</script>
+
+
+
+<!-- hexo injector body_end start -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const avatars = ["/img/avatar/1.png","/img/avatar/11.png","/img/avatar/2.gif","/img/avatar/3.jpg","/img/avatar/4.jpg","/img/avatar/5.jpg","/img/avatar/6.gif","/img/avatar/7.jpg","/img/avatar/8.jpg","/img/avatar/9.jpg","/img/avatar/呆猫.jpg"];
+      
+      if (avatars.length > 0) {
+        const randomIndex = Math.floor(Math.random() * avatars.length);
+        const avatarElement = document.querySelector('.site-author-image');
+        if (avatarElement) {
+          avatarElement.src = avatars[randomIndex];
+        }
+      }
+    });
+  </script>
+  <!-- hexo injector body_end end --></body>
+</html>

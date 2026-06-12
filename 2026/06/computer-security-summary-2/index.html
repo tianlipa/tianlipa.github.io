@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":150,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="访问监控器  访问监控器 Reference Monitor, 负责监控所有主体对客体的访问 安全内核 Security Kernel, 实现 RM 的硬件固件软件的总和 可信计算基 Trusted Computing Base, 计算机系统中全部的保护机制的总和, 包括硬件软件固件  访问验证机制的三个要求:  不可破坏性, 必须不受篡改 警惕性, 始终处于活动状态 可测试性, 必须是一个足够小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机安全总复习 Part2">
+<meta property="og:url" content="https://tianlipa.github.io/2026/06/computer-security-summary-2/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="访问监控器  访问监控器 Reference Monitor, 负责监控所有主体对客体的访问 安全内核 Security Kernel, 实现 RM 的硬件固件软件的总和 可信计算基 Trusted Computing Base, 计算机系统中全部的保护机制的总和, 包括硬件软件固件  访问验证机制的三个要求:  不可破坏性, 必须不受篡改 警惕性, 始终处于活动状态 可测试性, 必须是一个足够小">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-03T14:45:14.000Z">
+<meta property="article:modified_time" content="2026-06-08T01:00:26.408Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机安全">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/06/computer-security-summary-2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/06/computer-security-summary-2/","path":"2026/06/computer-security-summary-2/","title":"计算机安全总复习 Part2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机安全总复习 Part2 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Subtitle</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tianlipa"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/06/computer-security-summary-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机安全总复习 Part2 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机安全总复习 Part2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间: 2026-06-03 22:45:14" itemprop="dateCreated datePublished" datetime="2026-06-03T22:45:14+08:00">2026-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间: 2026-06-08 09:00:26" itemprop="dateModified" datetime="2026-06-08T09:00:26+08:00">2026-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数: </span>
+      <span>4.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>15 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="fang-wen-jian-kong-qi">访问监控器</span><a href="#fang-wen-jian-kong-qi" class="header-anchor">#</a></h2>
+<ul>
+<li>访问监控器 Reference Monitor, 负责监控所有主体对客体的访问</li>
+<li>安全内核 Security Kernel, 实现 RM 的硬件固件软件的总和</li>
+<li>可信计算基 Trusted Computing Base, 计算机系统中全部的保护机制的总和, 包括硬件软件固件</li>
+</ul>
+<p><strong>访问验证机制的三个要求</strong>:</p>
+<ul>
+<li>不可破坏性, 必须不受篡改</li>
+<li>警惕性, 始终处于活动状态</li>
+<li>可测试性, 必须是一个足够小的进程, 操作系统可以随时监视它</li>
+</ul>
+<p><strong>受控调用/门</strong>: 系统提供的一种机制, 允许低权限用户 (例如用户态程序) 以安全的, 预定义好的唯一方式调用高权限资源.</p>
+<p>可信路径: 在用户 (其他主体) 和可信计算基之间建立的安全的, 抗篡改的直接通信通道.</p>
+<span id="more"></span>
+<h2><span id="an-quan-mo-xing">安全模型</span><a href="#an-quan-mo-xing" class="header-anchor">#</a></h2>
+<h3><span id="blp-mo-xing">BLP 模型</span><a href="#blp-mo-xing" class="header-anchor">#</a></h3>
+<p>Bell-LaPadula 模型, <strong>保密性</strong></p>
+<p>状态集: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>B</mi><mo>×</mo><mi>M</mi><mo>×</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">V = B \times M \times F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span></p>
+<ul>
+<li>B: Current Accesses 当前访问集, 谁正在对谁干什么</li>
+<li>M: Access Matrix, 一个表格, 记录了系统设定的权限名单 (谁允许对谁干什么)</li>
+<li>F: Security Level Functions, 给每个主体分配涉密许可级, 给客体分配密级</li>
+</ul>
+<p>安全属性如下:</p>
+<ul>
+<li>ss-property (Simple Security Property, 简单安全属性)<br>
+又称向下读, 一个状态是安全的, 当且仅当对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 中的每一个读操作, 主体的安全级别必须大于或等于客体的安全级别.</li>
+<li>*-property (Star Property, 星型安全属性)<br>
+又称向上写, 一个状态是安全的, 当且仅当对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 中的每一个写操作, 主体的安全级别必须小于或等于客体的安全级别.</li>
+<li>ds-property (Discretionary Security Property, 自主安全属性)<br>
+当前的任何访问 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 中的元素), 都必须在访问控制矩阵 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 中有明确的授权.</li>
+</ul>
+<p>基本安全定理: 初始状态安全, 状态转换能保证三个属性不被破坏, 则系统安全.</p>
+<h3><span id="biba-mo-xing">Biba 模型</span><a href="#biba-mo-xing" class="header-anchor">#</a></h3>
+<p>不下读, 不上写, 保证的是<strong>完整性</strong></p>
+<p>考虑医院, 主治医师不能看实习生笔记, 实习生不能在病历里写东西</p>
+<ul>
+<li>简单完整性, 禁止往下读</li>
+<li>完整性*-property, 禁止往上写</li>
+</ul>
+<p>信息传递路径: <strong>信息只能自上而下流动.</strong></p>
+<p>动态完整性级别: 如果主治医师看了不可靠的笔记, 则暂时把他当成实习生</p>
+<p>调用性: 低完整性的主体不允许请求 (调用) 高完整性的主体提供服务</p>
+<p>环属性: 取消了读取限制, 但依然保留不上写和调用性原则.</p>
+<h3><span id="chinese-wall-mo-xing">Chinese Wall 模型</span><a href="#chinese-wall-mo-xing" class="header-anchor">#</a></h3>
+<p>用于域权限隔离.</p>
+<p>为什么安全模型的名字都这么奇怪.</p>
+<p>公司数据集, 利益冲突类, 安全标签标明它属于哪个公司数据集以及哪个利益冲突类.</p>
+<ul>
+<li>ss-property: 想读必须满足二者之一:
+<ul>
+<li>这个文件和你以前读过的文件属于同一个公司数据集</li>
+<li>这个文件属于一个你从未接触过的全新利益冲突类</li>
+</ul>
+</li>
+<li>*-property: 想写必须满足: 能读, 且未读过<strong>任何其他公司</strong>的<strong>机密数据</strong></li>
+</ul>
+<h3><span id="xin-xi-liu-mo-xing">信息流模型</span><a href="#xin-xi-liu-mo-xing" class="header-anchor">#</a></h3>
+<p>考虑了所有形式的信息流.</p>
+<ul>
+<li>强 (显式) 信息流: 信息从变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 直接传递到变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>, 例如直接赋值语句</li>
+<li>弱 (隐式) 信息流: 变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的值没有直接赋给 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>, 但是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 决定了程序的控制流, 从而间接改变了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的值, 例如条件分支语句 (if-else).</li>
+</ul>
+<p>熵: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>p</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">H (x) = -\sum_{i=1}^{n}{p (x_i)\log_2p (x_i)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 流向 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的信息量是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>H</mi><mo stretchy="false">(</mo><mi>x</mi><mi mathvariant="normal">∣</mi><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H (x) - H (x|y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p>
+<h2><span id="unix-linux-an-quan">Unix/Linux 安全</span><a href="#unix-linux-an-quan" class="header-anchor">#</a></h2>
+<ul>
+<li>主角: UID, GID, group, root</li>
+<li>主体: pid, EUID/EGID/RUID/RGID</li>
+<li>客体: 文件许可位</li>
+</ul>
+<p>二进制表示: rwx, 所有者 同组用户 其他人</p>
+<p>SUID, SGID: 特殊的文件权限位. 当一个可执行文件被设置了 SUID, 普通用户在运行这个程序时, 其进程的有效用户 ID (EUID) 会临时变成该文件所有者的 UID (通常是 root).</p>
+<p>例如 <code>-rwsr-xr-x</code> , 第一个 - 是文件类型, s 表示 x+SUID, 执行时系统临时将用户当作文件所有者 (一般是 root) 对待.</p>
+<p>受控调用: 虽然进程拥有了超级用户的权限, 但用户只能严格按照该程序预先编写好的代码逻辑来执行操作, 无法任意发挥.</p>
+<p>强制访问控制 (MAC), SELinux</p>
+<p>访问授权规则的四个元素:</p>
+<ul>
+<li>源类型</li>
+<li>目标类型</li>
+<li>客体类别</li>
+<li>许可权限</li>
+</ul>
+<h2><span id="windows-an-quan">Windows 安全</span><a href="#windows-an-quan" class="header-anchor">#</a></h2>
+<ul>
+<li>WinLogon: 负责用户登录</li>
+<li>LSA Local Security Authority: 本地安全授权子系统, 是 Windows 安全的核心组件, 负责验证用户身份, 生成访问令牌以及管理本地安全策略.</li>
+<li>SAM Security Account Manager: 安全账户管理器, 是一个数据库, 存储了本地用户的账户信息和密码哈希值.</li>
+<li>注册表: Windows 系统的核心配置数据库, SAM 数据库实际上就是注册表中的一个特定配置单元.</li>
+<li>域 (Domain) / 活动目录 (AD): 域是 Windows 网络中共享统一安全策略和集中账户管理的逻辑边界. 活动目录是实现域管理的目录服务数据库, 用于集中存储网络中所有对象 (用户, 计算机, 组) 的凭据和权限信息, 实现单点登录和集中控制.</li>
+<li>主角</li>
+<li>主体</li>
+<li>令牌: 由 LSA 在用户成功登录后创建的数据结构, 包含了用户的安全标识符 (SID), 所属组的 SID 以及用户拥有的特权列表. 进程通过持有这个令牌来证明自己的身份.</li>
+<li>安全描述符 (Security Descriptor): 附加在 Windows 对象 (如文件, 文件夹, 注册表键, 进程) 上的数据结构, 包含了对象的所有者信息以及用于控制访问的规则.</li>
+<li>受限上下文 (Restricted Context): 一种安全机制 (如 Windows UAC 用户账户控制), 通过创建一个去除了管理员特权或特定组 SID 的「受限访问令牌」来运行进程, 从而实现最小权限原则, 防止恶意软件滥用高权限.</li>
+<li>DACL (Discretionary Access Control List, 自主访问控制列表): 安全描述符中的一部分, 包含了允许或拒绝特定用户/组访问该对象的规则 (ACE). 系统通过比对进程的令牌和对象的 DACL 来决定是否放行.</li>
+<li>SACL (System Access Control List, 系统访问控制列表): 负责安全审计. 它定义了当特定用户尝试访问对象时 (成功或失败), 系统是否需要生成安全审核日志 (Audit Log).</li>
+<li>DEP (Data Execution Prevention, 数据执行保护): 一种基于硬件和软件的内存保护机制. 它将系统内存分为「可执行代码区」和「不可执行数据区」. 如果恶意程序试图在标记为「数据」的内存区域执行代码 (例如常见的缓冲区溢出攻击), DEP 会强制关闭该进程, 从而防止系统被控制.</li>
+</ul>
+<p>这都啥玩意啊.</p>
+<h2><span id="android-harmony-an-quan">Android/Harmony 安全</span><a href="#android-harmony-an-quan" class="header-anchor">#</a></h2>
+<p>Android 系统架构: Java VM, Dalvik VM, ART</p>
+<p>Android 安全机制: 沙箱, 权限</p>
+<p>微内核, 宏内核, 鸿蒙, 安卓</p>
+<p>宏内核: Linux, 早期传统 UNIX, 安卓</p>
+<p>微内核: 鸿蒙, QNX, MINIX</p>
+<p>混合内核: Windows, MacOS, iOS</p>
+<h2><span id="shu-ju-ku-an-quan">数据库安全</span><a href="#shu-ju-ku-an-quan" class="header-anchor">#</a></h2>
+<p>关系数据库</p>
+<p>视图, 快照</p>
+<p>存储过程, 函数</p>
+<p>触发器</p>
+<p>委托授权 WITH GRANT OPTION</p>
+<p>递归回收: 撤销某个用户的带有委托性质的权限时, 系统会级联 (Cascade) 撤销由该用户直接或间接授权给其他所有用户的该项权限, 以确保权限依赖图的完整性.</p>
+<p>否定式授权: 拒绝优先</p>
+<p>基于视图的访问控制, 优点:</p>
+<ul>
+<li>细粒度的安全控制</li>
+<li>简化用户操作</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>性能开销</li>
+<li>很多复杂的视图是不可更新的, 用户无法通过这些视图向底层表中直接插入或修改数据, 限制了业务写入的灵活性</li>
+</ul>
+<p>用户发放授权和角色 (即职位) 发放授权, 当回收用户权限时, 必须理清其权限来源.</p>
+<p>三元组安全标签: 在强制访问控制模型中, 主体 (用户/进程) 和客体 (数据行/列/文件) 都会被绑定一个安全标签, <strong>等级, 类别, 组别</strong>, 如 (宇宙绝密: Keter: Site-9)</p>
+<p>统计数据库的推理: 通过多个合法查询推导出个人隐私</p>
+<p>跟踪攻击: 构造辅助谓词 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>(Tracker), 查询 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> 的聚合值和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∪</mo><mo stretchy="false">{</mo><mi>T</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">T \cup \{Target\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mclose">}</span></span></span></span> 的聚合值并进行差分计算, 绕开基数限制.</p>
+<p>差分隐私: 在查询结果中添加随机噪音, 防止推理出单个数据</p>
+<p>数据库备份的考虑因素, 完全备份, 差异备份, 增量备份</p>
+<h2><span id="xi-tong-wan-zheng-xing-jian-cha">系统完整性检查</span><a href="#xi-tong-wan-zheng-xing-jian-cha" class="header-anchor">#</a></h2>
+<p>系统引导 (Boot, Bootstrap): 从计算机通电到操作系统进入正常工作状态的过程</p>
+<p><strong>系统可信引导</strong>的目标: 确保引导过程中获得控制权的所有组件的完整性都没有受到过破坏</p>
+<p><strong>系统安全引导</strong>的目标: 不仅确保完整性良好, 还要确保操作系统内核一定能够顺利地引导起来. 为此, 需要在系统可信引导的基础上增加系统恢复的功能</p>
+<p><strong>进程完整性的体现</strong>:</p>
+<ul>
+<li>初始状态的完整性</li>
+<li>中断过程的完整性</li>
+<li>呈现于存储介质时的完整性 (片上 Cache 和片外存储)</li>
+<li>输出结果的完整性</li>
+</ul>
+<h2><span id="yun-ji-suan-an-quan">云计算安全</span><a href="#yun-ji-suan-an-quan" class="header-anchor">#</a></h2>
+<p>真有人关心这个吗.</p>
+<p>行吧我错了, 去年还真考了这个.</p>
+<h3><span id="yun-ji-suan-de-wu-da-te-xing">云计算的五大特性</span><a href="#yun-ji-suan-de-wu-da-te-xing" class="header-anchor">#</a></h3>
+<ul>
+<li><strong>按需自助服务</strong>: 用户可以根据实际需求, 单方面地, 自动地配置计算资源 (如服务器运行时间, 网络存储), 而无需与服务提供商进行人工交互.</li>
+<li><strong>泛在接入</strong>: 计算资源可以通过各种标准机制在网络上获取, 并支持各种异构的客户端平台. 只要有水管就能接水.</li>
+<li><strong>资源池化</strong>: 服务商的计算资源被集中整合为一个资源池, 通过多租户模型为多个消费者提供服务. 物理和虚拟资源会根据用户需求动态地分配和重新分配.</li>
+<li><strong>快速伸缩性</strong>: 计算能力可以弹性地, 甚至自动地进行配置和释放, 以便根据业务需求快速扩大或缩小规模.</li>
+<li><strong>服务可计量</strong></li>
+</ul>
+<h3><span id="yun-ji-suan-de-san-da-fu-wu-mo-shi">云计算的三大服务模式</span><a href="#yun-ji-suan-de-san-da-fu-wu-mo-shi" class="header-anchor">#</a></h3>
+<ul>
+<li>IaaS (<strong>Infrastructure</strong> as a Service, 基础设施即服务), 提供商为消费者提供处理, 存储, 网络和其他基础计算资源. 消费者可以在其上部署和运行任意软件 (包括操作系统和应用程序). 消费者不管理底层云基础设施, 但拥有操作系统的控制权.</li>
+<li>PaaS (<strong>Platform</strong> as a Service, 平台即服务), 提供商将支持消费者开发, 运行应用程序的平台 (如编程语言运行环境, 数据库) 部署在云端. 消费者无需管理底层的服务器, 操作系统和存储, 只需掌控自己部署的应用程序.</li>
+<li>SaaS (<strong>Software</strong> as a Service, 软件即服务), 提供商为消费者提供运行在云基础设施上的完整应用程序. 消费者只需通过浏览器或客户端界面直接使用软件, 完全不需要管理任何底层云基础设施或应用程序的后端代码.</li>
+</ul>
+<h3><span id="yun-ji-suan-de-si-da-bu-shu-mo-shi"><strong>云计算的四大部署模式</strong></span><a href="#yun-ji-suan-de-si-da-bu-shu-mo-shi" class="header-anchor">#</a></h3>
+<ul>
+<li>公有云</li>
+<li>私有云</li>
+<li>社区云</li>
+<li>混合云</li>
+</ul>
+<p><strong>云计算服务安全管理基本原则</strong>: 四不变一坚持: 安全管理责任不变, 资源的所有权不变, 司法管辖关系不变, 安全管理水平不变, 坚持先评后用原则</p>
+<h2><span id="an-quan-ping-gu">安全评估</span><a href="#an-quan-ping-gu" class="header-anchor">#</a></h2>
+<p>评估对象: 产品, 系统</p>
+<p>评估方法:</p>
+<ul>
+<li>面向产品的: 检查和测试产品; 更加适合查找问题</li>
+<li>面向过程的: 检查文档和产品开发的过程; 代价小, 而且容易达到可重复的结果</li>
+</ul>
+<h3><span id="tcsec">TCSEC</span><a href="#tcsec" class="header-anchor">#</a></h3>
+<p>可信计算机系统评估准则橘皮书, Trusted Computer System Evaluation Criteria</p>
+<p>D 类是最低保护等级.</p>
+<ul>
+<li>D 最小保护级</li>
+<li>C 自主保护级</li>
+<li>B 强制保护级</li>
+<li>A 验证保护级</li>
+</ul>
+<p>ITSEC: E0 不充分保证到 E6 形式化证明</p>
+<p>CC: EAL1 功能测试到 EAL7 形式化验证的设计和测试</p>
+<h2><span id="wang-luo-an-quan-deng-ji-bao-hu">网络安全等级保护</span><a href="#wang-luo-an-quan-deng-ji-bao-hu" class="header-anchor">#</a></h2>
+<p>Oh, who cares?</p>
+<p>去年居然连这也考了.</p>
+<p>根据信息系统应用业务重要程度及其实际安全需求, 实行分等级, 分类, 分阶段实施保护, 保障信息安全和系统安全正常运行, 维护国家利益, 公共利益和社会稳定以及公民, 法人和其他组织的合法权益.</p>
+<p>技术要求:</p>
+<ul>
+<li>安全物理环境</li>
+<li>安全通信网络</li>
+<li>安全区域边界</li>
+<li>安全计算环境</li>
+<li>安全管理中心</li>
+</ul>
+<p>管理要求:</p>
+<ul>
+<li>安全管理制度</li>
+<li>安全管理机构</li>
+<li>安全管理人员</li>
+<li>安全建设管理</li>
+<li>安全运维管理</li>
+</ul>
+<h2><span id="mi-ma-ying-yong-an-quan-xing-ping-gu">密码应用安全性评估</span><a href="#mi-ma-ying-yong-an-quan-xing-ping-gu" class="header-anchor">#</a></h2>
+<p>你不觉得做三明治无聊得让人脑袋打结, 无聊得震古烁今, 无聊得惊世骇俗, 无聊得超乎想象吗?</p>
+<p>对密码技术产品/服务的<strong>合规性, 正确性, 有效性</strong>进行检测分析和评估验证.</p>
+<p>三同步一评估: 信息系统的密码保障系统必须与业务系统实现<strong>同步规划, 同步建设, 同步运行</strong>, 并且投入使用后要开展<strong>定期评估</strong>.</p>
+<p>密码应用基本要求的八大安全类:</p>
+<ul>
+<li>技术类: <strong>物理和环境安全, 网络和通信安全, 设备和计算安全, 应用和数据安全</strong></li>
+<li>管理类: <strong>管理制度, 人员管理, 建设运行, 应急处置</strong></li>
+</ul>
+<p>网络安全等级保护和密码应用安全性评估的区别: 等保关注的是信息系统的<strong>综合安全防护能力</strong>(防病毒, 访问控制等); 密评专项聚焦于系统中<strong>密码应用</strong>的合规与有效. 在<strong>方案评估</strong>阶段, 等保评估的是「整体安全架构设计」是否满足对应等级的防御需求; 而密评专门评估该方案中「密码算法是否合规 (如是否使用了国密 SM 系列), 密钥管理体系是否安全, 密码协议是否正确」.</p>
+<h2><span id="ru-qin-jian-ce">入侵检测</span><a href="#ru-qin-jian-ce" class="header-anchor">#</a></h2>
+<p>PPDRR 模型: Policy, Protection, <strong>Detection</strong>, Response, Recovery</p>
+<ul>
+<li>IDS (Intrusion Detection System, 入侵检测系统): 监控和告警</li>
+<li>IPS (Intrusion Prevention System, 入侵防御系统): 主动防御</li>
+<li>DPI (Deep Packet Inspection, 深度包检测): 深入检查数据包载荷</li>
+<li>DFI (Deep Flow Inspection, 深度流检测): 基于流量行为特征检测</li>
+<li>态势感知: 基于大数据和人工智能技术, 全面收集网络环境中多源的安全数据, 宏观评估整体安全状况, 并对未来可能的威胁趋势进行预测的高级系统.</li>
+</ul>
+<p>入侵检测的两种方法:</p>
+<ul>
+<li>异常检测: 基于行为, 行为大幅偏离 Baseline 时判定, 能发现零日攻击, 但误报率高</li>
+<li>误用检测: 基于特征, 匹配已知攻击行为的特征码, 准确率高, 无法发现未知的全新攻击</li>
+</ul>
+<p>入侵检测系统的分类: 按照数据来源分类</p>
+<ul>
+<li>基于主机, 系统获取数据的依据是系统所在主机, 保护的目标也是系统所在主机</li>
+<li>基于网络, 系统获取的数据是网络传输的数据包, 保护的是网络的运行</li>
+<li>混合型</li>
+</ul>
+<h2><span id="ying-ji-xiang-ying-yu-zai-bei-hui-fu">应急响应与灾备恢复</span><a href="#ying-ji-xiang-ying-yu-zai-bei-hui-fu" class="header-anchor">#</a></h2>
+<p>Policy, Protection, Detection, <strong>Response</strong>, <strong>Recovery</strong></p>
+<h3><span id="feng-xian-ping-gu">风险评估</span><a href="#feng-xian-ping-gu" class="header-anchor">#</a></h3>
+<p><strong>评估准备</strong>: 确定评估的目标, 范围, 策略, 成立评估工作组, 准备评估工具.</p>
+<p><strong>风险要素识别</strong>:</p>
+<ul>
+<li><strong>资产识别</strong>: 对系统内的硬件, 软件, 数据等进行分类并<strong>赋值</strong>(确定其重要性).</li>
+<li><strong>威胁识别</strong>: 分析威胁的来源 (人为/环境), 动机及发生的<strong>可能性</strong>.</li>
+<li><strong>脆弱性识别</strong>: 通过漏洞扫描, 代码审计等手段找出技术和管理上的<strong>弱点</strong>.</li>
+<li><strong>确认已有安全措施</strong>: 评估现有控制措施是否能抵消一部分脆弱性.</li>
+</ul>
+<p><strong>风险分析</strong>: 采用定性或定量方法, 将资产价值, 威胁出现概率, 脆弱性严重程度进行关联矩阵计算, 最终确定<strong>风险值</strong>.</p>
+<p><strong>风险处理</strong>: 根据风险值和业务接受度, 选择<strong>降低风险</strong> (加固), <strong>规避风险</strong> (停用高危业务), <strong>转移风险</strong> (买保险或外包) 或<strong>接受风险</strong> (对残留的微小风险不予处理).</p>
+<p>划分应急事件级别: 系统重要程度, 损失/破坏程度, 社会影响/波及范围</p>
+<p>RAID0: 条带化</p>
+<p>RAID1: 镜像</p>
+<p>RAID5: 分布式奇偶校验, 最少 3 块磁盘, 空间利用率: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><mi>N</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{N-1}{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> , 允许任意坏一块磁盘而不丢失数据</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/" rel="tag"># 计算机安全</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/06/trans-suicidal-intervention/" rel="prev" title="社群危机 (自杀) 干预手册">
+                  <i class="fa fa-angle-left"></i> 社群危机 (自杀) 干预手册
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/06/nsp-homework/" rel="next" title="神秘 NSP 大作业">
+                  神秘 NSP 大作业 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">196k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:40</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/subtitle.js"></script>
+
+<script>
+  function removeTaskListSpaces() {
+      const checkboxes = document.querySelectorAll('.task-list-item-checkbox');
+      checkboxes.forEach(function(box) {
+          let nextNode = box.nextSibling;
+        
+          // 如果它确实是一段文本
+          if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+            // 把开头的空白字符（包括空格、换行）强制删掉
+            nextNode.textContent = nextNode.textContent.replace(/^\s+/, '');
+          }
+      });
+  }
+
+  // 页面常规加载时执行
+  document.addEventListener("DOMContentLoaded", removeTaskListSpaces);
+  // 兼容开启 PJAX 的主题（无刷新跳转）
+  document.addEventListener("pjax:complete", removeTaskListSpaces);
+  document.addEventListener("pjax:success", removeTaskListSpaces);
+</script>
+
+
+
+<!-- hexo injector body_end start -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const avatars = ["/img/avatar/1.png","/img/avatar/11.png","/img/avatar/2.gif","/img/avatar/3.jpg","/img/avatar/4.jpg","/img/avatar/5.jpg","/img/avatar/6.gif","/img/avatar/7.jpg","/img/avatar/8.jpg","/img/avatar/9.jpg","/img/avatar/呆猫.jpg"];
+      
+      if (avatars.length > 0) {
+        const randomIndex = Math.floor(Math.random() * avatars.length);
+        const avatarElement = document.querySelector('.site-author-image');
+        if (avatarElement) {
+          avatarElement.src = avatars[randomIndex];
+        }
+      }
+    });
+  </script>
+  <!-- hexo injector body_end end --></body>
+</html>

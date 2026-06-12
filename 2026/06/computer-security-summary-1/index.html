@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":150,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="评课社区叫我不要记这种笔记, 但是众所周知我记吃不记打. 绪论, 计算机安全基础, 身份识别与认证, 访问控制 绪论 系统安全的方法论  以系统思维应对安全问题 应对系统面临的安全问题  安全策略的精确表示 (形式化表示), 称为安全模型.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机安全总复习 Part1">
+<meta property="og:url" content="https://tianlipa.github.io/2026/06/computer-security-summary-1/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="评课社区叫我不要记这种笔记, 但是众所周知我记吃不记打. 绪论, 计算机安全基础, 身份识别与认证, 访问控制 绪论 系统安全的方法论  以系统思维应对安全问题 应对系统面临的安全问题  安全策略的精确表示 (形式化表示), 称为安全模型.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/computer-security-summary-1/1.png">
+<meta property="article:published_time" content="2026-06-02T14:39:50.000Z">
+<meta property="article:modified_time" content="2026-06-08T00:34:03.094Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="计算机安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/computer-security-summary-1/1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/06/computer-security-summary-1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/06/computer-security-summary-1/","path":"2026/06/computer-security-summary-1/","title":"计算机安全总复习 Part1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机安全总复习 Part1 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Subtitle</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tianlipa"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/06/computer-security-summary-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机安全总复习 Part1 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机安全总复习 Part1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间: 2026-06-02 22:39:50" itemprop="dateCreated datePublished" datetime="2026-06-02T22:39:50+08:00">2026-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间: 2026-06-08 08:34:03" itemprop="dateModified" datetime="2026-06-08T08:34:03+08:00">2026-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数: </span>
+      <span>4.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>15 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>评课社区叫我不要记这种笔记, 但是众所周知我记吃不记打.</p>
+<p>绪论, 计算机安全基础, 身份识别与认证, 访问控制</p>
+<h2><span id="xu-lun">绪论</span><a href="#xu-lun" class="header-anchor">#</a></h2>
+<h3><span id="xi-tong-an-quan-de-fang-fa-lun">系统安全的方法论</span><a href="#xi-tong-an-quan-de-fang-fa-lun" class="header-anchor">#</a></h3>
+<ul>
+<li>以系统思维应对安全问题</li>
+<li>应对系统面临的安全问题</li>
+</ul>
+<p>安全策略的精确表示 (形式化表示), 称为<strong>安全模型</strong>.</p>
+<span id="more"></span>
+<p>为使理论色彩比较浓厚的安全模型的作用能落实到实处, 需要为它设计出便于在信息系统中实现的形式, 这种形式称为安全机制.</p>
+<p>必须在网络空间的系统中实现一定的安全机制, 网络空间的系统才有可能称为安全系统.</p>
+<p>脆弱性: 系统的缺陷或漏洞, 可被利用来破坏资产.</p>
+<p><strong>攻击面</strong>: 由系统中可到达的和可被利用的脆弱点构成. 例如: 对外开放的端口, 对敏感信息有权限的员工等. 包括网络攻击面, 软件攻击面, 人为攻击面.</p>
+<h4><span id="gong-ji-shu">攻击树</span><a href="#gong-ji-shu" class="header-anchor">#</a></h4>
+<ul>
+<li>树根: 一般类的攻击, 攻击目标</li>
+<li>树结点: 达成攻击所需的子目标</li>
+<li>叶子节点: 发起一个攻击的不同方式</li>
+<li>除了叶子结点外的每一个结点: 与节点 (AND-node) 或或结点 (OR-node)</li>
+<li>边: 赋权值, 估算攻击的成本, 发生的可能性, 成功的可能性</li>
+</ul>
+<figure><img data-src="/img/computer-security-summary-1/1.png" alt></figure>
+<p>社会工程学: 暗黑心理学, 识人术, 人性的秘密, 后面忘了.</p>
+<h2><span id="ji-suan-ji-an-quan-ji-chu">计算机安全基础</span><a href="#ji-suan-ji-an-quan-ji-chu" class="header-anchor">#</a></h2>
+<h3><span id="cia-san-yao-su">CIA 三要素</span><a href="#cia-san-yao-su" class="header-anchor">#</a></h3>
+<ul>
+<li><strong>Confidentiality 保密性</strong>, 消息不会被非法泄露扩散. 实现方法: <strong>加密保护阻止理解</strong>, <strong>访问控制阻止获取</strong></li>
+<li><strong>Integrity 完整性</strong>, 消息的来源, 去向, 内容真实无误, 未被篡改, 删除或以任何方式损坏. 包括数据完整性, 系统完整性</li>
+<li><strong>Availablility 可用性</strong>, 系统及时工作, 并向授权用户提供所需服务</li>
+<li>Survivablity 可生存性, 遭受打击后系统仍能完成任务, 并能及时修复被损坏的服务</li>
+<li>Accountability 可审计性 (问责性)</li>
+<li>Non-repudiation 不可否认性, 可审计性的更强形式</li>
+<li>Controllability 可控性, 对于信息安全风险的控制能力, 即通过一系列措施, 对信息系统安全风险进行事前识别, 预测, 并通过一定的手段来防范, 化解风险, 减少遭受的损失的可能性</li>
+</ul>
+<h4><span id="4a-da-zuo">4A 大作</span><a href="#4a-da-zuo" class="header-anchor">#</a></h4>
+<ul>
+<li><strong>认证</strong> Authentication 提供认证方式</li>
+<li><strong>授权</strong> Authorization 可以对用户的资源访问权限进行集中管理</li>
+<li><strong>审计</strong> Auditing 将用户所有的操作日志集中记录管理和分析</li>
+<li>记账 Accounting 为用户提供统一集中的账号管理</li>
+</ul>
+<h3><span id="ji-suan-ji-an-quan-ding-yi">计算机安全定义</span><a href="#ji-suan-ji-an-quan-ding-yi" class="header-anchor">#</a></h3>
+<p>研究如何<strong>预防和检测</strong>计算机系统用户的<strong>非授权行为</strong>.</p>
+<h3><span id="pdrr-mo-xing">PDRR 模型</span><a href="#pdrr-mo-xing" class="header-anchor">#</a></h3>
+<ul>
+<li>Protect 保护, 保障信息的这个性那个性</li>
+<li>Detect 检测, 检查系统存在的漏洞, 脆弱性, 攻击, 恶意代码等</li>
+<li>React 响应, 对危及安全的事件, 行为做出及时处理</li>
+<li>Restore 恢复, 系统遭到破坏, 尽快恢复系统功能, 尽早提供正常服务</li>
+</ul>
+<p>有时简化为 PDR:</p>
+<ul>
+<li>Prevention 预防</li>
+<li>Detection 检测</li>
+<li>Reaction 响应</li>
+</ul>
+<p>别问我为什么简化完词性全变了, 我也不知道.</p>
+<p>有时扩展为 PPDRR:</p>
+<ul>
+<li>Policy 策略</li>
+<li>Protection 防护</li>
+<li>Detection 检测</li>
+<li>Response 响应</li>
+<li>Recovery 恢复, 刚刚不还是 restore 吗怎么变成 recovery 了</li>
+</ul>
+<h3><span id="yin-bi-xin-dao-he-ce-xin-dao">隐蔽信道和侧信道</span><a href="#yin-bi-xin-dao-he-ce-xin-dao" class="header-anchor">#</a></h3>
+<p>隐蔽信道: 一种违反系统安全策略, 不被安全机制控制的信息传递通道. 它并不使用正常的通信接口, 而是利用原本不是为通信设计的共享资源或通道, 通过特殊编码来偷偷传输数据.</p>
+<p>侧信道攻击: 利用密码算法在软硬件实现中泄露出的各种信息进行攻击, 例如声音, 时间, 电磁辐射等.</p>
+<h3><span id="ji-suan-ji-an-quan-she-ji-yuan-ze">计算机安全设计原则</span><a href="#ji-suan-ji-an-quan-she-ji-yuan-ze" class="header-anchor">#</a></h3>
+<ul>
+<li>保护机制集中在数据, 操作还是用户上? 传统上为数据, 现代则多为用户行为</li>
+<li>一个安全机制应该被放置在计算机系统的哪一个层次上?</li>
+<li>与富有特色的安全环境相比, 你是否偏爱简单性和更高的保证?</li>
+<li>定义和实施安全的任务是应该交给一个中央实体, 还是应该托付给系统中的各个成员?</li>
+<li>如何防止攻击者访问位于保护机制下面的层?</li>
+</ul>
+<h3><span id="ji-suan-ji-an-quan-fang-hu-yuan-ze">计算机安全防护原则</span><a href="#ji-suan-ji-an-quan-fang-hu-yuan-ze" class="header-anchor">#</a></h3>
+<ul>
+<li>整体性原则, 整体构思和设计系统</li>
+<li>分层性原则, 设置多个防护层次, 单点失效不出现严重影响</li>
+<li>最小授权原则, 权限分割, 互相制约, 最小化原则</li>
+<li>简单性原则, 使过程尽量简洁, 安全工具便于使用和管理</li>
+<li>等级性原则, 安全层次和安全级别, 良好的信息安全系统必然是分为不同级别的</li>
+</ul>
+<h2><span id="shen-fen-shi-bie-yu-ren-zheng">身份识别与认证</span><a href="#shen-fen-shi-bie-yu-ren-zheng" class="header-anchor">#</a></h2>
+<p>标识 (Identification), 用户标识符</p>
+<p>鉴别 (Authentication), 将用户标识符与用户物理身份联系的过程</p>
+<h3><span id="ren-zheng-xi-tong">认证系统</span><a href="#ren-zheng-xi-tong" class="header-anchor">#</a></h3>
+<ul>
+<li>鉴别信息的集合 A: 实体用来证明其身份的特定信息的集合. 如 Unix 的明文口令的集合</li>
+<li>辅助信息的集合 C: 系统存储并且用来证实鉴别信息的集合信息集合. 如 Unix 的密文口令的集合</li>
+<li>辅助函数的集合 F: 由鉴别信息产生辅助信息的函数的集合. 即 f ∈ F, f: A → C. 如 Unix 的 Hash 函数的集合</li>
+<li>鉴别函数的集合 L: 验证身份的函数的集合. 即对于 l ∈ L, l: A × C → {true, false}</li>
+<li>选择函数的集合 S: 允许实体创建或改变鉴别信息和辅助信息. 如创建, 修改口令, 选择加密算法等</li>
+</ul>
+<p>可供选择的认证方法:</p>
+<ul>
+<li>所知信息</li>
+<li>所拥有物品</li>
+<li>生理特征</li>
+<li>行为特征</li>
+<li>位置信息</li>
+</ul>
+<p>双因素认证: 选两个混用</p>
+<h3><span id="kou-ling">口令</span><a href="#kou-ling" class="header-anchor">#</a></h3>
+<p>加盐口令</p>
+<p>口令空间</p>
+<p>口令猜测</p>
+<p>我已经不认识呤了</p>
+<p>口令认证机制的安全性 (猜测, 欺骗, 文件泄露, 遗忘)</p>
+<h2><span id="fang-wen-kong-zhi">访问控制</span><a href="#fang-wen-kong-zhi" class="header-anchor">#</a></h2>
+<p>是在身份认证基础上, 依据授权对提出的资源访问请求加以控制, 限制已授权的实体访问本系统中资源的过程.</p>
+<ul>
+<li>主体/主角 (<strong>Subject</strong>/Principal): 访问的发起者</li>
+<li>客体/对象/目标 (<strong>Object</strong>): 供访问的软硬件资源</li>
+<li>访问 (<strong>Access</strong>): 读写, 执行, 删除, 创建, 搜索等</li>
+</ul>
+<p>即 <strong>SOA 模型</strong>.</p>
+<p>基本原则: <strong>最小权限原则, 多人负责原则, 职责分离原则.</strong></p>
+<h3><span id="fang-wen-quan-xian">访问权限</span><a href="#fang-wen-quan-xian" class="header-anchor">#</a></h3>
+<p>读, 写, 添加/盲写 (append), 执行 (execute)</p>
+<h3><span id="dac-yu-mac">DAC 与 MAC</span><a href="#dac-yu-mac" class="header-anchor">#</a></h3>
+<ul>
+<li>自主访问控制 DAC, Discretionary Access Control, 为每个资源定义一个所有者, 让所有者规定谁可以访问</li>
+<li>强制访问控制 MAC, MandatoryAccess Control, 系统策略规定谁可以访问</li>
+</ul>
+<h3><span id="fang-wen-kong-zhi-jie-gou">访问控制结构</span><a href="#fang-wen-kong-zhi-jie-gou" class="header-anchor">#</a></h3>
+<h4><span id="fang-wen-kong-zhi-ju-zhen">访问控制矩阵</span><a href="#fang-wen-kong-zhi-ju-zhen" class="header-anchor">#</a></h4>
+<p>访问控制矩阵 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mo stretchy="false">(</mo><msub><mi>M</mi><mrow><mi>s</mi><mi>o</mi></mrow></msub><msub><mo stretchy="false">)</mo><mrow><mi>s</mi><mo>∈</mo><mi>S</mi><mo separator="true">,</mo><mi>o</mi><mo>∈</mo><mi>O</mi></mrow></msub></mrow><annotation encoding="application/x-tex">M = (M_{so})_{s \in S, o \in O}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">so</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">o</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> , 其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mrow><mi>s</mi><mi>o</mi></mrow></msub><mo>⊆</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">M_{so} \subseteq A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">so</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> .</p>
+<p><strong>S (行) 是主体集合, O (列) 是客体集合</strong>, A 是访问操作集合.</p>
+<table>
+<thead>
+<tr>
+<th><strong>主体 (Subject) \ 客体 (Object)</strong></th>
+<th><strong>Shadow_File</strong></th>
+<th><strong>Log_File</strong></th>
+<th><strong>Public_Dir</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Admin_Process</code></strong></td>
+<td>R, W</td>
+<td>R, W</td>
+<td>R, W, X</td>
+</tr>
+<tr>
+<td><strong><code>Guest_User</code></strong></td>
+<td><em>(空)</em></td>
+<td>R</td>
+<td>R, X</td>
+</tr>
+</tbody>
+</table>
+<p>不适用于直接实现, 不方便安全管理.</p>
+<p>是稀疏矩阵, 每行称作<strong>访问能力表 (CL)</strong>, 每列称作<strong>访问控制列表 (ACL)</strong>.</p>
+<h4><span id="acl-yu-cl">ACL 与 CL</span><a href="#acl-yu-cl" class="header-anchor">#</a></h4>
+<ul>
+<li>保存位置不同, ACL 在客体上, CL 在主体上</li>
+<li>需要鉴别的实体不同, ACL 以客体为中心, CL 以主体为中心</li>
+<li>浏览访问权限 (查看某个文件谁可以读写): ACL 容易, CL 困难</li>
+<li>访问权限传递 (分享对某个文件的权限): ACL 困难, CL 容易</li>
+<li>访问权限回收 (某个文件不再开放): ACL 容易, CL 困难</li>
+<li>ALC-&gt;CL 困难, CL-&gt;ACL 容易</li>
+<li>原因: 主体少, 客体多</li>
+</ul>
+<p>对于数量众多的主体和客体或者主体和客体的集合频繁改变时, 这种结构管理起来很不方便, 而采用中间控制层是较为可取的.</p>
+<h4><span id="zhong-jian-kong-zhi">中间控制</span><a href="#zhong-jian-kong-zhi" class="header-anchor">#</a></h4>
+<p>在主体和客体之间加一层组.</p>
+<p>可插入的层包括: 角色, 过程, 数据类型.</p>
+<h3><span id="pian-xu">偏序</span><a href="#pian-xu" class="header-anchor">#</a></h3>
+<p>自反传递反对称</p>
+<p>哈斯图, 有向图</p>
+<h4><span id="fang-wen-kong-zhi-ce-lue">访问控制策略</span><a href="#fang-wen-kong-zhi-ce-lue" class="header-anchor">#</a></h4>
+<p>仅当客体的 ability 是主体的 ability 的一个前缀时允许访问.</p>
+<p>不能采用主体的 ability 是客体的 ability 的前缀的策略, 否则未赋值的空串能访问所有.</p>
+<p>失效保护的行为要求拒绝访问.</p>
+<h4><span id="ge">格</span><a href="#ge" class="header-anchor">#</a></h4>
+<p>对任意两个元素存在最小上界和最大下界.</p>
+<p>a≤b 称为 a 被 b 支配, b 支配 a.</p>
+<p>最低: 系统低, 最高: 系统高. 集合有限则存在, 存在则唯一.</p>
+<h4><span id="duo-ji-an-quan-ce-lue">多级安全策略</span><a href="#duo-ji-an-quan-ce-lue" class="header-anchor">#</a></h4>
+<p>Multi-Level Security</p>
+<p>无向上读, 无向下写</p>
+<h3><span id="ge-chong-fang-wen-kong-zhi">各种访问控制</span><a href="#ge-chong-fang-wen-kong-zhi" class="header-anchor">#</a></h3>
+<ul>
+<li>自主访问控制 DAC, Discretionary Access Control<br>
+系统完全基于请求者的身份以及预先设定的访问规则 (授权列表) 来决定是否放行, 所有者拥有最大权限</li>
+<li>强制访问控制 MAC, Mandatory Access Control<br>
+系统通过比对实体的安全许可和资源的安全标签控制访问</li>
+<li>基于角色的访问控制 RBAC, Role-Based Access Control<br>
+系统不再将权限直接赋予具体的用户, 而是将权限赋予特定的角色, 再根据用户所在的岗位为其分配对应的角色</li>
+</ul>
+<h4><span id="ji-yu-jiao-se-de-fang-wen-kong-zhi-rbac">基于角色的访问控制 (RBAC)</span><a href="#ji-yu-jiao-se-de-fang-wen-kong-zhi-rbac" class="header-anchor">#</a></h4>
+<p>将访问权限分配给角色, 用户通过被指派为角色从而获得角色所拥有的访问权限</p>
+<ul>
+<li>RBAC0, 基础模型<br>
+一个用户可以拥有多个角色, 一个角色可以包含多个用户 (多对多)<br>
+一个角色可以拥有多个权限, 一个权限可以被分配给多个角色 (多对多)</li>
+<li>RBAC1, 层次模型 (角色继承)<br>
+高级角色自动继承低级角色的所有权限<br>
+简化了权限管理, 减少冗余的权限分配</li>
+<li>RBAC2, 约束模型<br>
+某些角色不能被分配给同一个用户 (静态职责分离)<br>
+一个用户可以同时拥有两个互斥角色, 但一次登录会话只能激活一个 (动态职责分离)<br>
+限制角色被分配的用户数量, 或者一个用户能拥有的角色数量 (基数约束)<br>
+用户只有拥有角色 A 才能拥有角色 B (先决条件约束)</li>
+<li>RBAC3, 统一模型, 即 RBAC1+RBAC2</li>
+</ul>
+<p>RBAC 的优点:</p>
+<ul>
+<li>支持最小权限原则, 责任分离原则</li>
+<li>支持数据抽象原则和继承概念</li>
+<li>模型中概念与实际系统紧密对应</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>没有提供信息流控制机制</li>
+<li>没有提供操作顺序控制机制</li>
+<li>其他问题</li>
+</ul>
+<h4><span id="ji-yu-ren-wu-de-fang-wen-kong-zhi-tbac">基于任务的访问控制 (TBAC)</span><a href="#ji-yu-ren-wu-de-fang-wen-kong-zhi-tbac" class="header-anchor">#</a></h4>
+<p>动态授权, 只有当业务流程走到某个具体任务, 并且该任务被激活时, 执行该任务的用户才会在这一瞬间获得所需的权限; 一旦任务完成或挂起, 权限立刻被系统收回.</p>
+<p>构成:</p>
+<ul>
+<li>工作流 Wf, 底盘搭建 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 引擎安装 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 喷漆出厂, 完整的流程体系</li>
+<li>授权结构体 Au, 封装任务及其相关授权信息的逻辑容器</li>
+<li>授权步, 权限验证的最小细粒度操作, 例如在安装引擎这个大任务中, 拿起扳手是一个授权步, 拧螺丝是另一个授权步</li>
+<li>受托人集 T, 有资格, 被指派去执行某个任务, 并因此在任务激活时获得权限的主体集合</li>
+<li>许可集 P, 在某个特定的授权步中, 允许执行的具体操作集合及其对应的客体, &lt;操作, 资源&gt;, 例如允许你用 10 号扳手拧 10 号螺丝</li>
+<li>任务</li>
+<li>依赖, 任务与任务之间, 授权步与授权步之间的逻辑和时序约束条件, 必须打开盖子再喝水</li>
+</ul>
+<p>授权用五元组 (S, O, P, L, AS) 表示</p>
+<ul>
+<li>Subject 主体</li>
+<li>Object 客体</li>
+<li>Permission 许可</li>
+<li>Lifecycle 生命周期, 权限的存活时限</li>
+<li>Authorization Step 授权步, 在哪一步, 业务流转到了哪个具体的检查点或任务环节</li>
+</ul>
+<p><strong>动态授权</strong>, 授权步的五种状态</p>
+<ul>
+<li>睡眠, 授权步未生成</li>
+<li>激活, 授权步已经生成</li>
+<li>有效, 授权步开始执行</li>
+<li>挂起</li>
+<li>无效, 授权步可以删除</li>
+</ul>
+<p>授权步的生命期, 许可的次数限制和授权步的自我动态管理, 三者形成了 TBAC 的动态授权.</p>
+<h3><span id="abc-mo-xing">ABC 模型</span><a href="#abc-mo-xing" class="header-anchor">#</a></h3>
+<p>基本元素: 主体, 客体, 权限 Right</p>
+<p>授权相关元素: 授权规则 Authorization, 义务 oBligation, 条件 Condition</p>
+<p>扩展元素: ATT (S), ATT (O), 主体属性和客体属性</p>
+<p>授权规则是主体使用客体权限必须满足的规则集, 义务是获得权利前或过程中必须完成的操作, 条件是获得权利前或过程中必须满足的强制约束条件</p>
+<p>授权规则是针对主体和客体的内部属性, 条件是外部环境 (时间地点, 网络状态, CPU 负载等)</p>
+<p>新特性:</p>
+<ul>
+<li>连续性: 授权决策在资源的使用过程中对访问请求进行不间断的或重复的判断</li>
+<li>可变性: 属性需随着主体行为而被改变</li>
+</ul>
+<h3><span id="ucon-de-16-ge-ji-ben-mo-xing">UCON 的 16 个基本模型</span><a href="#ucon-de-16-ge-ji-ben-mo-xing" class="header-anchor">#</a></h3>
+<p><strong>维度一: 时间阶段</strong></p>
+<ul>
+<li><strong>pre (事前):</strong> 在访问发生<strong>前</strong>做决定.</li>
+<li><strong>on (事中/持续):</strong> 在访问<strong>过程中</strong>持续做决定.</li>
+</ul>
+<p><strong>维度二: 控制要素</strong></p>
+<ul>
+<li><strong>A (Authorization):</strong> 授权规则.</li>
+<li><strong>B (Obligation):</strong> 义务.</li>
+<li><strong>C (Condition):</strong> 环境条件.</li>
+</ul>
+<p><strong>维度三: 属性更新策略</strong></p>
+<ul>
+<li><strong>0 (无更新):</strong> 属性不变 (Immutable).</li>
+<li><strong>1 (事前更新):</strong> 在访问开始前更新 (Pre-update), 比如进门前先扣除门票积分.</li>
+<li><strong>2 (事中持续更新):</strong> 在访问过程中随着使用状态持续更新 (Ongoing-update), 比如按分钟扣费的云服务器.</li>
+<li><strong>3 (事后更新):</strong> 在访问结束后统一结算更新 (Post-update), 比如看完电影后增加账号的观影时长.</li>
+</ul>
+<p><strong>PRE 一定不会有 2, C 一定只有 0</strong>, 3+4=7, 7+7+2=16 种</p>
+<h4><span id="ucon-miao-shu-dac-zi-zhu-fang-wen-kong-zhi">UCON 描述 DAC (自主访问控制)</span><a href="#ucon-miao-shu-dac-zi-zhu-fang-wen-kong-zhi" class="header-anchor">#</a></h4>
+<p>DAC 的核心是看脸身份放行.</p>
+<ul>
+<li><strong>定义主体属性 (Subject Attributes):</strong> 主体的唯一标识符 (例如: <code>S.ID = &quot;张三&quot;</code>).</li>
+<li><strong>定义客体属性 (Object Attributes):</strong> 绑在资源上的访问控制列表 (例如: <code>O.ACL = &#123;&quot;张三&quot;:读写, &quot;李四&quot;:只读&#125;</code>).</li>
+<li><strong>UCON 授权规则 (A) 判定逻辑:</strong> 系统在事前 (<code>pre</code>) 触发规则: 检查主体的 <code>S.ID</code> 是否存在于客体的 <code>O.ACL</code> 字典中. 如果存在, 并且对应的值包含当前请求的操作 (如「读」), 则返回 True, 允许访问.</li>
+</ul>
+<h4><span id="ucon-miao-shu-mac-qiang-zhi-fang-wen-kong-zhi">UCON 描述 MAC (强制访问控制)</span><a href="#ucon-miao-shu-mac-qiang-zhi-fang-wen-kong-zhi" class="header-anchor">#</a></h4>
+<p>MAC 的核心是阶级森严的大小比较.</p>
+<ul>
+<li><strong>定义主体属性 (Subject Attributes):</strong> 主体的安全许可级别 (例如: <code>S.Clearance = 3</code>, 代表机密级).</li>
+<li><strong>定义客体属性 (Object Attributes):</strong> 资源的安全敏感度标签 (例如: <code>O.Classification = 2</code>, 代表秘密级).</li>
+<li><strong>UCON 授权规则 (A) 判定逻辑:</strong> 以经典的 Bell-LaPadula 模型 (向下读, 向上写) 为例, 系统在事前 (<code>pre</code>) 触发两条数学公式:
+<ul>
+<li>如果是<strong>读请求</strong>: 判断 <code>S.Clearance &gt;= O.Classification</code> 是否成立.</li>
+<li>如果是<strong>写请求</strong>: 判断 <code>S.Clearance &lt;= O.Classification</code> 是否成立.  成立则放行, 否则拒绝.</li>
+</ul>
+</li>
+</ul>
+<h4><span id="ucon-miao-shu-rbac-ji-yu-jiao-se-de-fang-wen-kong-zhi">UCON 描述 RBAC (基于角色的访问控制)</span><a href="#ucon-miao-shu-rbac-ji-yu-jiao-se-de-fang-wen-kong-zhi" class="header-anchor">#</a></h4>
+<p>RBAC 的核心是「拿角色当中间商」. 在 UCON 的视角里, 角色不再是单独的实体, 而是变成了主体的一种<strong>状态属性</strong>.</p>
+<ul>
+<li><strong>定义主体属性 (Subject Attributes):</strong> 用户在当前会话中已经激活的角色集合 (例如: <code>S.ActiveRoles = &#123;&quot;财务&quot;, &quot;内审&quot;&#125;</code>).</li>
+<li><strong>定义客体属性/权限要求 (Object Attributes):</strong> 执行该操作所必需的角色集合 (例如: <code>O.RequiredRoles = &#123;&quot;财务&quot;, &quot;出纳&quot;&#125;</code>).</li>
+<li><strong>UCON 授权规则 (A) 判定逻辑:</strong> 系统在事前 (<code>pre</code>) 触发集合交叉运算: 计算 <code>S.ActiveRoles</code> 和 <code>O.RequiredRoles</code> 的交集. 如果交集不为空 (即至少匹配上了一个角色), 则返回 True, 允许访问.</li>
+</ul>
+<p>怎么后面还有这么多.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/" rel="tag"># 计算机安全</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/05/basic-pwn/" rel="prev" title="Pwn 入门">
+                  <i class="fa fa-angle-left"></i> Pwn 入门
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/06/trans-suicidal-intervention/" rel="next" title="社群危机 (自杀) 干预手册">
+                  社群危机 (自杀) 干预手册 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">196k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:40</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/subtitle.js"></script>
+
+<script>
+  function removeTaskListSpaces() {
+      const checkboxes = document.querySelectorAll('.task-list-item-checkbox');
+      checkboxes.forEach(function(box) {
+          let nextNode = box.nextSibling;
+        
+          // 如果它确实是一段文本
+          if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+            // 把开头的空白字符（包括空格、换行）强制删掉
+            nextNode.textContent = nextNode.textContent.replace(/^\s+/, '');
+          }
+      });
+  }
+
+  // 页面常规加载时执行
+  document.addEventListener("DOMContentLoaded", removeTaskListSpaces);
+  // 兼容开启 PJAX 的主题（无刷新跳转）
+  document.addEventListener("pjax:complete", removeTaskListSpaces);
+  document.addEventListener("pjax:success", removeTaskListSpaces);
+</script>
+
+
+
+<!-- hexo injector body_end start -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const avatars = ["/img/avatar/1.png","/img/avatar/11.png","/img/avatar/2.gif","/img/avatar/3.jpg","/img/avatar/4.jpg","/img/avatar/5.jpg","/img/avatar/6.gif","/img/avatar/7.jpg","/img/avatar/8.jpg","/img/avatar/9.jpg","/img/avatar/呆猫.jpg"];
+      
+      if (avatars.length > 0) {
+        const randomIndex = Math.floor(Math.random() * avatars.length);
+        const avatarElement = document.querySelector('.site-author-image');
+        if (avatarElement) {
+          avatarElement.src = avatars[randomIndex];
+        }
+      }
+    });
+  </script>
+  <!-- hexo injector body_end end --></body>
+</html>

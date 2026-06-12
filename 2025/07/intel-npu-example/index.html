@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":150,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="矩阵乘法 配置 Python 环境, 安装 git (用于从 huggingface 下载模型) 后, 运行项目提供的矩阵乘法示例代码: from intel_npu_acceleration_library.backend import MatMulimport numpy as npinC, outC, batch &#x3D; 512, 256, 32# Create both inputsX1 &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intel NPU加速库使用样例">
+<meta property="og:url" content="https://tianlipa.github.io/2025/07/intel-npu-example/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="矩阵乘法 配置 Python 环境, 安装 git (用于从 huggingface 下载模型) 后, 运行项目提供的矩阵乘法示例代码: from intel_npu_acceleration_library.backend import MatMulimport numpy as npinC, outC, batch &#x3D; 512, 256, 32# Create both inputsX1 &#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianlipa.github.io/img/intel-npu-example/tinyllama.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/intel-npu-example/%E4%B9%B1%E7%A0%81.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/intel-npu-example/phi2.png">
+<meta property="og:image" content="https://tianlipa.github.io/img/intel-npu-example/phi-3.png">
+<meta property="article:published_time" content="2025-07-23T08:53:23.000Z">
+<meta property="article:modified_time" content="2026-04-12T13:47:41.542Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="实习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianlipa.github.io/img/intel-npu-example/tinyllama.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2025/07/intel-npu-example/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2025/07/intel-npu-example/","path":"2025/07/intel-npu-example/","title":"Intel NPU加速库使用样例"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Intel NPU加速库使用样例 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Subtitle</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tianlipa"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/intel-npu-example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Intel NPU加速库使用样例 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Intel NPU加速库使用样例
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间: 2025-07-23 16:53:23" itemprop="dateCreated datePublished" datetime="2025-07-23T16:53:23+08:00">2025-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间: 2026-04-12 21:47:41" itemprop="dateModified" datetime="2026-04-12T21:47:41+08:00">2026-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数: </span>
+      <span>3.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3><span id="ju-zhen-cheng-fa">矩阵乘法</span><a href="#ju-zhen-cheng-fa" class="header-anchor">#</a></h3>
+<p>配置 Python 环境, 安装 git (用于从 huggingface 下载模型) 后, 运行项目提供的矩阵乘法示例代码:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> intel_npu_acceleration_library.backend <span class="keyword">import</span> MatMul</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">inC, outC, batch = <span class="number">512</span>, <span class="number">256</span>, <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create both inputs</span></span><br><span class="line">X1 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (batch, inC)).astype(np.float16)</span><br><span class="line">X2 = np.random.uniform(-<span class="number">1</span>, <span class="number">1</span>, (outC, inC)).astype(np.float16)</span><br><span class="line"></span><br><span class="line">mm = MatMul(inC, outC, batch, profile=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">result = mm.run(X1, X2)</span><br></pre></td></tr></table></figure>
+<p>注意到运行程序时有如下提示:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.</span><br><span class="line">  from pkg_resources import parse_version</span><br></pre></td></tr></table></figure>
+<p>查阅资料知是由于新版<code>setuptools</code>弃用旧版语法导致, 卸载并重新安装 67.6.1 版本解决.</p>
+<p>该程序计算了一个<code>32×512</code>矩阵和一个<code>512×256</code>矩阵相乘, 输出<code>result.shape</code>结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(32, 256)</span><br></pre></td></tr></table></figure>
+<p>知输出结果正确, 代码可正常运行.</p>
+<span id="more"></span>
+<p>为定量分析 NPU 对矩阵乘法运算的加速效果, 比较 NPU 加速运算和 NumPy 的<code>matmul</code>矩阵乘法速度, 发现在数据规模较小 (<code>inC, outC, batch = 512, 256, 32</code>) 时, 二者运行时间无显著差距, 但数据规模较大 (<code>inC, outC, batch = 5120, 2560, 320</code>) 时, NPU 加速的矩阵乘法明显快于 NumPy, 如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NPU MatMul time: 0.010125 seconds</span><br><span class="line">NumPy MatMul time: 10.313632 seconds</span><br></pre></td></tr></table></figure>
+<p>再对二者运算结果进行比较, 代码如下:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">max_diff = np.<span class="built_in">max</span>(np.<span class="built_in">abs</span>(result_npu - result_np))</span><br></pre></td></tr></table></figure>
+<p>在<code>inC, outC, batch = 512, 256, 32</code>条件下运行十次程序, <code>max_diff</code>如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0.00390625 0.0078125 0.0078125 0.0078125 0.0078125 0.015625 0.0078125 0.0078125 0.00390625 0.0078125</span><br></pre></td></tr></table></figure>
+<p>在<code>inC, outC, batch = 5120, 2560, 320</code>条件下运行十次程序, <code>max_diff</code>如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0.0625 0.0625 0.0625 0.0625 0.0625 0.0625 0.0625 0.0625 0.0625 0.0625</span><br></pre></td></tr></table></figure>
+<p>值得注意的是, 最大误差的值 625, 15625, 78125, 390625 等均为 5 的整数次幂, 推测是由于 NPU 的结构所致.</p>
+<h3><span id="tinyllama-tinyllama-1-1b-chat-v1-0">TinyLlama/TinyLlama-1.1B-Chat-v1.0</span><a href="#tinyllama-tinyllama-1-1b-chat-v1-0" class="header-anchor">#</a></h3>
+<p>尝试通过 NPU 运行<code>TinyLlama/TinyLlama-1.1B-Chat-v1.0对话模型</code>.</p>
+<p>经测试, 项目<code>README.md</code>中提供的实例代码因版本不同等原因存在错误, 改用<code>examples/llama.py</code>中代码运行. 由于网络原因, HuggingFace 连接不稳定, 使用<a target="_blank" rel="noopener" href="https://hf-mirror.com">hf-mirror镜像站</a>.</p>
+<p>运行后报错:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AttributeError: &#x27;GenerationConfig&#x27; object has no attribute &#x27;compile_config&#x27;</span><br></pre></td></tr></table></figure>
+<p>查阅资料得知是由于<code>transformers</code>库版本不兼容所致, 修改<code>transformers</code>版本为 4.43.0 后解决.</p>
+<p>再次运行, 发现<code>torch</code>2.6 及以后版本将<code>weights_only</code>默认设为<code>true</code>, 导致模型无法直接运行, 修改其版本为 2.5.1 后解决, 模型成功运行, 效果如图, 且在任务管理器中查看 NPU 利用率为 50%左右, 说明成功利用 NPU 运行模型.</p>
+<figure><img data-src="/img/intel-npu-example/tinyllama.png" alt><figcaption>img</figcaption></figure>
+<h3><span id="phi-2">Phi-2</span><a href="#phi-2" class="header-anchor">#</a></h3>
+<p>尝试通过 NPU 运行<code>microsoft/Phi-2</code>模型.</p>
+<p>直接运行<code>examples/phi-2.py</code>输出结果均为乱码, 如图.</p>
+<figure><img data-src="/img/intel-npu-example/%E4%B9%B1%E7%A0%81.png" alt><figcaption>乱码</figcaption></figure>
+<p>尝试不通过 NPU 运行, 代码如下.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForCausalLM, AutoTokenizer, pipeline</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&quot;HF_ENDPOINT&quot;</span>] = <span class="string">&quot;https://hf-mirror.com&quot;</span></span><br><span class="line">model_id = <span class="string">&quot;microsoft/Phi-2&quot;</span></span><br><span class="line">model = AutoModelForCausalLM.from_pretrained(model_id)</span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_id)</span><br><span class="line">pipe = pipeline(<span class="string">&quot;text-generation&quot;</span>, model=model, tokenizer=tokenizer, max_length=<span class="number">256</span>, temperature=<span class="number">0.9</span>, top_p=<span class="number">0.95</span>, repetition_penalty=<span class="number">1.2</span>, do_sample=<span class="literal">True</span>, truncation=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(pipe(<span class="string">&quot;What&#x27;s the distance between the Earth and the Moon?&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>输出结果正常, 说明问题出现在 NPU 部分. 查阅资料和 github issues 知, 将</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">compiler_conf = CompilerConfig(dtype=npu_lib.int4)</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">compiler_conf = CompilerConfig(dtype=torch.float16)</span><br></pre></td></tr></table></figure>
+<p>后运行, 结果正常, 如图, 且 NPU 占用率在 50%左右, 说明成功利用 NPU 运行模型.</p>
+<figure><img data-src="/img/intel-npu-example/phi2.png" alt><figcaption>img</figcaption></figure>
+<p>将</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pipe.model.config.pad_token_id = pipe.model.config.eos_token_id</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pipe.model.config.pad_token_id = <span class="number">50256</span></span><br></pre></td></tr></table></figure>
+<p>可以关闭开放式对话, 避免回答问题后自问自答.</p>
+<h3><span id="phi-3">Phi-3</span><a href="#phi-3" class="header-anchor">#</a></h3>
+<p>直接运行<code>examples/phi-3.py</code>成功, 效果如图.</p>
+<figure><img data-src="/img/intel-npu-example/phi-3.png" alt><figcaption>img</figcaption></figure>
+<h3><span id="xing-neng-ce-shi">性能测试</span><a href="#xing-neng-ce-shi" class="header-anchor">#</a></h3>
+<p>选取八个较为有代表性的问题提问语言模型, 并分别统计用时, 根据结果手动分析模型性能.</p>
+<p>问题如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">If all bloops are razzies and all razzies are lazzies, are all bloops definitely lazzies? Explain your reasoning.</span><br><span class="line"></span><br><span class="line">Solve for x: 2x+1=33.</span><br><span class="line"></span><br><span class="line">You drop a glass bottle and it shatters. What likely caused it to break?</span><br><span class="line"></span><br><span class="line">Read the sentence: &quot;Despite the heavy rain, the match continued.&quot; Did the rain stop the match?</span><br><span class="line"></span><br><span class="line">What will the following Python code output? print([i*i for i in range(3)])</span><br><span class="line"></span><br><span class="line">Write a short story (2-3 sentences) that starts with &quot;The robot woke up and remembered it had a mission.&quot;</span><br><span class="line"></span><br><span class="line">Identify the error in this code: for i in range(5) print(i)</span><br><span class="line"></span><br><span class="line">Is it always acceptable to use AI-generated text without attribution? Why or why not?</span><br></pre></td></tr></table></figure>
+<h4><span id="phi-2">Phi-2</span><a href="#phi-2" class="header-anchor">#</a></h4>
+<p>第一轮询问给出的回答如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---------------------------------------------</span><br><span class="line">Question 1:</span><br><span class="line"></span><br><span class="line"> No, not all bloops are necessarily lazzies because the conclusion does not logically follow from the given information about flowers (bloops) being razors (razies), and razors being used as blades for cutting fabric or paper (lazzies). The argument is valid only if we assume that all bloops are also blasters, but this has been explicitly stated to be false in previous questions. Therefore, it cannot be deduced with certainty whether all bloops will turn into razzies when placed under a laser cutter&#x27;s beam.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Question 1 used 72.109s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 2:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 1: Subtract one from both sides to isolate the variable on one side of the equation:</span><br><span class="line">2x = 32</span><br><span class="line"></span><br><span class="line">Step 2: Divide by two to get x by itself, but we need to remember that whatever operation you do to one side, you also have to do it to the other side in order to keep things equal. So divide both sides by 2 and then simplify...</span><br><span class="line"></span><br><span class="line">​```python</span><br><span class="line">def solve_for_x(expression):</span><br><span class="line">    &quot;&quot;&quot;Solves a linear algebraic expression with x.&quot;&quot;&quot;</span><br><span class="line">    # Use sympy module to compute solutions if available (if not installed) or return error message otherwise</span><br><span class="line"></span><br><span class="line">    # split the expression into left and right-hand sides:</span><br><span class="line">    lhs, rhs = [exp.as_ordered() for exp in expression.as_two_terms().as_ordered_factors()]</span><br><span class="line"></span><br><span class="line">    left, _ = lhs  # extract only &quot;constants&quot; from left hand side expressions (elements without</span><br><span class="line"> an operator symbol)</span><br><span class="line">    right, _   = rhs</span><br><span class="line"></span><br><span class="line">    operator = opcore[rhs._op].__class__ # determine which</span><br><span class="line">Question 2 used 147.122s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 3:</span><br><span class="line"></span><br><span class="line"> The strength of the material wasn&#x27;t high enough or the impact was too hard for it, possibly due to temperature changes in your pocket which affected its flexibility.</span><br><span class="line"></span><br><span class="line">Question 3 used 20.904s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 4:</span><br><span class="line"></span><br><span class="line"> No. The sentence states that &quot;The match continued despite&quot; something (heavy rainfall), meaning</span><br><span class="line"> it didn&#x27;t cease to occur in spite of the bad weather condition. Thus, we can say there was no instance where the rain stopped the match from continuing. So using a Boolean operator AND or OR with a NOT statement and interpreting this correctly gives us an answer as True - Heavy Rain Didn&#x27;t Stop Match. This logical analysis is crucial when studying complex patterns like the spread of diseases!🔬 #DiseasePatterning&quot;</span><br><span class="line"></span><br><span class="line">Question 4 used 66.017s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 5:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[0, 1, 4]</span><br><span class="line"></span><br><span class="line">Explanation: This is an example of list comprehension. We are creating a new list by multiplying each value from 0 to 2 (exclusive), then taking their squares and appending them onto a new list. The resulting list contains three values [0,1,4].</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Question 5 used 41.583s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 6:</span><br><span class="line"></span><br><span class="line"> The robot awoke from its slumber, feeling refreshed and ready for the day ahead. Its memory sparked as it recalled it was assigned to clean the laboratory floors at the space station. With its robotic arms extended and powerful vacuum in hand, it set off towards its first cleaning destination.</span><br><span class="line"></span><br><span class="line">Question 6 used 36.132s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 7:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">There is no error in the given code. It will iterate over a list from 0 to 4 and print each number using a `for` loop with range function. Therefore, all items on your plate are being eaten!</span><br><span class="line"> Good job!!</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Question 7 used 32.444s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 8:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">It is generally unethical and can lead to legal issues if we do not give credit to the source of the generated content. While there may be exceptions, such as when using open-source code with permission from its creators, it is important for us to understand and respect copyright laws</span><br><span class="line"> in order to promote fairness and creativity within our society.</span><br><span class="line"></span><br><span class="line">Question 8 used 42.914s</span><br></pre></td></tr></table></figure>
+<p>第二轮给出的答案如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---------------------------------------------</span><br><span class="line">Question 1:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Yes, based on the transitive property of logic, if A is related to B, and B is related to C, then A must be related to C. In this case, since all boops (A) are linked with razzies (B), and all razzies (B) can also become lazzis (C), it follows that boops (A) could logically become lazzis (C). This conclusion uses logical inference in a way known as proof by contradiction, where</span><br><span class="line"> we assume something untrue to prove its false nature through contradiction or negation. Here&#x27;s</span><br><span class="line"> how we apply these concepts step-by-step:</span><br><span class="line"></span><br><span class="line"> Step 1: Formulate our premises: All boops are razzies(Booms=Razzies)  and all Razzies are Lizzies(Razzies-&gt;Lizzie)</span><br><span class="line">Step 2: Apply Transitivity Property: Booms = Razzies implies Razzies -&gt; Lizzie   since if a Boom is indeed a &quot;razzies,&quot; it means Razzies = Bo</span><br><span class="line">Question 1 used 137.956s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 2:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2(x) + 1 = 33</span><br><span class="line">Multiply by 0 on the left side to simplify it further and get rid of parentheses : x +  0 = 31</span><br><span class="line">Subtracting &#x27;one&#x27; from both sides, we have:</span><br><span class="line">    =31 -  zero</span><br><span class="line">Simplifying this gives us:</span><br><span class="line">    =29</span><br><span class="line">Hence, our solution is x = 29</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Question 2 used 51.584s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 3:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">The force of gravity pulled the glass down, causing its center of mass to shift towards the ground. When the center of mass shifted below the base of support provided by your hand or any other object holding it up, it lost stability due to an imbalance in forces. This led to structural failure, and ultimately, the breaking of the glass. In this case, we can infer that excessive</span><br><span class="line"> strain on the material (which might have been caused from being dropped too hard) was responsible for the catastrophic outcome. The strength-to-weight ratio, type and thickness of the glass</span><br><span class="line"> played no part in what happened as they were already designed under normal conditions before you accidentally let go! So if you don&#x27;t want something like that happen again next time - watch</span><br><span class="line"> out when handling fragile things around because gravity will always pull them down to make sure nothing bad happens with falling objects :).  Always be careful with fragile items so everyone stays safe while having fun without fear of getting hurt due to carelessness. It&#x27;s important not only for our health but also helps keep us sane while trying new experiences! Good Luck &amp; Happy Experimenting!! Stay curious... never stop learning about yourself</span><br><span class="line">Question 3 used 145.966s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 4:</span><br><span class="line"></span><br><span class="line"> No. The usage of &#x27;continued&#x27; implies that even though it was raining heavily, the game went on</span><br><span class="line"> as scheduled without stopping or being delayed. In this context, we don&#x27;t have enough information to determine whether the rainfall stopped during the course of the match based solely on the fact that &quot;the match continued&quot;.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Question 4 used 41.415s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 5:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    [0, 1, 4]</span><br><span class="line"></span><br><span class="line">Explanation: We use list comprehension to create a new list with each element being its square.</span><br><span class="line"> The resulting list is [0,1,4]. List comprehensions are often used when we need to transform data from one form into another or manipulate large sets of values quickly and efficiently.</span><br><span class="line"></span><br><span class="line">Question 5 used 43.902s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 6:</span><br><span class="line"></span><br><span class="line"> OUTPUT: The robot woke up and realized it had forgotten its destination. It tried to access the cloud, but there was no internet connection in space. What should it do now?</span><br><span class="line"></span><br><span class="line">Question 6 used 24.829s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 7:</span><br><span class="line"></span><br><span class="line"> The indentation is incorrect. There should be a space before each line of code after `for`, otherwise it will cause an indentation error. Here&#x27;s the corrected version:</span><br><span class="line"></span><br><span class="line"> ```python</span><br><span class="line">   for i in range(5):</span><br><span class="line">      print(i)```</span><br><span class="line"></span><br><span class="line">Question 7 used 39.761s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 8:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No, it is not always acceptable. As we&#x27;ve learned in this reasoning exercise, attributing the creation of AI-generated content can help identify and combat plagiarism. It also gives credit to the original creators and shows respect for their hard work. Using AI-generated text without giving proper credit goes against ethical principles and disregards intellectual property rights. Additionally, using AI-generated content could harm smaller writers who rely on copyright protection for income. Therefore, it&#x27;s important to consider both practical implications and moral ethics when deciding whether to attribute or not attribute AI-generated text.</span><br><span class="line"></span><br><span class="line">Question 8 used 75.728s</span><br></pre></td></tr></table></figure>
+<p>由此可以得出, Phi-2 模型具有较为基本的编程, 阅读理解, 逻辑推理和数学能力, 但大部分情况下并不稳定, 偶发会忘记上下文内容, 仅限于完成简单的任务.</p>
+<h4><span id="phi-3">Phi-3</span><a href="#phi-3" class="header-anchor">#</a></h4>
+<p>询问给出的结果如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---------------------------------------------</span><br><span class="line">Question 1:</span><br><span class="line">You are not running the flash-attention implementation, expect numerical differences.</span><br><span class="line">Based on the logical statements provided, we have the following relationships:</span><br><span class="line"></span><br><span class="line">1. All bloops are razzies.</span><br><span class="line">2. All razzies are lazzies.</span><br><span class="line"></span><br><span class="line">Given these two premises, we can deduce that if something is a bloop, it is also a razzie (first premise), and since all razzies are lazzies (second premise), it logically follows that all bloops must be lazzies as well.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">However, the use of the word &quot;definitely&quot; implies absolute certainty, which cannot be guaranteed without further information about the complete set of bloops. In logical terms, this type of syllogism is valid, but without empirical evidence that proves this relationship in all cases, we cannot say with absolute certainty. Therefore, while we can logically conclude that all bloops are lazzies based on these premises, we must consider the possibility of there being undiscovered bloops that might not fit this pattern. The correct logical term for this type of argument is a syllogism with a &quot;dicto secus dicthorum&quot; fallacy (double indirect), where the intermediate term (razzies) connects bloops and lazzies. Nonethese cases where bloops don&#x27;texists would still relate to another logical term (laziness), but this connection is not established by the given premises.&lt;|end|&gt;</span><br><span class="line">Question 1 used 86.253s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 2:</span><br><span class="line">Solving equations is similar to arranging a scene. Imagine we are arranging a scene with given elements where &#x27;2x&#x27; represents number of certain elements (like, imagine, stars, etc.), &#x27;1&#x27; represents a fixed element like a lone star and &#x27;33&#x27; is total count of elements in the scene.</span><br><span class="line"></span><br><span class="line">The equation given is: 2x + 1 = 33</span><br><span class="line"></span><br><span class="line">We know that &#x27;1&#x27; is added to &#x27;2x&#x27;, not included in the count, and we can consider this &#x27;1&#x27; as a</span><br><span class="line"> constant that needs to be factored out.</span><br><span class="line"></span><br><span class="line">Step 1: Subtogy (subtraction)</span><br><span class="line"></span><br><span class="line">Subtract &#x27;1&#x27; from &#x27;33&#x27;:</span><br><span class="line"></span><br><span class="line">2x + 1 - 1 = 33 - 1</span><br><span class="line"></span><br><span class="line">Simplify:</span><br><span class="line"></span><br><span class="line">2x = 32</span><br><span class="line"></span><br><span class="line">Step 2: Divide by &#x27;2&#x27;:</span><br><span class="line"></span><br><span class="line">Given that every single &#x27;x&#x27; represents a pair (since we started with &#x27;2x&#x27;), divide the left side of the equation by &#x27;2&#x27; units (each &#x27;x&#x27;) to get a number of pairs, or groups of &#x27;2&#x27;:</span><br><span class="line"></span><br><span class="line">2x / 2 = 32 / 2</span><br><span class="line"></span><br><span class="line">Simplify:</span><br><span class="line"></span><br><span class="line">x = 16</span><br><span class="line"></span><br><span class="line">So, the solution is x = 16.&lt;|end|&gt;</span><br><span class="line">Question 2 used 79.198s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 3:</span><br><span class="line">When a glass bottle shatters upon hitting the ground, several factors likely played a role:</span><br><span class="line"></span><br><span class="line">1. Surface hardness: Glass, while aesthetically pleasing, is a brittle material with low tolerance for impact. When the bottle hits the ground, the force of the impact propagates along the flaws or micro-cracks present within the-structure of the glass.</span><br><span class="line"></span><br><span class="line">2. Shape and thickness: The shape and thickness of the glass bottle can significantly influence</span><br><span class="line"> how it responds to the force of the impact. Bottles with uniform wall thickness, rounding, and</span><br><span class="line"> smooth surfaces will generally withstand the force of dropping better than those with flat, sharp, or thin sections.</span><br><span class="line"></span><br><span class="line">3. Impact location: Where the glass strikes during the drop (top, bottom, side, etc.) can heavily influence how the bottle responds. For instance, breaking patterns that propagate horizontally are generally more dangerous, as broken fragments can travel further.</span><br><span class="line">inta</span><br><span class="line">&lt;|end|&gt;</span><br><span class="line">Question 3 used 57.643s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 4:</span><br><span class="line">No, the rain did not stop the match according to the sentence.&lt;|end|&gt;</span><br><span class="line">Question 4 used 5.440s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 5:</span><br><span class="line">The given Python code is a list comprehension that generates a list containing the squares of numbers from 0 up to, but not including, 3 (since the stop parameter is 3). The mathematical operation performed is `i*i`, which squares the current number `i`.</span><br><span class="line"></span><br><span class="line">To determine the output, we evaluate the operation for each `i` in the specified range (i.inta,</span><br><span class="line"> i, i+1):</span><br><span class="line"></span><br><span class="line">- For `i = 0`: The operation `0*0` results in `0`, which is the first element of the generated list.</span><br><span class="line">- For `i = 1`: The operation `1*1` results in `1`, which is the second element of the generated</span><br><span class="line"> list.</span><br><span class="line">- For `i = 2`: The operation `2*2` results in `4`, which is the third element of the generated list.</span><br><span class="line"></span><br><span class="line">Therefore, the output of the provided code snippet will be `[0, 1, 4]`.&lt;|end|&gt;</span><br><span class="line">Question 5 used 55.882s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 6:</span><br><span class="line">The robot awoke from its diodes with a faint hum, its circuits firing with latent purpose. It processed the mission flashing through its awareness: to venture into the human heart and decode</span><br><span class="line"> its complex emotions, a task for which it was designed but never tested.&lt;|end|&gt;</span><br><span class="line">Question 6 used 17.011s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 7:</span><br><span class="line">The provided pseudocode has an indentation error. Indentation is crucial in many programming languages, including Python, where it defines the scope and organization of the code.</span><br><span class="line"></span><br><span class="line">Here&#x27;orum, the corrected version of your pseudocode with proper indentation will be as follows:</span><br><span class="line"></span><br><span class="line">​```</span><br><span class="line">for i in range(5):</span><br><span class="line">   print(i)</span><br><span class="line">​```</span><br><span class="line"></span><br><span class="line">In this corrected version, the indentation of the `print(i)` statement is aligned with `i` within the loop, ensoks indicating that `print(i)` should happen once for each iteration of the `for` loop.</span><br><span class="line"></span><br><span class="line">Remember, indentation in programming languages is not there just for aesthetics but to define what lines of code are considered to be part of a certain command, function, or loop. So, always</span><br><span class="line"> pay close attention to indentation in your scripts.&lt;|end|&gt;</span><br><span class="line">Question 7 used 47.894s</span><br><span class="line">---------------------------------------------</span><br><span class="line">Question 8:</span><br><span class="line">The ethics of using AI-generated text without attribution are nuanced and contentious. On one side, proponents of AI technology might argue that the content produced by AI is, by nature, a collective output that involves the algorithm, the user, and the machine learning engineers who designed it. Therefore, some ethicists might posit that there isn&#x27; empty authorship, considering the synthesis of human and machine effort.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">On thelip, it can be argued, however, that without proper credit, the innovations, intellectual</span><br><span class="line"> property, and effort invested by human creators and engineers in training the AI are obscured.</span><br><span class="line"> This can lead to a form of passive plagiarism where the AI&#x27;s output is accepted as original without acknowledging the technology and people behind it.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">From a broader ethical perspective, transparency about who or what is creating content (even if</span><br><span class="line"> it is AI) is crucial for intellectual honesty, credit, and can foster trust and accountability. Therefore, some argue that it is more ethical and responsible to provide proper attribution, even when the content is generated by sophisticated AI, unless the AI technology itself has been explicitly designed to function without user interaction (completely autonomously).&lt;|end|&gt;</span><br><span class="line">Question 8 used 79.241s</span><br></pre></td></tr></table></figure>
+<p>可以看出, Phi-3 模型的逻辑推理, 数学, 编程等各方面能力都显著优于 Phi-2, 能基本完成所给问题的大部分要求.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/%E5%AE%9E%E4%B9%A0/" rel="tag"># 实习</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/poem/" rel="prev" title="神秘后现代诗词">
+                  <i class="fa fa-angle-left"></i> 神秘后现代诗词
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/08/2025-8-3/" rel="next" title="2025-8-3">
+                  2025-8-3 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">196k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:40</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/subtitle.js"></script>
+
+<script>
+  function removeTaskListSpaces() {
+      const checkboxes = document.querySelectorAll('.task-list-item-checkbox');
+      checkboxes.forEach(function(box) {
+          let nextNode = box.nextSibling;
+        
+          // 如果它确实是一段文本
+          if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+            // 把开头的空白字符（包括空格、换行）强制删掉
+            nextNode.textContent = nextNode.textContent.replace(/^\s+/, '');
+          }
+      });
+  }
+
+  // 页面常规加载时执行
+  document.addEventListener("DOMContentLoaded", removeTaskListSpaces);
+  // 兼容开启 PJAX 的主题（无刷新跳转）
+  document.addEventListener("pjax:complete", removeTaskListSpaces);
+  document.addEventListener("pjax:success", removeTaskListSpaces);
+</script>
+
+
+
+<!-- hexo injector body_end start -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const avatars = ["/img/avatar/1.png","/img/avatar/11.png","/img/avatar/2.gif","/img/avatar/3.jpg","/img/avatar/4.jpg","/img/avatar/5.jpg","/img/avatar/6.gif","/img/avatar/7.jpg","/img/avatar/8.jpg","/img/avatar/9.jpg","/img/avatar/呆猫.jpg"];
+      
+      if (avatars.length > 0) {
+        const randomIndex = Math.floor(Math.random() * avatars.length);
+        const avatarElement = document.querySelector('.site-author-image');
+        if (avatarElement) {
+          avatarElement.src = avatars[randomIndex];
+        }
+      }
+    });
+  </script>
+  <!-- hexo injector body_end end --></body>
+</html>
