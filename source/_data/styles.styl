@@ -193,3 +193,15 @@ li.task-list-item {
   text-indent: 0 !important; 
   list-style-type: none !important; 
 }
+
+/* 精准隐藏独立页面（带有 page 类）下的 breadcrumb 导航 */
+.page .post-meta-container .breadcrumb {
+    display: none !important;
+}
+
+
+/* 如果你发现单独隐藏 breadcrumb 后，外层的容器还占着空白高度，可以直接把外层容器也隐藏掉： *
+.page .post-meta-container {
+    display: none !important;
+}
+*/

@@ -5,16 +5,16 @@ date: 2025-08-20 09:26:44
 
 ## 笔记
 
-<div class="text-center">{% btn /tags/数据库基础/, 数据库基础,, %} {% btn /tags/计算机网络, 计算机网络,, %} {% btn /tags/计算机安全, 计算机安全,, %}</div>
+<div class="text-center">{% btn /blog/tags/数据库基础/, 数据库基础,, %} {% btn /blog/tags/计算机网络, 计算机网络,, %} {% btn /blog/tags/计算机安全, 计算机安全,, %}</div>
 
 ## 随笔
 
 <div class="text-center" style="margin-top: 1rem;">
-  {% btn /what-to-read, 待看清单,, 总有一天我会全部看完的 %} {% btn /what-to-write, 待写清单,, 听说每个作家都有个小本子记这些 %}
+  {% btn /blog/what-to-read, 待看清单,, 总有一天我会全部看完的 %} {% btn /blog/what-to-write, 待写清单,, 听说每个作家都有个小本子记这些 %}
 </div>
 
 <div class="text-center">
-  {% btn /tags/随笔, 随笔合集,, %}
+  {% btn /blog/tags/随笔, 随笔合集,, %}
 </div>
 
 ## 资料
@@ -23,14 +23,14 @@ date: 2025-08-20 09:26:44
 
 ## 杂项
 
-<div class="text-center">{% btn /abracadabra, 魔曰,, 一个有趣的文本对称加密程序 %} {% btn /shitpost, 勾史文案,, 请输入文本 %} {% btn /proust-questionnaire, 普鲁斯特问卷,, 被用来衡量成长轨迹的35个问题 %}</div>
+<div class="text-center">{% btn /abracadabra, 魔曰,, 一个有趣的文本对称加密程序 %} {% btn /blog/shitpost, 勾史文案,, 请输入文本 %} {% btn /blog/proust-questionnaire, 普鲁斯特问卷,, 被用来衡量成长轨迹的35个问题 %}</div>
 
 <div class="text-center">
-  {% btn /what-to-do, 待办清单,, 我完蛋了 %}
+  {% btn /blog/what-to-do, 待办清单,, 我完蛋了 %}
 </div>
 
 <div class="text-center random-btn">
-  {% btn /hachimi, I'm Feeling Lucky,, %}
+  {% btn /blog/hachimi, I'm Feeling Lucky,, %}
 </div>
 
 <script src="/js/randombtn.js"></script>
