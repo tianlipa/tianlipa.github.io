@@ -107,7 +107,7 @@ theme: next
 deploy:
   - type: git
     # repository: git@github.com:tianlipa/tianlipa.github.io.git
-    repository: https://github.com/tianlipa/tianlipa.github.io.git
+    repository: https://github.com/tianlipa/tianlipa.github.io
     branch: main
   - type: cjh_google_url_submitter
   - type: cjh_bing_url_submitter
