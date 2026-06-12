@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桑烨 · Sang Ye</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+    <style>
+        :root {
+            --ink: #141414;
+            --ink-soft: #3b3b3b;
+            --ink-faint: #6b6b6b;
+            --paper: #fcfcfb;
+            --line: #e4e3df;
+            --line-strong: #cfcec9;
+            --accent: #2b4a7a;
+            --serif: "Newsreader", Georgia, "Songti SC", serif;
+            --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+            --maxw: 760px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+            scroll-padding-top: 64px;
+        }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 18px;
+            line-height: 1.62;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 56px 28px 96px;
+        }
+
+        a {
+            color: var(--ink);
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+        }
+        a:hover {
+            color: var(--accent);
+        }
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* ---------- 顶部导航栏 (靠左对齐优化) ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(252, 252, 251, .92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--line);
+            width: 100%;
+        }
+        .nav-inner {
+            width: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 40px;
+            height: 58px;
+        }
+        .nav-home {
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink);
+            text-decoration: none;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--ink-faint);
+            text-decoration: none;
+            padding: 5px 4px;
+            white-space: nowrap;
+            transition: color 0.15s ease;
+        }
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        /* ---------- 顶部:姓名 + 头像 ---------- */
+        .head {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .head-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .name {
+            font-family: "LXGW WenKai", "Songti SC", serif;
+            font-size: clamp(38px, 6vw, 54px);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            margin: 0 0 2px;
+        }
+        .name .en {
+            font-family: "Newsreader", Georgia, serif;
+            /* font-style: italic; */
+            font-weight: 400;
+            color: var(--ink-soft);
+            font-size: 0.5em;
+            letter-spacing: 0;
+            margin-left: .5em;
+        }
+        .role {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--ink-faint);
+            letter-spacing: 0.01em;
+            margin: 14px 0 0;
+        }
+        .role b {
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .role .sep {
+            color: var(--line-strong);
+            margin: 0 .55em;
+        }
+
+        .avatar {
+            flex: 0 0 116px;
+            width: 116px;
+            height: 116px;
+            border: 1px solid var(--line-strong);
+            /* display: grid;
+            place-items: center;
+            font-family: var(--mono);
+            font-size: 30px;
+            color: var(--ink-soft);
+            letter-spacing: .04em;
+            background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(20, 20, 20, .025) 5px 6px);
+            user-select: none; */
+            background: none;
+            display: block;
+            /* 图片裁剪与居中 */
+            object-fit: cover;
+            object-position: center;
+            /* 如果想用圆形，打开下面这一行，同时可去掉 border */
+            /* border-radius: 50%; */
+        }
+
+        .rule {
+            border: 0;
+            border-top: 1px solid var(--line);
+            margin: 40px 0 0;
+        }
+
+        /* ---------- 章节通用 ---------- */
+        section {
+            padding: 38px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        section:last-of-type {
+            border-bottom: 0;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--ink-faint);
+            letter-spacing: 0.04em;
+            margin: 0 0 18px;
+        }
+
+        h2 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+        }
+
+        p {
+            margin: 0 0 1em;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+        .lede {
+            color: var(--ink-soft);
+        }
+
+        /* ---------- 研究兴趣 ---------- */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            border: 1px solid var(--line-strong);
+            padding: 5px 11px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        /* ---------- 时间线条目 ---------- */
+        .entry {
+            display: grid;
+            grid-template-columns: 118px 1fr;
+            gap: 22px;
+            padding: 14px 0;
+        }
+        .entry+.entry {
+            border-top: 1px dotted var(--line);
+        }
+        .entry .when {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            color: var(--ink-faint);
+            padding-top: 4px;
+            letter-spacing: 0.01em;
+        }
+        .entry .what h3 {
+            margin: 0 0 3px;
+            font-size: 19px;
+            font-weight: 600;
+        }
+        .entry .what .org {
+            color: var(--ink-soft);
+            font-size: 16.5px;
+            margin: 0 0 7px;
+        }
+        .entry .what .detail {
+            color: var(--ink-soft);
+            font-size: 16.5px;
+            margin: 0;
+        }
+        .entry .what ul {
+            margin: 6px 0 0;
+            padding-left: 18px;
+            color: var(--ink-soft);
+            font-size: 16.5px;
+        }
+        .entry .what li {
+            margin: 0 0 4px;
+        }
+        .role-tag {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            color: var(--ink-faint);
+            border: 1px solid var(--line-strong);
+            padding: 1px 7px;
+            border-radius: 3px;
+            margin-left: 8px;
+            vertical-align: 2px;
+            white-space: nowrap;
+        }
+
+        /* ---------- 课程 ---------- */
+        .course-group {
+            margin-bottom: 24px;
+        }
+        .course-group:last-child {
+            margin-bottom: 0;
+        }
+        .course-group h3 {
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--ink-faint);
+            letter-spacing: 0.03em;
+            margin: 0 0 12px;
+            text-transform: uppercase;
+        }
+        .courses {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px 28px;
+        }
+        .courses li {
+            font-size: 16.5px;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .grade-note {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--ink-faint);
+            margin: 16px 0 0;
+        }
+
+        /* ---------- 技能 ---------- */
+        .skills {
+            display: grid;
+            grid-template-columns: 118px 1fr;
+            gap: 22px 22px;
+        }
+        .skills dt {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            color: var(--ink-faint);
+            padding-top: 2px;
+        }
+        .skills dd {
+            margin: 0;
+            font-size: 16.5px;
+            color: var(--ink-soft);
+        }
+
+        /* ---------- 联系方式 ---------- */
+        .contact-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 118px 1fr;
+            gap: 9px 22px;
+            align-items: baseline;
+        }
+        .contact-list dt {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            color: var(--ink-faint);
+        }
+        .contact-list dd {
+            margin: 0;
+            font-size: 16.5px;
+        }
+        .contact-list a {
+            font-family: var(--mono);
+            font-size: 14.5px;
+        }
+
+        footer {
+            margin-top: 46px;
+            font-family: var(--mono);
+            font-size: 11.5px;
+            color: var(--ink-faint);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* ---------- 响应式调整 ---------- */
+        @media (max-width: 768px) {
+            .nav-inner {
+                padding: 0 24px;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .wrap {
+                padding: 40px 22px 72px;
+            }
+            .nav-inner {
+                padding: 0 22px;
+                gap: 16px;
+            }
+            .head {
+                flex-direction: column-reverse;
+                gap: 22px;
+            }
+            .avatar {
+                width: 88px;
+                height: 88px;
+                flex-basis: 88px;
+                font-size: 24px;
+            }
+            .entry {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .entry .when {
+                padding-top: 0;
+            }
+            .skills,
+            .contact-list {
+                grid-template-columns: 1fr;
+                gap: 3px;
+            }
+            .skills dt,
+            .contact-list dt {
+                margin-top: 12px;
+            }
+            .skills dt:first-child,
+            .contact-list dt:first-child {
+                margin-top: 0;
+            }
+            .courses {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" aria-label="页面导航">
+        <div class="nav-inner">
+            <a class="nav-home" href="#top">桑烨</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#interests">Interests</a>
+                <a href="#education">Education</a>
+                <a href="#experiences">Experiences</a>
+                <a href="#projects">Projects</a>
+                <a href="#awards">Awards</a>
+                <a href="#courses">Courses</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="wrap" id="top">
+
+        <header class="head">
+            <div class="head-text">
+                <h1 class="name">桑&#8202;烨<span class="en">Sang Ye</span></h1>
+                <p class="role">
+                    <b>网络空间安全</b> · 本科生<span class="sep">/</span>中国科学技术大学 网络空间安全学院<span class="sep">/</span>预计 2027 届
+                </p>
+            </div>
+            <!-- <div class="avatar" aria-label="头像占位">SY</div> -->
+            <img class="avatar" src="/img/avatar/11.png" alt="头像">
+        </header>
+        <hr class="rule">
+
+        <section id="about" aria-labelledby="about-h">
+            <p class="eyebrow">/about</p>
+            <h2 id="about-h">个人简介</h2>
+            <p class="lede">我是中国科学技术大学网络空间安全专业的本科三年级学生。</p>
+            <p>我具备扎实的计算机底层基础与算法功底，热衷于探索前沿交叉领域的攻防技术，课余时间作为学校 CTF 校队（NEBULA）成员积极参与赛事演练，并在校内前沿实验室参与学术科研与工程实践。我擅长将抽象的攻防原理转化为可落地的代码实现，期望未来在 AI 及 AI 安全领域深造，攻读相关方向的研究生学位。</p>
+            <p>我现任中科大校学生电影协会副社长，负责组织高新校区的周常活动，具备良好的团队协作与沟通能力。</p>
+            <p>我的课程笔记参见：<a href="/tags/笔记/">笔记</a>。</p>
+        </section>
+
+        <section id="interests" aria-labelledby="interests-h">
+            <p class="eyebrow">/interests</p>
+            <h2 id="interests-h">研究兴趣</h2>
+            <div class="tags">
+                <span class="tag">机器学习</span>
+                <span class="tag">大语言模型</span>
+                <span class="tag">AI 安全</span>
+                <span class="tag">智能体</span>
+                <span class="tag">系统安全</span>
+            </div>
+        </section>
+
+        <section id="education" aria-labelledby="education-h">
+            <p class="eyebrow">/education</p>
+            <h2 id="education-h">教育经历</h2>
+
+            <div class="entry">
+                <div class="when">2023.09 — 至今</div>
+                <div class="what">
+                    <h3>工学学士，网络空间安全</h3>
+                    <p class="org">中国科学技术大学 · 网络空间安全学院</p>
+                    <p class="detail">主修方向：系统安全、密码学、人工智能安全与网络攻防。</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">2020.09 — 2023.06</div>
+                <div class="what">
+                    <h3>理科强基班（高中）</h3>
+                    <p class="org">合肥市第一中学</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiences" aria-labelledby="experiences-h">
+            <p class="eyebrow">/experiences</p>
+            <h2 id="experiences-h">科研与实习经历</h2>
+
+            <div class="entry">
+                <div class="when">2026.03 — 至今</div>
+                <div class="what">
+                    <h3>科研实习生</h3>
+                    <p class="org">中科大下一代移动计算与数据创新实验室</p>
+                    <ul>
+                        <li>负责 LLM 安全方向，深入研究大语言模型、智能体的基本安全原理。</li>
+                        <!-- <li>安全论文的算法复现、评估与技术调研。</li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">2025.09 — 2026.01</div>
+                <div class="what">
+                    <h3>科研实习生</h3>
+                    <p class="org">中国科学技术大学 MINE 项目组</p>
+                    <ul>
+                        <li>多智能体相关论文的算法复现、评估与技术调研。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">2025.07 — 2025.08</div>
+                <div class="what">
+                    <h3>AI 测试工程师（实习）</h3>
+                    <p class="org">深圳市亿道信息股份有限公司</p>
+                    <ul>
+                        <li>参与将 DeepSeek，Hunyuan3D 等模型转移至 Intel NPU 运行。</li>
+                        <li>利用 OpenVINO 库加速 FunASR 模型语音识别。</li>
+                        <li>其他模型测试评估工作。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">2024 — 至今</div>
+                <div class="what">
+                    <h3>中科大 CTF 校队（NEBULA）队员</h3>
+                    <!-- <p class="org">深圳市亿道信息股份有限公司</p> -->
+                    <ul>
+                        <li>选拔入校队，长期跟进校队技术训练，多次参与线上练习赛与攻防演练。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- <div class="entry">
+                <div class="when">2026 — 至今</div>
+                <div class="what">
+                    <h3>中科大校学生电影协会副社长</h3>
+                    <p class="org">深圳市亿道信息股份有限公司</p>
+                    <ul>
+                        <li>负责组织高新校区的周常活动，具备良好的团队协作与沟通能力。</li>
+                    </ul>
+                </div>
+            </div> -->
+        </section>
+
+        <section id="projects" aria-labelledby="projects-h">
+            <p class="eyebrow">/projects</p>
+            <h2 id="projects-h">项目经历</h2>
+
+            <div class="entry">
+                <div class="when">密码学导论</div>
+                <div class="what">
+                    <h3>国密算法文件保险箱实现</h3>
+                    <p class="org">技术栈：C/C++ · 国密 SM3 · SM4</p>
+                    <ul>
+                        <li>基于 C/C++ 完整实现了国密 SM3 密码杂凑算法与 SM4 分组密码算法。</li>
+                        <li>基于上述算法构建了一款安全的文件加密保险箱工具，具备完整的工程规范，开源并维护于 GitHub。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">人工智能原理</div>
+                <div class="what">
+                    <h3>人工智能算法与应用集锦</h3>
+                    <p class="org">技术栈：PyTorch · A* 算法 · Q-Learning · 贝叶斯网络 · CVAE</p>
+                    <ul>
+                        <li>基于 PyTorch 框架，优化了 A* 算法的启发式函数并应用于地图路线规划。</li>
+                        <li>实现基于 Q-Learning 的五子棋强化学习 AI、贝叶斯网络控制小车自主行驶，以及基于条件 VAE（CVAE）的手写数字图片识别项目。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">网络安全协议</div>
+                <div class="what">
+                    <h3>标准安全电子邮件服务器部署</h3>
+                    <p class="org">技术栈：SPF · DKIM · DMARC · TLS</p>
+                    <ul>
+                        <li>在公网搭建并运行标准电子邮件服务器，配置并实现了 SPF、DKIM、DMARC 及 TLS 传输加密等全套主流电子邮件安全协议。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">编译原理</div>
+                <div class="what">
+                    <h3>Tiny C 简易编译器开发</h3>
+                    <p class="org">技术栈：C/C++ · 词法分析 · 语法分析 · AST · 中间代码生成</p>
+                    <ul>
+                        <li>实现了一个针对类 C 语言的简易编译器原型，完整涵盖词法分析、语法分析、抽象语法树（AST）构建及中间代码生成流程。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">计算机程序设计</div>
+                <div class="what">
+                    <h3>Unity 简易游戏开发</h3>
+                    <p class="org">技术栈：Unity · C# · 状态机</p>
+                    <ul>
+                        <li>基于 Unity 引擎实现了一个完整的 2D 射击游戏，并利用 C# 编写了基于状态机的简易游戏 AI。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- <div class="entry">
+                <div class="when">多门课程</div>
+                <div class="what">
+                    <h3>其他代表性课程实践</h3>
+                    <ul>
+                        <li><b>网络安全设计与实践：</b>系统学习并演练了 SQL 注入、基础 Crypto、简单取证、二进制逆向与 LLM 安全（提示词注入等）技术。</li>
+                        <li><b>嵌入式系统开发：</b>基于 STM32 微控制器进行了软硬件协同开发与基础系统设计。</li>
+                        <li><b>Unity 简易游戏 AI：</b>基于 Unity 引擎开发游戏 Demo，并利用 C# 编写了基于状态机的简易游戏 AI 逻辑。</li>
+                        <li><b>Linux 系统管理：</b>基于 Linux 环境搭建并运维了高可用的企业级 Web 服务器。</li>
+                    </ul>
+                </div>
+            </div> -->
+        </section>
+
+        <section id="awards" aria-labelledby="awards-h">
+            <p class="eyebrow">/awards</p>
+            <h2 id="awards-h">比赛获奖与荣誉</h2>
+
+            <div class="entry">
+                <div class="when">2025.08</div>
+                <div class="what">
+                    <h3>第九届全国兵棋推演大赛（城市作战博弈算法挑战赛）</h3>
+                    <p class="detail">作为队员参赛，获全国三等奖。</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="when">2024.10</div>
+                <div class="what">
+                    <h3>中科大第十一届信息安全大赛（Hackergame 2024）</h3>
+                    <p class="detail">获校内第 24 名。</p>
+                </div>
+            </div>
+
+            <!-- <div class="entry">
+                <div class="when">2024 — 至今</div>
+                <div class="what">
+                    <h3>中科大 CTF 校队（NEBULA）<span class="role-tag">队员</span></h3>
+                    <p class="detail">选拔入校队，长期跟进校队技术训练，多次参与各类线上练习赛与攻防演练。</p>
+                </div>
+            </div> -->
+
+            <div class="entry">
+                <div class="when">2026.02</div>
+                <div class="what">
+                    <h3>美国大学生数学建模竞赛（ICM）</h3>
+                    <p class="detail">担任队长，负责数学建模与代码部分，获得 H 奖（Honorable Mention）。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" aria-labelledby="courses-h">
+            <p class="eyebrow">/courses</p>
+            <h2 id="courses-h">主修课程</h2>
+
+            <div class="course-group">
+                <h3>安全与密码核心</h3>
+                <ul class="courses">
+                    <li><span>密码学导论</span></li>
+                    <li><span>网络安全基础实践</span></li>
+                    <li><span>网络安全协议</span></li>
+                    <li><span>网络安全设计与实践</span></li>
+                    <li><span>计算机安全</span></li>
+                    <li><span>Web 信息处理与应用</span></li>
+                </ul>
+            </div>
+
+            <div class="course-group">
+                <h3>计算机专业基础</h3>
+                <ul class="courses">
+                    <li><span>数据结构及其算法</span></li>
+                    <li><span>操作系统</span></li>
+                    <li><span>编译原理</span></li>
+                    <li><span>算法分析与设计</span></li>
+                    <li><span>计算机程序设计</span></li>
+                    <li><span>面向对象设计与编程</span></li>
+                    <li><span>Linux 系统管理与应用</span></li>
+                    <li><span>数据库基础</span></li>
+                    <li><span>数字逻辑电路</span></li>
+                    <li><span>形式化方法导引</span></li>
+                </ul>
+            </div>
+
+            <div class="course-group">
+                <h3>数学与理论前沿</h3>
+                <ul class="courses">
+                    <li><span>数学分析</span></li>
+                    <li><span>线性代数</span></li>
+                    <li><span>近世代数与数论</span></li>
+                    <li><span>信号与系统</span></li>
+                    <li><span>信息论</span></li>
+                    <li><span>数理逻辑与图论</span></li>
+                    <li><span>人工智能原理与技术</span></li>
+                </ul>
+            </div>
+            <!-- <p class="grade-note">* 部分课程获评 A / A+。</p> -->
+        </section>
+
+        <section id="skills" aria-labelledby="skills-h">
+            <p class="eyebrow">/skills</p>
+            <h2 id="skills-h">技能</h2>
+            <dl class="skills">
+                <dt>编程语言</dt>
+                <dd>C / C++ · Python · Bash</dd>
+                <dt>基础技能</dt>
+                <dd>Linux 系统管理 · Git 版本控制 · 公网服务器运维</dd>
+                <dt>网络攻防</dt>
+                <dd>GDB · IDA Pro · SQLMap · Burp Suite · Wireshark<br>熟悉常见 Web 漏洞，基础 Crypto，数字取证及逆向工程</dd>
+                <dt>人工智能</dt>
+                <dd>熟悉大语言模型底层原理，Agent / Multi-Agent 系统架构</dd>
+                <dt>语言能力</dt>
+                <dd>中文（母语） · 大学英语六级（CET-6）650 分<br>雅思（IELTS）7.5 分（听力 8.0 / 阅读 8.0 / 写作 7.0 / 口语 6.0）</dd>
+            </dl>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-h">
+            <p class="eyebrow">/contact</p>
+            <h2 id="contact-h">联系方式</h2>
+            <dl class="contact-list">
+                <dt>Email</dt>
+                <dd><a href="mailto:sangye@mail.ustc.edu.cn">sangye@mail.ustc.edu.cn</a></dd>
+                <dt>GitHub</dt>
+                <dd><a href="https://github.com/tianlipa" target="_blank" rel="noopener">github.com/tianlipa</a></dd>
+                <dt>主页</dt>
+                <dd><a href="https://tianlipa.xyz">tianlipa.xyz</a></dd>
+                <dt>所在地</dt>
+                <!-- <dd><a href="#" style="font-family:var(--serif);font-size:16.5px;pointer-events:none;text-decoration:none;color:var(--ink-soft);">中国 · 安徽 · 合肥市</a></dd> -->
+                <dd><span style="font-family:var(--serif);font-size:16.5px;color:var(--ink-soft);">中国 · 安徽 · 合肥市</span></dd>
+            </dl>
+        </section>
+
+        <footer>
+            <span>© 2026 tianlipa</span>
+            <span>最后更新：2026-06</span>
+        </footer>
+
+    </main>
+</body>
+</html>

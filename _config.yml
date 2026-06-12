@@ -14,9 +14,9 @@ timezone: 'Asia/Shanghai'
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://tianlipa.github.io
-root: /blog/
+# root: /blog/
 # permalink: :year/:month/:day/:title/
-permalink: blog/:year/:month/:title/
+permalink: :year/:month/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -64,7 +64,7 @@ prismjs:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: 'blog'
+  path: 'home'
   per_page: 12
   order_by: -date
 
@@ -106,7 +106,8 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
-    repository: git@github.com:tianlipa/blog.git
+    # repository: git@github.com:tianlipa/tianlipa.github.io.git
+    repository: https://github.com/tianlipa/tianlipa.github.io.git
     branch: main
   - type: cjh_google_url_submitter
   - type: cjh_bing_url_submitter
