@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-count">197</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -198,6 +198,152 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/08/msb-06-file-include/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/msb-06-file-include/" class="post-title-link" itemprop="url">6-文件包含漏洞</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间: 2025-08-13 13:43:25" itemprop="dateCreated datePublished" datetime="2025-08-13T13:43:25+08:00">2025-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间: 2026-04-12 21:44:33" itemprop="dateModified" datetime="2026-04-12T21:44:33+08:00">2026-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数: </span>
+      <span>435</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简介">简介</h2>
+<h3 id="本地文件包含-LFI-Local-File-Inclusion">本地文件包含 (LFI, Local File Inclusion)</h3>
+<p>目录遍历漏洞/文件任意访问漏洞<br>
+通过接口动态包含<br>
+可用于包含恶意代码或图片马<br>
+包含敏感文件</p>
+<h3 id="远程文件包含-RFI-Remote-File-Inclusion">远程文件包含 (RFI, Remote File Inclusion)</h3>
+<table>
+<thead>
+<tr>
+<th>漏洞</th>
+<th>描述</th>
+<th>原因</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XXE</td>
+<td>XML 外部实体注入</td>
+<td>使用 XML 传输数据，并且允许解析外部实体</td>
+<td>导致访问敏感文件，探测端口，执行系统命令等</td>
+</tr>
+<tr>
+<td>SSRF</td>
+<td>服务顿请求伪造</td>
+<td>使用了 curl_exec () 之类的函数</td>
+<td>导致端口扫描，攻击内网主机，绕过防火墙，获取敏感信息，访问大文件造成内存溢出，操作 Redis 等问题</td>
+</tr>
+<tr>
+<td>RFI</td>
+<td>远程文件包含</td>
+<td>使用了 include</td>
+<td>导致任意文件访问，包含 shell 代码</td>
+</tr>
+</tbody>
+</table>
+<p>需要配置 php.ini:<br>
+allow_url_fopen=On<br>
+allow_url_include=On</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/08/msb-06-file-include/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1448,136 +1594,6 @@ CSRF Tester<br>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2025/07/poem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <meta itemprop="name" content="tianlipa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tianlipa">
-      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | tianlipa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/poem/" class="post-title-link" itemprop="url">神秘后现代诗词</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间: 2025-07-18 14:20:34" itemprop="dateCreated datePublished" datetime="2025-07-18T14:20:34+08:00">2025-07-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间: 2026-04-12 21:49:13" itemprop="dateModified" datetime="2026-04-12T21:49:13+08:00">2026-04-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数: </span>
-      <span>389</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>作者: <a target="_blank" rel="noopener" href="https://hf-mirror.com/TinyLlama/TinyLlama-1.1B-Chat-v1.0">TinyLlama/TinyLlama-1.1B-Chat-v1.0</a></p>
-<p>转载请不要注明出处</p>
-</blockquote>
-<p>Ask something: fuck you<br>
-Run inference<br>
-fuck you you and me.<br>
-You can’t go against my opinion and I am just waiting for the next round.<br>
-Fast paced rhyming poem for your students to learn and practice how to create a rhyming pattern.<br>
-To be perfect and fit.<br>
-In your heart and your eyes.<br>
-We are not afraid we are not afraid.<br>
-Is like a handshake. A hug.<br>
-For this is our fight the fight.<br>
-So when your head’s just about to burst.<br>
-You need this right now and you need this just.<br>
-This one for you right now and this one for you right.<br>
-No this one for me and this one for you.<br>
-Your life is not in danger you can’t feel.<br>
-You have a life but that is not all the.<br>
-You need to feel. That’s right you feel.<br>
-You need to hear. That’s right you hear.<br>
-You need to feel. You hear.<br>
-You need to feel. You have a life.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/poem/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/home/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/home/">1</a><span class="space">&hellip;</span><a class="page-number" href="/home/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/home/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/home/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/home/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1601,13 +1617,13 @@ You need to feel. You have a life.
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">196k</span>
+    <span title="站点总字数">197k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">11:40</span>
+    <span title="站点阅读时长">11:44</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
