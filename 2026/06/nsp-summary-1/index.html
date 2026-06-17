@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":150,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="网络安全综述 典中典之保密性完整性可用性 可认证性, 不可否认性 (可审计性), 可控性 (对网络信息的传播及内容具有控制能力), 可靠性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全协议总复习 Part1">
+<meta property="og:url" content="https://tianlipa.github.io/2026/06/nsp-summary-1/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="网络安全综述 典中典之保密性完整性可用性 可认证性, 不可否认性 (可审计性), 可控性 (对网络信息的传播及内容具有控制能力), 可靠性">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C1.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C2.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C3.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C4.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C5.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C6.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C7.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C8.png">
+<meta property="og:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C9.png">
+<meta property="article:published_time" content="2026-06-17T14:35:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T14:35:00.490Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C1.png">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/06/nsp-summary-1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/06/nsp-summary-1/","path":"2026/06/nsp-summary-1/","title":"网络安全协议总复习 Part1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>网络安全协议总复习 Part1 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Subtitle</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tianlipa"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">198</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/06/nsp-summary-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="网络安全协议总复习 Part1 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络安全协议总复习 Part1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间: 2026-06-17 22:35:00" itemprop="dateCreated datePublished" datetime="2026-06-17T22:35:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数: </span>
+      <span>4.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>17 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="wang-luo-an-quan-zong-shu">网络安全综述</span><a href="#wang-luo-an-quan-zong-shu" class="header-anchor">#</a></h2>
+<p>典中典之保密性完整性可用性</p>
+<p>可认证性, 不可否认性 (可审计性), 可控性 (对网络信息的传播及内容具有控制能力), 可靠性</p>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C1.png" alt></figure>
+<span id="more"></span>
+<p>OSI 和 TCP/IP 模型:</p>
+<ul>
+<li>都是基于独立的协议栈</li>
+<li>两者都有功能相似的应用层、传输层、网络层</li>
+</ul>
+<p>不同点:</p>
+<ul>
+<li>OSI 严格定义了服务, 接口, 协议, TCP/IP 中没有严格区分</li>
+<li><strong>OSI 模型支持非连接和面向连接的网络层通信，但在传输层只支持面向连接的通信；TCP/IP 模型只支持非连接的网络层通信，但在传输层有支持非连接和面向连接的两种协议可供用户选择</strong></li>
+<li>TCP/IP 模型中不区分、甚至不提起物理层和数据链路层</li>
+</ul>
+<p>安全攻击, 安全服务, 安全机制</p>
+<p>用一种或多种安全机制来实现安全服务，安全服务致力于抵御安全攻击</p>
+<p>安全攻击包括:</p>
+<ul>
+<li><strong>主动攻击: 更改数据流, 或伪造假的数据流</strong></li>
+<li><strong>被动攻击: 对传输进行偷听与监视, 获得传输信息, 但不对通信和数据做任何修改</strong></li>
+</ul>
+<p>安全服务:</p>
+<ul>
+<li>认证: <strong>对等实体认证</strong>验证正在通信的实体的身份, <strong>数据源认证</strong>验证收到的数据的来源</li>
+<li>访问控制</li>
+<li>数据机密性</li>
+<li>数据完整性</li>
+<li>不可否认性</li>
+</ul>
+<p>安全服务和安全攻击的关系</p>
+<table>
+<thead>
+<tr>
+<th><strong>服务\攻击</strong></th>
+<th><strong>报文分析</strong></th>
+<th><strong>流量分析</strong></th>
+<th><strong>伪装</strong></th>
+<th><strong>重放</strong></th>
+<th><strong>篡改</strong></th>
+<th><strong>拒绝服务</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>对等实体认证</strong></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>数据源认证</strong></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>访问控制</strong></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>机密性</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>流量机密性</strong></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>数据完整性</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>非否认服务</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>可用性</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+</tr>
+</tbody>
+</table>
+<p>安全服务和安全机制的关系</p>
+<table>
+<thead>
+<tr>
+<th><strong>安全服务\安全机制</strong></th>
+<th><strong>加密</strong></th>
+<th><strong>数字签名</strong></th>
+<th><strong>访问控制</strong></th>
+<th><strong>完整性</strong></th>
+<th><strong>认证</strong></th>
+<th><strong>流量填充</strong></th>
+<th><strong>路由控制</strong></th>
+<th><strong>公证</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>对等实体认证</strong></td>
+<td><strong>Y</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>数据源认证</strong></td>
+<td><strong>Y</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>访问控制</strong></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>机密性</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>流量机密性</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>数据完整性</strong></td>
+<td><strong>Y</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>非否认服务</strong></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td><strong>可用性</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Y</strong></td>
+<td><strong>Y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><span id="mi-ma-xue-ji-chu-zhi-shi">密码学基础知识</span><a href="#mi-ma-xue-ji-chu-zhi-shi" class="header-anchor">#</a></h3>
+<p>按体制分: 古典密码, 对称密钥, 非对称密钥</p>
+<p>按加密模式分: 序列密码 (按位或字节加密, 流密码, 手工和机械密码时代的主流), 分组密码</p>
+<p>对称密码算法:</p>
+<ul>
+<li>DES, 数据分组长度为 64 位，密文分组长度也是 64 位，使用的密钥为 64 位，有效密钥长度为 56 位，有 8 位用于奇偶校验</li>
+<li>三重 DES, 使用三个密钥对数据块进行三次 DES 操作.<br>
+DES-EDE3 使用三个不同密钥依次进行加密-解密-加密变换 (3DES 标准，兼容性考虑)</li>
+<li>AES, 块长度为 128 位，密钥长度可以是 128、192、256 位</li>
+<li>IDEA, 密钥长度为 128 位, 被推荐使用在 PGP (Pretty Good Privacy 这什么逆天全称) 软件中</li>
+<li>Blowfish</li>
+<li>RC5, RC4 是流密码算法</li>
+<li>CAST-128</li>
+</ul>
+<p>对加密系统的攻击:</p>
+<ul>
+<li>已知明文攻击 Known Plaintext Attack</li>
+<li>选择明文攻击 Chosen Plaintext Attack: 有选择地使用任意明文和与之对应的密文信息，根据算法寻找密钥</li>
+<li>选择密文攻击 Chosen Ciphertext Attack: 具有 CPA 的能力之外，还可以有选择地使用密文和与之对应的明文信息，根据算法寻找密钥</li>
+</ul>
+<h3><span id="fen-zu-mi-ma-de-gong-zuo-mo-shi">分组密码的工作模式</span><a href="#fen-zu-mi-ma-de-gong-zuo-mo-shi" class="header-anchor">#</a></h3>
+<h4><span id="ecb-electronic-codebook-dian-zi-mi-ma-ben-mo-shi">ECB (Electronic Codebook) 电子密码本模式</span><a href="#ecb-electronic-codebook-dian-zi-mi-ma-ben-mo-shi" class="header-anchor">#</a></h4>
+<p>各个数据块独立进行加解密。相同的明文块总是生成相同的密文块，无法隐藏数据模式，容易受到统计分析攻击。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_i = E_K (P_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<h4><span id="cbc-cipher-block-chaining-mi-ma-fen-zu-lian-jie-mo-shi">CBC (Cipher-block chaining) 密码分组链接模式</span><a href="#cbc-cipher-block-chaining-mi-ma-fen-zu-lian-jie-mo-shi" class="header-anchor">#</a></h4>
+<p>引入了初始化向量 (IV)，每个明文块<strong>在加密前必须与前一个密文块进行异或 (XOR) 操作</strong>。加密过程串行，无法并行计算，存在错误传播现象。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo>⊕</mo><msub><mi>C</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_i = E_K (P_i \oplus C_{i-1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<h4><span id="cfb-cipher-feedback-mi-ma-fan-kui-mo-shi">CFB (Cipher feedback) 密码反馈模式</span><a href="#cfb-cipher-feedback-mi-ma-fan-kui-mo-shi" class="header-anchor">#</a></h4>
+<p>将块密码转化为流密码。前一个<strong>密文块/IV</strong> 经过加密后，再与当前明文块异或，生成当前密文块。解密支持并行，但加密依然串行，存在错误传播。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><msub><mi>P</mi><mi>i</mi></msub><mo>⊕</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mi>C</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_i = P_i \oplus E_K (C_{i-1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<h4><span id="ofb-output-feedback-shu-chu-fan-kui-mo-shi">OFB (Output Feedback) 输出反馈模式</span><a href="#ofb-output-feedback-shu-chu-fan-kui-mo-shi" class="header-anchor">#</a></h4>
+<p>将块密码转化为流密码。密码机的输出（独立密钥流）反馈到其自身的输入，再与明文异或。明文或密文的错误不会在后续块中传播（无错误传播）。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>i</mi></msub><mo>=</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mi>O</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O_i = E_K (O_{i-1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><msub><mi>P</mi><mi>i</mi></msub><mo>⊕</mo><msub><mi>O</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">C_i = P_i \oplus O_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h4><span id="ctr-counter-ji-shu-qi-mo-shi">CTR (Counter) 计数器模式</span><a href="#ctr-counter-ji-shu-qi-mo-shi" class="header-anchor">#</a></h4>
+<p>将块密码转化为流密码。通过加密连续的计数器值来生成独立的密钥流，随后与明文异或。支持完全并行计算，无错误传播，非常适合高速网络环境。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><msub><mi>P</mi><mi>i</mi></msub><mo>⊕</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mtext>Counter</mtext><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_i = P_i \oplus E_K (\text{Counter}_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord text"><span class="mord">Counter</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<h3><span id="gong-kai-mi-yao-suan-fa">公开密钥算法</span><a href="#gong-kai-mi-yao-suan-fa" class="header-anchor">#</a></h3>
+<p>对称密码算法存在问题:</p>
+<ul>
+<li>密钥管理量问题：潜在通信的两两分别用一对密钥，当用户量增大时，密钥空间急剧增大。</li>
+<li>对称算法无法实现抗否认需求</li>
+</ul>
+<p>非对称密码体制的基本原则:</p>
+<ul>
+<li>加密能力与解密能力是分开的</li>
+<li>密钥分发简单</li>
+<li>需要保存的密钥量大大减少，N 个用户只需要 N 个，除了个人私钥之外，公钥均可以公开保存</li>
+<li>可满足不相识的人之间保密通信</li>
+<li>可以实现数字签名</li>
+</ul>
+<p>RSA, ELGamal 密码, 椭圆曲线密码 (ECC), Diffie-Hellman 密钥交换</p>
+<h3><span id="shu-zi-qian-ming-yu-xiao-xi-ren-zheng">数字签名与消息认证</span><a href="#shu-zi-qian-ming-yu-xiao-xi-ren-zheng" class="header-anchor">#</a></h3>
+<p>消息伪造, 内容篡改, 延迟或重播, 否认</p>
+<p>数字签名: 不可否认性, 消息认证: 完整性</p>
+<p>消息认证码 MAC (Message Authentication Code), 散列函数 (Hash Function)+签名</p>
+<p>散列函数: 弱碰撞抵抗, 强碰撞抵抗</p>
+<p>标准：MD5（128 比特），SHA-1（160 比特），SHA-2（包括 6 种）</p>
+<h2><span id="gong-yao-ji-chu-she-shi-pki">公钥基础设施 PKI</span><a href="#gong-yao-ji-chu-she-shi-pki" class="header-anchor">#</a></h2>
+<p>PKI 是一个用非对称密码算法原理和技术来实现并提供安全服务的具有通用性的安全基础设施。是一种遵循标准的利用公钥加密技术为电子商务的开展提供安全基础平台的技术和规范。能够为所有网络应用提供采用加密和数字签名等密码服务所需要的密钥和证书管理。</p>
+<p>理想状态下包括证书、一个可以获取证书的开放库、一种撤销证书的方法以及一种能够根据已知的可信公钥验证证书链的方法。</p>
+<p><strong>证书的基本结构 (最简构成)</strong>: (主体身份信息+主体公钥值+认证机构名) 生成数字签名</p>
+<ul>
+<li><strong>认证中心 CA</strong>（Certificate Authority）证书的签发机构，它是 PKI 的核心构件，是 PKI 应用中权威的、可信任的、公正的第三方机构。</li>
+<li><strong>注册机构 RA</strong>（Registration Authority）注册功能也可以由 CA 直接实现，但随着用户的增加，多个 RA 可以分担 CA 的功能，作为 CA 的延展，可以增强可扩展性。按照特定的政策和管理规范对用户的资格进行审查，并执行是否同意给该申请人发放证书。撤销证书等操作，应注意的是 RA 不容许直接颁发证书或 CRL。</li>
+<li><strong>证书库 CL</strong>（Certification Library）CA 颁发证书和证书撤销列表 CRL 的集中存放地，提供公众查询，常用目录服务器提供服务，采用 LDAP（Lightweight Directory Access Protocol）目录访问协议。
+<ul>
+<li>得到与之通信的实体的公钥，在证书中</li>
+<li>验证通信实体的证书是否在 CRL 中，也基于签名</li>
+</ul>
+</li>
+<li><strong>密钥备份及恢复系统</strong>
+<ul>
+<li>签名密钥对：签名私钥相当于日常生活中的印章效力，为保证其唯一性、抗否认性，签名私钥不作备份。签名密钥的生命期较长。</li>
+<li>加密密钥对：加密密钥通常用于分发会话密钥，为防止密钥丢失时无法解密数据，解密密钥应进行备份。这种密钥应频繁更换。</li>
+</ul>
+</li>
+<li><strong>证书作废处理系统</strong> 证书由于某种原因需要作废, 终止使用, 这将通过证书作废列表（CRL, Certificate Revocation List）来完成, 证书撤销列表作为文件结构，也需要由 CA 进行签发。</li>
+<li><strong>自动密钥更新</strong> 无需用户干预, 当证书失效日期到来时, 启动更新过程, 生成新的证书</li>
+<li><strong>密钥历史档案</strong> 由于密钥更新，每个用户都会拥有多个旧证书和至少一个当前证书, 这一系列证书及相应私钥（除签名私钥）组成密钥历史档案。</li>
+<li><strong>PKI 应用接口系统</strong> 是为各种各样的应用提供安全、一致、可信任的方式与 PKI 交互, 确保所建立起来的网络环境安全可信,并降低管理成本。</li>
+<li><strong>交叉认证</strong> 多个 PKI 独立地运行, 相互之间应建立信任关系</li>
+</ul>
+<p>PKI 的基本服务:</p>
+<ul>
+<li>认证: 实体鉴别, 数据来源鉴别</li>
+<li>完整性: 哈希+数字签名计数, 消息认证码 (数字信封传输对称密钥)</li>
+<li>保密性: 采用数字信封, 传输会话密钥</li>
+<li>不可否认性服务: 收据的电子签名, 安全时间戳</li>
+<li>公证服务: 由 CA 充当第三方进行数据验证</li>
+</ul>
+<p>数字信封: 用非对称加密来保护一个一次性对称密钥，再用这个对称密钥去加密真正的数据</p>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C2.png" alt></figure>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C3.png" alt><figcaption>image-20260617180517325</figcaption></figure>
+<h3><span id="pki-de-yun-xing-cao-zuo">PKI 的运行操作</span><a href="#pki-de-yun-xing-cao-zuo" class="header-anchor">#</a></h3>
+<ol>
+<li>端实体向证书机构（CA）提出数字证书申请；</li>
+<li>CA 验明端实体身份，并<strong>签发数字证书</strong>；</li>
+<li><strong>CA 将证书公布到证书库中</strong>；</li>
+<li>假设为电子邮件应用，端实体对电子邮件数字签名作为发送认证，确保邮件完整性，不可否认性，并发送给接收方。</li>
+<li>接收方接收邮件，用端实体的<strong>公钥验证数字签名（离线)</strong>，并<strong>到证书库查明端实体证书的状态和有效性（在线)</strong>；</li>
+<li>证书库返回证书检查结果（<strong>CRL 检查</strong>等）。</li>
+</ol>
+<h3><span id="pki-ti-xi-de-hu-tong-xing-yu-biao-zhun-hua">PKI 体系的互通性与标准化</span><a href="#pki-ti-xi-de-hu-tong-xing-yu-biao-zhun-hua" class="header-anchor">#</a></h3>
+<p>信任关系:</p>
+<ul>
+<li>建立全球统一的根 CA（显然不现实）</li>
+<li>交叉认证方式：对等关系的 CA 互相签发（双向）</li>
+<li>建立基于层次化结构信任路径（单向）</li>
+<li>分布式 CA （单向双向混合）</li>
+</ul>
+<p>X.509 标准</p>
+<h3><span id="ren-zheng-ji-gou-ca">认证机构 CA</span><a href="#ren-zheng-ji-gou-ca" class="header-anchor">#</a></h3>
+<p>PKI 核心实体是认证机构 CA，为各个实体颁发电子证书，对实体身份信息和相应公钥数据进行数字签名，用以绑定该实体的公钥和身份，以证明各实体在网上身份的真实性；并负责在交易中检验和管理证书。同时也是 CRL 的签发者。</p>
+<h2><span id="ipsec-ah-he-esp">IPSec：AH 和 ESP</span><a href="#ipsec-ah-he-esp" class="header-anchor">#</a></h2>
+<p>IPv4 和 IPv6 协议, Internet 的网络层协议</p>
+<p>IPv6:</p>
+<ul>
+<li>扩展地址空间，128 位地址长度</li>
+<li>简化了头标</li>
+<li>改善了选项功能，提供了安全功能</li>
+<li>修订了参数，增加了流标记域</li>
+</ul>
+<p>认证头标, 封装化安全静荷</p>
+<p>IP + TCP + 载荷</p>
+<p>IP + IPSec + TCP + 加密载荷</p>
+<p>IP + AH + ESP + TCP + 加密载荷</p>
+<h3><span id="ipsec-zhong-de-an-quan-guan-lian-sa">IPSec 中的安全关联（SA）</span><a href="#ipsec-zhong-de-an-quan-guan-lian-sa" class="header-anchor">#</a></h3>
+<p>为使通信双方的认证/加密算法及其参数、密钥的一致，相互间建立的联系（协商一致的信息）被称为<strong>安全组合或安全关联</strong>（Security Association）。数据传输是双向的，但不同方向可能存在不同的策略，即使同一方向，针对不同功能也可能存在不同策略，因此 <strong>SA 是单向（由目的端确定）的，在双向通信时至少要建立两个 SA</strong>。对于某一主机来说，某个会话的输出数据和输入数据流处理需要两个独立的 SA。</p>
+<p>IPSec 中默认采用密钥管理协议在通信双方之间进行协商得到 SA，协商完毕后，双方都<strong>在它们的安全关联数据库（SAD）中存储该 SA 参数</strong>。</p>
+<p>SA 由一个三元组唯一地标识，该<strong>三元组为安全参数索引 SPI、一个用于输出处理的目的 IP 地址和协议</strong>（如 AH 或 ESP）。</p>
+<p>安全参数索引 SPI: SPI 是为了唯一标识 SA 而生成的一个 32 位整数，由目的端确定。包含在 AH 头标和 ESP 头标中，其值 1～255 被 IANA 留作将来使用，0 被保留，目前有效的值为 256～<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{32}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
+<p>IPSec 安全策略本质上由两个交互的数据库决定:</p>
+<ul>
+<li>安全策略数据库（Security Policy Database，SPD）</li>
+<li>安全关联数据库（Security Association Database，SAD）</li>
+</ul>
+<p>SPD 中包含一个策略条目的有序表（自上而下），类似于防火墙的规则表，通过使用一个或多个选择符来确定每一个条目。</p>
+<p>其中包含处理<strong>策略</strong>, 即是否需要 IPSec 处理</p>
+<p><strong>对外出处理，应在 SPD 中查找指向 SAD 中 SA 的指针</strong>.</p>
+<p>SAD 包含现行的一系列 SA 条目，每个 SA 由三元组进行索引, 包含序列号计数器, 序列号溢出, <strong>抗重放窗口</strong> (使用一个 32 位计数器和位图确定一个输入的 AH 或 ESP 数据包是否是重放包), AH 和 ESP 的认证算法和所需密钥, …</p>
+<h3><span id="ren-zheng-tou-biao-ah-authentication-head">认证头标 AH (Authentication Head)</span><a href="#ren-zheng-tou-biao-ah-authentication-head" class="header-anchor">#</a></h3>
+<p>AH 协议提供<strong>无连接的数据完整性</strong>、<strong>数据源认证</strong>和<strong>抗重放保护</strong>服务.</p>
+<p>不提供保密性服务, 使用消息认证码（MAC）提供源认证.</p>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C4.png" alt></figure>
+<p>安全参数索引 SPI：此 32 比特和目的 IP 地址、IPSec 协议（AH 或 ESP）组合为三元组，即可确定 SA，以确定采用的 IPSec 协议、操作模式、密码算法、密钥等。当建立新 SA 时，SPI 的产生由目的系统进行选择，另一端可采用目的地址+SPI 值标识该 SA.</p>
+<p>序列号：单调增加的 32 位无符号整数，利用该域抵抗重放攻击。每个 IPSec 分组依次将序列号加 1，但不用来对数据包进行排序。</p>
+<p>抗重放:</p>
+<ul>
+<li>接收到包含在窗口中的新包，且验证通过，则直接进行标记；</li>
+<li>接收包超过了窗口右边界，且验证通过，则窗口右移，使得新包成为右边界；</li>
+<li>接收包超过了左边界或者没有通过验证，丢弃该包.</li>
+</ul>
+<p>认证数据: 是一个长度可变的域，长度为 32 比特的整数倍。具体长度因采用的不同认证算法而异。该认证数据也被称为 IP 数据包的完整性校验值.</p>
+<h4><span id="ah-de-chu-li">AH 的处理</span><a href="#ah-de-chu-li" class="header-anchor">#</a></h4>
+<p>源端处理:</p>
+<ul>
+<li>使用相应的选择符 (目的 IP 地址、端口号和传输协议等) 查找安全策略数据库 SPD 获取策略。如需要对分组进行 IPSec 处理，且到目的主机的 SA 已经建立，那么符合分组选择符的 SPD 将指向外出 SA 数据库（SAD）的一个或者多个 SA。如果 SA 还未建立，IPSec 将调用 IKE 协商一个 SA，并将其连接到 SPD 条目上。</li>
+<li>产生或增加序列号，当一个新的 SA 建立时，序列号计数器初始化为 0，以后每发一个分组，序列号加 1.</li>
+<li>计算 ICV（完整性校验值).</li>
+<li>转发分组到目的节点.</li>
+</ul>
+<p>目的端进入处理:</p>
+<ul>
+<li>如 IP 分组中无 IPSec 选项，则分组中的选择符进入 SPD 查找一条与选择符匹配的策略，检查策略是否相符。如果无需进行 IPSec 处理则放行，否则丢弃.</li>
+<li>使用 IP 分组头中的 SPI 值、目的 IP 地址以及 IPSec 协议在进入的 SA 数据库中查找 SA，如果查找失败，则抛弃该分组，并记录事件。</li>
+<li>使用已查到的 SA 进行 IPSec 处理。</li>
+<li>检查序列号，确定是否为重放分组.</li>
+<li>使用 SA 指定的 MAC 算法计算 ICV，并与认证数据域中的 ICV 比较，如果两值不同，则抛弃分组.</li>
+</ul>
+<p>MAC 的计算包括 IP 头标，计算前先将<strong>可变不可预测域置为 0</strong>，将可变但可预测域设定为到达接收端的预期值，并<strong>保持不变域的值</strong>。但在隧道模式下，内部 IP 头标的可变域不用设为 0。</p>
+<h3><span id="feng-zhuang-an-quan-zai-he-tou-biao-esp">封装安全载荷头标 ESP</span><a href="#feng-zhuang-an-quan-zai-he-tou-biao-esp" class="header-anchor">#</a></h3>
+<p>ESP 提供<strong>加密（基于填充能提供抗流量分析）、抗重放、完整性校验（可选，不覆盖 IP 头标）、认证功能</strong>.</p>
+<p>采用对称密码体制加密数据, 使用消息认证码（MAC）提供认证和完整性保护服务.</p>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C5.png" alt></figure>
+<p>填充的目的: 32 位对齐, 加密算法要求, 分组特定域数值的固定单位要求, 隐藏实际载荷长度.</p>
+<h4><span id="esp-de-chu-li">ESP 的处理</span><a href="#esp-de-chu-li" class="header-anchor">#</a></h4>
+<p>源端处理:</p>
+<ul>
+<li>使用分组的相应<strong>选择符</strong>（目的 IP 地址、端口、传输协议等）查找<strong>安全策略数据库</strong>（SPD）获取策略，如分组需要 IPSec 处理，且其 SA 已建立，则与选择符相匹配的 SPD 项将指向<strong>安全关联数据库</strong>（SAD）中的相应 SA，否则则使用 IKE 建立 SA。</li>
+<li>生成或增加序列号</li>
+<li>加密分组，SA 指明加密算法，一般采用对称密码算法</li>
+<li>计算完整性校验值 (可选)</li>
+</ul>
+<p>目的端处理:</p>
+<ul>
+<li>使用<strong>目的 IP 地址、IPSec 协议、SPI</strong> 进入 SAD 检索特定 SA，如果查找失败，则丢弃分组</li>
+<li>策略验证：使用分组的选择符进入 SPD 中查找与之匹配的策略，根据策略检查该分组是否满足 IPSec 处理要求</li>
+<li>检查抗重放功能</li>
+<li>如 SA 指定需要认证，则检查数据完整性</li>
+<li>解密</li>
+</ul>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C6.png" alt></figure>
+<h3><span id="ipsec-de-chuan-shu-mo-shi-yu-sui-dao-mo-shi">IPSec 的传输模式与隧道模式</span><a href="#ipsec-de-chuan-shu-mo-shi-yu-sui-dao-mo-shi" class="header-anchor">#</a></h3>
+<p>在传输模式中，AH 和 ESP 头标插在 IP 头标及其他选项 (或扩展头标) 之后，但在传输层协议之前。为 IP 载荷提供认证、完整性和机密性.</p>
+<p>IP head + AH head + ESP head + payload</p>
+<p>在隧道模式下，AH 或 ESP 头标插在 IP 头标之前，另外生成一个新的 IP 头放在前面，隧道的起点和终点的网关地址就是新 IP 头的源/目的 IP 地址, 保护整个 IP 分组，提供认证、完整性和机密性。</p>
+<p>IP head + AH head + ESP head + IP head + payload</p>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C7.png" alt></figure>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C8.png" alt><figcaption>AH的认证范围</figcaption></figure>
+<figure><img data-src="D:%5CBlog%5Csource%5Cimg%5Cnsp-summary-1%5C9.png" alt><figcaption>ESP的认证和加密范围</figcaption></figure>
+<p>单个的 SA 不能够同时支持 AH 和 ESP。为了满足复杂的安全策略，调用多个 SA 来为同一个流提供服务. 符合某个特定策略的多个 SA 的组合，被称为安全关联组合.</p>
+<p>组合模式: 传输邻接, 隧道迭代</p>
+<p><strong>具有 AH 头标或 ESP 头标的的 IP 分组不能穿越 NAT 和 NATPT.</strong></p>
+<p>地址的修改使得接收端的 AH 认证失败.</p>
+<p>上层端口号信息的 ESP 加密，使得端口无法被得知，无法进行 NAT-PT.</p>
+<p>上层 TCP/UDP 中校验和计算涉及伪头标，包括 IP 地址和端口，通过 ESP 认证，校验和字段不能被修改，上层会校验验证失败.</p>
+<p>针对 ESP 问题，IETF 的可行解决方案（建议）：在 ESP 头标前插入一个 UDP 头标</p>
+<p>IPSec 隧道模式的应用: VPN</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/06/math-modeling-review/" rel="prev" title="数学建模评论转载">
+                  <i class="fa fa-angle-left"></i> 数学建模评论转载
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">202k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12:02</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/subtitle.js"></script>
+
+<script>
+  function removeTaskListSpaces() {
+      const checkboxes = document.querySelectorAll('.task-list-item-checkbox');
+      checkboxes.forEach(function(box) {
+          let nextNode = box.nextSibling;
+        
+          // 如果它确实是一段文本
+          if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+            // 把开头的空白字符（包括空格、换行）强制删掉
+            nextNode.textContent = nextNode.textContent.replace(/^\s+/, '');
+          }
+      });
+  }
+
+  // 页面常规加载时执行
+  document.addEventListener("DOMContentLoaded", removeTaskListSpaces);
+  // 兼容开启 PJAX 的主题（无刷新跳转）
+  document.addEventListener("pjax:complete", removeTaskListSpaces);
+  document.addEventListener("pjax:success", removeTaskListSpaces);
+</script>
+
+
+
+<!-- hexo injector body_end start -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const avatars = ["/img/avatar/1.png","/img/avatar/11.png","/img/avatar/2.gif","/img/avatar/3.jpg","/img/avatar/4.jpg","/img/avatar/5.jpg","/img/avatar/6.gif","/img/avatar/7.jpg","/img/avatar/8.jpg","/img/avatar/9.jpg","/img/avatar/呆猫.jpg"];
+      
+      if (avatars.length > 0) {
+        const randomIndex = Math.floor(Math.random() * avatars.length);
+        const avatarElement = document.querySelector('.site-author-image');
+        if (avatarElement) {
+          avatarElement.src = avatars[randomIndex];
+        }
+      }
+    });
+  </script>
+  <!-- hexo injector body_end end --></body>
+</html>
