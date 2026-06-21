@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/creeper-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/creeper-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/creeper-16x16.png">
+  <link rel="mask-icon" href="/img/creeper.svg" color="#222">
+  <meta name="google-site-verification" content="xnevF7kqEaJI7y45BmO0xpIUVUa0xusjcJ0MIFbvX2I">
+  <meta name="msvalidate.01" content="0E006AA8DCC38A710D0287C1DD04DDCA">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=MiSans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tianlipa.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":16,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":150,"transition":{"menu_item":"fadeIn","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="虚拟专用网技术 VPN Virtual Private Network 虚拟专用网络 虚拟专用网络可以实现不同网络的组件和资源之间的相互连接. 虚拟专用网络能够利用 Internet 或其它公共互联网络的基础设施为用户创建隧道, 并提供与物理专用网络一样的安全和功能保障. 在虚拟专网中, 任意两个节点之间的连接并没有传统专网所需的端到端的物理链路, 而是利用某种公众网的资源动态组成的. 是通过隧道">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全协议总复习 Part3">
+<meta property="og:url" content="https://tianlipa.github.io/2026/06/nsp-summary-3/index.html">
+<meta property="og:site_name" content="tianlipa">
+<meta property="og:description" content="虚拟专用网技术 VPN Virtual Private Network 虚拟专用网络 虚拟专用网络可以实现不同网络的组件和资源之间的相互连接. 虚拟专用网络能够利用 Internet 或其它公共互联网络的基础设施为用户创建隧道, 并提供与物理专用网络一样的安全和功能保障. 在虚拟专网中, 任意两个节点之间的连接并没有传统专网所需的端到端的物理链路, 而是利用某种公众网的资源动态组成的. 是通过隧道">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-19T08:54:32.000Z">
+<meta property="article:modified_time" content="2026-06-19T09:42:06.871Z">
+<meta property="article:author" content="tianlipa">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tianlipa.github.io/2026/06/nsp-summary-3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tianlipa.github.io/2026/06/nsp-summary-3/","path":"2026/06/nsp-summary-3/","title":"网络安全协议总复习 Part3"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>网络安全协议总复习 Part3 | tianlipa</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+<!-- <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@500&display=swap" /> -->
+<link rel="stylesheet" href="https://unpkg.com/misans@4.0.0/lib/Normal/MiSans-Regular.min.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tianlipa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Subtitle</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/collection/" rel="section"><i class="fa fa-heart fa-fw"></i>收藏</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tianlipa"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <p class="site-author-name" itemprop="name">tianlipa</p>
+  <div class="site-description" itemprop="description">本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">198</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tianlipa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tianlipa@qq.com" title="E-Mail → mailto:tianlipa@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/tianlipa" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/tianlipa" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;tianlipa" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tianlipa.github.io/2026/06/nsp-summary-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <meta itemprop="name" content="tianlipa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tianlipa">
+      <meta itemprop="description" content="本站所有内容<br>都是我家猫写的<br>如有任何疑问<br>喵喵喵喵喵喵喵">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="网络安全协议总复习 Part3 | tianlipa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络安全协议总复习 Part3
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间: 2026-06-19 16:54:32 / 修改时间: 17:42:06" itemprop="dateCreated datePublished" datetime="2026-06-19T16:54:32+08:00">2026-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数: </span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2><span id="xu-ni-zhuan-yong-wang-ji-zhu-vpn">虚拟专用网技术 VPN</span><a href="#xu-ni-zhuan-yong-wang-ji-zhu-vpn" class="header-anchor">#</a></h2>
+<p>Virtual Private Network 虚拟专用网络</p>
+<p>虚拟专用网络可以实现不同网络的组件和资源之间的相互连接. 虚拟专用网络能够利用 Internet 或其它公共互联网络的基础设施为用户创建隧道, 并提供与物理专用网络一样的安全和功能保障.</p>
+<p>在虚拟专网中, 任意两个节点之间的连接并没有传统专网所需的端到端的物理链路, 而是利用某种公众网的资源动态组成的.</p>
+<p>是通过隧道技术在公共数据网络上虚拟出一条点到点的专线技术.</p>
+<span id="more"></span>
+<p><strong>透明性</strong>: 对上层协议和终端用户透明 (无感知).</p>
+<p><strong>隧道技术</strong>(Tunneling): 隧道协议将其他协议的数据帧或包重新封装在新的包头中发送. 新的包头提供了路由信息, 从而使封装的原始数据能够通过互联网络传递.</p>
+<p>按隧道协议技术分类:</p>
+<ul>
+<li>基于第二层 (数据链路层) 隧道技术的 VPN</li>
+<li>IPSec VPN</li>
+<li>GRE VPN</li>
+<li>MPLS VPN</li>
+<li>SSL VPN</li>
+</ul>
+<p>按应用类型分类:</p>
+<ul>
+<li>远程访问型</li>
+<li>LAN 间互连</li>
+</ul>
+<p>基于服务器的认证方式 RADIUS, 用于 <strong>AAA (Authentication Authorization Accounting)</strong> 认证, 基于客户/服务器方式.</p>
+<p>这里 AAA 是认证授权记账, 隔壁计算机安全又是另外一套, 不知道发什么癫.</p>
+<p>隧道技术:</p>
+<ul>
+<li>第二层隧道协议, 数据链路层, 包括 L2F, PPTP, L2TP, 都是<strong>远程访问 VPN</strong> 的协议</li>
+<li>第三层隧道协议, 网络层, 支持多种 VPN 类型, <strong>偏向 LAN 间互联</strong></li>
+<li>第四层隧道协议, 传输层, SSL VPN, 只要支持 web 访问即可, 无需客户端, 穿越防火墙和 NAT</li>
+</ul>
+<h3><span id="ipsec-vpn">IPSec VPN</span><a href="#ipsec-vpn" class="header-anchor">#</a></h3>
+<p>IPSec 不是一个单独的协议, 而是一套协议包, 包括三个基本协议:</p>
+<ul>
+<li>AH 协议提供信息源验证, 完整性保证, 防重放攻击;</li>
+<li>ESP 协议提供信息源验证, 机密性和完整性保证, 防重放;</li>
+<li>IKE 提供密钥协商与管理 (IKEv1, IKEv2), 用于实现动态协商 SA, 密钥管理, 支持预共享密钥/公钥认证</li>
+</ul>
+<p>主要用于 LAN 间 VPN, 隧道模式</p>
+<h3><span id="mpls-vpn">MPLS VPN</span><a href="#mpls-vpn" class="header-anchor">#</a></h3>
+<p>MPLS, Multi Protocol Label Switching: 多协议标记交换</p>
+<p>MPLS 吸收了 ATM 网络的交换思想, 集成了 IP 路由技术的灵活性和第 2 层交换的简捷性, 将第二层的基础设施和第三层的路由进行有机结合, 路由功能在网络边缘, MPLS 核心网络采用 MPLS 交换. 为无连接的 IP 网络提供了面向连接的交换服务, 通过标签交换实现快速转发.</p>
+<p>该技术通过标签交换路径 (LSP) 实现数据转发, 核心组件包括标签交换路由器 (LSR) 和标签分发协议 (LDP).</p>
+<p>利用标记通道为用户提供有安全的, 有服务质量保证的虚拟专网服务.</p>
+<p>利用 MPLS 构建 VPN 时, 只需对不同的企业集团分配不同的标记通道, 企业网使用的内部地址也仍可以原封不动使用 (即企业网网关可以不用 NAT), 可直接沿用原来的地址空间.<br>
+利用标记堆叠来实现 VPN, 在一个 IP 分组上叠加两个 MPLS 标记头标进行转发, 外标记用于转发, 内标记用于 VPN 接入 (FEC 标识+VPN 标识).</p>
+<h3><span id="ssl-vpn">SSL VPN</span><a href="#ssl-vpn" class="header-anchor">#</a></h3>
+<p>SSL VPN 基于 SSL/TLS 协议, 利用其证书认证, 加密和完整性机制, 实现轻量级, 安全的远程接入, 为应用层通信建立端到端安全通道.</p>
+<p>SSL VPN 涉及三类实体, 分别为网关, 访问实例和策略组.</p>
+<p>SSL VPN 网关可以创建多个访问实例, 在每个访问实例中可创建多个策略组以关联不同的访问资源. SSL VPN 网关将特定策略组授权给用户后, 该用户即可访问特定资源.</p>
+<p>接入方式: Web, TCP, IP</p>
+<h2><span id="ying-yong-ceng-an-quan-xie-yi">应用层安全协议</span><a href="#ying-yong-ceng-an-quan-xie-yi" class="header-anchor">#</a></h2>
+<h3><span id="dian-zi-you-jian-an-quan-xie-yi">电子邮件安全协议</span><a href="#dian-zi-you-jian-an-quan-xie-yi" class="header-anchor">#</a></h3>
+<p>PGP (Pretty Good Privacy), Email 安全加密系统, 侧重于为个人电子邮件提供安全保护, 采用信任网模型, 用户通过相互签署公钥建立信任关系.</p>
+<p>提供的业务: 加密, 认证, 压缩 (<strong>压缩前签名, 压缩后加密</strong>), 兼容性, 数据分段</p>
+<p>签名优先的合理性:</p>
+<ul>
+<li>便于存储验证: 保存未压缩的原始报文及签名即可, 无需额外保存压缩版本 (否则需保留压缩副本或重新计算压缩结果)</li>
+<li>避免压缩不确定性: 相同压缩算法可能因实现差异产生略微不同的输出, 若对压缩后报文签名可能导致验证失败</li>
+</ul>
+<p>压缩后加密的优势:</p>
+<ul>
+<li>节省空间, 减少加密时间: ZIP 压缩平均减少 50%体积, 抵消 Base64 编码的 33%膨胀</li>
+<li>提升安全: 压缩降低原文冗余度, 削弱明文统计特征, 增加密码分析难度</li>
+</ul>
+<p>Base64: 三个 8 位字节转为 4 个 6 位字节, 先查对应的基-64 表, 再对应到 ASCII 表, 首位置 0. 若编码的数据不是 3 字节的整数倍, 转换时不够 6 位的后面加 0 补成 6 位, 如果数据长度对 3 余 1, 编码结果加 2 个=, 余 2, 加 1 个=</p>
+<p>密码标识符 Key ID: 一个用户有多个公钥/私钥对时, 接收者如何知道发送者是用了哪个公钥来加密会话密钥? 将一个标识符 (KeyID) 与一个公钥关联, 对一个用户来说做到一一对应即可.</p>
+<p>定义 KeyID 包括 64 个有效位, (KUa mod <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>64</mn></msup></mrow><annotation encoding="application/x-tex">2^{64}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">64</span></span></span></span></span></span></span></span></span></span></span></span>)</p>
+<p>密钥环</p>
+<p>PGP 虽然采用公钥密码体系, 但不是证书, 需要保证公钥确实是所指定用户的合法公钥, 保护公钥免受攻击是 PGP 的一个问题.</p>
+<ul>
+<li>直接索取, 其他方式确认</li>
+<li>从可信任证书机构获得 B 的公钥</li>
+<li>采用信任关系保护 (从可信第三方) 公钥: 完全信任, 部分信任, 不信任</li>
+</ul>
+<p>SMTP 不能传输可执行文件和其他二进制码 (如 jpg 图片), 只能传输 7 位 ASCII 字符的问题, 因此出现了 S/MIME.</p>
+<p>MIME 的头标定义了:</p>
+<ul>
+<li>版本</li>
+<li><strong>内容类型</strong></li>
+<li><strong>内容传输编码</strong></li>
+<li>内容 ID</li>
+<li>内容描述</li>
+</ul>
+<p>在功能上, S/MIME 与 PGP 相似, 通过使用签名, 加密或签名/加密的组合来保证 MIME 通信的安全, 但强化了<strong>证书的规范</strong>.</p>
+<h3><span id="yuan-cheng-deng-lu-an-quan-xie-yi-ssh">远程登陆安全协议 SSH</span><a href="#yuan-cheng-deng-lu-an-quan-xie-yi-ssh" class="header-anchor">#</a></h3>
+<p>Secure SHell</p>
+<ul>
+<li>SSH 传输层协议</li>
+<li>SSH 认证协议</li>
+<li>SSH 连接协议</li>
+</ul>
+<h3><span id="web-an-quan-xie-yi-https">Web 安全协议 HTTPS</span><a href="#web-an-quan-xie-yi-https" class="header-anchor">#</a></h3>
+<p>http over SSL, 由 http 和 SSL 结合来实现浏览器和服务器之间的安全通信.</p>
+<p>https 的功能被嵌入到所有当前的主流浏览器当中, 但依赖于服务器端是否支持 https 通信.</p>
+<p>https 的周知端口为 443, http 为 80.</p>
+<p>客户端同时扮演 http 的客户端和 TLS 的客户端, 首先是 TLS 握手过程, 然后是 http 请求, 执行标准的 http 过程.</p>
+<h3><span id="dnssec-xie-yi-he-xi-tong">DNSSEC 协议和系统</span><a href="#dnssec-xie-yi-he-xi-tong" class="header-anchor">#</a></h3>
+<p>DNSSEC (DNS Security Extensions) 通过为 DNS 中的数据添加数字签名信息, 使得客户端在得到应答消息后可以通过检查此签名信息来判断应答数据是否权威和真实, 从而为 DNS 数据提供数据来源验证和数据完整性检验, 可以防止针对 DNS 的相关攻击.</p>
+<ul>
+<li>为 DNS 数据提供来源验证</li>
+<li>为数据提供完整性性验证</li>
+<li>为查询提供否定存在验证 (即为否定应答消息提供验证, 确认授权服务器上不存在所查询的资源记录)</li>
+</ul>
+<h3><span id="set-xie-yi">SET 协议</span><a href="#set-xie-yi" class="header-anchor">#</a></h3>
+<p>安全电子交易协议 SET (Secure Electronic Transaction) 提供了消费者, 商家和银行之间的认证, 确保了网上交易数据的<strong>保密性</strong>, 数据的<strong>完整性</strong>以及交易的<strong>不可抵赖性</strong>. 特别是能保证不将消费者银行卡号暴露给商家, 不将消费者的购物信息暴露给银行等优点, 因此它成为目前公认的信用卡/借记卡网上交易安全标准.</p>
+<h2><span id="wlan-security">WLAN Security</span><a href="#wlan-security" class="header-anchor">#</a></h2>
+<p>802.11 身份认证:</p>
+<ul>
+<li>开放式系统 公开 SSID 传统缺省设置, 不进行认证</li>
+<li>封闭式系统 不公开 SSID</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/06/nsp-summary-2/" rel="prev" title="网络安全协议总复习 Part2">
+                  <i class="fa fa-angle-left"></i> 网络安全协议总复习 Part2
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">tianlipa</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">198k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/subtitle.js"></script>
+
+<script>
+  function removeTaskListSpaces() {
+      const checkboxes = document.querySelectorAll('.task-list-item-checkbox');
+      checkboxes.forEach(function(box) {
+          let nextNode = box.nextSibling;
+        
+          // 如果它确实是一段文本
+          if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+            // 把开头的空白字符（包括空格、换行）强制删掉
+            nextNode.textContent = nextNode.textContent.replace(/^\s+/, '');
+          }
+      });
+  }
+
+  // 页面常规加载时执行
+  document.addEventListener("DOMContentLoaded", removeTaskListSpaces);
+  // 兼容开启 PJAX 的主题（无刷新跳转）
+  document.addEventListener("pjax:complete", removeTaskListSpaces);
+  document.addEventListener("pjax:success", removeTaskListSpaces);
+</script>
+
+
+
+<!-- hexo injector body_end start -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const avatars = ["/img/avatar/1.png","/img/avatar/11.png","/img/avatar/2.gif","/img/avatar/3.jpg","/img/avatar/4.jpg","/img/avatar/5.jpg","/img/avatar/6.gif","/img/avatar/7.jpg","/img/avatar/8.jpg","/img/avatar/9.jpg","/img/avatar/呆猫.jpg"];
+      
+      if (avatars.length > 0) {
+        const randomIndex = Math.floor(Math.random() * avatars.length);
+        const avatarElement = document.querySelector('.site-author-image');
+        if (avatarElement) {
+          avatarElement.src = avatars[randomIndex];
+        }
+      }
+    });
+  </script>
+  <!-- hexo injector body_end end --></body>
+</html>
