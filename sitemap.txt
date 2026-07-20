@@ -1,11 +1,16 @@
+https://tianlipa.github.io/2026/07/2026-7-15/
+https://tianlipa.github.io/2026/07/movies-2026-1/
+https://tianlipa.github.io/2026/06/death-of-femboy/
+https://tianlipa.github.io/2026/06/trans-suicidal-intervention/
+https://tianlipa.github.io/2026/05/about-shit-thoughts/
+https://tianlipa.github.io/2026/07/2026-7-11/
+https://tianlipa.github.io/2026/06/math-modeling-review/
 https://tianlipa.github.io/2026/06/2026-6-28/
 https://tianlipa.github.io/2026/02/machine-learning-review/
-https://tianlipa.github.io/2026/07/movies-2026-1/
 https://tianlipa.github.io/2025/12/summary-2025/
 https://tianlipa.github.io/2026/06/nsp-summary-3/
 https://tianlipa.github.io/2026/06/nsp-summary-1/
 https://tianlipa.github.io/2026/06/nsp-summary-2/
-https://tianlipa.github.io/2026/06/math-modeling-review/
 https://tianlipa.github.io/2026/05/2026-5-8/
 https://tianlipa.github.io/2026/03/cosmic-princess-kaguya/
 https://tianlipa.github.io/2026/03/not-your-fault/
@@ -210,6 +215,7 @@ https://tianlipa.github.io/tags/%E7%94%B5%E5%BD%B1/
 https://tianlipa.github.io/tags/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94/
 https://tianlipa.github.io/tags/%E9%83%BD%E5%B8%82%E4%BC%A0%E8%AF%B4/
 https://tianlipa.github.io/tags/%E8%BD%AC%E8%BD%BD/
+https://tianlipa.github.io/tags/Shitthoughts/
 https://tianlipa.github.io/tags/LLM/
 https://tianlipa.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/
 https://tianlipa.github.io/tags/LLM%E5%AE%89%E5%85%A8/
@@ -241,6 +247,7 @@ https://tianlipa.github.io/categories/%E6%B8%B8%E6%88%8F/
 https://tianlipa.github.io/categories/%E9%9A%8F%E7%AC%94/
 https://tianlipa.github.io/categories/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94/
 https://tianlipa.github.io/categories/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/
+https://tianlipa.github.io/categories/Shit-Thoughts/
 https://tianlipa.github.io/categories/%E7%A7%91%E7%A0%94/
 https://tianlipa.github.io/categories/%E7%AC%94%E8%AE%B0/
 https://tianlipa.github.io/categories/%E5%BD%B1%E8%A7%86%E4%BD%9C%E5%93%81/

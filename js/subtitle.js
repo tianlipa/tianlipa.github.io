@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "我受够繁文缛节了.",
         "谨以此物纪念我的童年,<br>那是一段小有遗憾的幸福时光.",
         "你好",
-        "飞光飞光, 劝尔一杯酒",
+        "飞光飞光, 劝尔一杯酒.",
         "吾不识青天高, 黄地厚.<br>唯见月寒日暖, 来煎人寿.",
         "天东有若木, 下置衔烛龙.<br>吾将斩龙足, 嚼龙肉,<br>使之朝不得回, 夜不得伏.<br>自然老者不死, 少者不哭.",
         "刘彻茂陵多滞骨,<br>嬴政梓棺费鲍鱼.",
@@ -322,10 +322,15 @@ document.addEventListener("DOMContentLoaded", function () {
         "唉, 我是多么憎恨夜晚.",
         "暗影大师69的编年史",
         "世上终究没有不停的雨,<br>但或许有无止境的冒险.",
-        "This APT has Super Cow Powers.",
+        "This Foundation has Super Cow Powers.",
         "...like tears in rain.",
         "DON'T PANIC",
         "只需呼吸",
+        "反叛和小众把你变酷了吗?",
+        "试图在此寻找寓意者将被放逐",
+        "☝️🤓",
+        "如果你是龙, 也好",
+        "您好我们这里是麦当劳,<br>没有疯狂星期四",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
