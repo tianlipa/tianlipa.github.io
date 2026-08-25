@@ -330,7 +330,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "试图在此寻找寓意者将被放逐",
         "☝️🤓",
         "如果你是龙, 也好",
-        "您好我们这里是麦当劳,<br>没有疯狂星期四",
+        "您好我们这里是麦当劳,<br>没有疯狂星期四.",
+        "一无所有",
+        "主观能动性专找等待的人",
+        "樽前作剧莫相笑, 死诸君思此狂.",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
