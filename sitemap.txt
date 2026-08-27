@@ -1,8 +1,6 @@
-https://tianlipa.github.io/what-to-write/index.html
-https://tianlipa.github.io/2026/08/choose-life/
-https://tianlipa.github.io/what-to-read/index.html
-https://tianlipa.github.io/shitpost/index.html
+https://tianlipa.github.io/2026/05/about-shit-thoughts/
 https://tianlipa.github.io/2026/07/movies-2026-1/
+https://tianlipa.github.io/2026/08/choose-life/
 https://tianlipa.github.io/2026/08/d2l-notes-3/
 https://tianlipa.github.io/2026/02/g-safeguard-etc/
 https://tianlipa.github.io/2026/04/badagent-etc/
@@ -17,7 +15,6 @@ https://tianlipa.github.io/2026/06/2026-6-28/
 https://tianlipa.github.io/2026/07/2026-7-15/
 https://tianlipa.github.io/2026/06/death-of-femboy/
 https://tianlipa.github.io/2026/06/trans-suicidal-intervention/
-https://tianlipa.github.io/2026/05/about-shit-thoughts/
 https://tianlipa.github.io/2026/07/2026-7-11/
 https://tianlipa.github.io/2026/06/math-modeling-review/
 https://tianlipa.github.io/2026/02/machine-learning-review/
@@ -219,7 +216,6 @@ https://tianlipa.github.io/2026/04/2026-4-3/
 https://tianlipa.github.io/categories/index.html
 https://tianlipa.github.io/tags/index.html
 https://tianlipa.github.io/what-to-do/index.html
-https://tianlipa.github.io/proust-questionnaire/index.html
 https://tianlipa.github.io/
 https://tianlipa.github.io/tags/%E6%97%A5%E5%AF%84/
 https://tianlipa.github.io/tags/%E6%B8%B8%E6%88%8F/
