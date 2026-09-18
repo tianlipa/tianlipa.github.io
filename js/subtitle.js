@@ -333,7 +333,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "您好我们这里是麦当劳,<br>没有疯狂星期四.",
         "一无所有",
         "主观能动性专找等待的人",
-        "樽前作剧莫相笑, 死诸君思此狂.",
+        "樽前作剧莫相笑,<br>我死诸君思此狂.",
+        "What a life",
+        "我已经想到了一个真正惊人的Sub...",
+        "我心里有一只基米,<br>路过的人只听到了哈气.",
+        "请您忍耐.",
+        "(一个元笑话)",
+        "闹麻了",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
