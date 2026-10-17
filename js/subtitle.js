@@ -336,10 +336,15 @@ document.addEventListener("DOMContentLoaded", function () {
         "樽前作剧莫相笑,<br>我死诸君思此狂.",
         "What a life",
         "我已经想到了一个真正惊人的Sub...",
-        "我心里有一只基米,<br>路过的人只听到了哈气.",
+        "我心里有一只基米,<br>路过的人只看到了哈气.",
         "请您忍耐.",
         "(一个元笑话)",
         "闹麻了",
+        "红酒半杯十五块",
+        "超级秘密字幕",
+        "Knock knock",
+        "愿您罪有应得",
+        "I'm not great at the advice.<br>Can I interest you in<br>a sarcastic comment?",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
