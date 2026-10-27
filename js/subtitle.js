@@ -351,6 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "大啖食粮之刻已到",
         "没有人性",
         "悲哀藏在现实中",
+        "坚决支持AGI统治人类",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
