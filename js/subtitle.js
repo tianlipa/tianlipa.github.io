@@ -352,6 +352,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "没有人性",
         "悲哀藏在现实中",
         "坚决支持AGI统治人类",
+        "😡生南国",
+        "再见, 再见",
+        "我让你不戴帽子",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
