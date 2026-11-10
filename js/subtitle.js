@@ -355,6 +355,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "😡生南国",
         "再见, 再见",
         "我让你不戴帽子",
+        "朋友就像雪花",
+        "搞不好你也是个相当怪的怪人.",
         "and that's all i wrote."
     ];
     var randomIndex = Math.floor(Math.random() * paragraphs.length);
