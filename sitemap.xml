@@ -173,9 +173,27 @@
   </url>
   
   <url>
+    <loc>https://tianlipa.github.io/shitpost/index.html</loc>
+    
+    <lastmod>2026-10-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/2026/09/2026-9-27/</loc>
     
     <lastmod>2026-09-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/what-to-write/index.html</loc>
+    
+    <lastmod>2026-09-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1271,7 +1289,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/08/msb-10-deserialize/</loc>
+    <loc>https://tianlipa.github.io/2025/08/msb-09-rce/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1280,7 +1298,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/08/msb-09-rce/</loc>
+    <loc>https://tianlipa.github.io/2025/08/msb-10-deserialize/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1316,7 +1334,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/08/msb-05-file-upload/</loc>
+    <loc>https://tianlipa.github.io/2025/08/msb-04-csrf/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1325,7 +1343,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/08/msb-04-csrf/</loc>
+    <loc>https://tianlipa.github.io/2025/08/msb-05-file-upload/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1370,15 +1388,6 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/12/database-6/</loc>
-    
-    <lastmod>2026-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tianlipa.github.io/2025/12/database-5/</loc>
     
     <lastmod>2026-04-12</lastmod>
@@ -1388,7 +1397,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/12/database-4/</loc>
+    <loc>https://tianlipa.github.io/2025/12/database-6/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1398,6 +1407,15 @@
   
   <url>
     <loc>https://tianlipa.github.io/2025/12/database-3/</loc>
+    
+    <lastmod>2026-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/12/database-4/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1514,6 +1532,15 @@
   </url>
   
   <url>
+    <loc>https://tianlipa.github.io/2026/01/2026-1-10/</loc>
+    
+    <lastmod>2026-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/2026/01/2026-1-11/</loc>
     
     <lastmod>2026-04-12</lastmod>
@@ -1532,25 +1559,16 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2026/02/2026-2-18/</loc>
-    
-    <lastmod>2026-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tianlipa.github.io/2026/01/2026-1-10/</loc>
-    
-    <lastmod>2026-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tianlipa.github.io/2026/02/2026-2-14/</loc>
+    
+    <lastmod>2026-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2026/02/2026-2-18/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1577,7 +1595,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/09/2025-9-1/</loc>
+    <loc>https://tianlipa.github.io/2025/09/2025-9-13/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1587,6 +1605,15 @@
   
   <url>
     <loc>https://tianlipa.github.io/2025/09/2025-9-14/</loc>
+    
+    <lastmod>2026-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/09/2025-9-1/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1605,15 +1632,6 @@
   
   <url>
     <loc>https://tianlipa.github.io/2025/09/2025-9-25/</loc>
-    
-    <lastmod>2026-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tianlipa.github.io/2025/09/2025-9-13/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1685,7 +1703,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/02/2025-2-3/</loc>
+    <loc>https://tianlipa.github.io/2025/02/2025-2-24/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1694,7 +1712,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/02/2025-2-24/</loc>
+    <loc>https://tianlipa.github.io/2025/02/2025-2-3/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1748,16 +1766,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/02/2025-2-1/</loc>
-    
-    <lastmod>2026-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tianlipa.github.io/2025/02/2025-2-14/</loc>
+    <loc>https://tianlipa.github.io/2025/12/2025-12-11/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1775,7 +1784,16 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/12/2025-12-11/</loc>
+    <loc>https://tianlipa.github.io/2025/02/2025-2-14/</loc>
+    
+    <lastmod>2026-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/2025/02/2025-2-1/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1838,7 +1856,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/01/2025-1-24/</loc>
+    <loc>https://tianlipa.github.io/2025/01/2025-1-23/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -1847,7 +1865,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/2025/01/2025-1-23/</loc>
+    <loc>https://tianlipa.github.io/2025/01/2025-1-24/</loc>
     
     <lastmod>2026-04-12</lastmod>
     
@@ -2063,6 +2081,15 @@
   </url>
   
   <url>
+    <loc>https://tianlipa.github.io/blocklist/index.html</loc>
+    
+    <lastmod>2026-02-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/what-to-do/index.html</loc>
     
     <lastmod>2025-11-28</lastmod>
@@ -2095,14 +2122,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
+    <loc>https://tianlipa.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://tianlipa.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2130,13 +2157,6 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E5%BD%B1%E8%A7%86%E4%BD%9C%E5%93%81/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://tianlipa.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -2158,14 +2178,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E8%89%BA%E6%9C%AF%E7%BB%86%E8%8F%8C/</loc>
+    <loc>https://tianlipa.github.io/tags/Shitthoughts/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/Shitthoughts/</loc>
+    <loc>https://tianlipa.github.io/tags/%E8%89%BA%E6%9C%AF%E7%BB%86%E8%8F%8C/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2193,7 +2213,7 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/USTC-MINE/</loc>
+    <loc>https://tianlipa.github.io/tags/%E5%BD%B1%E8%A7%86%E4%BD%9C%E5%93%81/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2201,6 +2221,13 @@
   
   <url>
     <loc>https://tianlipa.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tianlipa.github.io/tags/USTC-MINE/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2235,14 +2262,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E8%AF%97%E8%AF%8D/</loc>
+    <loc>https://tianlipa.github.io/tags/GEO/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/GEO/</loc>
+    <loc>https://tianlipa.github.io/tags/%E8%AF%97%E8%AF%8D/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2256,14 +2283,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E5%AE%9E%E4%B9%A0/</loc>
+    <loc>https://tianlipa.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://tianlipa.github.io/tags/%E5%AE%9E%E4%B9%A0/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2277,14 +2304,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://tianlipa.github.io/tags/LeetCode/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/tags/LeetCode/</loc>
+    <loc>https://tianlipa.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2312,6 +2339,13 @@
   </url>
   
   <url>
+    <loc>https://tianlipa.github.io/tags/Minecraft/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://tianlipa.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -2332,13 +2366,6 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://tianlipa.github.io/tags/Minecraft/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
@@ -2349,14 +2376,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
+    <loc>https://tianlipa.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://tianlipa.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2405,14 +2432,14 @@
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/categories/%E5%B7%A5%E4%BD%9C/</loc>
+    <loc>https://tianlipa.github.io/categories/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tianlipa.github.io/categories/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://tianlipa.github.io/categories/%E5%B7%A5%E4%BD%9C/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
